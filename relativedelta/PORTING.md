@@ -74,6 +74,11 @@ resulting `timedelta` count).
   `ValueError("float division by zero")` (Python: `ZeroDivisionError`).
   `normalized()`, `mul()` and `div()` raise like Python's `int()` for
   NaN (`ValueError`) and infinite (`OverflowError`) values.
+* **`weeks` property.** `weeks()` returns an `Int` and never raises:
+  it saturates for `|days| >= 7 * 2^31` and is meaningless for non-finite
+  `days` (Python returns an unbounded int / raises from `int()`).
+  `set_weeks` likewise does not raise for non-finite `days` (Python raises
+  from the getter it calls).
 * **Integer bounds.** Python ints are unbounded; `years`, `months` and the
   absolute fields are `Int`. Month carries are computed in `Int64`, and a
   normalized `years` outside the `Int` range raises `OverflowError` from

@@ -214,13 +214,19 @@ pub fn RelativeDelta::from_float(
   second? : Int,
   microsecond? : Int,
 ) -> RelativeDelta raise @datetime.DateTimeError {
-  let years_i = py_int64(years)
-  let months_i = py_int64(months)
-  if years_i.to_double() != years || months_i.to_double() != months {
-    raise @datetime.ValueError(
-      "Non-integer years and months are ambiguous and not currently supported.",
-    )
+  // Python checks `x != int(x)` for years, then months.
+  fn integral(x : Double) -> Int64 raise @datetime.DateTimeError {
+    let i = py_int64(x)
+    if i.to_double() != x {
+      raise @datetime.ValueError(
+        "Non-integer years and months are ambiguous and not currently supported.",
+      )
+    }
+    i
   }
+
+  let years_i = integral(years)
+  let months_i = integral(months)
   let mut leapdays = leapdays
   let mut month = month
   let mut day = day
