@@ -13,8 +13,8 @@ fn[T] first_some(a : T?, b : T?) -> T? {
 /// self.leapdays`).
 pub impl Add for RelativeDelta with fn add(self, other) {
   RelativeDelta::build(
-    years=other.years + self.years,
-    months=other.months + self.months,
+    years=other.years.to_int64() + self.years.to_int64(),
+    months=other.months.to_int64() + self.months.to_int64(),
     days=other.days + self.days,
     leapdays=if other.leapdays != 0 { other.leapdays } else { self.leapdays },
     hours=other.hours + self.hours,
@@ -29,7 +29,9 @@ pub impl Add for RelativeDelta with fn add(self, other) {
     minute=first_some(other.minute, self.minute),
     second=first_some(other.second, self.second),
     microsecond=first_some(other.microsecond, self.microsecond),
-  )
+  ) catch {
+    e => abort(e.to_string())
+  }
 }
 
 ///|
@@ -37,8 +39,8 @@ pub impl Add for RelativeDelta with fn add(self, other) {
 /// `leapdays` the *left* operand wins when set (as in Python).
 pub impl Sub for RelativeDelta with fn sub(self, other) {
   RelativeDelta::build(
-    years=self.years - other.years,
-    months=self.months - other.months,
+    years=self.years.to_int64() - other.years.to_int64(),
+    months=self.months.to_int64() - other.months.to_int64(),
     days=self.days - other.days,
     leapdays=if self.leapdays != 0 { self.leapdays } else { other.leapdays },
     hours=self.hours - other.hours,
@@ -53,35 +55,41 @@ pub impl Sub for RelativeDelta with fn sub(self, other) {
     minute=first_some(self.minute, other.minute),
     second=first_some(self.second, other.second),
     microsecond=first_some(self.microsecond, other.microsecond),
-  )
+  ) catch {
+    e => abort(e.to_string())
+  }
 }
 
 ///|
 /// `-rd`: negates the relative fields (not `leapdays`, nor absolute fields).
 pub impl Neg for RelativeDelta with fn neg(self) {
   self.with_relative(
-    years=-self.years,
-    months=-self.months,
+    years=-self.years.to_int64(),
+    months=-self.months.to_int64(),
     days=-self.days,
     hours=-self.hours,
     minutes=-self.minutes,
     seconds=-self.seconds,
     microseconds=-self.microseconds,
-  )
+  ) catch {
+    e => abort(e.to_string())
+  }
 }
 
 ///|
 /// `abs(rd)`: absolute value of each relative field (not `leapdays`).
 pub fn RelativeDelta::abs(self : RelativeDelta) -> RelativeDelta {
   self.with_relative(
-    years=self.years.abs(),
-    months=self.months.abs(),
+    years=self.years.to_int64().abs(),
+    months=self.months.to_int64().abs(),
     days=self.days.abs(),
     hours=self.hours.abs(),
     minutes=self.minutes.abs(),
     seconds=self.seconds.abs(),
     microseconds=self.microseconds.abs(),
-  )
+  ) catch {
+    e => abort(e.to_string())
+  }
 }
 
 ///|
@@ -92,14 +100,16 @@ pub fn RelativeDelta::add_timedelta(
   td : @datetime.TimeDelta,
 ) -> RelativeDelta {
   self.with_relative(
-    years=self.years,
-    months=self.months,
+    years=self.years.to_int64(),
+    months=self.months.to_int64(),
     days=self.days + td.days.to_double(),
     hours=self.hours,
     minutes=self.minutes,
     seconds=self.seconds + td.seconds.to_double(),
     microseconds=self.microseconds + td.microseconds.to_double(),
-  )
+  ) catch {
+    e => abort(e.to_string())
+  }
 }
 
 ///|
@@ -112,24 +122,14 @@ pub fn RelativeDelta::mul(
   self : RelativeDelta,
   f : Double,
 ) -> RelativeDelta raise @datetime.DateTimeError {
-  fn trunc(x : Double) -> Double raise @datetime.DateTimeError {
-    if x.is_nan() {
-      raise @datetime.ValueError("cannot convert float NaN to integer")
-    }
-    if x.is_inf() {
-      raise @datetime.OverflowError("cannot convert float infinity to integer")
-    }
-    x.trunc() + 0.0
-  }
-
   self.with_relative(
-    years=py_int(self.years.to_double() * f),
-    months=py_int(self.months.to_double() * f),
-    days=trunc(self.days * f),
-    hours=trunc(self.hours * f),
-    minutes=trunc(self.minutes * f),
-    seconds=trunc(self.seconds * f),
-    microseconds=trunc(self.microseconds * f),
+    years=py_int64(self.years.to_double() * f),
+    months=py_int64(self.months.to_double() * f),
+    days=py_int_float(self.days * f),
+    hours=py_int_float(self.hours * f),
+    minutes=py_int_float(self.minutes * f),
+    seconds=py_int_float(self.seconds * f),
+    microseconds=py_int_float(self.microseconds * f),
   )
 }
 

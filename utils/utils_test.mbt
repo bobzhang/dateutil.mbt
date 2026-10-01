@@ -70,6 +70,19 @@ test "within_delta: naive vs aware raises TypeError" {
 }
 
 ///|
+test "within_delta: -timedelta.max overflows, timedelta.min is fine" {
+  let d = @datetime.DateTime::new(2000, 1, 1)
+  try @utils.within_delta(d, d, @datetime.max_timedelta) catch {
+    @datetime.OverflowError(msg) =>
+      inspect(msg, content="days=-1000000000; must have magnitude <= 999999999")
+    e => fail("unexpected \{e}")
+  } noraise {
+    _ => fail("expected OverflowError")
+  }
+  assert_true(@utils.within_delta(d, d, @datetime.min_timedelta))
+}
+
+///|
 test "within_delta: aware datetimes in different zones" {
   let d1 = @datetime.DateTime::new(2016, 1, 1, hour=12, tzinfo=@tz.utc)
   let d2 = @datetime.DateTime::new(2016, 1, 1, hour=7, tzinfo=nyc())

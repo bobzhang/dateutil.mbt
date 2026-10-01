@@ -34,10 +34,11 @@ pub struct RelativeDelta {
 
 ///|
 /// Python `relativedelta.__init__` keyword path (no `yearday`) followed by
-/// `_fix()`.
+/// `_fix()`. `years`/`months` are taken as `Int64` so that sums cannot wrap;
+/// raises `OverflowError` if the normalized `years` does not fit an `Int`.
 fn RelativeDelta::build(
-  years~ : Int,
-  months~ : Int,
+  years~ : Int64,
+  months~ : Int64,
   days~ : Double,
   leapdays~ : Int,
   hours~ : Double,
@@ -52,7 +53,7 @@ fn RelativeDelta::build(
   minute~ : Int?,
   second~ : Int?,
   microsecond~ : Int?,
-) -> RelativeDelta {
+) -> RelativeDelta raise @datetime.DateTimeError {
   let mut years = years
   let mut months = months
   let mut days = days
@@ -84,15 +85,15 @@ fn RelativeDelta::build(
     hours = mod * s
     days += div * s
   }
-  if months.abs() > 11 {
-    let s = if months < 0 { -1 } else { 1 }
+  if months.abs() > 11L {
+    let s = if months < 0L { -1L } else { 1L }
     let m = months * s
-    months = m % 12 * s
-    years += m / 12 * s
+    months = m % 12L * s
+    years += m / 12L * s
   }
   {
-    years,
-    months,
+    years: int64_to_int(years),
+    months: months.to_int(),
     days,
     leapdays,
     hours,
@@ -213,8 +214,8 @@ pub fn RelativeDelta::from_float(
   second? : Int,
   microsecond? : Int,
 ) -> RelativeDelta raise @datetime.DateTimeError {
-  let years_i = py_int(years)
-  let months_i = py_int(months)
+  let years_i = py_int64(years)
+  let months_i = py_int64(months)
   if years_i.to_double() != years || months_i.to_double() != months {
     raise @datetime.ValueError(
       "Non-integer years and months are ambiguous and not currently supported.",
@@ -287,7 +288,7 @@ pub fn RelativeDelta::weeks(self : RelativeDelta) -> Int {
 /// (`days = days - weeks * 7 + value * 7`), in place.
 pub fn RelativeDelta::set_weeks(self : RelativeDelta, value : Int) -> Unit {
   self.days = self.days -
-    (self.weeks() * 7).to_double() +
+    (self.days / 7.0).trunc() * 7.0 +
     value.to_double() * 7.0
 }
 
@@ -296,14 +297,14 @@ pub fn RelativeDelta::set_weeks(self : RelativeDelta, value : Int) -> Unit {
 /// run through the constructor normalization.
 fn RelativeDelta::with_relative(
   self : RelativeDelta,
-  years~ : Int,
-  months~ : Int,
+  years~ : Int64,
+  months~ : Int64,
   days~ : Double,
   hours~ : Double,
   minutes~ : Double,
   seconds~ : Double,
   microseconds~ : Double,
-) -> RelativeDelta {
+) -> RelativeDelta raise @datetime.DateTimeError {
   RelativeDelta::build(
     years~,
     months~,
@@ -338,23 +339,25 @@ fn RelativeDelta::with_relative(
 ///   )
 /// }
 /// ```
-pub fn RelativeDelta::normalized(self : RelativeDelta) -> RelativeDelta {
-  let days = self.days.trunc()
+pub fn RelativeDelta::normalized(
+  self : RelativeDelta,
+) -> RelativeDelta raise @datetime.DateTimeError {
+  let days = py_int_float(self.days)
   let hours_f = py_round_ndigits(self.hours + 24.0 * (self.days - days), 11)
-  let hours = hours_f.trunc()
+  let hours = py_int_float(hours_f)
   let minutes_f = py_round_ndigits(self.minutes + 60.0 * (hours_f - hours), 10)
-  let minutes = minutes_f.trunc()
+  let minutes = py_int_float(minutes_f)
   let seconds_f = py_round_ndigits(
     self.seconds + 60.0 * (minutes_f - minutes),
     8,
   )
-  let seconds = seconds_f.trunc()
-  let microseconds = @datetime.round_half_even(
-    self.microseconds + 1.0e6 * (seconds_f - seconds),
+  let seconds = py_int_float(seconds_f)
+  let microseconds = py_int_float(
+    @datetime.round_half_even(self.microseconds + 1.0e6 * (seconds_f - seconds)),
   )
   self.with_relative(
-    years=self.years,
-    months=self.months,
+    years=self.years.to_int64(),
+    months=self.months.to_int64(),
     days~,
     hours~,
     minutes~,

@@ -72,8 +72,17 @@ resulting `timedelta` count).
 * **Errors.** Python `ValueError`/`OverflowError` map to
   `@datetime.ValueError`/`@datetime.OverflowError`. `rd / 0` raises
   `ValueError("float division by zero")` (Python: `ZeroDivisionError`).
-  `rd.mul(f)` raises `OverflowError` if `years`/`months` no longer fit an
-  `Int` (Python has unbounded ints).
+  `normalized()`, `mul()` and `div()` raise like Python's `int()` for
+  NaN (`ValueError`) and infinite (`OverflowError`) values.
+* **Integer bounds.** Python ints are unbounded; `years`, `months` and the
+  absolute fields are `Int`. Month carries are computed in `Int64`, and a
+  normalized `years` outside the `Int` range raises `OverflowError` from
+  the constructors, `mul`/`div` and `normalized()`; the `+`/`-`/unary `-`
+  operators and `abs()`/`add_timedelta()` abort in that (pathological)
+  case, like `TimeDelta`'s operators. At application, the target year is
+  computed in `Int64` and raises `OverflowError` if it does not fit (Python
+  raises `OverflowError` from `replace` in that case too); the weekday jump
+  is computed in `Int64` and raises `OverflowError` beyond 999999999 days.
 * **Hash.** Python's `__eq__` treats a weekday with `n` in `{None, 0, 1}` as
   equal, but `__hash__` hashes `n` verbatim (so equal deltas can hash
   differently). Our `Hash` is consistent with `Eq`.

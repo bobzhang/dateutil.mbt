@@ -91,12 +91,17 @@ fn accum(
 }
 
 ///|
-/// C `round()`: half away from zero.
+/// C `round()`: half away from zero, computed exactly (no `x + 0.5`
+/// double rounding).
 fn c_round(x : Double) -> Double {
-  if x < 0.0 {
-    -(-x + 0.5).floor()
+  let t = x.trunc()
+  let frac = x - t // exact
+  if frac >= 0.5 {
+    t + 1.0
+  } else if frac <= -0.5 {
+    t - 1.0
   } else {
-    (x + 0.5).floor()
+    t
   }
 }
 
@@ -148,7 +153,7 @@ fn RelativeDelta::apply_datetime(
     Some(y) if y != 0 => y
     _ => other.year
   }
-  let mut year = base_year + self.years
+  let mut year = base_year.to_int64() + self.years.to_int64()
   let mut month = match self.month {
     Some(m) if m != 0 => m
     _ => other.month
@@ -156,13 +161,15 @@ fn RelativeDelta::apply_datetime(
   if self.months != 0 {
     month += self.months
     if month > 12 {
-      year += 1
+      year += 1L
       month -= 12
     } else if month < 1 {
-      year -= 1
+      year -= 1L
       month += 12
     }
   }
+  // Python ints are unbounded; such a year fails in `replace` anyway.
+  let year = int64_to_int(year)
   let want_day = match self.day {
     Some(d) if d != 0 => d
     _ => other.day
@@ -197,14 +204,20 @@ fn RelativeDelta::apply_datetime(
         None | Some(0) => 1
         Some(n) => n
       }
-      let mut jumpdays = (nth.abs() - 1) * 7
-      if nth > 0 {
-        jumpdays += @datetime.floor_mod(7 - ret.weekday() + weekday, 7)
+      let nth = nth.to_int64()
+      let mut jumpdays = (nth.abs() - 1L) * 7L
+      if nth > 0L {
+        jumpdays += @datetime.floor_mod(7 - ret.weekday() + weekday, 7).to_int64()
       } else {
-        jumpdays += @datetime.floor_mod(ret.weekday() - weekday, 7)
+        jumpdays += @datetime.floor_mod(ret.weekday() - weekday, 7).to_int64()
         jumpdays = -jumpdays
       }
-      ret.add(@datetime.TimeDelta::try_new(days=jumpdays))
+      if jumpdays.abs() > @datetime.max_timedelta_days.to_int64() {
+        raise @datetime.OverflowError(
+          "days=\{jumpdays}; must have magnitude <= 999999999",
+        )
+      }
+      ret.add(@datetime.TimeDelta::try_new(days=jumpdays.to_int()))
     }
   }
 }
@@ -336,10 +349,10 @@ pub fn RelativeDelta::between(
     dtm = months_only(months).apply_datetime(dt2)
   }
   let delta = dt1.diff(dtm)
-  let (years, months) = split_months(months)
+  // `_set_months(months)` then `_fix()`: `build` performs the same split.
   RelativeDelta::build(
-    years~,
-    months~,
+    years=0L,
+    months=months.to_int64(),
     days=0.0,
     leapdays=0,
     hours=0.0,

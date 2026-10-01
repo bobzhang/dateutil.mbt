@@ -168,18 +168,34 @@ fn py_sign(x : Double) -> Double {
 }
 
 ///|
-/// Python `int(x)` for a float, as an `Int`: raises like Python for NaN and
-/// infinities, and `OverflowError` when the value does not fit an `Int`.
-fn py_int(x : Double) -> Int raise @datetime.DateTimeError {
+/// Python `int(x)` for a float, kept as an (integral) float: raises like
+/// Python for NaN and infinities. `-0.0` becomes `0.0`.
+fn py_int_float(x : Double) -> Double raise @datetime.DateTimeError {
   if x.is_nan() {
     raise @datetime.ValueError("cannot convert float NaN to integer")
   }
   if x.is_inf() {
     raise @datetime.OverflowError("cannot convert float infinity to integer")
   }
-  let t = x.trunc()
-  if t > 2147483647.0 || t < -2147483648.0 {
+  x.trunc() + 0.0
+}
+
+///|
+/// Python `int(x)` for a float, as an `Int64`; `OverflowError` when the
+/// value does not fit (Python ints are unbounded).
+fn py_int64(x : Double) -> Int64 raise @datetime.DateTimeError {
+  let t = py_int_float(x)
+  if t >= 9.2e18 || t <= -9.2e18 {
     raise @datetime.OverflowError("Python int too large to convert to C int")
   }
-  t.to_int()
+  t.to_int64()
+}
+
+///|
+/// Narrow an `Int64` to `Int`, raising `OverflowError` if it does not fit.
+fn int64_to_int(x : Int64) -> Int raise @datetime.DateTimeError {
+  if x > 2147483647L || x < -2147483648L {
+    raise @datetime.OverflowError("Python int too large to convert to C int")
+  }
+  x.to_int()
 }

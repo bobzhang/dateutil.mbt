@@ -13,7 +13,7 @@ Port of `dateutil/utils.py`.
 * `within_delta` is typed for `DateTime`s (Python duck-types any values
   supporting `-` and comparison with a `timedelta`, e.g. two `date`s). It
   raises `@datetime.TypeError` for naive/aware mixing and `OverflowError`
-  for `abs(timedelta.min)`, like Python.
+  when `-abs(delta)` overflows (e.g. `timedelta.max`), like Python.
 * `default_tzinfo` attaches the zone with `DateTime::with_tzinfo` (Python
   `dt.replace(tzinfo=...)`; cannot fail).
 

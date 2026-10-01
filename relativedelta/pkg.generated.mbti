@@ -64,7 +64,7 @@ pub fn RelativeDelta::from_float(years? : Double, months? : Double, days? : Doub
 pub fn RelativeDelta::has_time(Self) -> Bool
 pub fn RelativeDelta::mul(Self, Double) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::new(years? : Int, months? : Int, days? : Int, leapdays? : Int, weeks? : Int, hours? : Int, minutes? : Int, seconds? : Int, microseconds? : Int, year? : Int, month? : Int, day? : Int, weekday? : @datetime.Weekday, yearday? : Int, nlyearday? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int) -> Self raise @datetime.DateTimeError
-pub fn RelativeDelta::normalized(Self) -> Self
+pub fn RelativeDelta::normalized(Self) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::output(Self, &Logger) -> Unit
 pub fn RelativeDelta::repr(Self) -> String
 pub fn RelativeDelta::set_weeks(Self, Int) -> Unit

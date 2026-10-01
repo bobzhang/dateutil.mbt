@@ -52,8 +52,8 @@ pub fn default_tzinfo(
 ///|
 /// `dateutil.utils.within_delta(dt1, dt2, delta)`: whether `dt1` and `dt2`
 /// differ by at most `abs(delta)`. Raises `TypeError` when mixing naive and
-/// aware datetimes, and `OverflowError` for `abs(timedelta.min)`, as in
-/// Python.
+/// aware datetimes, and `OverflowError` when `-abs(delta)` overflows (e.g.
+/// `timedelta.max`), as in Python.
 ///
 /// ```mbt check
 /// test {
@@ -80,5 +80,5 @@ pub fn within_delta(
 ) -> Bool raise @datetime.DateTimeError {
   let delta = if delta.days < 0 { delta.checked_neg() } else { delta }
   let difference = dt1.diff(dt2)
-  -delta <= difference && difference <= delta
+  delta.checked_neg() <= difference && difference <= delta
 }
