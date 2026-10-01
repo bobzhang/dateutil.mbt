@@ -96,13 +96,12 @@ resulting `timedelta` count).
   differently). Our `Hash` is consistent with `Eq`.
 * **timedelta at application.** dateutil builds
   `timedelta(days=, hours=, minutes=, seconds=, microseconds=)` from the
-  (possibly fractional) fields. We reproduce CPython's C `timedelta`
-  constructor (`accum` + half-even rounding of the leftover), which differs
-  from the pure-Python `_pydatetime` algorithm (and from
-  `@datetime.TimeDelta::from_float`) in the last microsecond for some float
-  inputs. The accumulation is done in `Int64` microseconds; sums beyond
-  ±9e18 µs (~10^8 days, far outside the date range) raise `OverflowError`
-  directly.
+  (possibly fractional) fields. Application delegates to
+  `@datetime.TimeDelta::from_float`, which reproduces CPython's C
+  `timedelta` constructor (`accum` with exact `BigInt` arithmetic +
+  half-even rounding of the leftover); this differs from the pure-Python
+  `_pydatetime` algorithm in the last microsecond for some float inputs.
+  Out-of-range results raise `OverflowError` like Python.
 * **Type errors.** Python's `TypeError`s for unsupported operand types
   (`rd + 9`, `rd - 14`, `rd == 19`, `relativedelta(dt1='2018-01-01', ...)`)
   are compile-time errors in MoonBit. Aware/naive mixing in `between`

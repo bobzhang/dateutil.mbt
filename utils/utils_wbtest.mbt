@@ -37,9 +37,8 @@ test "test_utils_today" {
 
 ///|
 test "test_utils_today_tz_info" {
-  // NYC = tz.gettz("America/New_York") is not available; EST (its
-  // December offset) stands in.
-  let nyc = @tz.tzoffset(Some("EST"), -18000)
+  // NYC = tz.gettz("America/New_York") (a fixed EST stand-in on wasm)
+  let nyc = nyc()
   let now = frozen_now(
     @datetime.DateTime::new(2014, 12, 15, hour=12),
     tz_offset=5,
