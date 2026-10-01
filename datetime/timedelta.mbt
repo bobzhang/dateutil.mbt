@@ -79,8 +79,48 @@ pub fn TimeDelta::new(
 }
 
 ///|
+/// CPython `accum()` (Modules/_datetimemodule.c) for one float argument:
+/// the integral part is multiplied exactly, the fractional part in floating
+/// point, and the sub-microsecond remainder is collected in `leftover`.
+fn accum(
+  sofar : @bigint.BigInt,
+  num : Double,
+  factor : Int64,
+  leftover : Ref[Double],
+) -> @bigint.BigInt raise DateTimeError {
+  if num.is_nan() {
+    raise ValueError("cannot convert float NaN to integer")
+  }
+  if num.is_inf() {
+    raise OverflowError("cannot convert float infinity to integer")
+  }
+  let (fracpart, intpart) = modf(num)
+  let sum = sofar + double_trunc_to_big(intpart) * big(factor)
+  if fracpart == 0.0 {
+    return sum
+  }
+  let (fracpart2, intpart2) = modf(factor.to_double() * fracpart)
+  leftover.val += fracpart2
+  sum + double_trunc_to_big(intpart2)
+}
+
+///|
+/// C `round()`: half away from zero (exact, no `x + 0.5` double rounding).
+fn c_round(x : Double) -> Double {
+  let (frac, t) = modf(x)
+  if frac >= 0.5 {
+    t + 1.0
+  } else if frac <= -0.5 {
+    t - 1.0
+  } else {
+    t
+  }
+}
+
+///|
 /// `timedelta(...)` with floating point arguments, using the exact
-/// normalization and half-even rounding algorithm of CPython.
+/// algorithm of CPython's C implementation (`delta_new`), including its
+/// half-to-even rounding of the accumulated sub-microsecond remainder.
 pub fn TimeDelta::from_float(
   days? : Double = 0.0,
   seconds? : Double = 0.0,
@@ -90,27 +130,26 @@ pub fn TimeDelta::from_float(
   hours? : Double = 0.0,
   weeks? : Double = 0.0,
 ) -> TimeDelta raise DateTimeError {
-  let days = days + weeks * 7.0
-  let seconds = seconds + minutes * 60.0 + hours * 3600.0
-  let microseconds = microseconds + milliseconds * 1000.0
-  if days.is_nan() || seconds.is_nan() || microseconds.is_nan() {
-    raise ValueError("cannot convert float NaN to integer")
+  let leftover = Ref(0.0)
+  let mut x = big(0L)
+  x = accum(x, microseconds, 1L, leftover)
+  x = accum(x, milliseconds, 1000L, leftover)
+  x = accum(x, seconds, 1000000L, leftover)
+  x = accum(x, minutes, 60000000L, leftover)
+  x = accum(x, hours, 3600000000L, leftover)
+  x = accum(x, days, 86400000000L, leftover)
+  x = accum(x, weeks, 604800000000L, leftover)
+  if leftover.val != 0.0 {
+    let lo = leftover.val
+    let mut whole_us = c_round(lo)
+    if (whole_us - lo).abs() == 0.5 {
+      // Exactly halfway: round half to even on the total.
+      let x_is_odd = if (x % big(2L)).is_zero() { 0.0 } else { 1.0 }
+      whole_us = 2.0 * c_round((lo + x_is_odd) * 0.5) - x_is_odd
+    }
+    x = x + double_trunc_to_big(whole_us)
   }
-  if days.is_inf() || seconds.is_inf() || microseconds.is_inf() {
-    raise OverflowError("cannot convert float infinity to integer")
-  }
-  let (dayfrac, days_whole) = modf(days)
-  let (daysecondsfrac, daysecondswhole) = modf(dayfrac * 86400.0)
-  let s = double_trunc_to_big(daysecondswhole)
-  let d = double_trunc_to_big(days_whole)
-  let (secondsfrac0, seconds_whole) = modf(seconds)
-  let secondsfrac = secondsfrac0 + daysecondsfrac
-  let (dd, ss) = big_divmod(double_trunc_to_big(seconds_whole), big(86400L))
-  let d = d + dd
-  let s = s + ss
-  let usdouble = secondsfrac * 1.0e6
-  let us = double_trunc_to_big(round_half_even(microseconds + usdouble))
-  TimeDelta::from_big(d, s, us)
+  TimeDelta::from_big(big(0L), big(0L), x)
 }
 
 ///|

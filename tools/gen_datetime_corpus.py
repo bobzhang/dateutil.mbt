@@ -61,7 +61,7 @@ for _ in range(200):
 emit("cpython: timedelta int constructor", lines)
 
 lines = []
-for _ in range(200):
+for _ in range(1500):
     args = dict(days=rnd.uniform(-1000, 1000), seconds=rnd.uniform(-10**6, 10**6),
                 microseconds=rnd.uniform(-10**7, 10**7), milliseconds=rnd.uniform(-10**4, 10**4),
                 minutes=rnd.uniform(-10**4, 10**4), hours=rnd.uniform(-100, 100), weeks=rnd.uniform(-10, 10))

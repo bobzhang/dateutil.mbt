@@ -3,10 +3,32 @@ package "bobzhang/dateutil/tz"
 
 import {
   "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/relativedelta",
+  "moonbitlang/core/debug",
 }
 
 // Values
+pub fn datetime_ambiguous(@datetime.DateTime, tz? : @datetime.Tz) -> Bool raise @datetime.DateTimeError
+
+pub fn datetime_exists(@datetime.DateTime, tz? : @datetime.Tz) -> Bool raise @datetime.DateTimeError
+
 pub fn enfold(@datetime.DateTime, fold? : Int) -> @datetime.DateTime
+
+pub fn gettz(name? : String) -> @datetime.Tz? raise
+
+pub fn gettz_cache_clear() -> Unit
+
+pub fn gettz_nocache(name? : String) -> @datetime.Tz? raise
+
+pub fn gettz_set_cache_size(Int) -> Unit
+
+pub fn resolve_imaginary(@datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
+
+pub fn tzfile(String) -> @datetime.Tz raise
+
+pub fn tzfile_from_bytes(BytesView, filename? : String) -> @datetime.Tz raise @datetime.DateTimeError
+
+pub let tzfiles : Array[String]
 
 pub fn tzinfo_fold_status(@datetime.Tz, @datetime.DateTime, @datetime.DateTime) -> Int raise @datetime.DateTimeError
 
@@ -16,17 +38,33 @@ pub fn tzinfo_fromutc_naive(@datetime.DateTime) -> @datetime.DateTime raise @dat
 
 pub fn tzinfo_is_ambiguous(@datetime.Tz, @datetime.DateTime) -> Bool
 
+pub fn tzlocal() -> @datetime.Tz
+
 pub fn tzoffset(String?, Int) -> @datetime.Tz raise @datetime.DateTimeError
 
 pub fn tzoffset_delta(String?, @datetime.TimeDelta) -> @datetime.Tz raise @datetime.DateTimeError
 
 pub fn tzoffset_instance(String?, @datetime.TimeDelta) -> @datetime.Tz raise @datetime.DateTimeError
 
+pub let tzpaths : Array[String]
+
+pub fn tzrange(String?, stdoffset? : @datetime.TimeDelta, dstabbr? : String, dstoffset? : @datetime.TimeDelta, start? : @relativedelta.RelativeDelta, end? : @relativedelta.RelativeDelta) -> @datetime.Tz
+
+pub fn tzstr(String, posix_offset? : Bool) -> @datetime.Tz raise @datetime.DateTimeError
+
+pub fn tzstr_instance(String, posix_offset? : Bool) -> @datetime.Tz raise @datetime.DateTimeError
+
 pub fn tzutc() -> @datetime.Tz
 
 pub let utc : @datetime.Tz
 
 // Errors
+pub(all) suberror IOError {
+  IOError(String)
+} derive(Eq, @debug.Debug)
+pub fn IOError::output(Self, &Logger) -> Unit
+pub fn IOError::to_string(Self) -> String
+pub impl Show for IOError
 
 // Types and methods
 
