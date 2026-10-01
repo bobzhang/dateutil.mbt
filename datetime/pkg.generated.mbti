@@ -1,0 +1,320 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/datetime"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub const MAXORDINAL : Int = 3652059
+
+pub const MAXYEAR : Int = 9999
+
+pub const MINYEAR : Int = 1
+
+pub fn cpython_fromutc(DateTime) -> DateTime raise DateTimeError
+
+pub fn days_before_month(Int, Int) -> Int
+
+pub fn days_before_year(Int) -> Int
+
+pub fn days_in_month(Int, Int) -> Int
+
+pub fn days_in_year(Int) -> Int
+
+pub fn floor_div(Int, Int) -> Int
+
+pub fn floor_mod(Int, Int) -> Int
+
+pub fn format_utcoffset(TimeDelta?, sep? : String) -> String
+
+pub let fr : Weekday
+
+pub fn gmtime(Int64) -> LocalTime
+
+pub fn is_leap(Int) -> Bool
+
+pub fn local_zone() -> LocalZone
+
+pub fn localtime(Int64) -> LocalTime
+
+pub let max_datetime : DateTime
+
+pub let max_timedelta : TimeDelta
+
+pub let max_timedelta_days : Int
+
+pub let min_datetime : DateTime
+
+pub let min_timedelta : TimeDelta
+
+pub let mo : Weekday
+
+pub fn monthrange(Int, Int) -> (Int, Int) raise DateTimeError
+
+pub fn ordinal_to_ymd(Int) -> (Int, Int, Int)
+
+pub fn py_str_repr(String) -> String
+
+pub let resolution : TimeDelta
+
+pub fn round_half_even(Double) -> Double
+
+pub let sa : Weekday
+
+pub fn same_tz(Tz?, Tz?) -> Bool
+
+pub let su : Weekday
+
+pub let th : Weekday
+
+pub fn timegm(Int, Int, Int, Int, Int, Int) -> Int64
+
+pub let tu : Weekday
+
+pub fn tzset() -> Unit
+
+pub let utc : Tz
+
+pub let we : Weekday
+
+pub let weekday_abbrs : FixedArray[String]
+
+pub fn weekday_of(Int, Int, Int) -> Int
+
+pub fn ymd_to_ordinal(Int, Int, Int) -> Int
+
+pub let zero_timedelta : TimeDelta
+
+// Errors
+pub(all) suberror DateTimeError {
+  ValueError(String)
+  OverflowError(String)
+  TypeError(String)
+} derive(Eq)
+pub fn DateTimeError::output(Self, &Logger) -> Unit
+pub fn DateTimeError::to_string(Self) -> String
+pub impl Show for DateTimeError
+pub impl @debug.Debug for DateTimeError
+
+// Types and methods
+pub struct Date {
+  year : Int
+  month : Int
+  day : Int
+} derive(Compare, Eq, Hash)
+pub fn Date::add(Self, TimeDelta) -> Self raise DateTimeError
+pub fn Date::compare(Self, Self) -> Int
+pub fn Date::ctime(Self) -> String
+pub fn Date::diff(Self, Self) -> TimeDelta
+pub fn Date::from_isocalendar(Int, Int, Int) -> Self raise DateTimeError
+pub fn Date::from_ordinal(Int) -> Self raise DateTimeError
+pub fn Date::isocalendar(Self) -> (Int, Int, Int)
+pub fn Date::isoformat(Self) -> String
+pub fn Date::isoweekday(Self) -> Int
+pub fn Date::new(Int, Int, Int) -> Self raise DateTimeError
+pub fn Date::output(Self, &Logger) -> Unit
+pub fn Date::replace(Self, year? : Int, month? : Int, day? : Int) -> Self raise DateTimeError
+pub fn Date::repr(Self) -> String
+pub fn Date::strftime(Self, String) -> String
+pub fn Date::sub(Self, TimeDelta) -> Self raise DateTimeError
+pub fn Date::timetuple(Self) -> TimeTuple
+pub fn Date::to_datetime(Self) -> DateTime
+pub fn Date::to_ordinal(Self) -> Int
+pub fn Date::to_string(Self) -> String
+pub fn Date::today() -> Self
+pub fn Date::weekday(Self) -> Int
+pub impl Show for Date
+pub impl @debug.Debug for Date
+
+pub struct DateTime {
+  year : Int
+  month : Int
+  day : Int
+  hour : Int
+  minute : Int
+  second : Int
+  microsecond : Int
+  tzinfo : Tz?
+  fold : Int
+}
+pub fn DateTime::add(Self, TimeDelta) -> Self raise DateTimeError
+pub fn DateTime::astimezone(Self, tz? : Tz) -> Self raise DateTimeError
+pub fn DateTime::checked_compare(Self, Self) -> Int raise DateTimeError
+pub fn DateTime::combine(Date, Time, tzinfo? : Tz?) -> Self
+pub fn DateTime::compare(Self, Self) -> Int
+pub fn DateTime::ctime(Self) -> String
+pub fn DateTime::date(Self) -> Date
+pub fn DateTime::diff(Self, Self) -> TimeDelta raise DateTimeError
+pub fn DateTime::dst(Self) -> TimeDelta?
+pub fn DateTime::from_ordinal(Int) -> Self raise DateTimeError
+pub fn DateTime::from_timestamp(Double, tz? : Tz) -> Self raise DateTimeError
+pub fn DateTime::is_aware(Self) -> Bool
+pub fn DateTime::isocalendar(Self) -> (Int, Int, Int)
+pub fn DateTime::isoformat(Self, sep? : Char, timespec? : TimeSpec) -> String
+pub fn DateTime::isoweekday(Self) -> Int
+pub fn DateTime::new(Int, Int, Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int, tzinfo? : Tz, fold? : Int) -> Self raise DateTimeError
+pub fn DateTime::now(tz? : Tz) -> Self
+pub fn DateTime::output(Self, &Logger) -> Unit
+pub fn DateTime::replace(Self, year? : Int, month? : Int, day? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int, tzinfo? : Tz?, fold? : Int) -> Self raise DateTimeError
+pub fn DateTime::repr(Self) -> String
+pub fn DateTime::strftime(Self, String) -> String
+pub fn DateTime::sub(Self, TimeDelta) -> Self raise DateTimeError
+pub fn DateTime::time(Self) -> Time
+pub fn DateTime::timestamp(Self) -> Double raise DateTimeError
+pub fn DateTime::timetuple(Self) -> TimeTuple
+pub fn DateTime::timetz(Self) -> Time
+pub fn DateTime::to_ordinal(Self) -> Int
+pub fn DateTime::to_string(Self) -> String
+pub fn DateTime::tzname(Self) -> String?
+pub fn DateTime::utc_from_timestamp(Double) -> Self raise DateTimeError
+pub fn DateTime::utcnow() -> Self
+pub fn DateTime::utcoffset(Self) -> TimeDelta?
+pub fn DateTime::weekday(Self) -> Int
+pub fn DateTime::with_fold(Self, Int) -> Self
+pub fn DateTime::with_tzinfo(Self, Tz?) -> Self
+pub impl Compare for DateTime
+pub impl Eq for DateTime
+pub impl Hash for DateTime
+pub impl Show for DateTime
+pub impl @debug.Debug for DateTime
+
+pub struct LocalTime {
+  year : Int
+  month : Int
+  day : Int
+  hour : Int
+  minute : Int
+  second : Int
+  isdst : Int
+  gmtoff : Int
+  zone : String
+} derive(Eq, @debug.Debug)
+
+pub struct LocalZone {
+  timezone : Int
+  altzone : Int
+  daylight : Bool
+  tzname : (String, String)
+} derive(Eq, @debug.Debug)
+
+pub struct Time {
+  hour : Int
+  minute : Int
+  second : Int
+  microsecond : Int
+  tzinfo : Tz?
+  fold : Int
+}
+pub fn Time::checked_compare(Self, Self) -> Int raise DateTimeError
+pub fn Time::compare(Self, Self) -> Int
+pub fn Time::dst(Self) -> TimeDelta?
+pub fn Time::isoformat(Self, timespec? : TimeSpec) -> String
+pub fn Time::new(hour? : Int, minute? : Int, second? : Int, microsecond? : Int, tzinfo? : Tz, fold? : Int) -> Self raise DateTimeError
+pub fn Time::output(Self, &Logger) -> Unit
+pub fn Time::replace(Self, hour? : Int, minute? : Int, second? : Int, microsecond? : Int, tzinfo? : Tz?, fold? : Int) -> Self raise DateTimeError
+pub fn Time::repr(Self) -> String
+pub fn Time::strftime(Self, String) -> String
+pub fn Time::to_string(Self) -> String
+pub fn Time::tzname(Self) -> String?
+pub fn Time::utcoffset(Self) -> TimeDelta?
+pub impl Compare for Time
+pub impl Eq for Time
+pub impl Hash for Time
+pub impl Show for Time
+pub impl @debug.Debug for Time
+
+pub struct TimeDelta {
+  days : Int
+  seconds : Int
+  microseconds : Int
+} derive(Compare, Eq, Hash)
+pub fn TimeDelta::abs(Self) -> Self
+pub fn TimeDelta::checked_add(Self, Self) -> Self raise DateTimeError
+pub fn TimeDelta::checked_mul(Self, Int) -> Self raise DateTimeError
+pub fn TimeDelta::checked_neg(Self) -> Self raise DateTimeError
+pub fn TimeDelta::checked_sub(Self, Self) -> Self raise DateTimeError
+pub fn TimeDelta::compare(Self, Self) -> Int
+pub fn TimeDelta::div_int(Self, Int) -> Self raise DateTimeError
+pub fn TimeDelta::from_float(days? : Double, seconds? : Double, microseconds? : Double, milliseconds? : Double, minutes? : Double, hours? : Double, weeks? : Double) -> Self raise DateTimeError
+pub fn TimeDelta::is_zero(Self) -> Bool
+pub fn TimeDelta::mul_float(Self, Double) -> Self raise DateTimeError
+pub fn TimeDelta::new(days? : Int, seconds? : Int, microseconds? : Int, milliseconds? : Int, minutes? : Int, hours? : Int, weeks? : Int) -> Self
+pub fn TimeDelta::output(Self, &Logger) -> Unit
+pub fn TimeDelta::ratio(Self, Self) -> Double
+pub fn TimeDelta::repr(Self) -> String
+pub fn TimeDelta::to_string(Self) -> String
+pub fn TimeDelta::total_microseconds(Self) -> Int64
+pub fn TimeDelta::total_seconds(Self) -> Double
+pub fn TimeDelta::total_whole_seconds(Self) -> Int64
+pub fn TimeDelta::try_new(days? : Int, seconds? : Int, microseconds? : Int, milliseconds? : Int, minutes? : Int, hours? : Int, weeks? : Int) -> Self raise DateTimeError
+pub impl Add for TimeDelta
+pub impl Neg for TimeDelta
+pub impl Show for TimeDelta
+pub impl Sub for TimeDelta
+pub impl @debug.Debug for TimeDelta
+
+pub(all) enum TimeSpec {
+  Auto
+  Hours
+  Minutes
+  Seconds
+  Milliseconds
+  Microseconds
+} derive(Eq, @debug.Debug)
+
+pub struct TimeTuple {
+  year : Int
+  month : Int
+  day : Int
+  hour : Int
+  minute : Int
+  second : Int
+  weekday : Int
+  yday : Int
+  isdst : Int
+} derive(Eq, @debug.Debug)
+
+pub struct Tz {
+  // private fields
+}
+pub fn Tz::dst(Self, DateTime?) -> TimeDelta?
+pub fn Tz::eq_key(Self) -> String?
+pub fn Tz::fixed(TimeDelta, name? : String) -> Self raise DateTimeError
+pub fn Tz::fromutc(Self, DateTime) -> DateTime raise DateTimeError
+pub fn Tz::inner(Self) -> &TzInfo
+pub fn Tz::is_ambiguous(Self, DateTime) -> Bool?
+pub fn Tz::is_same(Self, Self) -> Bool
+pub fn Tz::new(&TzInfo) -> Self
+pub fn Tz::output(Self, &Logger) -> Unit
+pub fn Tz::repr(Self) -> String
+pub fn Tz::to_string(Self) -> String
+pub fn Tz::tzname(Self, DateTime?) -> String?
+pub fn Tz::utcoffset(Self, DateTime?) -> TimeDelta?
+pub impl Eq for Tz
+pub impl Show for Tz
+pub impl @debug.Debug for Tz
+
+pub struct Weekday {
+  weekday : Int
+  n : Int?
+} derive(Eq, Hash)
+pub fn Weekday::new(Int, n? : Int) -> Self
+pub fn Weekday::nth(Self, Int?) -> Self
+pub fn Weekday::output(Self, &Logger) -> Unit
+pub fn Weekday::to_string(Self) -> String
+pub impl Show for Weekday
+pub impl @debug.Debug for Weekday
+
+// Type aliases
+
+// Traits
+pub(open) trait TzInfo {
+  fn utcoffset(Self, DateTime?) -> TimeDelta?
+  fn dst(Self, DateTime?) -> TimeDelta?
+  fn tzname(Self, DateTime?) -> String?
+  fn fromutc(Self, DateTime) -> DateTime raise DateTimeError = _
+  fn is_ambiguous(Self, DateTime) -> Bool? = _
+  fn repr(Self) -> String
+  fn eq_key(Self) -> String? = _
+}
