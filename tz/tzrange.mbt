@@ -131,13 +131,10 @@ impl @datetime.TzInfo for TzRange with fn tzname(self, dt) {
 ///|
 /// `tzrangebase.fromutc`: computed from the UTC transitions of the year.
 impl @datetime.TzInfo for TzRange with fn fromutc(self, dt) {
-  // Get transitions - if there are none, fixed offset
-  guard self.transitions(dt.year) is Some((dston, dstoff)) else {
-    let off = match self.isdst(Some(dt)) {
-      Some(true) => self.dst_offset
-      _ => self.std_offset
-    }
-    return dt.add(off)
+  // Get transitions - if there are none, fixed offset. (Errors, e.g. a
+  // transition beyond datetime.max, propagate as in Python.)
+  guard self.transitions_checked(dt.year) is Some((dston, dstoff)) else {
+    return dt.add(self.std_offset)
   }
   // Get the transition times in UTC
   let utc_transitions = (
@@ -371,13 +368,17 @@ fn tzstr_delta(
     }
   }
   // Default is 2AM.
-  let mut seconds = x.time.unwrap_or(7200)
+  let mut seconds = x.time.unwrap_or(7200).to_int64()
   if isend {
     // Convert to standard time, to follow the documented way of working
     // with the extra hour.
     let delta = dst_offset - std_offset
-    seconds -= delta.seconds + delta.days * 86400
+    seconds -= delta.seconds.to_int64() + delta.days.to_int64() * 86400L
   }
+  if seconds < -2147483648L || seconds > 2147483647L {
+    raise @datetime.OverflowError("tzstr: transition time out of range")
+  }
+  let seconds = seconds.to_int()
   @relativedelta.RelativeDelta::new(
     month?,
     day?,

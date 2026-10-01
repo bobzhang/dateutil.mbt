@@ -95,7 +95,8 @@ impl @datetime.TzInfo for TzOffset with fn repr(self) {
     None => "None"
     Some(n) => @datetime.py_str_repr(n)
   }
-  "tzoffset(\{name}, \{self.offset.total_whole_seconds()})"
+  // Python `int(total_seconds())` truncates toward zero
+  "tzoffset(\{name}, \{self.offset.total_microseconds() / 1000000L})"
 }
 
 ///|

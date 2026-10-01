@@ -48,7 +48,7 @@ fn ByteReader::take(
   self : ByteReader,
   n : Int,
 ) -> BytesView raise @datetime.DateTimeError {
-  if n < 0 || self.pos + n > self.data.length() {
+  if n < 0 || n > self.data.length() - self.pos {
     raise @datetime.ValueError("tzfile: unexpected end of data")
   }
   let v = self.data[self.pos:self.pos + n]
@@ -183,6 +183,9 @@ fn read_tzfile(
     _ => raise @datetime.ValueError("tzfile: invalid abbreviation data")
   }
   // Leap second records are not used (but are skipped over).
+  if leapcnt > (data.length() - r.pos) / 8 {
+    raise @datetime.ValueError("tzfile: unexpected end of data")
+  }
   ignore(r.take(leapcnt * 8))
   let isstd : Array[Int] = []
   for _ in 0..<ttisstdcnt {

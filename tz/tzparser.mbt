@@ -112,6 +112,22 @@ fn tz_int(s : String) -> Int raise TzParseFail {
 }
 
 ///|
+/// Python computes offsets and times with unbounded integers; values that
+/// do not fit in 32 bits are rejected here (the string is invalid).
+fn tz_fit(v : Int64) -> Int raise TzParseFail {
+  if v < -2147483648L || v > 2147483647L {
+    raise TzParseFail
+  }
+  v.to_int()
+}
+
+///|
+/// `h * 3600 + m * 60 + s` without overflow.
+fn tz_hms(h : Int, m : Int, s? : Int = 0) -> Int raise TzParseFail {
+  tz_fit(h.to_int64() * 3600L + m.to_int64() * 60L + s.to_int64())
+}
+
+///|
 fn tz_tok(l : Array[String], i : Int) -> String raise TzParseFail {
   guard l.get(i) is Some(t) else { raise TzParseFail }
   t
@@ -246,7 +262,7 @@ fn parse_tzstr_tokens(
           signal
         } else if i + 1 < len_l && l[i + 1] == ":" {
           // -03:00
-          let v = (tz_int(tok) * 3600 + tz_int(tz_tok(l, i + 2)) * 60) * signal
+          let v = tz_hms(tz_int(tok), tz_int(tz_tok(l, i + 2))) * signal
           used_idxs.push(i)
           i += 2
           v
@@ -329,7 +345,7 @@ fn parse_tzstr_tokens(
         res.type_error = true
         return true
       }
-      res.dstoffset = Some(stdoffset + delta)
+      res.dstoffset = Some(tz_fit(stdoffset.to_int64() + delta.to_int64()))
     }
     // (dateutil warns that this format is deprecated.)
   } else if tz_count(l, ",") == 2 &&
@@ -388,13 +404,17 @@ fn parse_tzstr_tokens(
           )
         } else if i + 1 < len_l && l[i + 1] == ":" {
           // -03:00
-          x.time = Some(tz_int(tok) * 3600 + tz_int(tz_tok(l, i + 2)) * 60)
+          x.time = Some(tz_hms(tz_int(tok), tz_int(tz_tok(l, i + 2))))
           used_idxs.push(i)
           i += 2
           if i + 1 < len_l && l[i + 1] == ":" {
             used_idxs.push(i)
             i += 2
-            x.time = Some(x.time.unwrap_or(0) + tz_int(tz_tok(l, i)))
+            x.time = Some(
+              tz_fit(
+                x.time.unwrap_or(0).to_int64() + tz_int(tz_tok(l, i)).to_int64(),
+              ),
+            )
           }
         } else if len_li <= 2 {
           // -[0]3

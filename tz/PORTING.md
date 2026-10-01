@@ -65,12 +65,18 @@ offset zero; a `tzoffset` with the same name and offset) through
   `None` when `dt - dst_saved` overflows (so `datetime_ambiguous` uses its
   fold-based fallback); `tzlocal.tzname()` for a `time` (no date) in a zone
   with DST returns `None` (Python fails).
+* **`tzoffset` validation.** `tzoffset`/`tzoffset_delta`/`tzoffset_instance`
+  reject offsets outside (-24h, 24h) at construction with `ValueError`;
+  Python accepts them and fails when the offset is used.
+* **`enfold(dt, fold)`** never fails: any non-zero `fold` means 1 (Python's
+  `replace(fold=2)` raises `ValueError`).
 * **Offsets.** `tzrange` offsets are `TimeDelta`s (Python also accepts
   seconds). Offsets of 24h or more are accepted at construction (as in
   Python) and abort when used (Python raises `ValueError` then).
 * **TZ strings.** Python's `int()` accepts non-ASCII digits and arbitrary
-  length; the parser here accepts ASCII digit runs of up to 9 digits (longer
-  runs make the string invalid). The deprecated dateutil-specific format
+  length; the parser here accepts ASCII digit runs of up to 9 digits, and
+  offsets/times that do not fit in 32 bits make the string invalid
+  (Python builds a zone that fails when used). The deprecated dateutil-specific format
   is parsed but no `DeprecatedTzFormatWarning` is emitted.
 * **`datetime_ambiguous`** uses a zone's `is_ambiguous` when it returns
   `Some`; Python additionally swallows any exception raised by a custom

@@ -955,3 +955,45 @@ test "gettz without the file system: TZ strings, UTC, bad names" {
   assert_true(local_from_empty_string is Some(_))
   assert_eq(local_from_none, local_from_empty_string)
 }
+
+///|
+test "regressions from review" {
+  // tzrange.fromutc propagates transition errors (Python OverflowError)
+  let z = @tz.tzstr("X0Y,J365/99,J1")
+  try dt(9999, 6, 1, tz=@tz.utc).astimezone(tz=z) catch {
+    @datetime.OverflowError(_) => ()
+    e => fail("unexpected \{e}")
+  } noraise {
+    _ => fail("expected OverflowError")
+  }
+  // tzoffset repr truncates toward zero like int(total_seconds())
+  inspect(
+    @tz.tzoffset_delta(Some("X"), @datetime.TimeDelta::new(microseconds=-1)),
+    content="tzoffset('X', 0)",
+  )
+  // offsets that do not fit in 32 bits make a TZ string invalid
+  try @tz.tzstr("X1193046:28") catch {
+    @datetime.ValueError(_) => ()
+    e => fail("unexpected \{e}")
+  } noraise {
+    _ => fail("expected ValueError")
+  }
+  // a leap second count larger than the data is a truncated file
+  let buf = @buffer.new()
+  buf.write_bytes(b"TZif")
+  for _ in 0..<16 {
+    buf.write_byte(0)
+  }
+  for count in [0, 1, 0x20000000, 0, 1, 0] {
+    buf.write_int_be(count)
+  }
+  for _ in 0..<7 {
+    buf.write_byte(0)
+  }
+  try @tz.tzfile_from_bytes(buf.to_bytes()) catch {
+    @datetime.ValueError(_) => ()
+    e => fail("unexpected \{e}")
+  } noraise {
+    _ => fail("expected ValueError")
+  }
+}
