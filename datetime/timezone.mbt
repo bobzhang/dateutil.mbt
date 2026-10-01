@@ -84,11 +84,23 @@ pub fn py_str_repr(s : String) -> String {
         if c == quote {
           buf.write_char('\\')
           buf.write_char(c)
-        } else if c.to_int() < 0x20 || c.to_int() == 0x7f {
+        } else if is_py_nonprintable(c.to_int()) {
           let h = c.to_int()
-          buf.write_string("\\x")
-          buf.write_string(hex_digit(h / 16))
-          buf.write_string(hex_digit(h % 16))
+          if h < 0x100 {
+            buf.write_string("\\x")
+            buf.write_string(hex_digit(h / 16))
+            buf.write_string(hex_digit(h % 16))
+          } else if h < 0x10000 {
+            buf.write_string("\\u")
+            for shift in [12, 8, 4, 0] {
+              buf.write_string(hex_digit((h >> shift) & 0xf))
+            }
+          } else {
+            buf.write_string("\\U")
+            for shift in [28, 24, 20, 16, 12, 8, 4, 0] {
+              buf.write_string(hex_digit((h >> shift) & 0xf))
+            }
+          }
         } else {
           buf.write_char(c)
         }
@@ -96,6 +108,32 @@ pub fn py_str_repr(s : String) -> String {
   }
   buf.write_char(quote)
   buf.to_string()
+}
+
+///|
+/// Approximation of `not str.isprintable()` for a code point: control
+/// characters, separators other than ASCII space, common format
+/// characters, surrogates, private use and noncharacters.
+fn is_py_nonprintable(c : Int) -> Bool {
+  c < 0x20 ||
+  (c >= 0x7f && c <= 0xa0) ||
+  c == 0xad ||
+  (c >= 0x600 && c <= 0x605) ||
+  c == 0x61c ||
+  c == 0x6dd ||
+  c == 0x70f ||
+  c == 0x1680 ||
+  c == 0x180e ||
+  (c >= 0x2000 && c <= 0x200f) ||
+  (c >= 0x2028 && c <= 0x202f) ||
+  (c >= 0x205f && c <= 0x206f) ||
+  c == 0x3000 ||
+  (c >= 0xd800 && c <= 0xf8ff) ||
+  c == 0xfeff ||
+  (c >= 0xfff9 && c <= 0xfffb) ||
+  c == 0xfffe ||
+  c == 0xffff ||
+  c >= 0xf0000
 }
 
 ///|
@@ -121,6 +159,9 @@ pub fn Tz::fixed(offset : TimeDelta, name? : String) -> Tz raise DateTimeError {
     raise ValueError(
       "offset must be a timedelta strictly between -timedelta(hours=24) and timedelta(hours=24), not \{offset.repr()}.",
     )
+  }
+  if name is None && offset.is_zero() {
+    return utc
   }
   Tz::new(FixedTimezone::{ offset, name, is_utc_singleton: false, })
 }

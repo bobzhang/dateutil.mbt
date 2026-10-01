@@ -99,17 +99,18 @@ fn Time::cmp(
     }
     raise TypeError("cannot compare naive and aware times")
   }
-  let myhhmm = self.hour * 60 + self.minute - floor_div_minutes(mo)
-  let othhmm = other.hour * 60 + other.minute - floor_div_minutes(oo)
-  compare_tuple4(
-    (myhhmm, self.second, self.microsecond, 0),
-    (othhmm, other.second, other.microsecond, 0),
-  )
+  // Compare full UTC microseconds (CPython's C implementation; the
+  // pure-Python reference truncates offsets to whole minutes).
+  let mine = time_utc_us(self, mo)
+  let theirs = time_utc_us(other, oo)
+  mine.compare(theirs)
 }
 
 ///|
-fn floor_div_minutes(td : TimeDelta) -> Int {
-  td.days * 1440 + td.seconds / 60
+fn time_utc_us(t : Time, off : TimeDelta) -> Int64 {
+  (t.hour * 3600 + t.minute * 60 + t.second).to_int64() * 1000000L +
+  t.microsecond.to_int64() -
+  off.total_microseconds()
 }
 
 ///|
@@ -163,13 +164,7 @@ pub impl Hash for Time with fn hash_combine(self, hasher) {
       hasher.combine_int(t.second)
       hasher.combine_int(t.microsecond)
     }
-    Some(off) => {
-      // Normalize to UTC microseconds, consistent with `Eq`.
-      let total = (t.hour * 3600 + t.minute * 60 + t.second).to_int64() *
-        1000000L +
-        t.microsecond.to_int64()
-      hasher.combine_int64(total - off.total_microseconds())
-    }
+    Some(off) => hasher.combine_int64(time_utc_us(t, off))
   }
 }
 

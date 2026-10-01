@@ -463,7 +463,16 @@ pub fn DateTime::astimezone(
 /// (CPython `_local_timezone`).
 fn DateTime::local_timezone(self : DateTime) -> Tz raise DateTimeError {
   let ts = match self.tzinfo {
-    None => self.mktime()
+    None => {
+      let ts = self.mktime()
+      // Detect gap
+      let ts2 = self.with_fold(1 - self.fold).mktime()
+      if ts2 != ts && (ts2 > ts) == (self.fold == 1) {
+        ts2
+      } else {
+        ts
+      }
+    }
     Some(_) => self.diff(epoch_aware).total_whole_seconds()
   }
   let lt = localtime(ts)
@@ -566,6 +575,11 @@ fn utc_fields(
 
 ///|
 fn local_fields(t : Int64, us : Int) -> DateTime raise DateTimeError {
+  // Local offsets are within a day; keep the platform call in range.
+  let days = floor_div64(t, 86400L) + ymd_to_ordinal(1970, 1, 1).to_int64()
+  if days < 2L || days > MAXORDINAL.to_int64() - 1L {
+    raise ValueError("year is out of range")
+  }
   let lt = localtime(t)
   DateTime::new(
     lt.year,
@@ -580,7 +594,10 @@ fn local_fields(t : Int64, us : Int) -> DateTime raise DateTimeError {
 
 ///|
 fn split_timestamp(t : Double) -> (Int64, Int) raise DateTimeError {
-  if t.is_nan() || t.is_inf() || t.abs() > 1.0e15 {
+  if t.is_nan() {
+    raise ValueError("Invalid value NaN (not a number)")
+  }
+  if t.is_inf() || t.abs() > 1.0e15 {
     raise OverflowError("timestamp out of range for platform time_t")
   }
   let (frac, whole) = modf(t)
@@ -606,22 +623,28 @@ pub fn DateTime::from_timestamp(
   let (t, us) = split_timestamp(t)
   match tz {
     Some(tz) => tz.fromutc(utc_fields(t, us, Some(tz)))
-    None => {
-      let result = local_fields(t, us)
-      let max_fold_seconds = 86400L
-      let probe1 = local_fields(t - max_fold_seconds, us)
-      let trans = result
-        .naive_diff(probe1)
-        .checked_sub(TimeDelta::new(seconds=86400))
-      if trans.days < 0 {
-        let probe2 = local_fields(t + trans.total_whole_seconds(), us)
-        if probe2 == result {
-          return result.with_fold(1)
-        }
-      }
-      result
+    None => local_from_timestamp(t, us)
+  }
+}
+
+///|
+/// Naive local time for a timestamp, with CPython's fold detection.
+fn local_from_timestamp(t : Int64, us : Int) -> DateTime raise DateTimeError {
+  let result = local_fields(t, us)
+  let max_fold_seconds = 86400L
+  let probe1 = local_fields(t - max_fold_seconds, us) catch {
+    _ => return result
+  }
+  let trans = result
+    .naive_diff(probe1)
+    .checked_sub(TimeDelta::new(seconds=86400))
+  if trans.days < 0 {
+    let probe2 = local_fields(t + trans.total_whole_seconds(), us)
+    if probe2 == result {
+      return result.with_fold(1)
     }
   }
+  result
 }
 
 ///|
@@ -640,7 +663,7 @@ pub fn DateTime::now(tz? : Tz) -> DateTime {
   let r = try {
     match tz {
       Some(tz) => tz.fromutc(utc_fields(t, us, Some(tz)))
-      None => local_fields(t, us)
+      None => local_from_timestamp(t, us)
     }
   } catch {
     e => abort(e.to_string())

@@ -96,30 +96,21 @@ pub fn TimeDelta::from_float(
   if days.is_nan() || seconds.is_nan() || microseconds.is_nan() {
     raise ValueError("cannot convert float NaN to integer")
   }
-  if days.is_inf() ||
-    seconds.is_inf() ||
-    microseconds.is_inf() ||
-    days.abs() > 1.0e10 ||
-    seconds.abs() > 1.0e15 ||
-    microseconds.abs() > 1.0e18 {
-    raise OverflowError("timedelta value too large")
+  if days.is_inf() || seconds.is_inf() || microseconds.is_inf() {
+    raise OverflowError("cannot convert float infinity to integer")
   }
   let (dayfrac, days_whole) = modf(days)
   let (daysecondsfrac, daysecondswhole) = modf(dayfrac * 86400.0)
-  let mut s = daysecondswhole.to_int64()
-  let mut d = days_whole.to_int64()
+  let s = double_trunc_to_big(daysecondswhole)
+  let d = double_trunc_to_big(days_whole)
   let (secondsfrac0, seconds_whole) = modf(seconds)
   let secondsfrac = secondsfrac0 + daysecondsfrac
-  let seconds_i = seconds_whole.to_int64()
-  d = d + floor_div64(seconds_i, 86400L)
-  s = s + floor_mod64(seconds_i, 86400L)
+  let (dd, ss) = big_divmod(double_trunc_to_big(seconds_whole), big(86400L))
+  let d = d + dd
+  let s = s + ss
   let usdouble = secondsfrac * 1.0e6
-  let us = round_half_even(microseconds + usdouble).to_int64()
-  let secs = floor_div64(us, 1000000L)
-  let us = floor_mod64(us, 1000000L)
-  d = d + floor_div64(secs, 86400L)
-  s = s + floor_mod64(secs, 86400L)
-  TimeDelta::normalize64(d, s, us)
+  let us = double_trunc_to_big(round_half_even(microseconds + usdouble))
+  TimeDelta::from_big(d, s, us)
 }
 
 ///|
@@ -226,14 +217,8 @@ pub fn TimeDelta::checked_mul(
   self : TimeDelta,
   n : Int,
 ) -> TimeDelta raise DateTimeError {
+  // |days * n| < 2**61, so the products cannot overflow Int64.
   let n = n.to_int64()
-  // days * n can overflow Int64 only far outside the representable range.
-  if n.abs() > 1000000000L {
-    let r = self.days.to_double() * n.to_double()
-    if r.abs() > 2.0e9 {
-      raise OverflowError("timedelta multiplication overflow")
-    }
-  }
   TimeDelta::normalize64(
     self.days.to_int64() * n,
     self.seconds.to_int64() * n,
@@ -242,16 +227,21 @@ pub fn TimeDelta::checked_mul(
 }
 
 ///|
-/// Multiply by a float (`td * f`), rounding half to even like CPython.
+/// Multiply by a float (`td * f`): exact rational product rounded half to
+/// even, like CPython.
 pub fn TimeDelta::mul_float(
   self : TimeDelta,
   f : Double,
 ) -> TimeDelta raise DateTimeError {
-  TimeDelta::from_float(
-    microseconds=self.days.to_double() * 86400.0e6 * f +
-      self.seconds.to_double() * 1.0e6 * f +
-      self.microseconds.to_double() * f,
-  )
+  if f.is_nan() {
+    raise ValueError("cannot convert float NaN to integer")
+  }
+  if f.is_inf() {
+    raise OverflowError("cannot convert float infinity to integer")
+  }
+  let (a, b) = as_integer_ratio(f)
+  let us = big_divide_and_round(self.to_big_us() * a, b)
+  TimeDelta::from_big(big(0L), big(0L), us)
 }
 
 ///|
@@ -263,21 +253,56 @@ pub fn TimeDelta::div_int(
   if n == 0 {
     raise ValueError("integer division or modulo by zero")
   }
-  let us = self.total_microseconds()
-  let n = n.to_int64()
-  let q = floor_div64(us, n)
-  let r = floor_mod64(us, n)
-  // round half to even, see CPython `_divide_and_round`
-  let r2 = r * 2L
-  let greater = if n > 0L { r2 > n } else { r2 < n }
-  let q = if greater || (r2 == n && q % 2L != 0L) { q + 1L } else { q }
-  TimeDelta::normalize64(0L, 0L, q)
+  let us = big_divide_and_round(self.to_big_us(), big(n.to_int64()))
+  TimeDelta::from_big(big(0L), big(0L), us)
+}
+
+///|
+/// `td // n` for an integer `n` (floor division).
+pub fn TimeDelta::floor_div_int(
+  self : TimeDelta,
+  n : Int,
+) -> TimeDelta raise DateTimeError {
+  if n == 0 {
+    raise ValueError("integer division or modulo by zero")
+  }
+  let (q, _) = big_divmod(self.to_big_us(), big(n.to_int64()))
+  TimeDelta::from_big(big(0L), big(0L), q)
+}
+
+///|
+/// `td1 // td2` (floor division of durations).
+pub fn TimeDelta::floor_div(
+  self : TimeDelta,
+  other : TimeDelta,
+) -> Int64 raise DateTimeError {
+  if other.is_zero() {
+    raise ValueError("integer division or modulo by zero")
+  }
+  let (q, _) = big_divmod(self.to_big_us(), other.to_big_us())
+  q.to_int64()
 }
 
 ///|
 /// `td1 / td2` as a float.
-pub fn TimeDelta::ratio(self : TimeDelta, other : TimeDelta) -> Double {
-  self.total_microseconds().to_double() / other.total_microseconds().to_double()
+pub fn TimeDelta::ratio(
+  self : TimeDelta,
+  other : TimeDelta,
+) -> Double raise DateTimeError {
+  if other.is_zero() {
+    raise ValueError("division by zero")
+  }
+  let a = self.to_big_us()
+  let b = other.to_big_us()
+  let limit = big(9007199254740992L) // 2**53: exact conversion below this
+  if a.compare(limit) < 0 &&
+    a.compare(-limit) > 0 &&
+    b.compare(limit) < 0 &&
+    b.compare(-limit) > 0 {
+    a.to_int64().to_double() / b.to_int64().to_double()
+  } else {
+    self.total_seconds() / other.total_seconds()
+  }
 }
 
 ///|

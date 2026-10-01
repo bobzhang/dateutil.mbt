@@ -47,7 +47,9 @@ fn ctime_of(
 /// Implements `strftime` for the C/POSIX locale. Supported directives:
 /// `%a %A %b %B %c %d %e %f %H %I %j %m %M %p %S %U %w %W %x %X %y %Y %z
 /// %Z %G %u %V %D %F %T %R %n %t %h %C %%`, plus the glibc/BSD `-` flag
-/// (no padding, e.g. `%-d`). Unknown directives are copied verbatim.
+/// (no padding, e.g. `%-d`). `%Y`/`%G` are zero-padded to 4 digits like
+/// CPython on macOS. Unknown directives are copied verbatim. The zone is
+/// only queried when `%z`/`%Z` occur.
 fn strftime_impl(
   fmt : String,
   year : Int,
@@ -57,8 +59,8 @@ fn strftime_impl(
   minute : Int,
   second : Int,
   microsecond : Int,
-  utcoffset : TimeDelta?,
-  tzname : String?,
+  utcoffset : () -> TimeDelta?,
+  tzname : () -> String?,
 ) -> String {
   let buf = StringBuilder()
   let chars = fmt.to_array()
@@ -139,11 +141,11 @@ fn strftime_impl(
           "\{pad(month, 2)}/\{pad(day, 2)}/\{pad(year % 100, 2)}",
         )
       'y' => buf.write_string(num(year % 100, 2))
-      'Y' => buf.write_string(year.to_string())
-      'G' => buf.write_string(iso_calendar_of(year, month, day).0.to_string())
+      'Y' => buf.write_string(num(year, 4))
+      'G' => buf.write_string(num(iso_calendar_of(year, month, day).0, 4))
       'V' => buf.write_string(num(iso_calendar_of(year, month, day).1, 2))
-      'z' => buf.write_string(format_utcoffset(utcoffset, sep=""))
-      'Z' => buf.write_string(tzname.unwrap_or(""))
+      'z' => buf.write_string(format_utcoffset(utcoffset(), sep=""))
+      'Z' => buf.write_string(tzname().unwrap_or(""))
       '%' => buf.write_char('%')
       _ => {
         buf.write_char('%')
@@ -170,15 +172,17 @@ pub fn DateTime::strftime(self : DateTime, fmt : String) -> String {
     self.minute,
     self.second,
     self.microsecond,
-    self.utcoffset(),
-    self.tzname(),
+    () => self.utcoffset(),
+    () => self.tzname(),
   )
 }
 
 ///|
 /// `date.strftime(fmt)` (C locale).
 pub fn Date::strftime(self : Date, fmt : String) -> String {
-  strftime_impl(fmt, self.year, self.month, self.day, 0, 0, 0, 0, None, None)
+  strftime_impl(fmt, self.year, self.month, self.day, 0, 0, 0, 0, () => None, () => {
+    None
+  })
 }
 
 ///|
@@ -193,7 +197,7 @@ pub fn Time::strftime(self : Time, fmt : String) -> String {
     self.minute,
     self.second,
     self.microsecond,
-    self.utcoffset(),
-    self.tzname(),
+    () => self.utcoffset(),
+    () => self.tzname(),
   )
 }

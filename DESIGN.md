@@ -119,12 +119,15 @@ vendored Python implementation (with a local `six` shim) and comparing outputs.
 
 * **Zone handle.** `pub struct Tz` (datetime pkg) = stable integer identity +
   `&TzInfo` implementation. `DateTime.tzinfo : Tz?`. Python `a is b` ==
-  `Tz::is_same`. Zone *value* equality (`tz1 == tz2`) uses the trait method
-  `eq_key(Self) -> String?` (a canonical fingerprint, `None` = identity only).
+  `Tz::is_same`. Zone *value* equality (`tz1 == tz2`): identity, else
+  `self.eq_with(other)` / reflected `other.eq_with(self)` (Python
+  `__eq__`/`NotImplemented`, for non-transitive cases like `tzlocal`), else
+  matching `eq_key(Self) -> String?` fingerprints (`None` = identity only).
   dateutil constructors that Python caches (tzutc singleton, tzoffset/tzstr
   factories, gettz cache) return the same handle.
 * **TzInfo trait** methods take `DateTime?` (`None` for `time` queries) and are
-  called with `dt.tzinfo` = the handle that wraps `self`. Trait defaults are
+  always called through the `Tz` handle, which attaches itself first, so
+  inside an impl `dt.tzinfo` is the handle that wraps `self`. Trait defaults are
   plain CPython `tzinfo` behavior: `fromutc` = CPython algorithm,
   `is_ambiguous` = `None` (unsupported). dateutil's `_tzinfo` behaviours
   (fold-aware `fromutc`, offset-based `is_ambiguous`) are public helpers that

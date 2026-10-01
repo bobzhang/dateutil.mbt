@@ -6,9 +6,11 @@
 ///
 /// Every method receives the datetime being queried, or `None` when the
 /// query comes from a `Time` object (Python calls `tzinfo.utcoffset(None)`
-/// in that case). When called through a `DateTime`, the argument's `tzinfo`
-/// is the handle wrapping this zone, so implementations may freely call
-/// `dt.utcoffset()` and friends on derived values.
+/// in that case). Methods are always invoked through the `Tz` handle, which
+/// first attaches itself to the argument: inside an implementation,
+/// `dt.tzinfo` is the handle wrapping this zone (Python's `self`), so
+/// implementations may call `dt.utcoffset()` and friends on derived values
+/// and pass `dt.tzinfo` to helpers that need the zone object.
 pub(open) trait TzInfo {
   /// Offset of local time from UTC (positive east of UTC); `None` if unknown.
   /// Must be strictly between -24h and +24h.
@@ -30,6 +32,11 @@ pub(open) trait TzInfo {
   /// Python). Two zones with equal `Some` keys compare equal. `None` (the
   /// default) means the zone is only equal to itself.
   fn eq_key(Self) -> String? = _
+  /// Python `self.__eq__(other)` for zones whose equality is not a plain
+  /// fingerprint match (e.g. it is not transitive). Return `None` for
+  /// `NotImplemented`. Implementations typically inspect `other.eq_key()`.
+  /// The default defers to `eq_key`.
+  fn eq_with(Self, Tz) -> Bool? = _
 }
 
 ///|
@@ -44,6 +51,11 @@ impl TzInfo with fn is_ambiguous(_self, _dt) {
 
 ///|
 impl TzInfo with fn eq_key(_self) {
+  None
+}
+
+///|
+impl TzInfo with fn eq_with(_self, _other) {
   None
 }
 
@@ -116,18 +128,31 @@ fn check_offset(name : String, off : TimeDelta?) -> TimeDelta? {
 }
 
 ///|
+fn Tz::attach(self : Tz, dt : DateTime?) -> DateTime? {
+  match dt {
+    Some(d) if !(d.tzinfo is Some(t) && t.is_same(self)) =>
+      Some(d.with_tzinfo(Some(self)))
+    _ => dt
+  }
+}
+
+///|
+/// `tz.utcoffset(dt)`. Aborts if the zone returns an offset outside
+/// ±24h (Python raises `ValueError`; that is a zone implementation bug).
 pub fn Tz::utcoffset(self : Tz, dt : DateTime?) -> TimeDelta? {
-  check_offset("utcoffset", self.inner.utcoffset(dt))
+  check_offset("utcoffset", self.inner.utcoffset(self.attach(dt)))
 }
 
 ///|
+/// `tz.dst(dt)`.
 pub fn Tz::dst(self : Tz, dt : DateTime?) -> TimeDelta? {
-  check_offset("dst", self.inner.dst(dt))
+  check_offset("dst", self.inner.dst(self.attach(dt)))
 }
 
 ///|
+/// `tz.tzname(dt)`.
 pub fn Tz::tzname(self : Tz, dt : DateTime?) -> String? {
-  self.inner.tzname(dt)
+  self.inner.tzname(self.attach(dt))
 }
 
 ///|
@@ -144,7 +169,7 @@ pub fn Tz::fromutc(self : Tz, dt : DateTime) -> DateTime raise DateTimeError {
 ///|
 /// dateutil's `is_ambiguous`, `None` if the zone does not support it.
 pub fn Tz::is_ambiguous(self : Tz, dt : DateTime) -> Bool? {
-  self.inner.is_ambiguous(dt)
+  self.inner.is_ambiguous(dt.with_tzinfo(Some(self)))
 }
 
 ///|
@@ -164,10 +189,23 @@ pub impl Show for Tz with fn output(self, logger) {
 }
 
 ///|
-/// Zone value equality (Python `==`).
+/// Zone value equality (Python `==`): identity, else `self.eq_with(other)`,
+/// else the reflected `other.eq_with(self)`, else matching `eq_key`s.
 pub impl Eq for Tz with fn equal(self, other) {
-  self.is_same(other) ||
-  (self.inner.eq_key() is Some(a) && other.inner.eq_key() is Some(b) && a == b)
+  if self.is_same(other) {
+    return true
+  }
+  match self.inner.eq_with(other) {
+    Some(r) => r
+    None =>
+      match other.inner.eq_with(self) {
+        Some(r) => r
+        None =>
+          self.inner.eq_key() is Some(a) &&
+          other.inner.eq_key() is Some(b) &&
+          a == b
+      }
+  }
 }
 
 ///|

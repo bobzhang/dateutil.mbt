@@ -3,6 +3,7 @@ warnings = "-79"
 import {
   "moonbitlang/core/env",
   "moonbitlang/core/cmp",
+  "moonbitlang/core/bigint",
 }
 
 options(
