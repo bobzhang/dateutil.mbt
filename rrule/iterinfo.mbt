@@ -85,6 +85,10 @@ fn IterInfo::rebuild(
   let rr = self.rr
   let mut month = month
   if self.lastyear != Some(year) {
+    if year < @datetime.MINYEAR || year > @datetime.MAXYEAR {
+      // Python: datetime.date(year, 1, 1) raises
+      raise @datetime.ValueError("year \{year} is out of range")
+    }
     self.yearlen = 365 + (if @datetime.is_leap(year) { 1 } else { 0 })
     self.nextyearlen = 365 + (if @datetime.is_leap(year + 1) { 1 } else { 0 })
     self.yearordinal = @datetime.ymd_to_ordinal(year, 1, 1)

@@ -112,15 +112,41 @@ fn py_splitlines(s : String) -> Array[String] {
 }
 
 ///|
+/// First code points of the Unicode (15.1) decimal digit runs (category Nd,
+/// each run is `zero..=zero+9`).
+let decimal_zeros : FixedArray[Int] = [
+  0x30, 0x660, 0x6f0, 0x7c0, 0x966, 0x9e6, 0xa66, 0xae6, 0xb66, 0xbe6, 0xc66, 0xce6,
+  0xd66, 0xde6, 0xe50, 0xed0, 0xf20, 0x1040, 0x1090, 0x17e0, 0x1810, 0x1946, 0x19d0,
+  0x1a80, 0x1a90, 0x1b50, 0x1bb0, 0x1c40, 0x1c50, 0xa620, 0xa8d0, 0xa900, 0xa9d0,
+  0xa9f0, 0xaa50, 0xabf0, 0xff10, 0x104a0, 0x10d30, 0x11066, 0x110f0, 0x11136, 0x111d0,
+  0x112f0, 0x11450, 0x114d0, 0x11650, 0x116c0, 0x11730, 0x118e0, 0x11950, 0x11c50,
+  0x11d50, 0x11da0, 0x11f50, 0x16a60, 0x16ac0, 0x16b50, 0x1d7ce, 0x1d7d8, 0x1d7e2,
+  0x1d7ec, 0x1d7f6, 0x1e140, 0x1e2f0, 0x1e4f0, 0x1e950, 0x1fbf0,
+]
+
+///|
+/// Python `unicodedata.decimal(c)`.
+fn decimal_value(c : Char) -> Int? {
+  let c = c.to_int()
+  for z in decimal_zeros {
+    if c >= z && c <= z + 9 {
+      return Some(c - z)
+    }
+  }
+  None
+}
+
+///|
 /// Python `int(s)` for base-10 strings: surrounding whitespace, an optional
-/// sign, and digits optionally separated by single underscores.
+/// sign, and (Unicode) decimal digits optionally separated by single
+/// underscores. Values must fit in `Int` (Python ints are unbounded).
 fn py_int(s : String) -> Int raise HandleError {
-  let s = py_strip(s)
-  let n = s.length()
+  let chars = py_strip(s).to_array()
+  let n = chars.length()
   let mut i = 0
   let mut neg = false
-  if i < n && (s[i] == '+' || s[i] == '-') {
-    neg = s[i] == '-'
+  if i < n && (chars[i] == '+' || chars[i] == '-') {
+    neg = chars[i] == '-'
     i += 1
   }
   if i >= n {
@@ -129,22 +155,23 @@ fn py_int(s : String) -> Int raise HandleError {
   let mut acc = 0L
   let mut prev_digit = false
   while i < n {
-    let c = s[i]
-    if c >= '0' && c <= '9' {
-      acc = acc * 10L + (c.to_int() - '0').to_int64()
-      if acc > 2147483648L {
-        // beyond Int range (Python ints are unbounded)
-        raise InvalidValue
+    match decimal_value(chars[i]) {
+      Some(d) => {
+        acc = acc * 10L + d.to_int64()
+        if acc > 2147483648L {
+          raise InvalidValue
+        }
+        prev_digit = true
       }
-      prev_digit = true
-    } else if c == '_' &&
-      prev_digit &&
-      i + 1 < n &&
-      s[i + 1] >= '0' &&
-      s[i + 1] <= '9' {
-      prev_digit = false
-    } else {
-      raise InvalidValue
+      None =>
+        if chars[i] == '_' &&
+          prev_digit &&
+          i + 1 < n &&
+          decimal_value(chars[i + 1]) is Some(_) {
+          prev_digit = false
+        } else {
+          raise InvalidValue
+        }
     }
     i += 1
   }

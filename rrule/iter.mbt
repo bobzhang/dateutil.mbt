@@ -1,8 +1,9 @@
 // `rrule._iter`: the recurrence generator, as a resumable state machine.
 // Each "period" (year/month/week/day/hour/... depending on `freq`) is
-// expanded into a buffer of candidate datetimes, which are then filtered by
-// `until`/`dtstart`/`count` one at a time, exactly like the Python
-// generator's inner loops.
+// filtered into a list of kept days; candidates (day x time) are then built
+// and checked against `until`/`dtstart`/`count` one at a time, exactly like
+// the Python generator's inner loops (with `bysetpos`, the period's
+// candidates are built eagerly, as in Python).
 
 ///|
 priv struct RruleGen {
@@ -19,8 +20,12 @@ priv struct RruleGen {
   mut timeset : Array[(Int, Int, Int)]
   mut total : Int
   mut count : Int?
+  /// `bysetpos` candidates of the current period (eagerly built).
   buf : Array[@datetime.DateTime]
   mut pos : Int
+  /// Without `bysetpos`: position in `kept` x `timeset`.
+  mut day_pos : Int
+  mut time_pos : Int
   /// `false` until the first period has been expanded.
   mut started : Bool
   /// Whether some day of the current period was filtered out.
@@ -66,6 +71,8 @@ fn RruleGen::init(rr : Rrule) -> RruleGen raise @datetime.DateTimeError {
     count: rr.count,
     buf: [],
     pos: 0,
+    day_pos: 0,
+    time_pos: 0,
     started: false,
     filtered: false,
     kept: [],
@@ -129,6 +136,7 @@ fn RruleGen::gettimeset(
 fn RruleGen::finish(self : RruleGen) -> @datetime.DateTime? {
   self.rr.base.len = Some(self.total)
   self.pos = self.buf.length()
+  self.day_pos = self.kept.length()
   None
 }
 
@@ -138,17 +146,16 @@ fn RruleGen::next(
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   let rr = self.rr
   for ;; {
-    while self.pos < self.buf.length() {
-      let res = self.buf[self.pos]
-      self.pos += 1
-      if rr.until is Some(until) && res.compare(until) > 0 {
+    while self.next_candidate() is Some(res) {
+      if rr.until is Some(until) && res.checked_compare(until) > 0 {
         return self.finish()
-      } else if res.compare(rr.dtstart) >= 0 {
+      } else if res.checked_compare(rr.dtstart) >= 0 {
         if self.count is Some(c) {
-          self.count = Some(c - 1)
-          if c - 1 < 0 {
+          // Python: count -= 1; if count < 0: return
+          if c <= 0 {
             return self.finish()
           }
+          self.count = Some(c - 1)
         }
         self.total += 1
         return Some(res)
@@ -162,6 +169,38 @@ fn RruleGen::next(
     self.started = true
     self.expand()
   }
+}
+
+///|
+/// The next candidate of the current period, if any.
+fn RruleGen::next_candidate(
+  self : RruleGen,
+) -> @datetime.DateTime? raise @datetime.DateTimeError {
+  if self.pos < self.buf.length() {
+    let res = self.buf[self.pos]
+    self.pos += 1
+    return Some(res)
+  }
+  let kept = self.kept
+  let timeset = self.timeset
+  while self.day_pos < kept.length() {
+    let i = kept[self.day_pos]
+    if self.time_pos == 0 &&
+      i >= self.ii.yearlen &&
+      self.year + 1 > @datetime.MAXYEAR {
+      // Python computes `date.fromordinal(...)` per day, even for an empty
+      // timeset
+      raise @datetime.ValueError("year \{self.year + 1} is out of range")
+    }
+    if self.time_pos < timeset.length() {
+      let t = timeset[self.time_pos]
+      self.time_pos += 1
+      return Some(self.make(i, t))
+    }
+    self.day_pos += 1
+    self.time_pos = 0
+  }
+  None
 }
 
 ///|
@@ -251,10 +290,12 @@ fn RruleGen::expand(self : RruleGen) -> Unit raise @datetime.DateTimeError {
   let ii = self.ii
   self.buf.clear()
   self.pos = 0
+  self.day_pos = 0
+  self.time_pos = 0
   // getdayset
   let (start, end) = match rr.freq {
     Yearly => (0, ii.yearlen)
-    Monthly => (ii.mrange[self.month - 1], ii.mrange[self.month])
+    Monthly => ii.month_range(self.month)
     Weekly => {
       // We need to handle cross-year weeks here.
       let mut i = self.day_index()
@@ -309,16 +350,54 @@ fn RruleGen::expand(self : RruleGen) -> Unit raise @datetime.DateTimeError {
     }
     stable_sort(poslist, dt_lt)
     self.buf.append(poslist)
+    // the kept days are consumed through `buf`
+    self.day_pos = kept.length()
+  }
+}
+
+// Advancing uses `Int64` arithmetic: Python integers do not overflow, and
+// the intermediate values (e.g. `hour + interval`) can exceed `Int` for
+// large intervals.
+
+///|
+fn fdiv64(a : Int64, b : Int64) -> Int64 {
+  let q = a / b
+  if a % b != 0L && (a < 0L) != (b < 0L) {
+    q - 1L
   } else {
-    for i in kept {
-      if i >= ii.yearlen && self.year + 1 > @datetime.MAXYEAR {
-        // Python computes `date.fromordinal(...)` even for an empty timeset
-        raise @datetime.ValueError("year \{self.year + 1} is out of range")
-      }
-      for t in timeset {
-        self.buf.push(self.make(i, t))
-      }
-    }
+    q
+  }
+}
+
+///|
+fn fmod64(a : Int64, b : Int64) -> Int64 {
+  let r = a % b
+  if r != 0L && (r < 0L) != (b < 0L) {
+    r + b
+  } else {
+    r
+  }
+}
+
+///|
+/// Python `a // b` on Int64 (raises for `b == 0`).
+fn py_floordiv64(a : Int64, b : Int64) -> Int64 raise @datetime.DateTimeError {
+  if b == 0L {
+    raise @datetime.ValueError("integer division or modulo by zero")
+  }
+  fdiv64(a, b)
+}
+
+///|
+/// Clamp a day number to `Int`. Values beyond the clamp are equivalent: a
+/// day past ~4M overflows MAXYEAR and one below 1 is invalid either way.
+fn clamp_day(d : Int64) -> Int {
+  if d > 100_000_000L {
+    100_000_000
+  } else if d < -100_000_000L {
+    -100_000_000
+  } else {
+    d.to_int()
   }
 }
 
@@ -327,19 +406,20 @@ fn RruleGen::expand(self : RruleGen) -> Unit raise @datetime.DateTimeError {
 /// `interval`, as `(carry, value)`.
 fn RruleGen::mod_distance(
   self : RruleGen,
-  value : Int,
+  value : Int64,
   byxxx : FixedArray[Bool],
   base : Int,
-) -> (Int, Int) raise @datetime.DateTimeError {
-  let interval = self.rr.interval
-  let mut accumulator = 0
+) -> (Int64, Int) raise @datetime.DateTimeError {
+  let interval = self.rr.interval.to_int64()
+  let b = base.to_int64()
+  let mut accumulator = 0L
   let mut value = value
   for _ in 1..<=base {
-    let div = @datetime.floor_div(value + interval, base)
-    value = @datetime.floor_mod(value + interval, base)
+    let div = fdiv64(value + interval, b)
+    value = fmod64(value + interval, b)
     accumulator += div
-    if in_table(byxxx, value) {
-      return (accumulator, value)
+    if in_table(byxxx, value.to_int()) {
+      return (accumulator, value.to_int())
     }
   }
   // Python returns None, and the caller's tuple unpacking fails.
@@ -351,96 +431,101 @@ fn RruleGen::mod_distance(
 /// `false` when the iteration ends (year > MAXYEAR).
 fn RruleGen::advance(self : RruleGen) -> Bool raise @datetime.DateTimeError {
   let rr = self.rr
-  let interval = rr.interval
+  let interval = rr.interval.to_int64()
   let t = rr.tables
   let has_byhour = rr.byhour is Some(b) && !b.is_empty()
   let has_byminute = rr.byminute is Some(b) && !b.is_empty()
   let has_bysecond = rr.bysecond is Some(b) && !b.is_empty()
+  let maxyear = @datetime.MAXYEAR.to_int64()
   let mut fixday = false
+  let mut day = self.day.to_int64()
   match rr.freq {
     Yearly => {
-      self.year += interval
-      if self.year > @datetime.MAXYEAR {
+      let year = self.year.to_int64() + interval
+      if year > maxyear {
         return false
       }
+      self.year = year.to_int()
       self.ii.rebuild(self.year, self.month)
     }
     Monthly => {
-      self.month += interval
-      if self.month > 12 {
-        let div = @datetime.floor_div(self.month, 12)
-        let mod_ = @datetime.floor_mod(self.month, 12)
-        self.month = mod_
-        self.year += div
-        if self.month == 0 {
-          self.month = 12
-          self.year -= 1
+      let mut month = self.month.to_int64() + interval
+      let mut year = self.year.to_int64()
+      if month > 12L {
+        let div = fdiv64(month, 12L)
+        month = fmod64(month, 12L)
+        year += div
+        if month == 0L {
+          month = 12L
+          year -= 1L
         }
-        if self.year > @datetime.MAXYEAR {
+        if year > maxyear {
           return false
         }
       }
+      self.year = year.to_int()
+      self.month = month.to_int()
       self.ii.rebuild(self.year, self.month)
     }
     Weekly => {
       let wkst = rr.wkst
       if wkst > self.weekday {
-        self.day += -(self.weekday + 1 + (6 - wkst)) + interval * 7
+        day += (-(self.weekday + 1 + (6 - wkst))).to_int64() + interval * 7L
       } else {
-        self.day += -(self.weekday - wkst) + interval * 7
+        day += (-(self.weekday - wkst)).to_int64() + interval * 7L
       }
       self.weekday = wkst
       fixday = true
     }
     Daily => {
-      self.day += interval
+      day += interval
       fixday = true
     }
     Hourly => {
+      let mut hour = self.hour.to_int64()
       if self.filtered {
         // Jump to one iteration before next day
-        self.hour += py_floordiv(23 - self.hour, interval) * interval
+        hour += py_floordiv64(23L - hour, interval) * interval
       }
-      let (ndays, hour) = if has_byhour {
-        self.mod_distance(self.hour, t.byhour, 24)
+      let (ndays, h) = if has_byhour {
+        self.mod_distance(hour, t.byhour, 24)
       } else {
-        (
-          @datetime.floor_div(self.hour + interval, 24),
-          @datetime.floor_mod(self.hour + interval, 24),
-        )
+        (fdiv64(hour + interval, 24L), fmod64(hour + interval, 24L).to_int())
       }
-      self.hour = hour
-      if ndays != 0 {
-        self.day += ndays
+      self.hour = h
+      if ndays != 0L {
+        day += ndays
         fixday = true
       }
       self.timeset = self.gettimeset()
     }
     Minutely => {
+      let mut minute = self.minute.to_int64()
       if self.filtered {
         // Jump to one iteration before next day
-        self.minute += py_floordiv(
-            1439 - (self.hour * 60 + self.minute),
+        minute += py_floordiv64(
+            1439L - (self.hour.to_int64() * 60L + minute),
             interval,
           ) *
           interval
       }
       let mut valid = false
       let rep_rate = 24 * 60
-      for _ in 0..<(rep_rate / gcd(interval, rep_rate)) {
-        let (nhours, minute) = if has_byminute {
-          self.mod_distance(self.minute, t.byminute, 60)
+      for _ in 0..<(rep_rate / gcd(rr.interval, rep_rate)) {
+        let (nhours, m) = if has_byminute {
+          self.mod_distance(minute, t.byminute, 60)
         } else {
           (
-            @datetime.floor_div(self.minute + interval, 60),
-            @datetime.floor_mod(self.minute + interval, 60),
+            fdiv64(minute + interval, 60L),
+            fmod64(minute + interval, 60L).to_int(),
           )
         }
-        self.minute = minute
-        let div = @datetime.floor_div(self.hour + nhours, 24)
-        self.hour = @datetime.floor_mod(self.hour + nhours, 24)
-        if div != 0 {
-          self.day += div
+        minute = m.to_int64()
+        let hour = self.hour.to_int64() + nhours
+        let div = fdiv64(hour, 24L)
+        self.hour = fmod64(hour, 24L).to_int()
+        if div != 0L {
+          day += div
           fixday = true
           self.filtered = false
         }
@@ -449,6 +534,7 @@ fn RruleGen::advance(self : RruleGen) -> Bool raise @datetime.DateTimeError {
           break
         }
       }
+      self.minute = minute.to_int()
       if !valid {
         raise @datetime.ValueError(
           "Invalid combination of interval and byhour resulting in empty rule.",
@@ -457,44 +543,52 @@ fn RruleGen::advance(self : RruleGen) -> Bool raise @datetime.DateTimeError {
       self.timeset = self.gettimeset()
     }
     Secondly => {
+      let mut second = self.second.to_int64()
       if self.filtered {
         // Jump to one iteration before next day
-        self.second += py_floordiv(
-            86399 - (self.hour * 3600 + self.minute * 60 + self.second),
+        second += py_floordiv64(
+            86399L -
+            (
+              self.hour.to_int64() * 3600L +
+              self.minute.to_int64() * 60L +
+              second
+            ),
             interval,
           ) *
           interval
       }
       let rep_rate = 24 * 3600
       let mut valid = false
-      for _ in 0..<(rep_rate / gcd(interval, rep_rate)) {
-        let (nminutes, second) = if has_bysecond {
-          self.mod_distance(self.second, t.bysecond, 60)
+      for _ in 0..<(rep_rate / gcd(rr.interval, rep_rate)) {
+        let (nminutes, s) = if has_bysecond {
+          self.mod_distance(second, t.bysecond, 60)
         } else {
           (
-            @datetime.floor_div(self.second + interval, 60),
-            @datetime.floor_mod(self.second + interval, 60),
+            fdiv64(second + interval, 60L),
+            fmod64(second + interval, 60L).to_int(),
           )
         }
-        self.second = second
-        let div = @datetime.floor_div(self.minute + nminutes, 60)
-        self.minute = @datetime.floor_mod(self.minute + nminutes, 60)
-        if div != 0 {
-          self.hour += div
-          let div = @datetime.floor_div(self.hour, 24)
-          self.hour = @datetime.floor_mod(self.hour, 24)
-          if div != 0 {
-            self.day += div
+        second = s.to_int64()
+        let minute = self.minute.to_int64() + nminutes
+        let div = fdiv64(minute, 60L)
+        self.minute = fmod64(minute, 60L).to_int()
+        if div != 0L {
+          let hour = self.hour.to_int64() + div
+          let div = fdiv64(hour, 24L)
+          self.hour = fmod64(hour, 24L).to_int()
+          if div != 0L {
+            day += div
             fixday = true
           }
         }
         if (!has_byhour || in_table(t.byhour, self.hour)) &&
           (!has_byminute || in_table(t.byminute, self.minute)) &&
-          (!has_bysecond || in_table(t.bysecond, self.second)) {
+          (!has_bysecond || in_table(t.bysecond, second.to_int())) {
           valid = true
           break
         }
       }
+      self.second = second.to_int()
       if !valid {
         raise @datetime.ValueError(
           "Invalid combination of interval, byhour and byminute resulting in empty rule.",
@@ -503,7 +597,12 @@ fn RruleGen::advance(self : RruleGen) -> Bool raise @datetime.DateTimeError {
       self.timeset = self.gettimeset()
     }
   }
+  self.day = clamp_day(day)
   if fixday && self.day > 28 {
+    if self.day > 5_000_000 {
+      // more days than in 10000 years: the loop below would pass MAXYEAR
+      return false
+    }
     let mut daysinmonth = @datetime.days_in_month(self.year, self.month)
     if self.day > daysinmonth {
       while self.day > daysinmonth {

@@ -17,7 +17,7 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
 | `dt in r`, `r.count()` | `contains(dt)`, `count()` |
 | `before`/`after`/`xafter`/`between` | same names; `xafter` returns a lazy `Iter` |
 | `rruleset(cache)` + `rrule/rdate/exrule/exdate` | `RruleSet::new(cache?)` + same method names |
-| `rrulestr(s, **kw)` | `rrulestr(s, dtstart?, cache?, unfold?, forceset?, compatible?, ignoretz?, tzids?) -> RruleBase` |
+| `rrulestr(s, **kw)` | `rrulestr(s, dtstart?, cache?, unfold?, forceset?, compatible?, ignoretz?, tzids?, tzinfos?) -> RruleBase` |
 | `rrule` / `rruleset` result of `rrulestr` | `RruleBase::Rule(Rrule)` / `RruleBase::Set(RruleSet)` (same query methods) |
 | `tzids` mapping / callable | `TzIds::Mapping(Map)` / `TzIds::Lookup(fn)` |
 
@@ -50,18 +50,24 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
 * **`rrulestr`**:
   * `str.upper()` only maps ASCII letters (non-ASCII input is not
     upper-cased like Python would).
-  * `int()` values are limited to the `Int` range.
-  * `tzinfos` is not supported yet (TODO(parser)).
-  * The callback in `TzIds::Lookup` may raise any error; `rrulestr`
-    therefore raises the polymorphic `Error`.
+  * `int()` values are limited to the `Int` range (Unicode decimal digits
+    and `_` separators are accepted, as in Python).
+  * `tzinfos` is `@parser.TzInfos` and is passed to `@parser.parse`.
+  * The callback in `TzIds::Lookup` may raise any error, and parse errors
+    of date values propagate as `@parser.ParserError` (a Python
+    `ValueError` subclass); `rrulestr` therefore raises the polymorphic
+    `Error`. Inside `RRULE` values, parse errors are re-wrapped as
+    `ValueError("invalid 'UNTIL': ...")` like Python.
+* **Integer overflow.** Python integers are unbounded; the period
+  arithmetic uses `Int64`, so huge `interval`/`count` values behave like
+  Python (e.g. `interval=2**31-1` ends after the first period).
 * **Debug/repr**: Python's `repr(rrule)` is the default object repr; our
   `Debug` shows the RFC string.
 
-## Pending dependencies
+## Dependencies
 
-* `parser.parse` (DTSTART/UNTIL/RDATE/EXDATE values) is a stopgap in
-  `deps.mbt` (`parse_datetime`, marked `TODO(parser)`) accepting
-  `YYYYMMDD[THHMM[SS]][Z]`.
+* `parser.parse` (DTSTART/UNTIL/RDATE/EXDATE values) and `tz.gettz` calls
+  are isolated in `deps.mbt`.
 * `tz.gettz` is the default `tzids` lookup (as in Python). Zone files are
   only available where `tz.gettz` has a file system (native, js), so the
   upstream tests resolving IANA names live in `upstream_gettz_test.mbt`,
@@ -88,4 +94,6 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
   the reference implementation (`tools/gen_rrule_corpus.py`): 700 random
   rules over all frequencies and by-rules (first 20 occurrences or the
   error, `str()`, the `rrulestr(str())` round trip, `before`/`after`/
-  `between` probes) and 150 random rule sets.
+  `between` probes), 150 random rule sets and ~60 hand-picked `rrulestr`
+  inputs (parameters, folding, errors). `regression_test.mbt` holds edge
+  cases found in review, checked against the reference by hand.

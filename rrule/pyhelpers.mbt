@@ -95,14 +95,18 @@ fn[T] py_slice(
   if step > 0 {
     let start = adjust(start, 0)
     let stop = adjust(stop, len)
-    for i = start; i < stop; i = i + step {
-      out.push(xs[i])
+    let mut i = start.to_int64()
+    while i < stop.to_int64() {
+      out.push(xs[i.to_int()])
+      i += step.to_int64()
     }
   } else {
     let start = adjust(start, len - 1)
     let stop = adjust(stop, -1)
-    for i = start; i > stop; i = i + step {
-      out.push(xs[i])
+    let mut i = start.to_int64()
+    while i > stop.to_int64() {
+      out.push(xs[i.to_int()])
+      i += step.to_int64()
     }
   }
   out
@@ -168,13 +172,4 @@ fn dt_lt(
   b : @datetime.DateTime,
 ) -> Bool raise @datetime.DateTimeError {
   a.checked_compare(b) < 0
-}
-
-///|
-/// Python `a // b` (raises for `b == 0`, Python `ZeroDivisionError`).
-fn py_floordiv(a : Int, b : Int) -> Int raise @datetime.DateTimeError {
-  if b == 0 {
-    raise @datetime.ValueError("integer division or modulo by zero")
-  }
-  @datetime.floor_div(a, b)
 }

@@ -249,9 +249,12 @@ fn Base::slice(
         Some(x) => {
           cnt += 1
           out.push(x)
-          next = next + step
-          if stop is Some(s) && next > s {
-            next = s
+          // CPython clamps to `stop` on overflow or overshoot
+          let n = next.to_int64() + step.to_int64()
+          next = match stop {
+            Some(s) if n > s.to_int64() => s
+            None if n > 2147483647L => 2147483647
+            _ => n.to_int()
           }
         }
       }
