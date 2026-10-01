@@ -191,3 +191,16 @@ test "huge BYEASTER offsets raise" {
     })
   }
 }
+
+///|
+test "nth rejects n == 0 even when the weekday already has n == 0" {
+  // A shared @datetime.Weekday can carry n == 0 (relativedelta allows it);
+  // rrule's nth must still raise like Python's rrule.weekday(..., 0).
+  let mo0 = @datetime.Weekday::new(0, n=0)
+  expect_value_error(() => ignore(@rrule.nth(mo0, 0)))
+  expect_value_error(() => ignore(@rrule.nth(@rrule.mo, 0)))
+  // the base Weekday::nth does not validate
+  assert_eq(@rrule.mo.nth(Some(0)).n, Some(0))
+  // a non-zero n is fine
+  inspect(@rrule.nth(mo0, 2), content="MO(+2)")
+}

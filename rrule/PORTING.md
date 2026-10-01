@@ -29,6 +29,12 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
   (`weekdays[i]` for an int). `dtstart`/`until` are `DateTime`; pass
   `Date::to_datetime()` for a Python `date`. An empty array is still
   distinct from an omitted argument, as in Python (`()` vs `None`).
+* **Shared `Weekday` type.** Python's `rrule.weekday` subclass rejects
+  `n == 0` in its constructor. Here `Weekday` is the shared
+  `@datetime.Weekday` (also used by relativedelta, where `n == 0` is
+  allowed), so `Weekday::nth` itself does **not** validate; use rrule's
+  `nth(wday, n)` / `weekday(wkday, n?)`, which raise `ValueError` for
+  `n == 0` (also when `wday` already carries `n == 0`).
 * **`wkst` default** is Monday; Python reads the process-global
   `calendar.firstweekday()`, which has no MoonBit counterpart.
 * **Errors during iteration.** Python generators raise lazily. All query
