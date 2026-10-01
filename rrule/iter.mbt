@@ -311,6 +311,10 @@ fn RruleGen::expand(self : RruleGen) -> Unit raise @datetime.DateTimeError {
     self.buf.append(poslist)
   } else {
     for i in kept {
+      if i >= ii.yearlen && self.year + 1 > @datetime.MAXYEAR {
+        // Python computes `date.fromordinal(...)` even for an empty timeset
+        raise @datetime.ValueError("year \{self.year + 1} is out of range")
+      }
       for t in timeset {
         self.buf.push(self.make(i, t))
       }

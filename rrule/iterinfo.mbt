@@ -157,6 +157,10 @@ fn IterInfo::rebuild(
           // days from last year, so there are no days from last year's
           // last week number in this year.
           let lnumweeks = if !byweekno.contains(-1) {
+            if year - 1 < @datetime.MINYEAR {
+              // Python: datetime.date(year - 1, 1, 1) raises
+              raise @datetime.ValueError("year \{year - 1} is out of range")
+            }
             let lyearweekday = @datetime.weekday_of(year - 1, 1, 1)
             let lno1wkst = (7 - lyearweekday + rr.wkst) % 7
             let lyearlen = 365 +
