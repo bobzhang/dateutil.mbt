@@ -1,0 +1,100 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/internal/tzdata"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn civil_from_days(Int64) -> (Int64, Int, Int)
+
+pub fn civil_from_seconds(Int64) -> (Int64, Int, Int, Int, Int, Int)
+
+pub fn days_from_civil(Int64, Int, Int) -> Int64
+
+pub fn days_in_month(Int64, Int) -> Int
+
+pub let default_dst_rules : (Rule, Rule)
+
+pub let default_localtime_path : String
+
+pub fn is_leap(Int64) -> Bool
+
+pub fn load_tzif(String, (String) -> Bytes?) -> Tzif?
+
+pub fn parse_posix_tz(String) -> PosixTz?
+
+pub fn parse_tzif(BytesView) -> Tzif raise TzdataError
+
+pub fn resolve(String?, read_file~ : (String) -> Bytes?, tzdir? : String) -> (Zone, ZoneSource)
+
+pub let utc : Zone
+
+pub fn weekday_from_days(Int64) -> Int
+
+pub fn zone_file_candidates(String, tzdir? : String) -> Array[String]
+
+pub let zoneinfo_dirs : Array[String]
+
+// Errors
+pub(all) suberror TzdataError {
+  InvalidTzif(String)
+} derive(Eq, @debug.Debug)
+
+// Types and methods
+pub(all) struct DstSpec {
+  abbr : String
+  offset : Int
+  start : Rule
+  end : Rule
+} derive(Eq, @debug.Debug)
+
+pub(all) struct PosixTz {
+  std_abbr : String
+  std_offset : Int
+  dst : DstSpec?
+} derive(Eq, @debug.Debug)
+pub fn PosixTz::lookup(Self, Int64) -> TimeType
+
+pub(all) struct Rule {
+  date : RuleDate
+  time : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) enum RuleDate {
+  Julian1(Int)
+  Julian0(Int)
+  MonthWeekDay(month~ : Int, week~ : Int, weekday~ : Int)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TimeType {
+  offset : Int
+  isdst : Bool
+  abbr : String
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Tzif {
+  version : Int
+  transitions : Array[Int64]
+  type_indices : Array[Int]
+  types : Array[TimeType]
+  footer_text : String
+  footer : PosixTz?
+} derive(Eq, @debug.Debug)
+pub fn Tzif::lookup(Self, Int64) -> TimeType
+
+pub(all) enum Zone {
+  TzifZone(Tzif)
+  PosixZone(PosixTz)
+} derive(Eq, @debug.Debug)
+pub fn Zone::lookup(Self, Int64) -> TimeType
+
+pub(all) enum ZoneSource {
+  File(String)
+  Posix
+  Fallback
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
