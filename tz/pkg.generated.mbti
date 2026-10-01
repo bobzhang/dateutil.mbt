@@ -1,0 +1,35 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/tz"
+
+import {
+  "bobzhang/dateutil/datetime",
+}
+
+// Values
+pub fn enfold(@datetime.DateTime, fold? : Int) -> @datetime.DateTime
+
+pub fn tzinfo_fold_status(@datetime.Tz, @datetime.DateTime, @datetime.DateTime) -> Int raise @datetime.DateTimeError
+
+pub fn tzinfo_fromutc(@datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
+
+pub fn tzinfo_fromutc_naive(@datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
+
+pub fn tzinfo_is_ambiguous(@datetime.Tz, @datetime.DateTime) -> Bool
+
+pub fn tzoffset(String?, Int) -> @datetime.Tz raise @datetime.DateTimeError
+
+pub fn tzoffset_delta(String?, @datetime.TimeDelta) -> @datetime.Tz raise @datetime.DateTimeError
+
+pub fn tzoffset_instance(String?, @datetime.TimeDelta) -> @datetime.Tz raise @datetime.DateTimeError
+
+pub fn tzutc() -> @datetime.Tz
+
+pub let utc : @datetime.Tz
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

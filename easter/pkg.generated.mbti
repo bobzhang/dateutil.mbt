@@ -1,0 +1,25 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/easter"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn easter(Int, variant? : EasterMethod) -> @datetime.Date raise @datetime.DateTimeError
+
+// Errors
+
+// Types and methods
+pub(all) enum EasterMethod {
+  Julian
+  Orthodox
+  Western
+} derive(Eq, @debug.Debug)
+pub fn EasterMethod::from_int(Int) -> Self raise @datetime.DateTimeError
+pub fn EasterMethod::to_int(Self) -> Int
+
+// Type aliases
+
+// Traits
