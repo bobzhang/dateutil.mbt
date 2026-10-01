@@ -62,8 +62,10 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
 * `parser.parse` (DTSTART/UNTIL/RDATE/EXDATE values) is a stopgap in
   `deps.mbt` (`parse_datetime`, marked `TODO(parser)`) accepting
   `YYYYMMDD[THHMM[SS]][Z]`.
-* `tz.gettz` (the default `tzids` lookup) is a stopgap in `deps.mbt`
-  (`default_gettz`, marked `TODO(tz)`) resolving only UTC names.
+* `tz.gettz` is the default `tzids` lookup (as in Python). Zone files are
+  only available where `tz.gettz` has a file system (native, js), so the
+  upstream tests resolving IANA names live in `upstream_gettz_test.mbt`,
+  gated to those targets.
 
 ## Tests
 
@@ -79,7 +81,11 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
     check that the rule is accepted.
   * `testWeekdayEqualitySubclass`: Python duck-typed equality with foreign
     classes; ported as equality with the base `@datetime.Weekday`.
-  * `testStrWithTZID`, `testStrWithTZIDCallable`, `testStrSetExDateWithTZID`,
-    `testStrSetExDateValueDateTimeWithTZID`: need `tz.gettz`/`tz.tzstr`
-    (TODO(tz)); the TZID tests needing only a zone object use fixed-offset
-    zones through `TzIds::Mapping`.
+  * `testStrWithTZID*`, `testStrSetExDate*WithTZID`, `testStrUntil*`:
+    hand-ported (`upstream_gettz_test.mbt`, native/js only because they
+    need the system zoneinfo).
+* `corpus_wbtest.mbt` / `corpus_data_wbtest.mbt`: differential corpus from
+  the reference implementation (`tools/gen_rrule_corpus.py`): 700 random
+  rules over all frequencies and by-rules (first 20 occurrences or the
+  error, `str()`, the `rrulestr(str())` round trip, `before`/`after`/
+  `between` probes) and 150 random rule sets.

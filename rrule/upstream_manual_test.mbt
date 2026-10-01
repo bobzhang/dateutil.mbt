@@ -182,54 +182,17 @@ test "RRuleTest.testStrWithTZIDCallableFailure" {
 }
 
 ///|
-test "RRuleTest.testStrWithTZIDMapping" {
-  let rrstr = "DTSTART;TZID=Eastern:19970902T090000\nRRULE:FREQ=YEARLY;COUNT=3"
-  // TODO(tz): upstream uses tz.gettz('America/New_York'); any zone object
-  // exercises the mapping lookup.
-  let nyc = @tz.tzoffset(Some("EST"), -5 * 3600)
-  let rr = @rrule.rrulestr(rrstr, tzids=Mapping({ "Eastern": nyc }))
+test "RRuleTest.testStrWithTZIDCallable" {
+  let rrstr = "DTSTART;TZID=UTC+04:19970902T090000\nRRULE:FREQ=YEARLY;COUNT=3"
+  let tz = @tz.tzstr("UTC+04")
+  let parse_tzstr : (String) -> @datetime.Tz? raise = tzstr => {
+    Some(@tz.tzstr(tzstr))
+  }
+  let rr = @rrule.rrulestr(rrstr, tzids=Lookup(parse_tzstr))
   let exp = [
-    dt(1997, 9, 2, h=9, tz=nyc),
-    dt(1998, 9, 2, h=9, tz=nyc),
-    dt(1999, 9, 2, h=9, tz=nyc),
+    dt(1997, 9, 2, h=9, tz~),
+    dt(1998, 9, 2, h=9, tz~),
+    dt(1999, 9, 2, h=9, tz~),
   ]
   assert_eq(rr.to_array(), exp)
-}
-
-///|
-test "RRuleTest.testStrWithConflictingTZID" {
-  // RFC 5545 Section 3.3.5, FORM #2: DATE WITH UTC TIME
-  // The "TZID" property parameter MUST NOT be applied to DATE-TIME
-  let nyc = @tz.tzoffset(Some("EST"), -5 * 3600)
-  expect_value_error(() => {
-    ignore(
-      @rrule.rrulestr(
-        "DTSTART;TZID=America/New_York:19970902T090000Z\nRRULE:FREQ=YEARLY;COUNT=3\n",
-        tzids=Mapping({ "America/New_York": nyc }),
-      ),
-    )
-  })
-}
-
-///|
-test "RRuleTest.testStrUntilMustBeUTC" {
-  let nyc = @tz.tzoffset(Some("EST"), -5 * 3600)
-  expect_value_error(() => {
-    ignore(
-      @rrule.rrulestr(
-        "DTSTART;TZID=America/New_York:19970902T090000\nRRULE:FREQ=YEARLY;UNTIL=19990101T000000;BYDAY=1TU,-1TH\n",
-        tzids=Mapping({ "America/New_York": nyc }),
-      ).to_array(),
-    )
-  })
-}
-
-///|
-test "RRuleTest.testStrUntilWithTZ" {
-  let nyc = @tz.tzoffset(Some("EST"), -5 * 3600)
-  let rr = @rrule.rrulestr(
-    "DTSTART;TZID=America/New_York:19970101T000000\nRRULE:FREQ=YEARLY;UNTIL=19990101T000000Z\n",
-    tzids=Mapping({ "America/New_York": nyc }),
-  )
-  assert_eq(rr.to_array(), [dt(1997, 1, 1, tz=nyc), dt(1998, 1, 1, tz=nyc)])
 }

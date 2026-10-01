@@ -5,3 +5,7 @@ import {
   "bobzhang/dateutil/easter",
   "bobzhang/dateutil/tz",
 }
+
+options(
+  targets: { "upstream_gettz_test.mbt": [ "native", "js" ] },
+)

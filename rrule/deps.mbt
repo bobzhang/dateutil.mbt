@@ -75,11 +75,6 @@ fn parse_datetime(
 
 ///|
 /// `tz.gettz(name)`, the default `tzids` lookup of `rrulestr`.
-///
-/// TODO(tz): stopgap until `tz.gettz` lands; only resolves `UTC`/`GMT`/`Z`.
-fn default_gettz(name : String) -> @datetime.Tz? {
-  match name {
-    "UTC" | "GMT" | "Z" | "utc" | "gmt" | "z" => Some(@tz.tzutc())
-    _ => None
-  }
+fn default_gettz(name : String) -> @datetime.Tz? raise {
+  @tz.gettz(name~)
 }
