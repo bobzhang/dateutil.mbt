@@ -28,3 +28,6 @@ fn join_path(a : String, b : String) -> String {
     a + "/" + b
   }
 }
+
+///|
+pub extend IOError with Show::{to_string, output}
