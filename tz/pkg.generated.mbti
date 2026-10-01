@@ -3,6 +3,7 @@ package "bobzhang/dateutil/tz"
 
 import {
   "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/relativedelta",
   "moonbitlang/core/debug",
 }
 
@@ -47,7 +48,7 @@ pub fn tzoffset_instance(String?, @datetime.TimeDelta) -> @datetime.Tz raise @da
 
 pub let tzpaths : Array[String]
 
-pub fn tzrange(String?, stdoffset? : @datetime.TimeDelta, dstabbr? : String, dstoffset? : @datetime.TimeDelta, start? : TzRangeDelta, end? : TzRangeDelta) -> @datetime.Tz
+pub fn tzrange(String?, stdoffset? : @datetime.TimeDelta, dstabbr? : String, dstoffset? : @datetime.TimeDelta, start? : @relativedelta.RelativeDelta, end? : @relativedelta.RelativeDelta) -> @datetime.Tz
 
 pub fn tzstr(String, posix_offset? : Bool) -> @datetime.Tz raise @datetime.DateTimeError
 
@@ -64,10 +65,6 @@ pub(all) suberror IOError {
 pub impl Show for IOError
 
 // Types and methods
-pub struct TzRangeDelta {
-  // private fields
-}
-pub fn TzRangeDelta::new(years? : Int, months? : Int, days? : Int, leapdays? : Int, weeks? : Int, hours? : Int, minutes? : Int, seconds? : Int, microseconds? : Int, year? : Int, month? : Int, day? : Int, weekday? : @datetime.Weekday, yearday? : Int, nlyearday? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int) -> Self raise @datetime.DateTimeError
 
 // Type aliases
 

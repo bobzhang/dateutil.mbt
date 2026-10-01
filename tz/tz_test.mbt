@@ -422,8 +422,8 @@ test "test_valid_dateutil_format" {
   let su = @datetime.su
   let range = (
     dstoffset : @datetime.TimeDelta?,
-    start : @tz.TzRangeDelta,
-    end : @tz.TzRangeDelta,
+    start : @relativedelta.RelativeDelta,
+    end : @relativedelta.RelativeDelta,
   ) => {
     @tz.tzrange(
       Some("EST"),

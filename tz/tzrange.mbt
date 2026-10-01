@@ -7,8 +7,8 @@ priv struct TzRange {
   dst_abbr : String?
   std_offset : @datetime.TimeDelta
   dst_offset : @datetime.TimeDelta
-  start_delta : TzRangeDelta?
-  end_delta : TzRangeDelta?
+  start_delta : @relativedelta.RelativeDelta?
+  end_delta : @relativedelta.RelativeDelta?
   hasdst : Bool
   /// `tzstr`'s source string (`None` for a plain `tzrange`); only used by
   /// `repr()`.
@@ -179,10 +179,10 @@ impl @datetime.TzInfo for TzRange with fn eq_key(self) {
     }
   }
 
-  fn opt_delta(d : TzRangeDelta?) -> String {
+  fn opt_delta(d : @relativedelta.RelativeDelta?) -> String {
     match d {
       None => "None"
-      Some(d) => d.fingerprint()
+      Some(d) => relativedelta_key(d)
     }
   }
 
@@ -192,9 +192,38 @@ impl @datetime.TzInfo for TzRange with fn eq_key(self) {
 }
 
 ///|
+/// Canonical text of the fields compared by `relativedelta.__eq__`
+/// (a weekday with `n` of `None`, `0` or `1` compares equal; `-0.0` and
+/// `0.0` are equal).
+fn relativedelta_key(d : @relativedelta.RelativeDelta) -> String {
+  fn opt(v : Int?) -> String {
+    match v {
+      None => "_"
+      Some(x) => x.to_string()
+    }
+  }
+
+  fn num(v : Double) -> String {
+    (v + 0.0).to_string()
+  }
+
+  let wd = match d.weekday {
+    None => "_"
+    Some({ weekday, n: None | Some(0) | Some(1), }) => "\{weekday}:1"
+    Some({ weekday, n: Some(n), }) => "\{weekday}:\{n}"
+  }
+  "rd(\{d.years},\{d.months},\{num(d.days)},\{d.leapdays},\{num(d.hours)},\{num(d.minutes)},\{num(d.seconds)},\{num(d.microseconds)},\{opt(d.year)},\{opt(d.month)},\{opt(d.day)},\{wd},\{opt(d.hour)},\{opt(d.minute)},\{opt(d.second)},\{opt(d.microsecond)})"
+}
+
+///|
 /// The default DST start: 2AM on the first Sunday in April.
-fn default_start_delta() -> TzRangeDelta {
-  TzRangeDelta::new(hours=2, month=4, day=1, weekday=@datetime.su.nth(Some(1))) catch {
+fn default_start_delta() -> @relativedelta.RelativeDelta {
+  @relativedelta.RelativeDelta::new(
+    hours=2,
+    month=4,
+    day=1,
+    weekday=@datetime.su.nth(Some(1)),
+  ) catch {
     _ => panic()
   }
 }
@@ -202,8 +231,8 @@ fn default_start_delta() -> TzRangeDelta {
 ///|
 /// The default DST end: 1AM standard time (2AM DST) on the last Sunday in
 /// October.
-fn default_end_delta() -> TzRangeDelta {
-  TzRangeDelta::new(
+fn default_end_delta() -> @relativedelta.RelativeDelta {
+  @relativedelta.RelativeDelta::new(
     hours=1,
     month=10,
     day=31,
@@ -219,8 +248,8 @@ fn TzRange::new(
   stdoffset : @datetime.TimeDelta?,
   dstabbr : String?,
   dstoffset : @datetime.TimeDelta?,
-  start : TzRangeDelta?,
-  end : TzRangeDelta?,
+  start : @relativedelta.RelativeDelta?,
+  end : @relativedelta.RelativeDelta?,
   defaults~ : Bool,
 ) -> TzRange {
   let has_dstabbr = dstabbr is Some(a) && a != ""
@@ -267,9 +296,6 @@ fn TzRange::new(
 /// * `start`/`end` are relative deltas from January 1st of the year; `end`
 ///   is expressed in *standard* time.
 ///
-/// Note: `start`/`end` currently take the stand-in `TzRangeDelta`; they
-/// will take `@relativedelta.RelativeDelta` once that package lands.
-///
 /// ```mbt check
 /// test {
 ///   let est = @tz.tzrange(
@@ -288,8 +314,8 @@ pub fn tzrange(
   stdoffset? : @datetime.TimeDelta,
   dstabbr? : String,
   dstoffset? : @datetime.TimeDelta,
-  start? : TzRangeDelta,
-  end? : TzRangeDelta,
+  start? : @relativedelta.RelativeDelta,
+  end? : @relativedelta.RelativeDelta,
 ) -> @datetime.Tz {
   @datetime.Tz::new(
     TzRange::new(
@@ -311,7 +337,7 @@ fn tzstr_delta(
   isend : Bool,
   std_offset : @datetime.TimeDelta,
   dst_offset : @datetime.TimeDelta,
-) -> TzRangeDelta raise @datetime.DateTimeError {
+) -> @relativedelta.RelativeDelta raise @datetime.DateTimeError {
   let mut month : Int? = None
   let mut day : Int? = None
   let mut weekday : @datetime.Weekday? = None
@@ -352,7 +378,14 @@ fn tzstr_delta(
     let delta = dst_offset - std_offset
     seconds -= delta.seconds + delta.days * 86400
   }
-  TzRangeDelta::new(month?, day?, weekday?, yearday?, nlyearday?, seconds~)
+  @relativedelta.RelativeDelta::new(
+    month?,
+    day?,
+    weekday?,
+    yearday?,
+    nlyearday?,
+    seconds~,
+  )
 }
 
 ///|

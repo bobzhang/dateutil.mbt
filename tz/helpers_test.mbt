@@ -212,8 +212,16 @@ fn rd(
   day? : Int,
   weekday? : @datetime.Weekday,
   hour? : Int,
-) -> @tz.TzRangeDelta {
-  @tz.TzRangeDelta::new(days~, hours~, seconds~, month?, day?, weekday?, hour?) catch {
+) -> @relativedelta.RelativeDelta {
+  @relativedelta.RelativeDelta::new(
+    days~,
+    hours~,
+    seconds~,
+    month?,
+    day?,
+    weekday?,
+    hour?,
+  ) catch {
     e => abort(e.to_string())
   }
 }

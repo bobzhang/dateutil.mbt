@@ -2,6 +2,7 @@ warnings = "-79"
 
 import {
   "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/relativedelta",
   "moonbitlang/core/encoding/utf8",
   "moonbitlang/core/env",
   "moonbitlang/x/fs",
