@@ -48,12 +48,11 @@ offset zero; a `tzoffset` with the same name and offset) through
   whatever the TZif version. Truncated or inconsistent data (short reads,
   out-of-range type indices, negative counts) raise `ValueError` where
   Python raises `struct.error`/`IndexError`.
-* **File system.** `tzfile(path)`/`gettz` read zone files on native and
-  js (via `moonbitlang/x/fs`). The wasm backends have no portable file
-  system (`@fs` there needs host imports), so there `tzfile(path)` raises
-  `IOError` and `gettz` only understands TZ strings, `UTC`/`GMT` and the
-  local zone's names. dateutil's bundled zoneinfo tarball and Windows
-  zones do not exist here.
+* **File system.** `tzfile(path)`/`gettz` read zone files through
+  `moonbitlang/x/fs` on every backend. On wasm/wasm-gc this relies on the
+  host providing MoonBit's file-system imports (`moon run`/`moon test`
+  do); embedders that don't provide them should use `tzfile_from_bytes`.
+  dateutil's bundled zoneinfo tarball and Windows zones do not exist here.
 * **`gettz` raises** (as Python does) only when an explicit absolute path
   names a file that is not a valid zone file; its type is the generic
   `raise` (`ValueError` or `IOError`).
