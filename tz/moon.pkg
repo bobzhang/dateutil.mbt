@@ -7,9 +7,15 @@ import {
   "moonbitlang/x/fs",
 }
 
+import {
+  "moonbitlang/core/encoding/base64",
+} for "test"
+
 options(
   targets: {
     "io_fs.mbt": [ "native", "js" ],
     "io_nofs.mbt": [ "wasm", "wasm-gc" ],
+    "diff_corpus_tzlocal_native_test.mbt": [ "native" ],
+    "tzlocal_native_test.mbt": [ "native" ],
   },
 )

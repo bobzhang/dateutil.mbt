@@ -172,7 +172,9 @@ fn gettz_touch_strong(name : String) -> Unit {
 /// test {
 ///   let z = @tz.gettz(name="EST5EDT4,M3.2.0/2,M11.1.0/2")
 ///   guard z is Some(z) else { fail("expected a zone") }
-///   assert_true(@tz.gettz(name="EST5EDT4,M3.2.0/2,M11.1.0/2") is Some(z2) && z2.is_same(z))
+///   assert_true(
+///     @tz.gettz(name="EST5EDT4,M3.2.0/2,M11.1.0/2") is Some(z2) && z2.is_same(z),
+///   )
 ///   assert_true(@tz.gettz(name="Fake.Region/Abcdefghijklmnop") is None)
 /// }
 /// ```

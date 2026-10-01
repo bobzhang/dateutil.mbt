@@ -121,21 +121,21 @@ pub fn TzRangeDelta::new(
 /// Python `bool(relativedelta)`.
 fn TzRangeDelta::to_bool(self : TzRangeDelta) -> Bool {
   !(self.years == 0 &&
-    self.months == 0 &&
-    self.days == 0 &&
-    self.hours == 0 &&
-    self.minutes == 0 &&
-    self.seconds == 0 &&
-    self.microseconds == 0 &&
-    self.leapdays == 0 &&
-    self.year is None &&
-    self.month is None &&
-    self.day is None &&
-    self.weekday is None &&
-    self.hour is None &&
-    self.minute is None &&
-    self.second is None &&
-    self.microsecond is None)
+  self.months == 0 &&
+  self.days == 0 &&
+  self.hours == 0 &&
+  self.minutes == 0 &&
+  self.seconds == 0 &&
+  self.microseconds == 0 &&
+  self.leapdays == 0 &&
+  self.year is None &&
+  self.month is None &&
+  self.day is None &&
+  self.weekday is None &&
+  self.hour is None &&
+  self.minute is None &&
+  self.second is None &&
+  self.microsecond is None)
 }
 
 ///|
@@ -151,8 +151,8 @@ fn TzRangeDelta::fingerprint(self : TzRangeDelta) -> String {
 
   let wd = match self.weekday {
     None => "_"
-    Some({ weekday, n: None | Some(0) | Some(1) }) => "\{weekday}:1"
-    Some({ weekday, n: Some(n) }) => "\{weekday}:\{n}"
+    Some({ weekday, n: None | Some(0) | Some(1), }) => "\{weekday}:1"
+    Some({ weekday, n: Some(n), }) => "\{weekday}:\{n}"
   }
   "rd(\{self.years},\{self.months},\{self.days},\{self.leapdays},\{self.hours},\{self.minutes},\{self.seconds},\{self.microseconds},\{opt(self.year)},\{opt(self.month)},\{opt(self.day)},\{wd},\{opt(self.hour)},\{opt(self.minute)},\{opt(self.second)},\{opt(self.microsecond)})"
 }
@@ -212,7 +212,7 @@ fn TzRangeDelta::add_to_datetime(
   )
   match self.weekday {
     None => ret
-    Some({ weekday, n }) => {
+    Some({ weekday, n, }) => {
       let nth = match n {
         None | Some(0) => 1
         Some(n) => n

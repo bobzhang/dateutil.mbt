@@ -34,9 +34,7 @@ fn TzRange::transitions(
   guard self.start_delta is Some(start) && self.end_delta is Some(end) else {
     return None
   }
-  let base_year = @datetime.DateTime::new(year, 1, 1) catch {
-    _ => return None
-  }
+  let base_year = @datetime.DateTime::new(year, 1, 1) catch { _ => return None }
   let start = start.add_to_datetime(base_year) catch { _ => return None }
   let end = end.add_to_datetime(base_year) catch { _ => return None }
   Some((start, end))
@@ -128,7 +126,10 @@ impl @datetime.TzInfo for TzRange with fn fromutc(self, dt) {
     return dt.add(off)
   }
   // Get the transition times in UTC
-  let utc_transitions = (dston.sub(self.std_offset), dstoff.sub(self.std_offset))
+  let utc_transitions = (
+    dston.sub(self.std_offset),
+    dstoff.sub(self.std_offset),
+  )
   let dt_utc = dt.with_tzinfo(None)
   let isdst = naive_isdst(dt_utc, utc_transitions)
   let dt_wall = if isdst {

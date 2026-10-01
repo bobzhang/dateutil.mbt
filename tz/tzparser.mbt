@@ -172,9 +172,7 @@ fn parse_tzstr(tzstr : String) -> TzStrParse? raise @datetime.DateTimeError {
   let l = tz_tokens(tzstr)
   let used_idxs : Array[Int] = []
   let len_l = l.length()
-  let ok = parse_tzstr_tokens(res, l, used_idxs) catch {
-    TzParseFail => false
-  }
+  let ok = parse_tzstr_tokens(res, l, used_idxs) catch { TzParseFail => false }
   if !ok {
     return None
   }
@@ -226,7 +224,8 @@ fn parse_tzstr_tokens(
         used_idxs.push(ii)
       }
       i = j
-      if i < len_l && (l[i] is ("+" | "-") || tz_has_any(tz_slice(l[i], 0, 1), "0123456789")) {
+      if i < len_l &&
+        (l[i] is ("+" | "-") || tz_has_any(tz_slice(l[i], 0, 1), "0123456789")) {
         let signal = if l[i] is ("+" | "-") {
           // Yes, that's right.  See the TZ variable documentation.
           let s = if l[i] == "+" { -1 } else { 1 }
@@ -240,7 +239,10 @@ fn parse_tzstr_tokens(
         let len_li = tok.length()
         let offset = if len_li == 4 {
           // -0300
-          (tz_int(tz_slice(tok, 0, 2)) * 3600 + tz_int(tz_slice(tok, 2, 4)) * 60) *
+          (
+            tz_int(tz_slice(tok, 0, 2)) * 3600 +
+            tz_int(tz_slice(tok, 2, 4)) * 60
+          ) *
           signal
         } else if i + 1 < len_l && l[i + 1] == ":" {
           // -03:00
@@ -334,8 +336,10 @@ fn parse_tzstr_tokens(
     tz_count(l[i:], "/") <= 2 &&
     l[i:]
     .iter()
-    .all(x => x is ("," | "/" | "J" | "M" | "." | "-" | ":") ||
-      tz_all_in(x, "0123456789")) {
+    .all(x => {
+      x is ("," | "/" | "J" | "M" | "." | "-" | ":") ||
+      tz_all_in(x, "0123456789")
+    }) {
     for x in [res.start, res.end] {
       if tz_tok(l, i) == "J" {
         // non-leap year day (1 based)
@@ -379,7 +383,8 @@ fn parse_tzstr_tokens(
         if len_li == 4 {
           // -0300
           x.time = Some(
-            tz_int(tz_slice(tok, 0, 2)) * 3600 + tz_int(tz_slice(tok, 2, 4)) * 60,
+            tz_int(tz_slice(tok, 0, 2)) * 3600 +
+            tz_int(tz_slice(tok, 2, 4)) * 60,
           )
         } else if i + 1 < len_l && l[i + 1] == ":" {
           // -03:00
