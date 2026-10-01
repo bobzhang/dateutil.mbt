@@ -13,7 +13,7 @@ TZ-string parser `parser._tzparser` (which lives here to avoid a
 | `tzoffset(name, seconds/timedelta)`      | `tzoffset(name, seconds)`, `tzoffset_delta(name, td)` (cached) |
 | `tzoffset.instance(...)`                 | `tzoffset_instance(name, td)`                  |
 | `tzlocal()`                              | `tzlocal()`                                    |
-| `tzfile(path)`                           | `tzfile(path)` (native/js)                     |
+| `tzfile(path)`                           | `tzfile(path)`                                 |
 | `tzfile(fileobj, filename)`              | `tzfile_from_bytes(bytes, filename?)`          |
 | `tzrange(...)`                           | `tzrange(stdabbr, stdoffset?, dstabbr?, dstoffset?, start?, end?)` with `TimeDelta` offsets and `@relativedelta.RelativeDelta` rules |
 | `tzstr(s, posix_offset)` / `.instance`   | `tzstr(s, posix_offset?)` (cached) / `tzstr_instance` |

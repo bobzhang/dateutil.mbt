@@ -203,8 +203,9 @@ pub fn TzIcal::from_string(
 }
 
 ///|
-/// `tzical(filename)`: read and parse an iCalendar file (native and js
-/// backends; on wasm this raises `IOError`).
+/// `tzical(filename)`: read and parse an iCalendar file. Raises
+/// `@tz.IOError` if the file cannot be read (on js this needs Node's `fs`;
+/// on wasm the host must provide MoonBit's file-system imports).
 pub fn TzIcal::from_file(path : String) -> TzIcal raise {
   let s = read_file_text(path)
   let ical = { name: path, vtz: {}, }

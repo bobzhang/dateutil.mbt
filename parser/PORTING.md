@@ -96,9 +96,9 @@ it is declared with a plain `raise`. The isoparser raises
 `time.tzname`), `tz.enfold`, `tz.tzoffset`/`tz.utc` and
 `relativedelta(weekday=...)` come from the `tz` and `relativedelta`
 packages. Tests needing `tz.gettz` (`test_parse_tzinfos_fold`, the `gettz`
-zones of `test_isoparse_prop`) live in `gettz_test.mbt`, which runs on the
-native and js backends (where the system zoneinfo is readable) and is
-skipped silently if the zones are missing.
+zones of `test_isoparse_prop`) live in `gettz_test.mbt`, which reads the
+system zoneinfo (on every backend) and is skipped silently if the zones
+are missing.
 
 ## Tests
 

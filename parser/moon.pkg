@@ -12,7 +12,3 @@ import {
   "moonbitlang/core/json",
   "moonbitlang/core/env",
 } for "test"
-
-options(
-  targets: { "gettz_test.mbt": [ "native", "js" ] },
-)

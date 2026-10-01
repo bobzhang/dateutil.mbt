@@ -98,8 +98,8 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
   * `testWeekdayEqualitySubclass`: Python duck-typed equality with foreign
     classes; ported as equality with the base `@datetime.Weekday`.
   * `testStrWithTZID*`, `testStrSetExDate*WithTZID`, `testStrUntil*`:
-    hand-ported (`upstream_gettz_test.mbt`, native/js only because they
-    need the system zoneinfo).
+    hand-ported (`upstream_gettz_test.mbt`; they read the system
+    zoneinfo, on every backend).
 * `corpus_wbtest.mbt` / `corpus_data_wbtest.mbt`: differential corpus from
   the reference implementation (`tools/gen_rrule_corpus.py`): 700 random
   rules over all frequencies and by-rules (first 20 occurrences or the

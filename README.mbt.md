@@ -2,8 +2,8 @@
 
 A MoonBit port of [python-dateutil](https://github.com/dateutil/dateutil)
 (ported from upstream commit `2642afa`), together with a faithful model of
-CPython's `datetime` module that it is built on. It runs on the wasm-gc, js
-and native backends.
+CPython's `datetime` module that it is built on. It runs on the wasm,
+wasm-gc, js and native backends.
 
 | package | Python module | what it does |
 |---|---|---|
@@ -145,7 +145,7 @@ test "rrule" {
 ///|
 test "tz" {
   // POSIX TZ strings work everywhere; gettz also reads the system
-  // zoneinfo database on native and js.
+  // zoneinfo database (on wasm through MoonBit's host file-system imports).
   let eastern = @tz.tzstr("EST5EDT,M3.2.0,M11.1.0")
   let summer = @datetime.DateTime::new(2021, 7, 4, hour=12, tzinfo=eastern)
   inspect(summer, content="2021-07-04 12:00:00-04:00")

@@ -6,7 +6,3 @@ import {
   "bobzhang/dateutil/tz",
   "bobzhang/dateutil/parser",
 }
-
-options(
-  targets: { "upstream_gettz_test.mbt": [ "native", "js" ] },
-)
