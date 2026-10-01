@@ -242,3 +242,51 @@ test "differential: random rrulesets vs python-dateutil" {
   }
   assert_true(n > 100)
 }
+
+///|
+test "differential: rrulestr inputs vs python-dateutil" {
+  let mut n = 0
+  for line in split_all(str_corpus, "\n") {
+    if line == "" {
+      continue
+    }
+    guard split_all(line, "\t") is [src, flags, expected] else {
+      fail("bad corpus line: \{line}")
+    }
+    let src = src
+      .replace_all(old="\\n", new="\n")
+      .replace_all(old="\\r", new="\r")
+    let flags = split_all(flags, ",")
+    let dtstart = if flags.contains("dtstart") {
+      Some(@datetime.DateTime::new(2001, 2, 3, hour=4, minute=5, second=6))
+    } else {
+      None
+    }
+    let got = try
+      rrulestr(
+        src,
+        dtstart?,
+        unfold=flags.contains("unfold"),
+        forceset=flags.contains("forceset"),
+        compatible=flags.contains("compatible"),
+        ignoretz=flags.contains("ignoretz"),
+      )
+    catch {
+      // Python IndexError is reported as ValueError (see PORTING.md)
+      @datetime.ValueError(_) =>
+        if expected == "!IndexError" {
+          expected
+        } else {
+          "!ValueError"
+        }
+      @datetime.TypeError(_) => "!TypeError"
+      e => "!\{e}"
+    } noraise {
+      Rule(r) => "rule:" + take(r.raw_iter())
+      Set(s) => "set:" + take(s.raw_iter())
+    }
+    assert_eq(got, expected, msg="rrulestr(\{src}): \{got} vs \{expected}")
+    n += 1
+  }
+  assert_true(n > 40)
+}
