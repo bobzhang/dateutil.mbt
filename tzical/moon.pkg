@@ -5,5 +5,5 @@ import {
   "bobzhang/dateutil/tz",
   "bobzhang/dateutil/rrule",
   "moonbitlang/core/encoding/utf8",
-  "moonbitlang/x/fs",
+  "bobzhang/dateutil/internal/host",
 }

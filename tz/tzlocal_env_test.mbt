@@ -1,6 +1,6 @@
 // tzlocal tests that change the TZ environment variable (upstream
-// TZEnvContext); native only, since only there does `@datetime.tzset()`
-// make the C library re-read TZ.
+// TZEnvContext). `@datetime.tzset()` re-reads TZ on every backend (the C
+// library on native, the internal/tzdata resolver elsewhere).
 
 ///|
 /// Upstream `TZEnvContext`: run `f` with `TZ=tzval`, restoring it after.
@@ -20,7 +20,7 @@ fn with_tz_env(tzval : String, f : () -> Unit raise) -> Unit raise {
 
 ///|
 test "differential: tzlocal under TZ strings" {
-  let groups : Map[String, Array[String]] = {}
+  let groups : Map[String, Array[String]] = Map([])
   for rec in tzlocal_corpus {
     let key = rec.split("|").nth(1).unwrap().to_owned()
     match groups.get(key) {
@@ -30,8 +30,8 @@ test "differential: tzlocal under TZ strings" {
   }
   for key, recs in groups {
     with_tz_env(key.view(start_offset=2).to_owned(), () => {
-      let local = @tz.tzlocal()
-      check_corpus(recs, _ => local)
+      let zone = @tz.tzlocal()
+      check_corpus(recs, _ => zone)
     })
   }
 }
@@ -219,5 +219,17 @@ test "gettz honours TZ and tzlocal names" {
     let l2 = @tz.gettz(name="JST").unwrap()
     inspect(l1, content="tzlocal()")
     assert_false(l1.is_same(l2))
+  })
+}
+
+///|
+test "tzlocal under TZ=Europe/London: 1941 British Summer Time in winter" {
+  with_tz_env("Europe/London", () => {
+    let d = dt(1941, 1, 15, hour=12, tz=@tz.tzlocal())
+    inspect(d, content="1941-01-15 12:00:00+01:00")
+    inspect(name_str(d.tzname()), content="BST")
+    let d = dt(2024, 1, 15, hour=12, tz=@tz.tzlocal())
+    inspect(d, content="2024-01-15 12:00:00+00:00")
+    inspect(name_str(d.tzname()), content="GMT")
   })
 }

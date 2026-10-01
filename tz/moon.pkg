@@ -3,9 +3,9 @@ warnings = "-79"
 import {
   "bobzhang/dateutil/datetime",
   "bobzhang/dateutil/relativedelta",
+  "bobzhang/dateutil/internal/host",
   "moonbitlang/core/encoding/utf8",
   "moonbitlang/core/env",
-  "moonbitlang/x/fs",
 }
 
 import {
@@ -15,10 +15,3 @@ import {
 import {
   "moonbitlang/core/encoding/base64",
 } for "wbtest"
-
-options(
-  targets: {
-    "diff_corpus_tzlocal_native_test.mbt": [ "native" ],
-    "tzlocal_native_test.mbt": [ "native" ],
-  },
-)
