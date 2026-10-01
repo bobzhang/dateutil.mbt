@@ -1,0 +1,13 @@
+# Files left out of the published mooncakes archive. This file overrides
+# .gitignore for packaging, so repeat its entries.
+.repos/
+_build/
+target/
+.mooncakes/
+node_modules/
+.claude/
+.github/
+reviews/
+# Python generators of the differential corpora; only needed to regenerate
+# this repository's own tests.
+tools/
