@@ -2,4 +2,14 @@ warnings = "-79"
 
 import {
   "bobzhang/dateutil/datetime",
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/env",
+  "moonbitlang/x/fs",
 }
+
+options(
+  targets: {
+    "io_fs.mbt": [ "native", "js" ],
+    "io_nofs.mbt": [ "wasm", "wasm-gc" ],
+  },
+)

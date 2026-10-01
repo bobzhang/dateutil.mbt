@@ -3,10 +3,15 @@ package "bobzhang/dateutil/tz"
 
 import {
   "bobzhang/dateutil/datetime",
+  "moonbitlang/core/debug",
 }
 
 // Values
 pub fn enfold(@datetime.DateTime, fold? : Int) -> @datetime.DateTime
+
+pub fn tzfile(String) -> @datetime.Tz raise
+
+pub fn tzfile_from_bytes(BytesView, filename? : String) -> @datetime.Tz raise @datetime.DateTimeError
 
 pub fn tzinfo_fold_status(@datetime.Tz, @datetime.DateTime, @datetime.DateTime) -> Int raise @datetime.DateTimeError
 
@@ -15,6 +20,8 @@ pub fn tzinfo_fromutc(@datetime.DateTime) -> @datetime.DateTime raise @datetime.
 pub fn tzinfo_fromutc_naive(@datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
 
 pub fn tzinfo_is_ambiguous(@datetime.Tz, @datetime.DateTime) -> Bool
+
+pub fn tzlocal() -> @datetime.Tz
 
 pub fn tzoffset(String?, Int) -> @datetime.Tz raise @datetime.DateTimeError
 
@@ -27,6 +34,10 @@ pub fn tzutc() -> @datetime.Tz
 pub let utc : @datetime.Tz
 
 // Errors
+pub(all) suberror IOError {
+  IOError(String)
+} derive(Eq, @debug.Debug)
+pub impl Show for IOError
 
 // Types and methods
 
