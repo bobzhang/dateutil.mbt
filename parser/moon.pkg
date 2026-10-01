@@ -11,3 +11,7 @@ import {
   "moonbitlang/core/encoding/utf8",
   "moonbitlang/core/json",
 } for "test"
+
+options(
+  targets: { "gettz_test.mbt": [ "native", "js" ] },
+)

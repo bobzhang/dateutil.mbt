@@ -343,7 +343,7 @@ fn build_tzinfo(
   match tzdata {
     NoTz => None
     Zone(z) => Some(z)
-    TzString(s) => Some(tzstr(s))
+    TzString(s) => Some(@tz.tzstr(s))
     Offset(secs) => Some(@tz.tzoffset(tzname, secs))
   }
 }
@@ -372,7 +372,7 @@ fn Parser::build_tzaware(
     return assign_tzname(aware, res.tzname)
   }
   if res.tzname is Some(name) && local_tznames().contains(name) {
-    let aware = naive.with_tzinfo(Some(tzlocal()))
+    let aware = naive.with_tzinfo(Some(@tz.tzlocal()))
     // Handle ambiguous local datetime
     let aware = assign_tzname(aware, res.tzname)
     // This is mostly relevant for winter GMT zones parsed in the UK

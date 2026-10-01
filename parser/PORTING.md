@@ -87,13 +87,15 @@ it is declared with a plain `raise`. The isoparser raises
   whose zone is UTC — `Z`, `UTC` and zero offsets resolve to `tzlocal()`
   there.
 
-## Pending dependencies (`TODO(dep)` in `deps.mbt`)
+## Dependencies
 
-* `tz.tzstr` — `TzInfoSpec::TzString` raises until `@tz.tzstr` exists.
-* `tz.tzlocal` — names in `time.tzname` raise until `@tz.tzlocal` exists.
-* Tests waiting on these: `TestTzinfoInputTypes::test_valid_tzinfo_unicode_input`,
-  `test_valid_tzinfo_callable_input` (tzstr), `test_parse_tzinfos_fold` and
-  the `gettz` zones of `test_isoparse_prop` (tz.gettz).
+`tz.tzstr` (for `TzInfoSpec::TzString`), `tz.tzlocal` (zone names found in
+`time.tzname`), `tz.enfold`, `tz.tzoffset`/`tz.utc` and
+`relativedelta(weekday=...)` come from the `tz` and `relativedelta`
+packages. Tests needing `tz.gettz` (`test_parse_tzinfos_fold`, the `gettz`
+zones of `test_isoparse_prop`) live in `gettz_test.mbt`, which runs on the
+native and js backends (where the system zoneinfo is readable) and is
+skipped silently if the zones are missing.
 
 ## Tests
 
@@ -102,6 +104,8 @@ it is declared with a plain `raise`. The isoparser raises
   parametrization, xfail tests included) of upstream `tests/test_parser.py`
   and `tests/test_isoparser.py` against the vendored reference and records
   each `parse`/`isoparse`/`isoparser` call with the reference result.
+* `tz_deps_test.mbt`, `gettz_test.mbt` — upstream tests using `tzstr`,
+  `tzlocal` and `gettz` zones.
 * `parser_test.mbt` — hand ports of the tests the generator cannot express
   (custom `parserinfo` subclasses, zone objects/callables in `tzinfos`,
   byte inputs, `ParserError` repr, warnings).
@@ -124,7 +128,7 @@ it is declared with a plain `raise`. The isoparser raises
 | `TestTzinfoInputTypes::test_invalid_tzinfo_input` | invalid `tzinfos` values are prevented by the types |
 | `ParserTest::testDateCommandFormatWithLong` | Python 2 only (`long`) |
 | `TestParseUnimplementedCases::test_somewhat_ambiguous_string` | xfail upstream; fails on `self.tzinfos` before calling `parse` |
-| `TestTZVar::*` (3 tests) | set the process `TZ` environment variable and need `tz.tzlocal` |
+| `TestTZVar::*` (3 tests) | set the process `TZ` environment variable (not possible portably); `tz_deps_test.mbt` checks the `tzlocal()` branch with the machine's own zone instead |
 | `test_isoparser::test_isoparser_byte_sep` | `bytes` separator (xfail on Python 3) |
 | `test_internals::test_parser_private_warns`, `test_parser_parser_private_not_warns` | deprecation-warning machinery for private names |
 | `test_internals::test_tzstr_internal_timedeltas` | belongs to the `tz` package |
