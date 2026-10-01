@@ -41,11 +41,17 @@ def run_parse(s, default, **opts):
     # Divergence: dateutil's tzoffset accepts offsets of 24h or more (the
     # datetime is then unusable: CPython raises on utcoffset()); the MoonBit
     # tz.tzoffset validates on construction, so parse raises that ValueError.
+    # Divergence: decimal.InvalidOperation is reported as ValueError.
+    if out.startswith('InvalidOperation: '):
+        out = 'ValueError: ' + out[len('InvalidOperation: '):]
     dt_r = r[0] if isinstance(r, tuple) else r
     if dt_r is not None and isinstance(dt_r.tzinfo, H.tz.tzoffset) and \
             abs(dt_r.tzinfo._offset.total_seconds()) >= 86400:
-        out = ('ValueError: offset must be a timedelta strictly between '
-               '-timedelta(hours=24) and timedelta(hours=24).')
+        if abs(dt_r.tzinfo._offset.total_seconds()) > 2 ** 31 - 1:
+            out = 'OverflowError: Python int too large to convert to C int'
+        else:
+            out = ('ValueError: offset must be a timedelta strictly between '
+                   '-timedelta(hours=24) and timedelta(hours=24).')
     o = {'default': [default.year, default.month, default.day, default.hour,
                      default.minute, default.second, default.microsecond]}
     for k, v in opts.items():
@@ -229,6 +235,12 @@ EDGES = [
     '2004 10 Apr 11h30m', '01m02h', '01h02s', '36 m 05 s', '10h pm', '10:00a.m', 'Wed',
     'Sep 03', 'Sep of 03', 'Sep of 2003 03', 'of Sep', '3rd of May 2001', '31-Dec-00',
     '0099-01-01T00:00:00', '0003-03-04', 'İstanbul 2003',
+    # review findings: saturation, decimal context, digit limit, big offsets
+    '92233720368547760080', 'Jan-92233720368547760080', '922337203685477580',
+    '0.99999999999999999999999999999h', '0.99999999999999999999999999999m',
+    '10:0.99999999999999999999999999999', '12345678901234567890123456789h',
+    '1234567890123456789012345678h', 'Jan-' + '1' * 4301, '1' * 4301,
+    '10:00 +999999:00', '10:00 -99:99', 'ΑΣ Jan 2003', '中Σ 2003',
 ]
 for s in EDGES:
     add(s, n_opts=3)

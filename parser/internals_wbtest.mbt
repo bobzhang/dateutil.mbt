@@ -2,7 +2,7 @@
 
 ///|
 fn dec(n : Int) -> Dec {
-  { ip: n.to_int64(), frac: "", }
+  { ip: n.to_int64(), frac: "", int_digits: 0, }
 }
 
 ///|
@@ -42,13 +42,21 @@ test "test_internals::test_YMD_could_be_day" {
 test "Dec: exact fractional arithmetic" {
   let d = try! to_decimal("5.6")
   assert_eq(d.ip, 5L)
-  assert_eq(d.frac60(), 36L)
+  assert_eq(try! d.frac60(), 36L)
   let d = try! to_decimal("10.0000")
   assert_false(d.has_frac())
   assert_true(d.le(10L))
   assert_false(d.gt(10L))
   let d = try! to_decimal("0.99999999999999999999999")
-  assert_eq(d.frac60(), 59L)
+  assert_eq(try! d.frac60(), 59L)
+  // Python's decimal context rounds to 28 significant digits
+  let d = try! to_decimal("0.99999999999999999999999999999")
+  assert_eq(try! d.frac60(), 60L)
+  let d = try! to_decimal("0.0000000000000000000000000000000000001")
+  assert_true(try! d.mod1_nonzero())
+  assert_eq(try! d.frac60(), 0L)
+  let d = try! to_decimal("12345678901234567890123456789")
+  assert_true(raises(() => ignore(d.mod1_nonzero())))
   assert_true(raises(() => ignore(to_decimal("nan"))))
   assert_true(raises(() => ignore(to_decimal("1.e"))))
   let d = try! to_decimal("\u{663}\u{664}.\u{665}") // Arabic-Indic digits
@@ -70,6 +78,9 @@ test "py_str helpers" {
   assert_eq(py_lower("ΟΔΟΣ"), "οδος")
   assert_eq(py_lower("ΟΔΟΣ ΣΑ"), "οδος σα")
   assert_eq(py_lower("\u{130}"), "i\u{307}")
+  assert_eq(py_lower("中Σ"), "中σ")
+  assert_eq(py_lower("Α'Σ'"), "α'ς'")
+  assert_eq(py_lower("ΑΣ'Α"), "ασ'α")
   assert_eq(try! py_int(" +1_000 "), 1000L)
   assert_true(raises(() => ignore(py_int("1__0"))))
   assert_true(raises(() => ignore(py_int(""))))

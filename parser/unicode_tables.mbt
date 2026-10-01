@@ -138,6 +138,91 @@ let decimal_ranges_src : String =
   #|1e950-1e959 1fbf0-1fbf9
 
 ///|
+/// Cased (and not case-ignorable) code points, for the final-sigma rule.
+let cased_ranges_src : String =
+  #|41-5a 61-7a aa b5 ba c0-d6 d8-f6 f8-1ba 1bc-1bf 1c4-293 295-2af
+  #|370-373 376-377 37b-37d 37f 386 388-38a 38c 38e-3a1 3a3-3f5 3f7-481
+  #|48a-52f 531-556 560-588 10a0-10c5 10c7 10cd 10d0-10fa 10fd-10ff
+  #|13a0-13f5 13f8-13fd 1c80-1c88 1c90-1cba 1cbd-1cbf 1d00-1d2b 1d6b-1d77
+  #|1d79-1d9a 1e00-1f15 1f18-1f1d 1f20-1f45 1f48-1f4d 1f50-1f57 1f59 1f5b
+  #|1f5d 1f5f-1f7d 1f80-1fb4 1fb6-1fbc 1fbe 1fc2-1fc4 1fc6-1fcc 1fd0-1fd3
+  #|1fd6-1fdb 1fe0-1fec 1ff2-1ff4 1ff6-1ffc 2102 2107 210a-2113 2115
+  #|2119-211d 2124 2126 2128 212a-212d 212f-2134 2139 213c-213f 2145-2149
+  #|214e 2160-217f 2183-2184 24b6-24e9 2c00-2c7b 2c7e-2ce4 2ceb-2cee
+  #|2cf2-2cf3 2d00-2d25 2d27 2d2d a640-a66d a680-a69b a722-a76f a771-a787
+  #|a78b-a78e a790-a7ca a7d0-a7d1 a7d3 a7d5-a7d9 a7f5-a7f6 a7fa ab30-ab5a
+  #|ab60-ab68 ab70-abbf fb00-fb06 fb13-fb17 ff21-ff3a ff41-ff5a
+  #|10400-1044f 104b0-104d3 104d8-104fb 10570-1057a 1057c-1058a
+  #|1058c-10592 10594-10595 10597-105a1 105a3-105b1 105b3-105b9
+  #|105bb-105bc 10c80-10cb2 10cc0-10cf2 118a0-118df 16e40-16e7f
+  #|1d400-1d454 1d456-1d49c 1d49e-1d49f 1d4a2 1d4a5-1d4a6 1d4a9-1d4ac
+  #|1d4ae-1d4b9 1d4bb 1d4bd-1d4c3 1d4c5-1d505 1d507-1d50a 1d50d-1d514
+  #|1d516-1d51c 1d51e-1d539 1d53b-1d53e 1d540-1d544 1d546 1d54a-1d550
+  #|1d552-1d6a5 1d6a8-1d6c0 1d6c2-1d6da 1d6dc-1d6fa 1d6fc-1d714
+  #|1d716-1d734 1d736-1d74e 1d750-1d76e 1d770-1d788 1d78a-1d7a8
+  #|1d7aa-1d7c2 1d7c4-1d7cb 1df00-1df09 1df0b-1df1e 1df25-1df2a
+  #|1e900-1e943 1f130-1f149 1f150-1f169 1f170-1f189
+
+///|
+/// Case_Ignorable code points, for the final-sigma rule.
+let case_ignorable_ranges_src : String =
+  #|27 2e 3a 5e 60 a8 ad af b4 b7-b8 2b0-36f 374-375 37a 384-385 387
+  #|483-489 559 55f 591-5bd 5bf 5c1-5c2 5c4-5c5 5c7 5f4 600-605 610-61a
+  #|61c 640 64b-65f 670 6d6-6dd 6df-6e8 6ea-6ed 70f 711 730-74a 7a6-7b0
+  #|7eb-7f5 7fa 7fd 816-82d 859-85b 888 890-891 898-89f 8c9-902 93a 93c
+  #|941-948 94d 951-957 962-963 971 981 9bc 9c1-9c4 9cd 9e2-9e3 9fe
+  #|a01-a02 a3c a41-a42 a47-a48 a4b-a4d a51 a70-a71 a75 a81-a82 abc
+  #|ac1-ac5 ac7-ac8 acd ae2-ae3 afa-aff b01 b3c b3f b41-b44 b4d b55-b56
+  #|b62-b63 b82 bc0 bcd c00 c04 c3c c3e-c40 c46-c48 c4a-c4d c55-c56
+  #|c62-c63 c81 cbc cbf cc6 ccc-ccd ce2-ce3 d00-d01 d3b-d3c d41-d44 d4d
+  #|d62-d63 d81 dca dd2-dd4 dd6 e31 e34-e3a e46-e4e eb1 eb4-ebc ec6
+  #|ec8-ece f18-f19 f35 f37 f39 f71-f7e f80-f84 f86-f87 f8d-f97 f99-fbc
+  #|fc6 102d-1030 1032-1037 1039-103a 103d-103e 1058-1059 105e-1060
+  #|1071-1074 1082 1085-1086 108d 109d 10fc 135d-135f 1712-1714 1732-1733
+  #|1752-1753 1772-1773 17b4-17b5 17b7-17bd 17c6 17c9-17d3 17d7 17dd
+  #|180b-180f 1843 1885-1886 18a9 1920-1922 1927-1928 1932 1939-193b
+  #|1a17-1a18 1a1b 1a56 1a58-1a5e 1a60 1a62 1a65-1a6c 1a73-1a7c 1a7f 1aa7
+  #|1ab0-1ace 1b00-1b03 1b34 1b36-1b3a 1b3c 1b42 1b6b-1b73 1b80-1b81
+  #|1ba2-1ba5 1ba8-1ba9 1bab-1bad 1be6 1be8-1be9 1bed 1bef-1bf1 1c2c-1c33
+  #|1c36-1c37 1c78-1c7d 1cd0-1cd2 1cd4-1ce0 1ce2-1ce8 1ced 1cf4 1cf8-1cf9
+  #|1d2c-1d6a 1d78 1d9b-1dff 1fbd 1fbf-1fc1 1fcd-1fcf 1fdd-1fdf 1fed-1fef
+  #|1ffd-1ffe 200b-200f 2018-2019 2024 2027 202a-202e 2060-2064 2066-206f
+  #|2071 207f 2090-209c 20d0-20f0 2c7c-2c7d 2cef-2cf1 2d6f 2d7f 2de0-2dff
+  #|2e2f 3005 302a-302d 3031-3035 303b 3099-309e 30fc-30fe a015 a4f8-a4fd
+  #|a60c a66f-a672 a674-a67d a67f a69c-a69f a6f0-a6f1 a700-a721 a770
+  #|a788-a78a a7f2-a7f4 a7f8-a7f9 a802 a806 a80b a825-a826 a82c a8c4-a8c5
+  #|a8e0-a8f1 a8ff a926-a92d a947-a951 a980-a982 a9b3 a9b6-a9b9 a9bc-a9bd
+  #|a9cf a9e5-a9e6 aa29-aa2e aa31-aa32 aa35-aa36 aa43 aa4c aa70 aa7c aab0
+  #|aab2-aab4 aab7-aab8 aabe-aabf aac1 aadd aaec-aaed aaf3-aaf4 aaf6
+  #|ab5b-ab5f ab69-ab6b abe5 abe8 abed fb1e fbb2-fbc2 fe00-fe0f fe13
+  #|fe20-fe2f fe52 fe55 feff ff07 ff0e ff1a ff3e ff40 ff70 ff9e-ff9f ffe3
+  #|fff9-fffb 101fd 102e0 10376-1037a 10780-10785 10787-107b0 107b2-107ba
+  #|10a01-10a03 10a05-10a06 10a0c-10a0f 10a38-10a3a 10a3f 10ae5-10ae6
+  #|10d24-10d27 10eab-10eac 10efd-10eff 10f46-10f50 10f82-10f85 11001
+  #|11038-11046 11070 11073-11074 1107f-11081 110b3-110b6 110b9-110ba
+  #|110bd 110c2 110cd 11100-11102 11127-1112b 1112d-11134 11173
+  #|11180-11181 111b6-111be 111c9-111cc 111cf 1122f-11231 11234
+  #|11236-11237 1123e 11241 112df 112e3-112ea 11300-11301 1133b-1133c
+  #|11340 11366-1136c 11370-11374 11438-1143f 11442-11444 11446 1145e
+  #|114b3-114b8 114ba 114bf-114c0 114c2-114c3 115b2-115b5 115bc-115bd
+  #|115bf-115c0 115dc-115dd 11633-1163a 1163d 1163f-11640 116ab 116ad
+  #|116b0-116b5 116b7 1171d-1171f 11722-11725 11727-1172b 1182f-11837
+  #|11839-1183a 1193b-1193c 1193e 11943 119d4-119d7 119da-119db 119e0
+  #|11a01-11a0a 11a33-11a38 11a3b-11a3e 11a47 11a51-11a56 11a59-11a5b
+  #|11a8a-11a96 11a98-11a99 11c30-11c36 11c38-11c3d 11c3f 11c92-11ca7
+  #|11caa-11cb0 11cb2-11cb3 11cb5-11cb6 11d31-11d36 11d3a 11d3c-11d3d
+  #|11d3f-11d45 11d47 11d90-11d91 11d95 11d97 11ef3-11ef4 11f00-11f01
+  #|11f36-11f3a 11f40 11f42 13430-13440 13447-13455 16af0-16af4
+  #|16b30-16b36 16b40-16b43 16f4f 16f8f-16f9f 16fe0-16fe1 16fe3-16fe4
+  #|1aff0-1aff3 1aff5-1affb 1affd-1affe 1bc9d-1bc9e 1bca0-1bca3
+  #|1cf00-1cf2d 1cf30-1cf46 1d167-1d169 1d173-1d182 1d185-1d18b
+  #|1d1aa-1d1ad 1d242-1d244 1da00-1da36 1da3b-1da6c 1da75 1da84
+  #|1da9b-1da9f 1daa1-1daaf 1e000-1e006 1e008-1e018 1e01b-1e021
+  #|1e023-1e024 1e026-1e02a 1e030-1e06d 1e08f 1e130-1e13d 1e2ae
+  #|1e2ec-1e2ef 1e4eb-1e4ef 1e8d0-1e8d6 1e944-1e94b 1f3fb-1f3ff e0001
+  #|e0020-e007f e0100-e01ef
+
+///|
 /// `str.lower()` single-code-point mappings as `start:end:step:delta` runs
 /// (U+0130 maps to two code points and is special-cased).
 let lower_runs_src : String =

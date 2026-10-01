@@ -82,8 +82,12 @@ fn Parser::parse_impl(
     Some(d) => d
     None => default_default()
   }
-  guard parse_fields(self.info, timestr, dayfirst, yearfirst, fuzzy)
-    is Some((res, skipped_tokens)) else {
+  let fields = parse_fields(self.info, timestr, dayfirst, yearfirst, fuzzy) catch {
+    // Python raises decimal.InvalidOperation (an ArithmeticError) here.
+    DecimalInvalidOperation(msg) => raise @datetime.ValueError(msg)
+    e => raise e
+  }
+  guard fields is Some((res, skipped_tokens)) else {
     raise ParserError("Unknown string format: %s", timestr)
   }
   if res.count() == 0 {
@@ -319,7 +323,15 @@ fn build_tzinfo(
   tzoffset : Int64?,
 ) -> @datetime.Tz? raise {
   let tzdata = match tzinfos {
-    Callback(f) => f(tzname, tzoffset.map(clamp_int))
+    Callback(f) => {
+      // Offsets beyond an Int (hundreds of hours) cannot be passed on; Python
+      // would pass the big int. Report instead of silently clamping.
+      let off = match tzoffset {
+        Some(o) => Some(to_c_int(o))
+        None => None
+      }
+      f(tzname, off)
+    }
     Table(m) =>
       match tzname {
         Some(n) => m.get(n).unwrap_or(NoTz)
@@ -333,17 +345,6 @@ fn build_tzinfo(
     Zone(z) => Some(z)
     TzString(s) => Some(tzstr(s))
     Offset(secs) => Some(@tz.tzoffset(tzname, secs))
-  }
-}
-
-///|
-fn clamp_int(v : Int64) -> Int {
-  if v > 2147483647L {
-    2147483647
-  } else if v < -2147483648L {
-    -2147483648
-  } else {
-    v.to_int()
   }
 }
 

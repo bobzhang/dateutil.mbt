@@ -36,16 +36,20 @@ it is declared with a plain `raise`. The isoparser raises
 * Python `str` semantics are reproduced with generated Unicode tables
   (`tools/gen_parser_unicode.py`, Python 3.13 / Unicode 15.1): the tokenizer
   uses `str.isalpha`/`isdigit`/`isspace`, word lookups use `str.lower()`
-  (including `İ` → `i̇`; the final-sigma rule uses `isalpha` neighbours as an
-  approximation of Unicode's cased/case-ignorable context), and `int()`,
-  `float()` and `Decimal()` accept Unicode decimal digits and `_` separators.
-  Lengths and slices are by code point.
-* Numeric tokens are handled as exact decimals (`Decimal` in Python); the
-  `int(60 * (value % 1))` computations are exact.
+  (including `İ` → `i̇` and CPython's final-sigma context rule, with Cased /
+  Case_Ignorable tables derived from `str.lower()`), and `int()`, `float()`
+  and `Decimal()` accept Unicode decimal digits and `_` separators. `int()`
+  of a string with more than 4300 digits fails like CPython's default
+  `sys.get_int_max_str_digits()`. Lengths and slices are by code point.
+* Numeric tokens are decimals (`Decimal` in Python). `value % 1` and
+  `60 * (value % 1)` follow the default decimal context: results are
+  rounded to 28 significant digits (ROUND_HALF_EVEN), and `% 1` of a value
+  whose integer part has more than 28 digits fails with DivisionImpossible.
 * Parsed integers are kept as `Int64` and saturate at 10**18; a value that
   does not fit a C `int` raises `OverflowError("Python int too large to
   convert to C int")` when it reaches `datetime.replace`, like CPython.
-  Saturation only changes error messages for absurdly long digit strings.
+  Saturation only changes error messages for absurdly long digit strings
+  (except as noted below for hooks and callbacks).
 * Two-digit years: the default `ParserInfo` takes the current local year
   when it is created (Python: when `parserinfo()` is created; dateutil's
   `DEFAULTPARSER` at import time, ours on first use).
@@ -63,7 +67,15 @@ it is declared with a plain `raise`. The isoparser raises
   raises `ValueError` (the differential corpus encodes this).
 * `ParserInfo` hooks: only `convertyear` is overridable as a function; the
   other lookups are customised through the tables. `parserinfo.validate`
-  cannot be overridden.
+  cannot be overridden. The `convertyear` hook takes and returns `Int`;
+  years that do not fit an `Int` (more than 10 digits) bypass the hook
+  (the default rule leaves them unchanged and they then overflow).
+* `tzinfos` callbacks receive the offset as `Int?`; an offset that does not
+  fit an `Int` (e.g. `"+999999:00"`) raises `OverflowError` instead of being
+  passed on as a big integer.
+* `decimal.InvalidOperation` (Python raises it out of `parse` for `% 1` of a
+  number with more than 28 integer digits followed by `h`/`m`/`:`) is
+  reported as `ValueError("[<class 'decimal.DivisionImpossible'>]")`.
 * A custom `weekdays` table with more than 7 entries: Python raises
   `IndexError` from `relativedelta(weekday=7)`; we raise
   `ValueError("tuple index out of range")`, which `parse` reports as

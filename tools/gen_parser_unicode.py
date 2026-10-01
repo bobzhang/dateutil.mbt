@@ -97,6 +97,27 @@ emit_string('space_ranges_src', 'Code points for which `str.isspace()` is true.'
 emit_string('decimal_ranges_src',
             'Code points for which `str.isdecimal()` is true; each run starts at a zero.',
             enc_ranges(dec))
+# Final-sigma context (CPython's handle_capital_sigma), derived from
+# str.lower() itself: `cased` = cased and not case-ignorable,
+# `case_ignorable` = Case_Ignorable.
+def _final(s):
+    return s.lower().endswith('\u03c2')
+
+
+def _cased_only(c):
+    return _final(' ' + c + '\u03a3')
+
+
+def _case_ignorable(c):
+    return _final('A' + c + '\u03a3') and not _cased_only(c)
+
+
+emit_string('cased_ranges_src',
+            'Cased (and not case-ignorable) code points, for the final-sigma rule.',
+            enc_ranges(ranges(_cased_only)))
+emit_string('case_ignorable_ranges_src',
+            'Case_Ignorable code points, for the final-sigma rule.',
+            enc_ranges(ranges(_case_ignorable)))
 emit_string('lower_runs_src',
             '`str.lower()` single-code-point mappings as `start:end:step:delta` runs\n'
             '/// (U+0130 maps to two code points and is special-cased).',

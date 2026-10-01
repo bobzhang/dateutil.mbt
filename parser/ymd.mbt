@@ -11,11 +11,25 @@ priv suberror ParseFail {
 ///|
 /// `Decimal(token)` for the finite, non-negative values the tokenizer can
 /// produce: `ip` is the integer part (saturating), `frac` the fraction
-/// digits (ASCII).
+/// digits (ASCII) and `int_digits` the number of significant digits of the
+/// integer part.
 priv struct Dec {
   ip : Int64
   frac : String
+  int_digits : Int
 }
+
+///|
+/// Python's `decimal.InvalidOperation` (an `ArithmeticError`), raised out
+/// of `parse` unchanged because `_parse` only catches `IndexError` and
+/// `ValueError`.
+priv suberror DecimalInvalidOperation {
+  DecimalInvalidOperation(String)
+}
+
+///|
+/// Precision of Python's default decimal context.
+const DECIMAL_PREC : Int = 28
 
 ///|
 fn ascii_digits(chars : ArrayView[Char]) -> String {
@@ -32,15 +46,18 @@ fn ascii_digits(chars : ArrayView[Char]) -> String {
 fn digits_to_int64(s : String) -> Int64 {
   let mut v = 0L
   for c in s {
-    if v < INT_SATURATE {
-      v = v * 10L + (c.to_int() - '0'.to_int()).to_int64()
-    }
+    v = sat_push(v, c.to_int() - '0'.to_int())
   }
-  if v > INT_SATURATE {
-    INT_SATURATE
-  } else {
-    v
+  v
+}
+
+///|
+fn strip_leading_zeros(s : String) -> String {
+  let mut i = 0
+  while i < s.length() - 1 && s.get_char(i) == Some('0') {
+    i += 1
   }
+  s.unsafe_substring(start=i, end=s.length())
 }
 
 ///|
@@ -54,46 +71,133 @@ fn to_decimal(val : String) -> Dec raise ParseFail {
   let digits = ascii_digits(int_part) + ascii_digits(frac_part)
   let n = digits.length()
   let point = int_part.length().to_int64() + exp
-  if point <= 0L {
+  let (int_str, frac) = if point <= 0L {
     let zeros = if point < -1000L { 1000 } else { (-point).to_int() }
-    { ip: 0L, frac: String::make(zeros, '0') + digits, }
+    ("0", String::make(zeros, '0') + digits)
   } else if point >= n.to_int64() {
-    let ip = if point - n.to_int64() > 20L {
-      if digits_to_int64(digits) == 0L {
-        0L
-      } else {
-        INT_SATURATE
-      }
-    } else {
-      digits_to_int64(
-        digits + String::make((point - n.to_int64()).to_int(), '0'),
-      )
-    }
-    { ip, frac: "", }
+    let pad = point - n.to_int64()
+    let pad = if pad > 1000L { 1000 } else { pad.to_int() }
+    (digits + String::make(pad, '0'), "")
   } else {
     let p = point.to_int()
-    {
-      ip: digits_to_int64(digits.unsafe_substring(start=0, end=p)),
-      frac: digits.unsafe_substring(start=p, end=n),
-    }
+    (
+      digits.unsafe_substring(start=0, end=p),
+      digits.unsafe_substring(start=p, end=n),
+    )
+  }
+  let int_str = strip_leading_zeros(if int_str == "" { "0" } else { int_str })
+  {
+    ip: digits_to_int64(int_str),
+    frac,
+    int_digits: if int_str == "0" {
+      0
+    } else {
+      int_str.length()
+    },
   }
 }
 
 ///|
-/// `value % 1` is non-zero.
+/// The value has a non-zero fractional part (exact; used for comparisons).
 fn Dec::has_frac(self : Dec) -> Bool {
   self.frac.iter().any(c => c != '0')
 }
 
 ///|
-/// `int(60 * (value % 1))`, computed exactly.
-fn Dec::frac60(self : Dec) -> Int64 {
+/// Decimal `x + 1` on a digit string.
+fn incr_digits(s : String) -> String {
+  let chars = s.to_array()
+  let mut i = chars.length() - 1
+  while i >= 0 {
+    if chars[i] == '9' {
+      chars[i] = '0'
+      i -= 1
+    } else {
+      chars[i] = Int::unsafe_to_char(chars[i].to_int() + 1)
+      return String::from_array(chars)
+    }
+  }
+  "1" + String::from_array(chars)
+}
+
+///|
+/// Round the coefficient `c` (no leading zeros) of `c * 10**exp` to the
+/// context precision with ROUND_HALF_EVEN (`Decimal._fix`).
+fn round_prec(c : String, exp : Int) -> (String, Int) {
+  let n = c.length()
+  if n <= DECIMAL_PREC {
+    return (c, exp)
+  }
+  let keep = c.unsafe_substring(start=0, end=DECIMAL_PREC)
+  let rest = c.unsafe_substring(start=DECIMAL_PREC, end=n)
+  let first = rest.get_char(0).unwrap()
+  let tail_nonzero = rest.iter().drop(1).any(x => x != '0')
+  let last_odd = (
+      keep.get_char(DECIMAL_PREC - 1).unwrap().to_int() - '0'.to_int()
+    ) %
+    2 ==
+    1
+  let up = first > '5' || (first == '5' && (tail_nonzero || last_odd))
+  let shift = n - DECIMAL_PREC
+  if up {
+    let k = incr_digits(keep)
+    if k.length() > DECIMAL_PREC {
+      (k.unsafe_substring(start=0, end=DECIMAL_PREC), exp + shift + 1)
+    } else {
+      (k, exp + shift)
+    }
+  } else {
+    (keep, exp + shift)
+  }
+}
+
+///|
+/// Python `value % 1` in the default decimal context: the coefficient and
+/// exponent of the (rounded) remainder. Raises `InvalidOperation`
+/// (DivisionImpossible) when the integer part exceeds the precision.
+fn Dec::rem1(self : Dec) -> (String, Int) raise DecimalInvalidOperation {
+  if self.int_digits > DECIMAL_PREC {
+    raise DecimalInvalidOperation("[<class 'decimal.DivisionImpossible'>]")
+  }
+  round_prec(
+    strip_leading_zeros(if self.frac == "" { "0" } else { self.frac }),
+    -self.frac.length(),
+  )
+}
+
+///|
+/// Python `bool(value % 1)`.
+fn Dec::mod1_nonzero(self : Dec) -> Bool raise DecimalInvalidOperation {
+  self.rem1().0 != "0"
+}
+
+///|
+/// Python `int(60 * (value % 1))` in the default decimal context.
+fn Dec::frac60(self : Dec) -> Int64 raise DecimalInvalidOperation {
+  let (c, exp) = self.rem1()
+  // multiply the coefficient by 60
+  let chars = c.to_array()
+  let out = []
   let mut carry = 0
-  for c in self.frac.rev_iter() {
-    let t = (c.to_int() - '0'.to_int()) * 60 + carry
+  for i = chars.length() - 1; i >= 0; i = i - 1 {
+    let t = (chars[i].to_int() - '0'.to_int()) * 60 + carry
+    out.push(Int::unsafe_to_char('0'.to_int() + t % 10))
     carry = t / 10
   }
-  carry.to_int64()
+  while carry > 0 {
+    out.push(Int::unsafe_to_char('0'.to_int() + carry % 10))
+    carry = carry / 10
+  }
+  out.rev_in_place()
+  let (c, exp) = round_prec(strip_leading_zeros(String::from_array(out)), exp)
+  // int(): truncate c * 10**exp
+  if exp >= 0 {
+    digits_to_int64(c + String::make(exp, '0'))
+  } else if c.length() + exp <= 0 {
+    0L
+  } else {
+    digits_to_int64(c.unsafe_substring(start=0, end=c.length() + exp))
+  }
 }
 
 ///|

@@ -184,9 +184,35 @@ fn lower_char_simple(c : Char) -> Char {
 }
 
 ///|
+let cased_table : RangeTable = parse_ranges(cased_ranges_src)
+
+///|
+let case_ignorable_table : RangeTable = parse_ranges(case_ignorable_ranges_src)
+
+///|
+/// CPython `handle_capital_sigma`: a cased letter precedes (skipping
+/// case-ignorable characters) and none follows.
+fn final_sigma(chars : Array[Char], i : Int) -> Bool {
+  let ignorable = (c : Char) => case_ignorable_table.find(c.to_int()) >= 0
+  let cased = (c : Char) => cased_table.find(c.to_int()) >= 0
+  let mut j = i - 1
+  while j >= 0 && ignorable(chars[j]) {
+    j -= 1
+  }
+  if !(j >= 0 && cased(chars[j])) {
+    return false
+  }
+  j = i + 1
+  while j < chars.length() && ignorable(chars[j]) {
+    j += 1
+  }
+  j == chars.length() || !cased(chars[j])
+}
+
+///|
 /// Python `s.lower()` (full case mapping: U+0130 becomes two code points and
-/// a capital sigma at the end of a word becomes a final sigma; "word" uses
-/// `isalpha` as an approximation of Unicode's cased/case-ignorable rule).
+/// a capital sigma in final position becomes a final sigma, following
+/// CPython's `handle_capital_sigma`).
 fn py_lower(s : String) -> String {
   let mut ascii = true
   for c in s {
@@ -205,9 +231,7 @@ fn py_lower(s : String) -> String {
       sb.write_char('i')
       sb.write_char('\u{307}')
     } else if c == '\u{3a3}' {
-      let before = i > 0 && py_isalpha_char(chars[i - 1])
-      let after = i + 1 < chars.length() && py_isalpha_char(chars[i + 1])
-      sb.write_char(if before && !after { '\u{3c2}' } else { '\u{3c3}' })
+      sb.write_char(if final_sigma(chars, i) { '\u{3c2}' } else { '\u{3c3}' })
     } else {
       sb.write_char(lower_char_simple(c))
     }
@@ -306,19 +330,33 @@ fn digits_value(chars : ArrayView[Char], allow_underscore : Bool) -> Int64? {
     if d < 0 {
       return None
     }
-    if v < INT_SATURATE {
-      v = v * 10L + d.to_int64()
-    }
+    v = sat_push(v, d)
     prev_digit = true
   }
   if !prev_digit {
     return None
   }
-  Some(if v > INT_SATURATE { INT_SATURATE } else { v })
+  Some(v)
 }
 
 ///|
-/// Python `int(s)` (base 10) for `str` input. Values beyond 10**18 saturate.
+/// `v * 10 + d`, saturating at `INT_SATURATE`.
+fn sat_push(v : Int64, d : Int) -> Int64 {
+  if v >= (INT_SATURATE - d.to_int64()) / 10L {
+    INT_SATURATE
+  } else {
+    v * 10L + d.to_int64()
+  }
+}
+
+///|
+/// CPython's default `sys.get_int_max_str_digits()`.
+const INT_MAX_STR_DIGITS : Int = 4300
+
+///|
+/// Python `int(s)` (base 10) for `str` input. Values beyond 10**18 saturate;
+/// strings of more than 4300 digits raise `ValueError` like CPython's default
+/// integer string conversion limit.
 fn py_int(s : String) -> Int64 raise @datetime.DateTimeError {
   let chars = py_strip(s)
   let (neg, body) = match chars {
@@ -327,7 +365,19 @@ fn py_int(s : String) -> Int64 raise @datetime.DateTimeError {
     _ => (false, chars[:])
   }
   match digits_value(body, true) {
-    Some(v) => if neg { -v } else { v }
+    Some(v) => {
+      let ndigits = body.iter().filter(c => c != '_').count()
+      if ndigits > INT_MAX_STR_DIGITS {
+        raise @datetime.ValueError(
+          "Exceeds the limit (4300 digits) for integer string conversion: value has \{ndigits} digits; use sys.set_int_max_str_digits() to increase the limit",
+        )
+      }
+      if neg {
+        -v
+      } else {
+        v
+      }
+    }
     None =>
       raise @datetime.ValueError(
         "invalid literal for int() with base 10: \{@datetime.py_str_repr(s)}",

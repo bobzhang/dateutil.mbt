@@ -95,9 +95,9 @@ fn parsems(value : String) -> (Int64, Int64) raise ParseFail {
 
 ///|
 /// `parser._parse_min_sec`
-fn parse_min_sec(value : Dec) -> (Int64, Int64?) {
+fn parse_min_sec(value : Dec) -> (Int64, Int64?) raise DecimalInvalidOperation {
   let minute = value.ip
-  let second = if value.has_frac() { Some(value.frac60()) } else { None }
+  let second = if value.mod1_nonzero() { Some(value.frac60()) } else { None }
   (minute, second)
 }
 
@@ -237,14 +237,14 @@ fn TokenParser::assign_hms(
   self : TokenParser,
   value_repr : String,
   hms : Int,
-) -> Unit raise ParseFail {
+) -> Unit raise {
   // See GH issue #427, fixing float rounding
   let value = to_decimal(value_repr)
   let res = self.res
   if hms == 0 {
     // Hour
     res.hour = Some(value.ip)
-    if value.has_frac() {
+    if value.mod1_nonzero() {
       res.minute = Some(value.frac60())
     }
   } else if hms == 1 {
@@ -261,10 +261,7 @@ fn TokenParser::assign_hms(
 ///|
 /// `parser._parse_numeric_token`: returns the index of the last consumed
 /// token.
-fn TokenParser::parse_numeric_token(
-  self : TokenParser,
-  idx : Int,
-) -> Int raise ParseFail {
+fn TokenParser::parse_numeric_token(self : TokenParser, idx : Int) -> Int raise {
   let tokens = self.tokens
   let info = self.info
   let ymd = self.ymd
@@ -423,7 +420,7 @@ fn TokenParser::run(
   yearfirst : Bool,
   dayfirst : Bool,
   skipped_idxs : Array[Int],
-) -> Unit raise ParseFail {
+) -> Unit raise {
   let l = self.tokens
   let info = self.info
   let res = self.res
@@ -602,7 +599,7 @@ fn parse_fields(
   dayfirst : Bool?,
   yearfirst : Bool?,
   fuzzy : Bool,
-) -> (ParseResult, Array[String])? {
+) -> (ParseResult, Array[String])? raise {
   let dayfirst = dayfirst.unwrap_or(info.dayfirst)
   let yearfirst = yearfirst.unwrap_or(info.yearfirst)
   let res = ParseResult::new()
@@ -610,7 +607,8 @@ fn parse_fields(
   let skipped_idxs = []
   let tp = { info, tokens, ymd: Ymd::new(), res, fuzzy, }
   tp.run(yearfirst, dayfirst, skipped_idxs) catch {
-    _ => return None
+    ParseFail(_) => return None
+    e => raise e
   }
   if !validate(info, res) {
     return None
