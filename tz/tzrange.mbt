@@ -22,22 +22,36 @@ fn TzRange::dst_base_offset(self : TzRange) -> @datetime.TimeDelta {
 
 ///|
 /// `tzrange.transitions(year)`: the DST on and off transitions, both in
-/// standard time; `None` for zones without DST. (Also `None` where Python
-/// raises: no end rule, or a transition outside the datetime range.)
+/// standard time; `None` for zones without DST. Raises where Python does
+/// (a transition outside the datetime range, an invalid rule).
+fn TzRange::transitions_checked(
+  self : TzRange,
+  year : Int,
+) -> (@datetime.DateTime, @datetime.DateTime)? raise @datetime.DateTimeError {
+  if !self.hasdst {
+    return None
+  }
+  let base_year = @datetime.DateTime::new(year, 1, 1)
+  guard self.start_delta is Some(start) && self.end_delta is Some(end) else {
+    raise @datetime.TypeError(
+      "unsupported operand type(s) for +: 'datetime.datetime' and 'NoneType'",
+    )
+  }
+  let start = start.add_to_datetime(base_year)
+  let end = end.add_to_datetime(base_year)
+  Some((start, end))
+}
+
+///|
+/// `transitions_checked`, with errors (which Python would raise from
+/// `utcoffset()` and friends) mapped to "no transitions".
 fn TzRange::transitions(
   self : TzRange,
   year : Int,
 ) -> (@datetime.DateTime, @datetime.DateTime)? {
-  if !self.hasdst {
-    return None
+  self.transitions_checked(year) catch {
+    _ => None
   }
-  guard self.start_delta is Some(start) && self.end_delta is Some(end) else {
-    return None
-  }
-  let base_year = @datetime.DateTime::new(year, 1, 1) catch { _ => return None }
-  let start = start.add_to_datetime(base_year) catch { _ => return None }
-  let end = end.add_to_datetime(base_year) catch { _ => return None }
-  Some((start, end))
 }
 
 ///|
