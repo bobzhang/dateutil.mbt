@@ -1,8 +1,4 @@
 ///|
-/// Whether this backend can read zone files from the file system.
-let has_filesystem : Bool = true
-
-///|
 /// Python `os.path.isfile`.
 fn is_file(path : String) -> Bool {
   @fs.is_file(path) catch {

@@ -514,8 +514,11 @@ fn TzFile::new(data : TzFileData, filename : String) -> TzFile {
 ///
 /// ```mbt check
 /// test {
-///   let bad = try? @tz.tzfile_from_bytes(b"BadFile")
-///   assert_true(bad is Err(_))
+///   try @tz.tzfile_from_bytes(b"BadFile") catch {
+///     err => inspect(err, content="ValueError: magic not found")
+///   } noraise {
+///     _ => fail("expected a ValueError")
+///   }
 /// }
 /// ```
 pub fn tzfile_from_bytes(

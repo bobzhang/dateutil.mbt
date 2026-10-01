@@ -41,8 +41,11 @@ impl @datetime.TzInfo for TzUtc with fn eq_key(_) {
 ///|
 /// `tzutc == tzoffset(_, 0)` and `tzoffset(a, x) == tzoffset(b, x)`.
 fn fixed_eq_key(offset : @datetime.TimeDelta) -> String {
-  "dateutil.fixed:\{offset.repr()}"
+  "\{fixed_key_prefix}\{offset.repr()}"
 }
+
+///|
+let fixed_key_prefix : String = "dateutil.fixed:"
 
 ///|
 /// `dateutil.tz.UTC`, the `tzutc()` singleton.

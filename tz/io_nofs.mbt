@@ -1,6 +1,6 @@
-///|
-/// Whether this backend can read zone files from the file system.
-let has_filesystem : Bool = false
+// The wasm backends have no portable file system: `@fs` there needs
+// host-provided imports, so zone files are not read at all and `gettz`
+// only understands TZ strings, "UTC"/"GMT" and the local zone.
 
 ///|
 /// There is no file system on this backend.
@@ -10,5 +10,9 @@ fn is_file(_path : String) -> Bool {
 
 ///|
 fn read_file_bytes(path : String) -> Bytes raise IOError {
-  raise IOError("no file system on this backend: \{path}")
+  // Only the error type of `@fs` is used here (no host imports).
+  let err : @fs.IOError = @fs.IOError("no file system on this backend: \{path}")
+  match err {
+    @fs.IOError(msg) => raise IOError(msg)
+  }
 }

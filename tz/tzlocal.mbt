@@ -118,16 +118,47 @@ impl @datetime.TzInfo for TzLocal with fn repr(_) {
 }
 
 ///|
-/// `tzlocal.__eq__` approximated with a single fingerprint: a local zone
-/// with DST equals another `tzlocal` with the same offsets; one without
-/// DST equals any fixed-offset zone (`tzutc`, `tzoffset`, `tzlocal`) with
-/// the same offset. Python additionally requires the zone names to match
-/// (`'UTC'`/`'GMT'` for `tzutc`), which a fingerprint cannot express.
+/// Fingerprint of a local zone: its standard and DST offsets (what
+/// `tzlocal == tzlocal` compares).
 impl @datetime.TzInfo for TzLocal with fn eq_key(self) {
-  if self.hasdst {
-    Some("dateutil.tzlocal:\{self.std_offset.repr()},\{self.dst_offset.repr()}")
+  Some(tzlocal_key(self.std_offset, self.dst_offset))
+}
+
+///|
+fn tzlocal_key(
+  std_offset : @datetime.TimeDelta,
+  dst_offset : @datetime.TimeDelta,
+) -> String {
+  "dateutil.tzlocal:\{std_offset.repr()},\{dst_offset.repr()}"
+}
+
+///|
+/// Python `tzlocal.__eq__`: equal to another `tzlocal` with the same
+/// offsets; to `tzutc` if there is no DST, the standard name is `UTC` or
+/// `GMT` and the offset is zero; to a `tzoffset` with the same name and
+/// offset if there is no DST. Anything else is `NotImplemented`.
+impl @datetime.TzInfo for TzLocal with fn eq_with(self, other) {
+  guard other.eq_key() is Some(key) else { return None }
+  if key.has_prefix("dateutil.tzlocal:") {
+    return Some(key == tzlocal_key(self.std_offset, self.dst_offset))
+  }
+  if !key.has_prefix(fixed_key_prefix) {
+    return None
+  }
+  // A dateutil fixed-offset zone: `tzutc` or `tzoffset`.
+  let repr = other.repr()
+  if repr == "tzutc()" {
+    Some(
+      !self.hasdst &&
+      (self.tznames.0 == "UTC" || self.tznames.0 == "GMT") &&
+      self.std_offset.is_zero(),
+    )
   } else {
-    Some(fixed_eq_key(self.std_offset))
+    Some(
+      !self.hasdst &&
+      other.tzname(None) == Some(self.tznames.0) &&
+      other.utcoffset(None) == Some(self.std_offset),
+    )
   }
 }
 
