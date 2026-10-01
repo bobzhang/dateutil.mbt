@@ -1,0 +1,115 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/rrule"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/parser",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub let fr : @datetime.Weekday
+
+pub let mo : @datetime.Weekday
+
+pub fn nth(@datetime.Weekday, Int) -> @datetime.Weekday raise @datetime.DateTimeError
+
+pub fn rrulestr(String, dtstart? : @datetime.DateTime, cache? : Bool, unfold? : Bool, forceset? : Bool, compatible? : Bool, ignoretz? : Bool, tzids? : TzIds, tzinfos? : @parser.TzInfos) -> RruleBase raise
+
+pub let sa : @datetime.Weekday
+
+pub let su : @datetime.Weekday
+
+pub let th : @datetime.Weekday
+
+pub let tu : @datetime.Weekday
+
+pub let we : @datetime.Weekday
+
+pub fn weekday(Int, n? : Int) -> @datetime.Weekday raise @datetime.DateTimeError
+
+pub let weekdays : FixedArray[@datetime.Weekday]
+
+// Errors
+
+// Types and methods
+pub(all) enum Freq {
+  Yearly
+  Monthly
+  Weekly
+  Daily
+  Hourly
+  Minutely
+  Secondly
+} derive(Compare, Eq, Hash, @debug.Debug)
+pub fn Freq::from_int(Int) -> Self raise @datetime.DateTimeError
+pub fn Freq::output(Self, &Logger) -> Unit
+pub fn Freq::to_int(Self) -> Int
+pub fn Freq::to_string(Self) -> String
+pub impl Show for Freq
+
+pub struct Rrule {
+  // private fields
+}
+pub fn Rrule::after(Self, @datetime.DateTime, inc? : Bool) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn Rrule::before(Self, @datetime.DateTime, inc? : Bool) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn Rrule::between(Self, @datetime.DateTime, @datetime.DateTime, inc? : Bool) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn Rrule::contains(Self, @datetime.DateTime) -> Bool raise @datetime.DateTimeError
+pub fn Rrule::count(Self) -> Int raise @datetime.DateTimeError
+pub fn Rrule::get(Self, Int) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn Rrule::iter(Self) -> Iter[@datetime.DateTime]
+pub fn Rrule::new(Freq, dtstart? : @datetime.DateTime, interval? : Int, wkst? : @datetime.Weekday, count? : Int, until? : @datetime.DateTime, bysetpos? : Array[Int], bymonth? : Array[Int], bymonthday? : Array[Int], byyearday? : Array[Int], byeaster? : Array[Int], byweekno? : Array[Int], byweekday? : Array[@datetime.Weekday], byhour? : Array[Int], byminute? : Array[Int], bysecond? : Array[Int], cache? : Bool) -> Self raise @datetime.DateTimeError
+pub fn Rrule::output(Self, &Logger) -> Unit
+pub fn Rrule::replace(Self, freq? : Freq, dtstart? : @datetime.DateTime, interval? : Int, wkst? : @datetime.Weekday, count? : Int?, until? : @datetime.DateTime?, bysetpos? : Array[Int]?, bymonth? : Array[Int]?, bymonthday? : Array[Int]?, byyearday? : Array[Int]?, byeaster? : Array[Int]?, byweekno? : Array[Int]?, byweekday? : Array[@datetime.Weekday]?, byhour? : Array[Int]?, byminute? : Array[Int]?, bysecond? : Array[Int]?, cache? : Bool) -> Self raise @datetime.DateTimeError
+pub fn Rrule::slice(Self, start? : Int, stop? : Int, step? : Int) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn Rrule::to_array(Self) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn Rrule::to_string(Self) -> String
+pub fn Rrule::xafter(Self, @datetime.DateTime, count? : Int, inc? : Bool) -> Iter[@datetime.DateTime]
+pub impl Show for Rrule
+pub impl @debug.Debug for Rrule
+
+pub(all) enum RruleBase {
+  Rule(Rrule)
+  Set(RruleSet)
+}
+pub fn RruleBase::after(Self, @datetime.DateTime, inc? : Bool) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn RruleBase::as_rrule(Self) -> Rrule?
+pub fn RruleBase::as_rruleset(Self) -> RruleSet?
+pub fn RruleBase::before(Self, @datetime.DateTime, inc? : Bool) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn RruleBase::between(Self, @datetime.DateTime, @datetime.DateTime, inc? : Bool) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn RruleBase::contains(Self, @datetime.DateTime) -> Bool raise @datetime.DateTimeError
+pub fn RruleBase::count(Self) -> Int raise @datetime.DateTimeError
+pub fn RruleBase::get(Self, Int) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn RruleBase::iter(Self) -> Iter[@datetime.DateTime]
+pub fn RruleBase::slice(Self, start? : Int, stop? : Int, step? : Int) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn RruleBase::to_array(Self) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn RruleBase::xafter(Self, @datetime.DateTime, count? : Int, inc? : Bool) -> Iter[@datetime.DateTime]
+
+pub struct RruleSet {
+  // private fields
+}
+pub fn RruleSet::after(Self, @datetime.DateTime, inc? : Bool) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn RruleSet::before(Self, @datetime.DateTime, inc? : Bool) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn RruleSet::between(Self, @datetime.DateTime, @datetime.DateTime, inc? : Bool) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn RruleSet::contains(Self, @datetime.DateTime) -> Bool raise @datetime.DateTimeError
+pub fn RruleSet::count(Self) -> Int raise @datetime.DateTimeError
+pub fn RruleSet::exdate(Self, @datetime.DateTime) -> Unit
+pub fn RruleSet::exrule(Self, Rrule) -> Unit
+pub fn RruleSet::get(Self, Int) -> @datetime.DateTime? raise @datetime.DateTimeError
+pub fn RruleSet::iter(Self) -> Iter[@datetime.DateTime]
+pub fn RruleSet::new(cache? : Bool) -> Self
+pub fn RruleSet::rdate(Self, @datetime.DateTime) -> Unit
+pub fn RruleSet::rrule(Self, Rrule) -> Unit
+pub fn RruleSet::slice(Self, start? : Int, stop? : Int, step? : Int) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn RruleSet::to_array(Self) -> Array[@datetime.DateTime] raise @datetime.DateTimeError
+pub fn RruleSet::xafter(Self, @datetime.DateTime, count? : Int, inc? : Bool) -> Iter[@datetime.DateTime]
+
+pub(all) enum TzIds {
+  Mapping(Map[String, @datetime.Tz])
+  Lookup((String) -> @datetime.Tz? raise)
+}
+
+// Type aliases
+pub using @datetime {type Weekday}
+
+// Traits
