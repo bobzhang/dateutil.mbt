@@ -29,7 +29,9 @@ test "test_isoparse_prop::test_timespec_auto (gettz zones)" {
   }
   fn check(dt : @datetime.DateTime, sep : Char) raise {
     // Assume offset has no sub-second components
-    guard dt.utcoffset() is Some(off)
+    guard dt.utcoffset() is Some(off) else {
+      fail("expected an aware datetime")
+    }
     if off.seconds % 60 != 0 || off.microseconds != 0 {
       return
     }
