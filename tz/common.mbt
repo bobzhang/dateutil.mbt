@@ -20,13 +20,19 @@ pub fn tzinfo_is_ambiguous(tz : @datetime.Tz, dt : @datetime.DateTime) -> Bool {
 }
 
 ///|
-/// dateutil `_tzinfo._fold_status`.
+/// dateutil `_tzinfo._fold_status`. Uses the zone's own `is_ambiguous`
+/// (falling back to `tzinfo_is_ambiguous` for zones without one), as
+/// Python's `self.is_ambiguous` dispatches to subclass overrides.
 pub fn tzinfo_fold_status(
   tz : @datetime.Tz,
   dt_utc : @datetime.DateTime,
   dt_wall : @datetime.DateTime,
 ) -> Int raise @datetime.DateTimeError {
-  if tzinfo_is_ambiguous(tz, dt_wall) {
+  let ambiguous = match tz.is_ambiguous(dt_wall) {
+    Some(b) => b
+    None => tzinfo_is_ambiguous(tz, dt_wall)
+  }
+  if ambiguous {
     let delta_wall = dt_wall.diff(dt_utc)
     match (dt_utc.utcoffset(), dt_utc.dst()) {
       (Some(off), Some(dst)) => if delta_wall == off - dst { 1 } else { 0 }
