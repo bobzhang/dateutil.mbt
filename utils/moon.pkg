@@ -1,0 +1,13 @@
+warnings = "-79"
+
+import {
+  "bobzhang/dateutil/datetime",
+}
+
+import {
+  "bobzhang/dateutil/tz",
+} for "test"
+
+import {
+  "bobzhang/dateutil/tz",
+} for "wbtest"
