@@ -9,8 +9,9 @@ Port of `tz.tzical`, `_tzicalvtz` and `_tzicalvtzcomp` from
 * `TzIcal::from_string(text, name?)` — Python `tzical(StringIO(text))`;
   `name` stands in for the stream's `name` attribute in `repr()`.
 * `TzIcal::from_file(path)` — Python `tzical(filename)`, via
-  `moonbitlang/x/fs` (on wasm the host must provide MoonBit's file-system
-  imports, as `moon run`/`moon test` do).
+  `internal/host` (see `tz/PORTING.md`: on wasm the host must provide
+  MoonBit's file-system imports, as `moon run`/`moon test` do; on js Node's
+  `fs` is obtained at run time, so there is no static `node:fs` import).
 * `keys()`, `get(tzid?)`, `repr()`; zones are `@datetime.Tz` handles whose
   repr is `<tzicalvtz 'US-Eastern'>`.
 

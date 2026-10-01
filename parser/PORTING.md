@@ -82,10 +82,13 @@ it is declared with a plain `raise`. The isoparser raises
   `ParserError`.
 * `IsoParser::new` takes the separator as a `String` (so Python's length and
   ASCII checks still apply); Python's `bytes` separator is not supported.
-* Local zone names (`time.tzname`) come from `@datetime.local_zone()`. On the
-  wasm backends local time is UTC, so — exactly like Python on a machine
-  whose zone is UTC — `Z`, `UTC` and zero offsets resolve to `tzlocal()`
-  there.
+* Local zone names (`time.tzname`) come from `@datetime.local_zone()`,
+  which honours `TZ` (after `@datetime.tzset()`) on every backend; e.g.
+  with `TZ=Europe/London`, `BST` parses as `tzlocal()` (+01:00 in summer).
+  On a machine (or wasm host) whose zone resolves to UTC — exactly like
+  Python there — `Z`, `UTC` and zero offsets resolve to `tzlocal()`. Only
+  js without a file system (browsers) uses the host `Date`, whose `Intl`
+  names (`GMT+1`) are not real abbreviations.
 
 ## Dependencies
 
@@ -106,6 +109,9 @@ skipped silently if the zones are missing.
   each `parse`/`isoparse`/`isoparser` call with the reference result.
 * `tz_deps_test.mbt`, `gettz_test.mbt` — upstream tests using `tzstr`,
   `tzlocal` and `gettz` zones.
+* `localtime_env_test.mbt` — `TestTZVar::*` (every backend: `TZ` is set
+  with `@env.set_env_var` + `@datetime.tzset()`) and local zone names under
+  `TZ=Europe/London` (`BST`) and a southern-hemisphere POSIX TZ string.
 * `parser_test.mbt` — hand ports of the tests the generator cannot express
   (custom `parserinfo` subclasses, zone objects/callables in `tzinfos`,
   byte inputs, `ParserError` repr, warnings).
@@ -128,7 +134,6 @@ skipped silently if the zones are missing.
 | `TestTzinfoInputTypes::test_invalid_tzinfo_input` | invalid `tzinfos` values are prevented by the types |
 | `ParserTest::testDateCommandFormatWithLong` | Python 2 only (`long`) |
 | `TestParseUnimplementedCases::test_somewhat_ambiguous_string` | xfail upstream; fails on `self.tzinfos` before calling `parse` |
-| `TestTZVar::*` (3 tests) | set the process `TZ` environment variable (not possible portably); `tz_deps_test.mbt` checks the `tzlocal()` branch with the machine's own zone instead |
 | `test_isoparser::test_isoparser_byte_sep` | `bytes` separator (xfail on Python 3) |
 | `test_internals::test_parser_private_warns`, `test_parser_parser_private_not_warns` | deprecation-warning machinery for private names |
 | `test_internals::test_tzstr_internal_timedeltas` | belongs to the `tz` package |
