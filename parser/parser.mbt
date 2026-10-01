@@ -281,9 +281,17 @@ fn build_naive(
     microsecond?,
   )
   match res.weekday {
-    Some(wd) if res.day is None =>
+    Some(wd) if res.day is None => {
+      if wd > 6 {
+        // Python: `relativedelta(weekday=7)` raises IndexError (only
+        // reachable with a custom WEEKDAYS table of more than 7 entries).
+        raise @datetime.ValueError("tuple index out of range")
+      }
       // naive + relativedelta(weekday=wd): the next such weekday (or today).
-      naive.add(@datetime.TimeDelta::new(days=(7 - naive.weekday() + wd) % 7))
+      @relativedelta.RelativeDelta::new(weekday=@datetime.Weekday::new(wd)).add_to_datetime(
+        naive,
+      )
+    }
     _ => naive
   }
 }
