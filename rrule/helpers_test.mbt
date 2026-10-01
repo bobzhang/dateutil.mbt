@@ -48,7 +48,7 @@ fn rrulestr_reverse_test(rule : @rrule.Rrule) -> Unit raise {
 /// Upstream `assertRaises(ValueError, ...)`.
 fn expect_value_error(f : () -> Unit raise) -> Unit raise {
   try f() catch {
-    @datetime.ValueError(_) => ()
+    @datetime.ValueError(_) | @parser.ParserError(_, _) => ()
     e => fail("expected ValueError, got \{e}")
   } noraise {
     _ => fail("expected ValueError")

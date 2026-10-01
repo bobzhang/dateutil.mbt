@@ -8,7 +8,7 @@ let corpus_n : Int = 20
 ///|
 fn parse_dt(s : String) -> @datetime.DateTime raise {
   let aware = s.has_suffix("Z")
-  let d = parse_datetime(s, false)
+  let d = parse_datetime(s, false, None)
   if aware {
     assert_true(d.tzinfo is Some(_))
   }
@@ -17,7 +17,16 @@ fn parse_dt(s : String) -> @datetime.DateTime raise {
 
 ///|
 fn fmt_dt(d : @datetime.DateTime) -> String {
-  d.strftime("%Y%m%dT%H%M%S") + (if d.tzinfo is Some(_) { "Z" } else { "" })
+  let base = d.strftime("%Y%m%dT%H%M%S")
+  match d.utcoffset() {
+    None => base
+    Some(off) =>
+      if off.is_zero() {
+        base + "Z"
+      } else {
+        base + "@" + off.total_whole_seconds().to_string()
+      }
+  }
 }
 
 ///|
@@ -273,7 +282,7 @@ test "differential: rrulestr inputs vs python-dateutil" {
       )
     catch {
       // Python IndexError is reported as ValueError (see PORTING.md)
-      @datetime.ValueError(_) =>
+      @datetime.ValueError(_) | @parser.ParserError(_, _) =>
         if expected == "!IndexError" {
           expected
         } else {

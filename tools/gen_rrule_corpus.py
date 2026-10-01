@@ -56,9 +56,9 @@ signal.signal(signal.SIGALRM, on_alarm)
 
 def fmt_dt(d):
     s = d.strftime("%Y%m%dT%H%M%S")
-    if d.tzinfo is not None:
-        assert d.tzinfo is UTC
-        s += "Z"
+    off = d.utcoffset()
+    if off is not None:
+        s += "Z" if not off else "@%d" % int(off.total_seconds())
     return s
 
 
@@ -292,9 +292,9 @@ def set_case():
 
 
 STR_CASES = [
-    ("FREQ=DAILY;COUNT=3", ""),
+    # (inputs without DTSTART get the `dtstart` flag, see main)
     ("RRULE:FREQ=DAILY;COUNT=3", ""),
-    ("rrule:freq=daily;count=3;byday=mo,tu", ""),
+    ("rrule:freq=daily;count=3;byday=mo,tu", "dtstart"),
     ("FREQ=WEEKLY;COUNT=5;BYDAY=+1MO,-1FR,TU(+2),WE(-1)", ""),
     ("FREQ=MONTHLY;COUNT=5;BYDAY=+1MO,-1FR,TU(+2),WE(-1)", ""),
     ("FREQ=MONTHLY;COUNT=5;BYDAY=1MO,+0FR", ""),
@@ -345,6 +345,11 @@ STR_CASES = [
     ("   ", ""),
     ("", ""),
     ("FREQ=DAILY;COUNT=3", "dtstart"),
+    ("DTSTART:1997-09-02T09:00:00\nRRULE:FREQ=DAILY;COUNT=2", ""),
+    ("DTSTART:1997-09-02T09:00:00+02:00\nRRULE:FREQ=DAILY;UNTIL=1997-09-04T00:00:00Z", ""),
+    ("DTSTART:19970902T090000\nRRULE:FREQ=DAILY;UNTIL=1997-09-04", ""),
+    ("DTSTART:19970902T090000\nRDATE:1997-09-10,1997-09-11T10:00\nEXDATE:19970910", ""),
+    ("DTSTART;TZID=UTC:19970902T090000+0100\nRRULE:FREQ=DAILY;COUNT=2", ""),
     ("DTSTART:19970902T090000\nRRULE:FREQ=YEARLY;COUNT=3;INTERVAL=3;BYMONTH=3;BYWEEKDAY=TH;BYMONTHDAY=3;BYHOUR=3;BYMINUTE=3;BYSECOND=3", ""),
 ]
 
@@ -359,7 +364,7 @@ def str_case(s, flags):
     try:
         r = rrulestr(s, **kw)
     except Exception as e:
-        return "!" + type(e).__name__
+        return "!" + ("ValueError" if isinstance(e, ValueError) else type(e).__name__)
     kind = "rule:" if isinstance(r, rrule) else "set:"
     return kind + take(iter(r))
 
@@ -379,6 +384,9 @@ def main():
             sets.append(c)
     strs = []
     for src, flags in STR_CASES:
+        if "DTSTART" not in src.upper() and "dtstart" not in flags:
+            # without a start the rule depends on the clock
+            flags = ",".join(x for x in (flags, "dtstart") if x)
         strs.append("%s\t%s\t%s" % (src.replace("\n", "\\n").replace("\r", "\\r"),
                                        flags or "-", str_case(src, flags)))
     path = os.path.join(ROOT, "rrule/corpus_data_wbtest.mbt")

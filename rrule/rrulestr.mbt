@@ -28,9 +28,11 @@ pub(all) enum TzIds {
 ///   `RDATE`.
 /// * `ignoretz`: drop time zones from parsed date values.
 /// * `tzids`: resolve `TZID=` parameters (default: `tz.gettz`).
+/// * `tzinfos`: extra time zone names for `parser.parse` of date values.
 ///
 /// Raises `ValueError` (as `@datetime.DateTimeError`) for malformed input,
-/// and propagates errors raised by a `tzids` callback.
+/// `@parser.ParserError` for unparsable DTSTART/RDATE/EXDATE values, and
+/// propagates errors raised by a `tzids` callback.
 ///
 /// ```mbt check
 /// test {
@@ -52,6 +54,7 @@ pub fn rrulestr(
   compatible? : Bool = false,
   ignoretz? : Bool = false,
   tzids? : TzIds,
+  tzinfos? : @parser.TzInfos,
 ) -> RruleBase raise {
   let (forceset, unfold) = if compatible {
     (true, true)
@@ -67,7 +70,7 @@ pub fn rrulestr(
   if !forceset &&
     lines.length() == 1 &&
     (s.find(":") is None || s.has_prefix("RRULE:")) {
-    return Rule(parse_rfc_rrule(lines[0], dtstart, cache, ignoretz))
+    return Rule(parse_rfc_rrule(lines[0], dtstart, cache, ignoretz, tzinfos))
   }
   let rrulevals = []
   let rdatevals = []
@@ -112,10 +115,12 @@ pub fn rrulestr(
       }
       "EXDATE" =>
         exdatevals.append(
-          parse_date_value(value, parms, tzid_names, ignoretz, tzids),
+          parse_date_value(value, parms, tzid_names, ignoretz, tzids, tzinfos),
         )
       "DTSTART" => {
-        let dtvals = parse_date_value(value, parms, tzid_names, ignoretz, tzids)
+        let dtvals = parse_date_value(
+          value, parms, tzid_names, ignoretz, tzids, tzinfos,
+        )
         if dtvals.length() != 1 {
           raise @datetime.ValueError(
             "Multiple DTSTART values specified:" + value,
@@ -133,15 +138,15 @@ pub fn rrulestr(
     !exdatevals.is_empty() {
     let rset = RruleSet::new(cache~)
     for value in rrulevals {
-      rset.rrule(parse_rfc_rrule(value, dtstart, false, ignoretz))
+      rset.rrule(parse_rfc_rrule(value, dtstart, false, ignoretz, tzinfos))
     }
     for value in rdatevals {
       for datestr in value.split(",") {
-        rset.rdate(parse_datetime(datestr.to_owned(), ignoretz))
+        rset.rdate(parse_datetime(datestr.to_owned(), ignoretz, tzinfos))
       }
     }
     for value in exrulevals {
-      rset.exrule(parse_rfc_rrule(value, dtstart, false, ignoretz))
+      rset.exrule(parse_rfc_rrule(value, dtstart, false, ignoretz, tzinfos))
     }
     for value in exdatevals {
       rset.exdate(value)
@@ -152,7 +157,7 @@ pub fn rrulestr(
     Set(rset)
   } else {
     guard rrulevals is [first, ..] else { raise index_error() }
-    Rule(parse_rfc_rrule(first, dtstart, cache, ignoretz))
+    Rule(parse_rfc_rrule(first, dtstart, cache, ignoretz, tzinfos))
   }
 }
 
@@ -210,6 +215,7 @@ fn parse_date_value(
   rule_tzids : Map[String, String],
   ignoretz : Bool,
   tzids : TzIds?,
+  tzinfos : @parser.TzInfos?,
 ) -> Array[@datetime.DateTime] raise {
   let mut tzid : @datetime.Tz? = None
   let mut value_found = false
@@ -241,7 +247,7 @@ fn parse_date_value(
   }
   let datevals = []
   for datestr in split_all(date_value, ",") {
-    let mut date = parse_datetime(datestr, ignoretz)
+    let mut date = parse_datetime(datestr, ignoretz, tzinfos)
     if tzid is Some(tz) {
       if date.tzinfo is None {
         date = date.with_tzinfo(Some(tz))
@@ -261,7 +267,8 @@ fn parse_rfc_rrule(
   dtstart : @datetime.DateTime?,
   cache : Bool,
   ignoretz : Bool,
-) -> Rrule raise @datetime.DateTimeError {
+  tzinfos : @parser.TzInfos?,
+) -> Rrule raise {
   let value = if line.find(":") is Some(_) {
     guard split_all(line, ":") is [name, value] else {
       raise @datetime.ValueError("too many values to unpack (expected 2)")
@@ -282,10 +289,13 @@ fn parse_rfc_rrule(
     }
     let name = py_upper(name)
     let value = py_upper(value)
-    kw.handle(name, value, ignoretz) catch {
+    kw.handle(name, value, ignoretz, tzinfos) catch {
       UnknownParameter =>
         raise @datetime.ValueError("unknown parameter '\{name}'")
-      _ => raise @datetime.ValueError("invalid '\{name}': \{value}")
+      InvalidValue => raise @datetime.ValueError("invalid '\{name}': \{value}")
+      e if is_value_error(e) =>
+        raise @datetime.ValueError("invalid '\{name}': \{value}")
+      e => raise e
     }
   }
   guard kw.freq is Some(freq) else {
@@ -375,7 +385,8 @@ fn RruleKwargs::handle(
   name : String,
   value : String,
   ignoretz : Bool,
-) -> Unit raise HandleError {
+  tzinfos : @parser.TzInfos?,
+) -> Unit raise {
   match name {
     "INTERVAL" => self.interval = Some(py_int(value))
     "COUNT" => self.count = Some(py_int(value))
@@ -395,8 +406,10 @@ fn RruleKwargs::handle(
       }
     "UNTIL" =>
       self.until = Some(
-        parse_datetime(value, ignoretz) catch {
-          _ => raise InvalidValue
+        parse_datetime(value, ignoretz, tzinfos) catch {
+          // Python: ValueError("invalid until date"), re-wrapped by the caller
+          e if is_value_error(e) => raise InvalidValue
+          e => raise e
         },
       )
     "WKST" => self.wkst = Some(weekdays[weekday_index(value)])

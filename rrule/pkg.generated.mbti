@@ -3,6 +3,7 @@ package "bobzhang/dateutil/rrule"
 
 import {
   "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/parser",
   "moonbitlang/core/debug",
 }
 
@@ -13,7 +14,7 @@ pub let mo : @datetime.Weekday
 
 pub fn nth(@datetime.Weekday, Int) -> @datetime.Weekday raise @datetime.DateTimeError
 
-pub fn rrulestr(String, dtstart? : @datetime.DateTime, cache? : Bool, unfold? : Bool, forceset? : Bool, compatible? : Bool, ignoretz? : Bool, tzids? : TzIds) -> RruleBase raise
+pub fn rrulestr(String, dtstart? : @datetime.DateTime, cache? : Bool, unfold? : Bool, forceset? : Bool, compatible? : Bool, ignoretz? : Bool, tzids? : TzIds, tzinfos? : @parser.TzInfos) -> RruleBase raise
 
 pub let sa : @datetime.Weekday
 

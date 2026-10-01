@@ -4,6 +4,7 @@ import {
   "bobzhang/dateutil/datetime",
   "bobzhang/dateutil/easter",
   "bobzhang/dateutil/tz",
+  "bobzhang/dateutil/parser",
 }
 
 options(
