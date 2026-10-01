@@ -60,7 +60,11 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
     `ValueError("invalid 'UNTIL': ...")` like Python.
 * **Integer overflow.** Python integers are unbounded; the period
   arithmetic uses `Int64`, so huge `interval`/`count` values behave like
-  Python (e.g. `interval=2**31-1` ends after the first period).
+  Python (e.g. `interval=2**31-1` ends after the first period). Mask
+  indices derived from user values (nth-weekday ordinals such as
+  `BYDAY=613566758MO`, `byeaster` offsets) are also computed in `Int64` and
+  bounds-checked before narrowing, so they raise the `IndexError` mapping
+  instead of wrapping back into range.
 * **Debug/repr**: Python's `repr(rrule)` is the default object repr; our
   `Debug` shows the RFC string.
 

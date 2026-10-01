@@ -56,6 +56,18 @@ fn IterInfo::wday(
 }
 
 ///|
+/// Narrow an `Int64` index into `wdaymask` to `Int`, raising (Python
+/// `IndexError`) when it is outside the mask's Python index range.
+fn IterInfo::checked_index(
+  self : IterInfo,
+  i : Int64,
+) -> Int raise @datetime.DateTimeError {
+  let len = (wdaymask_len - self.yearweekday).to_int64()
+  guard i >= -len && i < len else { raise index_error() }
+  i.to_int()
+}
+
+///|
 /// Python `self.mrange[month-1:month+1]` unpacked into `first, last`.
 fn IterInfo::month_range(
   self : IterInfo,
@@ -219,11 +231,15 @@ fn IterInfo::rebuild(
         let last = last - 1
         for wn in bynweekday {
           let (wday, n) = wn
-          let i = if n < 0 {
-            let i = last + (n + 1) * 7
+          // Python ints don't overflow: compute the base index in Int64 so a
+          // large ordinal (e.g. `613566758MO`) hits the `wdaymask` bounds
+          // check (IndexError) instead of wrapping into range.
+          let n = n.to_int64()
+          let i = if n < 0L {
+            let i = self.checked_index(last.to_int64() + (n + 1L) * 7L)
             i - @datetime.floor_mod(self.wday(i) - wday, 7)
           } else {
-            let i = first + (n - 1) * 7
+            let i = self.checked_index(first.to_int64() + (n - 1L) * 7L)
             i + @datetime.floor_mod(7 - self.wday(i) + wday, 7)
           }
           if first <= i && i <= last {
@@ -240,7 +256,12 @@ fn IterInfo::rebuild(
       let eastermask = FixedArray::make(len, false)
       let eyday = @easter.easter(year).to_ordinal() - self.yearordinal
       for offset in byeaster {
-        match py_index(len, eyday + offset) {
+        // Int64 sum: a huge offset must not wrap back into range.
+        let idx = eyday.to_int64() + offset.to_int64()
+        guard idx >= -len.to_int64() && idx < len.to_int64() else {
+          raise index_error()
+        }
+        match py_index(len, idx.to_int()) {
           Some(i) => eastermask[i] = true
           None => raise index_error()
         }

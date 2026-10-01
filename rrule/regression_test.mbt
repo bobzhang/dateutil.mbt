@@ -143,3 +143,51 @@ test "islice quirks of __getitem__" {
   assert_eq(r.get(-1), Some(dt(2024, 1, 3)))
   assert_eq(r.get(3), None)
 }
+
+///|
+test "huge BYDAY ordinals raise instead of wrapping" {
+  // Python computes `first + (n - 1) * 7` in arbitrary precision and the
+  // `wdaymask[i]` lookup raises IndexError (mapped to ValueError).
+  for
+    byday in [
+      "613566758MO", "-613566758MO", "2147483647MO", "-2147483648MO", "56MO", "-60MO",
+    ] {
+    expect_value_error(() => {
+      let r = @rrule.rrulestr(
+        "DTSTART:20240101T000000\nRRULE:FREQ=MONTHLY;COUNT=1;BYDAY=\{byday}",
+      )
+      ignore(r.to_array())
+    })
+  }
+  for byday in ["613566758MO", "-2147483648MO", "60MO"] {
+    expect_value_error(() => {
+      let r = @rrule.rrulestr(
+        "DTSTART:20240101T000000\nRRULE:FREQ=YEARLY;COUNT=1;BYDAY=\{byday}",
+      )
+      ignore(r.to_array())
+    })
+  }
+  let yearly = (byday : String) => {
+    @rrule.rrulestr(
+      "DTSTART:20240101T000000\nRRULE:FREQ=YEARLY;COUNT=1;BYDAY=\{byday}",
+    ).to_array()
+  }
+  assert_eq(yearly("53MO"), [dt(2024, 12, 30)])
+  assert_eq(yearly("-53MO"), [dt(2024, 1, 1)])
+  assert_eq(yearly("-60MO"), [])
+}
+
+///|
+test "huge BYEASTER offsets raise" {
+  for offset in [2147483647, -2147483648, 2147483547] {
+    expect_value_error(() => {
+      let r = @rrule.Rrule::new(
+        Yearly,
+        dtstart=dt(2024, 1, 1),
+        byeaster=[offset],
+        count=1,
+      )
+      ignore(r.to_array())
+    })
+  }
+}
