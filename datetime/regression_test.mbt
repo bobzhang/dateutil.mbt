@@ -62,7 +62,7 @@ test "strftime pads %Y and %G" {
 ///|
 test "calendar helpers for far years" {
   inspect(@datetime.weekday_of(6000000, 1, 1), content="5")
-  inspect(@datetime.monthrange(-1, 2), content="(0, 28)")
+  debug_inspect(@datetime.monthrange(-1, 2), content="(0, 28)")
   // 400-year cycles keep timegm exact
   inspect(
     @datetime.timegm(12000, 3, 1, 1, 2, 3) -

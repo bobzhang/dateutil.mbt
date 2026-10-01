@@ -5413,6 +5413,11404 @@ test "cpython: timedelta float constructor" {
     4298918.4,
   )
   check_td(
+    @datetime.TimeDelta::from_float(
+      days=310.55,
+      minutes=9276.6,
+      hours=80.5,
+      weeks=-6.012438,
+    ),
+    "278 days, 6:13:13.497600",
+    "datetime.timedelta(days=278, seconds=22393, microseconds=497600)",
+    24041593.4976,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-6958485.114,
+      milliseconds=-356.155,
+      minutes=-6700.200165,
+      hours=65.239645,
+    ),
+    "-2 days, 1:34:03.397460",
+    "datetime.timedelta(days=-2, seconds=5643, microseconds=397460)",
+    -167156.60254,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=4204079.273),
+    "0:00:04.204079",
+    "datetime.timedelta(seconds=4, microseconds=204079)",
+    4.204079,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=1628098.5, minutes=-2532.99),
+    "-2 days, 5:47:02.228099",
+    "datetime.timedelta(days=-2, seconds=20822, microseconds=228099)",
+    -151977.771901,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=332.987121, hours=-44.53515),
+    "331 days, 3:09:20.714400",
+    "datetime.timedelta(days=331, seconds=11360, microseconds=714400)",
+    28609760.7144,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-785.961,
+      milliseconds=7648.89,
+      hours=83.23,
+    ),
+    "-783 days, 12:10:05.248890",
+    "datetime.timedelta(days=-783, seconds=43805, microseconds=248890)",
+    -67607394.75111,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=335.603,
+      microseconds=-869304.37,
+      minutes=3833.81,
+    ),
+    "338 days, 6:22:06.930696",
+    "datetime.timedelta(days=338, seconds=22926, microseconds=930696)",
+    29226126.930696,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-473.3,
+      microseconds=9413949.89,
+      hours=-24.05,
+      weeks=5.47,
+    ),
+    "-437 days, 23:42:45.413950",
+    "datetime.timedelta(days=-437, seconds=85365, microseconds=413950)",
+    -37671434.58605,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-448.24, seconds=-436888.5),
+    "-454 days, 16:52:55.500000",
+    "datetime.timedelta(days=-454, seconds=60775, microseconds=500000)",
+    -39164824.5,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=18.39),
+    "18:23:24",
+    "datetime.timedelta(seconds=66204)",
+    66204.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=902225.23,
+      milliseconds=5303.56,
+      hours=-18.85,
+    ),
+    "9 days, 15:46:10.533560",
+    "datetime.timedelta(days=9, seconds=56770, microseconds=533560)",
+    834370.53356,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=607.353,
+      milliseconds=-2940.97385,
+      minutes=-4371.683,
+      weeks=2.283487,
+    ),
+    "620 days, 7:14:08.216626",
+    "datetime.timedelta(days=620, seconds=26048, microseconds=216626)",
+    53594048.216626,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=755.4,
+      seconds=-561249.768585,
+      milliseconds=-5336.0,
+      minutes=-6567.6,
+    ),
+    "744 days, 8:14:08.895415",
+    "datetime.timedelta(days=744, seconds=29648, microseconds=895415)",
+    64311248.895415,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-323580.431,
+      microseconds=9582356.5,
+      weeks=-5.821,
+    ),
+    "-45 days, 12:11:28.351357",
+    "datetime.timedelta(days=-45, seconds=43888, microseconds=351357)",
+    -3844111.648643,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=240.059),
+    "240 days, 1:24:57.600000",
+    "datetime.timedelta(days=240, seconds=5097, microseconds=600000)",
+    20741097.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=5327468.841),
+    "0:00:05.327469",
+    "datetime.timedelta(seconds=5, microseconds=327469)",
+    5.327469,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=366.7,
+      seconds=-815878.2,
+      milliseconds=4701.983,
+    ),
+    "357 days, 6:10:06.501983",
+    "datetime.timedelta(days=357, seconds=22206, microseconds=501983)",
+    30867006.501983,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-373.677301),
+    "-374 days, 7:44:41.193600",
+    "datetime.timedelta(days=-374, seconds=27881, microseconds=193600)",
+    -32285718.8064,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=838193.8,
+      microseconds=4241846.917274,
+      hours=53.726,
+      weeks=4.4,
+    ),
+    "42 days, 17:45:31.641847",
+    "datetime.timedelta(days=42, seconds=63931, microseconds=641847)",
+    3692731.641847,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=38833.111716,
+      microseconds=6222079.7,
+      weeks=-8.107343,
+    ),
+    "-57 days, 16:45:18.287396",
+    "datetime.timedelta(days=-57, seconds=60318, microseconds=287396)",
+    -4864481.712604,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-493080.9, weeks=1.134692),
+    "2 days, 5:39:40.821600",
+    "datetime.timedelta(days=2, seconds=20380, microseconds=821600)",
+    193180.8216,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-662.511,
+      seconds=-931748.578576,
+      microseconds=1981229.294,
+      milliseconds=-5700.721198,
+    ),
+    "-674 days, 16:54:57.301932",
+    "datetime.timedelta(days=-674, seconds=60897, microseconds=301932)",
+    -58172702.698068,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1899706.416798,
+      milliseconds=-2899.877,
+      hours=59.6,
+      weeks=1.22,
+    ),
+    "11 days, 0:33:34.999829",
+    "datetime.timedelta(days=11, seconds=2014, microseconds=999829)",
+    952414.999829,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=481.267, milliseconds=-6480.278528),
+    "481 days, 6:24:22.319721",
+    "datetime.timedelta(days=481, seconds=23062, microseconds=319721)",
+    41581462.319721,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=208.8,
+      seconds=-510446.904699,
+      microseconds=-2204013.15,
+      milliseconds=4066.0,
+      hours=-6.282,
+    ),
+    "202 days, 15:07:39.757288",
+    "datetime.timedelta(days=202, seconds=54459, microseconds=757288)",
+    17507259.757288,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-222593.2,
+      milliseconds=-2398.7,
+      hours=-26.853478,
+      weeks=-2.75,
+    ),
+    "-23 days, 1:18:51.880500",
+    "datetime.timedelta(days=-23, seconds=4731, microseconds=880500)",
+    -1982468.1195,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-762820.19,
+      microseconds=6782224.441,
+      milliseconds=498.58,
+      minutes=4180.67,
+    ),
+    "-6 days, 1:47:07.290804",
+    "datetime.timedelta(days=-6, seconds=6427, microseconds=290804)",
+    -511972.709196,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1218003.814,
+      milliseconds=3866.089,
+      weeks=8.815,
+    ),
+    "61 days, 16:55:17.084093",
+    "datetime.timedelta(days=61, seconds=60917, microseconds=84093)",
+    5331317.084093,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-9240.45, hours=35.792),
+    "-5 days, 1:47:04.200000",
+    "datetime.timedelta(days=-5, seconds=6424, microseconds=200000)",
+    -425575.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=578.432,
+      seconds=-110232.42,
+      microseconds=7950870.884354,
+      milliseconds=5615.560003,
+      hours=-18.271,
+      weeks=2.526,
+    ),
+    "594 days, 1:50:55.146431",
+    "datetime.timedelta(days=594, seconds=6655, microseconds=146431)",
+    51328255.146431,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-631.787,
+      seconds=685997.640887,
+      microseconds=-4973766.9,
+      weeks=-8.768,
+    ),
+    "-686 days, 18:38:29.467120",
+    "datetime.timedelta(days=-686, seconds=67109, microseconds=467120)",
+    -59203290.53288,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-6384114.447372,
+      milliseconds=4424.14974,
+      minutes=-5443.9,
+      hours=2.05,
+      weeks=-1.821314,
+    ),
+    "-17 days, 13:20:13.332835",
+    "datetime.timedelta(days=-17, seconds=48013, microseconds=332835)",
+    -1420786.667165,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=335.515,
+      milliseconds=-6362.1,
+      hours=17.98,
+      weeks=-7.988826,
+    ),
+    "280 days, 8:12:55.673100",
+    "datetime.timedelta(days=280, seconds=29575, microseconds=673100)",
+    24221575.6731,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=421694.059,
+      microseconds=-358095.283169,
+      hours=19.359817,
+      weeks=2.54,
+    ),
+    "23 days, 11:13:01.042105",
+    "datetime.timedelta(days=23, seconds=40381, microseconds=42105)",
+    2027581.042105,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-232161.646,
+      microseconds=-2804616.766438,
+    ),
+    "-3 days, 7:30:35.549383",
+    "datetime.timedelta(days=-3, seconds=27035, microseconds=549383)",
+    -232164.450617,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-2730306.2,
+      milliseconds=7219.955534,
+      weeks=-2.2566,
+    ),
+    "-16 days, 4:53:32.809649",
+    "datetime.timedelta(days=-16, seconds=17612, microseconds=809649)",
+    -1364787.190351,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=187135.256103,
+      hours=-43.0,
+      weeks=0.937,
+    ),
+    "6 days, 22:23:52.856103",
+    "datetime.timedelta(days=6, seconds=80632, microseconds=856103)",
+    599032.856103,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-5695035.661,
+      milliseconds=2930.895093,
+      minutes=-5017.153,
+    ),
+    "-4 days, 12:22:48.055859",
+    "datetime.timedelta(days=-4, seconds=44568, microseconds=55859)",
+    -301031.944141,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-1231241.221792,
+      minutes=-6570.152284,
+      hours=41.928626,
+    ),
+    "-3 days, 4:25:32.685319",
+    "datetime.timedelta(days=-3, seconds=15932, microseconds=685319)",
+    -243267.314681,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=220814.199561,
+      milliseconds=2227.666,
+      minutes=-7183.609,
+      weeks=-4.91,
+    ),
+    "-37 days, 4:43:51.887227",
+    "datetime.timedelta(days=-37, seconds=17031, microseconds=887227)",
+    -3179768.112773,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=146.6,
+      microseconds=-171563.110049,
+      milliseconds=8462.33,
+      minutes=1157.815343,
+    ),
+    "147 days, 9:41:57.211347",
+    "datetime.timedelta(days=147, seconds=34917, microseconds=211347)",
+    12735717.211347,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=230473.03,
+      microseconds=-468823.813171,
+      milliseconds=-168.751,
+      hours=-21.289964,
+      weeks=-4.2,
+    ),
+    "-28 days, 9:07:48.522025",
+    "datetime.timedelta(days=-28, seconds=32868, microseconds=522025)",
+    -2386331.477975,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=917824.68),
+    "10 days, 14:57:04.680000",
+    "datetime.timedelta(days=10, seconds=53824, microseconds=680000)",
+    917824.68,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-370686.89, minutes=1085.017),
+    "-4 days, 11:06:54.130000",
+    "datetime.timedelta(days=-4, seconds=40014, microseconds=130000)",
+    -305585.87,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=452.848537,
+      milliseconds=-880.78,
+      minutes=4049.3,
+      weeks=7.791409,
+    ),
+    "510 days, 4:48:34.879220",
+    "datetime.timedelta(days=510, seconds=17314, microseconds=879220)",
+    44081314.87922,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=586.86,
+      seconds=-284103.6,
+      microseconds=4101776.7,
+      minutes=-7075.9,
+    ),
+    "578 days, 15:47:30.501777",
+    "datetime.timedelta(days=578, seconds=56850, microseconds=501777)",
+    49996050.501777,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=236.65, weeks=7.3),
+    "287 days, 18:00:00",
+    "datetime.timedelta(days=287, seconds=64800)",
+    24861600.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=977.768295,
+      minutes=6406.94,
+      hours=46.887476,
+    ),
+    "984 days, 4:06:32.001600",
+    "datetime.timedelta(days=984, seconds=14792, microseconds=1600)",
+    85032392.0016,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-7177.4),
+    "-5 days, 0:22:36",
+    "datetime.timedelta(days=-5, seconds=1356)",
+    -430644.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=6152377.291,
+      milliseconds=-571.338,
+      weeks=8.59,
+    ),
+    "60 days, 3:07:17.581039",
+    "datetime.timedelta(days=60, seconds=11237, microseconds=581039)",
+    5195237.581039,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=643.63,
+      seconds=-973956.93,
+      minutes=4756.3,
+    ),
+    "635 days, 15:50:53.070000",
+    "datetime.timedelta(days=635, seconds=57053, microseconds=70000)",
+    54921053.07,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-334.147931,
+      seconds=268218.0,
+      microseconds=-5521726.477899,
+      weeks=6.63,
+    ),
+    "-285 days, 8:47:35.239874",
+    "datetime.timedelta(days=-285, seconds=31655, microseconds=239874)",
+    -24592344.760126,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-1448.628, minutes=-9977.3),
+    "-7 days, 1:42:40.551372",
+    "datetime.timedelta(days=-7, seconds=6160, microseconds=551372)",
+    -598639.448628,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=42120.733,
+      microseconds=761622.4,
+      hours=-41.6,
+      weeks=7.885,
+    ),
+    "53 days, 22:46:49.494622",
+    "datetime.timedelta(days=53, seconds=82009, microseconds=494622)",
+    4661209.494622,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=211.926,
+      microseconds=8097186.842851,
+      milliseconds=-1950.280833,
+    ),
+    "211 days, 22:13:32.546906",
+    "datetime.timedelta(days=211, seconds=80012, microseconds=546906)",
+    18310412.546906,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-47.86),
+    "-2 days, 0:08:24",
+    "datetime.timedelta(days=-2, seconds=504)",
+    -172296.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-103.207),
+    "-104 days, 19:01:55.200000",
+    "datetime.timedelta(days=-104, seconds=68515, microseconds=200000)",
+    -8917084.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=3139864.719,
+      milliseconds=2599.82,
+      hours=-83.36,
+    ),
+    "-4 days, 12:38:29.739685",
+    "datetime.timedelta(days=-4, seconds=45509, microseconds=739685)",
+    -300090.260315,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=528256.61,
+      microseconds=4213418.53179,
+      minutes=9383.58354,
+    ),
+    "12 days, 15:07:55.835819",
+    "datetime.timedelta(days=12, seconds=54475, microseconds=835819)",
+    1091275.835819,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=970.0,
+      minutes=-5258.8,
+      hours=21.485744,
+      weeks=-2.26,
+    ),
+    "951 days, 10:09:32.678400",
+    "datetime.timedelta(days=951, seconds=36572, microseconds=678400)",
+    82202972.6784,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=870491.305876, minutes=3417.589),
+    "12 days, 10:45:46.645876",
+    "datetime.timedelta(days=12, seconds=38746, microseconds=645876)",
+    1075546.645876,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=714.6,
+      microseconds=391468.51,
+      milliseconds=6369.97,
+      hours=-52.47,
+    ),
+    "712 days, 9:55:54.761439",
+    "datetime.timedelta(days=712, seconds=35754, microseconds=761439)",
+    61552554.761439,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-0.610517, weeks=6.819567),
+    "47 days, 17:04:36.260400",
+    "datetime.timedelta(days=47, seconds=61476, microseconds=260400)",
+    4122276.2604,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=27471.3, weeks=-7.91),
+    "-56 days, 22:45:03.300000",
+    "datetime.timedelta(days=-56, seconds=81903, microseconds=300000)",
+    -4756496.7,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=715.251,
+      seconds=-691814.0,
+      milliseconds=-3461.1,
+      minutes=2208.052431,
+      weeks=5.3,
+    ),
+    "745 days, 21:03:12.084760",
+    "datetime.timedelta(days=745, seconds=75792, microseconds=84760)",
+    64443792.08476,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-521538.8,
+      milliseconds=3820.91,
+      minutes=8791.52,
+    ),
+    "1:39:16.220910",
+    "datetime.timedelta(seconds=5956, microseconds=220910)",
+    5956.22091,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-405706.6,
+      milliseconds=-1217.1,
+      hours=7.0,
+      weeks=4.96,
+    ),
+    "30 days, 7:35:00.182900",
+    "datetime.timedelta(days=30, seconds=27300, microseconds=182900)",
+    2619300.1829,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-355448.448,
+      microseconds=8801961.05,
+      milliseconds=-3498.66,
+      minutes=-6517.527872,
+      hours=0.9,
+      weeks=-4.705025,
+    ),
+    "-42 days, 11:05:46.062981",
+    "datetime.timedelta(days=-42, seconds=39946, microseconds=62981)",
+    -3588853.937019,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=402860.0374,
+      microseconds=-7444645.8063,
+      hours=-93.4,
+      weeks=-4.1,
+    ),
+    "-28 days, 1:42:12.592754",
+    "datetime.timedelta(days=-28, seconds=6132, microseconds=592754)",
+    -2413067.407246,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-2865.4, weeks=-5.7),
+    "-42 days, 2:38:36",
+    "datetime.timedelta(days=-42, seconds=9516)",
+    -3619284.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-525.04, hours=-38.15),
+    "-527 days, 8:53:24",
+    "datetime.timedelta(days=-527, seconds=32004)",
+    -45500796.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=9943.1),
+    "6 days, 21:43:06",
+    "datetime.timedelta(days=6, seconds=78186)",
+    596586.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=8888.40422,
+      minutes=2796.219,
+      weeks=7.04,
+    ),
+    "51 days, 5:19:34.028404",
+    "datetime.timedelta(days=51, seconds=19174, microseconds=28404)",
+    4425574.028404,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=799.86, hours=-49.02),
+    "797 days, 19:37:12",
+    "datetime.timedelta(days=797, seconds=70632)",
+    68931432.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=19.456, weeks=-9.417),
+    "-66 days, 21:24:00",
+    "datetime.timedelta(days=-66, seconds=77040)",
+    -5625360.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=4.015933),
+    "4:00:57.358800",
+    "datetime.timedelta(seconds=14457, microseconds=358800)",
+    14457.3588,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-50731.445977),
+    "-1 day, 9:54:28.554023",
+    "datetime.timedelta(days=-1, seconds=35668, microseconds=554023)",
+    -50731.445977,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-232.8,
+      microseconds=-2510658.8,
+      minutes=2227.426,
+      hours=-28.425347,
+    ),
+    "-233 days, 13:29:51.800141",
+    "datetime.timedelta(days=-233, seconds=48591, microseconds=800141)",
+    -20082608.199859,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-1990.545881,
+      minutes=4830.596212,
+      hours=-16.179202,
+      weeks=-9.447323,
+    ),
+    "-64 days, 13:10:47.704574",
+    "datetime.timedelta(days=-64, seconds=47447, microseconds=704574)",
+    -5482152.295426,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-789539.7,
+      hours=-37.8,
+      weeks=9.68,
+    ),
+    "66 days, 4:26:23.210460",
+    "datetime.timedelta(days=66, seconds=15983, microseconds=210460)",
+    5718383.21046,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5188.02),
+    "-1 day, 23:59:54.811980",
+    "datetime.timedelta(days=-1, seconds=86394, microseconds=811980)",
+    -5.18802,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=7947413.641,
+      minutes=3575.202,
+      hours=25.91,
+      weeks=-2.3,
+    ),
+    "-13 days, 11:05:56.067414",
+    "datetime.timedelta(days=-13, seconds=39956, microseconds=67414)",
+    -1083243.932586,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-486.5,
+      seconds=-347242.008369,
+      microseconds=-9582324.59,
+      minutes=-3791.93,
+    ),
+    "-494 days, 20:20:32.609306",
+    "datetime.timedelta(days=-494, seconds=73232, microseconds=609306)",
+    -42608367.390694,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=7288.2, hours=13.2),
+    "13:12:07.288200",
+    "datetime.timedelta(seconds=47527, microseconds=288200)",
+    47527.2882,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=769130.4,
+      milliseconds=1930.897054,
+      minutes=-1250.495,
+      hours=17.91,
+      weeks=2.27,
+    ),
+    "24 days, 16:04:34.630897",
+    "datetime.timedelta(days=24, seconds=57874, microseconds=630897)",
+    2131474.630897,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-188.5,
+      seconds=-976307.8,
+      hours=45.049,
+      weeks=-8.124178,
+    ),
+    "-255 days, 4:59:25.745600",
+    "datetime.timedelta(days=-255, seconds=17965, microseconds=745600)",
+    -22014034.2544,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-570.3, hours=37.03),
+    "1 day, 3:31:30",
+    "datetime.timedelta(days=1, seconds=12690)",
+    99090.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=170.56,
+      seconds=-890462.964318,
+      milliseconds=4098.9,
+      minutes=3437.242,
+    ),
+    "162 days, 15:22:39.654582",
+    "datetime.timedelta(days=162, seconds=55359, microseconds=654582)",
+    14052159.654582,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-5.02),
+    "-36 days, 20:38:24",
+    "datetime.timedelta(days=-36, seconds=74304)",
+    -3036096.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=970.496, weeks=2.4),
+    "987 days, 7:06:14.400000",
+    "datetime.timedelta(days=987, seconds=25574, microseconds=400000)",
+    85302374.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-751.4,
+      seconds=106309.164141,
+      milliseconds=6684.220443,
+      hours=22.88,
+    ),
+    "-750 days, 18:48:43.848361",
+    "datetime.timedelta(days=-750, seconds=67723, microseconds=848361)",
+    -64732276.151639,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=7595714.1,
+      milliseconds=4003.6,
+      minutes=-8257.6,
+      weeks=-3.113,
+    ),
+    "-28 days, 11:23:33.199314",
+    "datetime.timedelta(days=-28, seconds=41013, microseconds=199314)",
+    -2378186.800686,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-8884.1),
+    "-1 day, 23:59:51.115900",
+    "datetime.timedelta(days=-1, seconds=86391, microseconds=115900)",
+    -8.8841,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-3573457.895, weeks=-9.191873),
+    "-65 days, 15:45:51.636142",
+    "datetime.timedelta(days=-65, seconds=56751, microseconds=636142)",
+    -5559248.363858,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-36.5, weeks=-2.94),
+    "-23 days, 21:34:48",
+    "datetime.timedelta(days=-23, seconds=77688)",
+    -1909512.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-120.707011,
+      seconds=-845106.38,
+      minutes=8367.1,
+      hours=74.968796,
+    ),
+    "-122 days, 10:42:01.535200",
+    "datetime.timedelta(days=-122, seconds=38521, microseconds=535200)",
+    -10502278.4648,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-817531.919, minutes=-5442.804747),
+    "-14 days, 18:11:39.796180",
+    "datetime.timedelta(days=-14, seconds=65499, microseconds=796180)",
+    -1144100.20382,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=8456.2, hours=-25.8, weeks=6.5),
+    "50 days, 7:08:12",
+    "datetime.timedelta(days=50, seconds=25692)",
+    4345692.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=36.2),
+    "1 day, 12:12:00",
+    "datetime.timedelta(days=1, seconds=43920)",
+    130320.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=571407.88,
+      microseconds=8275889.3,
+      milliseconds=1030.443567,
+      minutes=-2725.82,
+      hours=-10.292387,
+    ),
+    "4 days, 7:00:15.393133",
+    "datetime.timedelta(days=4, seconds=25215, microseconds=393133)",
+    370815.393133,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=1467.0, hours=54.813022, weeks=-2.0),
+    "-11 days, 7:15:46.879200",
+    "datetime.timedelta(days=-11, seconds=26146, microseconds=879200)",
+    -924253.1208,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=119.9,
+      minutes=-7922.1,
+      hours=-79.43,
+      weeks=-6.717098,
+    ),
+    "64 days, 1:39:45.129600",
+    "datetime.timedelta(days=64, seconds=5985, microseconds=129600)",
+    5535585.1296,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=228.073),
+    "228 days, 1:45:07.200000",
+    "datetime.timedelta(days=228, seconds=6307, microseconds=200000)",
+    19705507.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-129407.634,
+      milliseconds=5429.59,
+      hours=78.47,
+    ),
+    "1 day, 18:31:29.795590",
+    "datetime.timedelta(days=1, seconds=66689, microseconds=795590)",
+    153089.79559,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-166043.5,
+      milliseconds=-5575.37,
+      minutes=609.381486,
+    ),
+    "-2 days, 12:01:53.813790",
+    "datetime.timedelta(days=-2, seconds=43313, microseconds=813790)",
+    -129486.18621,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=3613252.0, milliseconds=5450.5),
+    "0:00:09.063752",
+    "datetime.timedelta(seconds=9, microseconds=63752)",
+    9.063752,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-156274.896, hours=91.902),
+    "2 days, 0:29:32.304000",
+    "datetime.timedelta(days=2, seconds=1772, microseconds=304000)",
+    174572.304,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=78.74),
+    "3 days, 6:44:24",
+    "datetime.timedelta(days=3, seconds=24264)",
+    283464.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-5656313.9, hours=52.605),
+    "2 days, 4:36:12.343686",
+    "datetime.timedelta(days=2, seconds=16572, microseconds=343686)",
+    189372.343686,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=212.520057),
+    "212 days, 12:28:52.924800",
+    "datetime.timedelta(days=212, seconds=44932, microseconds=924800)",
+    18361732.9248,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=700.881,
+      seconds=-542428.5,
+      hours=-40.71,
+      weeks=-5.3,
+    ),
+    "655 days, 19:21:33.900000",
+    "datetime.timedelta(days=655, seconds=69693, microseconds=900000)",
+    56661693.9,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-953127.3,
+      microseconds=2884525.718124,
+      weeks=8.2,
+    ),
+    "46 days, 8:50:35.584526",
+    "datetime.timedelta(days=46, seconds=31835, microseconds=584526)",
+    4006235.584526,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-211.300486,
+      minutes=-4014.9,
+      weeks=-4.64,
+    ),
+    "-247 days, 10:21:12.009600",
+    "datetime.timedelta(days=-247, seconds=37272, microseconds=9600)",
+    -21303527.9904,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-894975.6,
+      microseconds=695502.673,
+      hours=54.6,
+    ),
+    "-9 days, 21:59:45.095503",
+    "datetime.timedelta(days=-9, seconds=79185, microseconds=95503)",
+    -698414.904497,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=839.8,
+      seconds=-857436.802513,
+      weeks=1.3,
+    ),
+    "838 days, 23:25:23.197487",
+    "datetime.timedelta(days=838, seconds=84323, microseconds=197487)",
+    72487523.197487,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-566.723,
+      seconds=-4016.611,
+      hours=35.13,
+    ),
+    "-566 days, 16:39:44.189000",
+    "datetime.timedelta(days=-566, seconds=59984, microseconds=189000)",
+    -48842415.811,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=3525.7, hours=-55.589474),
+    "3:10:19.893600",
+    "datetime.timedelta(seconds=11419, microseconds=893600)",
+    11419.8936,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-259.863302),
+    "-260 days, 3:16:50.707200",
+    "datetime.timedelta(days=-260, seconds=11810, microseconds=707200)",
+    -22452189.2928,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=238.112),
+    "238 days, 2:41:16.800000",
+    "datetime.timedelta(days=238, seconds=9676, microseconds=800000)",
+    20572876.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1827205.872,
+      milliseconds=-5912.19,
+      hours=-1.8,
+    ),
+    "-1 day, 22:11:55.915016",
+    "datetime.timedelta(days=-1, seconds=79915, microseconds=915016)",
+    -6484.084984,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=286417.1, weeks=-5.790249),
+    "-38 days, 18:47:54.504800",
+    "datetime.timedelta(days=-38, seconds=67674, microseconds=504800)",
+    -3215525.4952,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-447.581, weeks=8.31),
+    "-390 days, 14:08:09.600000",
+    "datetime.timedelta(days=-390, seconds=50889, microseconds=600000)",
+    -33645110.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-442535.5,
+      hours=-43.7,
+      weeks=-0.89,
+    ),
+    "-9 days, 22:46:47.557464",
+    "datetime.timedelta(days=-9, seconds=82007, microseconds=557464)",
+    -695592.442536,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-142243.258912,
+      milliseconds=-8082.22,
+      minutes=7768.404012,
+      weeks=-8.8,
+    ),
+    "-58 days, 3:33:32.899588",
+    "datetime.timedelta(days=-58, seconds=12812, microseconds=899588)",
+    -4998387.100412,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-27665.22,
+      microseconds=6092098.88,
+      milliseconds=-5845.467641,
+      hours=-71.9,
+      weeks=-2.61,
+    ),
+    "-22 days, 9:56:07.026631",
+    "datetime.timedelta(days=-22, seconds=35767, microseconds=26631)",
+    -1865032.973369,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=497.31,
+      seconds=-379028.067,
+      microseconds=-5576634.94,
+      minutes=-5846.92,
+      hours=-5.104,
+      weeks=6.810932,
+    ),
+    "536 days, 7:50:12.429965",
+    "datetime.timedelta(days=536, seconds=28212, microseconds=429965)",
+    46338612.429965,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-767543.916,
+      microseconds=-5966842.652101,
+      hours=2.5,
+      weeks=-1.785,
+    ),
+    "-22 days, 17:24:42.117157",
+    "datetime.timedelta(days=-22, seconds=62682, microseconds=117157)",
+    -1838117.882843,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=742182.176103,
+      microseconds=-5944901.8,
+      minutes=-6445.805,
+      hours=65.219,
+      weeks=-7.463,
+    ),
+    "-46 days, 14:09:53.931201",
+    "datetime.timedelta(days=-46, seconds=50993, microseconds=931201)",
+    -3923406.068799,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-66.922, seconds=920288.479898),
+    "-57 days, 17:30:27.679898",
+    "datetime.timedelta(days=-57, seconds=63027, microseconds=679898)",
+    -4861772.320102,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-993.117,
+      microseconds=-5774750.086,
+      milliseconds=-4086.945727,
+      minutes=6028.634985,
+      hours=8.5,
+    ),
+    "-989 days, 10:09:59.437404",
+    "datetime.timedelta(days=-989, seconds=36599, microseconds=437404)",
+    -85413000.562596,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=881.25, seconds=990865.421),
+    "892 days, 17:14:25.421000",
+    "datetime.timedelta(days=892, seconds=62065, microseconds=421000)",
+    77130865.421,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-904.78,
+      microseconds=-9405822.45,
+      minutes=-6044.4,
+    ),
+    "-909 days, 0:32:14.594178",
+    "datetime.timedelta(days=-909, seconds=1934, microseconds=594178)",
+    -78535665.405822,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-425728.9, microseconds=5148259.3),
+    "-5 days, 1:44:36.248259",
+    "datetime.timedelta(days=-5, seconds=6276, microseconds=248259)",
+    -425723.751741,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-376.7,
+      seconds=275468.120815,
+      minutes=7649.2,
+    ),
+    "-369 days, 19:12:20.120815",
+    "datetime.timedelta(days=-369, seconds=69140, microseconds=120815)",
+    -31812459.879185,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-986496.7, minutes=7917.62),
+    "-6 days, 1:56:00.500000",
+    "datetime.timedelta(days=-6, seconds=6960, microseconds=500000)",
+    -511439.5,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-92.12, minutes=6664.32292),
+    "-88 days, 12:11:31.375200",
+    "datetime.timedelta(days=-88, seconds=43891, microseconds=375200)",
+    -7559308.6248,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=973.6, weeks=-6.570272),
+    "927 days, 14:35:39.494400",
+    "datetime.timedelta(days=927, seconds=52539, microseconds=494400)",
+    80145339.4944,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-189482.002, hours=94.7),
+    "1 day, 18:03:57.998000",
+    "datetime.timedelta(days=1, seconds=65037, microseconds=998000)",
+    151437.998,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=230930.13, minutes=-5564.26),
+    "-2 days, 19:24:34.530000",
+    "datetime.timedelta(days=-2, seconds=69874, microseconds=530000)",
+    -102925.47,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-759.0,
+      microseconds=1500139.541419,
+      milliseconds=-1945.828,
+      minutes=-9571.37,
+      hours=-97.51,
+      weeks=-4.9,
+    ),
+    "-805 days, 23:46:01.354312",
+    "datetime.timedelta(days=-805, seconds=85561, microseconds=354312)",
+    -69466438.645688,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=125.838),
+    "125 days, 20:06:43.200000",
+    "datetime.timedelta(days=125, seconds=72403, microseconds=200000)",
+    10872403.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=120.4,
+      microseconds=9625241.681,
+      minutes=-6640.227674,
+    ),
+    "115 days, 18:55:55.964802",
+    "datetime.timedelta(days=115, seconds=68155, microseconds=964802)",
+    10004155.964802,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-833456.35,
+      microseconds=7087297.658793,
+      weeks=-6.339589,
+    ),
+    "-55 days, 23:26:07.310098",
+    "datetime.timedelta(days=-55, seconds=84367, microseconds=310098)",
+    -4667632.689902,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-5069.62442),
+    "-4 days, 11:30:22.534800",
+    "datetime.timedelta(days=-4, seconds=41422, microseconds=534800)",
+    -304177.4652,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=346106.05,
+      milliseconds=-3016.52,
+      hours=-61.12,
+    ),
+    "1 day, 11:01:11.033480",
+    "datetime.timedelta(days=1, seconds=39671, microseconds=33480)",
+    126071.03348,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-201057.3),
+    "-3 days, 16:09:02.700000",
+    "datetime.timedelta(days=-3, seconds=58142, microseconds=700000)",
+    -201057.3,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=711411.942,
+      microseconds=-4897776.772,
+      minutes=-9292.83,
+    ),
+    "1 day, 18:43:57.244223",
+    "datetime.timedelta(days=1, seconds=67437, microseconds=244223)",
+    153837.244223,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-796.79),
+    "-797 days, 5:02:24",
+    "datetime.timedelta(days=-797, seconds=18144)",
+    -68842656.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-847.96,
+      milliseconds=-7386.22,
+      minutes=2892.105,
+    ),
+    "-846 days, 1:09:34.913780",
+    "datetime.timedelta(days=-846, seconds=4174, microseconds=913780)",
+    -73090225.08622,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=9019.133809, weeks=8.1),
+    "56 days, 16:48:09.019134",
+    "datetime.timedelta(days=56, seconds=60489, microseconds=19134)",
+    4898889.019134,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-356084.5,
+      microseconds=8745346.99,
+      milliseconds=-3872.7,
+    ),
+    "-5 days, 21:05:20.372647",
+    "datetime.timedelta(days=-5, seconds=75920, microseconds=372647)",
+    -356079.627353,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-2128.708, weeks=3.537595),
+    "23 days, 6:50:14.976000",
+    "datetime.timedelta(days=23, seconds=24614, microseconds=976000)",
+    2011814.976,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=7918043.0),
+    "0:00:07.918043",
+    "datetime.timedelta(seconds=7, microseconds=918043)",
+    7.918043,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-410.256691, minutes=-3299.8),
+    "-413 days, 10:50:33.897600",
+    "datetime.timedelta(days=-413, seconds=39033, microseconds=897600)",
+    -35644166.1024,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=608.767563),
+    "608 days, 18:25:17.443200",
+    "datetime.timedelta(days=608, seconds=66317, microseconds=443200)",
+    52597517.4432,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=831687.933442,
+      milliseconds=-7403.96,
+    ),
+    "9 days, 15:01:20.529482",
+    "datetime.timedelta(days=9, seconds=54080, microseconds=529482)",
+    831680.529482,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-306.323548,
+      seconds=459418.887,
+      microseconds=-6900736.953,
+      milliseconds=2826.4,
+      minutes=-9380.09,
+    ),
+    "-308 days, 11:30:54.865463",
+    "datetime.timedelta(days=-308, seconds=41454, microseconds=865463)",
+    -26569745.134537,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-460754.44,
+      hours=-18.15,
+      weeks=1.559743,
+    ),
+    "4 days, 19:53:58.126400",
+    "datetime.timedelta(days=4, seconds=71638, microseconds=126400)",
+    417238.1264,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-676002.904147,
+      microseconds=-6747007.2348,
+      minutes=4965.651,
+    ),
+    "-5 days, 14:58:49.408846",
+    "datetime.timedelta(days=-5, seconds=53929, microseconds=408846)",
+    -378070.591154,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-40.304),
+    "-2 days, 7:41:45.600000",
+    "datetime.timedelta(days=-2, seconds=27705, microseconds=600000)",
+    -145094.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=881326.08,
+      microseconds=8940874.9,
+      milliseconds=-6834.601207,
+      hours=67.900423,
+    ),
+    "13 days, 0:42:49.709074",
+    "datetime.timedelta(days=13, seconds=2569, microseconds=709074)",
+    1125769.709074,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=995.952565,
+      seconds=-220849.9,
+      minutes=2765.940053,
+      hours=-92.3,
+    ),
+    "991 days, 11:18:48.119180",
+    "datetime.timedelta(days=991, seconds=40728, microseconds=119180)",
+    85663128.11918,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-375960.59),
+    "-5 days, 15:33:59.410000",
+    "datetime.timedelta(days=-5, seconds=56039, microseconds=410000)",
+    -375960.59,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-589.942,
+      milliseconds=6939.519344,
+      hours=22.526819,
+      weeks=-9.679572,
+    ),
+    "-657 days, 5:45:09.542319",
+    "datetime.timedelta(days=-657, seconds=20709, microseconds=542319)",
+    -56744090.457681,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4957446.426519,
+      milliseconds=-4849.615,
+      hours=-14.452,
+    ),
+    "-1 day, 9:32:52.907831",
+    "datetime.timedelta(days=-1, seconds=34372, microseconds=907831)",
+    -52027.092169,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-580.244601,
+      seconds=321666.72,
+      minutes=1402.0,
+    ),
+    "-576 days, 10:50:53.193600",
+    "datetime.timedelta(days=-576, seconds=39053, microseconds=193600)",
+    -49727346.8064,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-4909.677568),
+    "-4 days, 14:10:19.345920",
+    "datetime.timedelta(days=-4, seconds=51019, microseconds=345920)",
+    -294580.65408,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=7516351.57, minutes=7645.57796),
+    "5 days, 7:25:42.193952",
+    "datetime.timedelta(days=5, seconds=26742, microseconds=193952)",
+    458742.193952,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-283.801718, minutes=-272.3),
+    "-284 days, 0:13:13.564800",
+    "datetime.timedelta(days=-284, seconds=793, microseconds=564800)",
+    -24536806.4352,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=593.554,
+      microseconds=3377473.67,
+      milliseconds=-7471.771,
+    ),
+    "593 days, 13:17:41.505703",
+    "datetime.timedelta(days=593, seconds=47861, microseconds=505703)",
+    51283061.505703,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=544.9,
+      seconds=352707.777542,
+      microseconds=2539709.5,
+      hours=-8.355,
+      weeks=2.289796,
+    ),
+    "564 days, 15:54:20.938051",
+    "datetime.timedelta(days=564, seconds=57260, microseconds=938051)",
+    48786860.938051,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=547241.337439,
+      milliseconds=6526.18,
+      minutes=2836.1,
+      weeks=4.299,
+    ),
+    "38 days, 9:30:49.063619",
+    "datetime.timedelta(days=38, seconds=34249, microseconds=63619)",
+    3317449.063619,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=363.3,
+      milliseconds=6830.305,
+      minutes=-6664.5,
+      hours=-16.670919,
+    ),
+    "357 days, 23:27:21.521905",
+    "datetime.timedelta(days=357, seconds=84441, microseconds=521905)",
+    30929241.521905,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=462.105,
+      seconds=271597.558275,
+      microseconds=-5176597.4,
+      milliseconds=-3002.693,
+      minutes=3346.8,
+      hours=1.1,
+    ),
+    "467 days, 14:50:29.378985",
+    "datetime.timedelta(days=467, seconds=53429, microseconds=378985)",
+    40402229.378985,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-434.128, hours=64.898794),
+    "2 days, 9:39:47.978400",
+    "datetime.timedelta(days=2, seconds=34787, microseconds=978400)",
+    207587.9784,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-4.102),
+    "-1 day, 23:59:59.995898",
+    "datetime.timedelta(days=-1, seconds=86399, microseconds=995898)",
+    -0.004102,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-895.1,
+      seconds=-92970.83,
+      microseconds=9589593.221,
+      hours=-91.47,
+    ),
+    "-900 days, 0:18:26.759593",
+    "datetime.timedelta(days=-900, seconds=1106, microseconds=759593)",
+    -77758893.240407,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-6657352.064377),
+    "-1 day, 23:59:53.342648",
+    "datetime.timedelta(days=-1, seconds=86393, microseconds=342648)",
+    -6.657352,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=4540.791723),
+    "3 days, 3:40:47.503380",
+    "datetime.timedelta(days=3, seconds=13247, microseconds=503380)",
+    272447.50338,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=692280.5,
+      milliseconds=3564.311,
+      minutes=6747.6,
+    ),
+    "12 days, 16:45:40.064311",
+    "datetime.timedelta(days=12, seconds=60340, microseconds=64311)",
+    1097140.064311,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-571437.687, weeks=-5.393),
+    "-45 days, 15:14:35.913000",
+    "datetime.timedelta(days=-45, seconds=54875, microseconds=913000)",
+    -3833124.087,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-196.39, milliseconds=-2971.39),
+    "-197 days, 14:38:21.028610",
+    "datetime.timedelta(days=-197, seconds=52701, microseconds=28610)",
+    -16968098.97139,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-2771.3, weeks=1.737459),
+    "12 days, 3:53:32.431900",
+    "datetime.timedelta(days=12, seconds=14012, microseconds=431900)",
+    1050812.4319,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-25.0406),
+    "-2 days, 22:57:33.840000",
+    "datetime.timedelta(days=-2, seconds=82653, microseconds=840000)",
+    -90146.16,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-6352.834836),
+    "-5 days, 14:07:09.909840",
+    "datetime.timedelta(days=-5, seconds=50829, microseconds=909840)",
+    -381170.09016,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-454.53,
+      microseconds=8513442.155958,
+      milliseconds=-4257.82,
+      minutes=-1885.8,
+    ),
+    "-456 days, 3:51:04.255622",
+    "datetime.timedelta(days=-456, seconds=13864, microseconds=255622)",
+    -39384535.744378,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=375.7,
+      seconds=556220.644906,
+      milliseconds=-9841.428,
+    ),
+    "382 days, 3:18:10.803478",
+    "datetime.timedelta(days=382, seconds=11890, microseconds=803478)",
+    33016690.803478,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-438.1, weeks=-0.09),
+    "-439 days, 6:28:48",
+    "datetime.timedelta(days=-439, seconds=23328)",
+    -37906272.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=561.279,
+      seconds=26294.3,
+      milliseconds=-6329.456,
+      hours=58.8,
+    ),
+    "564 days, 0:47:53.570544",
+    "datetime.timedelta(days=564, seconds=2873, microseconds=570544)",
+    48732473.570544,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=781.6,
+      seconds=818558.209396,
+      minutes=-8697.06795,
+    ),
+    "785 days, 0:49:34.132396",
+    "datetime.timedelta(days=785, seconds=2974, microseconds=132396)",
+    67826974.132396,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8995471.532,
+      milliseconds=3373.0,
+      minutes=2349.3,
+      hours=-38.3,
+    ),
+    "0:51:30.368472",
+    "datetime.timedelta(seconds=3090, microseconds=368472)",
+    3090.368472,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=19.5),
+    "19 days, 12:00:00",
+    "datetime.timedelta(days=19, seconds=43200)",
+    1684800.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=31548.13,
+      milliseconds=1689.0,
+      minutes=3756.9,
+      weeks=-5.770123,
+    ),
+    "-38 days, 13:59:53.428600",
+    "datetime.timedelta(days=-38, seconds=50393, microseconds=428600)",
+    -3232806.5714,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-539.512067,
+      seconds=418924.244891,
+      microseconds=998622.296828,
+    ),
+    "-535 days, 8:04:42.654713",
+    "datetime.timedelta(days=-535, seconds=29082, microseconds=654713)",
+    -46194917.345287,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=981.082524),
+    "981 days, 1:58:50.073600",
+    "datetime.timedelta(days=981, seconds=7130, microseconds=73600)",
+    84765530.0736,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=602.9,
+      microseconds=-5088636.261,
+      minutes=-731.51,
+      hours=-5.81,
+    ),
+    "602 days, 3:35:48.311364",
+    "datetime.timedelta(days=602, seconds=12948, microseconds=311364)",
+    52025748.311364,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=666.0,
+      seconds=557807.44,
+      milliseconds=-3094.63,
+      hours=60.31,
+    ),
+    "674 days, 23:15:20.345370",
+    "datetime.timedelta(days=674, seconds=83720, microseconds=345370)",
+    58317320.34537,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-923090.395539,
+      minutes=-4358.047,
+      hours=-84.05,
+    ),
+    "-18 days, 18:54:06.784461",
+    "datetime.timedelta(days=-18, seconds=68046, microseconds=784461)",
+    -1487153.215539,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-517.31,
+      seconds=-411280.382,
+      milliseconds=5594.23,
+      minutes=-9326.386379,
+      weeks=-4.8,
+    ),
+    "-563 days, 20:28:38.029490",
+    "datetime.timedelta(days=-563, seconds=73718, microseconds=29490)",
+    -48569481.97051,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=393.873),
+    "393 days, 20:57:07.200000",
+    "datetime.timedelta(days=393, seconds=75427, microseconds=200000)",
+    34030627.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-352.9, minutes=6339.0, hours=55.21076),
+    "-347 days, 19:15:38.736000",
+    "datetime.timedelta(days=-347, seconds=69338, microseconds=736000)",
+    -29911461.264,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=250415.81,
+      milliseconds=-1785.460421,
+    ),
+    "2 days, 21:33:34.024540",
+    "datetime.timedelta(days=2, seconds=77614, microseconds=24540)",
+    250414.02454,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=891.434,
+      milliseconds=2375.6,
+      hours=-33.165929,
+      weeks=-1.24,
+    ),
+    "881 days, 8:55:50.631200",
+    "datetime.timedelta(days=881, seconds=32150, microseconds=631200)",
+    76150550.6312,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-257.394142,
+      microseconds=9650601.0,
+      hours=51.2,
+    ),
+    "-256 days, 17:44:35.781801",
+    "datetime.timedelta(days=-256, seconds=63875, microseconds=781801)",
+    -22054524.218199,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=689.423603,
+      microseconds=-5758620.696267,
+      minutes=-9874.2,
+      hours=-16.5,
+    ),
+    "681 days, 21:05:41.540579",
+    "datetime.timedelta(days=681, seconds=75941, microseconds=540579)",
+    58914341.540579,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-148.8, minutes=1749.46, hours=23.873),
+    "-147 days, 9:49:50.400000",
+    "datetime.timedelta(days=-147, seconds=35390, microseconds=400000)",
+    -12665409.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-893.902),
+    "-894 days, 2:21:07.200000",
+    "datetime.timedelta(days=-894, seconds=8467, microseconds=200000)",
+    -77233132.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-6806.8, minutes=-8093.50146),
+    "-6 days, 9:06:23.105600",
+    "datetime.timedelta(days=-6, seconds=32783, microseconds=105600)",
+    -485616.8944,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-6634.866,
+      minutes=-6470.3,
+      hours=-2.21,
+      weeks=-3.7,
+    ),
+    "-31 days, 12:20:59.365134",
+    "datetime.timedelta(days=-31, seconds=44459, microseconds=365134)",
+    -2633940.634866,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-905.826, minutes=5557.894894),
+    "-902 days, 0:48:27.293640",
+    "datetime.timedelta(days=-902, seconds=2907, microseconds=293640)",
+    -77929892.70636,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-778797.078,
+      microseconds=3982170.8,
+      milliseconds=-4133.66,
+      hours=-16.338406,
+    ),
+    "-10 days, 7:19:44.508911",
+    "datetime.timedelta(days=-10, seconds=26384, microseconds=508911)",
+    -837615.491089,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=3281114.968),
+    "0:00:03.281115",
+    "datetime.timedelta(seconds=3, microseconds=281115)",
+    3.281115,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-682.773,
+      minutes=-9772.712,
+      hours=-91.147,
+      weeks=9.82,
+    ),
+    "-625 days, 9:10:56.880000",
+    "datetime.timedelta(days=-625, seconds=33056, microseconds=880000)",
+    -53966943.12,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-7176.027, weeks=-3.849),
+    "-27 days, 1:21:57.623973",
+    "datetime.timedelta(days=-27, seconds=4917, microseconds=623973)",
+    -2327882.376027,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-249651.809439,
+      milliseconds=-2636.9,
+      hours=-6.387,
+      weeks=7.544,
+    ),
+    "49 days, 15:39:23.553661",
+    "datetime.timedelta(days=49, seconds=56363, microseconds=553661)",
+    4289963.553661,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-393458.3),
+    "-5 days, 10:42:21.700000",
+    "datetime.timedelta(days=-5, seconds=38541, microseconds=700000)",
+    -393458.3,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=932068.197, weeks=-7.0),
+    "-39 days, 18:54:28.197000",
+    "datetime.timedelta(days=-39, seconds=68068, microseconds=197000)",
+    -3301531.803,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-724830.028,
+      microseconds=-7663661.1,
+      milliseconds=2307.31,
+      hours=-44.6,
+    ),
+    "-11 days, 18:03:24.615649",
+    "datetime.timedelta(days=-11, seconds=65004, microseconds=615649)",
+    -885395.384351,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=8.188318),
+    "57 days, 7:38:14.726400",
+    "datetime.timedelta(days=57, seconds=27494, microseconds=726400)",
+    4952294.7264,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-814384.7,
+      milliseconds=7268.751682,
+      minutes=1338.931552,
+    ),
+    "-9 days, 12:05:58.461872",
+    "datetime.timedelta(days=-9, seconds=43558, microseconds=461872)",
+    -734041.538128,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-316.192104, minutes=1906.2),
+    "-315 days, 3:09:34.214400",
+    "datetime.timedelta(days=-315, seconds=11374, microseconds=214400)",
+    -27204625.7856,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4592108.541,
+      minutes=-9034.73,
+      weeks=-1.885356,
+    ),
+    "-20 days, 12:40:57.483309",
+    "datetime.timedelta(days=-20, seconds=45657, microseconds=483309)",
+    -1682342.516691,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=738804.9,
+      microseconds=9137972.85504,
+    ),
+    "8 days, 13:13:34.037973",
+    "datetime.timedelta(days=8, seconds=47614, microseconds=37973)",
+    738814.037973,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=317.079941,
+      microseconds=7887643.608764,
+      milliseconds=-4380.734,
+      hours=96.147974,
+    ),
+    "321 days, 2:04:03.115710",
+    "datetime.timedelta(days=321, seconds=7443, microseconds=115710)",
+    27741843.11571,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=675801.89,
+      milliseconds=8191.09,
+      minutes=1781.211747,
+    ),
+    "9 days, 1:24:42.785910",
+    "datetime.timedelta(days=9, seconds=5082, microseconds=785910)",
+    782682.78591,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-122.025706,
+      milliseconds=2917.345,
+      weeks=0.286375,
+    ),
+    "-121 days, 23:29:41.518945",
+    "datetime.timedelta(days=-121, seconds=84581, microseconds=518945)",
+    -10369818.481055,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=841071.438,
+      microseconds=55357.025489,
+      milliseconds=-8020.1,
+      minutes=8549.66,
+      weeks=3.48,
+    ),
+    "40 days, 0:45:47.073257",
+    "datetime.timedelta(days=40, seconds=2747, microseconds=73257)",
+    3458747.073257,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=9301433.4),
+    "0:00:09.301433",
+    "datetime.timedelta(seconds=9, microseconds=301433)",
+    9.301433,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=300473.885),
+    "3 days, 11:27:53.885000",
+    "datetime.timedelta(days=3, seconds=41273, microseconds=885000)",
+    300473.885,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-228615.346,
+      milliseconds=2232.87,
+      weeks=0.495,
+    ),
+    "19:39:22.886870",
+    "datetime.timedelta(seconds=70762, microseconds=886870)",
+    70762.88687,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-930701.5,
+      microseconds=-7275420.878,
+      milliseconds=-4113.2,
+    ),
+    "-11 days, 5:28:07.111379",
+    "datetime.timedelta(days=-11, seconds=19687, microseconds=111379)",
+    -930712.888621,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-107.91935,
+      milliseconds=8679.5,
+      minutes=-5423.45,
+      hours=-92.05,
+      weeks=1.449,
+    ),
+    "-106 days, 14:55:45.039500",
+    "datetime.timedelta(days=-106, seconds=53745, microseconds=39500)",
+    -9104654.9605,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-5854.087031, hours=80.809),
+    "-1 day, 7:14:27.178140",
+    "datetime.timedelta(days=-1, seconds=26067, microseconds=178140)",
+    -60332.82186,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-5300133.018,
+      milliseconds=2821.27,
+      weeks=-4.031,
+    ),
+    "-29 days, 18:47:28.721137",
+    "datetime.timedelta(days=-29, seconds=67648, microseconds=721137)",
+    -2437951.278863,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=654.239, minutes=8510.2),
+    "660 days, 3:34:21.600000",
+    "datetime.timedelta(days=660, seconds=12861, microseconds=600000)",
+    57036861.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-8058.386, weeks=5.3),
+    "31 days, 12:05:36.840000",
+    "datetime.timedelta(days=31, seconds=43536, microseconds=840000)",
+    2721936.84,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=443.853,
+      seconds=-986711.63,
+      microseconds=962534.9,
+      milliseconds=-9264.8,
+    ),
+    "432 days, 10:22:59.267735",
+    "datetime.timedelta(days=432, seconds=37379, microseconds=267735)",
+    37362179.267735,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-187.406313,
+      seconds=507023.491,
+      milliseconds=7587.985609,
+      hours=-97.660369,
+      weeks=5.937003,
+    ),
+    "-145 days, 22:50:47.721786",
+    "datetime.timedelta(days=-145, seconds=82247, microseconds=721786)",
+    -12445752.278214,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=2391.21, minutes=-1795.0),
+    "-2 days, 18:05:02.391210",
+    "datetime.timedelta(days=-2, seconds=65102, microseconds=391210)",
+    -107697.60879,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-627315.43,
+      microseconds=-6373527.939516,
+      minutes=2205.078,
+    ),
+    "-6 days, 6:29:42.876472",
+    "datetime.timedelta(days=-6, seconds=23382, microseconds=876472)",
+    -495017.123528,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-151881.291,
+      microseconds=4957497.9,
+      milliseconds=9987.728,
+      minutes=-37.072762,
+    ),
+    "-2 days, 5:11:49.288506",
+    "datetime.timedelta(days=-2, seconds=18709, microseconds=288506)",
+    -154090.711494,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-504.327,
+      milliseconds=-2719.5,
+      minutes=-1144.44,
+    ),
+    "-506 days, 21:04:38.080500",
+    "datetime.timedelta(days=-506, seconds=75878, microseconds=80500)",
+    -43642521.9195,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=2177321.608182,
+      milliseconds=7216.1,
+      minutes=3440.8,
+      hours=-56.096,
+      weeks=-0.305501,
+    ),
+    "-3 days, 21:55:44.788622",
+    "datetime.timedelta(days=-3, seconds=78944, microseconds=788622)",
+    -180255.211378,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-3419.988036, weeks=6.6),
+    "43 days, 19:48:00.717840",
+    "datetime.timedelta(days=43, seconds=71280, microseconds=717840)",
+    3786480.71784,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=128.997, hours=94.433428, weeks=-8.27),
+    "75 days, 1:00:05.140800",
+    "datetime.timedelta(days=75, seconds=3605, microseconds=140800)",
+    6483605.1408,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-619990.441603,
+      milliseconds=4830.86,
+      minutes=5232.8,
+      hours=66.47,
+    ),
+    "-1 day, 5:27:54.389257",
+    "datetime.timedelta(days=-1, seconds=19674, microseconds=389257)",
+    -66725.610743,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-144.9,
+      seconds=-422295.22,
+      microseconds=6471137.5,
+      minutes=-2872.471,
+      weeks=7.860455,
+    ),
+    "-97 days, 5:46:46.175137",
+    "datetime.timedelta(days=-97, seconds=20806, microseconds=175137)",
+    -8359993.824863,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-180.689973, minutes=-9693.21),
+    "-188 days, 13:53:13.732800",
+    "datetime.timedelta(days=-188, seconds=49993, microseconds=732800)",
+    -16193206.2672,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=2981240.1,
+      milliseconds=9391.25,
+    ),
+    "0:00:12.372490",
+    "datetime.timedelta(seconds=12, microseconds=372490)",
+    12.37249,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      minutes=-345.081,
+      hours=72.99,
+      weeks=0.654351,
+    ),
+    "7 days, 9:10:10.624800",
+    "datetime.timedelta(days=7, seconds=33010, microseconds=624800)",
+    637810.6248,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=945.06,
+      hours=-76.9,
+      weeks=-8.18,
+    ),
+    "-61 days, 12:51:36.000945",
+    "datetime.timedelta(days=-61, seconds=46296, microseconds=945)",
+    -5224103.999055,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=999.882,
+      seconds=-259533.16,
+      microseconds=-7655413.124633,
+    ),
+    "996 days, 21:04:23.984587",
+    "datetime.timedelta(days=996, seconds=75863, microseconds=984587)",
+    86130263.984587,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=3269.473782, hours=-88.290652),
+    "-4 days, 7:42:36.922274",
+    "datetime.timedelta(days=-4, seconds=27756, microseconds=922274)",
+    -317843.077726,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=763.725189, hours=-7.55, weeks=3.8),
+    "790 days, 0:15:16.329600",
+    "datetime.timedelta(days=790, seconds=916, microseconds=329600)",
+    68256916.3296,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=81.07, weeks=2.14),
+    "18 days, 8:35:24",
+    "datetime.timedelta(days=18, seconds=30924)",
+    1586124.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-6104683.192215,
+      milliseconds=1035.712557,
+      minutes=2972.26,
+      weeks=-7.15,
+    ),
+    "-48 days, 0:20:10.531029",
+    "datetime.timedelta(days=-48, seconds=1210, microseconds=531029)",
+    -4145989.468971,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=9131416.3, minutes=3415.14),
+    "2 days, 8:55:17.531416",
+    "datetime.timedelta(days=2, seconds=32117, microseconds=531416)",
+    204917.531416,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-17.03,
+      microseconds=8086704.3,
+      milliseconds=5725.86744,
+      minutes=6423.485,
+      weeks=-9.03,
+    ),
+    "-76 days, 5:18:06.912572",
+    "datetime.timedelta(days=-76, seconds=19086, microseconds=912572)",
+    -6547313.087428,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=23.26, weeks=-3.621),
+    "-25 days, 14:55:55.200000",
+    "datetime.timedelta(days=-25, seconds=53755, microseconds=200000)",
+    -2106244.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=756.58, weeks=9.5),
+    "823 days, 1:55:12",
+    "datetime.timedelta(days=823, seconds=6912)",
+    71114112.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-56.113688, milliseconds=-4630.231),
+    "-57 days, 21:16:12.726569",
+    "datetime.timedelta(days=-57, seconds=76572, microseconds=726569)",
+    -4848227.273431,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=461.8, seconds=213595.836, weeks=-1.44),
+    "454 days, 4:36:43.836000",
+    "datetime.timedelta(days=454, seconds=16603, microseconds=836000)",
+    39242203.836,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-841255.483,
+      milliseconds=-4941.457225,
+      hours=7.83,
+    ),
+    "-10 days, 14:08:47.575543",
+    "datetime.timedelta(days=-10, seconds=50927, microseconds=575543)",
+    -813072.424457,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-506192.6,
+      minutes=-4529.032595,
+      hours=0.828513,
+      weeks=2.72,
+    ),
+    "10 days, 1:41:44.091100",
+    "datetime.timedelta(days=10, seconds=6104, microseconds=91100)",
+    870104.0911,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-691047.2, minutes=6201.761),
+    "-4 days, 7:24:18.460000",
+    "datetime.timedelta(days=-4, seconds=26658, microseconds=460000)",
+    -318941.54,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=816044.53,
+      microseconds=7433633.13,
+      minutes=-3023.1,
+      hours=33.162,
+    ),
+    "8 days, 17:27:29.163633",
+    "datetime.timedelta(days=8, seconds=62849, microseconds=163633)",
+    754049.163633,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-553.437869),
+    "-554 days, 13:29:28.118400",
+    "datetime.timedelta(days=-554, seconds=48568, microseconds=118400)",
+    -47817031.8816,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-50.927417),
+    "-3 days, 21:04:21.298800",
+    "datetime.timedelta(days=-3, seconds=75861, microseconds=298800)",
+    -183338.7012,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=769.150446, hours=79.9),
+    "772 days, 11:30:38.534400",
+    "datetime.timedelta(days=772, seconds=41438, microseconds=534400)",
+    66742238.5344,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=44.147),
+    "1 day, 20:08:49.200000",
+    "datetime.timedelta(days=1, seconds=72529, microseconds=200000)",
+    158929.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-359.204495,
+      seconds=-198246.33,
+      milliseconds=-815.3,
+      minutes=-1644.1,
+      hours=84.667971,
+    ),
+    "-360 days, 21:17:23.182300",
+    "datetime.timedelta(days=-360, seconds=76643, microseconds=182300)",
+    -31027356.8177,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-24.59, weeks=9.92),
+    "68 days, 9:58:12",
+    "datetime.timedelta(days=68, seconds=35892)",
+    5911092.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=597.672, hours=-6.073, weeks=3.779),
+    "623 days, 20:55:37.200000",
+    "datetime.timedelta(days=623, seconds=75337, microseconds=200000)",
+    53902537.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=269620.6, weeks=-7.9),
+    "-53 days, 19:41:40.600000",
+    "datetime.timedelta(days=-53, seconds=70900, microseconds=600000)",
+    -4508299.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5243.652806, weeks=-7.3),
+    "-52 days, 21:35:54.756347",
+    "datetime.timedelta(days=-52, seconds=77754, microseconds=756347)",
+    -4415045.243653,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-484192.35,
+      microseconds=-828209.466,
+      milliseconds=-796.403,
+      minutes=8708.794,
+      hours=25.774517,
+    ),
+    "1 day, 12:25:21.926588",
+    "datetime.timedelta(days=1, seconds=44721, microseconds=926588)",
+    131121.926588,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-784.678943,
+      microseconds=2825514.537,
+      milliseconds=-6009.5,
+    ),
+    "-785 days, 7:42:16.140815",
+    "datetime.timedelta(days=-785, seconds=27736, microseconds=140815)",
+    -67796263.859185,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=9108.342194,
+      minutes=9570.82801,
+      weeks=-0.450722,
+    ),
+    "3 days, 11:47:42.123342",
+    "datetime.timedelta(days=3, seconds=42462, microseconds=123342)",
+    301662.123342,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=327.1, milliseconds=-6342.613598),
+    "327 days, 2:23:53.657386",
+    "datetime.timedelta(days=327, seconds=8633, microseconds=657386)",
+    28261433.657386,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=492.5, weeks=-3.664353),
+    "466 days, 20:23:19.305600",
+    "datetime.timedelta(days=466, seconds=73399, microseconds=305600)",
+    40335799.3056,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=253.877, minutes=9127.4, weeks=6.2),
+    "303 days, 14:46:16.800000",
+    "datetime.timedelta(days=303, seconds=53176, microseconds=800000)",
+    26232376.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=238.0,
+      microseconds=2564053.55,
+      milliseconds=1276.6,
+    ),
+    "238 days, 0:00:03.840654",
+    "datetime.timedelta(days=238, seconds=3, microseconds=840654)",
+    20563203.840654,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=860.8,
+      seconds=24229.774881,
+      weeks=0.219,
+    ),
+    "862 days, 14:43:20.974881",
+    "datetime.timedelta(days=862, seconds=53000, microseconds=974881)",
+    74529800.974881,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-6035164.72, weeks=5.835),
+    "40 days, 20:16:41.964835",
+    "datetime.timedelta(days=40, seconds=73001, microseconds=964835)",
+    3529001.964835,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=572.8, minutes=8259.455227),
+    "578 days, 12:51:27.313620",
+    "datetime.timedelta(days=578, seconds=46287, microseconds=313620)",
+    49985487.31362,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=856568.321708),
+    "9 days, 21:56:08.321708",
+    "datetime.timedelta(days=9, seconds=78968, microseconds=321708)",
+    856568.321708,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=722189.687,
+      milliseconds=7256.920306,
+      minutes=-6788.04,
+    ),
+    "3 days, 15:28:34.543920",
+    "datetime.timedelta(days=3, seconds=55714, microseconds=543920)",
+    314914.54392,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=58.5, weeks=-3.6),
+    "-23 days, 5:42:00",
+    "datetime.timedelta(days=-23, seconds=20520)",
+    -1966680.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-4402.57, hours=78.366731),
+    "4:59:26.031600",
+    "datetime.timedelta(seconds=17966, microseconds=31600)",
+    17966.0316,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=180.16,
+      milliseconds=8724.87,
+      minutes=-7575.873159,
+      hours=-77.98,
+    ),
+    "171 days, 15:35:52.335330",
+    "datetime.timedelta(days=171, seconds=56152, microseconds=335330)",
+    14830552.33533,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-397.985,
+      seconds=305433.37,
+      microseconds=-5778650.707288,
+      milliseconds=5125.71,
+      minutes=-4409.094458,
+      hours=34.97,
+    ),
+    "-397 days, 22:41:15.049579",
+    "datetime.timedelta(days=-397, seconds=81675, microseconds=49579)",
+    -34219124.950421,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-390.15,
+      seconds=-912551.591,
+      minutes=-486.274006,
+      hours=-76.160869,
+      weeks=-9.9,
+    ),
+    "-474 days, 11:26:52.840240",
+    "datetime.timedelta(days=-474, seconds=41212, microseconds=840240)",
+    -40912387.15976,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=546.9, seconds=-834811.308248),
+    "537 days, 5:42:28.691752",
+    "datetime.timedelta(days=537, seconds=20548, microseconds=691752)",
+    46417348.691752,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=145.08,
+      microseconds=7532081.945,
+      milliseconds=-8911.297222,
+      minutes=8528.2,
+      weeks=-9.261,
+    ),
+    "86 days, 4:12:29.820785",
+    "datetime.timedelta(days=86, seconds=15149, microseconds=820785)",
+    7445549.820785,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-815.409),
+    "-816 days, 14:11:02.400000",
+    "datetime.timedelta(days=-816, seconds=51062, microseconds=400000)",
+    -70451337.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8567717.547657,
+      milliseconds=3077.283,
+      hours=-19.59,
+    ),
+    "-1 day, 4:24:47.645001",
+    "datetime.timedelta(days=-1, seconds=15887, microseconds=645001)",
+    -70512.354999,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-39.782, weeks=-0.3),
+    "-4 days, 5:49:04.800000",
+    "datetime.timedelta(days=-4, seconds=20944, microseconds=800000)",
+    -324655.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-7.291),
+    "-52 days, 23:06:43.200000",
+    "datetime.timedelta(days=-52, seconds=83203, microseconds=200000)",
+    -4409596.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-588571.0,
+      minutes=5050.7,
+      hours=-99.106556,
+    ),
+    "-8 days, 13:34:47.398400",
+    "datetime.timedelta(days=-8, seconds=48887, microseconds=398400)",
+    -642312.6016,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-6160.22, weeks=1.756828),
+    "12 days, 7:08:43.414180",
+    "datetime.timedelta(days=12, seconds=25723, microseconds=414180)",
+    1062523.41418,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-675.256, hours=61.89),
+    "-673 days, 7:44:45.600000",
+    "datetime.timedelta(days=-673, seconds=27885, microseconds=600000)",
+    -58119314.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-6810.5, hours=-7.719631),
+    "-6 days, 22:46:19.328400",
+    "datetime.timedelta(days=-6, seconds=81979, microseconds=328400)",
+    -436420.6716,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-812859.5,
+      microseconds=2865929.0,
+      hours=77.6342,
+    ),
+    "-7 days, 19:50:26.485929",
+    "datetime.timedelta(days=-7, seconds=71426, microseconds=485929)",
+    -533373.514071,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=712039.5,
+      milliseconds=645.069729,
+      weeks=-1.052,
+    ),
+    "21:03:10.545070",
+    "datetime.timedelta(seconds=75790, microseconds=545070)",
+    75790.54507,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-811.87, weeks=8.374803),
+    "58 days, 14:58:00.042530",
+    "datetime.timedelta(days=58, seconds=53880, microseconds=42530)",
+    5065080.04253,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4833.1, hours=47.0, weeks=-6.4),
+    "-43 days, 3:48:04.833100",
+    "datetime.timedelta(days=-43, seconds=13684, microseconds=833100)",
+    -3701515.1669,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=5365573.83,
+      milliseconds=-4124.7,
+      minutes=-1936.722,
+      hours=15.36392,
+      weeks=4.3,
+    ),
+    "29 days, 9:29:08.032874",
+    "datetime.timedelta(days=29, seconds=34148, microseconds=32874)",
+    2539748.032874,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-281985.9,
+      microseconds=-3939205.0,
+      milliseconds=7280.77,
+    ),
+    "-4 days, 17:40:17.441565",
+    "datetime.timedelta(days=-4, seconds=63617, microseconds=441565)",
+    -281982.558435,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=30.12, seconds=477601.67, weeks=5.777),
+    "76 days, 2:04:59.270000",
+    "datetime.timedelta(days=76, seconds=7499, microseconds=270000)",
+    6573899.27,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-915407.743912,
+      microseconds=-2484716.584,
+      hours=53.87,
+    ),
+    "-9 days, 15:35:21.771371",
+    "datetime.timedelta(days=-9, seconds=56121, microseconds=771371)",
+    -721478.228629,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-98.99, milliseconds=-8305.8),
+    "-99 days, 0:14:15.694200",
+    "datetime.timedelta(days=-99, seconds=855, microseconds=694200)",
+    -8552744.3058,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=4.337436),
+    "30 days, 8:41:21.292800",
+    "datetime.timedelta(days=30, seconds=31281, microseconds=292800)",
+    2623281.2928,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=568813.612,
+      milliseconds=3810.23,
+      minutes=-609.8,
+      weeks=3.676218,
+    ),
+    "31 days, 21:26:46.068630",
+    "datetime.timedelta(days=31, seconds=77206, microseconds=68630)",
+    2755606.06863,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-80.8),
+    "-4 days, 15:12:00",
+    "datetime.timedelta(days=-4, seconds=54720)",
+    -290880.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=395.1,
+      microseconds=6037438.481346,
+      weeks=-4.173,
+    ),
+    "365 days, 21:20:15.637438",
+    "datetime.timedelta(days=365, seconds=76815, microseconds=637438)",
+    31612815.637438,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=522039.998,
+      milliseconds=507.46,
+      weeks=-4.5,
+    ),
+    "-26 days, 13:00:40.505460",
+    "datetime.timedelta(days=-26, seconds=46840, microseconds=505460)",
+    -2199559.49454,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-1084.183968,
+      minutes=1461.14,
+      weeks=-4.563,
+    ),
+    "-31 days, 1:46:04.915816",
+    "datetime.timedelta(days=-31, seconds=6364, microseconds=915816)",
+    -2672035.084184,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-860741.88,
+      microseconds=-1662489.82515,
+      milliseconds=-4500.03,
+      minutes=-5063.2,
+    ),
+    "-14 days, 12:30:59.957480",
+    "datetime.timedelta(days=-14, seconds=45059, microseconds=957480)",
+    -1164540.04252,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-872.479,
+      seconds=-962960.07,
+      microseconds=1308074.9,
+      milliseconds=-2981.3,
+    ),
+    "-884 days, 9:00:52.656775",
+    "datetime.timedelta(days=-884, seconds=32452, microseconds=656775)",
+    -76345147.343225,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-601.007,
+      seconds=344327.987,
+      microseconds=-9165327.585,
+      minutes=-6071.5,
+    ),
+    "-602 days, 18:17:04.021672",
+    "datetime.timedelta(days=-602, seconds=65824, microseconds=21672)",
+    -51946975.978328,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=167.581286,
+      seconds=-118082.91,
+      milliseconds=3083.904129,
+      hours=-91.412178,
+    ),
+    "162 days, 9:44:19.443504",
+    "datetime.timedelta(days=162, seconds=35059, microseconds=443504)",
+    14031859.443504,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-481519.215988),
+    "-6 days, 10:14:40.784012",
+    "datetime.timedelta(days=-6, seconds=36880, microseconds=784012)",
+    -481519.215988,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=719347.912, hours=-35.7),
+    "6 days, 20:07:07.912000",
+    "datetime.timedelta(days=6, seconds=72427, microseconds=912000)",
+    590827.912,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=0.91),
+    "6 days, 8:52:48",
+    "datetime.timedelta(days=6, seconds=31968)",
+    550368.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=3173.16),
+    "0:00:03.173160",
+    "datetime.timedelta(seconds=3, microseconds=173160)",
+    3.17316,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-35.11, microseconds=3582214.1),
+    "-36 days, 21:21:39.582214",
+    "datetime.timedelta(days=-36, seconds=76899, microseconds=582214)",
+    -3033500.417786,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=608204.98,
+      microseconds=5009224.9,
+      hours=-64.436,
+    ),
+    "4 days, 8:30:40.389225",
+    "datetime.timedelta(days=4, seconds=30640, microseconds=389225)",
+    376240.389225,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=991.387819, microseconds=-4572215.895),
+    "991 days, 9:18:22.989384",
+    "datetime.timedelta(days=991, seconds=33502, microseconds=989384)",
+    85655902.989384,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=433.34,
+      microseconds=-7792871.7,
+      milliseconds=868.5,
+      weeks=7.108708,
+    ),
+    "483 days, 2:25:15.674028",
+    "datetime.timedelta(days=483, seconds=8715, microseconds=674028)",
+    41739915.674028,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-73.33),
+    "-4 days, 22:40:12",
+    "datetime.timedelta(days=-4, seconds=81612)",
+    -263988.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=144328.064, minutes=-9430.486347),
+    "-5 days, 2:54:58.883180",
+    "datetime.timedelta(days=-5, seconds=10498, microseconds=883180)",
+    -421501.11682,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=594101.47,
+      microseconds=-9370255.93,
+      milliseconds=-5310.562242,
+      minutes=6592.3,
+    ),
+    "11 days, 10:53:44.789182",
+    "datetime.timedelta(days=11, seconds=39224, microseconds=789182)",
+    989624.789182,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-9550539.551057,
+      milliseconds=-6512.2,
+    ),
+    "-1 day, 23:59:43.937260",
+    "datetime.timedelta(days=-1, seconds=86383, microseconds=937260)",
+    -16.06274,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-472.325346),
+    "-473 days, 16:11:30.105600",
+    "datetime.timedelta(days=-473, seconds=58290, microseconds=105600)",
+    -40808909.8944,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-2.6),
+    "-19 days, 19:12:00",
+    "datetime.timedelta(days=-19, seconds=69120)",
+    -1572480.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=646.214558, hours=-14.047),
+    "645 days, 15:06:08.611200",
+    "datetime.timedelta(days=645, seconds=54368, microseconds=611200)",
+    55782368.6112,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=44.167,
+      seconds=54778.72168,
+      milliseconds=6634.569,
+      weeks=-7.015406,
+    ),
+    "-5 days, 16:38:16.607449",
+    "datetime.timedelta(days=-5, seconds=59896, microseconds=607449)",
+    -372103.392551,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      minutes=4099.724895,
+      hours=-45.5,
+      weeks=-0.8,
+    ),
+    "-5 days, 8:25:43.493700",
+    "datetime.timedelta(days=-5, seconds=30343, microseconds=493700)",
+    -401656.5063,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-9931.73),
+    "-7 days, 2:28:16.200000",
+    "datetime.timedelta(days=-7, seconds=8896, microseconds=200000)",
+    -595903.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-239868.091, milliseconds=2495.96),
+    "-3 days, 5:22:14.404960",
+    "datetime.timedelta(days=-3, seconds=19334, microseconds=404960)",
+    -239865.59504,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-416.8,
+      seconds=-405669.621,
+      microseconds=3889212.73,
+      milliseconds=4427.628501,
+    ),
+    "-422 days, 12:06:58.695841",
+    "datetime.timedelta(days=-422, seconds=43618, microseconds=695841)",
+    -36417181.304159,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-5222.919, hours=-53.0, weeks=3.215),
+    "16 days, 16:04:16.860000",
+    "datetime.timedelta(days=16, seconds=57856, microseconds=860000)",
+    1440256.86,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-24.1),
+    "-2 days, 23:54:00",
+    "datetime.timedelta(days=-2, seconds=86040)",
+    -86760.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-671.93,
+      milliseconds=-5442.1,
+      weeks=1.763,
+    ),
+    "-660 days, 9:51:44.957900",
+    "datetime.timedelta(days=-660, seconds=35504, microseconds=957900)",
+    -56988495.0421,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=9583737.608),
+    "0:00:09.583738",
+    "datetime.timedelta(seconds=9, microseconds=583738)",
+    9.583738,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=931065.710211,
+      microseconds=-6120071.388097,
+      milliseconds=733.383,
+    ),
+    "10 days, 18:37:40.323523",
+    "datetime.timedelta(days=10, seconds=67060, microseconds=323523)",
+    931060.323523,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-780.190769, minutes=-7670.55),
+    "-786 days, 11:34:44.558400",
+    "datetime.timedelta(days=-786, seconds=41684, microseconds=558400)",
+    -67868715.4416,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=362.78,
+      seconds=585348.8,
+      microseconds=2097782.4,
+    ),
+    "369 days, 13:19:02.897782",
+    "datetime.timedelta(days=369, seconds=47942, microseconds=897782)",
+    31929542.897782,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-999.6),
+    "-1000 days, 9:36:00",
+    "datetime.timedelta(days=-1000, seconds=34560)",
+    -86365440.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=6728.9, weeks=-9.54),
+    "-67 days, 5:16:54.728900",
+    "datetime.timedelta(days=-67, seconds=19014, microseconds=728900)",
+    -5769785.2711,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-267.24,
+      seconds=-145485.1,
+      milliseconds=8812.657706,
+      weeks=5.8,
+    ),
+    "-229 days, 16:13:47.712658",
+    "datetime.timedelta(days=-229, seconds=58427, microseconds=712658)",
+    -19727172.287342,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=28583.15, hours=91.879),
+    "4 days, 3:49:07.550000",
+    "datetime.timedelta(days=4, seconds=13747, microseconds=550000)",
+    359347.55,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8974648.009,
+      minutes=9503.7,
+      weeks=5.9,
+    ),
+    "47 days, 21:35:50.974648",
+    "datetime.timedelta(days=47, seconds=77750, microseconds=974648)",
+    4138550.974648,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=4877.726272,
+      minutes=-2808.62,
+      weeks=2.4,
+    ),
+    "14 days, 20:23:27.677726",
+    "datetime.timedelta(days=14, seconds=73407, microseconds=677726)",
+    1283007.677726,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=865.4,
+      milliseconds=6307.58,
+      weeks=-5.368902,
+    ),
+    "827 days, 19:37:34.377980",
+    "datetime.timedelta(days=827, seconds=70654, microseconds=377980)",
+    71523454.37798,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=8385.81),
+    "5 days, 19:45:48.600000",
+    "datetime.timedelta(days=5, seconds=71148, microseconds=600000)",
+    503148.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-921530.51,
+      microseconds=-9949764.4,
+      milliseconds=-2419.228,
+      weeks=9.8,
+    ),
+    "57 days, 22:24:57.121008",
+    "datetime.timedelta(days=57, seconds=80697, microseconds=121008)",
+    5005497.121008,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-745638.714777,
+      microseconds=-8044454.71,
+      milliseconds=5565.356,
+      hours=-35.5,
+      weeks=-7.6,
+    ),
+    "-64 days, 16:34:38.806124",
+    "datetime.timedelta(days=-64, seconds=59678, microseconds=806124)",
+    -5469921.193876,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=949647.311,
+      microseconds=-6565529.237799,
+      milliseconds=1002.963,
+      hours=41.5,
+      weeks=-0.4,
+    ),
+    "9 days, 22:05:21.748434",
+    "datetime.timedelta(days=9, seconds=79521, microseconds=748434)",
+    857121.748434,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-1045854.140867,
+      milliseconds=-2472.6,
+      minutes=8126.084729,
+      weeks=7.006506,
+    ),
+    "54 days, 16:31:36.394086",
+    "datetime.timedelta(days=54, seconds=59496, microseconds=394086)",
+    4725096.394086,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=2151.637649),
+    "1 day, 11:51:38.258940",
+    "datetime.timedelta(days=1, seconds=42698, microseconds=258940)",
+    129098.25894,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-429097.839375, minutes=-2878.423),
+    "-7 days, 0:49:56.780625",
+    "datetime.timedelta(days=-7, seconds=2996, microseconds=780625)",
+    -601803.219375,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=865.61521, hours=45.29989),
+    "867 days, 12:03:53.748000",
+    "datetime.timedelta(days=867, seconds=43433, microseconds=748000)",
+    74952233.748,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-816.14,
+      seconds=971098.3,
+      microseconds=-6363630.0,
+      hours=-88.60815,
+      weeks=-4.8,
+    ),
+    "-843 days, 19:22:46.596370",
+    "datetime.timedelta(days=-843, seconds=69766, microseconds=596370)",
+    -72765433.40363,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-1752.144027),
+    "-2 days, 18:47:51.358380",
+    "datetime.timedelta(days=-2, seconds=67671, microseconds=358380)",
+    -105128.64162,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-28303.4,
+      microseconds=-6644674.16,
+      milliseconds=8525.453757,
+      minutes=1440.28,
+      weeks=2.8,
+    ),
+    "20 days, 6:32:35.280780",
+    "datetime.timedelta(days=20, seconds=23555, microseconds=280780)",
+    1751555.28078,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=391.065382,
+      microseconds=-9947893.4,
+      milliseconds=47.5,
+      weeks=8.851942,
+    ),
+    "453 days, 0:41:33.626007",
+    "datetime.timedelta(days=453, seconds=2493, microseconds=626007)",
+    39141693.626007,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-22.063316,
+      seconds=-591980.068,
+      microseconds=-7355919.64,
+      minutes=1692.0,
+      hours=77.84,
+    ),
+    "-25 days, 12:04:46.073680",
+    "datetime.timedelta(days=-25, seconds=43486, microseconds=73680)",
+    -2116513.92632,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=6991.083673, weeks=-4.593),
+    "-33 days, 20:22:40.591084",
+    "datetime.timedelta(days=-33, seconds=73360, microseconds=591084)",
+    -2777839.408916,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-388729.048,
+      microseconds=-7209429.353,
+      milliseconds=9581.8,
+      weeks=-1.958964,
+    ),
+    "-19 days, 18:54:51.897171",
+    "datetime.timedelta(days=-19, seconds=68091, microseconds=897171)",
+    -1573508.102829,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-48950.042,
+      milliseconds=4655.766423,
+    ),
+    "-1 day, 10:24:14.613766",
+    "datetime.timedelta(days=-1, seconds=37454, microseconds=613766)",
+    -48945.386234,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8948677.565,
+      milliseconds=2949.8,
+      minutes=797.4,
+      hours=1.8,
+    ),
+    "15:05:18.001122",
+    "datetime.timedelta(seconds=54318, microseconds=1122)",
+    54318.001122,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-983169.43, minutes=-523.38),
+    "-12 days, 6:10:27.770000",
+    "datetime.timedelta(days=-12, seconds=22227, microseconds=770000)",
+    -1014572.23,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-391.119551, microseconds=-5431654.85),
+    "-392 days, 21:07:45.361945",
+    "datetime.timedelta(days=-392, seconds=76065, microseconds=361945)",
+    -33792734.638055,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-934.5, minutes=8281.0, hours=-15.73),
+    "-930 days, 14:17:12",
+    "datetime.timedelta(days=-930, seconds=51432)",
+    -80300568.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-855.293947),
+    "-856 days, 16:56:42.979200",
+    "datetime.timedelta(days=-856, seconds=61002, microseconds=979200)",
+    -73897397.0208,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=315.3,
+      microseconds=-3548355.357191,
+      milliseconds=-3753.8,
+      minutes=6747.81,
+      weeks=2.7,
+    ),
+    "338 days, 21:15:41.297845",
+    "datetime.timedelta(days=338, seconds=76541, microseconds=297845)",
+    29279741.297845,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=3767.9),
+    "0:00:03.767900",
+    "datetime.timedelta(seconds=3, microseconds=767900)",
+    3.7679,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-249271.322,
+      microseconds=4562984.15,
+      minutes=-3226.2,
+      weeks=-6.958962,
+    ),
+    "-54 days, 3:53:01.023384",
+    "datetime.timedelta(days=-54, seconds=13981, microseconds=23384)",
+    -4651618.976616,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=310.381506,
+      milliseconds=2676.49297,
+      weeks=8.656016,
+    ),
+    "370 days, 23:22:03.271693",
+    "datetime.timedelta(days=370, seconds=84123, microseconds=271693)",
+    32052123.271693,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=736.902, hours=-1.78, weeks=1.9),
+    "750 days, 3:04:04.800000",
+    "datetime.timedelta(days=750, seconds=11044, microseconds=800000)",
+    64811044.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=205006.9,
+      microseconds=6472447.7,
+      weeks=-3.776697,
+    ),
+    "-25 days, 22:27:47.026848",
+    "datetime.timedelta(days=-25, seconds=80867, microseconds=26848)",
+    -2079132.973152,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=51.296,
+      seconds=952304.084,
+      microseconds=-3597282.1,
+      minutes=7162.41,
+      weeks=4.411,
+    ),
+    "98 days, 4:03:12.286718",
+    "datetime.timedelta(days=98, seconds=14592, microseconds=286718)",
+    8481792.286718,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-7323508.017,
+      milliseconds=-2045.7,
+      hours=-33.256434,
+    ),
+    "-2 days, 14:44:27.468392",
+    "datetime.timedelta(days=-2, seconds=53067, microseconds=468392)",
+    -119732.531608,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-109.28, hours=51.700703),
+    "-108 days, 20:58:50.530800",
+    "datetime.timedelta(days=-108, seconds=75530, microseconds=530800)",
+    -9255669.4692,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=665.290199,
+      milliseconds=-4120.753,
+      minutes=8785.3,
+      hours=-12.2,
+      weeks=-6.21,
+    ),
+    "627 days, 9:54:19.072847",
+    "datetime.timedelta(days=627, seconds=35659, microseconds=72847)",
+    54208459.072847,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-51337.051,
+      microseconds=-5927924.145838,
+    ),
+    "-1 day, 9:44:17.021076",
+    "datetime.timedelta(days=-1, seconds=35057, microseconds=21076)",
+    -51342.978924,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=8538.5, weeks=5.08),
+    "35 days, 13:26:32.538500",
+    "datetime.timedelta(days=35, seconds=48392, microseconds=538500)",
+    3072392.5385,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=625.635775,
+      microseconds=4234877.181,
+      minutes=-684.591,
+      hours=52.5,
+      weeks=-6.988,
+    ),
+    "578 days, 10:21:57.334877",
+    "datetime.timedelta(days=578, seconds=37317, microseconds=334877)",
+    49976517.334877,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-3369565.12, weeks=1.166),
+    "8 days, 3:53:13.430435",
+    "datetime.timedelta(days=8, seconds=13993, microseconds=430435)",
+    705193.430435,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-505.1,
+      milliseconds=-4906.616687,
+      minutes=8991.73,
+      weeks=9.11,
+    ),
+    "-436 days, 21:56:26.893383",
+    "datetime.timedelta(days=-436, seconds=78986, microseconds=893383)",
+    -37591413.106617,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=753.28,
+      microseconds=-2455734.5,
+      milliseconds=6712.8,
+      weeks=5.747113,
+    ),
+    "793 days, 12:14:10.199465",
+    "datetime.timedelta(days=793, seconds=44050, microseconds=199465)",
+    68559250.199465,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-979.7,
+      seconds=-570864.552136,
+      microseconds=2969796.5,
+      milliseconds=8322.8,
+      weeks=8.473,
+    ),
+    "-927 days, 0:05:37.140460",
+    "datetime.timedelta(days=-927, seconds=337, microseconds=140460)",
+    -80092462.85954,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4271.752199, minutes=-8395.68),
+    "-6 days, 4:04:23.471752",
+    "datetime.timedelta(days=-6, seconds=14663, microseconds=471752)",
+    -503736.528248,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=8162868.78),
+    "0:00:08.162869",
+    "datetime.timedelta(seconds=8, microseconds=162869)",
+    8.162869,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-52.863335),
+    "-3 days, 19:08:11.994000",
+    "datetime.timedelta(days=-3, seconds=68891, microseconds=994000)",
+    -190308.006,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=278.54,
+      seconds=-414568.261,
+      milliseconds=-4414.835953,
+    ),
+    "273 days, 17:48:03.324164",
+    "datetime.timedelta(days=273, seconds=64083, microseconds=324164)",
+    23651283.324164,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=541.41,
+      minutes=5674.652,
+      hours=-52.318143,
+      weeks=5.526,
+    ),
+    "581 days, 20:28:02.605200",
+    "datetime.timedelta(days=581, seconds=73682, microseconds=605200)",
+    50272082.6052,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-102522.24,
+      minutes=-9411.1,
+      weeks=9.3,
+    ),
+    "57 days, 9:04:11.760000",
+    "datetime.timedelta(days=57, seconds=32651, microseconds=760000)",
+    4957451.76,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-620.115269,
+      milliseconds=9609.5,
+      minutes=9487.26,
+      weeks=2.0,
+    ),
+    "-600 days, 11:21:25.967900",
+    "datetime.timedelta(days=-600, seconds=40885, microseconds=967900)",
+    -51799114.0321,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-944.49, seconds=724544.64),
+    "-937 days, 21:30:08.640000",
+    "datetime.timedelta(days=-937, seconds=77408, microseconds=640000)",
+    -80879391.36,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=914617.8,
+      microseconds=8292757.799231,
+      hours=31.9,
+    ),
+    "11 days, 21:57:46.092758",
+    "datetime.timedelta(days=11, seconds=79066, microseconds=92758)",
+    1029466.092758,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=450.962786),
+    "450 days, 23:06:24.710400",
+    "datetime.timedelta(days=450, seconds=83184, microseconds=710400)",
+    38963184.7104,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-935.026475,
+      seconds=5187.709,
+      milliseconds=1718.196,
+      minutes=1542.5,
+      hours=-62.73,
+      weeks=-1.1,
+    ),
+    "-945 days, 18:59:03.987196",
+    "datetime.timedelta(days=-945, seconds=68343, microseconds=987196)",
+    -81579656.012804,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-350243.651, hours=85.1),
+    "-1 day, 11:48:36.349000",
+    "datetime.timedelta(days=-1, seconds=42516, microseconds=349000)",
+    -43883.651,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-6911.3,
+      hours=98.07,
+      weeks=-7.148,
+    ),
+    "-46 days, 1:12:14.688700",
+    "datetime.timedelta(days=-46, seconds=4334, microseconds=688700)",
+    -3970065.3113,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=500.878, weeks=-1.55),
+    "-11 days, 3:36:00.500878",
+    "datetime.timedelta(days=-11, seconds=12960, microseconds=500878)",
+    -937439.499122,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3229955.383038,
+      minutes=-1562.540829,
+      weeks=8.866,
+    ),
+    "60 days, 23:26:41.120305",
+    "datetime.timedelta(days=60, seconds=84401, microseconds=120305)",
+    5268401.120305,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-377712.0,
+      minutes=3076.730487,
+      weeks=7.806,
+    ),
+    "52 days, 9:46:00.629220",
+    "datetime.timedelta(days=52, seconds=35160, microseconds=629220)",
+    4527960.62922,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=589889.8,
+      microseconds=-2214449.944,
+      hours=-35.1,
+    ),
+    "5 days, 8:45:27.585550",
+    "datetime.timedelta(days=5, seconds=31527, microseconds=585550)",
+    463527.58555,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=687341.4, microseconds=3338434.3),
+    "7 days, 22:55:44.738434",
+    "datetime.timedelta(days=7, seconds=82544, microseconds=738434)",
+    687344.738434,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-8829.7),
+    "-1 day, 23:59:51.170300",
+    "datetime.timedelta(days=-1, seconds=86391, microseconds=170300)",
+    -8.8297,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-7833678.93,
+      milliseconds=4026.578673,
+    ),
+    "-1 day, 23:59:56.192900",
+    "datetime.timedelta(days=-1, seconds=86396, microseconds=192900)",
+    -3.8071,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-4169319.923,
+      milliseconds=-9438.484535,
+      minutes=5420.653988,
+      hours=-98.99,
+    ),
+    "-1 day, 15:21:01.631476",
+    "datetime.timedelta(days=-1, seconds=55261, microseconds=631476)",
+    -31138.368524,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=827.8),
+    "827 days, 19:12:00",
+    "datetime.timedelta(days=827, seconds=69120)",
+    71521920.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-732.2,
+      milliseconds=-6895.281,
+      hours=-13.372,
+    ),
+    "-733 days, 5:49:33.904719",
+    "datetime.timedelta(days=-733, seconds=20973, microseconds=904719)",
+    -63310226.095281,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=428320.09484, minutes=7885.294),
+    "10 days, 10:23:57.734840",
+    "datetime.timedelta(days=10, seconds=37437, microseconds=734840)",
+    901437.73484,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-74.734927, microseconds=158196.6),
+    "-75 days, 6:21:42.465397",
+    "datetime.timedelta(days=-75, seconds=22902, microseconds=465397)",
+    -6457097.534603,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-426.1,
+      seconds=402971.38,
+      microseconds=4630306.804,
+      milliseconds=2393.17,
+      hours=-23.621,
+      weeks=4.411275,
+    ),
+    "-392 days, 11:00:41.923477",
+    "datetime.timedelta(days=-392, seconds=39641, microseconds=923477)",
+    -33829158.076523,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=40.88,
+      milliseconds=-6110.511936,
+      minutes=7274.5,
+      weeks=-1.2,
+    ),
+    "37 days, 12:45:35.889488",
+    "datetime.timedelta(days=37, seconds=45935, microseconds=889488)",
+    3242735.889488,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-319724.614495),
+    "-1 day, 23:59:59.680275",
+    "datetime.timedelta(days=-1, seconds=86399, microseconds=680275)",
+    -0.319725,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-1199196.701, weeks=2.27),
+    "15 days, 21:21:34.800803",
+    "datetime.timedelta(days=15, seconds=76894, microseconds=800803)",
+    1372894.800803,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-720.538442, hours=42.2, weeks=8.47),
+    "-660 days, 12:14:14.611200",
+    "datetime.timedelta(days=-660, seconds=44054, microseconds=611200)",
+    -56979945.3888,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-112.97),
+    "-1 day, 23:59:59.887030",
+    "datetime.timedelta(days=-1, seconds=86399, microseconds=887030)",
+    -0.11297,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=230.833,
+      microseconds=8306078.442211,
+      milliseconds=-3579.26,
+      minutes=-2421.563099,
+      hours=-83.107142,
+      weeks=7.84,
+    ),
+    "280 days, 13:38:48.429678",
+    "datetime.timedelta(days=280, seconds=49128, microseconds=429678)",
+    24241128.429678,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=8518.29,
+      minutes=-942.732758,
+      hours=-11.237,
+      weeks=7.9,
+    ),
+    "54 days, 4:15:11.352810",
+    "datetime.timedelta(days=54, seconds=15311, microseconds=352810)",
+    4680911.35281,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-823169.260586,
+      microseconds=-7446912.163,
+    ),
+    "-10 days, 11:20:23.292502",
+    "datetime.timedelta(days=-10, seconds=40823, microseconds=292502)",
+    -823176.707498,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=208391.507,
+      microseconds=-8511580.848,
+      minutes=8566.967313,
+      hours=-62.495596,
+    ),
+    "5 days, 18:10:16.888599",
+    "datetime.timedelta(days=5, seconds=65416, microseconds=888599)",
+    497416.888599,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8614383.96002,
+      milliseconds=-8635.746031,
+      hours=26.462077,
+      weeks=3.775062,
+    ),
+    "27 days, 12:40:03.724670",
+    "datetime.timedelta(days=27, seconds=45603, microseconds=724670)",
+    2378403.72467,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=2175202.1,
+      milliseconds=-1268.687,
+      weeks=4.85,
+    ),
+    "33 days, 22:48:00.906515",
+    "datetime.timedelta(days=33, seconds=82080, microseconds=906515)",
+    2933280.906515,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=39.9, seconds=329742.009, weeks=-8.18),
+    "-14 days, 10:57:18.009000",
+    "datetime.timedelta(days=-14, seconds=39438, microseconds=9000)",
+    -1170161.991,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=6934.7),
+    "4 days, 19:34:42",
+    "datetime.timedelta(days=4, seconds=70482)",
+    416082.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=731.93,
+      microseconds=-6614084.3,
+      milliseconds=5557.62,
+    ),
+    "731 days, 22:19:10.943536",
+    "datetime.timedelta(days=731, seconds=80350, microseconds=943536)",
+    63238750.943536,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=736.84,
+      seconds=-110222.366,
+      milliseconds=6119.134,
+      minutes=6680.0,
+    ),
+    "740 days, 4:52:39.753134",
+    "datetime.timedelta(days=740, seconds=17559, microseconds=753134)",
+    63953559.753134,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=539822.503,
+      microseconds=9303302.925446,
+    ),
+    "6 days, 5:57:11.806303",
+    "datetime.timedelta(days=6, seconds=21431, microseconds=806303)",
+    539831.806303,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=4.03),
+    "28 days, 5:02:24",
+    "datetime.timedelta(days=28, seconds=18144)",
+    2437344.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-7656674.33184, weeks=5.1),
+    "35 days, 16:47:52.343326",
+    "datetime.timedelta(days=35, seconds=60472, microseconds=343326)",
+    3084472.343326,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=886683.508399,
+      microseconds=1877672.97,
+      minutes=-6579.492,
+    ),
+    "5 days, 16:38:35.866072",
+    "datetime.timedelta(days=5, seconds=59915, microseconds=866072)",
+    491915.866072,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-217.6, milliseconds=931.169333),
+    "-218 days, 9:36:00.931169",
+    "datetime.timedelta(days=-218, seconds=34560, microseconds=931169)",
+    -18800639.068831,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=685.206819),
+    "685 days, 4:57:49.161600",
+    "datetime.timedelta(days=685, seconds=17869, microseconds=161600)",
+    59201869.1616,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1396135.7,
+      hours=34.3,
+      weeks=-0.69,
+    ),
+    "-4 days, 14:22:49.396136",
+    "datetime.timedelta(days=-4, seconds=51769, microseconds=396136)",
+    -293830.603864,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-781.174,
+      seconds=840203.9,
+      minutes=1058.059984,
+      weeks=-8.691349,
+    ),
+    "-832 days, 10:42:06.023840",
+    "datetime.timedelta(days=-832, seconds=38526, microseconds=23840)",
+    -71846273.97616,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-728.11),
+    "-729 days, 21:21:36",
+    "datetime.timedelta(days=-729, seconds=76896)",
+    -62908704.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=6242400.304,
+      milliseconds=-8444.32,
+    ),
+    "-1 day, 23:59:57.798080",
+    "datetime.timedelta(days=-1, seconds=86397, microseconds=798080)",
+    -2.20192,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-627.48,
+      microseconds=2774119.108,
+      milliseconds=1087.96,
+    ),
+    "-628 days, 12:28:51.862079",
+    "datetime.timedelta(days=-628, seconds=44931, microseconds=862079)",
+    -54214268.137921,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=472.4, weeks=8.6),
+    "60 days, 12:40:24",
+    "datetime.timedelta(days=60, seconds=45624)",
+    5229624.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-47.433957),
+    "-2 days, 0:33:57.754800",
+    "datetime.timedelta(days=-2, seconds=2037, microseconds=754800)",
+    -170762.2452,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-281219.6,
+      milliseconds=-2780.374257,
+      minutes=9117.026,
+    ),
+    "3 days, 1:49:59.179626",
+    "datetime.timedelta(days=3, seconds=6599, microseconds=179626)",
+    265799.179626,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=708.26, seconds=-618328.531104),
+    "701 days, 2:28:55.468896",
+    "datetime.timedelta(days=701, seconds=8935, microseconds=468896)",
+    60575335.468896,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=436960.1,
+      milliseconds=7396.226,
+    ),
+    "0:00:07.833186",
+    "datetime.timedelta(seconds=7, microseconds=833186)",
+    7.833186,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-329907.852, weeks=-8.88),
+    "-66 days, 0:31:08.148000",
+    "datetime.timedelta(days=-66, seconds=1868, microseconds=148000)",
+    -5700531.852,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=256.8,
+      seconds=-554544.35,
+      microseconds=-8087887.7,
+      weeks=7.9,
+    ),
+    "305 days, 16:21:27.562112",
+    "datetime.timedelta(days=305, seconds=58887, microseconds=562112)",
+    26410887.562112,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-8.34),
+    "-59 days, 14:52:48",
+    "datetime.timedelta(days=-59, seconds=53568)",
+    -5044032.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-173.2, minutes=2541.181353),
+    "1 day, 18:21:10.707980",
+    "datetime.timedelta(days=1, seconds=66070, microseconds=707980)",
+    152470.70798,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-7902.94),
+    "-6 days, 12:17:03.600000",
+    "datetime.timedelta(days=-6, seconds=44223, microseconds=600000)",
+    -474176.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-257.499277,
+      seconds=903265.46,
+      microseconds=2257891.965871,
+    ),
+    "-248 days, 22:55:30.185092",
+    "datetime.timedelta(days=-248, seconds=82530, microseconds=185092)",
+    -21344669.814908,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=760569.57,
+      milliseconds=4845.8,
+      weeks=7.0,
+    ),
+    "57 days, 19:16:14.415800",
+    "datetime.timedelta(days=57, seconds=69374, microseconds=415800)",
+    4994174.4158,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4905755.15,
+      minutes=-4025.9,
+      hours=-97.717299,
+      weeks=6.39,
+    ),
+    "37 days, 20:42:20.629355",
+    "datetime.timedelta(days=37, seconds=74540, microseconds=629355)",
+    3271340.629355,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-760453.295,
+      microseconds=1747237.8,
+      milliseconds=-3932.6,
+      minutes=7351.979719,
+      weeks=1.013,
+    ),
+    "3 days, 9:28:45.702778",
+    "datetime.timedelta(days=3, seconds=34125, microseconds=702778)",
+    293325.702778,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=888.0,
+      seconds=575447.826019,
+      microseconds=5243383.260157,
+    ),
+    "894 days, 15:50:53.069402",
+    "datetime.timedelta(days=894, seconds=57053, microseconds=69402)",
+    77298653.069402,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-664.2,
+      seconds=961962.34,
+      microseconds=46581.9,
+      minutes=2390.5,
+    ),
+    "-652 days, 14:15:12.386582",
+    "datetime.timedelta(days=-652, seconds=51312, microseconds=386582)",
+    -56281487.613418,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=565.22863,
+      minutes=-2427.7,
+      hours=-92.8,
+      weeks=8.844389,
+    ),
+    "621 days, 14:04:58.099200",
+    "datetime.timedelta(days=621, seconds=50698, microseconds=99200)",
+    53705098.0992,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=171.5, microseconds=7828175.89),
+    "171 days, 12:00:07.828176",
+    "datetime.timedelta(days=171, seconds=43207, microseconds=828176)",
+    14817607.828176,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=270.6, milliseconds=7989.319496),
+    "270 days, 14:24:07.989319",
+    "datetime.timedelta(days=270, seconds=51847, microseconds=989319)",
+    23379847.989319,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-2217297.713986,
+      milliseconds=-5448.5,
+    ),
+    "-1 day, 23:59:52.334202",
+    "datetime.timedelta(days=-1, seconds=86392, microseconds=334202)",
+    -7.665798,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=813966.669183, milliseconds=-5490.7),
+    "9 days, 10:06:01.178483",
+    "datetime.timedelta(days=9, seconds=36361, microseconds=178483)",
+    813961.178483,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5889.809, minutes=2183.321),
+    "1 day, 12:23:13.370191",
+    "datetime.timedelta(days=1, seconds=44593, microseconds=370191)",
+    130993.370191,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=530.16, hours=26.9),
+    "531 days, 6:44:24",
+    "datetime.timedelta(days=531, seconds=24264)",
+    45902664.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-212.5,
+      milliseconds=1073.0,
+      minutes=3689.11,
+    ),
+    "-210 days, 1:29:07.673000",
+    "datetime.timedelta(days=-210, seconds=5347, microseconds=673000)",
+    -18138652.327,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-603.1,
+      microseconds=-5115809.45913,
+      weeks=-9.97,
+    ),
+    "-673 days, 2:38:18.884191",
+    "datetime.timedelta(days=-673, seconds=9498, microseconds=884191)",
+    -58137701.115809,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-2139.97, hours=43.71),
+    "8:02:37.800000",
+    "datetime.timedelta(seconds=28957, microseconds=800000)",
+    28957.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3433729.973,
+      milliseconds=5696.3,
+      hours=25.358545,
+      weeks=9.41,
+    ),
+    "66 days, 22:14:21.024570",
+    "datetime.timedelta(days=66, seconds=80061, microseconds=24570)",
+    5782461.02457,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=268.14,
+      seconds=-28323.9,
+      microseconds=2165131.46,
+      minutes=1788.748,
+      hours=-83.9,
+      weeks=1.991362,
+    ),
+    "279 days, 11:57:14.882731",
+    "datetime.timedelta(days=279, seconds=43034, microseconds=882731)",
+    24148634.882731,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=5555.207223),
+    "3 days, 20:35:12.433380",
+    "datetime.timedelta(days=3, seconds=74112, microseconds=433380)",
+    333312.43338,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-276.412, hours=-11.03),
+    "-277 days, 3:04:55.200000",
+    "datetime.timedelta(days=-277, seconds=11095, microseconds=200000)",
+    -23921704.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-753.671, hours=-90.489),
+    "-758 days, 13:24:25.200000",
+    "datetime.timedelta(days=-758, seconds=48265, microseconds=200000)",
+    -65442934.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=7651661.58, weeks=1.5946),
+    "11 days, 3:53:41.731662",
+    "datetime.timedelta(days=11, seconds=14021, microseconds=731662)",
+    964421.731662,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=834.4,
+      microseconds=8933997.925,
+      milliseconds=7685.967,
+    ),
+    "834 days, 9:36:16.619965",
+    "datetime.timedelta(days=834, seconds=34576, microseconds=619965)",
+    72092176.619965,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=158.5,
+      milliseconds=3168.83,
+      minutes=-2339.662699,
+      hours=-65.85,
+      weeks=5.2,
+    ),
+    "190 days, 12:45:23.406890",
+    "datetime.timedelta(days=190, seconds=45923, microseconds=406890)",
+    16461923.40689,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-9532.649385, hours=68.9),
+    "2 days, 20:53:50.467351",
+    "datetime.timedelta(days=2, seconds=75230, microseconds=467351)",
+    248030.467351,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-222.09,
+      microseconds=740007.9,
+      minutes=-7610.85,
+    ),
+    "-228 days, 14:59:33.740008",
+    "datetime.timedelta(days=-228, seconds=53973, microseconds=740008)",
+    -19645226.259992,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=162815.71,
+      microseconds=9461172.23,
+      minutes=-5612.16,
+      hours=34.5,
+    ),
+    "-1 day, 10:11:35.571172",
+    "datetime.timedelta(days=-1, seconds=36695, microseconds=571172)",
+    -49704.428828,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-0.41),
+    "-3 days, 3:07:12",
+    "datetime.timedelta(days=-3, seconds=11232)",
+    -247968.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-515.901558,
+      seconds=22382.76,
+      minutes=9039.61,
+      weeks=-6.03,
+    ),
+    "-552 days, 10:12:00.748800",
+    "datetime.timedelta(days=-552, seconds=36720, microseconds=748800)",
+    -47656079.2512,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-437474.092,
+      milliseconds=-9279.3,
+      hours=25.402344,
+      weeks=1.1,
+    ),
+    "3 days, 16:40:45.067100",
+    "datetime.timedelta(days=3, seconds=60045, microseconds=67100)",
+    319245.0671,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-840.181,
+      microseconds=4377700.354,
+      milliseconds=6679.56,
+      hours=44.982728,
+    ),
+    "-839 days, 16:38:30.478060",
+    "datetime.timedelta(days=-839, seconds=59910, microseconds=478060)",
+    -72429689.52194,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-236.226,
+      seconds=890430.15,
+      microseconds=-9496086.465588,
+      hours=16.57,
+      weeks=-2.3,
+    ),
+    "-242 days, 16:05:06.253914",
+    "datetime.timedelta(days=-242, seconds=57906, microseconds=253914)",
+    -20850893.746086,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=624.1,
+      seconds=321826.133378,
+      milliseconds=-895.2,
+      minutes=4396.03,
+      hours=99.625,
+    ),
+    "635 days, 0:41:17.038178",
+    "datetime.timedelta(days=635, seconds=2477, microseconds=38178)",
+    54866477.038178,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=381.96, milliseconds=-6257.131),
+    "381 days, 23:02:17.742869",
+    "datetime.timedelta(days=381, seconds=82937, microseconds=742869)",
+    33001337.742869,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=967.46, minutes=-2322.656),
+    "965 days, 20:19:44.640000",
+    "datetime.timedelta(days=965, seconds=73184, microseconds=640000)",
+    83449184.64,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-798.026514,
+      seconds=948740.433,
+      minutes=-9733.529,
+    ),
+    "-794 days, 4:40:37.883400",
+    "datetime.timedelta(days=-794, seconds=16837, microseconds=883400)",
+    -68584762.1166,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8616787.5,
+      minutes=-5670.814,
+      hours=31.33,
+    ),
+    "-3 days, 8:48:50.543212",
+    "datetime.timedelta(days=-3, seconds=31730, microseconds=543212)",
+    -227469.456788,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=922.924836, seconds=-375345.976115),
+    "918 days, 13:55:59.854285",
+    "datetime.timedelta(days=918, seconds=50159, microseconds=854285)",
+    79365359.854285,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=629.57,
+      seconds=600542.9,
+      minutes=1647.645,
+    ),
+    "637 days, 15:57:29.600000",
+    "datetime.timedelta(days=637, seconds=57449, microseconds=600000)",
+    55094249.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=782489.311,
+      milliseconds=543.347185,
+      minutes=-8017.83,
+    ),
+    "3 days, 11:43:40.054347",
+    "datetime.timedelta(days=3, seconds=42220, microseconds=54347)",
+    301420.054347,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-919442.02,
+      microseconds=3400082.8,
+      milliseconds=-109.529,
+      hours=8.87,
+    ),
+    "-11 days, 17:28:13.270554",
+    "datetime.timedelta(days=-11, seconds=62893, microseconds=270554)",
+    -887506.729446,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=541140.1,
+      microseconds=2437856.76488,
+      milliseconds=4668.65,
+      minutes=-7333.75,
+      hours=7.143,
+      weeks=1.99,
+    ),
+    "15 days, 9:33:09.006507",
+    "datetime.timedelta(days=15, seconds=34389, microseconds=6507)",
+    1330389.006507,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=299.071,
+      seconds=597830.19,
+      minutes=4964.7331,
+    ),
+    "309 days, 10:30:48.576000",
+    "datetime.timedelta(days=309, seconds=37848, microseconds=576000)",
+    26735448.576,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-4.7),
+    "-33 days, 2:24:00",
+    "datetime.timedelta(days=-33, seconds=8640)",
+    -2842560.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-952.104,
+      minutes=978.537007,
+      hours=15.146,
+      weeks=8.03571,
+    ),
+    "57 days, 13:27:14.276316",
+    "datetime.timedelta(days=57, seconds=48434, microseconds=276316)",
+    4973234.276316,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-160.8,
+      seconds=-234835.5,
+      milliseconds=4624.54,
+      hours=-30.5,
+    ),
+    "-165 days, 5:04:09.124540",
+    "datetime.timedelta(days=-165, seconds=18249, microseconds=124540)",
+    -14237750.87546,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=7.88),
+    "55 days, 3:50:24",
+    "datetime.timedelta(days=55, seconds=13824)",
+    4765824.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=649.953, minutes=-3578.1),
+    "647 days, 11:14:13.200000",
+    "datetime.timedelta(days=647, seconds=40453, microseconds=200000)",
+    55941253.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-840.705572),
+    "-841 days, 7:03:58.579200",
+    "datetime.timedelta(days=-841, seconds=25438, microseconds=579200)",
+    -72636961.4208,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=617.88,
+      microseconds=9640806.705,
+      milliseconds=919.173,
+      minutes=7739.855398,
+      hours=-46.058284,
+    ),
+    "621 days, 8:03:44.061460",
+    "datetime.timedelta(days=621, seconds=29024, microseconds=61460)",
+    53683424.06146,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=7.99, weeks=1.058),
+    "7 days, 17:44:02.400000",
+    "datetime.timedelta(days=7, seconds=63842, microseconds=400000)",
+    668642.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-331.618014,
+      seconds=-678556.8,
+      microseconds=-163948.924,
+      milliseconds=2141.006721,
+      weeks=7.32,
+    ),
+    "-289 days, 18:26:24.767458",
+    "datetime.timedelta(days=-289, seconds=66384, microseconds=767458)",
+    -24903215.232542,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=203.438,
+      seconds=493544.991,
+      milliseconds=1714.5,
+      hours=25.26,
+    ),
+    "210 days, 4:52:05.905500",
+    "datetime.timedelta(days=210, seconds=17525, microseconds=905500)",
+    18161525.9055,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=145.52, microseconds=-540064.8),
+    "145 days, 12:28:47.459935",
+    "datetime.timedelta(days=145, seconds=44927, microseconds=459935)",
+    12572927.459935,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=258.98,
+      seconds=-9018.7,
+      microseconds=9326367.096,
+      milliseconds=4972.2,
+    ),
+    "258 days, 21:01:07.598567",
+    "datetime.timedelta(days=258, seconds=75667, microseconds=598567)",
+    22366867.598567,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-98136.67, minutes=-7479.748),
+    "-7 days, 16:04:38.450000",
+    "datetime.timedelta(days=-7, seconds=57878, microseconds=450000)",
+    -546921.55,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=990.377, minutes=4972.9, weeks=-1.305),
+    "984 days, 16:41:22.800000",
+    "datetime.timedelta(days=984, seconds=60082, microseconds=800000)",
+    85077682.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=619.7),
+    "619 days, 16:48:00",
+    "datetime.timedelta(days=619, seconds=60480)",
+    53542080.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-5273735.229788,
+      minutes=5285.835463,
+    ),
+    "3 days, 16:05:44.854045",
+    "datetime.timedelta(days=3, seconds=57944, microseconds=854045)",
+    317144.854045,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-791.12,
+      microseconds=-2726809.247,
+      milliseconds=-4113.09,
+      minutes=-4691.876,
+    ),
+    "-795 days, 14:55:12.600101",
+    "datetime.timedelta(days=-795, seconds=53712, microseconds=600101)",
+    -68634287.399899,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=868.0,
+      microseconds=4425932.211173,
+      minutes=-7122.38,
+    ),
+    "863 days, 1:17:41.625932",
+    "datetime.timedelta(days=863, seconds=4661, microseconds=625932)",
+    74567861.625932,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9095665.955616,
+      weeks=-8.079016,
+    ),
+    "-57 days, 10:43:40.218866",
+    "datetime.timedelta(days=-57, seconds=38620, microseconds=218866)",
+    -4886179.781134,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-318216.308556,
+      microseconds=-5571264.719879,
+      milliseconds=-151.55,
+    ),
+    "-4 days, 7:36:17.968629",
+    "datetime.timedelta(days=-4, seconds=27377, microseconds=968629)",
+    -318222.031371,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-720131.836631,
+      microseconds=5702449.01,
+      milliseconds=7792.6,
+      minutes=8221.005996,
+      hours=75.4,
+    ),
+    "12:23:02.018178",
+    "datetime.timedelta(seconds=44582, microseconds=18178)",
+    44582.018178,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=733.8, seconds=8430.3, hours=16.372362),
+    "734 days, 13:54:50.803200",
+    "datetime.timedelta(days=734, seconds=50090, microseconds=803200)",
+    63467690.8032,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5793.476199, minutes=510.637),
+    "8:30:32.426524",
+    "datetime.timedelta(seconds=30632, microseconds=426524)",
+    30632.426524,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-6849.6,
+      minutes=-5071.810421,
+      hours=29.28,
+    ),
+    "-3 days, 16:44:52.525140",
+    "datetime.timedelta(days=-3, seconds=60292, microseconds=525140)",
+    -198907.47486,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=5082606.4,
+      milliseconds=7481.4,
+      weeks=2.627,
+    ),
+    "18 days, 9:20:22.164006",
+    "datetime.timedelta(days=18, seconds=33622, microseconds=164006)",
+    1588822.164006,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=14.4, minutes=2421.793955),
+    "16 days, 1:57:47.637300",
+    "datetime.timedelta(days=16, seconds=7067, microseconds=637300)",
+    1389467.6373,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8273934.5,
+      milliseconds=-6445.137,
+      minutes=4411.031592,
+    ),
+    "3 days, 1:31:03.724318",
+    "datetime.timedelta(days=3, seconds=5463, microseconds=724318)",
+    264663.724318,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=311637.3,
+      hours=53.955926,
+      weeks=3.51,
+    ),
+    "30 days, 10:12:06.633600",
+    "datetime.timedelta(days=30, seconds=36726, microseconds=633600)",
+    2628726.6336,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=7357.56, minutes=-7690.865879),
+    "-6 days, 15:49:15.404820",
+    "datetime.timedelta(days=-6, seconds=56955, microseconds=404820)",
+    -461444.59518,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=1249.88, weeks=-7.987559),
+    "-56 days, 2:05:25.566680",
+    "datetime.timedelta(days=-56, seconds=7525, microseconds=566680)",
+    -4830874.43332,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=310.864687, hours=14.258997),
+    "311 days, 11:00:41.346000",
+    "datetime.timedelta(days=311, seconds=39641, microseconds=346000)",
+    26910041.346,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-45.9,
+      seconds=171740.298,
+      microseconds=7141314.4,
+      minutes=4923.24,
+    ),
+    "-41 days, 12:09:41.839314",
+    "datetime.timedelta(days=-41, seconds=43781, microseconds=839314)",
+    -3498618.160686,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=170.1, weeks=-8.847),
+    "108 days, 4:06:14.400000",
+    "datetime.timedelta(days=108, seconds=14774, microseconds=400000)",
+    9345974.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-912528.0,
+      minutes=9912.0,
+      hours=44.84,
+      weeks=-9.06,
+    ),
+    "-55 days, 7:57:35.087472",
+    "datetime.timedelta(days=-55, seconds=28655, microseconds=87472)",
+    -4723344.912528,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-656.24,
+      seconds=792777.2,
+      microseconds=5163440.998472,
+      minutes=6075.25,
+    ),
+    "-643 days, 3:42:41.363441",
+    "datetime.timedelta(days=-643, seconds=13361, microseconds=363441)",
+    -55541838.636559,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=9379635.925),
+    "0:00:09.379636",
+    "datetime.timedelta(seconds=9, microseconds=379636)",
+    9.379636,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=441.120615,
+      seconds=673249.93,
+      microseconds=-317754.94,
+      milliseconds=9173.818476,
+      hours=46.027,
+      weeks=-6.5,
+    ),
+    "405 days, 7:56:17.122064",
+    "datetime.timedelta(days=405, seconds=28577, microseconds=122064)",
+    35020577.122064,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-258562.7,
+      milliseconds=9003.9,
+      hours=-9.75,
+    ),
+    "-4 days, 14:25:46.303900",
+    "datetime.timedelta(days=-4, seconds=51946, microseconds=303900)",
+    -293653.6961,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-7096.58, weeks=7.057),
+    "49 days, 9:34:26.503420",
+    "datetime.timedelta(days=49, seconds=34466, microseconds=503420)",
+    4268066.50342,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=462819.202,
+      minutes=-8141.414,
+      hours=65.02,
+    ),
+    "2 days, 9:53:26.362000",
+    "datetime.timedelta(days=2, seconds=35606, microseconds=362000)",
+    208406.362,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-13.757),
+    "-1 day, 10:14:34.800000",
+    "datetime.timedelta(days=-1, seconds=36874, microseconds=800000)",
+    -49525.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-213.744808,
+      microseconds=-2937688.745341,
+      milliseconds=-9236.016,
+      minutes=-4777.1,
+      hours=70.2,
+      weeks=-9.806,
+    ),
+    "-283 days, 5:17:41.615095",
+    "datetime.timedelta(days=-283, seconds=19061, microseconds=615095)",
+    -24432138.384905,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=687463.1, hours=-24.3, weeks=-2.5),
+    "-11 days, 10:39:43.100000",
+    "datetime.timedelta(days=-11, seconds=38383, microseconds=100000)",
+    -912016.9,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5924.932, weeks=-5.7),
+    "-40 days, 2:23:54.075068",
+    "datetime.timedelta(days=-40, seconds=8634, microseconds=75068)",
+    -3447365.924932,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-824583.35, weeks=-5.11),
+    "-46 days, 16:28:08.650000",
+    "datetime.timedelta(days=-46, seconds=59288, microseconds=650000)",
+    -3915111.35,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8937502.4,
+      milliseconds=-9983.603,
+      hours=48.365,
+    ),
+    "2 days, 0:21:52.953899",
+    "datetime.timedelta(days=2, seconds=1312, microseconds=953899)",
+    174112.953899,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=638.908035, milliseconds=2435.32),
+    "638 days, 21:47:36.659320",
+    "datetime.timedelta(days=638, seconds=78456, microseconds=659320)",
+    55201656.65932,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-66.4,
+      microseconds=-4481056.518995,
+      minutes=1926.1,
+      weeks=6.98,
+    ),
+    "-17 days, 19:08:25.518943",
+    "datetime.timedelta(days=-17, seconds=68905, microseconds=518943)",
+    -1399894.481057,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-189.9,
+      seconds=161774.192074,
+      microseconds=-9420786.369519,
+      minutes=-1618.04,
+      hours=-94.64,
+    ),
+    "-194 days, 21:43:38.371288",
+    "datetime.timedelta(days=-194, seconds=78218, microseconds=371288)",
+    -16683381.628712,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-892.546265),
+    "-893 days, 10:53:22.704000",
+    "datetime.timedelta(days=-893, seconds=39202, microseconds=704000)",
+    -77115997.296,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=5369659.413,
+      milliseconds=-9530.58,
+      weeks=-8.1,
+    ),
+    "-57 days, 7:11:55.839079",
+    "datetime.timedelta(days=-57, seconds=25915, microseconds=839079)",
+    -4898884.160921,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-625.7,
+      microseconds=5195392.8,
+      weeks=-7.6,
+    ),
+    "-679 days, 2:24:05.195393",
+    "datetime.timedelta(days=-679, seconds=8645, microseconds=195393)",
+    -58656954.804607,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=52.221, weeks=1.6437),
+    "13 days, 16:21:45.360000",
+    "datetime.timedelta(days=13, seconds=58905, microseconds=360000)",
+    1182105.36,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-526988.644),
+    "-7 days, 21:36:51.356000",
+    "datetime.timedelta(days=-7, seconds=77811, microseconds=356000)",
+    -526988.644,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-353.27,
+      seconds=-647934.81638,
+      hours=-77.069769,
+      weeks=4.125377,
+    ),
+    "-336 days, 21:31:54.024820",
+    "datetime.timedelta(days=-336, seconds=77514, microseconds=24820)",
+    -28952885.97518,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8720592.613854,
+      milliseconds=-7099.419629,
+      minutes=-8800.03,
+    ),
+    "-7 days, 21:19:42.379988",
+    "datetime.timedelta(days=-7, seconds=76782, microseconds=379988)",
+    -528017.620012,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=386621.574,
+      microseconds=-1172863.085,
+      minutes=1925.81178,
+      hours=44.095,
+    ),
+    "7 days, 15:35:11.107937",
+    "datetime.timedelta(days=7, seconds=56111, microseconds=107937)",
+    660911.107937,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-282.962616,
+      seconds=808037.2,
+      minutes=-1732.778028,
+    ),
+    "-275 days, 4:28:20.495920",
+    "datetime.timedelta(days=-275, seconds=16100, microseconds=495920)",
+    -23743899.50408,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-8142161.71, minutes=9079.4),
+    "6 days, 7:19:15.857838",
+    "datetime.timedelta(days=6, seconds=26355, microseconds=857838)",
+    544755.857838,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=418.431,
+      microseconds=7710787.932857,
+      hours=-34.345,
+    ),
+    "417 days, 0:00:04.110788",
+    "datetime.timedelta(days=417, seconds=4, microseconds=110788)",
+    36028804.110788,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-876483.9,
+      milliseconds=-6340.4,
+      minutes=7692.104,
+    ),
+    "-5 days, 4:43:55.999600",
+    "datetime.timedelta(days=-5, seconds=17035, microseconds=999600)",
+    -414964.0004,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=289490.61,
+      microseconds=-6535244.580671,
+      hours=56.652,
+      weeks=-4.0,
+    ),
+    "-23 days, 17:03:51.274755",
+    "datetime.timedelta(days=-23, seconds=61431, microseconds=274755)",
+    -1925768.725245,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=297437.01,
+      microseconds=5582414.388,
+      milliseconds=-2674.0,
+    ),
+    "3 days, 10:37:19.918414",
+    "datetime.timedelta(days=3, seconds=38239, microseconds=918414)",
+    297439.918414,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-498864.458,
+      microseconds=-9720975.285,
+      milliseconds=1336.12,
+      minutes=-9409.51,
+    ),
+    "-13 days, 16:35:56.557145",
+    "datetime.timedelta(days=-13, seconds=59756, microseconds=557145)",
+    -1063443.442855,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-4110400.1,
+      milliseconds=-6732.21928,
+      minutes=-5281.4,
+    ),
+    "-4 days, 7:58:25.157381",
+    "datetime.timedelta(days=-4, seconds=28705, microseconds=157381)",
+    -316894.842619,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=185287.91, weeks=-2.8),
+    "-18 days, 13:04:07.910000",
+    "datetime.timedelta(days=-18, seconds=47047, microseconds=910000)",
+    -1508152.09,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=872.7,
+      microseconds=-6308722.46,
+      weeks=7.96,
+    ),
+    "928 days, 10:04:41.691278",
+    "datetime.timedelta(days=928, seconds=36281, microseconds=691278)",
+    80215481.691278,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=5131.3,
+      hours=-1.207,
+      weeks=9.231012,
+    ),
+    "64 days, 13:36:15.988900",
+    "datetime.timedelta(days=64, seconds=48975, microseconds=988900)",
+    5578575.9889,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=7332071.3, hours=-35.252541),
+    "-2 days, 12:44:58.184471",
+    "datetime.timedelta(days=-2, seconds=45898, microseconds=184471)",
+    -126901.815529,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=746.8, minutes=-5280.826, hours=89.98),
+    "746 days, 21:09:58.440000",
+    "datetime.timedelta(days=746, seconds=76198, microseconds=440000)",
+    64530598.44,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=1254.238,
+      minutes=-450.978,
+      weeks=-5.355,
+    ),
+    "-38 days, 4:50:38.574238",
+    "datetime.timedelta(days=-38, seconds=17438, microseconds=574238)",
+    -3265761.425762,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-8166.393, weeks=6.387),
+    "44 days, 17:00:49.433607",
+    "datetime.timedelta(days=44, seconds=61249, microseconds=433607)",
+    3862849.433607,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=5.02),
+    "35 days, 3:21:36",
+    "datetime.timedelta(days=35, seconds=12096)",
+    3036096.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=337.828,
+      minutes=-7586.444322,
+      hours=-29.625,
+    ),
+    "331 days, 7:48:22.540680",
+    "datetime.timedelta(days=331, seconds=28102, microseconds=540680)",
+    28626502.54068,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=2948915.778864,
+      minutes=6827.992,
+      hours=-80.6,
+    ),
+    "1 day, 9:12:02.468916",
+    "datetime.timedelta(days=1, seconds=33122, microseconds=468916)",
+    119522.468916,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=1177.048493),
+    "0:00:01.177048",
+    "datetime.timedelta(seconds=1, microseconds=177048)",
+    1.177048,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=5942.9),
+    "0:00:05.942900",
+    "datetime.timedelta(seconds=5, microseconds=942900)",
+    5.9429,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-796.7,
+      seconds=549774.8,
+      milliseconds=5781.5,
+      hours=85.16,
+    ),
+    "-787 days, 5:04:36.581500",
+    "datetime.timedelta(days=-787, seconds=18276, microseconds=581500)",
+    -67978523.4185,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-8071.06, minutes=-1267.84),
+    "-1 day, 2:52:01.528940",
+    "datetime.timedelta(days=-1, seconds=10321, microseconds=528940)",
+    -76078.47106,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=581.765851),
+    "581 days, 18:22:49.526400",
+    "datetime.timedelta(days=581, seconds=66169, microseconds=526400)",
+    50264569.5264,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=38.518),
+    "1 day, 14:31:04.800000",
+    "datetime.timedelta(days=1, seconds=52264, microseconds=800000)",
+    138664.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=88.028),
+    "88 days, 0:40:19.200000",
+    "datetime.timedelta(days=88, seconds=2419, microseconds=200000)",
+    7605619.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=947.2,
+      microseconds=-6970405.863,
+      milliseconds=7433.056037,
+      minutes=-209.63,
+      weeks=8.1,
+    ),
+    "1003 days, 18:06:22.662650",
+    "datetime.timedelta(days=1003, seconds=65182, microseconds=662650)",
+    86724382.66265,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=624455.88, minutes=944.386344),
+    "7 days, 21:11:59.060640",
+    "datetime.timedelta(days=7, seconds=76319, microseconds=60640)",
+    681119.06064,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-5039358.275,
+      minutes=3559.245,
+      weeks=3.607386,
+    ),
+    "27 days, 17:21:36.713442",
+    "datetime.timedelta(days=27, seconds=62496, microseconds=713442)",
+    2395296.713442,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=2145360.926351, hours=-26.5),
+    "-2 days, 21:30:02.145361",
+    "datetime.timedelta(days=-2, seconds=77402, microseconds=145361)",
+    -95397.854639,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-415527.0, minutes=-6053.3),
+    "-10 days, 23:41:15",
+    "datetime.timedelta(days=-10, seconds=85275)",
+    -778725.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-6691178.23,
+      milliseconds=1940.525024,
+    ),
+    "-1 day, 23:59:55.249347",
+    "datetime.timedelta(days=-1, seconds=86395, microseconds=249347)",
+    -4.750653,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=4435.42, hours=94.116312),
+    "7 days, 0:02:23.923200",
+    "datetime.timedelta(days=7, seconds=143, microseconds=923200)",
+    604943.9232,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-2271.504501, minutes=-1577.3),
+    "-2 days, 21:42:39.728495",
+    "datetime.timedelta(days=-2, seconds=78159, microseconds=728495)",
+    -94640.271505,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=558.9, microseconds=-5176224.23),
+    "558 days, 21:35:54.823776",
+    "datetime.timedelta(days=558, seconds=77754, microseconds=823776)",
+    48288954.823776,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-746.12,
+      milliseconds=-4295.493282,
+      minutes=-9305.53132,
+    ),
+    "-753 days, 10:01:35.825307",
+    "datetime.timedelta(days=-753, seconds=36095, microseconds=825307)",
+    -65023104.174693,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-152.276,
+      seconds=-584661.273085,
+      milliseconds=-4811.029418,
+      hours=31.439548,
+      weeks=-3.385,
+    ),
+    "-182 days, 13:43:41.888686",
+    "datetime.timedelta(days=-182, seconds=49421, microseconds=888686)",
+    -15675378.111314,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=5549696.79,
+      milliseconds=3875.883,
+      minutes=7440.168,
+      hours=11.42396,
+    ),
+    "5 days, 15:25:45.761580",
+    "datetime.timedelta(days=5, seconds=55545, microseconds=761580)",
+    487545.76158,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=49.374,
+      milliseconds=7336.0,
+      minutes=386.11,
+      hours=-17.083,
+    ),
+    "48 days, 22:19:48.736000",
+    "datetime.timedelta(days=48, seconds=80388, microseconds=736000)",
+    4227588.736,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-501.0,
+      milliseconds=3859.91,
+      minutes=-9232.239892,
+      weeks=-6.115,
+    ),
+    "-551 days, 18:48:37.466390",
+    "datetime.timedelta(days=-551, seconds=67717, microseconds=466390)",
+    -47538682.53361,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-786.5,
+      microseconds=-3060626.415,
+      milliseconds=3898.449,
+      minutes=6025.527,
+    ),
+    "-783 days, 16:25:32.457823",
+    "datetime.timedelta(days=-783, seconds=59132, microseconds=457823)",
+    -67592067.542177,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3307864.563,
+      milliseconds=9627.134,
+    ),
+    "0:00:06.319269",
+    "datetime.timedelta(seconds=6, microseconds=319269)",
+    6.319269,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-302.924347),
+    "-303 days, 1:48:56.419200",
+    "datetime.timedelta(days=-303, seconds=6536, microseconds=419200)",
+    -26172663.5808,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=83.386, seconds=-842704.189),
+    "73 days, 15:10:46.211000",
+    "datetime.timedelta(days=73, seconds=54646, microseconds=211000)",
+    6361846.211,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=1320.1),
+    "0:00:01.320100",
+    "datetime.timedelta(seconds=1, microseconds=320100)",
+    1.3201,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-734559.4,
+      milliseconds=9012.8,
+      hours=52.73,
+    ),
+    "-7 days, 16:41:17.612800",
+    "datetime.timedelta(days=-7, seconds=60077, microseconds=612800)",
+    -544722.3872,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=378885.202,
+      minutes=-6783.093,
+      weeks=-4.791,
+    ),
+    "-34 days, 3:18:22.822000",
+    "datetime.timedelta(days=-34, seconds=11902, microseconds=822000)",
+    -2925697.178,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=526.73,
+      milliseconds=-4802.23,
+      minutes=-7288.66273,
+      weeks=3.5,
+    ),
+    "546 days, 4:02:27.433970",
+    "datetime.timedelta(days=546, seconds=14547, microseconds=433970)",
+    47188947.43397,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-2140.406,
+      milliseconds=6250.32,
+      minutes=-8557.397,
+    ),
+    "-6 days, 0:47:02.024320",
+    "datetime.timedelta(days=-6, seconds=2822, microseconds=24320)",
+    -515577.97568,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=905301.703,
+      microseconds=178043.0,
+      milliseconds=6693.214,
+      minutes=-3077.149,
+      hours=87.5,
+    ),
+    "11 days, 23:41:19.634257",
+    "datetime.timedelta(days=11, seconds=85279, microseconds=634257)",
+    1035679.634257,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=291.174,
+      microseconds=8551008.177,
+      milliseconds=4273.269,
+      minutes=-6530.013,
+      weeks=-0.384,
+    ),
+    "283 days, 22:50:02.444277",
+    "datetime.timedelta(days=283, seconds=82202, microseconds=444277)",
+    24533402.444277,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-691.5,
+      seconds=104439.2,
+      microseconds=7154414.176,
+      milliseconds=-579.3,
+      minutes=2395.75,
+      weeks=-8.135,
+    ),
+    "-746 days, 10:15:42.775114",
+    "datetime.timedelta(days=-746, seconds=36942, microseconds=775114)",
+    -64417457.224886,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=853.947557, weeks=1.203968),
+    "862 days, 9:00:28.771200",
+    "datetime.timedelta(days=862, seconds=32428, microseconds=771200)",
+    74509228.7712,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-732624.6,
+      milliseconds=-7625.265759,
+      minutes=1073.467304,
+      hours=-23.38,
+    ),
+    "-9 days, 7:00:07.812974",
+    "datetime.timedelta(days=-9, seconds=25207, microseconds=812974)",
+    -752392.187026,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-3.88278, hours=-58.661001, weeks=-8.6),
+    "-67 days, 11:21:08.204400",
+    "datetime.timedelta(days=-67, seconds=40868, microseconds=204400)",
+    -5747931.7956,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9651722.730817,
+      hours=20.5,
+      weeks=-4.79,
+    ),
+    "-33 days, 7:46:57.651723",
+    "datetime.timedelta(days=-33, seconds=28017, microseconds=651723)",
+    -2823182.348277,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-167.2, microseconds=-1744459.472032),
+    "-168 days, 19:11:58.255541",
+    "datetime.timedelta(days=-168, seconds=69118, microseconds=255541)",
+    -14446081.744459,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-597504.002,
+      microseconds=-6932648.138,
+      minutes=8183.26,
+      hours=73.522082,
+    ),
+    "1 day, 19:56:04.160552",
+    "datetime.timedelta(days=1, seconds=71764, microseconds=160552)",
+    158164.160552,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=505.442607, hours=67.0),
+    "508 days, 5:37:21.244800",
+    "datetime.timedelta(days=508, seconds=20241, microseconds=244800)",
+    43911441.2448,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-288.98,
+      milliseconds=-61.944345,
+      minutes=536.225256,
+      hours=-53.9,
+    ),
+    "-291 days, 3:31:01.453416",
+    "datetime.timedelta(days=-291, seconds=12661, microseconds=453416)",
+    -25129738.546584,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-753.7,
+      milliseconds=5589.949,
+      hours=97.159,
+    ),
+    "-750 days, 8:21:37.989949",
+    "datetime.timedelta(days=-750, seconds=30097, microseconds=989949)",
+    -64769902.010051,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=432544.702,
+      microseconds=4268425.201159,
+      weeks=7.66,
+    ),
+    "58 days, 15:01:56.970425",
+    "datetime.timedelta(days=58, seconds=54116, microseconds=970425)",
+    5065316.970425,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-1273250.53, hours=18.7),
+    "18:41:58.726749",
+    "datetime.timedelta(seconds=67318, microseconds=726749)",
+    67318.726749,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=80.425, weeks=-4.741615),
+    "-30 days, 3:50:01.248000",
+    "datetime.timedelta(days=-30, seconds=13801, microseconds=248000)",
+    -2578198.752,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=153.60845,
+      seconds=673164.467,
+      microseconds=-7238130.437067,
+      weeks=-0.9,
+    ),
+    "155 days, 2:23:27.308870",
+    "datetime.timedelta(days=155, seconds=8607, microseconds=308870)",
+    13400607.30887,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-254.2, minutes=-1742.1),
+    "-256 days, 14:09:54",
+    "datetime.timedelta(days=-256, seconds=50994)",
+    -22067406.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-936910.0,
+      microseconds=-2607774.997377,
+      minutes=6233.69,
+    ),
+    "-7 days, 11:38:28.792225",
+    "datetime.timedelta(days=-7, seconds=41908, microseconds=792225)",
+    -562891.207775,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=371.87,
+      seconds=-943968.0,
+      microseconds=4270937.73,
+      weeks=-3.9,
+    ),
+    "333 days, 15:28:04.270938",
+    "datetime.timedelta(days=333, seconds=55684, microseconds=270938)",
+    28826884.270938,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=103498.364),
+    "1 day, 4:44:58.364000",
+    "datetime.timedelta(days=1, seconds=17098, microseconds=364000)",
+    103498.364,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=798719.79,
+      milliseconds=-5412.06,
+      minutes=-9682.32,
+      weeks=-9.125,
+    ),
+    "-62 days, 15:29:35.177940",
+    "datetime.timedelta(days=-62, seconds=55775, microseconds=177940)",
+    -5301024.82206,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-982.9, seconds=548939.5),
+    "-977 days, 10:52:59.500000",
+    "datetime.timedelta(days=-977, seconds=39179, microseconds=500000)",
+    -84373620.5,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-901.446444,
+      seconds=-455466.2,
+      microseconds=4815402.46,
+      milliseconds=-9142.321461,
+      hours=-66.283614,
+    ),
+    "-910 days, 12:28:55.701081",
+    "datetime.timedelta(days=-910, seconds=44935, microseconds=701081)",
+    -78579064.298919,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=7292783.361762,
+      milliseconds=1751.05,
+    ),
+    "0:00:09.043833",
+    "datetime.timedelta(seconds=9, microseconds=43833)",
+    9.043833,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=440.52),
+    "440 days, 12:28:48",
+    "datetime.timedelta(days=440, seconds=44928)",
+    38060928.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=29.318401,
+      seconds=-124757.601117,
+      milliseconds=8140.26,
+    ),
+    "27 days, 20:59:20.385543",
+    "datetime.timedelta(days=27, seconds=75560, microseconds=385543)",
+    2408360.385543,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=5588.647),
+    "3 days, 21:08:38.820000",
+    "datetime.timedelta(days=3, seconds=76118, microseconds=820000)",
+    335318.82,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=178.28,
+      seconds=-757357.7,
+      milliseconds=6434.98,
+    ),
+    "169 days, 12:20:40.734980",
+    "datetime.timedelta(days=169, seconds=44440, microseconds=734980)",
+    14646040.73498,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-553.31,
+      seconds=-310813.778247,
+      microseconds=7909703.757,
+      hours=82.31,
+    ),
+    "-554 days, 12:32:06.131457",
+    "datetime.timedelta(days=-554, seconds=45126, microseconds=131457)",
+    -47820473.868543,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-795.5, weeks=-0.266982),
+    "-798 days, 15:08:49.286400",
+    "datetime.timedelta(days=-798, seconds=54529, microseconds=286400)",
+    -68892670.7136,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-444151.9,
+      hours=46.523259,
+      weeks=3.256,
+    ),
+    "19 days, 14:09:20.632400",
+    "datetime.timedelta(days=19, seconds=50960, microseconds=632400)",
+    1692560.6324,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-80295.776, weeks=2.0),
+    "13 days, 1:41:44.224000",
+    "datetime.timedelta(days=13, seconds=6104, microseconds=224000)",
+    1129304.224,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=70.59,
+      seconds=976845.17,
+      minutes=-1106.08,
+      hours=44.5,
+    ),
+    "82 days, 23:34:16.370000",
+    "datetime.timedelta(days=82, seconds=84856, microseconds=370000)",
+    7169656.37,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=7042.33, weeks=7.866),
+    "59 days, 22:51:36.600000",
+    "datetime.timedelta(days=59, seconds=82296, microseconds=600000)",
+    5179896.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-709555.655, hours=-74.96),
+    "-12 days, 15:56:28.345000",
+    "datetime.timedelta(days=-12, seconds=57388, microseconds=345000)",
+    -979411.655,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3287997.115582,
+      milliseconds=9411.45,
+      minutes=-9557.8,
+      hours=36.8,
+      weeks=6.917,
+    ),
+    "43 days, 7:33:39.723453",
+    "datetime.timedelta(days=43, seconds=27219, microseconds=723453)",
+    3742419.723453,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=101.022814,
+      microseconds=-2078151.39,
+      hours=-34.572613,
+      weeks=6.403782,
+    ),
+    "144 days, 9:48:34.998249",
+    "datetime.timedelta(days=144, seconds=35314, microseconds=998249)",
+    12476914.998249,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-990062.044779, weeks=5.97),
+    "30 days, 7:56:33.955221",
+    "datetime.timedelta(days=30, seconds=28593, microseconds=955221)",
+    2620593.955221,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=157945.106,
+      microseconds=1525604.02,
+      milliseconds=5364.144,
+      hours=90.1,
+    ),
+    "5 days, 13:58:31.995748",
+    "datetime.timedelta(days=5, seconds=50311, microseconds=995748)",
+    482311.995748,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-467.296,
+      milliseconds=5466.768,
+      minutes=-243.433,
+      weeks=4.389892,
+    ),
+    "-437 days, 6:20:31.768368",
+    "datetime.timedelta(days=-437, seconds=22831, microseconds=768368)",
+    -37733968.231632,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=736.498569,
+      milliseconds=-8241.39,
+      weeks=-2.25,
+    ),
+    "720 days, 17:57:48.120210",
+    "datetime.timedelta(days=720, seconds=64668, microseconds=120210)",
+    62272668.12021,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=402.58,
+      microseconds=-1911416.6,
+      minutes=-382.8,
+      hours=48.556,
+    ),
+    "404 days, 8:05:43.688583",
+    "datetime.timedelta(days=404, seconds=29143, microseconds=688583)",
+    34934743.688583,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=674.8,
+      minutes=1969.849091,
+      weeks=-4.84,
+    ),
+    "-33 days, 11:42:39.620260",
+    "datetime.timedelta(days=-33, seconds=42159, microseconds=620260)",
+    -2809040.37974,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-5759751.2,
+      milliseconds=6487.247,
+      minutes=80.685,
+      hours=64.1,
+      weeks=0.18849,
+    ),
+    "4 days, 1:06:40.579496",
+    "datetime.timedelta(days=4, seconds=4000, microseconds=579496)",
+    349600.579496,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=269.4,
+      seconds=-22622.558777,
+      microseconds=7066060.3,
+    ),
+    "269 days, 3:19:04.507283",
+    "datetime.timedelta(days=269, seconds=11944, microseconds=507283)",
+    23253544.507283,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=641.68269,
+      seconds=28848.561,
+      milliseconds=-5769.18,
+      weeks=-0.232141,
+    ),
+    "640 days, 9:23:48.331020",
+    "datetime.timedelta(days=640, seconds=33828, microseconds=331020)",
+    55329828.33102,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1547015.35,
+      minutes=1848.82,
+      hours=-6.67,
+    ),
+    "1 day, 0:08:38.747015",
+    "datetime.timedelta(days=1, seconds=518, microseconds=747015)",
+    86918.747015,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      minutes=-9058.252777,
+      hours=53.754594,
+      weeks=-6.9,
+    ),
+    "-53 days, 15:35:01.371780",
+    "datetime.timedelta(days=-53, seconds=56101, microseconds=371780)",
+    -4523098.62822,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=996.555432,
+      microseconds=-9484306.250537,
+    ),
+    "996 days, 13:19:39.840494",
+    "datetime.timedelta(days=996, seconds=47979, microseconds=840494)",
+    86102379.840494,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5675.5, hours=93.93),
+    "3 days, 21:55:42.324500",
+    "datetime.timedelta(days=3, seconds=78942, microseconds=324500)",
+    338142.3245,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9274219.08,
+      minutes=8156.274567,
+      hours=70.453831,
+      weeks=9.714,
+    ),
+    "76 days, 14:20:46.739839",
+    "datetime.timedelta(days=76, seconds=51646, microseconds=739839)",
+    6618046.739839,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-2509067.9, minutes=9344.849),
+    "6 days, 11:44:48.430932",
+    "datetime.timedelta(days=6, seconds=42288, microseconds=430932)",
+    560688.430932,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-6862.0, hours=-75.364671),
+    "-8 days, 2:16:07.184400",
+    "datetime.timedelta(days=-8, seconds=8167, microseconds=184400)",
+    -683032.8156,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=274.236, microseconds=-3760038.221),
+    "274 days, 5:39:46.639962",
+    "datetime.timedelta(days=274, seconds=20386, microseconds=639962)",
+    23693986.639962,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=843490.7,
+      milliseconds=9191.77,
+      hours=-38.3,
+    ),
+    "8 days, 4:00:19.891770",
+    "datetime.timedelta(days=8, seconds=14419, microseconds=891770)",
+    705619.89177,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=422.598,
+      microseconds=-2993946.6,
+      minutes=-9139.42,
+      weeks=-6.2,
+    ),
+    "372 days, 20:25:39.006053",
+    "datetime.timedelta(days=372, seconds=73539, microseconds=6053)",
+    32214339.006053,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-797.06,
+      microseconds=2447668.5,
+      milliseconds=599.3,
+      minutes=-2611.731,
+      weeks=-9.269061,
+    ),
+    "-864 days, 5:49:47.094169",
+    "datetime.timedelta(days=-864, seconds=20987, microseconds=94169)",
+    -74628612.905831,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4537529.941,
+      milliseconds=-7552.592,
+      minutes=2342.0,
+      hours=54.3,
+    ),
+    "3 days, 21:19:56.984938",
+    "datetime.timedelta(days=3, seconds=76796, microseconds=984938)",
+    335996.984938,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=24.0, minutes=7821.007276),
+    "29 days, 10:21:00.436560",
+    "datetime.timedelta(days=29, seconds=37260, microseconds=436560)",
+    2542860.43656,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=714.319,
+      seconds=358329.792,
+      microseconds=7571582.034,
+      weeks=-4.227,
+    ),
+    "688 days, 21:03:29.363582",
+    "datetime.timedelta(days=688, seconds=75809, microseconds=363582)",
+    59519009.363582,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=405.527,
+      seconds=553802.369894,
+      microseconds=6410584.438129,
+      milliseconds=9631.517,
+    ),
+    "411 days, 22:29:11.211995",
+    "datetime.timedelta(days=411, seconds=80951, microseconds=211995)",
+    35591351.211995,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=448785.897596,
+      microseconds=-63275.33,
+    ),
+    "5 days, 4:39:45.834321",
+    "datetime.timedelta(days=5, seconds=16785, microseconds=834321)",
+    448785.834321,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=2983497.807852, hours=-71.53),
+    "-3 days, 0:28:14.983498",
+    "datetime.timedelta(days=-3, seconds=1694, microseconds=983498)",
+    -257505.016502,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-860863.7),
+    "-10 days, 0:52:16.300000",
+    "datetime.timedelta(days=-10, seconds=3136, microseconds=300000)",
+    -860863.7,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=619071.23, minutes=-2547.436812),
+    "5 days, 9:30:25.021280",
+    "datetime.timedelta(days=5, seconds=34225, microseconds=21280)",
+    466225.02128,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-743309.889),
+    "-9 days, 9:31:30.111000",
+    "datetime.timedelta(days=-9, seconds=34290, microseconds=111000)",
+    -743309.889,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9074010.035319,
+      milliseconds=2837.46,
+      hours=-2.3,
+    ),
+    "-1 day, 21:42:11.911470",
+    "datetime.timedelta(days=-1, seconds=78131, microseconds=911470)",
+    -8268.08853,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1416731.8,
+      minutes=8172.784,
+      weeks=6.301706,
+    ),
+    "49 days, 18:54:00.245532",
+    "datetime.timedelta(days=49, seconds=68040, microseconds=245532)",
+    4301640.245532,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-307.6,
+      seconds=-534975.031,
+      microseconds=3692226.98,
+      minutes=6476.6,
+    ),
+    "-310 days, 16:56:24.661227",
+    "datetime.timedelta(days=-310, seconds=60984, microseconds=661227)",
+    -26723015.338773,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-7789890.24,
+      milliseconds=2227.3,
+      minutes=7137.115398,
+      hours=-59.52,
+      weeks=-0.6,
+    ),
+    "-2 days, 6:37:49.361290",
+    "datetime.timedelta(days=-2, seconds=23869, microseconds=361290)",
+    -148930.63871,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=279.617,
+      microseconds=493464.27,
+      weeks=-5.248,
+    ),
+    "242 days, 21:08:38.893464",
+    "datetime.timedelta(days=242, seconds=76118, microseconds=893464)",
+    20984918.893464,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-780.9,
+      seconds=888650.51,
+      microseconds=-2017814.429644,
+      minutes=-307.138,
+      weeks=-8.7,
+    ),
+    "-832 days, 6:31:40.212186",
+    "datetime.timedelta(days=-832, seconds=23500, microseconds=212186)",
+    -71861299.787814,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=861.0, seconds=-987769.36),
+    "849 days, 13:37:10.640000",
+    "datetime.timedelta(days=849, seconds=49030, microseconds=640000)",
+    73402630.64,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-536.123489,
+      milliseconds=-6439.01,
+      hours=-4.336801,
+    ),
+    "-537 days, 16:41:51.627790",
+    "datetime.timedelta(days=-537, seconds=60111, microseconds=627790)",
+    -46336688.37221,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-386.9),
+    "-1 day, 17:33:06",
+    "datetime.timedelta(days=-1, seconds=63186)",
+    -23214.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=5537.96, weeks=-7.713244),
+    "-51 days, 20:28:27.628800",
+    "datetime.timedelta(days=-51, seconds=73707, microseconds=628800)",
+    -4332692.3712,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=455.65,
+      seconds=-159012.3,
+      minutes=3066.8,
+    ),
+    "455 days, 22:32:35.700000",
+    "datetime.timedelta(days=455, seconds=81155, microseconds=700000)",
+    39393155.7,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9016067.32,
+      milliseconds=716.800658,
+      minutes=7302.9,
+    ),
+    "5 days, 1:43:03.732868",
+    "datetime.timedelta(days=5, seconds=6183, microseconds=732868)",
+    438183.732868,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=691.1,
+      microseconds=-4972997.11677,
+      milliseconds=-3853.1,
+      minutes=6831.8,
+    ),
+    "695 days, 20:15:39.173903",
+    "datetime.timedelta(days=695, seconds=72939, microseconds=173903)",
+    60120939.173903,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4198.53, hours=97.6),
+    "4 days, 1:36:04.198530",
+    "datetime.timedelta(days=4, seconds=5764, microseconds=198530)",
+    351364.19853,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=10.144,
+      seconds=60441.73,
+      microseconds=8016116.508,
+      hours=98.086957,
+    ),
+    "14 days, 22:20:04.391317",
+    "datetime.timedelta(days=14, seconds=80404, microseconds=391317)",
+    1290004.391317,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-176778.245,
+      microseconds=116962.592,
+      minutes=-431.16,
+      hours=90.101,
+      weeks=7.243,
+    ),
+    "52 days, 2:38:02.271963",
+    "datetime.timedelta(days=52, seconds=9482, microseconds=271963)",
+    4502282.271963,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=9703.9,
+      hours=-29.259,
+      weeks=-3.0,
+    ),
+    "-23 days, 18:44:37.303900",
+    "datetime.timedelta(days=-23, seconds=67477, microseconds=303900)",
+    -1919722.6961,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=495.000131,
+      seconds=-722092.9,
+      milliseconds=-5755.43,
+      weeks=-6.920112,
+    ),
+    "438 days, 4:50:28.925370",
+    "datetime.timedelta(days=438, seconds=17428, microseconds=925370)",
+    37860628.92537,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=7254.9,
+      minutes=5943.88139,
+      hours=-60.8,
+      weeks=-1.51,
+    ),
+    "-9 days, 0:35:12.138300",
+    "datetime.timedelta(days=-9, seconds=2112, microseconds=138300)",
+    -775487.8617,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-888695.479547,
+      microseconds=-5163530.578,
+      minutes=-9302.38,
+      weeks=-7.672,
+    ),
+    "-71 days, 13:12:10.956922",
+    "datetime.timedelta(days=-71, seconds=47530, microseconds=956922)",
+    -6086869.043078,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-183.680849,
+      seconds=-954583.0,
+      microseconds=86901.25,
+      milliseconds=6063.503,
+      weeks=0.9,
+    ),
+    "-189 days, 13:41:57.796804",
+    "datetime.timedelta(days=-189, seconds=49317, microseconds=796804)",
+    -16280282.203196,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=214.8,
+      seconds=-101469.247245,
+      microseconds=-5993456.5,
+    ),
+    "213 days, 15:00:44.759299",
+    "datetime.timedelta(days=213, seconds=54044, microseconds=759299)",
+    18457244.759299,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-430616.745, hours=-76.8),
+    "-9 days, 19:35:03.255000",
+    "datetime.timedelta(days=-9, seconds=70503, microseconds=255000)",
+    -707096.745,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-368.1),
+    "-369 days, 21:36:00",
+    "datetime.timedelta(days=-369, seconds=77760)",
+    -31803840.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=79.31, weeks=-9.897329),
+    "-66 days, 0:33:31.420800",
+    "datetime.timedelta(days=-66, seconds=2011, microseconds=420800)",
+    -5700388.5792,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=531.0,
+      microseconds=8509122.6,
+      milliseconds=-7853.342077,
+      hours=-66.92,
+    ),
+    "528 days, 5:04:48.655781",
+    "datetime.timedelta(days=528, seconds=18288, microseconds=655781)",
+    45637488.655781,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=659300.230401,
+      milliseconds=-1588.9,
+      minutes=2527.3,
+      hours=-25.21,
+    ),
+    "8 days, 8:03:00.641501",
+    "datetime.timedelta(days=8, seconds=28980, microseconds=641501)",
+    720180.641501,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=404141.85,
+      milliseconds=367.131,
+      hours=-83.96,
+    ),
+    "1 day, 4:18:06.217131",
+    "datetime.timedelta(days=1, seconds=15486, microseconds=217131)",
+    101886.217131,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=177375.46,
+      microseconds=6452487.16,
+      minutes=9478.185,
+      hours=15.35,
+    ),
+    "9 days, 6:35:33.012487",
+    "datetime.timedelta(days=9, seconds=23733, microseconds=12487)",
+    801333.012487,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=8418555.475, hours=53.31),
+    "2 days, 5:18:44.418555",
+    "datetime.timedelta(days=2, seconds=19124, microseconds=418555)",
+    191924.418555,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-137.4, minutes=5924.038, weeks=-6.6),
+    "-180 days, 12:20:02.280000",
+    "datetime.timedelta(days=-180, seconds=44402, microseconds=280000)",
+    -15507597.72,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-1885.373, weeks=7.2),
+    "50 days, 9:35:58.114627",
+    "datetime.timedelta(days=50, seconds=34558, microseconds=114627)",
+    4354558.114627,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-18.722586, seconds=-930732.669104),
+    "-30 days, 12:07:15.900496",
+    "datetime.timedelta(days=-30, seconds=43635, microseconds=900496)",
+    -2548364.099504,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=9133.720629,
+      minutes=8889.201221,
+      hours=-54.652,
+    ),
+    "3 days, 21:30:14.006981",
+    "datetime.timedelta(days=3, seconds=77414, microseconds=6981)",
+    336614.006981,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=433.65,
+      microseconds=2769978.9,
+      hours=-62.925237,
+    ),
+    "431 days, 0:40:31.916779",
+    "datetime.timedelta(days=431, seconds=2431, microseconds=916779)",
+    37240831.916779,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=462560.4,
+      milliseconds=9706.098529,
+      minutes=-8843.829156,
+      hours=89.7,
+    ),
+    "2 days, 22:47:40.356739",
+    "datetime.timedelta(days=2, seconds=82060, microseconds=356739)",
+    254860.356739,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-6368.600597),
+    "-5 days, 13:51:23.964180",
+    "datetime.timedelta(days=-5, seconds=49883, microseconds=964180)",
+    -382116.03582,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=2763.491713, hours=73.44),
+    "3 days, 1:26:26.763492",
+    "datetime.timedelta(days=3, seconds=5186, microseconds=763492)",
+    264386.763492,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=9728.48),
+    "6 days, 18:08:28.800000",
+    "datetime.timedelta(days=6, seconds=65308, microseconds=800000)",
+    583708.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-7801.16631),
+    "-6 days, 13:58:50.021400",
+    "datetime.timedelta(days=-6, seconds=50330, microseconds=21400)",
+    -468069.9786,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-878962.063, weeks=-4.478),
+    "-42 days, 11:32:23.537000",
+    "datetime.timedelta(days=-42, seconds=41543, microseconds=537000)",
+    -3587256.463,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=365179.14, milliseconds=-8866.2),
+    "4 days, 5:26:10.273800",
+    "datetime.timedelta(days=4, seconds=19570, microseconds=273800)",
+    365170.2738,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=730.7,
+      seconds=255638.0,
+      microseconds=2397253.472106,
+      milliseconds=-7538.8,
+    ),
+    "733 days, 15:48:32.858453",
+    "datetime.timedelta(days=733, seconds=56912, microseconds=858453)",
+    63388112.858453,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=987.88, microseconds=-6632646.99),
+    "987 days, 21:07:05.367353",
+    "datetime.timedelta(days=987, seconds=76025, microseconds=367353)",
+    85352825.367353,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=123118.6,
+      milliseconds=-8716.25,
+      hours=-4.74,
+      weeks=3.78,
+    ),
+    "27 days, 16:29:49.883750",
+    "datetime.timedelta(days=27, seconds=59389, microseconds=883750)",
+    2392189.88375,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-600.77, weeks=-0.462),
+    "-605 days, 23:54:14.400000",
+    "datetime.timedelta(days=-605, seconds=86054, microseconds=400000)",
+    -52185945.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=896898.885, hours=42.402048),
+    "12 days, 3:32:26.257800",
+    "datetime.timedelta(days=12, seconds=12746, microseconds=257800)",
+    1049546.2578,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=228.8, minutes=-9922.589, hours=80.858),
+    "225 days, 6:40:53.460000",
+    "datetime.timedelta(days=225, seconds=24053, microseconds=460000)",
+    19464053.46,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-3.064118,
+      microseconds=9531437.2,
+      minutes=-3468.3,
+    ),
+    "-6 days, 12:39:31.736237",
+    "datetime.timedelta(days=-6, seconds=45571, microseconds=736237)",
+    -472828.263763,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=8710.44, hours=51.5, weeks=-7.827),
+    "-47 days, 9:44:16.800000",
+    "datetime.timedelta(days=-47, seconds=35056, microseconds=800000)",
+    -4025743.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-286817.47,
+      microseconds=5004588.357,
+    ),
+    "-4 days, 16:19:47.534588",
+    "datetime.timedelta(days=-4, seconds=58787, microseconds=534588)",
+    -286812.465412,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-8721.01),
+    "-1 day, 23:59:51.278990",
+    "datetime.timedelta(days=-1, seconds=86391, microseconds=278990)",
+    -8.72101,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=156.08, microseconds=-3699853.991),
+    "156 days, 1:55:08.300146",
+    "datetime.timedelta(days=156, seconds=6908, microseconds=300146)",
+    13485308.300146,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-133.99),
+    "-134 days, 0:14:24",
+    "datetime.timedelta(days=-134, seconds=864)",
+    -11576736.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=233.892,
+      seconds=907047.751,
+      microseconds=1036718.1,
+      milliseconds=352.378,
+      hours=-39.405,
+    ),
+    "242 days, 17:57:39.940096",
+    "datetime.timedelta(days=242, seconds=64659, microseconds=940096)",
+    20973459.940096,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-487.225,
+      minutes=-9990.58,
+      weeks=2.196226,
+    ),
+    "-479 days, 5:03:22.684800",
+    "datetime.timedelta(days=-479, seconds=18202, microseconds=684800)",
+    -41367397.3152,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=19.89, weeks=0.921),
+    "7 days, 6:37:04.800000",
+    "datetime.timedelta(days=7, seconds=23824, microseconds=800000)",
+    628624.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-790.27, milliseconds=7174.483209),
+    "-791 days, 17:31:19.174483",
+    "datetime.timedelta(days=-791, seconds=63079, microseconds=174483)",
+    -68279320.825517,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=277.38,
+      microseconds=8711851.797468,
+      milliseconds=2932.87,
+    ),
+    "277 days, 9:07:23.644722",
+    "datetime.timedelta(days=277, seconds=32843, microseconds=644722)",
+    23965643.644722,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=740033.091361,
+      microseconds=9910114.47,
+      milliseconds=8333.73,
+      minutes=7685.0,
+    ),
+    "13 days, 21:39:11.335205",
+    "datetime.timedelta(days=13, seconds=77951, microseconds=335205)",
+    1201151.335205,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-30641.309018,
+      microseconds=7616548.1,
+      milliseconds=-4772.8,
+      hours=63.86,
+      weeks=-1.75,
+    ),
+    "-10 days, 1:20:57.534730",
+    "datetime.timedelta(days=-10, seconds=4857, microseconds=534730)",
+    -859142.46527,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=561524.09,
+      milliseconds=4190.635871,
+      minutes=8560.236,
+    ),
+    "12 days, 10:39:02.440636",
+    "datetime.timedelta(days=12, seconds=38342, microseconds=440636)",
+    1075142.440636,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-515.41, milliseconds=-9728.6),
+    "-516 days, 14:09:26.271400",
+    "datetime.timedelta(days=-516, seconds=50966, microseconds=271400)",
+    -44531433.7286,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=7787.104),
+    "0:00:07.787104",
+    "datetime.timedelta(seconds=7, microseconds=787104)",
+    7.787104,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=870416.008,
+      milliseconds=-9722.252854,
+      minutes=-5396.24,
+    ),
+    "6 days, 7:50:31.885747",
+    "datetime.timedelta(days=6, seconds=28231, microseconds=885747)",
+    546631.885747,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-1338684.642475,
+      milliseconds=-9457.26,
+      minutes=1605.631,
+    ),
+    "1 day, 2:45:27.064055",
+    "datetime.timedelta(days=1, seconds=9927, microseconds=64055)",
+    96327.064055,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=918446.19,
+      microseconds=-4590.1,
+      minutes=-7984.1,
+      weeks=-3.205293,
+    ),
+    "-18 days, 15:33:58.979010",
+    "datetime.timedelta(days=-18, seconds=56038, microseconds=979010)",
+    -1499161.02099,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=305.968966,
+      hours=39.659045,
+      weeks=9.701,
+    ),
+    "375 days, 12:40:56.024400",
+    "datetime.timedelta(days=375, seconds=45656, microseconds=24400)",
+    32445656.0244,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-910.684646,
+      seconds=-691230.848194,
+      minutes=5661.4,
+      hours=1.606,
+    ),
+    "-915 days, 7:31:21.337406",
+    "datetime.timedelta(days=-915, seconds=27081, microseconds=337406)",
+    -79028918.662594,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-821878.306858,
+      microseconds=-464681.25,
+    ),
+    "-10 days, 11:42:01.228461",
+    "datetime.timedelta(days=-10, seconds=42121, microseconds=228461)",
+    -821878.771539,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-425677.39,
+      milliseconds=2782.9,
+      minutes=2413.571,
+      weeks=-3.4,
+    ),
+    "-28 days, 22:46:59.652900",
+    "datetime.timedelta(days=-28, seconds=82019, microseconds=652900)",
+    -2337180.3471,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=44.2),
+    "1 day, 20:12:00",
+    "datetime.timedelta(days=1, seconds=72720)",
+    159120.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-44.5,
+      seconds=442266.252,
+      microseconds=5087294.418122,
+      milliseconds=1121.8,
+      hours=-89.472,
+      weeks=6.323,
+    ),
+    "1 day, 3:38:43.661094",
+    "datetime.timedelta(days=1, seconds=13123, microseconds=661094)",
+    99523.661094,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=908520.911, minutes=2159.64),
+    "12 days, 0:21:39.311000",
+    "datetime.timedelta(days=12, seconds=1299, microseconds=311000)",
+    1038099.311,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-669.8, seconds=804761.94, hours=75.9),
+    "-658 days, 16:14:41.940000",
+    "datetime.timedelta(days=-658, seconds=58481, microseconds=940000)",
+    -56792718.06,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=854.4,
+      seconds=-103454.6885,
+      microseconds=-7525700.8,
+      minutes=1855.4,
+      hours=-20.65,
+      weeks=0.7869,
+    ),
+    "859 days, 3:19:58.905799",
+    "datetime.timedelta(days=859, seconds=11998, microseconds=905799)",
+    74229598.905799,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-8232.464, hours=-97.45),
+    "-10 days, 5:20:32.160000",
+    "datetime.timedelta(days=-10, seconds=19232, microseconds=160000)",
+    -844767.84,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=625084.935313, hours=94.8),
+    "11 days, 4:26:04.935313",
+    "datetime.timedelta(days=11, seconds=15964, microseconds=935313)",
+    966364.935313,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-170.98,
+      microseconds=7326489.18,
+      milliseconds=4979.14,
+      minutes=-1524.4,
+    ),
+    "-173 days, 23:04:36.305629",
+    "datetime.timedelta(days=-173, seconds=83076, microseconds=305629)",
+    -14864123.694371,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=986402.494,
+      microseconds=5455677.14,
+      milliseconds=2914.69,
+    ),
+    "11 days, 10:00:10.864367",
+    "datetime.timedelta(days=11, seconds=36010, microseconds=864367)",
+    986410.864367,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=15.8,
+      seconds=690976.633,
+      microseconds=-5968323.492,
+      milliseconds=-1961.8,
+      minutes=7723.269,
+    ),
+    "29 days, 3:51:24.842877",
+    "datetime.timedelta(days=29, seconds=13884, microseconds=842877)",
+    2519484.842877,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=871420.601141,
+      milliseconds=846.218,
+      minutes=-6680.34,
+      weeks=1.644205,
+    ),
+    "16 days, 22:56:56.231359",
+    "datetime.timedelta(days=16, seconds=82616, microseconds=231359)",
+    1465016.231359,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=82.749536,
+      minutes=-4211.81,
+      hours=19.61,
+      weeks=-2.7,
+    ),
+    "61 days, 17:48:07.310400",
+    "datetime.timedelta(days=61, seconds=64087, microseconds=310400)",
+    5334487.3104,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=253.99,
+      microseconds=-2430850.355,
+      weeks=8.6,
+    ),
+    "314 days, 4:33:33.569150",
+    "datetime.timedelta(days=314, seconds=16413, microseconds=569150)",
+    27146013.56915,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=836390.38,
+      milliseconds=3242.98,
+      minutes=-3239.091045,
+      hours=-79.6,
+      weeks=0.84,
+    ),
+    "9 days, 23:52:00.160280",
+    "datetime.timedelta(days=9, seconds=85920, microseconds=160280)",
+    863520.16028,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-9112.375214, weeks=9.46),
+    "66 days, 5:16:38.887625",
+    "datetime.timedelta(days=66, seconds=18998, microseconds=887625)",
+    5721398.887625,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=7434.93,
+      minutes=-6235.75,
+      weeks=-8.47,
+    ),
+    "-64 days, 9:06:46.434930",
+    "datetime.timedelta(days=-64, seconds=32806, microseconds=434930)",
+    -5496793.56507,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=577.438,
+      microseconds=6122809.126781,
+      hours=-94.33,
+    ),
+    "573 days, 12:11:01.322809",
+    "datetime.timedelta(days=573, seconds=43861, microseconds=322809)",
+    49551061.322809,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4093.8, minutes=7737.44),
+    "5 days, 8:57:30.493800",
+    "datetime.timedelta(days=5, seconds=32250, microseconds=493800)",
+    464250.4938,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=180.089, seconds=430193.300077),
+    "185 days, 1:38:02.900077",
+    "datetime.timedelta(days=185, seconds=5882, microseconds=900077)",
+    15989882.900077,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-976.081932,
+      seconds=199558.4,
+      minutes=-1023.993,
+      hours=-74.236728,
+    ),
+    "-978 days, 10:09:47.674400",
+    "datetime.timedelta(days=-978, seconds=36587, microseconds=674400)",
+    -84462612.3256,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-328.293729,
+      seconds=283320.5,
+      minutes=2743.593258,
+    ),
+    "-324 days, 21:22:37.909880",
+    "datetime.timedelta(days=-324, seconds=76957, microseconds=909880)",
+    -27916642.09012,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-104.84, milliseconds=-2854.0),
+    "-105 days, 3:50:21.146000",
+    "datetime.timedelta(days=-105, seconds=13821, microseconds=146000)",
+    -9058178.854,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=404.781,
+      microseconds=5140550.9,
+      milliseconds=-9404.815,
+      minutes=-977.57,
+      hours=52.1,
+      weeks=7.241729,
+    ),
+    "456 days, 23:09:37.634936",
+    "datetime.timedelta(days=456, seconds=83377, microseconds=634936)",
+    39481777.634936,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-566.550445),
+    "-567 days, 10:47:21.552000",
+    "datetime.timedelta(days=-567, seconds=38841, microseconds=552000)",
+    -48949958.448,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4764953.383,
+      milliseconds=6729.0,
+    ),
+    "0:00:11.493953",
+    "datetime.timedelta(seconds=11, microseconds=493953)",
+    11.493953,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-2537.8, hours=62.400005, weeks=9.0),
+    "63 days, 20:06:12.018000",
+    "datetime.timedelta(days=63, seconds=72372, microseconds=18000)",
+    5515572.018,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-676.5,
+      microseconds=6242042.300024,
+      milliseconds=-1658.330738,
+    ),
+    "-677 days, 12:00:04.583712",
+    "datetime.timedelta(days=-677, seconds=43204, microseconds=583712)",
+    -58449595.416288,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=622266.929118,
+      microseconds=-6713620.53,
+      hours=-54.6,
+    ),
+    "4 days, 22:15:00.215497",
+    "datetime.timedelta(days=4, seconds=80100, microseconds=215497)",
+    425700.215497,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-4481.122691,
+      milliseconds=4150.829445,
+    ),
+    "-1 day, 22:45:23.028138",
+    "datetime.timedelta(days=-1, seconds=81923, microseconds=28138)",
+    -4476.971862,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-693.447,
+      seconds=883140.9,
+      microseconds=4238384.828,
+      minutes=-713.6,
+      weeks=-6.437,
+    ),
+    "-729 days, 5:16:50.738385",
+    "datetime.timedelta(days=-729, seconds=19010, microseconds=738385)",
+    -62966589.261615,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=56.4,
+      microseconds=7226800.139,
+      hours=-1.573,
+    ),
+    "56 days, 8:01:44.426800",
+    "datetime.timedelta(days=56, seconds=28904, microseconds=426800)",
+    4867304.4268,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=821.137,
+      seconds=-558947.8,
+      milliseconds=-8879.69,
+      minutes=-1360.6,
+    ),
+    "813 days, 17:20:44.120310",
+    "datetime.timedelta(days=813, seconds=62444, microseconds=120310)",
+    70305644.12031,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=305.54,
+      microseconds=-4850477.277,
+      milliseconds=-4127.5,
+      hours=-67.01,
+    ),
+    "302 days, 17:56:51.022023",
+    "datetime.timedelta(days=302, seconds=64611, microseconds=22023)",
+    26157411.022023,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-869.8, milliseconds=-9536.051348),
+    "-870 days, 4:47:50.463949",
+    "datetime.timedelta(days=-870, seconds=17270, microseconds=463949)",
+    -75150729.536051,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1440923.468587,
+      minutes=9029.203,
+      weeks=4.944131,
+    ),
+    "40 days, 21:06:04.049723",
+    "datetime.timedelta(days=40, seconds=75964, microseconds=49723)",
+    3531964.049723,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-683.0, seconds=806919.065748),
+    "-674 days, 8:08:39.065748",
+    "datetime.timedelta(days=-674, seconds=29319, microseconds=65748)",
+    -58204280.934252,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-274.380054,
+      seconds=176382.384845,
+      microseconds=9758977.426977,
+      minutes=-222.833337,
+    ),
+    "-273 days, 12:09:45.478002",
+    "datetime.timedelta(days=-273, seconds=43785, microseconds=478002)",
+    -23543414.521998,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9850911.308,
+      milliseconds=-3953.92,
+      minutes=8374.675283,
+      hours=36.573,
+    ),
+    "7 days, 8:09:09.213971",
+    "datetime.timedelta(days=7, seconds=29349, microseconds=213971)",
+    634149.213971,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-1662.358, hours=8.24),
+    "8:14:22.337642",
+    "datetime.timedelta(seconds=29662, microseconds=337642)",
+    29662.337642,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=385308.248,
+      microseconds=-2881246.78,
+      milliseconds=-40.6,
+    ),
+    "4 days, 11:01:45.326153",
+    "datetime.timedelta(days=4, seconds=39705, microseconds=326153)",
+    385305.326153,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9112686.952,
+      minutes=-1639.787185,
+      hours=-26.826,
+    ),
+    "-3 days, 17:50:48.281587",
+    "datetime.timedelta(days=-3, seconds=64248, microseconds=281587)",
+    -194951.718413,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=325171.73,
+      milliseconds=-8837.940736,
+      minutes=-2520.853,
+    ),
+    "2 days, 0:18:31.712059",
+    "datetime.timedelta(days=2, seconds=1111, microseconds=712059)",
+    173911.712059,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-57.96),
+    "-3 days, 14:02:24",
+    "datetime.timedelta(days=-3, seconds=50544)",
+    -208656.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-2009.5),
+    "-2 days, 14:30:30",
+    "datetime.timedelta(days=-2, seconds=52230)",
+    -120570.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-934.0,
+      seconds=736412.23,
+      microseconds=3620028.0,
+      milliseconds=-1535.64,
+      minutes=626.4,
+      weeks=-7.71,
+    ),
+    "-980 days, 23:43:10.314388",
+    "datetime.timedelta(days=-980, seconds=85390, microseconds=314388)",
+    -84586609.685612,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=871.54,
+      milliseconds=-6159.427807,
+      hours=-87.021,
+    ),
+    "867 days, 21:56:14.240572",
+    "datetime.timedelta(days=867, seconds=78974, microseconds=240572)",
+    74987774.240572,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-24.681,
+      microseconds=-3212975.207,
+      milliseconds=5636.644402,
+      minutes=9607.99,
+      hours=83.135,
+      weeks=4.622,
+    ),
+    "17 days, 19:25:15.023669",
+    "datetime.timedelta(days=17, seconds=69915, microseconds=23669)",
+    1538715.023669,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-5159.24, weeks=3.9),
+    "23 days, 17:12:45.600000",
+    "datetime.timedelta(days=23, seconds=61965, microseconds=600000)",
+    2049165.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-9141565.777323,
+      milliseconds=-5252.799702,
+    ),
+    "-1 day, 23:59:45.605635",
+    "datetime.timedelta(days=-1, seconds=86385, microseconds=605635)",
+    -14.394365,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=641.229836),
+    "641 days, 5:30:57.830400",
+    "datetime.timedelta(days=641, seconds=19857, microseconds=830400)",
+    55402257.8304,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=231968.119,
+      microseconds=8299499.87,
+      milliseconds=-4206.084,
+      minutes=-4058.51,
+      hours=-37.36,
+      weeks=-7.237502,
+    ),
+    "-53 days, 15:32:04.402816",
+    "datetime.timedelta(days=-53, seconds=55924, microseconds=402816)",
+    -4523275.597184,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-547.9),
+    "-1 day, 23:59:59.452100",
+    "datetime.timedelta(days=-1, seconds=86399, microseconds=452100)",
+    -0.5479,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-316338.3,
+      microseconds=-4247525.673,
+      minutes=1803.87,
+      hours=-85.3,
+    ),
+    "-6 days, 0:53:29.652474",
+    "datetime.timedelta(days=-6, seconds=3209, microseconds=652474)",
+    -515190.347526,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=296657.1,
+      microseconds=1973827.1,
+      minutes=9576.727031,
+      hours=95.982091,
+      weeks=3.415248,
+    ),
+    "37 days, 23:45:40.213687",
+    "datetime.timedelta(days=37, seconds=85540, microseconds=213687)",
+    3282340.213687,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=798.10446, weeks=6.944594),
+    "846 days, 17:11:55.795200",
+    "datetime.timedelta(days=846, seconds=61915, microseconds=795200)",
+    73156315.7952,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=10.99, hours=-2.871),
+    "10 days, 20:53:20.400000",
+    "datetime.timedelta(days=10, seconds=75200, microseconds=400000)",
+    939200.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=178.05,
+      seconds=594547.977,
+      milliseconds=-2692.959,
+      hours=-73.726118,
+    ),
+    "181 days, 20:37:31.259241",
+    "datetime.timedelta(days=181, seconds=74251, microseconds=259241)",
+    15712651.259241,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-837.3,
+      milliseconds=-3655.142,
+      minutes=-2404.4,
+      hours=66.23,
+    ),
+    "-837 days, 18:57:20.344858",
+    "datetime.timedelta(days=-837, seconds=68240, microseconds=344858)",
+    -72248559.655142,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-831.48,
+      microseconds=7348038.02,
+      minutes=-169.954371,
+    ),
+    "-832 days, 9:38:58.085778",
+    "datetime.timedelta(days=-832, seconds=34738, microseconds=85778)",
+    -71850061.914222,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-356.7,
+      microseconds=4741398.32,
+      milliseconds=-6080.120671,
+    ),
+    "-357 days, 7:11:58.661278",
+    "datetime.timedelta(days=-357, seconds=25918, microseconds=661278)",
+    -30818881.338722,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-711.143595,
+      microseconds=4489137.653,
+      hours=-60.722269,
+    ),
+    "-714 days, 7:49:57.712738",
+    "datetime.timedelta(days=-714, seconds=28197, microseconds=712738)",
+    -61661402.287262,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-140134.336,
+      milliseconds=-6260.166,
+      minutes=1229.4,
+      hours=-29.198,
+      weeks=-6.469,
+    ),
+    "-48 days, 17:34:19.403834",
+    "datetime.timedelta(days=-48, seconds=63259, microseconds=403834)",
+    -4083940.596166,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=46.654037,
+      milliseconds=-2659.121974,
+      hours=-64.76,
+      weeks=-8.2,
+    ),
+    "-14 days, 13:20:10.137678",
+    "datetime.timedelta(days=-14, seconds=48010, microseconds=137678)",
+    -1161589.862322,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-7533771.9,
+      milliseconds=-1918.62,
+      weeks=-0.3,
+    ),
+    "-3 days, 21:35:50.547608",
+    "datetime.timedelta(days=-3, seconds=77750, microseconds=547608)",
+    -181449.452392,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=520.941,
+      seconds=-58918.840316,
+      milliseconds=-5677.42,
+      minutes=-7015.9,
+      hours=0.72,
+    ),
+    "515 days, 10:00:15.882264",
+    "datetime.timedelta(days=515, seconds=36015, microseconds=882264)",
+    44532015.882264,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-993.044,
+      seconds=882170.3,
+      milliseconds=-9717.7,
+      minutes=5197.69,
+      hours=58.0,
+      weeks=-7.4,
+    ),
+    "-1029 days, 9:25:00.382300",
+    "datetime.timedelta(days=-1029, seconds=33900, microseconds=382300)",
+    -88871699.6177,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8406909.959763,
+      milliseconds=9038.5,
+      minutes=9071.12,
+    ),
+    "6 days, 7:11:07.831590",
+    "datetime.timedelta(days=6, seconds=25867, microseconds=831590)",
+    544267.83159,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=870.689127,
+      minutes=4564.878198,
+      hours=64.5,
+    ),
+    "876 days, 13:07:13.264680",
+    "datetime.timedelta(days=876, seconds=47233, microseconds=264680)",
+    75733633.26468,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=49.964),
+    "2 days, 1:57:50.400000",
+    "datetime.timedelta(days=2, seconds=7070, microseconds=400000)",
+    179870.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-5900.962568, weeks=-5.055539),
+    "-40 days, 12:19:12.258720",
+    "datetime.timedelta(days=-40, seconds=44352, microseconds=258720)",
+    -3411647.74128,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=200349.001,
+      milliseconds=8911.508,
+      hours=76.4,
+    ),
+    "5 days, 12:03:17.912508",
+    "datetime.timedelta(days=5, seconds=43397, microseconds=912508)",
+    475397.912508,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=6893.1, hours=11.5, weeks=9.13),
+    "64 days, 11:15:17.100000",
+    "datetime.timedelta(days=64, seconds=40517, microseconds=100000)",
+    5570117.1,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-33.182848),
+    "-2 days, 14:49:01.747200",
+    "datetime.timedelta(days=-2, seconds=53341, microseconds=747200)",
+    -119458.2528,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=6308450.757079,
+      milliseconds=1541.988,
+      minutes=8253.862,
+      weeks=-9.299311,
+    ),
+    "-60 days, 15:16:56.277639",
+    "datetime.timedelta(days=-60, seconds=55016, microseconds=277639)",
+    -5128983.722361,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=891902.019767,
+      microseconds=-2378960.827725,
+      milliseconds=-6851.903892,
+      weeks=6.01,
+    ),
+    "52 days, 9:25:40.788902",
+    "datetime.timedelta(days=52, seconds=33940, microseconds=788902)",
+    4526740.788902,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-4404722.6,
+      minutes=-8684.867,
+      hours=2.31,
+    ),
+    "-6 days, 1:33:39.575277",
+    "datetime.timedelta(days=-6, seconds=5619, microseconds=575277)",
+    -512780.424723,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-59.48),
+    "-60 days, 12:28:48",
+    "datetime.timedelta(days=-60, seconds=44928)",
+    -5139072.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=9148.82,
+      minutes=-4488.763,
+      weeks=-2.1,
+    ),
+    "-18 days, 4:23:23.368820",
+    "datetime.timedelta(days=-18, seconds=15803, microseconds=368820)",
+    -1539396.63118,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-1979818.06,
+      milliseconds=-2026.4,
+    ),
+    "-1 day, 23:59:55.993782",
+    "datetime.timedelta(days=-1, seconds=86395, microseconds=993782)",
+    -4.006218,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-211.99,
+      seconds=28547.274,
+      milliseconds=4678.4,
+      minutes=9320.736,
+      weeks=2.106668,
+    ),
+    "-191 days, 13:26:12.918800",
+    "datetime.timedelta(days=-191, seconds=48372, microseconds=918800)",
+    -16454027.0812,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-150.117226,
+      microseconds=-6478687.2,
+      milliseconds=-6549.124,
+      minutes=-3887.594,
+      hours=-45.69,
+      weeks=4.886,
+    ),
+    "-121 days, 11:32:51.805789",
+    "datetime.timedelta(days=-121, seconds=41571, microseconds=805789)",
+    -10412828.194211,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3311335.496183,
+      milliseconds=6457.359,
+    ),
+    "0:00:03.146024",
+    "datetime.timedelta(seconds=3, microseconds=146024)",
+    3.146024,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-141484.37,
+      microseconds=4306020.533,
+      minutes=-2140.33,
+      weeks=-6.23,
+    ),
+    "-47 days, 6:23:16.136021",
+    "datetime.timedelta(days=-47, seconds=22996, microseconds=136021)",
+    -4037803.863979,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=790846.414105,
+      milliseconds=-4405.684148,
+      minutes=207.627987,
+      hours=-16.7,
+    ),
+    "8 days, 14:26:19.687641",
+    "datetime.timedelta(days=8, seconds=51979, microseconds=687641)",
+    743179.687641,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-9984735.232),
+    "-1 day, 23:59:50.015265",
+    "datetime.timedelta(days=-1, seconds=86390, microseconds=15265)",
+    -9.984735,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-904395.3,
+      microseconds=-6227321.4,
+      minutes=8253.911781,
+    ),
+    "-5 days, 6:20:33.179539",
+    "datetime.timedelta(days=-5, seconds=22833, microseconds=179539)",
+    -409166.820461,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=834.314),
+    "834 days, 7:32:09.600000",
+    "datetime.timedelta(days=834, seconds=27129, microseconds=600000)",
+    72084729.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      minutes=-254.778927,
+      hours=20.5,
+      weeks=-3.61,
+    ),
+    "-25 days, 9:46:25.264380",
+    "datetime.timedelta(days=-25, seconds=35185, microseconds=264380)",
+    -2124814.73562,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-333.67, hours=98.65),
+    "-330 days, 10:34:12",
+    "datetime.timedelta(days=-330, seconds=38052)",
+    -28473948.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-974.779,
+      seconds=820841.814741,
+      milliseconds=-2684.6,
+      hours=-75.824521,
+      weeks=-3.9,
+    ),
+    "-996 days, 6:17:25.254541",
+    "datetime.timedelta(days=-996, seconds=22645, microseconds=254541)",
+    -86031754.745459,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-877.7,
+      milliseconds=3958.3,
+      minutes=6383.1,
+    ),
+    "-874 days, 17:35:09.958300",
+    "datetime.timedelta(days=-874, seconds=63309, microseconds=958300)",
+    -75450290.0417,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-7278975.288, hours=41.43),
+    "1 day, 17:25:40.721025",
+    "datetime.timedelta(days=1, seconds=62740, microseconds=721025)",
+    149140.721025,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=92.1, hours=44.45),
+    "93 days, 22:51:00",
+    "datetime.timedelta(days=93, seconds=82260)",
+    8117460.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4485.711, minutes=-114.482),
+    "-1 day, 22:05:35.565711",
+    "datetime.timedelta(days=-1, seconds=79535, microseconds=565711)",
+    -6864.434289,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=25.954,
+      minutes=-9176.795,
+      weeks=5.31,
+    ),
+    "30 days, 19:08:00.325954",
+    "datetime.timedelta(days=30, seconds=68880, microseconds=325954)",
+    2660880.325954,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5739.98, minutes=-7465.236),
+    "-6 days, 19:34:40.100020",
+    "datetime.timedelta(days=-6, seconds=70480, microseconds=100020)",
+    -447919.89998,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=768.27,
+      seconds=80813.122,
+      microseconds=8649840.9,
+      minutes=5227.9,
+      weeks=-2.12,
+    ),
+    "757 days, 23:54:07.771841",
+    "datetime.timedelta(days=757, seconds=86047, microseconds=771841)",
+    65490847.771841,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-100695.369286,
+      minutes=-813.667,
+      hours=-41.01,
+      weeks=-3.41,
+    ),
+    "-27 days, 20:32:55.879305",
+    "datetime.timedelta(days=-27, seconds=73975, microseconds=879305)",
+    -2258824.120695,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=890965.34,
+      minutes=-1165.239,
+      hours=18.171,
+    ),
+    "-1 day, 22:45:02.150965",
+    "datetime.timedelta(days=-1, seconds=81902, microseconds=150965)",
+    -4497.849035,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-715337.2,
+      microseconds=6090557.86552,
+      milliseconds=9757.8,
+      minutes=7481.378,
+      hours=77.32,
+    ),
+    "3:18:33.328358",
+    "datetime.timedelta(seconds=11913, microseconds=328358)",
+    11913.328358,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=6803944.92,
+      milliseconds=-4700.86,
+      weeks=-2.602069,
+    ),
+    "-19 days, 18:51:10.771885",
+    "datetime.timedelta(days=-19, seconds=67870, microseconds=771885)",
+    -1573729.228115,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=144989.76,
+      microseconds=-6712365.4,
+      milliseconds=-436.028,
+    ),
+    "1 day, 16:16:22.611607",
+    "datetime.timedelta(days=1, seconds=58582, microseconds=611607)",
+    144982.611607,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=178797.199,
+      microseconds=3875371.3,
+      hours=70.843,
+    ),
+    "5 days, 0:30:35.874371",
+    "datetime.timedelta(days=5, seconds=1835, microseconds=874371)",
+    433835.874371,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-27.95),
+    "-28 days, 1:12:00",
+    "datetime.timedelta(days=-28, seconds=4320)",
+    -2414880.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-904964.4,
+      microseconds=-4126195.05,
+      minutes=-7908.24,
+      hours=-48.68,
+      weeks=8.2,
+    ),
+    "39 days, 9:44:09.073805",
+    "datetime.timedelta(days=39, seconds=35049, microseconds=73805)",
+    3404649.073805,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-9344.0, weeks=-6.972),
+    "-49 days, 4:42:05.056000",
+    "datetime.timedelta(days=-49, seconds=16925, microseconds=56000)",
+    -4216674.944,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-4902965.6, minutes=186.252878),
+    "3:06:10.269714",
+    "datetime.timedelta(seconds=11170, microseconds=269714)",
+    11170.269714,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-41568.57,
+      microseconds=-8002600.6,
+      minutes=9463.5,
+    ),
+    "6 days, 2:10:33.427399",
+    "datetime.timedelta(days=6, seconds=7833, microseconds=427399)",
+    526233.427399,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=93.1),
+    "3 days, 21:06:00",
+    "datetime.timedelta(days=3, seconds=75960)",
+    335160.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-924.62,
+      microseconds=301381.77,
+      milliseconds=7542.328,
+      minutes=2562.181,
+    ),
+    "-923 days, 3:49:30.703710",
+    "datetime.timedelta(days=-923, seconds=13770, microseconds=703710)",
+    -79733429.29629,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-354254.647518,
+      microseconds=2267219.2651,
+      milliseconds=-9372.269,
+      minutes=3312.49,
+    ),
+    "-2 days, 4:48:07.647432",
+    "datetime.timedelta(days=-2, seconds=17287, microseconds=647432)",
+    -155512.352568,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=989796.0,
+      microseconds=8350076.0,
+      minutes=1828.1,
+      weeks=-0.803013,
+    ),
+    "7 days, 2:30:28.087676",
+    "datetime.timedelta(days=7, seconds=9028, microseconds=87676)",
+    613828.087676,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-2747.9, weeks=-5.1),
+    "-38 days, 9:24:06",
+    "datetime.timedelta(days=-38, seconds=33846)",
+    -3249354.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-300.1,
+      microseconds=-1132920.174,
+      minutes=7436.7,
+      hours=-71.854,
+    ),
+    "-298 days, 1:41:26.467080",
+    "datetime.timedelta(days=-298, seconds=6086, microseconds=467080)",
+    -25741113.53292,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-11.39,
+      seconds=-858231.36,
+      microseconds=-2708400.695457,
+      minutes=-2901.1,
+    ),
+    "-24 days, 15:53:23.931599",
+    "datetime.timedelta(days=-24, seconds=57203, microseconds=931599)",
+    -2016396.068401,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-595645.66, milliseconds=6710.94),
+    "-7 days, 2:32:41.050940",
+    "datetime.timedelta(days=-7, seconds=9161, microseconds=50940)",
+    -595638.94906,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=2106119.920959,
+      minutes=3518.04,
+      hours=-90.53,
+      weeks=4.94,
+    ),
+    "33 days, 6:01:28.506120",
+    "datetime.timedelta(days=33, seconds=21688, microseconds=506120)",
+    2872888.50612,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=955.24,
+      seconds=754335.800624,
+      microseconds=8633295.16,
+      minutes=7965.651,
+    ),
+    "969 days, 12:03:39.493919",
+    "datetime.timedelta(days=969, seconds=43419, microseconds=493919)",
+    83765019.493919,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=2209.91, hours=17.901709),
+    "17:54:08.362310",
+    "datetime.timedelta(seconds=64448, microseconds=362310)",
+    64448.36231,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=687663.4,
+      microseconds=-8956253.530398,
+      milliseconds=5020.219,
+      hours=23.44,
+    ),
+    "8 days, 22:27:23.463965",
+    "datetime.timedelta(days=8, seconds=80843, microseconds=463965)",
+    772043.463965,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=254276.623, minutes=6062.0),
+    "7 days, 3:39:56.623000",
+    "datetime.timedelta(days=7, seconds=13196, microseconds=623000)",
+    617996.623,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-947.651258, seconds=-212073.3),
+    "-951 days, 21:27:38.008800",
+    "datetime.timedelta(days=-951, seconds=77258, microseconds=8800)",
+    -82089141.9912,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-2.589715),
+    "-1 day, 21:24:37.026000",
+    "datetime.timedelta(days=-1, seconds=77077, microseconds=26000)",
+    -9322.974,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=768232.34,
+      milliseconds=-7984.6865,
+      hours=27.403473,
+      weeks=7.4,
+    ),
+    "61 days, 19:59:56.858114",
+    "datetime.timedelta(days=61, seconds=71996, microseconds=858114)",
+    5342396.858114,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=410.845,
+      seconds=794859.531474,
+      milliseconds=8029.224,
+      weeks=7.4,
+    ),
+    "471 days, 20:16:35.560698",
+    "datetime.timedelta(days=471, seconds=72995, microseconds=560698)",
+    40767395.560698,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-2.3),
+    "-17 days, 21:36:00",
+    "datetime.timedelta(days=-17, seconds=77760)",
+    -1391040.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-272254.569),
+    "-4 days, 20:22:25.431000",
+    "datetime.timedelta(days=-4, seconds=73345, microseconds=431000)",
+    -272254.569,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=473.271),
+    "473 days, 6:30:14.400000",
+    "datetime.timedelta(days=473, seconds=23414, microseconds=400000)",
+    40890614.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-692657.52,
+      microseconds=-1846413.8,
+      minutes=-3715.7,
+    ),
+    "-11 days, 9:39:58.633586",
+    "datetime.timedelta(days=-11, seconds=34798, microseconds=633586)",
+    -915601.366414,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-117.947549,
+      microseconds=-8895135.001494,
+      hours=32.084,
+    ),
+    "-117 days, 9:20:25.271265",
+    "datetime.timedelta(days=-117, seconds=33625, microseconds=271265)",
+    -10075174.728735,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-180849.586669,
+      minutes=-2951.990417,
+    ),
+    "-5 days, 20:33:50.988311",
+    "datetime.timedelta(days=-5, seconds=74030, microseconds=988311)",
+    -357969.011689,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-143703.9,
+      microseconds=-510434.839,
+      milliseconds=-3405.66,
+      minutes=-7301.28,
+      hours=69.7,
+      weeks=-2.97,
+    ),
+    "-25 days, 9:07:59.383905",
+    "datetime.timedelta(days=-25, seconds=32879, microseconds=383905)",
+    -2127120.616095,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-9602.0, weeks=-5.94),
+    "-49 days, 18:02:48",
+    "datetime.timedelta(days=-49, seconds=64968)",
+    -4168632.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-87068.461,
+      microseconds=-2747262.789,
+      weeks=5.125229,
+    ),
+    "34 days, 20:51:07.290937",
+    "datetime.timedelta(days=34, seconds=75067, microseconds=290937)",
+    3012667.290937,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-730856.635027),
+    "-9 days, 12:59:03.364973",
+    "datetime.timedelta(days=-9, seconds=46743, microseconds=364973)",
+    -730856.635027,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-1091440.321819,
+      minutes=-5343.04,
+      weeks=-1.06,
+    ),
+    "-12 days, 20:52:08.508560",
+    "datetime.timedelta(days=-12, seconds=75128, microseconds=508560)",
+    -961671.49144,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=123412.757,
+      microseconds=7418395.0,
+      milliseconds=-9076.8,
+    ),
+    "1 day, 10:16:51.098595",
+    "datetime.timedelta(days=1, seconds=37011, microseconds=98595)",
+    123411.098595,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-5053.4, weeks=4.19),
+    "29 days, 7:55:06.946600",
+    "datetime.timedelta(days=29, seconds=28506, microseconds=946600)",
+    2534106.9466,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-47.595,
+      microseconds=-29124.491487,
+      weeks=-4.69,
+    ),
+    "-81 days, 13:47:59.970876",
+    "datetime.timedelta(days=-81, seconds=49679, microseconds=970876)",
+    -6948720.029124,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=1925.278,
+      minutes=-7390.78,
+      hours=-34.366,
+    ),
+    "-7 days, 10:27:17.525278",
+    "datetime.timedelta(days=-7, seconds=37637, microseconds=525278)",
+    -567162.474722,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=977662.12,
+      microseconds=-8956567.63,
+      milliseconds=4028.806,
+    ),
+    "11 days, 7:34:17.192238",
+    "datetime.timedelta(days=11, seconds=27257, microseconds=192238)",
+    977657.192238,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-364438.3,
+      milliseconds=-9876.49,
+      minutes=1684.680509,
+      hours=86.7,
+    ),
+    "13:32:32.654050",
+    "datetime.timedelta(seconds=48752, microseconds=654050)",
+    48752.65405,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-297393.684856,
+      hours=-70.566794,
+      weeks=-9.6,
+    ),
+    "-74 days, 10:01:25.856744",
+    "datetime.timedelta(days=-74, seconds=36085, microseconds=856744)",
+    -6357514.143256,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=7817496.1, weeks=-2.12),
+    "-15 days, 3:50:31.817496",
+    "datetime.timedelta(days=-15, seconds=13831, microseconds=817496)",
+    -1282168.182504,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-445.65, minutes=6690.39),
+    "-442 days, 23:54:23.400000",
+    "datetime.timedelta(days=-442, seconds=86063, microseconds=400000)",
+    -38102736.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-2470461.19, hours=-62.17),
+    "-3 days, 9:49:45.529539",
+    "datetime.timedelta(days=-3, seconds=35385, microseconds=529539)",
+    -223814.470461,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-1718.377135),
+    "-1 day, 23:59:58.281623",
+    "datetime.timedelta(days=-1, seconds=86398, microseconds=281623)",
+    -1.718377,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=156.3,
+      seconds=572578.762143,
+      minutes=6872.865,
+      weeks=-1.3,
+    ),
+    "158 days, 14:23:50.662143",
+    "datetime.timedelta(days=158, seconds=51830, microseconds=662143)",
+    13703030.662143,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=1120.31,
+      microseconds=-9123675.15,
+      minutes=7799.3,
+      weeks=-4.686,
+    ),
+    "-28 days, 15:02:56.386325",
+    "datetime.timedelta(days=-28, seconds=54176, microseconds=386325)",
+    -2365023.613675,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-787722.3,
+      milliseconds=-871.204,
+      hours=-36.4,
+      weeks=-4.3,
+    ),
+    "-41 days, 6:23:16.828796",
+    "datetime.timedelta(days=-41, seconds=22996, microseconds=828796)",
+    -3519403.171204,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-571.58,
+      seconds=38227.222,
+      weeks=-4.061232,
+    ),
+    "-600 days, 10:24:42.108400",
+    "datetime.timedelta(days=-600, seconds=37482, microseconds=108400)",
+    -51802517.8916,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=4951713.357181, minutes=7235.9),
+    "5 days, 0:35:58.951713",
+    "datetime.timedelta(days=5, seconds=2158, microseconds=951713)",
+    434158.951713,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=3939.5, hours=-37.639668),
+    "-2 days, 10:21:41.134700",
+    "datetime.timedelta(days=-2, seconds=37301, microseconds=134700)",
+    -135498.8653,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=3493422.4,
+      milliseconds=-8862.8,
+      minutes=-2296.83,
+      hours=-66.76,
+    ),
+    "-5 days, 14:57:28.830622",
+    "datetime.timedelta(days=-5, seconds=53848, microseconds=830622)",
+    -378151.169378,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=870.581305, seconds=10226.0),
+    "870 days, 16:47:30.752000",
+    "datetime.timedelta(days=870, seconds=60450, microseconds=752000)",
+    75228450.752,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-18.408,
+      seconds=446430.19,
+      milliseconds=8087.6,
+    ),
+    "-14 days, 18:13:07.077600",
+    "datetime.timedelta(days=-14, seconds=65587, microseconds=77600)",
+    -1144012.9224,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-8456.175343,
+      minutes=8136.7,
+      weeks=-7.844784,
+    ),
+    "-50 days, 17:41:08.180625",
+    "datetime.timedelta(days=-50, seconds=63668, microseconds=180625)",
+    -4256331.819375,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-0.25),
+    "-2 days, 6:00:00",
+    "datetime.timedelta(days=-2, seconds=21600)",
+    -151200.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=864.307,
+      milliseconds=-6451.572,
+      minutes=795.9,
+      weeks=4.605,
+    ),
+    "897 days, 2:16:16.348428",
+    "datetime.timedelta(days=897, seconds=8176, microseconds=348428)",
+    77508976.348428,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=467.923935,
+      microseconds=-9199576.7,
+      milliseconds=7775.426848,
+      minutes=6048.082,
+    ),
+    "472 days, 2:58:31.479850",
+    "datetime.timedelta(days=472, seconds=10711, microseconds=479850)",
+    40791511.47985,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-154.08,
+      seconds=239931.18,
+      milliseconds=-429.074966,
+      minutes=-3496.047,
+    ),
+    "-154 days, 6:27:35.930925",
+    "datetime.timedelta(days=-154, seconds=23255, microseconds=930925)",
+    -13282344.069075,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-81.985,
+      seconds=674923.689,
+      microseconds=-4192420.58,
+      minutes=1069.2,
+    ),
+    "-74 days, 13:39:27.496579",
+    "datetime.timedelta(days=-74, seconds=49167, microseconds=496579)",
+    -6344432.503421,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-51832.252072,
+      microseconds=-8279362.800203,
+      minutes=-7709.32558,
+      hours=-8.675212,
+    ),
+    "-7 days, 16:26:09.170565",
+    "datetime.timedelta(days=-7, seconds=59169, microseconds=170565)",
+    -545630.829435,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=295451.252,
+      milliseconds=-4225.9,
+      minutes=3360.019,
+      hours=0.19,
+      weeks=-2.586,
+    ),
+    "-13 days, 15:48:39.366100",
+    "datetime.timedelta(days=-13, seconds=56919, microseconds=366100)",
+    -1066280.6339,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=335.046,
+      milliseconds=-6017.6,
+      hours=-83.503,
+    ),
+    "331 days, 13:35:57.582400",
+    "datetime.timedelta(days=331, seconds=48957, microseconds=582400)",
+    28647357.5824,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=813.59,
+      microseconds=-9372968.554156,
+      milliseconds=-9371.05,
+    ),
+    "813 days, 14:09:17.255981",
+    "datetime.timedelta(days=813, seconds=50957, microseconds=255981)",
+    70294157.255981,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=4176.901835,
+      minutes=4465.07,
+      hours=23.098,
+      weeks=-4.86,
+    ),
+    "-30 days, 1:02:13.176902",
+    "datetime.timedelta(days=-30, seconds=3733, microseconds=176902)",
+    -2588266.823098,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=1053094.11),
+    "0:00:01.053094",
+    "datetime.timedelta(seconds=1, microseconds=53094)",
+    1.053094,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-1374.5, weeks=-8.5),
+    "-61 days, 13:05:30",
+    "datetime.timedelta(days=-61, seconds=47130)",
+    -5223270.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3186546.327593,
+      minutes=-2885.741798,
+    ),
+    "-3 days, 23:54:12.305574",
+    "datetime.timedelta(days=-3, seconds=86052, microseconds=305574)",
+    -173147.694426,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=248.801506, minutes=-9311.0),
+    "242 days, 8:03:10.118400",
+    "datetime.timedelta(days=242, seconds=28990, microseconds=118400)",
+    20937790.1184,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=160.088121,
+      microseconds=-7566786.855,
+      milliseconds=7584.54,
+    ),
+    "160 days, 2:06:53.672153",
+    "datetime.timedelta(days=160, seconds=7613, microseconds=672153)",
+    13831613.672153,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=520.708, seconds=638753.541125),
+    "528 days, 2:25:24.741125",
+    "datetime.timedelta(days=528, seconds=8724, microseconds=741125)",
+    45627924.741125,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=92854.7,
+      milliseconds=7607.03825,
+      minutes=-6120.673,
+      hours=-82.9,
+      weeks=7.675885,
+    ),
+    "47 days, 2:25:57.175038",
+    "datetime.timedelta(days=47, seconds=8757, microseconds=175038)",
+    4069557.175038,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-3542.1,
+      minutes=7122.0,
+      weeks=-9.67525,
+    ),
+    "-63 days, 5:15:25.257900",
+    "datetime.timedelta(days=-63, seconds=18925, microseconds=257900)",
+    -5424274.7421,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3876316.166,
+      milliseconds=-4714.9,
+      minutes=-503.366,
+      hours=24.4,
+      weeks=-5.0,
+    ),
+    "-35 days, 16:00:29.448784",
+    "datetime.timedelta(days=-35, seconds=57629, microseconds=448784)",
+    -2966370.551216,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-214512.713108, weeks=-5.709),
+    "-43 days, 13:18:04.086892",
+    "datetime.timedelta(days=-43, seconds=47884, microseconds=86892)",
+    -3667315.913108,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-738282.497, weeks=5.54),
+    "30 days, 5:38:29.503000",
+    "datetime.timedelta(days=30, seconds=20309, microseconds=503000)",
+    2612309.503,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-533.6,
+      microseconds=9599954.685662,
+      hours=-94.8,
+      weeks=-4.258,
+    ),
+    "-568 days, 15:27:31.199955",
+    "datetime.timedelta(days=-568, seconds=55651, microseconds=199955)",
+    -49019548.800045,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=76.2,
+      microseconds=9417508.718,
+      weeks=-0.112,
+    ),
+    "75 days, 9:59:11.817509",
+    "datetime.timedelta(days=75, seconds=35951, microseconds=817509)",
+    6515951.817509,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=174603.589158,
+      milliseconds=2317.2,
+      minutes=-556.094697,
+      hours=-43.437,
+    ),
+    "-1 day, 19:47:47.024538",
+    "datetime.timedelta(days=-1, seconds=71267, microseconds=24538)",
+    -15132.975462,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=140.32,
+      seconds=-187954.94,
+      milliseconds=-4489.9,
+      minutes=-3951.671647,
+      hours=-55.6,
+      weeks=7.4,
+    ),
+    "184 days, 21:12:28.271280",
+    "datetime.timedelta(days=184, seconds=76348, microseconds=271280)",
+    15973948.27128,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-616.45566,
+      seconds=-78011.61,
+      hours=63.808467,
+      weeks=4.137283,
+    ),
+    "-586 days, 6:15:58.605600",
+    "datetime.timedelta(days=-586, seconds=22558, microseconds=605600)",
+    -50607841.3944,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-767.859,
+      milliseconds=-5552.4,
+      minutes=-5547.787286,
+      weeks=4.079,
+    ),
+    "-744 days, 20:11:28.810440",
+    "datetime.timedelta(days=-744, seconds=72688, microseconds=810440)",
+    -64208911.18956,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-256.7,
+      microseconds=-3958308.0,
+      milliseconds=-5194.44,
+      hours=-31.1,
+    ),
+    "-258 days, 0:05:50.847252",
+    "datetime.timedelta(days=-258, seconds=350, microseconds=847252)",
+    -22290849.152748,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=313143.422024),
+    "3 days, 14:59:03.422024",
+    "datetime.timedelta(days=3, seconds=53943, microseconds=422024)",
+    313143.422024,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=4138185.846859),
+    "0:00:04.138186",
+    "datetime.timedelta(seconds=4, microseconds=138186)",
+    4.138186,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-643.0,
+      hours=-35.450016,
+      weeks=3.507282,
+    ),
+    "-620 days, 1:46:24.096000",
+    "datetime.timedelta(days=-620, seconds=6384, microseconds=96000)",
+    -53561615.904,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=8699158.810111),
+    "0:00:08.699159",
+    "datetime.timedelta(seconds=8, microseconds=699159)",
+    8.699159,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-740063.058,
+      microseconds=1476364.310371,
+      hours=26.982768,
+    ),
+    "-8 days, 13:24:36.383164",
+    "datetime.timedelta(days=-8, seconds=48276, microseconds=383164)",
+    -642923.616836,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-82.2,
+      microseconds=2024189.4,
+      hours=20.99,
+    ),
+    "-82 days, 16:11:26.024189",
+    "datetime.timedelta(days=-82, seconds=58286, microseconds=24189)",
+    -7026513.975811,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=480.77,
+      seconds=735511.219,
+      hours=-70.27,
+      weeks=-0.12,
+    ),
+    "485 days, 12:21:31.219000",
+    "datetime.timedelta(days=485, seconds=44491, microseconds=219000)",
+    41948491.219,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=6977.345619),
+    "0:00:06.977346",
+    "datetime.timedelta(seconds=6, microseconds=977346)",
+    6.977346,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-830.56,
+      seconds=779219.9,
+      milliseconds=-1414.731002,
+      minutes=-4311.64,
+    ),
+    "-825 days, 11:08:56.085269",
+    "datetime.timedelta(days=-825, seconds=40136, microseconds=85269)",
+    -71239863.914731,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=858.461, microseconds=-293021.12),
+    "858 days, 11:03:50.106979",
+    "datetime.timedelta(days=858, seconds=39830, microseconds=106979)",
+    74171030.106979,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-602.249,
+      microseconds=1310698.79,
+      milliseconds=9454.452,
+      minutes=4056.4,
+      weeks=5.9,
+    ),
+    "-559 days, 20:50:01.165151",
+    "datetime.timedelta(days=-559, seconds=75001, microseconds=165151)",
+    -48222598.834849,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8041855.87,
+      hours=-49.259,
+      weeks=-4.168,
+    ),
+    "-32 days, 18:31:09.241856",
+    "datetime.timedelta(days=-32, seconds=66669, microseconds=241856)",
+    -2698130.758144,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=295744.46,
+      milliseconds=-6124.12,
+      weeks=4.285314,
+    ),
+    "33 days, 10:04:56.243080",
+    "datetime.timedelta(days=33, seconds=36296, microseconds=243080)",
+    2887496.24308,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-6443.871055, weeks=4.576216),
+    "27 days, 13:24:23.173500",
+    "datetime.timedelta(days=27, seconds=48263, microseconds=173500)",
+    2381063.1735,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-303.78,
+      seconds=-467283.693219,
+      microseconds=-922963.53,
+      weeks=-0.121,
+    ),
+    "-311 days, 23:09:02.583817",
+    "datetime.timedelta(days=-311, seconds=83342, microseconds=583817)",
+    -26787057.416183,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-245519.446614,
+      microseconds=-6923443.38822,
+      hours=40.705383,
+    ),
+    "-2 days, 20:30:13.008743",
+    "datetime.timedelta(days=-2, seconds=73813, microseconds=8743)",
+    -98986.991257,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-287.559,
+      microseconds=3308214.849502,
+      minutes=-7192.29,
+      weeks=-6.042,
+    ),
+    "-335 days, 3:39:26.708215",
+    "datetime.timedelta(days=-335, seconds=13166, microseconds=708215)",
+    -28930833.291785,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-662339.474057,
+      minutes=-3928.9,
+      weeks=1.9,
+    ),
+    "2 days, 21:44:06.525943",
+    "datetime.timedelta(days=2, seconds=78246, microseconds=525943)",
+    251046.525943,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-6173.452, hours=86.204, weeks=-4.7),
+    "-34 days, 9:42:47.280000",
+    "datetime.timedelta(days=-34, seconds=34967, microseconds=280000)",
+    -2902632.72,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=71.97),
+    "2 days, 23:58:12",
+    "datetime.timedelta(days=2, seconds=86292)",
+    259092.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-7108.457, hours=-16.975),
+    "-1 day, 7:01:22.891543",
+    "datetime.timedelta(days=-1, seconds=25282, microseconds=891543)",
+    -61117.108457,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=7534331.29, weeks=5.7),
+    "39 days, 21:36:07.534331",
+    "datetime.timedelta(days=39, seconds=77767, microseconds=534331)",
+    3447367.534331,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=985.55,
+      seconds=-931454.59,
+      hours=36.664551,
+      weeks=5.145,
+    ),
+    "1012 days, 7:29:13.793600",
+    "datetime.timedelta(days=1012, seconds=26953, microseconds=793600)",
+    87463753.7936,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=88.93,
+      microseconds=5998099.643488,
+      milliseconds=9764.149,
+      minutes=-5070.501404,
+      weeks=-0.659957,
+    ),
+    "80 days, 18:56:35.684409",
+    "datetime.timedelta(days=80, seconds=68195, microseconds=684409)",
+    6980195.684409,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=707397.292254,
+      milliseconds=-3555.41,
+      hours=22.872279,
+    ),
+    "9 days, 3:22:13.941244",
+    "datetime.timedelta(days=9, seconds=12133, microseconds=941244)",
+    789733.941244,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-3482929.9, hours=22.524),
+    "22:31:22.917070",
+    "datetime.timedelta(seconds=81082, microseconds=917070)",
+    81082.91707,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=776.45,
+      milliseconds=7398.39,
+      hours=6.279378,
+    ),
+    "776 days, 17:04:53.159190",
+    "datetime.timedelta(days=776, seconds=61493, microseconds=159190)",
+    67107893.15919,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-837.62,
+      seconds=61768.1,
+      microseconds=9972551.65,
+      hours=10.4,
+    ),
+    "-837 days, 12:40:50.072552",
+    "datetime.timedelta(days=-837, seconds=45650, microseconds=72552)",
+    -72271149.927448,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=342501.906151,
+      microseconds=7684851.38,
+      hours=47.98,
+    ),
+    "5 days, 23:07:17.591002",
+    "datetime.timedelta(days=5, seconds=83237, microseconds=591002)",
+    515237.591002,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=2614.7,
+      hours=19.42,
+      weeks=5.334,
+    ),
+    "38 days, 3:31:57.814700",
+    "datetime.timedelta(days=38, seconds=12717, microseconds=814700)",
+    3295917.8147,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=522897.588, hours=24.265977),
+    "7 days, 1:30:55.105200",
+    "datetime.timedelta(days=7, seconds=5455, microseconds=105200)",
+    610255.1052,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=752606.757785,
+      microseconds=1260414.315,
+      minutes=-1716.548,
+    ),
+    "7 days, 12:26:55.138199",
+    "datetime.timedelta(days=7, seconds=44815, microseconds=138199)",
+    649615.138199,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=544273.372, hours=-54.2),
+    "4 days, 0:59:13.372000",
+    "datetime.timedelta(days=4, seconds=3553, microseconds=372000)",
+    349153.372,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=894.04),
+    "894 days, 0:57:36",
+    "datetime.timedelta(days=894, seconds=3456)",
+    77245056.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-307.396304,
+      microseconds=7611733.447,
+      hours=-3.34,
+    ),
+    "-308 days, 11:09:02.946133",
+    "datetime.timedelta(days=-308, seconds=40142, microseconds=946133)",
+    -26571057.053867,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=201198.29,
+      microseconds=5319958.730117,
+      milliseconds=-6718.99,
+      minutes=7392.955,
+      hours=67.1,
+      weeks=2.71,
+    ),
+    "29 days, 5:29:02.190969",
+    "datetime.timedelta(days=29, seconds=19742, microseconds=190969)",
+    2525342.190969,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=43.6, weeks=-2.4),
+    "-15 days, 0:24:00",
+    "datetime.timedelta(days=-15, seconds=1440)",
+    -1294560.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-196.8, milliseconds=8184.4),
+    "-197 days, 4:48:08.184400",
+    "datetime.timedelta(days=-197, seconds=17288, microseconds=184400)",
+    -17003511.8156,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-657.497),
+    "-658 days, 12:04:19.200000",
+    "datetime.timedelta(days=-658, seconds=43459, microseconds=200000)",
+    -56807740.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-665.55225,
+      seconds=837333.671,
+      hours=6.9,
+    ),
+    "-656 days, 10:14:19.271000",
+    "datetime.timedelta(days=-656, seconds=36859, microseconds=271000)",
+    -56641540.729,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=9921.565,
+      minutes=3325.22577,
+      hours=-64.171,
+    ),
+    "-1 day, 15:15:07.867765",
+    "datetime.timedelta(days=-1, seconds=54907, microseconds=867765)",
+    -31492.132235,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=734.03, weeks=-5.47),
+    "695 days, 17:45:36",
+    "datetime.timedelta(days=695, seconds=63936)",
+    60111936.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=1.72),
+    "12 days, 0:57:36",
+    "datetime.timedelta(days=12, seconds=3456)",
+    1040256.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4737.79),
+    "0:00:04.737790",
+    "datetime.timedelta(seconds=4, microseconds=737790)",
+    4.73779,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-305.42, weeks=-8.190114),
+    "-363 days, 5:58:51.052800",
+    "datetime.timedelta(days=-363, seconds=21531, microseconds=52800)",
+    -31341668.9472,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=521.987, milliseconds=6760.1),
+    "521 days, 23:41:23.560100",
+    "datetime.timedelta(days=521, seconds=85283, microseconds=560100)",
+    45099683.5601,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-999161.37,
+      milliseconds=2457.641,
+      minutes=7165.83,
+    ),
+    "-7 days, 9:53:10.887641",
+    "datetime.timedelta(days=-7, seconds=35590, microseconds=887641)",
+    -569209.112359,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-89.7,
+      microseconds=-1862134.3,
+      milliseconds=-7809.945,
+    ),
+    "-90 days, 7:11:50.327921",
+    "datetime.timedelta(days=-90, seconds=25910, microseconds=327921)",
+    -7750089.672079,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-5174618.74, hours=-71.791412),
+    "-3 days, 0:12:25.742181",
+    "datetime.timedelta(days=-3, seconds=745, microseconds=742181)",
+    -258454.257819,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=3641502.72,
+      milliseconds=1936.3,
+    ),
+    "0:00:05.577803",
+    "datetime.timedelta(seconds=5, microseconds=577803)",
+    5.577803,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=485.33,
+      microseconds=7077593.388939,
+      minutes=9537.1,
+      hours=70.847454,
+    ),
+    "494 days, 21:43:15.911993",
+    "datetime.timedelta(days=494, seconds=78195, microseconds=911993)",
+    42759795.911993,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-935022.0,
+      minutes=3734.794,
+      hours=-25.49,
+    ),
+    "-10 days, 17:01:41.640000",
+    "datetime.timedelta(days=-10, seconds=61301, microseconds=640000)",
+    -802698.36,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-35.384,
+      seconds=-514646.941871,
+      microseconds=199214.1,
+      milliseconds=5318.212,
+      minutes=-9984.704785,
+    ),
+    "-49 days, 17:24:58.688455",
+    "datetime.timedelta(days=-49, seconds=62698, microseconds=688455)",
+    -4170901.311545,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-384061.73,
+      microseconds=7562763.063983,
+      weeks=-9.75,
+    ),
+    "-73 days, 7:19:05.832763",
+    "datetime.timedelta(days=-73, seconds=26345, microseconds=832763)",
+    -6280854.167237,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-2994474.31,
+      milliseconds=-1002.373534,
+      weeks=-8.024648,
+    ),
+    "-57 days, 19:51:28.892752",
+    "datetime.timedelta(days=-57, seconds=71488, microseconds=892752)",
+    -4853311.107248,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=227.163833,
+      milliseconds=765.73,
+      minutes=-4630.93,
+      weeks=8.9,
+    ),
+    "286 days, 5:57:00.136930",
+    "datetime.timedelta(days=286, seconds=21420, microseconds=136930)",
+    24731820.13693,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=163.525077,
+      seconds=807464.05,
+      microseconds=-2286530.4,
+      weeks=-0.2,
+    ),
+    "171 days, 11:17:48.416270",
+    "datetime.timedelta(days=171, seconds=40668, microseconds=416270)",
+    14815068.41627,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-190.2,
+      seconds=-657500.698,
+      milliseconds=-6760.457601,
+      minutes=2317.107,
+      hours=2.65,
+      weeks=8.17,
+    ),
+    "-139 days, 2:23:14.961542",
+    "datetime.timedelta(days=-139, seconds=8594, microseconds=961542)",
+    -12001005.038458,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4126.498607),
+    "0:00:04.126499",
+    "datetime.timedelta(seconds=4, microseconds=126499)",
+    4.126499,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8616921.44,
+      minutes=-7238.174,
+      hours=25.785762,
+    ),
+    "-4 days, 1:08:49.686279",
+    "datetime.timedelta(days=-4, seconds=4129, microseconds=686279)",
+    -341470.313721,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-389341.724),
+    "-5 days, 11:50:58.276000",
+    "datetime.timedelta(days=-5, seconds=42658, microseconds=276000)",
+    -389341.724,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=486.8,
+      seconds=-667083.24,
+      microseconds=-7554689.143,
+      milliseconds=-541.8,
+      weeks=-7.05,
+    ),
+    "429 days, 17:29:48.663511",
+    "datetime.timedelta(days=429, seconds=62988, microseconds=663511)",
+    37128588.663511,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=3216441.19),
+    "0:00:03.216441",
+    "datetime.timedelta(seconds=3, microseconds=216441)",
+    3.216441,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=112.52,
+      microseconds=-8125777.313,
+      milliseconds=-5405.801,
+      weeks=7.6,
+    ),
+    "165 days, 17:16:34.468422",
+    "datetime.timedelta(days=165, seconds=62194, microseconds=468422)",
+    14318194.468422,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=741.37,
+      seconds=-579408.47,
+      microseconds=-1639186.8,
+      hours=2.032,
+    ),
+    "734 days, 17:57:53.090813",
+    "datetime.timedelta(days=734, seconds=64673, microseconds=90813)",
+    63482273.090813,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=1.6),
+    "11 days, 4:48:00",
+    "datetime.timedelta(days=11, seconds=17280)",
+    967680.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-817.718885),
+    "-818 days, 6:44:48.336000",
+    "datetime.timedelta(days=-818, seconds=24288, microseconds=336000)",
+    -70650911.664,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-343.694,
+      microseconds=859935.035757,
+      milliseconds=5214.9,
+      hours=-99.9,
+      weeks=6.7,
+    ),
+    "-301 days, 1:02:44.474835",
+    "datetime.timedelta(days=-301, seconds=3764, microseconds=474835)",
+    -26002635.525165,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-908.462,
+      seconds=-240839.117,
+      milliseconds=578.8,
+    ),
+    "-912 days, 18:00:44.661800",
+    "datetime.timedelta(days=-912, seconds=64844, microseconds=661800)",
+    -78731955.3382,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-490.3,
+      microseconds=8591716.296,
+      weeks=1.974358,
+    ),
+    "-477 days, 12:29:40.310116",
+    "datetime.timedelta(days=-477, seconds=44980, microseconds=310116)",
+    -41167819.689884,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-84.904),
+    "-4 days, 11:05:45.600000",
+    "datetime.timedelta(days=-4, seconds=39945, microseconds=600000)",
+    -305654.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=324.2),
+    "324 days, 4:48:00",
+    "datetime.timedelta(days=324, seconds=17280)",
+    28010880.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=851.25),
+    "851 days, 6:00:00",
+    "datetime.timedelta(days=851, seconds=21600)",
+    73548000.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=168.023,
+      microseconds=336083.9,
+      minutes=-9653.76,
+      weeks=-3.938981,
+    ),
+    "133 days, 17:54:26.227284",
+    "datetime.timedelta(days=133, seconds=64466, microseconds=227284)",
+    11555666.227284,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=255.78,
+      microseconds=-5582802.122399,
+      minutes=5283.13,
+    ),
+    "259 days, 10:46:14.217198",
+    "datetime.timedelta(days=259, seconds=38774, microseconds=217198)",
+    22416374.217198,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-3455436.3),
+    "-1 day, 23:59:56.544564",
+    "datetime.timedelta(days=-1, seconds=86396, microseconds=544564)",
+    -3.455436,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-646.378,
+      microseconds=2475765.034941,
+      milliseconds=-9301.3,
+      weeks=7.15,
+    ),
+    "-597 days, 16:07:33.974465",
+    "datetime.timedelta(days=-597, seconds=58053, microseconds=974465)",
+    -51522746.025535,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-613383.97213,
+      microseconds=6588844.92794,
+      milliseconds=7441.79,
+      hours=-86.155149,
+    ),
+    "-11 days, 7:27:51.522105",
+    "datetime.timedelta(days=-11, seconds=26871, microseconds=522105)",
+    -923528.477895,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-7253336.891,
+      milliseconds=5594.4,
+      weeks=6.394,
+    ),
+    "44 days, 18:11:29.541063",
+    "datetime.timedelta(days=44, seconds=65489, microseconds=541063)",
+    3867089.541063,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-18.6,
+      milliseconds=-3142.803,
+      weeks=-5.77,
+    ),
+    "-59 days, 0:14:20.857197",
+    "datetime.timedelta(days=-59, seconds=860, microseconds=857197)",
+    -5096739.142803,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=108.335053,
+      seconds=-301281.13365,
+      microseconds=1187613.5,
+      minutes=-8438.629,
+    ),
+    "98 days, 23:42:30.893164",
+    "datetime.timedelta(days=98, seconds=85350, microseconds=893164)",
+    8552550.893164,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=368.271,
+      microseconds=-1682550.146,
+      weeks=8.5,
+    ),
+    "427 days, 18:30:12.717450",
+    "datetime.timedelta(days=427, seconds=66612, microseconds=717450)",
+    36959412.71745,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=469579.8),
+    "0:00:00.469580",
+    "datetime.timedelta(microseconds=469580)",
+    0.46958,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=421.4, microseconds=-9336116.2),
+    "421 days, 9:35:50.663884",
+    "datetime.timedelta(days=421, seconds=34550, microseconds=663884)",
+    36408950.663884,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-716.95,
+      seconds=-820592.1,
+      milliseconds=6233.943969,
+      minutes=7885.987202,
+      hours=-74.88,
+    ),
+    "-725 days, 21:48:45.366064",
+    "datetime.timedelta(days=-725, seconds=78525, microseconds=366064)",
+    -62561474.633936,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-173.96,
+      microseconds=1935806.53,
+      milliseconds=1192.257893,
+      minutes=6935.868921,
+      weeks=-4.733717,
+    ),
+    "-203 days, 17:17:39.221724",
+    "datetime.timedelta(days=-203, seconds=62259, microseconds=221724)",
+    -17476940.778276,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-800.6, hours=-28.5),
+    "-802 days, 5:06:00",
+    "datetime.timedelta(days=-802, seconds=18360)",
+    -69274440.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=1305.6, hours=-37.093517),
+    "-1 day, 8:39:59.338800",
+    "datetime.timedelta(days=-1, seconds=31199, microseconds=338800)",
+    -55200.6612,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=473.29,
+      microseconds=7111207.029,
+      minutes=-8735.3,
+      hours=30.0,
+      weeks=0.44,
+    ),
+    "471 days, 13:17:37.111207",
+    "datetime.timedelta(days=471, seconds=47857, microseconds=111207)",
+    40742257.111207,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=54.263),
+    "2 days, 6:15:46.800000",
+    "datetime.timedelta(days=2, seconds=22546, microseconds=800000)",
+    195346.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=4.92, minutes=1979.064, weeks=9.15),
+    "70 days, 8:15:51.840000",
+    "datetime.timedelta(days=70, seconds=29751, microseconds=840000)",
+    6077751.84,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-289.683, hours=75.076452),
+    "3 days, 3:04:34.937517",
+    "datetime.timedelta(days=3, seconds=11074, microseconds=937517)",
+    270274.937517,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8660366.591234,
+      minutes=-4114.9,
+    ),
+    "-3 days, 3:24:57.339633",
+    "datetime.timedelta(days=-3, seconds=12297, microseconds=339633)",
+    -246902.660367,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=9933209.437,
+      minutes=2008.9,
+      hours=68.9,
+      weeks=9.83,
+    ),
+    "73 days, 1:49:27.933209",
+    "datetime.timedelta(days=73, seconds=6567, microseconds=933209)",
+    6313767.933209,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-962470.012196,
+      microseconds=-8534260.1,
+    ),
+    "-12 days, 20:38:41.453544",
+    "datetime.timedelta(days=-12, seconds=74321, microseconds=453544)",
+    -962478.546456,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-6716562.082759, weeks=8.6),
+    "60 days, 4:47:53.283438",
+    "datetime.timedelta(days=60, seconds=17273, microseconds=283438)",
+    5201273.283438,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=888.2,
+      milliseconds=321.434,
+      minutes=5127.139,
+      weeks=-7.72146,
+    ),
+    "837 days, 17:02:49.653434",
+    "datetime.timedelta(days=837, seconds=61369, microseconds=653434)",
+    72378169.653434,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-972.761,
+      seconds=767283.32,
+      microseconds=-9916287.66,
+      milliseconds=-2530.44,
+    ),
+    "-964 days, 2:52:00.473272",
+    "datetime.timedelta(days=-964, seconds=10320, microseconds=473272)",
+    -83279279.526728,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=36.3, weeks=-9.876),
+    "-68 days, 9:07:55.200000",
+    "datetime.timedelta(days=-68, seconds=32875, microseconds=200000)",
+    -5842324.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-4803.11605),
+    "-4 days, 15:56:53.037000",
+    "datetime.timedelta(days=-4, seconds=57413, microseconds=37000)",
+    -288186.963,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-759345.61,
+      microseconds=1583820.524403,
+      hours=68.942,
+    ),
+    "-6 days, 2:00:47.173821",
+    "datetime.timedelta(days=-6, seconds=7247, microseconds=173821)",
+    -511152.826179,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-3656479.493,
+      minutes=-7889.635,
+      weeks=-5.92,
+    ),
+    "-47 days, 1:56:42.243521",
+    "datetime.timedelta(days=-47, seconds=7002, microseconds=243521)",
+    -4053797.756479,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=347.1,
+      microseconds=-2025871.055,
+      minutes=5404.5,
+      hours=-71.302,
+    ),
+    "347 days, 21:10:20.774129",
+    "datetime.timedelta(days=347, seconds=76220, microseconds=774129)",
+    30057020.774129,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1725765.483807,
+      milliseconds=90.167,
+      minutes=5566.13037,
+      hours=-68.6,
+    ),
+    "1 day, 0:10:09.638132",
+    "datetime.timedelta(days=1, seconds=609, microseconds=638132)",
+    87009.638132,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=372.3, weeks=3.8),
+    "398 days, 21:36:00",
+    "datetime.timedelta(days=398, seconds=77760)",
+    34464960.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-197.616),
+    "-198 days, 9:12:57.600000",
+    "datetime.timedelta(days=-198, seconds=33177, microseconds=600000)",
+    -17074022.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=9093285.597185, weeks=5.757273),
+    "40 days, 7:13:27.803686",
+    "datetime.timedelta(days=40, seconds=26007, microseconds=803686)",
+    3482007.803686,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-4158.935, minutes=9637.875),
+    "6 days, 16:37:48.341065",
+    "datetime.timedelta(days=6, seconds=59868, microseconds=341065)",
+    578268.341065,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-564.839),
+    "-565 days, 3:51:50.400000",
+    "datetime.timedelta(days=-565, seconds=13910, microseconds=400000)",
+    -48802089.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-399574.6, hours=98.63801),
+    "-1 day, 11:38:42.236000",
+    "datetime.timedelta(days=-1, seconds=41922, microseconds=236000)",
+    -44477.764,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-75.996),
+    "-76 days, 0:05:45.600000",
+    "datetime.timedelta(days=-76, seconds=345, microseconds=600000)",
+    -6566054.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-43451.04,
+      microseconds=3908757.959,
+      hours=-30.246,
+      weeks=-3.758,
+    ),
+    "-29 days, 22:20:28.868758",
+    "datetime.timedelta(days=-29, seconds=80428, microseconds=868758)",
+    -2425171.131242,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=188.074,
+      seconds=-798198.989,
+      weeks=-2.416101,
+    ),
+    "161 days, 22:08:56.726200",
+    "datetime.timedelta(days=161, seconds=79736, microseconds=726200)",
+    13990136.7262,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=642060.623432,
+      microseconds=9490414.944,
+      hours=38.939721,
+    ),
+    "9 days, 1:17:33.109447",
+    "datetime.timedelta(days=9, seconds=4653, microseconds=109447)",
+    782253.109447,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-160145.369606,
+      microseconds=-3542123.504056,
+    ),
+    "-2 days, 3:30:51.088270",
+    "datetime.timedelta(days=-2, seconds=12651, microseconds=88270)",
+    -160148.91173,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=121.0),
+    "0:00:00.121000",
+    "datetime.timedelta(microseconds=121000)",
+    0.121,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=288.15,
+      seconds=-280111.46,
+      milliseconds=-830.403,
+      minutes=2743.771635,
+      hours=-76.388857,
+    ),
+    "283 days, 15:07:54.122497",
+    "datetime.timedelta(days=283, seconds=54474, microseconds=122497)",
+    24505674.122497,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-299.87,
+      minutes=8470.287831,
+      weeks=-0.74,
+    ),
+    "-300 days, 19:58:17.269860",
+    "datetime.timedelta(days=-300, seconds=71897, microseconds=269860)",
+    -25848102.73014,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=6749094.54258,
+      minutes=-9473.514,
+    ),
+    "-7 days, 10:06:35.909095",
+    "datetime.timedelta(days=-7, seconds=36395, microseconds=909095)",
+    -568404.090905,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=341459.956,
+      minutes=2705.708087,
+      weeks=-9.035,
+    ),
+    "-58 days, 14:03:54.441220",
+    "datetime.timedelta(days=-58, seconds=50634, microseconds=441220)",
+    -4960565.55878,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4933601.425,
+      milliseconds=7894.5,
+      hours=88.369,
+    ),
+    "3 days, 16:22:21.228101",
+    "datetime.timedelta(days=3, seconds=58941, microseconds=228101)",
+    318141.228101,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=6321.1, minutes=4825.971),
+    "3 days, 8:26:04.581100",
+    "datetime.timedelta(days=3, seconds=30364, microseconds=581100)",
+    289564.5811,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-903.7,
+      minutes=-8571.5,
+      hours=-58.11,
+      weeks=-4.057908,
+    ),
+    "-941 days, 12:30:11.241600",
+    "datetime.timedelta(days=-941, seconds=45011, microseconds=241600)",
+    -81257388.7584,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=83.147695,
+      microseconds=4568656.45,
+      hours=45.537,
+    ),
+    "85 days, 1:04:58.616656",
+    "datetime.timedelta(days=85, seconds=3898, microseconds=616656)",
+    7347898.616656,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=671.6,
+      seconds=152290.7,
+      microseconds=6010505.8,
+    ),
+    "673 days, 8:42:16.710506",
+    "datetime.timedelta(days=673, seconds=31336, microseconds=710506)",
+    58178536.710506,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-243.781, weeks=8.79),
+    "-183 days, 17:58:33.600000",
+    "datetime.timedelta(days=-183, seconds=64713, microseconds=600000)",
+    -15746486.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=2140.5, hours=67.0),
+    "2 days, 19:00:02.140500",
+    "datetime.timedelta(days=2, seconds=68402, microseconds=140500)",
+    241202.1405,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-197.01,
+      seconds=301106.11,
+      minutes=9486.632,
+      hours=47.926603,
+      weeks=2.07,
+    ),
+    "-171 days, 13:11:51.800800",
+    "datetime.timedelta(days=-171, seconds=47511, microseconds=800800)",
+    -14726888.1992,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-658.8, hours=-64.3, weeks=3.384515),
+    "-638 days, 5:05:54.672000",
+    "datetime.timedelta(days=-638, seconds=18354, microseconds=672000)",
+    -55104845.328,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-515.1,
+      seconds=48199.119,
+      microseconds=3391062.051197,
+      milliseconds=143.4,
+    ),
+    "-515 days, 10:59:22.653462",
+    "datetime.timedelta(days=-515, seconds=39562, microseconds=653462)",
+    -44456437.346538,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=648.701419,
+      milliseconds=-5186.42,
+      minutes=-5818.7,
+      hours=20.168,
+    ),
+    "645 days, 12:01:20.215180",
+    "datetime.timedelta(days=645, seconds=43280, microseconds=215180)",
+    55771280.21518,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=247392.975189,
+      microseconds=-7956550.3,
+      minutes=-2913.393,
+      weeks=6.66,
+    ),
+    "47 days, 11:02:29.438639",
+    "datetime.timedelta(days=47, seconds=39749, microseconds=438639)",
+    4100549.438639,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-976.5,
+      seconds=-285240.007,
+      milliseconds=-7598.1,
+      hours=-64.57,
+    ),
+    "-983 days, 12:11:40.394900",
+    "datetime.timedelta(days=-983, seconds=43900, microseconds=394900)",
+    -84887299.6051,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=108376.3, hours=67.581),
+    "4 days, 1:41:07.900000",
+    "datetime.timedelta(days=4, seconds=6067, microseconds=900000)",
+    351667.9,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8321612.484464,
+      minutes=-9405.8,
+      weeks=-8.0,
+    ),
+    "-63 days, 11:14:03.678388",
+    "datetime.timedelta(days=-63, seconds=40443, microseconds=678388)",
+    -5402756.321612,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=392.692824,
+      seconds=675902.98,
+      milliseconds=-4732.6,
+      minutes=-4420.61,
+    ),
+    "397 days, 10:42:01.641000",
+    "datetime.timedelta(days=397, seconds=38521, microseconds=641000)",
+    34339321.641,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=1877121.3, minutes=-4768.0),
+    "-4 days, 16:32:01.877121",
+    "datetime.timedelta(days=-4, seconds=59521, microseconds=877121)",
+    -286078.122879,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-271.455854,
+      minutes=-9682.69,
+      weeks=3.654757,
+    ),
+    "-253 days, 9:40:49.848000",
+    "datetime.timedelta(days=-253, seconds=34849, microseconds=848000)",
+    -21824350.152,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=7619.873, hours=-81.2),
+    "1 day, 21:47:52.380000",
+    "datetime.timedelta(days=1, seconds=78472, microseconds=380000)",
+    164872.38,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=299.28,
+      seconds=-163041.504,
+      milliseconds=-8513.79,
+      minutes=7377.324371,
+      hours=-72.1,
+    ),
+    "299 days, 12:17:01.444470",
+    "datetime.timedelta(days=299, seconds=44221, microseconds=444470)",
+    25877821.44447,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-417411.63, hours=-47.827281),
+    "-7 days, 4:13:30.158400",
+    "datetime.timedelta(days=-7, seconds=15210, microseconds=158400)",
+    -589589.8416,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-7093.2, weeks=-1.2),
+    "-9 days, 14:23:52.906800",
+    "datetime.timedelta(days=-9, seconds=51832, microseconds=906800)",
+    -725767.0932,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-165.668334,
+      seconds=363287.4,
+      microseconds=6451002.308,
+      milliseconds=8266.7,
+    ),
+    "-162 days, 12:52:38.060102",
+    "datetime.timedelta(days=-162, seconds=46358, microseconds=60102)",
+    -13950441.939898,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=49.46329,
+      minutes=-8060.61,
+      weeks=2.5,
+    ),
+    "11 days, 21:39:23.449463",
+    "datetime.timedelta(days=11, seconds=77963, microseconds=449463)",
+    1028363.449463,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-890.668148, hours=3.72),
+    "-891 days, 11:41:04.012800",
+    "datetime.timedelta(days=-891, seconds=42064, microseconds=12800)",
+    -76940335.9872,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-4787.9, minutes=867.94),
+    "14:27:51.612100",
+    "datetime.timedelta(seconds=52071, microseconds=612100)",
+    52071.6121,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-69.225915,
+      seconds=259579.47,
+      minutes=-2155.768,
+      hours=-90.729998,
+    ),
+    "-72 days, 12:01:26.341200",
+    "datetime.timedelta(days=-72, seconds=43286, microseconds=341200)",
+    -6177513.6588,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=22.2,
+      microseconds=3412226.880419,
+      milliseconds=-7537.861197,
+    ),
+    "22 days, 4:47:55.874366",
+    "datetime.timedelta(days=22, seconds=17275, microseconds=874366)",
+    1918075.874366,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-663.69,
+      milliseconds=3385.867,
+      minutes=3860.601947,
+      hours=7.553737,
+    ),
+    "-661 days, 7:20:16.955887",
+    "datetime.timedelta(days=-661, seconds=26416, microseconds=955887)",
+    -57083983.044113,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=765.8,
+      milliseconds=9648.267468,
+      minutes=3244.511425,
+    ),
+    "768 days, 1:16:40.333767",
+    "datetime.timedelta(days=768, seconds=4600, microseconds=333767)",
+    66359800.333767,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-251.529127,
+      seconds=-776104.17,
+      microseconds=555345.6,
+      milliseconds=-1901.8,
+      minutes=1509.18,
+      hours=13.965,
+    ),
+    "-259 days, 2:50:02.710746",
+    "datetime.timedelta(days=-259, seconds=10202, microseconds=710746)",
+    -22367397.289254,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=713026.762486,
+      milliseconds=-7707.146622,
+      minutes=9251.6,
+      weeks=-0.95,
+    ),
+    "8 days, 0:39:15.055339",
+    "datetime.timedelta(days=8, seconds=2355, microseconds=55339)",
+    693555.055339,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-541.23),
+    "-542 days, 18:28:48",
+    "datetime.timedelta(days=-542, seconds=66528)",
+    -46762272.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-98444.08, hours=-76.5),
+    "-4 days, 19:29:59.901556",
+    "datetime.timedelta(days=-4, seconds=70199, microseconds=901556)",
+    -275400.098444,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=877385.29),
+    "10 days, 3:43:05.290000",
+    "datetime.timedelta(days=10, seconds=13385, microseconds=290000)",
+    877385.29,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=354.45,
+      seconds=-124045.2,
+      milliseconds=-8813.873076,
+      weeks=-5.644749,
+    ),
+    "313 days, 12:01:21.790927",
+    "datetime.timedelta(days=313, seconds=43281, microseconds=790927)",
+    27086481.790927,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=3532690.302,
+      minutes=9666.909301,
+      hours=42.87,
+    ),
+    "8 days, 11:59:10.090750",
+    "datetime.timedelta(days=8, seconds=43150, microseconds=90750)",
+    734350.09075,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=578.0,
+      minutes=2974.727525,
+      hours=-96.9,
+      weeks=-1.971,
+    ),
+    "562 days, 5:33:02.851500",
+    "datetime.timedelta(days=562, seconds=19982, microseconds=851500)",
+    48576782.8515,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=225.324,
+      seconds=-186227.617019,
+      milliseconds=2930.806,
+      weeks=-3.144,
+    ),
+    "201 days, 3:51:17.713787",
+    "datetime.timedelta(days=201, seconds=13877, microseconds=713787)",
+    17380277.713787,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-400176.446,
+      minutes=2805.73,
+      hours=36.54,
+    ),
+    "-2 days, 20:08:31.354000",
+    "datetime.timedelta(days=-2, seconds=72511, microseconds=354000)",
+    -100288.646,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=855522.6,
+      milliseconds=7826.858,
+      weeks=7.33,
+    ),
+    "61 days, 5:05:14.426858",
+    "datetime.timedelta(days=61, seconds=18314, microseconds=426858)",
+    5288714.426858,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=597087.3),
+    "6 days, 21:51:27.300000",
+    "datetime.timedelta(days=6, seconds=78687, microseconds=300000)",
+    597087.3,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-166.213,
+      microseconds=-3493190.97,
+      minutes=-2483.915,
+      hours=50.12,
+    ),
+    "-166 days, 3:36:30.406809",
+    "datetime.timedelta(days=-166, seconds=12990, microseconds=406809)",
+    -14329409.593191,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=537328.3),
+    "0:00:00.537328",
+    "datetime.timedelta(microseconds=537328)",
+    0.537328,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4479.78),
+    "0:00:04.479780",
+    "datetime.timedelta(seconds=4, microseconds=479780)",
+    4.47978,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=7858.206,
+      minutes=-9848.528608,
+      hours=-11.642715,
+      weeks=2.634,
+    ),
+    "11 days, 2:43:45.567726",
+    "datetime.timedelta(days=11, seconds=9825, microseconds=567726)",
+    960225.567726,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-38.3,
+      minutes=-3273.423046,
+      hours=-35.379,
+    ),
+    "-43 days, 22:51:50.217240",
+    "datetime.timedelta(days=-43, seconds=82310, microseconds=217240)",
+    -3632889.78276,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=650.216253,
+      hours=74.621491,
+      weeks=-1.4,
+    ),
+    "643 days, 12:36:41.626800",
+    "datetime.timedelta(days=643, seconds=45401, microseconds=626800)",
+    55600601.6268,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=83.137,
+      seconds=228977.5,
+      minutes=-913.8,
+      hours=10.2,
+    ),
+    "85 days, 13:51:46.300000",
+    "datetime.timedelta(days=85, seconds=49906, microseconds=300000)",
+    7393906.3,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=1293.544,
+      minutes=3366.558,
+      weeks=1.303,
+    ),
+    "11 days, 11:00:49.173544",
+    "datetime.timedelta(days=11, seconds=39649, microseconds=173544)",
+    990049.173544,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-61.292107),
+    "-3 days, 10:42:28.414800",
+    "datetime.timedelta(days=-3, seconds=38548, microseconds=414800)",
+    -220651.5852,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=384340.339536,
+      microseconds=8317397.783,
+      milliseconds=2070.533,
+    ),
+    "4 days, 10:45:50.727467",
+    "datetime.timedelta(days=4, seconds=38750, microseconds=727467)",
+    384350.727467,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-57529.496015,
+      microseconds=5814313.169079,
+      milliseconds=-4940.018617,
+    ),
+    "-1 day, 8:01:11.378280",
+    "datetime.timedelta(days=-1, seconds=28871, microseconds=378280)",
+    -57528.62172,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-915.721612,
+      microseconds=-5479074.598,
+      hours=38.206,
+    ),
+    "-915 days, 20:53:08.844125",
+    "datetime.timedelta(days=-915, seconds=75188, microseconds=844125)",
+    -78980811.155875,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=-3.95),
+    "-28 days, 8:24:00",
+    "datetime.timedelta(days=-28, seconds=30240)",
+    -2388960.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-596111.27,
+      microseconds=-8769219.818,
+      milliseconds=173.74,
+      hours=-29.2,
+      weeks=-8.6,
+    ),
+    "-69 days, 16:24:40.134520",
+    "datetime.timedelta(days=-69, seconds=59080, microseconds=134520)",
+    -5902519.86548,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=133.7,
+      milliseconds=3294.84,
+      minutes=-4060.85,
+      weeks=-9.0,
+    ),
+    "67 days, 21:07:12.294840",
+    "datetime.timedelta(days=67, seconds=76032, microseconds=294840)",
+    5864832.29484,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-954.5,
+      microseconds=-9713591.8,
+      minutes=-8770.444,
+      weeks=7.2,
+    ),
+    "-911 days, 19:25:23.646408",
+    "datetime.timedelta(days=-911, seconds=69923, microseconds=646408)",
+    -78640476.353592,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=863.8),
+    "863 days, 19:12:00",
+    "datetime.timedelta(days=863, seconds=69120)",
+    74632320.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=721716.97,
+      microseconds=-7123382.671101,
+      minutes=9371.090397,
+      hours=83.0,
+    ),
+    "18 days, 7:39:35.270437",
+    "datetime.timedelta(days=18, seconds=27575, microseconds=270437)",
+    1582775.270437,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=452.13607),
+    "452 days, 3:15:56.448000",
+    "datetime.timedelta(days=452, seconds=11756, microseconds=448000)",
+    39064556.448,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=580.39,
+      seconds=-647227.072,
+      milliseconds=-869.03,
+      minutes=3777.614,
+    ),
+    "575 days, 12:32:04.898970",
+    "datetime.timedelta(days=575, seconds=45124, microseconds=898970)",
+    49725124.89897,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-360.3,
+      microseconds=2712185.45,
+      hours=-87.971,
+    ),
+    "-364 days, 0:49:47.112185",
+    "datetime.timedelta(days=-364, seconds=2987, microseconds=112185)",
+    -31446612.887815,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=584.159, minutes=-8596.716753),
+    "578 days, 4:32:14.594820",
+    "datetime.timedelta(days=578, seconds=16334, microseconds=594820)",
+    49955534.59482,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-849.7,
+      microseconds=2959370.099412,
+      minutes=-9859.85,
+      hours=-69.6,
+      weeks=-5.18,
+    ),
+    "-896 days, 7:01:47.959370",
+    "datetime.timedelta(days=-896, seconds=25307, microseconds=959370)",
+    -77389092.04063,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-367.20822, milliseconds=-4657.6),
+    "-368 days, 19:00:05.134400",
+    "datetime.timedelta(days=-368, seconds=68405, microseconds=134400)",
+    -31726794.8656,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-534645.658,
+      milliseconds=-1059.472407,
+      minutes=4500.16,
+    ),
+    "-4 days, 22:29:22.882528",
+    "datetime.timedelta(days=-4, seconds=80962, microseconds=882528)",
+    -264637.117472,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-8458.5,
+      hours=60.9,
+      weeks=5.810661,
+    ),
+    "43 days, 5:05:19.314300",
+    "datetime.timedelta(days=43, seconds=18319, microseconds=314300)",
+    3733519.3143,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8988068.5,
+      hours=-20.502681,
+      weeks=-3.657962,
+    ),
+    "-27 days, 12:57:43.918869",
+    "datetime.timedelta(days=-27, seconds=46663, microseconds=918869)",
+    -2286136.081131,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-29.447666,
+      seconds=-741224.944,
+      milliseconds=6747.768,
+      hours=-17.66,
+      weeks=3.042,
+    ),
+    "-18 days, 12:45:29.061368",
+    "datetime.timedelta(days=-18, seconds=45929, microseconds=61368)",
+    -1509270.938632,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-668507.7,
+      microseconds=-8440389.67,
+      minutes=3022.929,
+      hours=68.23304,
+    ),
+    "-3 days, 4:54:58.543610",
+    "datetime.timedelta(days=-3, seconds=17698, microseconds=543610)",
+    -241501.45639,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=81.992409),
+    "3 days, 9:59:32.672400",
+    "datetime.timedelta(days=3, seconds=35972, microseconds=672400)",
+    295172.6724,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=396466.8, milliseconds=6074.425),
+    "4 days, 14:07:52.874425",
+    "datetime.timedelta(days=4, seconds=50872, microseconds=874425)",
+    396472.874425,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=282.85,
+      milliseconds=-6396.758194,
+      hours=22.631248,
+    ),
+    "283 days, 19:01:46.096042",
+    "datetime.timedelta(days=283, seconds=68506, microseconds=96042)",
+    24519706.096042,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=6160303.639154,
+      hours=78.2,
+      weeks=1.3,
+    ),
+    "12 days, 8:36:06.160304",
+    "datetime.timedelta(days=12, seconds=30966, microseconds=160304)",
+    1067766.160304,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-227905.0,
+      milliseconds=-9884.388,
+      hours=-51.588,
+      weeks=-5.4,
+    ),
+    "-43 days, 9:54:08.315612",
+    "datetime.timedelta(days=-43, seconds=35648, microseconds=315612)",
+    -3679551.684388,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-606.4),
+    "-607 days, 14:24:00",
+    "datetime.timedelta(days=-607, seconds=51840)",
+    -52392960.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-424.35,
+      seconds=-918142.45,
+      microseconds=-1427323.13,
+      milliseconds=4198.731,
+      minutes=3625.752,
+      hours=6.677,
+    ),
+    "-433 days, 19:40:02.641408",
+    "datetime.timedelta(days=-433, seconds=70802, microseconds=641408)",
+    -37340397.358592,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=782814.683,
+      microseconds=6245357.014,
+      milliseconds=-7651.862024,
+      minutes=-3058.7,
+      hours=43.79,
+    ),
+    "8 days, 18:15:35.276495",
+    "datetime.timedelta(days=8, seconds=65735, microseconds=276495)",
+    756935.276495,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=358900.84,
+      microseconds=-3687090.3,
+      minutes=-6066.754,
+      hours=81.4,
+    ),
+    "3 days, 7:58:51.912910",
+    "datetime.timedelta(days=3, seconds=28731, microseconds=912910)",
+    287931.91291,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-339.257),
+    "-340 days, 17:49:55.200000",
+    "datetime.timedelta(days=-340, seconds=64195, microseconds=200000)",
+    -29311804.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=437.806, hours=-4.5),
+    "437 days, 14:50:38.400000",
+    "datetime.timedelta(days=437, seconds=53438, microseconds=400000)",
+    37810238.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=745.02,
+      microseconds=-420213.3,
+      hours=66.7,
+      weeks=3.375059,
+    ),
+    "771 days, 10:11:23.262987",
+    "datetime.timedelta(days=771, seconds=36683, microseconds=262987)",
+    66651083.262987,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=618139.2,
+      microseconds=9871535.295,
+      minutes=8174.409,
+    ),
+    "12 days, 19:56:53.611535",
+    "datetime.timedelta(days=12, seconds=71813, microseconds=611535)",
+    1108613.611535,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=1809.92,
+      minutes=8854.5,
+      hours=20.3,
+      weeks=-7.544,
+    ),
+    "-46 days, 4:29:00.609920",
+    "datetime.timedelta(days=-46, seconds=16140, microseconds=609920)",
+    -3958259.39008,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=915597.843247, weeks=1.68),
+    "22 days, 8:34:21.843247",
+    "datetime.timedelta(days=22, seconds=30861, microseconds=843247)",
+    1931661.843247,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-552792.441,
+      hours=-92.0,
+      weeks=9.86,
+    ),
+    "58 days, 18:55:35.559000",
+    "datetime.timedelta(days=58, seconds=68135, microseconds=559000)",
+    5079335.559,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-7907.3,
+      hours=-27.342267,
+      weeks=-8.26,
+    ),
+    "-59 days, 0:58:31.931500",
+    "datetime.timedelta(days=-59, seconds=3511, microseconds=931500)",
+    -5094088.0685,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-7030.583905, weeks=-2.977783),
+    "-26 days, 6:33:21.807300",
+    "datetime.timedelta(days=-26, seconds=23601, microseconds=807300)",
+    -2222798.1927,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-422536.826358, minutes=-4605.5),
+    "-9 days, 21:52:13.173642",
+    "datetime.timedelta(days=-9, seconds=78733, microseconds=173642)",
+    -698866.826358,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-629450.919,
+      microseconds=-1379317.92,
+      milliseconds=6110.688,
+    ),
+    "-8 days, 17:09:13.812370",
+    "datetime.timedelta(days=-8, seconds=61753, microseconds=812370)",
+    -629446.18763,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-93.4),
+    "-4 days, 2:36:00",
+    "datetime.timedelta(days=-4, seconds=9360)",
+    -336240.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=47.88, weeks=1.107657),
+    "9 days, 17:57:58.953600",
+    "datetime.timedelta(days=9, seconds=64678, microseconds=953600)",
+    842278.9536,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-737.950285, hours=-86.4),
+    "-742 days, 10:47:35.376000",
+    "datetime.timedelta(days=-742, seconds=38855, microseconds=376000)",
+    -64069944.624,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=12.12),
+    "12:07:12",
+    "datetime.timedelta(seconds=43632)",
+    43632.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=6751.253,
+      minutes=4818.41,
+      weeks=-3.247,
+    ),
+    "-20 days, 14:48:45.751253",
+    "datetime.timedelta(days=-20, seconds=53325, microseconds=751253)",
+    -1674674.248747,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=655.892873,
+      milliseconds=-8948.491795,
+      hours=-86.8,
+    ),
+    "652 days, 6:37:35.278708",
+    "datetime.timedelta(days=652, seconds=23855, microseconds=278708)",
+    56356655.278708,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-619648.16),
+    "-8 days, 19:52:31.840000",
+    "datetime.timedelta(days=-8, seconds=71551, microseconds=840000)",
+    -619648.16,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=618.4,
+      microseconds=7097675.9,
+      minutes=5213.903,
+      hours=39.6,
+      weeks=1.687451,
+    ),
+    "635 days, 11:35:31.642476",
+    "datetime.timedelta(days=635, seconds=41731, microseconds=642476)",
+    54905731.642476,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-5334.84,
+      minutes=6045.868659,
+      hours=-28.6,
+      weeks=1.08,
+    ),
+    "10 days, 13:36:10.784700",
+    "datetime.timedelta(days=10, seconds=48970, microseconds=784700)",
+    912970.7847,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=1093.91),
+    "18:13:54.600000",
+    "datetime.timedelta(seconds=65634, microseconds=600000)",
+    65634.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-229.399,
+      milliseconds=9259.2,
+      weeks=9.939976,
+    ),
+    "-160 days, 4:20:33.144000",
+    "datetime.timedelta(days=-160, seconds=15633, microseconds=144000)",
+    -13808366.856,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-1037.68947,
+      minutes=-1356.6,
+      hours=10.681285,
+    ),
+    "-1 day, 12:04:15.588311",
+    "datetime.timedelta(days=-1, seconds=43455, microseconds=588311)",
+    -42944.411689,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=652535.235,
+      microseconds=-2435245.8,
+      minutes=-5570.597,
+      weeks=-8.537,
+    ),
+    "-57 days, 22:11:59.379754",
+    "datetime.timedelta(days=-57, seconds=79919, microseconds=379754)",
+    -4844880.620246,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-539.2,
+      seconds=-400283.7,
+      microseconds=-7164968.01,
+      hours=27.84,
+    ),
+    "-543 days, 7:50:53.135032",
+    "datetime.timedelta(days=-543, seconds=28253, microseconds=135032)",
+    -46886946.864968,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-638.14),
+    "-639 days, 20:38:24",
+    "datetime.timedelta(days=-639, seconds=74304)",
+    -55135296.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-975.141,
+      seconds=309309.424839,
+      hours=-88.99,
+      weeks=-9.07,
+    ),
+    "-1039 days, 5:47:07.024839",
+    "datetime.timedelta(days=-1039, seconds=20827, microseconds=24839)",
+    -89748772.975161,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=598597.37, microseconds=9409439.655),
+    "6 days, 22:16:46.779440",
+    "datetime.timedelta(days=6, seconds=80206, microseconds=779440)",
+    598606.77944,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=-42.786, weeks=0.8),
+    "3 days, 19:36:50.400000",
+    "datetime.timedelta(days=3, seconds=70610, microseconds=400000)",
+    329810.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-250075.79,
+      microseconds=3798076.49,
+      milliseconds=-1190.26,
+      weeks=-4.701,
+    ),
+    "-36 days, 4:46:02.017816",
+    "datetime.timedelta(days=-36, seconds=17162, microseconds=17816)",
+    -3093237.982184,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=740.96,
+      seconds=-513054.24,
+      microseconds=1476137.5,
+      minutes=6389.3,
+      weeks=-9.476,
+    ),
+    "673 days, 3:02:44.436138",
+    "datetime.timedelta(days=673, seconds=10964, microseconds=436138)",
+    58158164.436138,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-348.784879, seconds=276312.58899),
+    "-346 days, 9:54:59.043390",
+    "datetime.timedelta(days=-346, seconds=35699, microseconds=43390)",
+    -29858700.95661,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-959.712679,
+      microseconds=-9901766.841,
+      milliseconds=-698.58,
+      minutes=8631.75,
+      hours=-15.030067,
+    ),
+    "-955 days, 15:43:30.692853",
+    "datetime.timedelta(days=-955, seconds=56610, microseconds=692853)",
+    -82455389.307147,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8828413.0,
+      milliseconds=5615.09,
+      minutes=2358.504031,
+      hours=9.0,
+      weeks=2.234,
+    ),
+    "17 days, 15:37:27.885363",
+    "datetime.timedelta(days=17, seconds=56247, microseconds=885363)",
+    1525047.885363,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-425.56,
+      milliseconds=4787.442827,
+      minutes=-9212.289609,
+      weeks=5.35,
+    ),
+    "-395 days, 11:49:23.410903",
+    "datetime.timedelta(days=-395, seconds=42563, microseconds=410903)",
+    -34085436.589097,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-9.1,
+      seconds=317890.1,
+      microseconds=-8150363.074,
+      weeks=-6.8,
+    ),
+    "-54 days, 23:30:01.949637",
+    "datetime.timedelta(days=-54, seconds=84601, microseconds=949637)",
+    -4580998.050363,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-989.41,
+      milliseconds=7075.116,
+      weeks=0.226,
+    ),
+    "-988 days, 4:07:47.875116",
+    "datetime.timedelta(days=-988, seconds=14867, microseconds=875116)",
+    -85348332.124884,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=2.48, weeks=-6.718),
+    "-47 days, 1:51:21.600000",
+    "datetime.timedelta(days=-47, seconds=6681, microseconds=600000)",
+    -4054118.4,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-591.01, microseconds=-5696124.12),
+    "-592 days, 23:45:30.303876",
+    "datetime.timedelta(days=-592, seconds=85530, microseconds=303876)",
+    -51063269.696124,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-2824448.0,
+      milliseconds=728.4,
+      hours=42.6,
+      weeks=-7.056977,
+    ),
+    "-48 days, 9:01:38.214352",
+    "datetime.timedelta(days=-48, seconds=32498, microseconds=214352)",
+    -4114701.785648,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-430829.749751,
+      milliseconds=-5148.683,
+      minutes=-6181.771213,
+      hours=10.152407,
+      weeks=0.195952,
+    ),
+    "-8 days, 12:21:59.263586",
+    "datetime.timedelta(days=-8, seconds=44519, microseconds=263586)",
+    -646680.736414,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-6223.653, hours=28.584609),
+    "-4 days, 20:51:25.412400",
+    "datetime.timedelta(days=-4, seconds=75085, microseconds=412400)",
+    -270514.5876,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=227.29,
+      seconds=957233.434184,
+      microseconds=-4677516.161,
+      milliseconds=-4687.758,
+    ),
+    "238 days, 8:51:20.068910",
+    "datetime.timedelta(days=238, seconds=31880, microseconds=68910)",
+    20595080.06891,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-211607.8,
+      microseconds=8297412.0,
+      milliseconds=1949.6,
+      weeks=-4.18,
+    ),
+    "-32 days, 6:58:58.447012",
+    "datetime.timedelta(days=-32, seconds=25138, microseconds=447012)",
+    -2739661.552988,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-316586.784321,
+      milliseconds=-7316.883,
+      minutes=-4411.45,
+      weeks=-0.21,
+    ),
+    "-9 days, 19:15:10.898796",
+    "datetime.timedelta(days=-9, seconds=69310, microseconds=898796)",
+    -708289.101204,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=708.21, minutes=-5691.401, hours=29.9),
+    "705 days, 12:04:59.940000",
+    "datetime.timedelta(days=705, seconds=43499, microseconds=940000)",
+    60955499.94,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4171.8, minutes=3499.3),
+    "2 days, 10:19:22.171800",
+    "datetime.timedelta(days=2, seconds=37162, microseconds=171800)",
+    209962.1718,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-320469.593431, hours=10.9),
+    "-4 days, 17:52:50.406569",
+    "datetime.timedelta(days=-4, seconds=64370, microseconds=406569)",
+    -281229.593431,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=740.403529),
+    "740 days, 9:41:04.905600",
+    "datetime.timedelta(days=740, seconds=34864, microseconds=905600)",
+    63970864.9056,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-6119962.26,
+      milliseconds=-7582.634,
+      hours=-91.022976,
+    ),
+    "-4 days, 4:58:23.583804",
+    "datetime.timedelta(days=-4, seconds=17903, microseconds=583804)",
+    -327696.416196,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(weeks=4.879),
+    "34 days, 3:40:19.200000",
+    "datetime.timedelta(days=34, seconds=13219, microseconds=200000)",
+    2950819.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=5640955.109226,
+      milliseconds=-3421.94,
+      minutes=-4644.355,
+    ),
+    "-4 days, 18:35:40.919015",
+    "datetime.timedelta(days=-4, seconds=66940, microseconds=919015)",
+    -278659.080985,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=285527.377781, weeks=-1.225),
+    "-6 days, 17:30:47.377781",
+    "datetime.timedelta(days=-6, seconds=63047, microseconds=377781)",
+    -455352.622219,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-682.14, microseconds=7787474.552),
+    "-683 days, 20:38:31.787475",
+    "datetime.timedelta(days=-683, seconds=74311, microseconds=787475)",
+    -58936888.212525,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=3094397.37,
+      minutes=770.7,
+      hours=-33.4,
+    ),
+    "-1 day, 3:26:45.094397",
+    "datetime.timedelta(days=-1, seconds=12405, microseconds=94397)",
+    -73994.905603,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-55.1,
+      milliseconds=-8037.6,
+      minutes=7446.153649,
+    ),
+    "-50 days, 1:42:01.181340",
+    "datetime.timedelta(days=-50, seconds=6121, microseconds=181340)",
+    -4313878.81866,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-578.52, microseconds=7343495.3),
+    "-579 days, 11:31:19.343495",
+    "datetime.timedelta(days=-579, seconds=41479, microseconds=343495)",
+    -49984120.656505,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=757.484,
+      milliseconds=-3351.2,
+      minutes=-3473.75,
+      hours=79.470843,
+      weeks=-8.38,
+    ),
+    "699 days, 17:21:00.283600",
+    "datetime.timedelta(days=699, seconds=62460, microseconds=283600)",
+    60456060.2836,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-7187185.673948,
+      milliseconds=-5591.3,
+      weeks=5.264641,
+    ),
+    "36 days, 20:27:22.098314",
+    "datetime.timedelta(days=36, seconds=73642, microseconds=98314)",
+    3184042.098314,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=-47.732775,
+      minutes=5611.042,
+      hours=-14.031,
+      weeks=1.821,
+    ),
+    "16 days, 1:24:51.672267",
+    "datetime.timedelta(days=16, seconds=5091, microseconds=672267)",
+    1387491.672267,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=970334.291, weeks=3.98),
+    "39 days, 2:10:38.291000",
+    "datetime.timedelta(days=39, seconds=7838, microseconds=291000)",
+    3377438.291,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=861.1,
+      seconds=698806.541484,
+      microseconds=2556628.428,
+      minutes=-9083.6,
+    ),
+    "862 days, 21:07:13.098112",
+    "datetime.timedelta(days=862, seconds=76033, microseconds=98112)",
+    74552833.098112,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-302510.43,
+      microseconds=3307014.487,
+      minutes=1948.986377,
+    ),
+    "-3 days, 20:27:12.059634",
+    "datetime.timedelta(days=-3, seconds=73632, microseconds=59634)",
+    -185567.940366,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=5288471.55,
+      milliseconds=-2637.85,
+      hours=7.342,
+    ),
+    "7:20:33.850622",
+    "datetime.timedelta(seconds=26433, microseconds=850622)",
+    26433.850622,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=1489.027031),
+    "1 day, 0:49:01.621860",
+    "datetime.timedelta(days=1, seconds=2941, microseconds=621860)",
+    89341.62186,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-179944.739,
+      microseconds=-9064872.777,
+      hours=-40.442,
+    ),
+    "-4 days, 5:34:14.996127",
+    "datetime.timedelta(days=-4, seconds=20054, microseconds=996127)",
+    -325545.003873,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-50.6,
+      seconds=491422.73,
+      milliseconds=-2988.207,
+      weeks=-2.1,
+    ),
+    "-60 days, 9:18:19.741793",
+    "datetime.timedelta(days=-60, seconds=33499, microseconds=741793)",
+    -5150500.258207,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-3063047.7),
+    "-1 day, 23:59:56.936952",
+    "datetime.timedelta(days=-1, seconds=86396, microseconds=936952)",
+    -3.063048,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=422.886,
+      seconds=-49105.3,
+      microseconds=-1440437.729382,
+    ),
+    "422 days, 7:37:23.659562",
+    "datetime.timedelta(days=422, seconds=27443, microseconds=659562)",
+    36488243.659562,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-5915.104001),
+    "-5 days, 21:24:53.759940",
+    "datetime.timedelta(days=-5, seconds=77093, microseconds=759940)",
+    -354906.24006,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-398.4,
+      seconds=-795865.726825,
+      microseconds=9929211.927148,
+      milliseconds=-7350.8,
+      minutes=4596.8,
+      hours=-23.5,
+    ),
+    "-406 days, 14:26:24.851587",
+    "datetime.timedelta(days=-406, seconds=51984, microseconds=851587)",
+    -35026415.148413,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=643772.1,
+      microseconds=-3132211.519294,
+      minutes=-2821.14,
+    ),
+    "5 days, 11:48:20.567788",
+    "datetime.timedelta(days=5, seconds=42500, microseconds=567788)",
+    474500.567788,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-9224178.8,
+      milliseconds=-3772.72,
+      minutes=-4524.406,
+      hours=-97.11,
+      weeks=-1.75,
+    ),
+    "-20 days, 13:28:46.643101",
+    "datetime.timedelta(days=-20, seconds=48526, microseconds=643101)",
+    -1679473.356899,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-149.133,
+      microseconds=3796738.7,
+      minutes=3545.7,
+      hours=75.544,
+    ),
+    "-144 days, 11:26:52.996739",
+    "datetime.timedelta(days=-144, seconds=41212, microseconds=996739)",
+    -12400387.003261,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-711.567788,
+      milliseconds=-4752.577,
+      weeks=7.679389,
+    ),
+    "-658 days, 4:30:32.831423",
+    "datetime.timedelta(days=-658, seconds=16232, microseconds=831423)",
+    -56834967.168577,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=152233.925, weeks=-4.292),
+    "-29 days, 17:13:52.325000",
+    "datetime.timedelta(days=-29, seconds=62032, microseconds=325000)",
+    -2443567.675,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-800005.984651,
+      milliseconds=1067.918,
+    ),
+    "0:00:00.267912",
+    "datetime.timedelta(microseconds=267912)",
+    0.267912,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-951.873774, hours=15.781182),
+    "-952 days, 18:48:38.181600",
+    "datetime.timedelta(days=-952, seconds=67718, microseconds=181600)",
+    -82185081.8184,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-652.826658),
+    "-653 days, 4:09:36.748800",
+    "datetime.timedelta(days=-653, seconds=14976, microseconds=748800)",
+    -56404223.2512,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=830.334),
+    "830 days, 8:00:57.600000",
+    "datetime.timedelta(days=830, seconds=28857, microseconds=600000)",
+    71740857.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=541597.441658,
+      microseconds=-912063.0,
+    ),
+    "6 days, 6:26:36.529595",
+    "datetime.timedelta(days=6, seconds=23196, microseconds=529595)",
+    541596.529595,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=1831.309),
+    "1 day, 6:31:18.540000",
+    "datetime.timedelta(days=1, seconds=23478, microseconds=540000)",
+    109878.54,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-7711533.678874,
+      minutes=5983.6,
+    ),
+    "4 days, 3:43:28.288466",
+    "datetime.timedelta(days=4, seconds=13408, microseconds=288466)",
+    359008.288466,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=678.419,
+      seconds=-588285.0,
+      minutes=-3256.54,
+      hours=-22.5,
+    ),
+    "668 days, 9:52:04.200000",
+    "datetime.timedelta(days=668, seconds=35524, microseconds=200000)",
+    57750724.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=1313367.12,
+      milliseconds=3567.07206,
+    ),
+    "0:00:04.880439",
+    "datetime.timedelta(seconds=4, microseconds=880439)",
+    4.880439,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-180747.4,
+      microseconds=-1149578.559554,
+      minutes=5312.668182,
+      hours=75.486,
+    ),
+    "4 days, 17:49:21.141341",
+    "datetime.timedelta(days=4, seconds=64161, microseconds=141341)",
+    409761.141341,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-394.7, hours=-48.0, weeks=-9.421),
+    "-463 days, 8:28:19.200000",
+    "datetime.timedelta(days=-463, seconds=30499, microseconds=200000)",
+    -39972700.8,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-135.24,
+      seconds=-357249.61,
+      minutes=-1525.78,
+    ),
+    "-141 days, 13:34:27.590000",
+    "datetime.timedelta(days=-141, seconds=48867, microseconds=590000)",
+    -12133532.41,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=6552529.6, weeks=5.8),
+    "40 days, 14:24:06.552530",
+    "datetime.timedelta(days=40, seconds=51846, microseconds=552530)",
+    3507846.55253,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-9713219.7,
+      minutes=3816.78846,
+      hours=32.459365,
+      weeks=-5.788,
+    ),
+    "-37 days, 11:41:08.908380",
+    "datetime.timedelta(days=-37, seconds=42068, microseconds=908380)",
+    -3154731.09162,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=5555.68, hours=8.494405),
+    "8:29:45.413680",
+    "datetime.timedelta(seconds=30585, microseconds=413680)",
+    30585.41368,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=302.363,
+      microseconds=-4031323.239,
+      milliseconds=5417.14,
+      minutes=711.278,
+    ),
+    "302 days, 20:34:01.265817",
+    "datetime.timedelta(days=302, seconds=74041, microseconds=265817)",
+    26166841.265817,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=243.437,
+      milliseconds=3600.02,
+      minutes=-8211.407439,
+      weeks=-2.088,
+    ),
+    "223 days, 2:50:53.553680",
+    "datetime.timedelta(days=223, seconds=10253, microseconds=553680)",
+    19277453.55368,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-388.9),
+    "-389 days, 2:24:00",
+    "datetime.timedelta(days=-389, seconds=8640)",
+    -33600960.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=372.9,
+      milliseconds=-9427.3,
+      hours=-88.4,
+      weeks=-5.72,
+    ),
+    "329 days, 4:14:14.572700",
+    "datetime.timedelta(days=329, seconds=15254, microseconds=572700)",
+    28440854.5727,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=124.8, hours=-37.746933, weeks=-7.2),
+    "72 days, 19:51:11.041200",
+    "datetime.timedelta(days=72, seconds=71471, microseconds=41200)",
+    6292271.0412,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=679.438672),
+    "679 days, 10:31:41.260800",
+    "datetime.timedelta(days=679, seconds=37901, microseconds=260800)",
+    58703501.2608,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=170.225,
+      seconds=987718.58,
+      minutes=-3975.1,
+      weeks=-8.97,
+    ),
+    "116 days, 2:33:16.580000",
+    "datetime.timedelta(days=116, seconds=9196, microseconds=580000)",
+    10031596.58,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=295.3),
+    "295 days, 7:12:00",
+    "datetime.timedelta(days=295, seconds=25920)",
+    25513920.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-7673.9, minutes=-7522.248),
+    "-6 days, 18:37:37.446100",
+    "datetime.timedelta(days=-6, seconds=67057, microseconds=446100)",
+    -451342.5539,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-4141.5, weeks=3.87),
+    "24 days, 5:08:06",
+    "datetime.timedelta(days=24, seconds=18486)",
+    2092086.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-769.461,
+      seconds=956964.35,
+      microseconds=451691.770798,
+      minutes=-9393.267755,
+      hours=-5.700785,
+    ),
+    "-766 days, 20:30:15.510392",
+    "datetime.timedelta(days=-766, seconds=73815, microseconds=510392)",
+    -66108584.489608,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-244359.8,
+      microseconds=-3544553.35,
+      hours=18.379,
+    ),
+    "-3 days, 22:30:01.055447",
+    "datetime.timedelta(days=-3, seconds=81001, microseconds=55447)",
+    -178198.944553,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      milliseconds=1123.011094,
+      minutes=2878.155,
+      weeks=-8.94,
+    ),
+    "-61 days, 10:02:58.423011",
+    "datetime.timedelta(days=-61, seconds=36178, microseconds=423011)",
+    -5234221.576989,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-161.802084,
+      seconds=-646124.324286,
+      microseconds=1806968.9,
+      milliseconds=6337.845217,
+      minutes=-9406.3,
+      hours=-51.018,
+      weeks=8.28,
+    ),
+    "-120 days, 0:31:24.962928",
+    "datetime.timedelta(days=-120, seconds=1884, microseconds=962928)",
+    -10366115.037072,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=57477.169796),
+    "15:57:57.169796",
+    "datetime.timedelta(seconds=57477, microseconds=169796)",
+    57477.169796,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-418.006,
+      seconds=-145302.433499,
+      microseconds=-230074.12,
+      weeks=-5.83,
+    ),
+    "-461 days, 12:03:14.936427",
+    "datetime.timedelta(days=-461, seconds=43394, microseconds=936427)",
+    -39787005.063573,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=356.0,
+      seconds=492013.4,
+      microseconds=-6624170.406015,
+      milliseconds=6980.521,
+      weeks=8.1,
+    ),
+    "418 days, 9:28:13.756351",
+    "datetime.timedelta(days=418, seconds=34093, microseconds=756351)",
+    36149293.756351,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(minutes=-3224.6, hours=94.9),
+    "1 day, 17:09:24",
+    "datetime.timedelta(days=1, seconds=61764)",
+    148164.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=69.1,
+      milliseconds=8213.0,
+      minutes=-3250.056,
+      hours=5.8,
+      weeks=-3.7,
+    ),
+    "41 days, 4:26:04.853000",
+    "datetime.timedelta(days=41, seconds=15964, microseconds=853000)",
+    3558364.853,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-7488.424),
+    "-1 day, 23:59:52.511576",
+    "datetime.timedelta(days=-1, seconds=86392, microseconds=511576)",
+    -7.488424,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=684165.14,
+      minutes=-5039.7,
+      weeks=-1.196,
+    ),
+    "-12 days, 3:04:37.884165",
+    "datetime.timedelta(days=-12, seconds=11077, microseconds=884165)",
+    -1025722.115835,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=492.94, microseconds=-4285710.12),
+    "492 days, 22:33:31.714290",
+    "datetime.timedelta(days=492, seconds=81211, microseconds=714290)",
+    42590011.71429,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-337963.927984,
+      milliseconds=2629.956,
+      weeks=6.3,
+    ),
+    "40 days, 4:31:18.701972",
+    "datetime.timedelta(days=40, seconds=16278, microseconds=701972)",
+    3472278.701972,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=89859.53,
+      microseconds=3373072.334212,
+      milliseconds=9710.348998,
+      minutes=6155.141,
+    ),
+    "5 days, 7:33:01.073421",
+    "datetime.timedelta(days=5, seconds=27181, microseconds=73421)",
+    459181.073421,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=-436151.9, weeks=-3.9),
+    "-33 days, 15:38:48.100000",
+    "datetime.timedelta(days=-33, seconds=56328, microseconds=100000)",
+    -2794871.9,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      minutes=7567.5,
+      hours=10.772261,
+      weeks=9.913,
+    ),
+    "75 days, 2:16:52.539600",
+    "datetime.timedelta(days=75, seconds=8212, microseconds=539600)",
+    6488212.5396,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=8635.5, hours=84.9),
+    "3 days, 12:54:08.635500",
+    "datetime.timedelta(days=3, seconds=46448, microseconds=635500)",
+    305648.6355,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=200.910747,
+      seconds=-84036.367045,
+      minutes=-5294.0,
+    ),
+    "196 days, 6:16:52.173755",
+    "datetime.timedelta(days=196, seconds=22612, microseconds=173755)",
+    16957012.173755,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-504856.8),
+    "-1 day, 23:59:59.495143",
+    "datetime.timedelta(days=-1, seconds=86399, microseconds=495143)",
+    -0.504857,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-4647315.933634,
+      milliseconds=-2543.6,
+      hours=70.232,
+    ),
+    "2 days, 22:13:48.009084",
+    "datetime.timedelta(days=2, seconds=80028, microseconds=9084)",
+    252828.009084,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=563871.7,
+      microseconds=5230287.8,
+      milliseconds=-9244.041689,
+      minutes=-657.164595,
+      hours=14.9,
+    ),
+    "6 days, 16:34:37.810546",
+    "datetime.timedelta(days=6, seconds=59677, microseconds=810546)",
+    578077.810546,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=534.51,
+      seconds=696772.760389,
+      milliseconds=-7626.185,
+      hours=52.5,
+    ),
+    "544 days, 18:17:09.134204",
+    "datetime.timedelta(days=544, seconds=65829, microseconds=134204)",
+    47067429.134204,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=6797521.6, hours=-8.746),
+    "-1 day, 15:15:21.197522",
+    "datetime.timedelta(days=-1, seconds=54921, microseconds=197522)",
+    -31478.802478,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-747.429),
+    "-748 days, 13:42:14.400000",
+    "datetime.timedelta(days=-748, seconds=49334, microseconds=400000)",
+    -64577865.6,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=225314.5, weeks=5.5),
+    "41 days, 2:35:14.500000",
+    "datetime.timedelta(days=41, seconds=9314, microseconds=500000)",
+    3551714.5,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-471091.23,
+      microseconds=2517954.38,
+      milliseconds=-3136.544,
+      minutes=-8831.8,
+      hours=-82.246,
+    ),
+    "-16 days, 23:41:54.551410",
+    "datetime.timedelta(days=-16, seconds=85314, microseconds=551410)",
+    -1297085.44859,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=350008.6, weeks=6.283488),
+    "48 days, 0:51:02.142400",
+    "datetime.timedelta(days=48, seconds=3062, microseconds=142400)",
+    4150262.1424,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-838.8,
+      seconds=-400504.431,
+      microseconds=-798568.763,
+      minutes=2232.168,
+    ),
+    "-842 days, 2:45:04.850431",
+    "datetime.timedelta(days=-842, seconds=9904, microseconds=850431)",
+    -72738895.149569,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-236713.197465,
+      microseconds=-2768666.1,
+      hours=-89.7,
+      weeks=-4.4,
+    ),
+    "-38 days, 17:20:44.033869",
+    "datetime.timedelta(days=-38, seconds=62444, microseconds=33869)",
+    -3220755.966131,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-9902093.044637,
+      milliseconds=-3580.41,
+      minutes=7915.8,
+      hours=54.72865,
+    ),
+    "7 days, 18:39:17.657497",
+    "datetime.timedelta(days=7, seconds=67157, microseconds=657497)",
+    671957.657497,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(hours=56.7, weeks=8.2),
+    "59 days, 18:18:00",
+    "datetime.timedelta(days=59, seconds=65880)",
+    5163480.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-213.460335,
+      microseconds=-8236066.259,
+      milliseconds=5976.9,
+      minutes=-2061.1,
+      weeks=2.31982,
+    ),
+    "-199 days, 8:19:45.932834",
+    "datetime.timedelta(days=-199, seconds=29985, microseconds=932834)",
+    -17163614.067166,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-811.5, weeks=3.28),
+    "-789 days, 11:02:24",
+    "datetime.timedelta(days=-789, seconds=39744)",
+    -68129856.0,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=3917.6, minutes=-2746.837),
+    "-2 days, 2:13:13.697600",
+    "datetime.timedelta(days=-2, seconds=7993, microseconds=697600)",
+    -164806.3024,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-79.37,
+      microseconds=9195070.38,
+      hours=-66.1,
+    ),
+    "-83 days, 21:01:21.195070",
+    "datetime.timedelta(days=-83, seconds=75681, microseconds=195070)",
+    -7095518.80493,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-785.030665,
+      microseconds=-5947624.3,
+      weeks=-5.13,
+    ),
+    "-821 days, 1:25:20.596376",
+    "datetime.timedelta(days=-821, seconds=5120, microseconds=596376)",
+    -70929279.403624,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=240.044,
+      seconds=436995.8,
+      microseconds=-4728765.2,
+    ),
+    "245 days, 2:26:32.671235",
+    "datetime.timedelta(days=245, seconds=8792, microseconds=671235)",
+    21176792.671235,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=819.7,
+      seconds=908064.74,
+      milliseconds=5214.487,
+      hours=38.21,
+    ),
+    "831 days, 19:15:05.954487",
+    "datetime.timedelta(days=831, seconds=69305, microseconds=954487)",
+    71867705.954487,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=625.7,
+      seconds=-506607.98,
+      milliseconds=2935.495089,
+    ),
+    "619 days, 20:04:34.955495",
+    "datetime.timedelta(days=619, seconds=72274, microseconds=955495)",
+    53553874.955495,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4401742.668363,
+      milliseconds=-7378.29,
+      hours=-23.426,
+    ),
+    "-1 day, 0:34:23.423453",
+    "datetime.timedelta(days=-1, seconds=2063, microseconds=423453)",
+    -84336.576547,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-532.706677,
+      microseconds=-114675.215975,
+    ),
+    "-533 days, 7:02:22.992525",
+    "datetime.timedelta(days=-533, seconds=25342, microseconds=992525)",
+    -46025857.007475,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=592459.794504,
+      hours=83.314,
+      weeks=-9.24022,
+    ),
+    "-55 days, 15:31:45.138504",
+    "datetime.timedelta(days=-55, seconds=55905, microseconds=138504)",
+    -4696094.861496,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=697815.3, hours=-94.91),
+    "4 days, 2:55:39.300000",
+    "datetime.timedelta(days=4, seconds=10539, microseconds=300000)",
+    356139.3,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=5605310.815,
+      minutes=-152.8,
+      hours=-33.5,
+    ),
+    "-2 days, 11:57:17.605311",
+    "datetime.timedelta(days=-2, seconds=43037, microseconds=605311)",
+    -129762.394689,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-45.633242,
+      seconds=-282670.866,
+      minutes=5520.286,
+      weeks=1.925124,
+    ),
+    "-32 days, 9:42:29.180400",
+    "datetime.timedelta(days=-32, seconds=34949, microseconds=180400)",
+    -2729850.8196,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=4266.234743, minutes=-7603.23),
+    "-6 days, 17:16:50.466235",
+    "datetime.timedelta(days=-6, seconds=62210, microseconds=466235)",
+    -456189.533765,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-55.93,
+      seconds=900999.786,
+      minutes=-2702.436,
+      weeks=-0.89,
+    ),
+    "-54 days, 9:23:49.626000",
+    "datetime.timedelta(days=-54, seconds=33829, microseconds=626000)",
+    -4631770.374,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-344956.0,
+      microseconds=6149270.805322,
+      milliseconds=-4722.362636,
+      hours=56.529238,
+    ),
+    "-2 days, 8:42:30.683708",
+    "datetime.timedelta(days=-2, seconds=31350, microseconds=683708)",
+    -141449.316292,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-7938425.7, minutes=7480.183),
+    "5 days, 4:40:03.041574",
+    "datetime.timedelta(days=5, seconds=16803, microseconds=41574)",
+    448803.041574,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-768.028073,
+      seconds=-124096.4,
+      milliseconds=-8800.1,
+    ),
+    "-770 days, 12:51:09.292700",
+    "datetime.timedelta(days=-770, seconds=46269, microseconds=292700)",
+    -66481730.7073,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8147525.479043,
+      milliseconds=-358.63,
+      hours=78.1,
+    ),
+    "3 days, 6:06:07.788895",
+    "datetime.timedelta(days=3, seconds=21967, microseconds=788895)",
+    281167.788895,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8586252.926,
+      milliseconds=5792.1,
+      minutes=-8905.3,
+      hours=1.6,
+    ),
+    "-7 days, 21:10:56.378353",
+    "datetime.timedelta(days=-7, seconds=76256, microseconds=378353)",
+    -528543.621647,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(milliseconds=-3958.6),
+    "-1 day, 23:59:56.041400",
+    "datetime.timedelta(days=-1, seconds=86396, microseconds=41400)",
+    -3.9586,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=-8314313.952,
+      minutes=-9695.113388,
+    ),
+    "-7 days, 6:24:44.882406",
+    "datetime.timedelta(days=-7, seconds=23084, microseconds=882406)",
+    -581715.117594,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-990.64,
+      seconds=-911845.527635,
+      microseconds=-840348.31,
+      milliseconds=-2566.0,
+      minutes=-5563.95,
+      hours=-53.8,
+      weeks=-2.95,
+    ),
+    "-1028 days, 1:12:58.066017",
+    "datetime.timedelta(days=-1028, seconds=4378, microseconds=66017)",
+    -88814821.933983,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=2449574.49,
+      hours=-29.2,
+      weeks=6.1,
+    ),
+    "41 days, 11:36:02.449574",
+    "datetime.timedelta(days=41, seconds=41762, microseconds=449574)",
+    3584162.449574,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=6891.68, hours=-70.03),
+    "-3 days, 3:53:03.680000",
+    "datetime.timedelta(days=-3, seconds=13983, microseconds=680000)",
+    -245216.32,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-107190.7,
+      minutes=325.458,
+      weeks=5.8,
+    ),
+    "39 days, 14:02:56.780000",
+    "datetime.timedelta(days=39, seconds=50576, microseconds=780000)",
+    3420176.78,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=801.487,
+      seconds=542860.4,
+      hours=15.325,
+    ),
+    "808 days, 9:48:27.200000",
+    "datetime.timedelta(days=808, seconds=35307, microseconds=200000)",
+    69846507.2,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-5750727.3, minutes=-722.7),
+    "-1 day, 11:57:12.249273",
+    "datetime.timedelta(days=-1, seconds=43032, microseconds=249273)",
+    -43367.750727,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-958.379514,
+      seconds=781230.010607,
+      microseconds=-171435.643,
+      hours=-89.79,
+      weeks=7.603916,
+    ),
+    "-900 days, 3:34:04.226371",
+    "datetime.timedelta(days=-900, seconds=12844, microseconds=226371)",
+    -77747155.773629,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=-712.961453,
+      milliseconds=-5338.5,
+      minutes=-6929.066,
+      hours=89.51,
+    ),
+    "-715 days, 22:56:57.162300",
+    "datetime.timedelta(days=-715, seconds=82617, microseconds=162300)",
+    -61693382.8377,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=8082194.874829,
+      minutes=-8315.433971,
+    ),
+    "-6 days, 5:24:42.043935",
+    "datetime.timedelta(days=-6, seconds=19482, microseconds=43935)",
+    -498917.956065,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=137100.239024,
+      milliseconds=1361.720394,
+      minutes=108.032036,
+      hours=-81.1,
+      weeks=9.91,
+    ),
+    "66 days, 1:34:51.420981",
+    "datetime.timedelta(days=66, seconds=5691, microseconds=420981)",
+    5708091.420981,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=592666.8, hours=84.420044),
+    "10 days, 9:02:58.958400",
+    "datetime.timedelta(days=10, seconds=32578, microseconds=958400)",
+    896578.9584,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=748437.284759, minutes=8758.286),
+    "14 days, 17:52:14.444759",
+    "datetime.timedelta(days=14, seconds=64334, microseconds=444759)",
+    1273934.444759,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(microseconds=-6731449.877091, weeks=-1.5),
+    "-11 days, 11:59:53.268550",
+    "datetime.timedelta(days=-11, seconds=43193, microseconds=268550)",
+    -907206.73145,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=896.22989,
+      milliseconds=-7684.89,
+      minutes=-6874.211,
+      hours=20.294281,
+      weeks=9.5,
+    ),
+    "958 days, 19:14:21.562710",
+    "datetime.timedelta(days=958, seconds=69261, microseconds=562710)",
+    82840461.56271,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      days=572.18,
+      microseconds=-63428.35,
+      milliseconds=7129.250021,
+      minutes=3498.847,
+      hours=71.962526,
+    ),
+    "577 days, 14:35:54.979422",
+    "datetime.timedelta(days=577, seconds=52554, microseconds=979422)",
+    49905354.979422,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=4024896.7,
+      milliseconds=-7118.842,
+    ),
+    "-1 day, 23:59:56.906055",
+    "datetime.timedelta(days=-1, seconds=86396, microseconds=906055)",
+    -3.093945,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      seconds=-746064.2,
+      microseconds=7740263.521,
+      milliseconds=-8885.28,
+    ),
+    "-9 days, 8:45:34.654984",
+    "datetime.timedelta(days=-9, seconds=31534, microseconds=654984)",
+    -746065.345016,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(
+      microseconds=2142906.7,
+      hours=-14.0,
+      weeks=3.6,
+    ),
+    "24 days, 14:48:02.142907",
+    "datetime.timedelta(days=24, seconds=53282, microseconds=142907)",
+    2126882.142907,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(seconds=602991.99, weeks=-0.05),
+    "6 days, 15:05:51.990000",
+    "datetime.timedelta(days=6, seconds=54351, microseconds=990000)",
+    572751.99,
+  )
+  check_td(
+    @datetime.TimeDelta::from_float(days=-144.9),
+    "-145 days, 2:24:00",
+    "datetime.timedelta(days=-145, seconds=8640)",
+    -12519360.0,
+  )
+  check_td(
     @datetime.TimeDelta::from_float(seconds=0.5),
     "0:00:00.500000",
     "datetime.timedelta(microseconds=500000)",
@@ -5472,3903 +16870,3903 @@ test "cpython: timedelta float constructor" {
 test "cpython: datetime + timedelta" {
   check_add(
     @datetime.DateTime::new(
-      7525,
+      459,
       12,
-      6,
-      hour=19,
-      minute=49,
-      second=34,
-      microsecond=555978,
-    ),
-    @datetime.TimeDelta::new(days=-1734, seconds=55189, microseconds=153130),
-    Some("7521-03-09 11:09:23.709108"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8500,
-      7,
-      22,
-      hour=9,
-      minute=43,
-      second=46,
-      microsecond=374676,
-    ),
-    @datetime.TimeDelta::new(days=-3616, seconds=34017, microseconds=117002),
-    Some("8490-08-27 19:10:43.491678"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1615,
-      12,
-      23,
-      hour=21,
-      minute=0,
-      second=27,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1951, seconds=52532, microseconds=697493),
-    Some("1610-08-21 11:35:59.697493"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5538,
-      4,
-      24,
-      hour=19,
-      minute=6,
-      second=15,
-      microsecond=452302,
-    ),
-    @datetime.TimeDelta::new(days=-2875, seconds=73059, microseconds=365735),
-    Some("5530-06-11 15:23:54.818037"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1959,
-      5,
-      4,
-      hour=17,
-      minute=7,
-      second=59,
-      microsecond=533111,
-    ),
-    @datetime.TimeDelta::new(days=-464, seconds=51356, microseconds=381008),
-    Some("1958-01-26 07:23:55.914119"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9578,
-      6,
-      21,
-      hour=22,
-      minute=51,
-      second=23,
-      microsecond=940018,
-    ),
-    @datetime.TimeDelta::new(days=-3852, seconds=74942, microseconds=615839),
-    Some("9567-12-05 19:40:26.555857"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2107,
-      11,
-      19,
-      hour=23,
-      minute=55,
-      second=31,
-      microsecond=432235,
-    ),
-    @datetime.TimeDelta::new(days=-2889, seconds=69338, microseconds=873521),
-    Some("2099-12-22 19:11:10.305756"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2704,
-      5,
-      9,
+      3,
       hour=2,
-      minute=55,
-      second=17,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2715, seconds=82143, microseconds=545937),
-    Some("2711-10-16 01:44:20.545937"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2000,
-      4,
-      26,
-      hour=10,
-      minute=5,
-      second=26,
-      microsecond=68550,
-    ),
-    @datetime.TimeDelta::new(days=-3938, seconds=61706, microseconds=795476),
-    Some("1989-07-16 03:13:52.864026"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5167,
-      4,
-      13,
-      hour=21,
-      minute=10,
-      second=8,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-457, seconds=37504, microseconds=525588),
-    Some("5166-01-12 07:35:12.525588"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1983,
-      2,
-      20,
-      hour=16,
-      minute=47,
-      second=21,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2943, seconds=80164, microseconds=807213),
-    Some("1991-03-14 15:03:25.807213"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6902,
-      3,
-      8,
-      hour=21,
-      minute=28,
-      second=6,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2617, seconds=11661, microseconds=455449),
-    Some("6895-01-07 00:42:27.455449"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7656,
-      8,
-      15,
-      hour=1,
-      minute=53,
-      second=15,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4115, seconds=32071, microseconds=349520),
-    Some("7645-05-10 10:47:46.349520"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1068,
-      10,
-      9,
-      hour=21,
-      minute=20,
-      second=8,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-708, seconds=56463, microseconds=422237),
-    Some("1066-11-02 13:01:11.422237"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1928,
-      9,
-      7,
-      hour=11,
-      minute=32,
-      second=24,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1985, seconds=102, microseconds=398338),
-    Some("1934-02-13 11:34:06.398338"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      359,
-      8,
-      19,
-      hour=9,
-      minute=31,
-      second=25,
-      microsecond=865979,
-    ),
-    @datetime.TimeDelta::new(days=-815, seconds=16527, microseconds=21069),
-    Some("0357-05-26 14:06:52.887048"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2003,
-      10,
-      31,
-      hour=15,
-      minute=52,
-      second=40,
-      microsecond=270436,
-    ),
-    @datetime.TimeDelta::new(days=-500, seconds=15289, microseconds=301731),
-    Some("2002-06-18 20:07:29.572167"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2759,
-      10,
-      11,
-      hour=18,
-      minute=40,
-      second=53,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=37, seconds=4916, microseconds=157432),
-    Some("2759-11-17 20:02:49.157432"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9219,
-      12,
-      22,
-      hour=4,
-      minute=57,
-      second=8,
-      microsecond=179758,
-    ),
-    @datetime.TimeDelta::new(days=1198, seconds=34014, microseconds=379462),
-    Some("9223-04-03 14:24:02.559220"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2585,
-      5,
-      28,
-      hour=23,
-      minute=12,
-      second=26,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1236, seconds=38770, microseconds=230770),
-    Some("2582-01-09 09:58:36.230770"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2085,
-      6,
-      25,
-      hour=16,
-      minute=46,
-      second=12,
-      microsecond=721331,
-    ),
-    @datetime.TimeDelta::new(days=3543, seconds=1839, microseconds=796077),
-    Some("2095-03-08 17:16:52.517408"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1306,
-      1,
-      21,
-      hour=6,
-      minute=25,
-      second=48,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4489, seconds=81473, microseconds=19056),
-    Some("1318-05-08 05:03:41.019056"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6799,
-      1,
-      3,
-      hour=21,
-      minute=51,
-      second=27,
-      microsecond=115657,
-    ),
-    @datetime.TimeDelta::new(days=3032, seconds=7035, microseconds=976003),
-    Some("6807-04-23 23:48:43.091660"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3629,
-      1,
-      22,
-      hour=5,
-      minute=39,
-      second=36,
-      microsecond=997313,
-    ),
-    @datetime.TimeDelta::new(days=4936, seconds=82992, microseconds=209390),
-    Some("3642-07-30 04:42:49.206703"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7208,
-      6,
-      27,
-      hour=12,
-      minute=31,
-      second=52,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-933, seconds=26067, microseconds=127187),
-    Some("7205-12-07 19:46:19.127187"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1535,
-      7,
-      3,
-      hour=22,
-      minute=56,
-      second=6,
-      microsecond=892411,
-    ),
-    @datetime.TimeDelta::new(days=-2279, seconds=25536, microseconds=669266),
-    Some("1529-04-07 06:01:43.561677"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1968,
-      7,
-      11,
-      hour=23,
-      minute=57,
-      second=42,
-      microsecond=740874,
-    ),
-    @datetime.TimeDelta::new(days=4637, seconds=33943, microseconds=79348),
-    Some("1981-03-23 09:23:25.820222"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1806,
-      1,
-      24,
-      hour=11,
-      minute=10,
-      second=39,
-      microsecond=738333,
-    ),
-    @datetime.TimeDelta::new(days=-2666, seconds=57972, microseconds=862139),
-    Some("1798-10-07 03:16:52.600472"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8946,
-      12,
-      22,
-      hour=16,
-      minute=48,
-      second=22,
-      microsecond=656705,
-    ),
-    @datetime.TimeDelta::new(days=134, seconds=7247, microseconds=787905),
-    Some("8947-05-05 18:49:10.444610"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4408,
-      1,
-      1,
-      hour=7,
-      minute=39,
-      second=30,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2156, seconds=62777, microseconds=95090),
-    Some("4413-11-27 01:05:47.095090"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1909,
-      5,
-      26,
-      hour=3,
-      minute=54,
-      second=9,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3161, seconds=69648, microseconds=682757),
-    Some("1900-09-29 23:14:57.682757"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6932,
-      10,
-      16,
-      hour=1,
-      minute=48,
-      second=45,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2973, seconds=34038, microseconds=770222),
-    Some("6924-08-26 11:16:03.770222"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3884,
-      11,
-      14,
-      hour=5,
-      minute=4,
-      second=48,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1752, seconds=15775, microseconds=876503),
-    Some("3880-01-28 09:27:43.876503"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4089,
-      5,
-      1,
-      hour=8,
-      minute=48,
-      second=9,
-      microsecond=726783,
-    ),
-    @datetime.TimeDelta::new(days=-3433, seconds=75184, microseconds=441613),
-    Some("4079-12-08 05:41:14.168396"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3567,
-      1,
-      28,
-      hour=16,
-      minute=22,
-      second=39,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3672, seconds=33398, microseconds=40367),
-    Some("3557-01-09 01:39:17.040367"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2039,
-      9,
-      29,
-      hour=12,
-      minute=1,
-      second=48,
-      microsecond=996131,
-    ),
-    @datetime.TimeDelta::new(days=3547, seconds=61319, microseconds=595146),
-    Some("2049-06-16 05:03:48.591277"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2299,
-      12,
-      18,
-      hour=19,
-      minute=58,
-      second=31,
-      microsecond=386847,
-    ),
-    @datetime.TimeDelta::new(days=2702, seconds=20436, microseconds=655566),
-    Some("2307-05-14 01:39:08.042413"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9581,
-      5,
-      26,
-      hour=10,
-      minute=56,
-      second=29,
-      microsecond=332358,
-    ),
-    @datetime.TimeDelta::new(days=2727, seconds=52709, microseconds=295706),
-    Some("9588-11-13 01:34:58.628064"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2871,
-      4,
-      9,
-      hour=16,
-      minute=47,
-      second=43,
-      microsecond=827653,
-    ),
-    @datetime.TimeDelta::new(days=-3843, seconds=21040, microseconds=866124),
-    Some("2860-09-30 22:38:24.693777"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1918,
-      10,
-      2,
-      hour=14,
-      minute=35,
-      second=10,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-127, seconds=55286, microseconds=686825),
-    Some("1918-05-29 05:56:36.686825"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2052,
-      7,
-      22,
-      hour=18,
-      minute=8,
-      second=7,
-      microsecond=123143,
-    ),
-    @datetime.TimeDelta::new(days=128, seconds=38735, microseconds=890615),
-    Some("2052-11-28 04:53:43.013758"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4596,
-      11,
-      28,
-      hour=13,
-      minute=31,
-      second=22,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4213, seconds=68259, microseconds=605627),
-    Some("4585-05-18 08:29:01.605627"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8166,
-      8,
-      9,
-      hour=1,
-      minute=48,
-      second=48,
-      microsecond=710149,
-    ),
-    @datetime.TimeDelta::new(days=2881, seconds=47449, microseconds=854971),
-    Some("8174-06-29 14:59:38.565120"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7488,
-      12,
-      24,
-      hour=8,
-      minute=39,
-      second=16,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2638, seconds=86296, microseconds=256981),
-    Some("7481-10-05 08:37:32.256981"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9418,
-      3,
-      10,
-      hour=15,
-      minute=9,
-      second=9,
-      microsecond=260051,
-    ),
-    @datetime.TimeDelta::new(days=-4895, seconds=20824, microseconds=730623),
-    Some("9404-10-14 20:56:13.990674"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3963,
-      11,
-      24,
-      hour=13,
-      minute=13,
-      second=33,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=544, seconds=2912, microseconds=266675),
-    Some("3965-05-21 14:02:05.266675"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8471,
-      2,
-      19,
-      hour=20,
-      minute=26,
-      second=49,
-      microsecond=22309,
-    ),
-    @datetime.TimeDelta::new(days=-4974, seconds=28520, microseconds=433930),
-    Some("8457-07-09 04:22:09.456239"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6962,
-      5,
-      14,
-      hour=5,
-      minute=39,
-      second=28,
-      microsecond=107521,
-    ),
-    @datetime.TimeDelta::new(days=4793, seconds=31137, microseconds=63086),
-    Some("6975-06-28 14:18:25.170607"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      707,
-      6,
-      5,
-      hour=21,
-      minute=46,
-      second=48,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1702, seconds=5488, microseconds=389913),
-    Some("0712-02-01 23:18:16.389913"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1913,
-      5,
-      26,
-      hour=12,
-      minute=39,
-      second=1,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3697, seconds=10114, microseconds=543610),
-    Some("1923-07-10 15:27:35.543610"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      638,
-      9,
-      8,
-      hour=5,
-      minute=20,
-      second=2,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2399, seconds=36512, microseconds=17971),
-    Some("0645-04-03 15:28:34.017971"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1930,
-      6,
-      18,
-      hour=14,
-      minute=22,
-      second=29,
-      microsecond=729676,
-    ),
-    @datetime.TimeDelta::new(days=-159, seconds=71428, microseconds=38806),
-    Some("1930-01-11 10:12:57.768482"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4165,
-      11,
-      5,
-      hour=21,
-      minute=49,
-      second=11,
-      microsecond=623887,
-    ),
-    @datetime.TimeDelta::new(days=-1951, seconds=7763, microseconds=93636),
-    Some("4160-07-03 23:58:34.717523"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6664,
-      3,
-      8,
-      hour=9,
-      minute=8,
-      second=14,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2272, seconds=19686, microseconds=583100),
-    Some("6657-12-18 14:36:20.583100"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4070,
-      12,
-      9,
-      hour=0,
-      minute=47,
-      second=48,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4367, seconds=60958, microseconds=760730),
-    Some("4082-11-23 17:43:46.760730"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2048,
-      4,
-      26,
-      hour=14,
-      minute=43,
-      second=48,
-      microsecond=159142,
-    ),
-    @datetime.TimeDelta::new(days=2792, seconds=21722, microseconds=387122),
-    Some("2055-12-18 20:45:50.546264"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2027,
-      1,
-      4,
-      hour=10,
-      minute=55,
-      second=27,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3472, seconds=4365, microseconds=392514),
-    Some("2017-07-03 12:08:12.392514"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8077,
-      6,
-      11,
-      hour=14,
-      minute=29,
-      second=43,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2408, seconds=16972, microseconds=507347),
-    Some("8070-11-07 19:12:35.507347"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2212,
-      5,
-      13,
-      hour=2,
-      minute=42,
-      second=26,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2109, seconds=3632, microseconds=250675),
-    Some("2218-02-20 03:42:58.250675"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6120,
-      7,
-      19,
-      hour=21,
-      minute=44,
+      minute=27,
       second=4,
-      microsecond=727713,
+      microsecond=748537,
     ),
-    @datetime.TimeDelta::new(days=-2009, seconds=48528, microseconds=630340),
-    Some("6115-01-19 11:12:53.358053"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6757,
-      9,
-      24,
-      hour=12,
-      minute=40,
-      second=0,
-      microsecond=702943,
-    ),
-    @datetime.TimeDelta::new(days=-1778, seconds=76449, microseconds=942803),
-    Some("6752-11-12 09:54:10.645746"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1932,
-      1,
-      5,
-      hour=21,
-      minute=53,
-      second=50,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2327, seconds=3250, microseconds=283418),
-    Some("1925-08-22 22:48:00.283418"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      675,
-      6,
-      19,
-      hour=14,
-      minute=20,
-      second=17,
-      microsecond=124350,
-    ),
-    @datetime.TimeDelta::new(days=3598, seconds=36424, microseconds=973902),
-    Some("0685-04-26 00:27:22.098252"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6150,
-      5,
-      31,
-      hour=2,
-      minute=9,
-      second=47,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2963, seconds=79280, microseconds=321356),
-    Some("6142-04-21 00:11:07.321356"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2433,
-      4,
-      18,
-      hour=22,
-      minute=12,
-      second=50,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=537, seconds=16890, microseconds=902256),
-    Some("2434-10-08 02:54:20.902256"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8283,
-      11,
-      18,
-      hour=5,
-      minute=13,
-      second=8,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1114, seconds=23177, microseconds=553432),
-    Some("8280-10-30 11:39:25.553432"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1899,
-      5,
-      29,
-      hour=17,
-      minute=1,
-      second=4,
-      microsecond=440576,
-    ),
-    @datetime.TimeDelta::new(days=-1182, seconds=25664, microseconds=831126),
-    Some("1896-03-04 00:08:49.271702"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6278,
-      12,
-      28,
-      hour=23,
-      minute=59,
-      second=21,
-      microsecond=613328,
-    ),
-    @datetime.TimeDelta::new(days=371, seconds=6105, microseconds=489298),
-    Some("6280-01-04 01:41:07.102626"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      609,
-      6,
-      3,
-      hour=6,
-      minute=2,
-      second=51,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2749, seconds=35933, microseconds=206042),
-    Some("0616-12-12 16:01:44.206042"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8557,
-      9,
-      14,
-      hour=3,
-      minute=6,
-      second=44,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=14, seconds=63720, microseconds=865977),
-    Some("8557-09-28 20:48:44.865977"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4406,
-      2,
-      21,
-      hour=8,
-      minute=1,
-      second=26,
-      microsecond=651381,
-    ),
-    @datetime.TimeDelta::new(days=-3354, seconds=62794, microseconds=285836),
-    Some("4396-12-17 01:28:00.937217"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1978,
-      6,
-      2,
-      hour=2,
-      minute=41,
-      second=18,
-      microsecond=122177,
-    ),
-    @datetime.TimeDelta::new(days=-1149, seconds=39410, microseconds=293735),
-    Some("1975-04-10 13:38:08.415912"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4320,
-      12,
-      22,
-      hour=8,
-      minute=11,
-      second=47,
-      microsecond=883948,
-    ),
-    @datetime.TimeDelta::new(days=-884, seconds=74536, microseconds=519848),
-    Some("4318-07-23 04:54:04.403796"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9835,
-      3,
-      28,
-      hour=15,
-      minute=17,
-      second=3,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2339, seconds=39018, microseconds=461455),
-    Some("9828-11-01 02:07:21.461455"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3414,
-      12,
-      31,
-      hour=13,
-      minute=7,
-      second=50,
-      microsecond=207640,
-    ),
-    @datetime.TimeDelta::new(days=-21, seconds=31728, microseconds=8139),
-    Some("3414-12-10 21:56:38.215779"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2083,
-      3,
-      9,
-      hour=20,
-      minute=11,
-      second=11,
-      microsecond=756240,
-    ),
-    @datetime.TimeDelta::new(days=-1267, seconds=76729, microseconds=140171),
-    Some("2079-09-20 17:30:00.896411"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4223,
-      8,
-      15,
-      hour=20,
-      minute=34,
-      second=20,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3127, seconds=42377, microseconds=781264),
-    Some("4215-01-23 08:20:37.781264"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3585,
-      8,
-      28,
-      hour=7,
-      minute=41,
-      second=51,
-      microsecond=920309,
-    ),
-    @datetime.TimeDelta::new(days=4167, seconds=12604, microseconds=608276),
-    Some("3597-01-24 11:11:56.528585"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1923,
-      2,
-      23,
-      hour=12,
-      minute=56,
-      second=10,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3794, seconds=76159, microseconds=474252),
-    Some("1933-07-15 10:05:29.474252"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2028,
-      9,
-      24,
-      hour=16,
-      minute=35,
-      second=17,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3547, seconds=69631, microseconds=598125),
-    Some("2019-01-09 11:55:48.598125"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1956,
-      6,
-      26,
-      hour=18,
-      minute=24,
-      second=55,
-      microsecond=76027,
-    ),
-    @datetime.TimeDelta::new(days=2897, seconds=9228, microseconds=922461),
-    Some("1964-06-01 20:58:43.998488"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4185,
-      4,
-      13,
-      hour=19,
-      minute=40,
-      second=10,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=137, seconds=85268, microseconds=588722),
-    Some("4185-08-29 19:21:18.588722"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1930,
-      2,
-      8,
-      hour=6,
-      minute=6,
-      second=21,
-      microsecond=291237,
-    ),
-    @datetime.TimeDelta::new(days=1514, seconds=57633, microseconds=937267),
-    Some("1934-04-02 22:06:55.228504"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7069,
-      9,
-      4,
-      hour=11,
-      minute=31,
-      second=32,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4667, seconds=62804, microseconds=713311),
-    Some("7056-11-25 04:58:16.713311"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2009,
-      4,
-      23,
-      hour=12,
-      minute=25,
-      second=52,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2386, seconds=55680, microseconds=135794),
-    Some("2015-11-05 03:53:52.135794"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4725,
-      4,
-      29,
-      hour=5,
-      minute=54,
-      second=23,
-      microsecond=902821,
-    ),
-    @datetime.TimeDelta::new(days=3437, seconds=42890, microseconds=623908),
-    Some("4734-09-26 17:49:14.526729"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1293,
-      12,
-      20,
-      hour=18,
-      minute=57,
-      second=20,
-      microsecond=874818,
-    ),
-    @datetime.TimeDelta::new(days=643, seconds=19828, microseconds=839846),
-    Some("1295-09-25 00:27:49.714664"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      197,
-      5,
-      9,
-      hour=13,
-      minute=44,
-      second=50,
-      microsecond=559880,
-    ),
-    @datetime.TimeDelta::new(days=4725, seconds=36668, microseconds=820753),
-    Some("0210-04-17 23:55:59.380633"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2001,
-      4,
-      30,
-      hour=1,
-      minute=34,
-      second=19,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1321, seconds=27369, microseconds=475641),
-    Some("2004-12-11 09:10:28.475641"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3176,
-      1,
-      14,
-      hour=6,
-      minute=7,
-      second=1,
-      microsecond=646071,
-    ),
-    @datetime.TimeDelta::new(days=-4702, seconds=34194, microseconds=103244),
-    Some("3163-03-01 15:36:55.749315"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1976,
-      3,
-      31,
-      hour=20,
-      minute=41,
-      second=1,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1406, seconds=28845, microseconds=561984),
-    Some("1972-05-26 04:41:46.561984"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2028,
-      10,
-      26,
-      hour=0,
-      minute=24,
-      second=41,
-      microsecond=689141,
-    ),
-    @datetime.TimeDelta::new(days=3116, seconds=4867, microseconds=653538),
-    Some("2037-05-08 01:45:49.342679"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4277,
-      11,
-      6,
-      hour=7,
-      minute=42,
-      second=28,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2608, seconds=62710, microseconds=644558),
-    Some("4284-12-28 01:07:38.644558"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8150,
-      4,
-      9,
-      hour=19,
-      minute=25,
-      second=47,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-325, seconds=20479, microseconds=769965),
-    Some("8149-05-20 01:07:06.769965"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4673,
-      7,
-      21,
-      hour=13,
-      minute=28,
-      second=36,
-      microsecond=410730,
-    ),
-    @datetime.TimeDelta::new(days=4998, seconds=18715, microseconds=516308),
-    Some("4687-03-28 18:40:31.927038"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1672,
-      7,
-      3,
-      hour=4,
-      minute=11,
-      second=54,
-      microsecond=266752,
-    ),
-    @datetime.TimeDelta::new(days=2112, seconds=80761, microseconds=480864),
-    Some("1678-04-16 02:37:55.747616"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8943,
-      9,
-      14,
-      hour=8,
-      minute=58,
-      second=12,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3010, seconds=39788, microseconds=500876),
-    Some("8951-12-11 20:01:20.500876"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3780,
-      9,
-      7,
-      hour=4,
-      minute=36,
-      second=32,
-      microsecond=94499,
-    ),
-    @datetime.TimeDelta::new(days=2501, seconds=76249, microseconds=339963),
-    Some("3787-07-15 01:47:21.434462"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2742,
-      4,
-      9,
-      hour=22,
-      minute=32,
-      second=13,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-843, seconds=2073, microseconds=748756),
-    Some("2739-12-18 23:06:46.748756"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2069,
-      12,
-      24,
-      hour=17,
-      minute=58,
-      second=32,
-      microsecond=49619,
-    ),
-    @datetime.TimeDelta::new(days=-1791, seconds=30185, microseconds=877253),
-    Some("2065-01-29 02:21:37.926872"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1701,
-      7,
-      11,
-      hour=8,
-      minute=30,
-      second=41,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4605, seconds=6331, microseconds=556994),
-    Some("1714-02-18 10:16:12.556994"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2095,
-      5,
-      6,
-      hour=7,
-      minute=39,
-      second=12,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4110, seconds=9172, microseconds=117653),
-    Some("2106-08-07 10:12:04.117653"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8630,
-      5,
-      1,
-      hour=17,
-      minute=15,
-      second=31,
-      microsecond=578956,
-    ),
-    @datetime.TimeDelta::new(days=1225, seconds=6115, microseconds=201068),
-    Some("8633-09-07 18:57:26.780024"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2098,
-      10,
-      22,
-      hour=15,
-      minute=8,
-      second=31,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1413, seconds=33032, microseconds=310897),
-    Some("2102-09-06 00:19:03.310897"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9165,
-      11,
-      12,
-      hour=11,
-      minute=54,
-      second=33,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3197, seconds=53676, microseconds=466544),
-    Some("9157-02-11 02:49:09.466544"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3594,
-      11,
-      14,
-      hour=10,
-      minute=37,
-      second=36,
-      microsecond=617486,
-    ),
-    @datetime.TimeDelta::new(days=-1009, seconds=23330, microseconds=833662),
-    Some("3592-02-09 17:06:27.451148"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1915,
-      3,
-      4,
-      hour=13,
-      minute=56,
-      second=8,
-      microsecond=957857,
-    ),
-    @datetime.TimeDelta::new(days=1623, seconds=62611, microseconds=710951),
-    Some("1919-08-14 07:19:40.668808"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1962,
-      11,
-      15,
-      hour=14,
-      minute=55,
-      second=44,
-      microsecond=237385,
-    ),
-    @datetime.TimeDelta::new(days=-3697, seconds=8032, microseconds=157331),
-    Some("1952-10-01 17:09:36.394716"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2026,
-      4,
-      10,
-      hour=0,
-      minute=34,
-      second=4,
-      microsecond=55330,
-    ),
-    @datetime.TimeDelta::new(days=3614, seconds=41901, microseconds=322688),
-    Some("2036-03-02 12:12:25.378018"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1923,
-      9,
-      16,
-      hour=12,
-      minute=50,
-      second=13,
-      microsecond=375335,
-    ),
-    @datetime.TimeDelta::new(days=-2634, seconds=49451, microseconds=997814),
-    Some("1916-07-01 02:34:25.373149"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      30,
-      10,
-      1,
-      hour=22,
-      minute=6,
-      second=15,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3126, seconds=43055, microseconds=19644),
-    Some("0022-03-12 10:03:50.019644"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1039,
-      12,
-      31,
-      hour=21,
-      minute=26,
-      second=44,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2475, seconds=1447, microseconds=593434),
-    Some("1033-03-22 21:50:51.593434"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2016,
-      4,
-      26,
-      hour=12,
-      minute=40,
-      second=33,
-      microsecond=602855,
-    ),
-    @datetime.TimeDelta::new(days=-3270, seconds=51520, microseconds=564497),
-    Some("2007-05-15 02:59:14.167352"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      443,
-      9,
-      17,
-      hour=4,
-      minute=51,
-      second=13,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3181, seconds=13528, microseconds=373770),
-    Some("0435-01-01 08:36:41.373770"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8893,
-      8,
-      24,
-      hour=1,
-      minute=35,
-      second=4,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1407, seconds=57146, microseconds=80453),
-    Some("8889-10-17 17:27:30.080453"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1954,
-      2,
-      17,
-      hour=12,
-      minute=58,
-      second=51,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3498, seconds=77479, microseconds=563137),
-    Some("1963-09-17 10:30:10.563137"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3729,
-      6,
-      13,
-      hour=8,
-      minute=26,
-      second=10,
-      microsecond=719763,
-    ),
-    @datetime.TimeDelta::new(days=-2960, seconds=61361, microseconds=115963),
-    Some("3721-05-07 01:28:51.835726"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1998,
-      1,
-      19,
-      hour=17,
-      minute=32,
-      second=48,
-      microsecond=550246,
-    ),
-    @datetime.TimeDelta::new(days=4052, seconds=80867, microseconds=130668),
-    Some("2009-02-23 16:00:35.680914"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9433,
-      9,
-      1,
-      hour=14,
-      minute=7,
-      second=28,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2721, seconds=29949, microseconds=161231),
-    Some("9441-02-12 22:26:37.161231"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6529,
-      8,
-      24,
-      hour=14,
-      minute=39,
-      second=55,
-      microsecond=703358,
-    ),
-    @datetime.TimeDelta::new(days=578, seconds=76830, microseconds=344031),
-    Some("6531-03-26 12:00:26.047389"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9480,
-      12,
-      5,
-      hour=14,
-      minute=31,
-      second=17,
-      microsecond=543621,
-    ),
-    @datetime.TimeDelta::new(days=465, seconds=63042, microseconds=833652),
-    Some("9482-03-16 08:02:00.377273"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1903,
-      9,
-      4,
-      hour=22,
-      minute=51,
-      second=59,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2301, seconds=21152, microseconds=767368),
-    Some("1909-12-23 04:44:31.767368"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1913,
-      6,
-      24,
-      hour=15,
-      minute=28,
-      second=18,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1838, seconds=56310, microseconds=874089),
-    Some("1908-06-13 07:06:48.874089"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      170,
-      6,
-      23,
-      hour=20,
-      minute=38,
-      second=14,
-      microsecond=917448,
-    ),
-    @datetime.TimeDelta::new(days=-1536, seconds=52521, microseconds=566000),
-    Some("0166-04-10 11:13:36.483448"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4579,
-      1,
-      23,
-      hour=6,
-      minute=13,
-      second=55,
-      microsecond=557529,
-    ),
-    @datetime.TimeDelta::new(days=4527, seconds=33178, microseconds=766693),
-    Some("4591-06-16 15:26:54.324222"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4919,
-      7,
-      8,
-      hour=14,
-      minute=13,
-      second=20,
-      microsecond=749490,
-    ),
-    @datetime.TimeDelta::new(days=2007, seconds=23638, microseconds=4751),
-    Some("4925-01-04 20:47:18.754241"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1926,
-      3,
-      21,
-      hour=22,
-      minute=42,
-      second=32,
-      microsecond=472462,
-    ),
-    @datetime.TimeDelta::new(days=2209, seconds=47612, microseconds=653931),
-    Some("1932-04-08 11:56:05.126393"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6375,
-      11,
-      9,
-      hour=8,
-      minute=1,
-      second=33,
-      microsecond=189406,
-    ),
-    @datetime.TimeDelta::new(days=-2535, seconds=61814, microseconds=115192),
-    Some("6368-12-01 01:11:47.304598"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3354,
-      3,
-      2,
-      hour=19,
-      minute=7,
-      second=25,
-      microsecond=215932,
-    ),
-    @datetime.TimeDelta::new(days=-3638, seconds=2341, microseconds=772677),
-    Some("3344-03-16 19:46:26.988609"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2702,
-      3,
-      13,
-      hour=10,
-      minute=6,
-      second=8,
-      microsecond=579525,
-    ),
-    @datetime.TimeDelta::new(days=4930, seconds=23331, microseconds=994248),
-    Some("2715-09-11 16:35:00.573773"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      712,
-      5,
-      9,
-      hour=17,
-      minute=17,
-      second=4,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1612, seconds=12221, microseconds=991066),
-    Some("0716-10-07 20:40:45.991066"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1854,
-      11,
-      19,
-      hour=13,
-      minute=40,
-      second=44,
-      microsecond=770149,
-    ),
-    @datetime.TimeDelta::new(days=4555, seconds=67172, microseconds=561654),
-    Some("1867-05-11 08:20:17.331803"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4493,
-      2,
-      20,
-      hour=9,
-      minute=15,
-      second=27,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4447, seconds=62105, microseconds=586137),
-    Some("4505-04-27 02:30:32.586137"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2058,
-      10,
-      2,
-      hour=15,
-      minute=48,
-      second=26,
-      microsecond=908993,
-    ),
-    @datetime.TimeDelta::new(days=1275, seconds=67505, microseconds=405160),
-    Some("2062-03-31 10:33:32.314153"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8718,
-      9,
-      20,
-      hour=20,
-      minute=7,
-      second=52,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2345, seconds=80821, microseconds=319394),
-    Some("8725-02-21 18:34:53.319394"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1271,
-      3,
-      5,
-      hour=19,
-      minute=11,
-      second=42,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-52, seconds=81668, microseconds=134922),
-    Some("1271-01-13 17:52:50.134922"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2020,
-      7,
-      12,
-      hour=13,
-      minute=35,
-      second=45,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1974, seconds=38689, microseconds=653892),
-    Some("2025-12-08 00:20:34.653892"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9027,
-      8,
-      7,
-      hour=10,
-      minute=4,
-      second=1,
-      microsecond=839110,
-    ),
-    @datetime.TimeDelta::new(days=4364, seconds=7666, microseconds=439512),
-    Some("9039-07-19 12:11:48.278622"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      956,
-      6,
-      25,
-      hour=23,
-      minute=37,
-      second=4,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-957, seconds=24541, microseconds=678540),
-    Some("0953-11-12 06:26:05.678540"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4246,
-      11,
-      12,
-      hour=0,
-      minute=47,
-      second=23,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2834, seconds=86194, microseconds=513791),
-    Some("4239-02-09 00:43:57.513791"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1957,
-      5,
-      31,
-      hour=4,
-      minute=1,
-      second=28,
-      microsecond=764606,
-    ),
-    @datetime.TimeDelta::new(days=2977, seconds=14501, microseconds=224471),
-    Some("1965-07-25 08:03:09.989077"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2084,
-      12,
-      7,
-      hour=21,
-      minute=46,
-      second=46,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2132, seconds=83040, microseconds=227227),
-    Some("2090-10-10 20:50:46.227227"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2027,
-      9,
-      15,
-      hour=18,
-      minute=15,
-      second=43,
-      microsecond=636935,
-    ),
-    @datetime.TimeDelta::new(days=-48, seconds=76168, microseconds=639754),
-    Some("2027-07-30 15:25:12.276689"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2029,
-      9,
-      5,
-      hour=5,
-      minute=2,
-      second=35,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4805, seconds=77528, microseconds=878881),
-    Some("2016-07-11 02:34:43.878881"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2074,
-      10,
-      11,
-      hour=21,
-      minute=17,
-      second=0,
-      microsecond=318574,
-    ),
-    @datetime.TimeDelta::new(days=2111, seconds=54732, microseconds=491031),
-    Some("2080-07-23 12:29:12.809605"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2098,
-      5,
-      19,
-      hour=5,
-      minute=37,
-      second=29,
-      microsecond=245089,
-    ),
-    @datetime.TimeDelta::new(days=3935, seconds=36133, microseconds=883028),
-    Some("2109-02-26 15:39:43.128117"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5566,
-      5,
-      13,
-      hour=11,
-      minute=54,
-      second=23,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-982, seconds=10986, microseconds=235562),
-    Some("5563-09-04 14:57:29.235562"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1592,
-      5,
-      19,
-      hour=12,
-      minute=51,
-      second=19,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3775, seconds=62265, microseconds=762801),
-    Some("1582-01-18 06:09:04.762801"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1993,
-      9,
-      30,
-      hour=6,
-      minute=15,
-      second=15,
-      microsecond=214264,
-    ),
-    @datetime.TimeDelta::new(days=4294, seconds=55935, microseconds=924049),
-    Some("2005-07-03 21:47:31.138313"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2988,
-      8,
-      13,
-      hour=15,
-      minute=13,
-      second=53,
-      microsecond=169785,
-    ),
-    @datetime.TimeDelta::new(days=1915, seconds=22734, microseconds=359774),
-    Some("2993-11-10 21:32:47.529559"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      131,
-      9,
-      29,
-      hour=7,
-      minute=26,
-      second=56,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3416, seconds=48665, microseconds=379355),
-    Some("0141-02-04 20:58:01.379355"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3434,
-      3,
-      29,
-      hour=13,
-      minute=30,
-      second=32,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3503, seconds=58862, microseconds=499856),
-    Some("3443-11-01 05:51:34.499856"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7616,
-      10,
-      28,
-      hour=23,
-      minute=56,
-      second=35,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4109, seconds=85804, microseconds=829960),
-    Some("7605-07-30 23:46:39.829960"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2097,
-      7,
-      27,
-      hour=22,
-      minute=36,
-      second=20,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3670, seconds=17185, microseconds=204939),
-    Some("2087-07-11 03:22:45.204939"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1985,
-      10,
-      4,
-      hour=14,
-      minute=39,
-      second=2,
-      microsecond=569900,
-    ),
-    @datetime.TimeDelta::new(days=-1876, seconds=31236, microseconds=991454),
-    Some("1980-08-15 23:19:39.561354"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2527,
-      2,
-      11,
-      hour=3,
-      minute=7,
-      second=43,
-      microsecond=801634,
-    ),
-    @datetime.TimeDelta::new(days=-3944, seconds=25521, microseconds=15703),
-    Some("2516-04-25 10:13:04.817337"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1951,
-      12,
-      17,
-      hour=22,
-      minute=58,
-      second=41,
-      microsecond=338259,
-    ),
-    @datetime.TimeDelta::new(days=-4937, seconds=50764, microseconds=439044),
-    Some("1938-06-12 13:04:45.777303"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2088,
-      3,
-      16,
-      hour=1,
-      minute=20,
-      second=9,
-      microsecond=30994,
-    ),
-    @datetime.TimeDelta::new(days=3674, seconds=51326, microseconds=718658),
-    Some("2098-04-07 15:35:35.749652"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2010,
-      12,
-      5,
-      hour=2,
-      minute=40,
-      second=19,
-      microsecond=778949,
-    ),
-    @datetime.TimeDelta::new(days=2196, seconds=11586, microseconds=593406),
-    Some("2016-12-09 05:53:26.372355"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5348,
-      9,
-      1,
-      hour=23,
-      minute=37,
-      second=34,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3102, seconds=16009, microseconds=28654),
-    Some("5357-03-01 04:04:23.028654"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1902,
-      11,
-      12,
-      hour=3,
-      minute=10,
-      second=57,
-      microsecond=337930,
-    ),
-    @datetime.TimeDelta::new(days=323, seconds=28330, microseconds=730327),
-    Some("1903-10-01 11:03:08.068257"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9676,
-      5,
-      30,
-      hour=8,
-      minute=39,
-      second=29,
-      microsecond=152890,
-    ),
-    @datetime.TimeDelta::new(days=-81, seconds=84617, microseconds=134072),
-    Some("9676-03-11 08:09:46.286962"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1913,
-      9,
-      24,
-      hour=10,
-      minute=21,
-      second=35,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2885, seconds=17707, microseconds=253149),
-    Some("1921-08-18 15:16:42.253149"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4824,
-      2,
-      17,
-      hour=22,
-      minute=29,
-      second=8,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4458, seconds=78431, microseconds=246062),
-    Some("4811-12-05 20:16:19.246062"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      815,
-      7,
-      19,
-      hour=1,
-      minute=38,
-      second=15,
-      microsecond=938708,
-    ),
-    @datetime.TimeDelta::new(days=-3915, seconds=27803, microseconds=524952),
-    Some("0804-10-29 09:21:39.463660"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4924,
-      5,
-      28,
-      hour=1,
-      minute=6,
-      second=56,
-      microsecond=830537,
-    ),
-    @datetime.TimeDelta::new(days=-4029, seconds=70261, microseconds=833226),
-    Some("4913-05-17 20:37:58.663763"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4097,
-      7,
-      20,
-      hour=1,
-      minute=13,
-      second=43,
-      microsecond=487393,
-    ),
-    @datetime.TimeDelta::new(days=-2960, seconds=63179, microseconds=81136),
-    Some("4089-06-12 18:46:42.568529"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8463,
-      11,
-      24,
-      hour=14,
-      minute=14,
-      second=7,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3122, seconds=52229, microseconds=905397),
-    Some("8455-05-09 04:44:36.905397"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      683,
-      3,
-      19,
-      hour=7,
-      minute=10,
-      second=19,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1339, seconds=45068, microseconds=577215),
-    Some("0679-07-19 19:41:27.577215"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5018,
-      1,
-      25,
-      hour=18,
-      minute=42,
-      second=31,
-      microsecond=417899,
-    ),
-    @datetime.TimeDelta::new(days=-1272, seconds=13946, microseconds=83909),
-    Some("5014-08-02 22:34:57.501808"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      808,
-      11,
-      28,
-      hour=17,
-      minute=8,
-      second=41,
-      microsecond=58479,
-    ),
-    @datetime.TimeDelta::new(days=3365, seconds=6362, microseconds=66908),
-    Some("0818-02-14 18:54:43.125387"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4678,
-      11,
-      25,
-      hour=8,
-      minute=1,
-      second=56,
-      microsecond=180383,
-    ),
-    @datetime.TimeDelta::new(days=-4292, seconds=69615, microseconds=825911),
-    Some("4667-02-25 03:22:12.006294"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1945,
-      7,
-      6,
-      hour=9,
-      minute=51,
-      second=19,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2684, seconds=33559, microseconds=248072),
-    Some("1938-03-01 19:10:38.248072"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5101,
-      6,
-      18,
-      hour=2,
-      minute=33,
-      second=26,
-      microsecond=705571,
-    ),
-    @datetime.TimeDelta::new(days=-2004, seconds=14676, microseconds=494354),
-    Some("5095-12-22 06:38:03.199925"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1934,
-      8,
-      4,
-      hour=8,
-      minute=57,
-      second=23,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3830, seconds=66589, microseconds=712572),
-    Some("1945-01-29 03:27:12.712572"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7003,
-      11,
-      6,
-      hour=20,
-      minute=1,
-      second=42,
-      microsecond=444077,
-    ),
-    @datetime.TimeDelta::new(days=-1333, seconds=11717, microseconds=725863),
-    Some("7000-03-13 23:17:00.169940"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1965,
-      6,
-      30,
-      hour=18,
-      minute=38,
-      second=28,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2433, seconds=49957, microseconds=461953),
-    Some("1958-11-02 08:31:05.461953"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7604,
-      11,
-      21,
-      hour=5,
-      minute=33,
-      second=18,
-      microsecond=297586,
-    ),
-    @datetime.TimeDelta::new(days=-1241, seconds=46322, microseconds=924265),
-    Some("7601-06-29 18:25:21.221851"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1996,
-      11,
-      24,
-      hour=16,
-      minute=48,
-      second=56,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3685, seconds=59376, microseconds=874116),
-    Some("1986-10-24 09:18:32.874116"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6432,
-      4,
-      20,
-      hour=17,
-      minute=31,
-      second=27,
-      microsecond=497690,
-    ),
-    @datetime.TimeDelta::new(days=-482, seconds=70659, microseconds=495469),
-    Some("6430-12-26 13:09:06.993159"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1962,
-      5,
-      6,
-      hour=4,
-      minute=14,
-      second=25,
-      microsecond=12666,
-    ),
-    @datetime.TimeDelta::new(days=-3158, seconds=16979, microseconds=212282),
-    Some("1953-09-12 08:57:24.224948"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4697,
-      9,
-      10,
-      hour=14,
-      minute=24,
-      second=48,
-      microsecond=318178,
-    ),
-    @datetime.TimeDelta::new(days=-1925, seconds=56889, microseconds=564277),
-    Some("4692-06-04 06:12:57.882455"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      973,
-      4,
-      19,
-      hour=9,
-      minute=2,
-      second=17,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2797, seconds=56444, microseconds=652404),
-    Some("0965-08-23 00:43:01.652404"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2533,
-      3,
-      29,
-      hour=13,
-      minute=51,
-      second=47,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=151, seconds=23197, microseconds=414865),
-    Some("2533-08-27 20:18:24.414865"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5077,
-      6,
-      3,
-      hour=11,
-      minute=48,
-      second=36,
-      microsecond=840341,
-    ),
-    @datetime.TimeDelta::new(days=1935, seconds=19731, microseconds=409973),
-    Some("5082-09-20 17:17:28.250314"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      318,
-      5,
-      4,
-      hour=10,
-      minute=39,
-      second=41,
-      microsecond=471208,
-    ),
-    @datetime.TimeDelta::new(days=4306, seconds=80748, microseconds=243681),
-    Some("0330-02-17 09:05:29.714889"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2062,
-      9,
-      1,
-      hour=13,
-      minute=44,
-      second=30,
-      microsecond=845098,
-    ),
-    @datetime.TimeDelta::new(days=4234, seconds=29223, microseconds=931573),
-    Some("2074-04-05 21:51:34.776671"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9135,
-      10,
-      28,
-      hour=17,
-      minute=48,
-      second=19,
-      microsecond=806975,
-    ),
-    @datetime.TimeDelta::new(days=3615, seconds=39472, microseconds=212590),
-    Some("9145-09-21 04:46:12.019565"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2018,
-      7,
-      18,
-      hour=14,
-      minute=2,
-      second=24,
-      microsecond=247462,
-    ),
-    @datetime.TimeDelta::new(days=4854, seconds=28586, microseconds=351791),
-    Some("2031-11-01 21:58:50.599253"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9406,
-      7,
-      16,
-      hour=19,
-      minute=33,
-      second=47,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3332, seconds=86223, microseconds=814428),
-    Some("9415-08-31 19:30:50.814428"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1985,
-      5,
-      5,
-      hour=5,
-      minute=19,
-      second=10,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4316, seconds=40113, microseconds=973700),
-    Some("1997-02-27 16:27:43.973700"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1954,
-      11,
-      11,
-      hour=22,
-      minute=46,
-      second=58,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1825, seconds=21406, microseconds=21573),
-    Some("1959-11-11 04:43:44.021573"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2076,
-      3,
-      25,
-      hour=12,
-      minute=17,
-      second=36,
-      microsecond=495991,
-    ),
-    @datetime.TimeDelta::new(days=203, seconds=80836, microseconds=317776),
-    Some("2076-10-15 10:44:52.813767"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3698,
-      5,
-      30,
-      hour=12,
-      minute=1,
-      second=24,
-      microsecond=722576,
-    ),
-    @datetime.TimeDelta::new(days=-870, seconds=73968, microseconds=477743),
-    Some("3696-01-12 08:34:13.200319"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2480,
-      4,
-      22,
-      hour=20,
-      minute=44,
-      second=46,
-      microsecond=93792,
-    ),
-    @datetime.TimeDelta::new(days=3552, seconds=57515, microseconds=196566),
-    Some("2490-01-13 12:43:21.290358"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2046,
-      12,
-      17,
-      hour=9,
-      minute=11,
-      second=39,
-      microsecond=691925,
-    ),
-    @datetime.TimeDelta::new(days=-1657, seconds=30109, microseconds=563889),
-    Some("2042-06-04 17:33:29.255814"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      69,
-      1,
-      31,
-      hour=5,
-      minute=48,
-      second=54,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1546, seconds=64574, microseconds=45606),
-    Some("0073-04-26 23:45:08.045606"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1180,
-      12,
-      21,
-      hour=12,
-      minute=8,
-      second=39,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2276, seconds=80711, microseconds=629202),
-    Some("1174-09-29 10:33:50.629202"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5603,
-      11,
-      30,
-      hour=7,
-      minute=37,
-      second=48,
-      microsecond=361208,
-    ),
-    @datetime.TimeDelta::new(days=2502, seconds=79012, microseconds=364921),
-    Some("5610-10-07 05:34:40.726129"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2005,
-      5,
-      8,
-      hour=15,
-      minute=38,
-      second=50,
-      microsecond=458726,
-    ),
-    @datetime.TimeDelta::new(days=4659, seconds=33614, microseconds=572499),
-    Some("2018-02-09 00:59:05.031225"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8740,
-      3,
-      3,
-      hour=10,
-      minute=31,
-      second=44,
-      microsecond=936504,
-    ),
-    @datetime.TimeDelta::new(days=-4507, seconds=71189, microseconds=211943),
-    Some("8727-11-01 06:18:14.148447"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      956,
-      12,
-      2,
-      hour=7,
-      minute=38,
-      second=45,
-      microsecond=57522,
-    ),
-    @datetime.TimeDelta::new(days=-127, seconds=49238, microseconds=788453),
-    Some("0956-07-28 21:19:23.845975"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1815,
-      8,
-      25,
-      hour=0,
-      minute=59,
-      second=54,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-157, seconds=69276, microseconds=928311),
-    Some("1815-03-21 20:14:30.928311"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2032,
-      9,
-      10,
-      hour=10,
-      minute=6,
-      second=1,
-      microsecond=16439,
-    ),
-    @datetime.TimeDelta::new(days=1661, seconds=61760, microseconds=151112),
-    Some("2037-03-30 03:15:21.167551"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2057,
-      1,
-      11,
-      hour=15,
-      minute=52,
-      second=43,
-      microsecond=917229,
-    ),
-    @datetime.TimeDelta::new(days=254, seconds=59059, microseconds=851571),
-    Some("2057-09-23 08:17:03.768800"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1739,
-      8,
-      18,
-      hour=8,
-      minute=43,
-      second=57,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1519, seconds=20456, microseconds=547692),
-    Some("1735-06-21 14:24:53.547692"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1970,
-      8,
-      9,
-      hour=22,
-      minute=11,
-      second=42,
-      microsecond=471881,
-    ),
-    @datetime.TimeDelta::new(days=-2204, seconds=70712, microseconds=746327),
-    Some("1964-07-28 17:50:15.218208"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2803,
-      10,
-      12,
-      hour=4,
-      minute=3,
-      second=42,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2108, seconds=58999, microseconds=872121),
-    Some("2809-07-20 20:27:01.872121"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8570,
-      11,
-      17,
-      hour=1,
-      minute=51,
-      second=34,
-      microsecond=906197,
-    ),
-    @datetime.TimeDelta::new(days=-3664, seconds=42211, microseconds=318719),
-    Some("8560-11-05 13:35:06.224916"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3972,
-      9,
-      4,
-      hour=14,
-      minute=41,
-      second=12,
-      microsecond=261328,
-    ),
-    @datetime.TimeDelta::new(days=4982, seconds=52742, microseconds=747680),
-    Some("3986-04-27 05:20:15.009008"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1931,
-      3,
-      31,
-      hour=16,
-      minute=51,
-      second=40,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2440, seconds=27763, microseconds=98409),
-    Some("1937-12-05 00:34:23.098409"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1943,
-      6,
-      12,
-      hour=0,
-      minute=39,
-      second=14,
-      microsecond=368965,
-    ),
-    @datetime.TimeDelta::new(days=2802, seconds=78077, microseconds=683615),
-    Some("1951-02-12 22:20:32.052580"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4257,
-      6,
-      26,
-      hour=19,
-      minute=46,
-      second=3,
-      microsecond=968667,
-    ),
-    @datetime.TimeDelta::new(days=-4030, seconds=37976, microseconds=165240),
-    Some("4246-06-15 06:19:00.133907"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1921,
-      11,
-      19,
-      hour=16,
-      minute=51,
-      second=39,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2141, seconds=46113, microseconds=633657),
-    Some("1916-01-10 05:40:12.633657"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8509,
-      10,
-      3,
-      hour=9,
-      minute=46,
-      second=14,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4134, seconds=68118, microseconds=825324),
-    Some("8521-01-28 04:41:32.825324"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9603,
-      2,
-      9,
-      hour=18,
-      minute=50,
-      second=28,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-928, seconds=49981, microseconds=281986),
-    Some("9600-07-27 08:43:29.281986"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3069,
-      7,
-      8,
-      hour=22,
-      minute=15,
-      second=5,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=642, seconds=54602, microseconds=40108),
-    Some("3071-04-12 13:25:07.040108"),
+    @datetime.TimeDelta::new(days=-2046, seconds=20701, microseconds=804618),
+    Some("0454-04-27 08:12:06.553155"),
   )
   check_add(
     @datetime.DateTime::new(
       3406,
-      3,
-      30,
-      hour=2,
-      minute=19,
-      second=19,
-      microsecond=223967,
-    ),
-    @datetime.TimeDelta::new(days=948, seconds=84187, microseconds=257257),
-    Some("3408-11-03 01:42:26.481224"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3606,
-      12,
-      22,
-      hour=0,
-      minute=2,
-      second=7,
-      microsecond=676856,
-    ),
-    @datetime.TimeDelta::new(days=3879, seconds=19661, microseconds=514301),
-    Some("3617-08-05 05:29:49.191157"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6852,
-      10,
-      10,
-      hour=19,
-      minute=22,
-      second=52,
-      microsecond=669362,
-    ),
-    @datetime.TimeDelta::new(days=3288, seconds=83813, microseconds=462463),
-    Some("6861-10-12 18:39:46.131825"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4651,
-      9,
-      2,
-      hour=7,
-      minute=17,
-      second=22,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3871, seconds=52373, microseconds=312424),
-    Some("4662-04-08 21:50:15.312424"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2014,
-      4,
-      24,
-      hour=0,
-      minute=25,
-      second=16,
-      microsecond=574074,
-    ),
-    @datetime.TimeDelta::new(days=2117, seconds=80385, microseconds=358874),
-    Some("2020-02-09 22:45:01.932948"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4889,
-      4,
-      21,
-      hour=23,
-      minute=21,
-      second=35,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2153, seconds=65509, microseconds=978540),
-    Some("4883-05-31 17:33:24.978540"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3986,
-      11,
-      1,
-      hour=19,
-      minute=39,
-      second=23,
-      microsecond=470997,
-    ),
-    @datetime.TimeDelta::new(days=199, seconds=71464, microseconds=446460),
-    Some("3987-05-20 15:30:27.917457"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2043,
-      4,
-      13,
-      hour=1,
-      minute=45,
-      second=59,
-      microsecond=630955,
-    ),
-    @datetime.TimeDelta::new(days=-697, seconds=21416, microseconds=838504),
-    Some("2041-05-16 07:42:56.469459"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6008,
-      9,
-      9,
-      hour=5,
-      minute=28,
-      second=41,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4739, seconds=80437, microseconds=368983),
-    Some("6021-09-01 03:49:18.368983"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1471,
-      4,
-      10,
-      hour=2,
-      minute=46,
-      second=23,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2790, seconds=33998, microseconds=237030),
-    Some("1463-08-20 12:13:01.237030"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2078,
-      10,
-      13,
-      hour=13,
-      minute=47,
-      second=34,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1538, seconds=73037, microseconds=382663),
-    Some("2082-12-30 10:04:51.382663"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7404,
       6,
-      21,
-      hour=1,
-      minute=27,
-      second=14,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1488, seconds=33244, microseconds=388622),
-    Some("7408-07-18 10:41:18.388622"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1970,
-      10,
-      28,
-      hour=20,
-      minute=4,
-      second=0,
-      microsecond=731247,
-    ),
-    @datetime.TimeDelta::new(days=-3306, seconds=11769, microseconds=184851),
-    Some("1961-10-09 23:20:09.916098"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9058,
-      4,
-      5,
-      hour=15,
-      minute=49,
-      second=41,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1075, seconds=24469, microseconds=462980),
-    Some("9061-03-15 22:37:30.462980"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7172,
-      4,
-      14,
-      hour=16,
-      minute=31,
-      second=48,
-      microsecond=110348,
-    ),
-    @datetime.TimeDelta::new(days=3416, seconds=42415, microseconds=464246),
-    Some("7181-08-22 04:18:43.574594"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      52,
-      3,
-      26,
-      hour=1,
-      minute=5,
-      second=40,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3456, seconds=64449, microseconds=621717),
-    Some("0061-09-11 18:59:49.621717"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9346,
-      11,
-      28,
-      hour=21,
-      minute=58,
-      second=4,
-      microsecond=184927,
-    ),
-    @datetime.TimeDelta::new(days=-2106, seconds=70173, microseconds=523468),
-    Some("9341-02-22 17:27:37.708395"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1925,
-      1,
-      13,
-      hour=21,
-      minute=11,
-      second=50,
-      microsecond=642037,
-    ),
-    @datetime.TimeDelta::new(days=2346, seconds=56670, microseconds=566004),
-    Some("1931-06-18 12:56:21.208041"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3305,
-      7,
-      7,
-      hour=2,
-      minute=37,
-      second=14,
-      microsecond=590566,
-    ),
-    @datetime.TimeDelta::new(days=-2363, seconds=66703, microseconds=769993),
-    Some("3299-01-16 21:08:58.360559"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2019,
-      12,
-      18,
-      hour=5,
-      minute=7,
-      second=54,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2602, seconds=31057, microseconds=159560),
-    Some("2027-02-01 13:45:31.159560"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      879,
-      9,
-      13,
-      hour=12,
-      minute=47,
-      second=43,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1542, seconds=16243, microseconds=578740),
-    Some("0883-12-03 17:18:26.578740"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2064,
-      4,
-      12,
-      hour=21,
-      minute=0,
-      second=25,
-      microsecond=17370,
-    ),
-    @datetime.TimeDelta::new(days=3648, seconds=83484, microseconds=33420),
-    Some("2074-04-09 20:11:49.050790"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6411,
-      9,
-      14,
-      hour=2,
-      minute=31,
-      second=7,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1621, seconds=15410, microseconds=660022),
-    Some("6416-02-21 06:47:57.660022"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1103,
-      6,
-      20,
-      hour=8,
-      minute=6,
-      second=10,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4061, seconds=50454, microseconds=530652),
-    Some("1092-05-06 22:07:04.530652"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5229,
-      7,
-      18,
-      hour=8,
-      minute=49,
-      second=5,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-230, seconds=80919, microseconds=411442),
-    Some("5228-12-01 07:17:44.411442"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1407,
-      10,
-      3,
-      hour=15,
-      minute=39,
-      second=36,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-2122, seconds=56852, microseconds=819488),
-    Some("1401-12-12 07:27:08.819488"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3233,
-      9,
-      3,
-      hour=21,
-      minute=0,
-      second=32,
-      microsecond=523302,
-    ),
-    @datetime.TimeDelta::new(days=-1032, seconds=7317, microseconds=308484),
-    Some("3230-11-06 23:02:29.831786"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7580,
-      10,
-      29,
-      hour=9,
-      minute=6,
-      second=29,
-      microsecond=456441,
-    ),
-    @datetime.TimeDelta::new(days=-4362, seconds=43359, microseconds=980471),
-    Some("7568-11-19 21:09:09.436912"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2088,
-      6,
-      2,
-      hour=5,
-      minute=20,
-      second=2,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1367, seconds=43451, microseconds=20354),
-    Some("2084-09-04 17:24:13.020354"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1393,
-      7,
-      5,
-      hour=21,
-      minute=21,
-      second=10,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1829, seconds=76240, microseconds=678964),
-    Some("1398-07-09 18:31:50.678964"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2089,
-      5,
-      13,
-      hour=8,
-      minute=22,
-      second=22,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3582, seconds=66312, microseconds=776969),
-    Some("2099-03-05 02:47:34.776969"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3235,
-      5,
-      26,
-      hour=0,
-      minute=31,
-      second=18,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1246, seconds=29133, microseconds=749923),
-    Some("3231-12-27 08:36:51.749923"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      8414,
-      10,
-      16,
-      hour=21,
-      minute=27,
-      second=49,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4191, seconds=71593, microseconds=361221),
-    Some("8426-04-08 17:21:02.361221"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1996,
-      12,
-      23,
-      hour=21,
-      minute=4,
-      second=4,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=2928, seconds=6411, microseconds=123261),
-    Some("2004-12-29 22:50:55.123261"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5860,
-      1,
-      7,
-      hour=3,
-      minute=2,
-      second=49,
-      microsecond=442354,
-    ),
-    @datetime.TimeDelta::new(days=-4613, seconds=23890, microseconds=238027),
-    Some("5847-05-22 09:40:59.680381"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7716,
-      7,
-      17,
-      hour=15,
-      minute=14,
-      second=57,
-      microsecond=641966,
-    ),
-    @datetime.TimeDelta::new(days=-33, seconds=73223, microseconds=857629),
-    Some("7716-06-15 11:35:21.499595"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      914,
-      12,
       20,
       hour=4,
-      minute=17,
-      second=55,
-      microsecond=543810,
+      minute=24,
+      second=36,
+      microsecond=612009,
     ),
-    @datetime.TimeDelta::new(days=-171, seconds=68532, microseconds=469726),
-    Some("0914-07-02 23:20:08.013536"),
+    @datetime.TimeDelta::new(days=-4199, seconds=44533, microseconds=234288),
+    Some("3394-12-20 16:46:49.846297"),
   )
   check_add(
     @datetime.DateTime::new(
-      469,
-      5,
-      8,
-      hour=1,
-      minute=13,
-      second=49,
-      microsecond=0,
+      5926,
+      3,
+      28,
+      hour=12,
+      minute=8,
+      second=52,
+      microsecond=388196,
     ),
-    @datetime.TimeDelta::new(days=-1897, seconds=26470, microseconds=143253),
-    Some("0464-02-27 08:34:59.143253"),
+    @datetime.TimeDelta::new(days=2278, seconds=35512, microseconds=636894),
+    Some("5932-06-22 22:00:45.025090"),
   )
   check_add(
     @datetime.DateTime::new(
-      2022,
-      5,
-      11,
-      hour=17,
-      minute=15,
-      second=57,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-546, seconds=75449, microseconds=558964),
-    Some("2020-11-12 14:13:26.558964"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4285,
-      4,
-      26,
-      hour=6,
-      minute=43,
-      second=46,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=553, seconds=52731, microseconds=754450),
-    Some("4286-10-31 21:22:37.754450"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      771,
-      11,
-      24,
+      2410,
+      10,
+      23,
       hour=7,
-      minute=3,
-      second=45,
-      microsecond=665096,
+      minute=13,
+      second=20,
+      microsecond=823536,
     ),
-    @datetime.TimeDelta::new(days=-2374, seconds=42973, microseconds=990472),
-    Some("0765-05-25 18:59:59.655568"),
+    @datetime.TimeDelta::new(days=3387, seconds=38754, microseconds=526854),
+    Some("2420-01-31 17:59:15.350390"),
   )
   check_add(
     @datetime.DateTime::new(
-      2060,
-      11,
-      13,
-      hour=13,
-      minute=33,
-      second=50,
-      microsecond=746083,
+      9166,
+      10,
+      1,
+      hour=18,
+      minute=43,
+      second=10,
+      microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=-3050, seconds=40963, microseconds=287651),
-    Some("2052-07-09 00:56:34.033734"),
+    @datetime.TimeDelta::new(days=-713, seconds=47996, microseconds=223215),
+    Some("9164-10-19 08:03:06.223215"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7895,
+      2,
+      20,
+      hour=12,
+      minute=55,
+      second=15,
+      microsecond=191358,
+    ),
+    @datetime.TimeDelta::new(days=-4156, seconds=73201, microseconds=645057),
+    Some("7883-10-06 09:15:16.836415"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6687,
+      12,
+      3,
+      hour=4,
+      minute=56,
+      second=30,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2356, seconds=40120, microseconds=985789),
+    Some("6681-06-21 16:05:10.985789"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7808,
+      11,
+      19,
+      hour=9,
+      minute=40,
+      second=29,
+      microsecond=46189,
+    ),
+    @datetime.TimeDelta::new(days=3022, seconds=71162, microseconds=837797),
+    Some("7817-02-28 05:26:31.883986"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4072,
+      6,
+      9,
+      hour=20,
+      minute=18,
+      second=58,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-146, seconds=65215, microseconds=919328),
+    Some("4072-01-16 14:25:53.919328"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4311,
+      11,
+      25,
+      hour=16,
+      minute=15,
+      second=33,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-330, seconds=70880, microseconds=569433),
+    Some("4310-12-31 11:56:53.569433"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2725,
+      7,
+      17,
+      hour=9,
+      minute=13,
+      second=1,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2533, seconds=84219, microseconds=762681),
+    Some("2732-06-24 08:36:40.762681"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1344,
+      9,
+      24,
+      hour=14,
+      minute=23,
+      second=37,
+      microsecond=747700,
+    ),
+    @datetime.TimeDelta::new(days=2385, seconds=37901, microseconds=165179),
+    Some("1351-04-07 00:55:18.912879"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1476,
+      7,
+      17,
+      hour=19,
+      minute=46,
+      second=46,
+      microsecond=948986,
+    ),
+    @datetime.TimeDelta::new(days=1927, seconds=10217, microseconds=784128),
+    Some("1481-10-26 22:37:04.733114"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8090,
+      8,
+      20,
+      hour=19,
+      minute=23,
+      second=47,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3797, seconds=23643, microseconds=151849),
+    Some("8080-03-29 01:57:50.151849"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1903,
+      1,
+      18,
+      hour=14,
+      minute=25,
+      second=59,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2971, seconds=56357, microseconds=34646),
+    Some("1894-11-30 06:05:16.034646"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6693,
+      12,
+      30,
+      hour=7,
+      minute=29,
+      second=0,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=165, seconds=45483, microseconds=682773),
+    Some("6694-06-13 20:07:03.682773"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4792,
+      3,
+      14,
+      hour=6,
+      minute=52,
+      second=53,
+      microsecond=572715,
+    ),
+    @datetime.TimeDelta::new(days=-4441, seconds=39893, microseconds=453294),
+    Some("4780-01-16 17:57:47.026009"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9960,
+      1,
+      1,
+      hour=15,
+      minute=5,
+      second=3,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3480, seconds=33549, microseconds=523168),
+    Some("9950-06-23 00:24:12.523168"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9384,
+      9,
+      20,
+      hour=1,
+      minute=17,
+      second=38,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2162, seconds=7500, microseconds=958033),
+    Some("9378-10-20 03:22:38.958033"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1268,
+      1,
+      26,
+      hour=9,
+      minute=13,
+      second=26,
+      microsecond=449559,
+    ),
+    @datetime.TimeDelta::new(days=4289, seconds=5311, microseconds=600106),
+    Some("1279-10-24 10:41:58.049665"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2806,
+      1,
+      16,
+      hour=12,
+      minute=44,
+      second=55,
+      microsecond=734902,
+    ),
+    @datetime.TimeDelta::new(days=342, seconds=21616, microseconds=582929),
+    Some("2806-12-24 18:45:12.317831"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1309,
+      4,
+      10,
+      hour=14,
+      minute=47,
+      second=56,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3498, seconds=67953, microseconds=791734),
+    Some("1318-11-08 09:40:29.791734"),
   )
   check_add(
     @datetime.DateTime::new(
       9213,
-      9,
-      18,
-      hour=12,
-      minute=49,
-      second=38,
-      microsecond=493609,
-    ),
-    @datetime.TimeDelta::new(days=-4108, seconds=83191, microseconds=567004),
-    Some("9202-06-21 11:56:10.060613"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2014,
-      5,
-      22,
-      hour=23,
-      minute=20,
-      second=18,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3596, seconds=34774, microseconds=881301),
-    Some("2004-07-18 08:59:52.881301"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5187,
-      4,
-      2,
-      hour=14,
-      minute=9,
-      second=0,
-      microsecond=73562,
-    ),
-    @datetime.TimeDelta::new(days=2972, seconds=22070, microseconds=12306),
-    Some("5195-05-22 20:16:50.085868"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1907,
-      5,
-      31,
-      hour=6,
-      minute=41,
-      second=26,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1504, seconds=17087, microseconds=807812),
-    Some("1903-04-18 11:26:13.807812"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      9962,
-      2,
-      7,
-      hour=0,
-      minute=25,
-      second=10,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3119, seconds=13451, microseconds=248691),
-    Some("9970-08-23 04:09:21.248691"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5701,
-      10,
-      20,
-      hour=0,
-      minute=25,
-      second=6,
-      microsecond=413505,
-    ),
-    @datetime.TimeDelta::new(days=4155, seconds=34894, microseconds=255160),
-    Some("5713-03-06 10:06:40.668665"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4035,
       11,
-      19,
-      hour=8,
-      minute=18,
-      second=21,
+      14,
+      hour=6,
+      minute=1,
+      second=23,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=-1286, seconds=50963, microseconds=56168),
-    Some("4032-05-12 22:27:44.056168"),
+    @datetime.TimeDelta::new(days=-3250, seconds=13365, microseconds=413746),
+    Some("9204-12-21 09:44:08.413746"),
   )
   check_add(
     @datetime.DateTime::new(
-      2061,
+      5210,
+      10,
+      10,
+      hour=15,
+      minute=4,
+      second=38,
+      microsecond=459853,
+    ),
+    @datetime.TimeDelta::new(days=-2793, seconds=2326, microseconds=204800),
+    Some("5203-02-16 15:43:24.664653"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8227,
       1,
-      27,
-      hour=3,
-      minute=11,
-      second=43,
-      microsecond=0,
+      31,
+      hour=5,
+      minute=49,
+      second=33,
+      microsecond=526223,
     ),
-    @datetime.TimeDelta::new(days=-2609, seconds=80375, microseconds=792432),
-    Some("2053-12-07 01:31:18.792432"),
+    @datetime.TimeDelta::new(days=4009, seconds=54650, microseconds=570529),
+    Some("8238-01-22 21:00:24.096752"),
   )
   check_add(
     @datetime.DateTime::new(
-      8814,
-      9,
-      18,
-      hour=1,
-      minute=36,
-      second=19,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-3561, seconds=55014, microseconds=265609),
-    Some("8804-12-18 16:53:13.265609"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1972,
-      3,
-      20,
-      hour=9,
-      minute=47,
-      second=48,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=4934, seconds=6174, microseconds=518598),
-    Some("1985-09-22 11:30:42.518598"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      574,
+      2035,
       8,
-      29,
-      hour=2,
-      minute=14,
-      second=3,
-      microsecond=352628,
+      23,
+      hour=17,
+      minute=37,
+      second=13,
+      microsecond=910180,
     ),
-    @datetime.TimeDelta::new(days=-4119, seconds=61834, microseconds=129157),
-    Some("0563-05-20 19:24:37.481785"),
+    @datetime.TimeDelta::new(days=2671, seconds=42013, microseconds=823603),
+    Some("2042-12-16 05:17:27.733783"),
   )
   check_add(
     @datetime.DateTime::new(
       1987,
-      8,
-      11,
-      hour=18,
-      minute=34,
-      second=49,
-      microsecond=483998,
-    ),
-    @datetime.TimeDelta::new(days=1884, seconds=31531, microseconds=86994),
-    Some("1992-10-08 03:20:20.570992"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      2058,
-      4,
-      14,
-      hour=3,
-      minute=13,
-      second=31,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1928, seconds=77797, microseconds=430761),
-    Some("2053-01-03 00:50:08.430761"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7760,
-      2,
-      17,
-      hour=5,
-      minute=19,
-      second=58,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=577, seconds=49653, microseconds=203818),
-    Some("7761-09-16 19:07:31.203818"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      4269,
-      9,
-      18,
-      hour=18,
-      minute=17,
-      second=42,
-      microsecond=359980,
-    ),
-    @datetime.TimeDelta::new(days=-1423, seconds=55272, microseconds=19891),
-    Some("4265-10-27 09:38:54.379871"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      682,
-      4,
-      23,
-      hour=3,
-      minute=3,
-      second=18,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1360, seconds=21250, microseconds=807526),
-    Some("0678-08-02 08:57:28.807526"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7915,
-      8,
-      2,
-      hour=13,
-      minute=55,
-      second=50,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-1728, seconds=72669, microseconds=659092),
-    Some("7910-11-09 10:06:59.659092"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5988,
-      4,
-      16,
-      hour=16,
-      minute=3,
-      second=38,
-      microsecond=465397,
-    ),
-    @datetime.TimeDelta::new(days=-2991, seconds=44187, microseconds=934045),
-    Some("5980-02-08 04:20:06.399442"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      7834,
-      5,
-      21,
-      hour=16,
-      minute=4,
-      second=3,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=1355, seconds=45241, microseconds=133115),
-    Some("7838-02-05 04:38:04.133115"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6934,
-      4,
-      19,
-      hour=18,
-      minute=20,
-      second=25,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=-4196, seconds=27002, microseconds=7165),
-    Some("6922-10-24 01:50:27.007165"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6388,
-      7,
-      23,
-      hour=21,
-      minute=1,
-      second=12,
-      microsecond=337330,
-    ),
-    @datetime.TimeDelta::new(days=81, seconds=56587, microseconds=308584),
-    Some("6388-10-13 12:44:19.645914"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3405,
-      6,
-      23,
-      hour=6,
-      minute=57,
-      second=57,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=895, seconds=16569, microseconds=108278),
-    Some("3407-12-05 11:34:06.108278"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      6710,
-      8,
-      30,
-      hour=1,
-      minute=13,
-      second=39,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3049, seconds=66286, microseconds=325151),
-    Some("6719-01-04 19:38:25.325151"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      938,
-      12,
-      23,
-      hour=19,
-      minute=5,
+      3,
+      25,
+      hour=7,
+      minute=32,
       second=22,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=2472, seconds=78418, microseconds=43181),
-    Some("0945-09-30 16:52:20.043181"),
+    @datetime.TimeDelta::new(days=852, seconds=68224, microseconds=224586),
+    Some("1989-07-25 02:29:26.224586"),
   )
   check_add(
     @datetime.DateTime::new(
-      6525,
-      5,
-      27,
-      hour=10,
-      minute=18,
-      second=6,
+      3223,
+      11,
+      17,
+      hour=4,
+      minute=44,
+      second=39,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=3189, seconds=5919, microseconds=326960),
-    Some("6534-02-18 11:56:45.326960"),
+    @datetime.TimeDelta::new(days=-857, seconds=69912, microseconds=558820),
+    Some("3221-07-14 00:09:51.558820"),
   )
   check_add(
     @datetime.DateTime::new(
-      694,
-      8,
-      9,
-      hour=6,
-      minute=24,
-      second=35,
-      microsecond=0,
-    ),
-    @datetime.TimeDelta::new(days=3161, seconds=26323, microseconds=792035),
-    Some("0703-04-06 13:43:18.792035"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5096,
-      6,
-      6,
+      1969,
+      4,
+      25,
       hour=15,
-      minute=58,
+      minute=38,
       second=19,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=2224, seconds=31212, microseconds=98013),
-    Some("5102-07-11 00:38:31.098013"),
+    @datetime.TimeDelta::new(days=-1790, seconds=74297, microseconds=875473),
+    Some("1964-06-01 12:16:36.875473"),
   )
   check_add(
     @datetime.DateTime::new(
-      1894,
-      9,
-      21,
-      hour=22,
-      minute=43,
-      second=37,
-      microsecond=816067,
-    ),
-    @datetime.TimeDelta::new(days=734, seconds=59413, microseconds=34016),
-    Some("1896-09-25 15:13:50.850083"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      5045,
+      4336,
       2,
-      20,
-      hour=10,
-      minute=16,
-      second=18,
+      1,
+      hour=5,
+      minute=8,
+      second=27,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=-1433, seconds=75332, microseconds=186920),
-    Some("5041-03-21 07:11:50.186920"),
+    @datetime.TimeDelta::new(days=-1848, seconds=3040, microseconds=435331),
+    Some("4331-01-10 05:59:07.435331"),
   )
   check_add(
     @datetime.DateTime::new(
-      5488,
-      9,
-      17,
+      9126,
+      3,
+      25,
+      hour=19,
+      minute=53,
+      second=18,
+      microsecond=437701,
+    ),
+    @datetime.TimeDelta::new(days=3358, seconds=83297, microseconds=282638),
+    Some("9135-06-05 19:01:35.720339"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1765,
+      11,
+      18,
+      hour=4,
+      minute=38,
+      second=11,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-4499, seconds=60105, microseconds=975295),
+    Some("1753-07-25 21:19:56.975295"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7780,
+      3,
+      16,
       hour=3,
-      minute=33,
+      minute=43,
+      second=38,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4780, seconds=77770, microseconds=773396),
+    Some("7793-04-18 01:19:48.773396"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2623,
+      11,
+      2,
+      hour=1,
+      minute=44,
+      second=44,
+      microsecond=572995,
+    ),
+    @datetime.TimeDelta::new(days=123, seconds=51646, microseconds=93873),
+    Some("2624-03-04 16:05:30.666868"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7514,
+      4,
+      15,
+      hour=8,
+      minute=12,
+      second=0,
+      microsecond=954726,
+    ),
+    @datetime.TimeDelta::new(days=-3948, seconds=80744, microseconds=443086),
+    Some("7503-06-25 06:37:45.397812"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1440,
+      3,
+      1,
+      hour=16,
+      minute=5,
+      second=42,
+      microsecond=124818,
+    ),
+    @datetime.TimeDelta::new(days=4990, seconds=52400, microseconds=992786),
+    Some("1453-10-30 06:39:03.117604"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1946,
+      8,
+      1,
+      hour=9,
+      minute=19,
+      second=54,
+      microsecond=62161,
+    ),
+    @datetime.TimeDelta::new(days=825, seconds=76251, microseconds=453031),
+    Some("1948-11-04 06:30:45.515192"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9632,
+      4,
+      24,
+      hour=21,
+      minute=29,
+      second=37,
+      microsecond=737124,
+    ),
+    @datetime.TimeDelta::new(days=-2936, seconds=67464, microseconds=212845),
+    Some("9624-04-11 16:14:01.949969"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1909,
+      11,
+      3,
+      hour=22,
+      minute=48,
+      second=17,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4454, seconds=31280, microseconds=304523),
+    Some("1922-01-14 07:29:37.304523"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4093,
+      9,
+      2,
+      hour=6,
+      minute=31,
+      second=54,
+      microsecond=937416,
+    ),
+    @datetime.TimeDelta::new(days=-279, seconds=43933, microseconds=875483),
+    Some("4092-11-27 18:44:08.812899"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1970,
+      2,
+      27,
+      hour=9,
+      minute=53,
+      second=48,
+      microsecond=688402,
+    ),
+    @datetime.TimeDelta::new(days=-2865, seconds=81694, microseconds=538338),
+    Some("1962-04-26 08:35:23.226740"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2005,
+      10,
+      15,
+      hour=4,
+      minute=38,
+      second=31,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4752, seconds=13657, microseconds=471325),
+    Some("2018-10-19 08:26:08.471325"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2356,
+      8,
+      8,
+      hour=0,
+      minute=24,
+      second=3,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4123, seconds=33978, microseconds=831312),
+    Some("2367-11-22 09:50:21.831312"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1910,
+      1,
+      8,
+      hour=9,
+      minute=30,
+      second=0,
+      microsecond=863956,
+    ),
+    @datetime.TimeDelta::new(days=3018, seconds=53306, microseconds=192227),
+    Some("1918-04-15 00:18:27.056183"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7467,
+      7,
+      8,
+      hour=19,
+      minute=52,
+      second=9,
+      microsecond=585784,
+    ),
+    @datetime.TimeDelta::new(days=-4162, seconds=46221, microseconds=919806),
+    Some("7456-02-15 08:42:31.505590"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      543,
+      11,
+      8,
+      hour=15,
+      minute=50,
+      second=55,
+      microsecond=112112,
+    ),
+    @datetime.TimeDelta::new(days=-2752, seconds=4808, microseconds=906932),
+    Some("0536-04-26 17:11:04.019044"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1644,
+      3,
+      20,
+      hour=19,
+      minute=25,
+      second=24,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1254, seconds=44086, microseconds=10513),
+    Some("1640-10-14 07:40:10.010513"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4897,
+      7,
+      28,
+      hour=2,
+      minute=3,
+      second=43,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-4513, seconds=11017, microseconds=417050),
+    Some("4885-03-20 05:07:20.417050"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2094,
+      6,
+      22,
+      hour=15,
+      minute=49,
+      second=33,
+      microsecond=483019,
+    ),
+    @datetime.TimeDelta::new(days=876, seconds=12513, microseconds=681641),
+    Some("2096-11-14 19:18:07.164660"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8797,
+      8,
+      14,
+      hour=3,
+      minute=56,
+      second=11,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=260, seconds=9796, microseconds=810214),
+    Some("8798-05-01 06:39:27.810214"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1962,
+      12,
+      5,
+      hour=5,
+      minute=53,
+      second=23,
+      microsecond=777997,
+    ),
+    @datetime.TimeDelta::new(days=2042, seconds=37263, microseconds=569015),
+    Some("1968-07-08 16:14:27.347012"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2043,
+      10,
+      14,
+      hour=19,
+      minute=2,
+      second=25,
+      microsecond=720517,
+    ),
+    @datetime.TimeDelta::new(days=-1243, seconds=29907, microseconds=430337),
+    Some("2040-05-20 03:20:53.150854"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6224,
+      1,
+      18,
+      hour=7,
+      minute=25,
+      second=13,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-859, seconds=41606, microseconds=116458),
+    Some("6221-09-11 18:58:39.116458"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7947,
+      10,
+      14,
+      hour=20,
+      minute=41,
+      second=34,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-133, seconds=28544, microseconds=60214),
+    Some("7947-06-04 04:37:18.060214"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5147,
+      10,
+      18,
+      hour=6,
+      minute=12,
+      second=32,
+      microsecond=54579,
+    ),
+    @datetime.TimeDelta::new(days=-3134, seconds=16802, microseconds=391627),
+    Some("5139-03-20 10:52:34.446206"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1921,
+      10,
+      3,
+      hour=23,
+      minute=17,
+      second=10,
+      microsecond=492770,
+    ),
+    @datetime.TimeDelta::new(days=-3767, seconds=16226, microseconds=287842),
+    Some("1911-06-12 03:47:36.780612"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1947,
+      6,
+      3,
+      hour=18,
+      minute=39,
+      second=38,
+      microsecond=621476,
+    ),
+    @datetime.TimeDelta::new(days=4744, seconds=77689, microseconds=224246),
+    Some("1960-05-30 16:14:27.845722"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4392,
+      8,
+      1,
+      hour=2,
+      minute=14,
+      second=45,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1735, seconds=71509, microseconds=163860),
+    Some("4387-11-01 22:06:34.163860"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2310,
+      5,
+      1,
+      hour=12,
+      minute=10,
+      second=6,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-295, seconds=63875, microseconds=282447),
+    Some("2309-07-11 05:54:41.282447"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9100,
+      10,
+      5,
+      hour=3,
+      minute=16,
+      second=49,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3133, seconds=7127, microseconds=186790),
+    Some("9092-03-07 05:15:36.186790"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1980,
+      6,
+      4,
+      hour=18,
+      minute=24,
+      second=28,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4897, seconds=53049, microseconds=181825),
+    Some("1993-11-01 09:08:37.181825"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3097,
+      7,
+      12,
+      hour=22,
+      minute=0,
+      second=24,
+      microsecond=621039,
+    ),
+    @datetime.TimeDelta::new(days=3781, seconds=34957, microseconds=870635),
+    Some("3107-11-20 07:43:02.491674"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2933,
+      4,
+      3,
+      hour=21,
+      minute=16,
+      second=51,
+      microsecond=539770,
+    ),
+    @datetime.TimeDelta::new(days=446, seconds=34686, microseconds=560194),
+    Some("2934-06-24 06:54:58.099964"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2068,
+      7,
+      12,
+      hour=2,
+      minute=22,
+      second=56,
+      microsecond=118131,
+    ),
+    @datetime.TimeDelta::new(days=-2401, seconds=79945, microseconds=187214),
+    Some("2061-12-16 00:35:21.305345"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      794,
+      7,
+      7,
+      hour=7,
+      minute=52,
+      second=50,
+      microsecond=977418,
+    ),
+    @datetime.TimeDelta::new(days=4940, seconds=24427, microseconds=784838),
+    Some("0808-01-15 14:39:58.762256"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8207,
+      3,
+      14,
+      hour=9,
+      minute=6,
+      second=27,
+      microsecond=863994,
+    ),
+    @datetime.TimeDelta::new(days=-4218, seconds=48666, microseconds=867676),
+    Some("8195-08-25 22:37:34.731670"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2016,
+      12,
+      18,
+      hour=15,
+      minute=51,
+      second=26,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2408, seconds=51607, microseconds=87026),
+    Some("2010-05-17 06:11:33.087026"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5606,
+      7,
+      27,
+      hour=9,
+      minute=54,
+      second=50,
+      microsecond=887007,
+    ),
+    @datetime.TimeDelta::new(days=4440, seconds=12177, microseconds=879697),
+    Some("5618-09-22 13:17:48.766704"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1777,
+      8,
+      23,
+      hour=1,
+      minute=22,
+      second=17,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=86, seconds=11934, microseconds=957928),
+    Some("1777-11-17 04:41:11.957928"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1915,
+      4,
+      25,
+      hour=5,
+      minute=42,
+      second=3,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-4906, seconds=81223, microseconds=316145),
+    Some("1901-11-19 04:15:46.316145"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6451,
+      2,
+      21,
+      hour=4,
+      minute=39,
+      second=9,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3468, seconds=44283, microseconds=438076),
+    Some("6441-08-24 16:57:12.438076"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1936,
+      2,
+      5,
+      hour=12,
+      minute=32,
+      second=13,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2240, seconds=39183, microseconds=497652),
+    Some("1929-12-18 23:25:16.497652"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1999,
+      7,
+      31,
+      hour=21,
+      minute=10,
+      second=40,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3980, seconds=32748, microseconds=974599),
+    Some("2010-06-24 06:16:28.974599"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9012,
+      1,
+      31,
+      hour=18,
+      minute=31,
+      second=17,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-122, seconds=30282, microseconds=934661),
+    Some("9011-10-02 02:55:59.934661"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4376,
+      1,
+      15,
+      hour=4,
+      minute=46,
+      second=22,
+      microsecond=789041,
+    ),
+    @datetime.TimeDelta::new(days=-4168, seconds=48597, microseconds=143432),
+    Some("4364-08-17 18:16:19.932473"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8878,
+      11,
+      27,
+      hour=9,
+      minute=28,
+      second=55,
+      microsecond=385449,
+    ),
+    @datetime.TimeDelta::new(days=4591, seconds=54985, microseconds=775915),
+    Some("8891-06-24 00:45:21.161364"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1925,
+      4,
+      30,
+      hour=19,
+      minute=49,
+      second=20,
+      microsecond=816196,
+    ),
+    @datetime.TimeDelta::new(days=-4459, seconds=63765, microseconds=605151),
+    Some("1913-02-14 13:32:06.421347"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1954,
+      3,
+      23,
+      hour=8,
+      minute=31,
       second=33,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=2457, seconds=69301, microseconds=58813),
-    Some("5495-06-10 22:48:34.058813"),
+    @datetime.TimeDelta::new(days=2091, seconds=65499, microseconds=781958),
+    Some("1959-12-14 02:43:12.781958"),
   )
   check_add(
     @datetime.DateTime::new(
-      6291,
-      11,
-      5,
-      hour=3,
-      minute=58,
-      second=43,
-      microsecond=681540,
+      1915,
+      1,
+      30,
+      hour=6,
+      minute=6,
+      second=59,
+      microsecond=347316,
     ),
-    @datetime.TimeDelta::new(days=575, seconds=35751, microseconds=35308),
-    Some("6293-06-02 13:54:34.716848"),
+    @datetime.TimeDelta::new(days=3643, seconds=58763, microseconds=927439),
+    Some("1925-01-20 22:26:23.274755"),
   )
   check_add(
     @datetime.DateTime::new(
-      1380,
-      8,
-      3,
-      hour=18,
-      minute=51,
-      second=13,
-      microsecond=550595,
-    ),
-    @datetime.TimeDelta::new(days=2026, seconds=53119, microseconds=985184),
-    Some("1386-02-20 09:36:33.535779"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      1978,
-      3,
-      28,
-      hour=1,
-      minute=52,
-      second=37,
-      microsecond=492804,
-    ),
-    @datetime.TimeDelta::new(days=2562, seconds=52591, microseconds=880435),
-    Some("1985-04-02 16:29:09.373239"),
-  )
-  check_add(
-    @datetime.DateTime::new(
-      3803,
+      9247,
       7,
-      14,
-      hour=22,
-      minute=41,
-      second=20,
-      microsecond=280804,
+      30,
+      hour=1,
+      minute=16,
+      second=54,
+      microsecond=559758,
     ),
-    @datetime.TimeDelta::new(days=-2331, seconds=2113, microseconds=265204),
-    Some("3797-02-23 23:16:33.546008"),
+    @datetime.TimeDelta::new(days=2416, seconds=7727, microseconds=32027),
+    Some("9254-03-11 03:25:41.591785"),
   )
   check_add(
     @datetime.DateTime::new(
-      8521,
-      9,
+      2086,
+      12,
+      1,
+      hour=22,
+      minute=49,
+      second=47,
+      microsecond=361924,
+    ),
+    @datetime.TimeDelta::new(days=3860, seconds=20290, microseconds=428822),
+    Some("2097-06-27 04:27:57.790746"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1290,
+      10,
+      18,
+      hour=23,
+      minute=17,
+      second=15,
+      microsecond=14916,
+    ),
+    @datetime.TimeDelta::new(days=-1697, seconds=59149, microseconds=856078),
+    Some("1286-02-25 15:43:04.870994"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7408,
       3,
-      hour=16,
-      minute=7,
-      second=5,
+      5,
+      hour=19,
+      minute=42,
+      second=31,
+      microsecond=878890,
+    ),
+    @datetime.TimeDelta::new(days=2310, seconds=65926, microseconds=579313),
+    Some("7414-07-03 14:01:18.458203"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4040,
+      12,
+      3,
+      hour=8,
+      minute=26,
+      second=20,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=-2701, seconds=48452, microseconds=549696),
-    Some("8514-04-13 05:34:37.549696"),
+    @datetime.TimeDelta::new(days=-4247, seconds=78070, microseconds=955320),
+    Some("4029-04-19 06:07:30.955320"),
   )
   check_add(
     @datetime.DateTime::new(
-      2024,
-      1,
-      7,
-      hour=1,
-      minute=59,
-      second=46,
-      microsecond=242925,
+      1970,
+      9,
+      19,
+      hour=18,
+      minute=5,
+      second=41,
+      microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=1243, seconds=78293, microseconds=573671),
-    Some("2027-06-03 23:44:39.816596"),
+    @datetime.TimeDelta::new(days=-1339, seconds=55933, microseconds=1046),
+    Some("1967-01-20 09:37:54.001046"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9259,
+      10,
+      12,
+      hour=18,
+      minute=36,
+      second=13,
+      microsecond=77264,
+    ),
+    @datetime.TimeDelta::new(days=528, seconds=78898, microseconds=853409),
+    Some("9261-03-24 16:31:11.930673"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1981,
+      6,
+      20,
+      hour=6,
+      minute=57,
+      second=40,
+      microsecond=225454,
+    ),
+    @datetime.TimeDelta::new(days=-3987, seconds=46604, microseconds=12819),
+    Some("1970-07-21 19:54:24.238273"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4803,
+      4,
+      29,
+      hour=13,
+      minute=35,
+      second=24,
+      microsecond=784177,
+    ),
+    @datetime.TimeDelta::new(days=-4527, seconds=81339, microseconds=631076),
+    Some("4790-12-07 12:11:04.415253"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3938,
+      1,
+      19,
+      hour=11,
+      minute=21,
+      second=32,
+      microsecond=678471,
+    ),
+    @datetime.TimeDelta::new(days=2564, seconds=2034, microseconds=78321),
+    Some("3945-01-26 11:55:26.756792"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6565,
+      11,
+      12,
+      hour=22,
+      minute=42,
+      second=40,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-4777, seconds=63233, microseconds=167410),
+    Some("6552-10-15 16:16:33.167410"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      621,
+      8,
+      6,
+      hour=3,
+      minute=31,
+      second=44,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2615, seconds=22043, microseconds=848825),
+    Some("0614-06-09 09:39:07.848825"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      629,
+      5,
+      15,
+      hour=16,
+      minute=55,
+      second=58,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=981, seconds=48119, microseconds=214024),
+    Some("0632-01-22 06:17:57.214024"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8265,
+      12,
+      24,
+      hour=8,
+      minute=45,
+      second=55,
+      microsecond=315409,
+    ),
+    @datetime.TimeDelta::new(days=3016, seconds=67171, microseconds=167803),
+    Some("8274-03-29 03:25:26.483212"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6576,
+      3,
+      31,
+      hour=19,
+      minute=48,
+      second=28,
+      microsecond=661564,
+    ),
+    @datetime.TimeDelta::new(days=-3161, seconds=20027, microseconds=829019),
+    Some("6567-08-06 01:22:16.490583"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5745,
+      8,
+      11,
+      hour=5,
+      minute=15,
+      second=18,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2149, seconds=31033, microseconds=323417),
+    Some("5739-09-23 13:52:31.323417"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7736,
+      9,
+      16,
+      hour=23,
+      minute=54,
+      second=6,
+      microsecond=994340,
+    ),
+    @datetime.TimeDelta::new(days=913, seconds=7255, microseconds=27504),
+    Some("7739-03-19 01:55:02.021844"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6654,
+      6,
+      16,
+      hour=10,
+      minute=1,
+      second=29,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=92, seconds=50743, microseconds=630148),
+    Some("6654-09-17 00:07:12.630148"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1902,
+      3,
+      27,
+      hour=19,
+      minute=45,
+      second=52,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3329, seconds=50480, microseconds=744615),
+    Some("1911-05-09 09:47:12.744615"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6621,
+      11,
+      25,
+      hour=14,
+      minute=25,
+      second=7,
+      microsecond=123088,
+    ),
+    @datetime.TimeDelta::new(days=2016, seconds=16677, microseconds=660239),
+    Some("6627-06-03 19:03:04.783327"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1491,
+      12,
+      30,
+      hour=2,
+      minute=36,
+      second=8,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-283, seconds=45653, microseconds=387979),
+    Some("1491-03-22 15:17:01.387979"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8707,
+      9,
+      23,
+      hour=10,
+      minute=36,
+      second=49,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1551, seconds=78372, microseconds=553755),
+    Some("8711-12-23 08:23:01.553755"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      776,
+      12,
+      13,
+      hour=6,
+      minute=39,
+      second=53,
+      microsecond=825561,
+    ),
+    @datetime.TimeDelta::new(days=-4549, seconds=82953, microseconds=969967),
+    Some("0764-07-01 05:42:27.795528"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5691,
+      8,
+      30,
+      hour=22,
+      minute=37,
+      second=19,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3502, seconds=59529, microseconds=911181),
+    Some("5682-01-28 15:09:28.911181"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      76,
+      3,
+      20,
+      hour=1,
+      minute=6,
+      second=34,
+      microsecond=788663,
+    ),
+    @datetime.TimeDelta::new(days=4544, seconds=22556, microseconds=538860),
+    Some("0088-08-28 07:22:31.327523"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9732,
+      11,
+      22,
+      hour=0,
+      minute=17,
+      second=3,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1743, seconds=72300, microseconds=913435),
+    Some("9728-02-14 20:22:03.913435"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9685,
+      10,
+      13,
+      hour=16,
+      minute=29,
+      second=40,
+      microsecond=338431,
+    ),
+    @datetime.TimeDelta::new(days=-3730, seconds=78550, microseconds=208080),
+    Some("9675-07-29 14:18:50.546511"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6310,
+      10,
+      24,
+      hour=0,
+      minute=11,
+      second=29,
+      microsecond=449193,
+    ),
+    @datetime.TimeDelta::new(days=201, seconds=24104, microseconds=417760),
+    Some("6311-05-13 06:53:13.866953"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3489,
+      5,
+      10,
+      hour=20,
+      minute=47,
+      second=36,
+      microsecond=4127,
+    ),
+    @datetime.TimeDelta::new(days=-966, seconds=36269, microseconds=528554),
+    Some("3486-09-18 06:52:05.532681"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3701,
+      11,
+      6,
+      hour=10,
+      minute=44,
+      second=6,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1640, seconds=161, microseconds=808951),
+    Some("3706-05-04 10:46:47.808951"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4245,
+      8,
+      15,
+      hour=6,
+      minute=46,
+      second=53,
+      microsecond=102645,
+    ),
+    @datetime.TimeDelta::new(days=632, seconds=77812, microseconds=838176),
+    Some("4247-05-10 04:23:45.940821"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2003,
+      12,
+      4,
+      hour=16,
+      minute=38,
+      second=25,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1718, seconds=43389, microseconds=690704),
+    Some("1999-03-23 04:41:34.690704"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1903,
+      1,
+      10,
+      hour=4,
+      minute=34,
+      second=59,
+      microsecond=121056,
+    ),
+    @datetime.TimeDelta::new(days=381, seconds=63338, microseconds=332030),
+    Some("1904-01-26 22:10:37.453086"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6394,
+      1,
+      20,
+      hour=21,
+      minute=19,
+      second=9,
+      microsecond=717089,
+    ),
+    @datetime.TimeDelta::new(days=-1847, seconds=7322, microseconds=498667),
+    Some("6388-12-30 23:21:12.215756"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2098,
+      3,
+      7,
+      hour=14,
+      minute=48,
+      second=15,
+      microsecond=985984,
+    ),
+    @datetime.TimeDelta::new(days=4636, seconds=16462, microseconds=767721),
+    Some("2110-11-16 19:22:38.753705"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3950,
+      10,
+      29,
+      hour=16,
+      minute=21,
+      second=31,
+      microsecond=33393,
+    ),
+    @datetime.TimeDelta::new(days=530, seconds=13992, microseconds=608991),
+    Some("3952-04-11 20:14:43.642384"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3313,
+      6,
+      24,
+      hour=7,
+      minute=55,
+      second=7,
+      microsecond=462567,
+    ),
+    @datetime.TimeDelta::new(days=3173, seconds=82139, microseconds=417590),
+    Some("3322-03-03 06:44:06.880157"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1912,
+      12,
+      29,
+      hour=16,
+      minute=32,
+      second=4,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=30, seconds=49026, microseconds=882680),
+    Some("1913-01-29 06:09:10.882680"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8633,
+      8,
+      12,
+      hour=16,
+      minute=7,
+      second=54,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2686, seconds=61261, microseconds=808028),
+    Some("8640-12-20 09:08:55.808028"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9910,
+      5,
+      14,
+      hour=7,
+      minute=11,
+      second=37,
+      microsecond=727222,
+    ),
+    @datetime.TimeDelta::new(days=-4098, seconds=766, microseconds=873957),
+    Some("9899-02-22 07:24:24.601179"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4063,
+      6,
+      19,
+      hour=18,
+      minute=31,
+      second=49,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2895, seconds=64150, microseconds=193029),
+    Some("4071-05-24 12:20:59.193029"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4958,
+      12,
+      16,
+      hour=23,
+      minute=18,
+      second=0,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2988, seconds=36177, microseconds=345759),
+    Some("4967-02-21 09:20:57.345759"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9467,
+      11,
+      14,
+      hour=8,
+      minute=1,
+      second=37,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2955, seconds=82056, microseconds=832147),
+    Some("9459-10-13 06:49:13.832147"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      414,
+      5,
+      23,
+      hour=14,
+      minute=21,
+      second=38,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3880, seconds=37049, microseconds=491739),
+    Some("0403-10-09 00:39:07.491739"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7261,
+      7,
+      2,
+      hour=18,
+      minute=53,
+      second=41,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4460, seconds=55994, microseconds=762117),
+    Some("7273-09-18 10:26:55.762117"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7775,
+      10,
+      25,
+      hour=21,
+      minute=7,
+      second=58,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1620, seconds=68772, microseconds=882041),
+    Some("7771-05-20 16:14:10.882041"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1072,
+      5,
+      22,
+      hour=0,
+      minute=23,
+      second=33,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-4056, seconds=3165, microseconds=634033),
+    Some("1061-04-14 01:16:18.634033"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1926,
+      2,
+      17,
+      hour=7,
+      minute=29,
+      second=32,
+      microsecond=718669,
+    ),
+    @datetime.TimeDelta::new(days=-812, seconds=20019, microseconds=448220),
+    Some("1923-11-28 13:03:12.166889"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4581,
+      5,
+      25,
+      hour=3,
+      minute=22,
+      second=14,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3452, seconds=64812, microseconds=526881),
+    Some("4571-12-12 21:22:26.526881"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7598,
+      4,
+      30,
+      hour=10,
+      minute=44,
+      second=25,
+      microsecond=856899,
+    ),
+    @datetime.TimeDelta::new(days=867, seconds=22429, microseconds=368699),
+    Some("7600-09-13 16:58:15.225598"),
   )
   check_add(
     @datetime.DateTime::new(
       1927,
+      10,
       2,
-      2,
-      hour=16,
-      minute=20,
-      second=47,
-      microsecond=593962,
+      hour=13,
+      minute=57,
+      second=56,
+      microsecond=622516,
     ),
-    @datetime.TimeDelta::new(days=-1377, seconds=22300, microseconds=632443),
-    Some("1923-04-27 22:32:28.226405"),
+    @datetime.TimeDelta::new(days=-4994, seconds=1585, microseconds=892530),
+    Some("1914-01-29 14:24:22.515046"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9823,
+      8,
+      10,
+      hour=19,
+      minute=31,
+      second=12,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3662, seconds=80434, microseconds=488192),
+    Some("9813-08-01 17:51:46.488192"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4482,
+      5,
+      9,
+      hour=11,
+      minute=48,
+      second=57,
+      microsecond=287071,
+    ),
+    @datetime.TimeDelta::new(days=-2801, seconds=60096, microseconds=419089),
+    Some("4474-09-08 04:30:33.706160"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3415,
+      6,
+      6,
+      hour=2,
+      minute=16,
+      second=44,
+      microsecond=591473,
+    ),
+    @datetime.TimeDelta::new(days=-4807, seconds=30694, microseconds=677385),
+    Some("3402-04-08 10:48:19.268858"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      935,
+      10,
+      21,
+      hour=21,
+      minute=59,
+      second=49,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1679, seconds=10269, microseconds=301704),
+    Some("0931-03-18 00:50:58.301704"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3394,
+      8,
+      17,
+      hour=9,
+      minute=16,
+      second=37,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=702, seconds=10457, microseconds=288801),
+    Some("3396-07-19 12:10:54.288801"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3532,
+      7,
+      20,
+      hour=23,
+      minute=30,
+      second=45,
+      microsecond=222548,
+    ),
+    @datetime.TimeDelta::new(days=4304, seconds=23658, microseconds=14094),
+    Some("3544-05-03 06:05:03.236642"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1492,
+      2,
+      1,
+      hour=18,
+      minute=56,
+      second=14,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1945, seconds=61893, microseconds=259079),
+    Some("1486-10-06 12:07:47.259079"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2095,
+      6,
+      26,
+      hour=12,
+      minute=55,
+      second=41,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3422, seconds=45193, microseconds=572296),
+    Some("2104-11-09 01:28:54.572296"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8639,
+      7,
+      14,
+      hour=6,
+      minute=43,
+      second=4,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2700, seconds=81505, microseconds=520737),
+    Some("8632-02-22 05:21:29.520737"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3574,
+      7,
+      26,
+      hour=4,
+      minute=59,
+      second=26,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-813, seconds=48060, microseconds=342258),
+    Some("3572-05-04 18:20:26.342258"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2668,
+      12,
+      10,
+      hour=0,
+      minute=23,
+      second=53,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1997, seconds=47912, microseconds=185330),
+    Some("2674-05-30 13:42:25.185330"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3751,
+      5,
+      30,
+      hour=5,
+      minute=45,
+      second=21,
+      microsecond=846004,
+    ),
+    @datetime.TimeDelta::new(days=-3265, seconds=61798, microseconds=4161),
+    Some("3742-06-21 22:55:19.850165"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7505,
+      6,
+      29,
+      hour=20,
+      minute=31,
+      second=34,
+      microsecond=406360,
+    ),
+    @datetime.TimeDelta::new(days=63, seconds=8376, microseconds=866465),
+    Some("7505-08-31 22:51:11.272825"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5724,
+      10,
+      4,
+      hour=2,
+      minute=53,
+      second=7,
+      microsecond=891999,
+    ),
+    @datetime.TimeDelta::new(days=-1218, seconds=6279, microseconds=875438),
+    Some("5721-06-04 04:37:47.767437"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1988,
+      1,
+      20,
+      hour=17,
+      minute=1,
+      second=6,
+      microsecond=756151,
+    ),
+    @datetime.TimeDelta::new(days=274, seconds=35523, microseconds=310322),
+    Some("1988-10-21 02:53:10.066473"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2032,
+      2,
+      16,
+      hour=18,
+      minute=23,
+      second=5,
+      microsecond=825179,
+    ),
+    @datetime.TimeDelta::new(days=-4121, seconds=51045, microseconds=490667),
+    Some("2020-11-05 08:33:51.315846"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3219,
+      5,
+      16,
+      hour=9,
+      minute=51,
+      second=15,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1651, seconds=54220, microseconds=474797),
+    Some("3223-11-23 00:54:55.474797"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3962,
+      8,
+      13,
+      hour=22,
+      minute=48,
+      second=22,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1767, seconds=65930, microseconds=565682),
+    Some("3957-10-12 17:07:12.565682"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2046,
+      1,
+      16,
+      hour=22,
+      minute=26,
+      second=25,
+      microsecond=880020,
+    ),
+    @datetime.TimeDelta::new(days=-1989, seconds=26672, microseconds=901663),
+    Some("2040-08-07 05:50:58.781683"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1936,
+      11,
+      26,
+      hour=0,
+      minute=52,
+      second=12,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3208, seconds=50530, microseconds=775434),
+    Some("1945-09-08 14:54:22.775434"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7514,
+      10,
+      8,
+      hour=3,
+      minute=20,
+      second=59,
+      microsecond=770309,
+    ),
+    @datetime.TimeDelta::new(days=-4787, seconds=22030, microseconds=646419),
+    Some("7501-08-30 09:28:10.416728"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6646,
+      5,
+      15,
+      hour=14,
+      minute=34,
+      second=56,
+      microsecond=695013,
+    ),
+    @datetime.TimeDelta::new(days=3471, seconds=49057, microseconds=336841),
+    Some("6655-11-16 04:12:34.031854"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6739,
+      10,
+      14,
+      hour=3,
+      minute=45,
+      second=10,
+      microsecond=995029,
+    ),
+    @datetime.TimeDelta::new(days=1989, seconds=39584, microseconds=840247),
+    Some("6745-03-25 14:44:55.835276"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1980,
+      1,
+      13,
+      hour=14,
+      minute=9,
+      second=27,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1821, seconds=40753, microseconds=826428),
+    Some("1985-01-08 01:28:40.826428"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9082,
+      10,
+      31,
+      hour=3,
+      minute=30,
+      second=43,
+      microsecond=950252,
+    ),
+    @datetime.TimeDelta::new(days=-3089, seconds=61001, microseconds=987187),
+    Some("9074-05-17 20:27:25.937439"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1950,
+      11,
+      4,
+      hour=14,
+      minute=18,
+      second=5,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=245, seconds=4722, microseconds=509553),
+    Some("1951-07-07 15:36:47.509553"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      412,
+      3,
+      19,
+      hour=17,
+      minute=5,
+      second=23,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=968, seconds=60487, microseconds=169444),
+    Some("0414-11-13 09:53:30.169444"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7537,
+      7,
+      13,
+      hour=20,
+      minute=5,
+      second=52,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4946, seconds=6265, microseconds=17874),
+    Some("7551-01-27 21:50:17.017874"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4697,
+      8,
+      20,
+      hour=20,
+      minute=13,
+      second=14,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1170, seconds=35743, microseconds=610829),
+    Some("4694-06-08 06:08:57.610829"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4582,
+      11,
+      19,
+      hour=23,
+      minute=38,
+      second=3,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2007, seconds=73588, microseconds=797444),
+    Some("4588-05-19 20:04:31.797444"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1308,
+      12,
+      27,
+      hour=16,
+      minute=7,
+      second=29,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3165, seconds=60015, microseconds=22038),
+    Some("1317-08-28 08:47:44.022038"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7204,
+      6,
+      18,
+      hour=1,
+      minute=19,
+      second=1,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3172, seconds=23480, microseconds=801542),
+    Some("7195-10-12 07:50:21.801542"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1975,
+      12,
+      25,
+      hour=1,
+      minute=25,
+      second=35,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4593, seconds=1375, microseconds=883767),
+    Some("1988-07-22 01:48:30.883767"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1930,
+      11,
+      8,
+      hour=9,
+      minute=13,
+      second=24,
+      microsecond=726040,
+    ),
+    @datetime.TimeDelta::new(days=1855, seconds=63376, microseconds=603746),
+    Some("1935-12-08 02:49:41.329786"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8653,
+      7,
+      26,
+      hour=4,
+      minute=7,
+      second=22,
+      microsecond=532556,
+    ),
+    @datetime.TimeDelta::new(days=2869, seconds=37179, microseconds=857307),
+    Some("8661-06-03 14:27:02.389863"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9967,
+      11,
+      13,
+      hour=16,
+      minute=9,
+      second=7,
+      microsecond=589605,
+    ),
+    @datetime.TimeDelta::new(days=1059, seconds=57668, microseconds=282438),
+    Some("9970-10-08 08:10:15.872043"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7016,
+      3,
+      4,
+      hour=6,
+      minute=34,
+      second=48,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2248, seconds=33228, microseconds=738567),
+    Some("7022-04-30 15:48:36.738567"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1942,
+      6,
+      14,
+      hour=0,
+      minute=56,
+      second=27,
+      microsecond=121161,
+    ),
+    @datetime.TimeDelta::new(days=1550, seconds=47189, microseconds=20297),
+    Some("1946-09-11 14:02:56.141458"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7957,
+      3,
+      30,
+      hour=9,
+      minute=22,
+      second=16,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3827, seconds=28192, microseconds=627858),
+    Some("7946-10-07 17:12:08.627858"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2843,
+      4,
+      18,
+      hour=9,
+      minute=5,
+      second=45,
+      microsecond=998483,
+    ),
+    @datetime.TimeDelta::new(days=1555, seconds=22741, microseconds=666628),
+    Some("2847-07-21 15:24:47.665111"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8276,
+      5,
+      11,
+      hour=3,
+      minute=47,
+      second=57,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2285, seconds=62365, microseconds=246274),
+    Some("8282-08-13 21:07:22.246274"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7096,
+      9,
+      26,
+      hour=11,
+      minute=13,
+      second=34,
+      microsecond=899284,
+    ),
+    @datetime.TimeDelta::new(days=1921, seconds=52703, microseconds=61842),
+    Some("7102-01-01 01:51:57.961126"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1999,
+      8,
+      6,
+      hour=22,
+      minute=33,
+      second=24,
+      microsecond=831466,
+    ),
+    @datetime.TimeDelta::new(days=4142, seconds=47893, microseconds=225363),
+    Some("2010-12-09 11:51:38.056829"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      270,
+      5,
+      9,
+      hour=4,
+      minute=55,
+      second=40,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3777, seconds=17143, microseconds=769490),
+    Some("0260-01-05 09:41:23.769490"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4046,
+      7,
+      22,
+      hour=13,
+      minute=22,
+      second=17,
+      microsecond=251890,
+    ),
+    @datetime.TimeDelta::new(days=-4457, seconds=38281, microseconds=713353),
+    Some("4034-05-10 00:00:18.965243"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7130,
+      5,
+      22,
+      hour=14,
+      minute=46,
+      second=57,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2835, seconds=50033, microseconds=689638),
+    Some("7138-02-25 04:40:50.689638"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1966,
+      6,
+      21,
+      hour=19,
+      minute=24,
+      second=52,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4976, seconds=51809, microseconds=68167),
+    Some("1980-02-05 09:48:21.068167"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4478,
+      10,
+      20,
+      hour=8,
+      minute=33,
+      second=13,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4846, seconds=44092, microseconds=305402),
+    Some("4492-01-26 20:48:05.305402"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5006,
+      4,
+      12,
+      hour=13,
+      minute=55,
+      second=5,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=457, seconds=41712, microseconds=453031),
+    Some("5007-07-14 01:30:17.453031"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2081,
+      7,
+      26,
+      hour=8,
+      minute=3,
+      second=30,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2660, seconds=2576, microseconds=986502),
+    Some("2074-04-14 08:46:26.986502"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7417,
+      11,
+      30,
+      hour=19,
+      minute=15,
+      second=17,
+      microsecond=118424,
+    ),
+    @datetime.TimeDelta::new(days=-3507, seconds=23922, microseconds=15384),
+    Some("7408-04-25 01:53:59.133808"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5032,
+      12,
+      22,
+      hour=8,
+      minute=42,
+      second=22,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=685, seconds=61987, microseconds=249083),
+    Some("5034-11-08 01:55:29.249083"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2051,
+      11,
+      22,
+      hour=1,
+      minute=46,
+      second=23,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3552, seconds=37245, microseconds=198599),
+    Some("2042-03-02 12:07:08.198599"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4984,
+      5,
+      24,
+      hour=20,
+      minute=4,
+      second=2,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2313, seconds=69651, microseconds=790428),
+    Some("4990-09-24 15:24:53.790428"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1960,
+      9,
+      7,
+      hour=0,
+      minute=27,
+      second=20,
+      microsecond=105377,
+    ),
+    @datetime.TimeDelta::new(days=1485, seconds=10983, microseconds=10102),
+    Some("1964-10-01 03:30:23.115479"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2606,
+      3,
+      12,
+      hour=21,
+      minute=16,
+      second=4,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2502, seconds=5060, microseconds=146094),
+    Some("2599-05-05 22:40:24.146094"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4592,
+      8,
+      20,
+      hour=12,
+      minute=37,
+      second=9,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3101, seconds=84815, microseconds=756312),
+    Some("4601-02-17 12:10:44.756312"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2013,
+      7,
+      30,
+      hour=7,
+      minute=47,
+      second=0,
+      microsecond=522009,
+    ),
+    @datetime.TimeDelta::new(days=-3267, seconds=49352, microseconds=350938),
+    Some("2004-08-19 21:29:32.872947"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7556,
+      6,
+      11,
+      hour=23,
+      minute=54,
+      second=8,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2689, seconds=75712, microseconds=895512),
+    Some("7549-01-31 20:56:00.895512"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6110,
+      2,
+      13,
+      hour=0,
+      minute=18,
+      second=11,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=922, seconds=1217, microseconds=797587),
+    Some("6112-08-23 00:38:28.797587"),
   )
   check_add(
     @datetime.DateTime::new(
       1900,
-      7,
-      11,
-      hour=8,
-      minute=19,
+      6,
+      9,
+      hour=6,
+      minute=25,
+      second=46,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3509, seconds=47649, microseconds=518133),
+    Some("1890-10-30 19:39:55.518133"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2030,
+      10,
+      8,
+      hour=13,
+      minute=32,
+      second=58,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=736, seconds=56515, microseconds=833828),
+    Some("2032-10-14 05:14:53.833828"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4723,
+      4,
+      1,
+      hour=20,
+      minute=54,
+      second=7,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1350, seconds=43346, microseconds=653699),
+    Some("4719-07-22 08:56:33.653699"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8209,
+      8,
+      23,
+      hour=10,
+      minute=27,
+      second=59,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1618, seconds=21239, microseconds=584218),
+    Some("8214-01-27 16:21:58.584218"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      106,
+      6,
+      1,
+      hour=22,
+      minute=57,
       second=18,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=-1967, seconds=39733, microseconds=246983),
-    Some("1895-02-20 19:21:31.246983"),
+    @datetime.TimeDelta::new(days=1189, seconds=53784, microseconds=753502),
+    Some("0109-09-03 13:53:42.753502"),
   )
   check_add(
     @datetime.DateTime::new(
-      2011,
-      2,
-      4,
+      4458,
+      8,
+      16,
+      hour=4,
+      minute=4,
+      second=9,
+      microsecond=585781,
+    ),
+    @datetime.TimeDelta::new(days=695, seconds=47401, microseconds=172062),
+    Some("4460-07-11 17:14:10.757843"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9846,
+      1,
+      18,
+      hour=19,
+      minute=53,
+      second=24,
+      microsecond=758161,
+    ),
+    @datetime.TimeDelta::new(days=37, seconds=61749, microseconds=883501),
+    Some("9846-02-25 13:02:34.641662"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6740,
+      6,
+      14,
       hour=5,
-      minute=20,
-      second=45,
+      minute=35,
+      second=25,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=460, seconds=50563, microseconds=643974),
-    Some("2012-05-09 19:23:28.643974"),
+    @datetime.TimeDelta::new(days=1635, seconds=21505, microseconds=258931),
+    Some("6744-12-05 11:33:50.258931"),
   )
   check_add(
     @datetime.DateTime::new(
-      1971,
+      1175,
       5,
-      15,
-      hour=8,
-      minute=18,
-      second=31,
+      17,
+      hour=2,
+      minute=29,
+      second=57,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=1729, seconds=11849, microseconds=62720),
-    Some("1976-02-07 11:36:00.062720"),
+    @datetime.TimeDelta::new(days=1547, seconds=52516, microseconds=439830),
+    Some("1179-08-11 17:05:13.439830"),
   )
   check_add(
     @datetime.DateTime::new(
-      1956,
+      9725,
       9,
+      18,
+      hour=16,
+      minute=7,
+      second=52,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2369, seconds=35555, microseconds=286335),
+    Some("9719-03-26 02:00:27.286335"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1900,
+      2,
+      14,
+      hour=10,
+      minute=0,
+      second=34,
+      microsecond=77748,
+    ),
+    @datetime.TimeDelta::new(days=1188, seconds=79005, microseconds=207101),
+    Some("1903-05-19 07:57:19.284849"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4826,
+      10,
+      28,
+      hour=12,
+      minute=18,
+      second=37,
+      microsecond=799106,
+    ),
+    @datetime.TimeDelta::new(days=-1480, seconds=63455, microseconds=109330),
+    Some("4822-10-10 05:56:12.908436"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7405,
+      1,
+      24,
+      hour=1,
+      minute=47,
+      second=28,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1119, seconds=59728, microseconds=712992),
+    Some("7408-02-17 18:22:56.712992"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1571,
+      9,
+      14,
+      hour=1,
+      minute=32,
+      second=46,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1502, seconds=7517, microseconds=927091),
+    Some("1575-10-25 03:38:03.927091"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1919,
+      11,
+      9,
+      hour=11,
+      minute=38,
+      second=49,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3205, seconds=85678, microseconds=805995),
+    Some("1928-08-19 11:26:47.805995"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6905,
+      12,
+      29,
+      hour=14,
+      minute=21,
+      second=18,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4422, seconds=28720, microseconds=652152),
+    Some("6918-02-06 22:19:58.652152"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      134,
+      8,
+      27,
+      hour=19,
+      minute=50,
+      second=17,
+      microsecond=303580,
+    ),
+    @datetime.TimeDelta::new(days=402, seconds=49397, microseconds=345702),
+    Some("0135-10-04 09:33:34.649282"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7957,
+      1,
+      25,
+      hour=21,
+      minute=36,
+      second=12,
+      microsecond=146651,
+    ),
+    @datetime.TimeDelta::new(days=-640, seconds=71582, microseconds=641126),
+    Some("7955-04-27 17:29:14.787777"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2027,
+      4,
+      2,
+      hour=22,
+      minute=25,
+      second=50,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1367, seconds=20851, microseconds=212705),
+    Some("2030-12-30 04:13:21.212705"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9501,
+      8,
+      11,
+      hour=5,
+      minute=39,
+      second=48,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-4582, seconds=60573, microseconds=465592),
+    Some("9489-01-23 22:29:21.465592"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      787,
+      2,
+      18,
+      hour=5,
+      minute=57,
+      second=56,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2842, seconds=41465, microseconds=376106),
+    Some("0794-11-30 17:29:01.376106"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5252,
+      4,
+      24,
+      hour=6,
+      minute=50,
+      second=15,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1400, seconds=31688, microseconds=729301),
+    Some("5248-06-24 15:38:23.729301"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2247,
+      10,
+      14,
+      hour=20,
+      minute=25,
+      second=4,
+      microsecond=404629,
+    ),
+    @datetime.TimeDelta::new(days=380, seconds=45370, microseconds=332107),
+    Some("2248-10-29 09:01:14.736736"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9447,
+      1,
+      5,
+      hour=13,
+      minute=28,
+      second=39,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4006, seconds=25405, microseconds=218122),
+    Some("9457-12-24 20:32:04.218122"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2046,
+      8,
+      25,
+      hour=19,
+      minute=58,
+      second=17,
+      microsecond=317621,
+    ),
+    @datetime.TimeDelta::new(days=-184, seconds=34285, microseconds=657230),
+    Some("2046-02-23 05:29:42.974851"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2039,
+      4,
+      21,
+      hour=5,
+      minute=6,
+      second=2,
+      microsecond=897558,
+    ),
+    @datetime.TimeDelta::new(days=1459, seconds=29458, microseconds=487861),
+    Some("2043-04-19 13:17:01.385419"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2022,
+      12,
+      24,
+      hour=17,
+      minute=10,
+      second=59,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3970, seconds=7483, microseconds=295164),
+    Some("2012-02-10 19:15:42.295164"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7237,
+      10,
+      17,
+      hour=18,
+      minute=0,
+      second=33,
+      microsecond=940646,
+    ),
+    @datetime.TimeDelta::new(days=3660, seconds=56029, microseconds=690531),
+    Some("7247-10-26 09:34:23.631177"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1965,
+      7,
+      3,
+      hour=8,
+      minute=43,
+      second=36,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2935, seconds=77655, microseconds=705999),
+    Some("1973-07-17 06:17:51.705999"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2072,
+      3,
+      19,
+      hour=6,
+      minute=11,
+      second=44,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=930, seconds=17862, microseconds=748515),
+    Some("2074-10-05 11:09:26.748515"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5541,
+      5,
+      12,
+      hour=21,
+      minute=40,
+      second=19,
+      microsecond=548127,
+    ),
+    @datetime.TimeDelta::new(days=4671, seconds=67734, microseconds=842907),
+    Some("5554-02-25 16:29:14.391034"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2047,
+      9,
+      18,
+      hour=4,
+      minute=52,
+      second=38,
+      microsecond=552201,
+    ),
+    @datetime.TimeDelta::new(days=3741, seconds=20152, microseconds=146781),
+    Some("2057-12-15 10:28:30.698982"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2548,
+      3,
+      12,
+      hour=10,
+      minute=54,
+      second=18,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-4134, seconds=7235, microseconds=219166),
+    Some("2536-11-16 12:54:53.219166"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      755,
+      12,
+      20,
+      hour=14,
+      minute=28,
+      second=33,
+      microsecond=7028,
+    ),
+    @datetime.TimeDelta::new(days=368, seconds=10324, microseconds=125573),
+    Some("0756-12-22 17:20:37.132601"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      808,
+      8,
       27,
       hour=14,
-      minute=0,
-      second=1,
+      minute=41,
+      second=36,
       microsecond=0,
     ),
-    @datetime.TimeDelta::new(days=327, seconds=7948, microseconds=48624),
-    Some("1957-08-20 16:12:29.048624"),
+    @datetime.TimeDelta::new(days=-4813, seconds=86252, microseconds=710820),
+    Some("0795-06-25 14:39:08.710820"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5592,
+      5,
+      11,
+      hour=5,
+      minute=24,
+      second=25,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2816, seconds=1428, microseconds=791764),
+    Some("5600-01-26 05:48:13.791764"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2083,
+      5,
+      21,
+      hour=11,
+      minute=48,
+      second=39,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2248, seconds=77827, microseconds=905530),
+    Some("2077-03-26 09:25:46.905530"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9840,
+      8,
+      26,
+      hour=5,
+      minute=17,
+      second=50,
+      microsecond=247802,
+    ),
+    @datetime.TimeDelta::new(days=3643, seconds=8177, microseconds=969902),
+    Some("9850-08-17 07:34:08.217704"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3720,
+      3,
+      12,
+      hour=22,
+      minute=46,
+      second=17,
+      microsecond=790597,
+    ),
+    @datetime.TimeDelta::new(days=2913, seconds=82376, microseconds=244591),
+    Some("3728-03-04 21:39:14.035188"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1569,
+      8,
+      27,
+      hour=3,
+      minute=49,
+      second=50,
+      microsecond=677705,
+    ),
+    @datetime.TimeDelta::new(days=3674, seconds=66053, microseconds=985658),
+    Some("1579-09-18 22:10:44.663363"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6097,
+      8,
+      6,
+      hour=3,
+      minute=43,
+      second=32,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2373, seconds=3980, microseconds=531869),
+    Some("6091-02-06 04:49:52.531869"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1151,
+      4,
+      29,
+      hour=7,
+      minute=15,
+      second=37,
+      microsecond=613395,
+    ),
+    @datetime.TimeDelta::new(days=2102, seconds=74661, microseconds=31661),
+    Some("1157-01-30 03:59:58.645056"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6029,
+      4,
+      7,
+      hour=22,
+      minute=6,
+      second=34,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1283, seconds=65764, microseconds=234369),
+    Some("6025-10-03 16:22:38.234369"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2312,
+      6,
+      29,
+      hour=15,
+      minute=0,
+      second=6,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2720, seconds=39438, microseconds=310895),
+    Some("2319-12-11 01:57:24.310895"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9415,
+      7,
+      30,
+      hour=0,
+      minute=58,
+      second=13,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-567, seconds=55869, microseconds=615608),
+    Some("9414-01-09 16:29:22.615608"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7679,
+      12,
+      15,
+      hour=14,
+      minute=53,
+      second=20,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3146, seconds=19864, microseconds=631255),
+    Some("7688-07-26 20:24:24.631255"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6970,
+      12,
+      23,
+      hour=2,
+      minute=42,
+      second=25,
+      microsecond=119193,
+    ),
+    @datetime.TimeDelta::new(days=-1430, seconds=25823, microseconds=30286),
+    Some("6967-01-23 09:52:48.149479"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6527,
+      2,
+      15,
+      hour=1,
+      minute=32,
+      second=13,
+      microsecond=731208,
+    ),
+    @datetime.TimeDelta::new(days=1824, seconds=71747, microseconds=97953),
+    Some("6532-02-13 21:28:00.829161"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5238,
+      5,
+      12,
+      hour=14,
+      minute=8,
+      second=37,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2704, seconds=70559, microseconds=437724),
+    Some("5230-12-17 09:44:36.437724"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2475,
+      11,
+      18,
+      hour=0,
+      minute=25,
+      second=11,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4989, seconds=19377, microseconds=670232),
+    Some("2489-07-16 05:48:08.670232"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1943,
+      4,
+      15,
+      hour=23,
+      minute=30,
+      second=43,
+      microsecond=683492,
+    ),
+    @datetime.TimeDelta::new(days=2677, seconds=48781, microseconds=703324),
+    Some("1950-08-14 13:03:45.386816"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2012,
+      5,
+      7,
+      hour=23,
+      minute=41,
+      second=36,
+      microsecond=523071,
+    ),
+    @datetime.TimeDelta::new(days=-816, seconds=31172, microseconds=500602),
+    Some("2010-02-12 08:21:09.023673"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3925,
+      1,
+      21,
+      hour=11,
+      minute=58,
+      second=30,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-850, seconds=77747, microseconds=452133),
+    Some("3922-09-25 09:34:17.452133"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4743,
+      12,
+      29,
+      hour=1,
+      minute=7,
+      second=41,
+      microsecond=944647,
+    ),
+    @datetime.TimeDelta::new(days=-740, seconds=61607, microseconds=782529),
+    Some("4741-12-19 18:14:29.727176"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7498,
+      6,
+      23,
+      hour=11,
+      minute=38,
+      second=47,
+      microsecond=283167,
+    ),
+    @datetime.TimeDelta::new(days=-1434, seconds=86218, microseconds=177205),
+    Some("7494-07-21 11:35:45.460372"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2080,
+      5,
+      19,
+      hour=8,
+      minute=34,
+      second=3,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1146, seconds=41738, microseconds=275077),
+    Some("2077-03-30 20:09:41.275077"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1494,
+      3,
+      23,
+      hour=5,
+      minute=44,
+      second=18,
+      microsecond=547304,
+    ),
+    @datetime.TimeDelta::new(days=-3326, seconds=56249, microseconds=221426),
+    Some("1485-02-12 21:21:47.768730"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4268,
+      9,
+      8,
+      hour=13,
+      minute=44,
+      second=35,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=189, seconds=13382, microseconds=881326),
+    Some("4269-03-16 17:27:37.881326"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8125,
+      3,
+      12,
+      hour=19,
+      minute=14,
+      second=54,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2344, seconds=77192, microseconds=536365),
+    Some("8118-10-12 16:41:26.536365"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2037,
+      12,
+      25,
+      hour=21,
+      minute=1,
+      second=56,
+      microsecond=384283,
+    ),
+    @datetime.TimeDelta::new(days=-3872, seconds=26008, microseconds=583927),
+    Some("2027-05-21 04:15:24.968210"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5511,
+      12,
+      29,
+      hour=17,
+      minute=5,
+      second=16,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2723, seconds=27934, microseconds=966101),
+    Some("5519-06-14 00:50:50.966101"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2004,
+      5,
+      11,
+      hour=17,
+      minute=54,
+      second=31,
+      microsecond=733246,
+    ),
+    @datetime.TimeDelta::new(days=2337, seconds=73814, microseconds=702184),
+    Some("2010-10-05 14:24:46.435430"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5271,
+      3,
+      17,
+      hour=3,
+      minute=50,
+      second=52,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2334, seconds=72251, microseconds=343885),
+    Some("5264-10-25 23:55:03.343885"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2066,
+      4,
+      18,
+      hour=12,
+      minute=5,
+      second=35,
+      microsecond=540519,
+    ),
+    @datetime.TimeDelta::new(days=-3264, seconds=39081, microseconds=638436),
+    Some("2057-05-11 22:56:57.178955"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8964,
+      9,
+      3,
+      hour=1,
+      minute=41,
+      second=36,
+      microsecond=722271,
+    ),
+    @datetime.TimeDelta::new(days=2015, seconds=3060, microseconds=395219),
+    Some("8970-03-11 02:32:37.117490"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1783,
+      10,
+      3,
+      hour=16,
+      minute=54,
+      second=35,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4177, seconds=44134, microseconds=198076),
+    Some("1795-03-12 05:10:09.198076"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2047,
+      3,
+      3,
+      hour=22,
+      minute=59,
+      second=17,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2075, seconds=4633, microseconds=203143),
+    Some("2052-11-07 00:16:30.203143"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7219,
+      2,
+      7,
+      hour=4,
+      minute=54,
+      second=30,
+      microsecond=279719,
+    ),
+    @datetime.TimeDelta::new(days=2307, seconds=83346, microseconds=397928),
+    Some("7225-06-03 04:03:36.677647"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1053,
+      11,
+      9,
+      hour=19,
+      minute=5,
+      second=24,
+      microsecond=372870,
+    ),
+    @datetime.TimeDelta::new(days=4712, seconds=41061, microseconds=999056),
+    Some("1066-10-05 06:29:46.371926"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      5167,
+      10,
+      20,
+      hour=0,
+      minute=18,
+      second=58,
+      microsecond=547321,
+    ),
+    @datetime.TimeDelta::new(days=3504, seconds=74438, microseconds=737891),
+    Some("5177-05-24 20:59:37.285212"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6873,
+      9,
+      21,
+      hour=3,
+      minute=9,
+      second=17,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2873, seconds=86175, microseconds=357935),
+    Some("6881-08-04 03:05:32.357935"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1967,
+      4,
+      20,
+      hour=1,
+      minute=8,
+      second=4,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2505, seconds=12636, microseconds=783803),
+    Some("1960-06-10 04:38:40.783803"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1931,
+      4,
+      11,
+      hour=2,
+      minute=35,
+      second=29,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3341, seconds=59855, microseconds=711607),
+    Some("1940-06-03 19:13:04.711607"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9700,
+      9,
+      26,
+      hour=8,
+      minute=30,
+      second=14,
+      microsecond=722204,
+    ),
+    @datetime.TimeDelta::new(days=1143, seconds=78272, microseconds=647207),
+    Some("9703-11-14 06:14:47.369411"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9669,
+      4,
+      17,
+      hour=14,
+      minute=43,
+      second=45,
+      microsecond=765484,
+    ),
+    @datetime.TimeDelta::new(days=-963, seconds=71401, microseconds=116052),
+    Some("9666-08-29 10:33:46.881536"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2874,
+      6,
+      4,
+      hour=23,
+      minute=58,
+      second=45,
+      microsecond=10996,
+    ),
+    @datetime.TimeDelta::new(days=-3066, seconds=37191, microseconds=325410),
+    Some("2866-01-12 10:18:36.336406"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1986,
+      1,
+      23,
+      hour=12,
+      minute=9,
+      second=13,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1847, seconds=54353, microseconds=673603),
+    Some("1981-01-03 03:15:06.673603"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6348,
+      1,
+      17,
+      hour=22,
+      minute=24,
+      second=32,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1437, seconds=41453, microseconds=695362),
+    Some("6351-12-25 09:55:25.695362"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1969,
+      6,
+      17,
+      hour=21,
+      minute=8,
+      second=8,
+      microsecond=246456,
+    ),
+    @datetime.TimeDelta::new(days=-2248, seconds=2858, microseconds=216662),
+    Some("1963-04-22 21:55:46.463118"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1901,
+      12,
+      14,
+      hour=8,
+      minute=39,
+      second=3,
+      microsecond=259036,
+    ),
+    @datetime.TimeDelta::new(days=-821, seconds=55034, microseconds=557326),
+    Some("1899-09-14 23:56:17.816362"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2006,
+      3,
+      26,
+      hour=4,
+      minute=37,
+      second=22,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=417, seconds=6511, microseconds=961720),
+    Some("2007-05-17 06:25:53.961720"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2021,
+      1,
+      8,
+      hour=5,
+      minute=7,
+      second=42,
+      microsecond=26179,
+    ),
+    @datetime.TimeDelta::new(days=-4351, seconds=37818, microseconds=56451),
+    Some("2009-02-09 15:38:00.082630"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      9706,
+      4,
+      15,
+      hour=6,
+      minute=33,
+      second=49,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3391, seconds=47476, microseconds=919294),
+    Some("9715-07-28 19:45:05.919294"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1979,
+      2,
+      15,
+      hour=2,
+      minute=37,
+      second=5,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=3903, seconds=25321, microseconds=357174),
+    Some("1989-10-23 09:39:06.357174"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2016,
+      9,
+      19,
+      hour=3,
+      minute=47,
+      second=5,
+      microsecond=873401,
+    ),
+    @datetime.TimeDelta::new(days=143, seconds=51695, microseconds=378976),
+    Some("2017-02-09 18:08:41.252377"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7796,
+      8,
+      2,
+      hour=22,
+      minute=41,
+      second=43,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-1892, seconds=61876, microseconds=343219),
+    Some("7791-05-30 15:52:59.343219"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1948,
+      10,
+      2,
+      hour=22,
+      minute=51,
+      second=33,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-3682, seconds=19017, microseconds=882080),
+    Some("1938-09-04 04:08:30.882080"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3996,
+      8,
+      28,
+      hour=21,
+      minute=16,
+      second=12,
+      microsecond=709832,
+    ),
+    @datetime.TimeDelta::new(days=292, seconds=43079, microseconds=982001),
+    Some("3997-06-17 09:14:12.691833"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7613,
+      8,
+      17,
+      hour=20,
+      minute=12,
+      second=39,
+      microsecond=279552,
+    ),
+    @datetime.TimeDelta::new(days=4840, seconds=13348, microseconds=537817),
+    Some("7626-11-17 23:55:07.817369"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8512,
+      10,
+      10,
+      hour=9,
+      minute=9,
+      second=39,
+      microsecond=823969,
+    ),
+    @datetime.TimeDelta::new(days=1669, seconds=31768, microseconds=495090),
+    Some("8517-05-06 17:59:08.319059"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3346,
+      2,
+      24,
+      hour=20,
+      minute=26,
+      second=15,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1160, seconds=11014, microseconds=664828),
+    Some("3349-04-29 23:29:49.664828"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1039,
+      1,
+      9,
+      hour=22,
+      minute=0,
+      second=59,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=1921, seconds=61489, microseconds=499871),
+    Some("1044-04-14 15:05:48.499871"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2073,
+      5,
+      8,
+      hour=15,
+      minute=1,
+      second=49,
+      microsecond=75670,
+    ),
+    @datetime.TimeDelta::new(days=1258, seconds=72643, microseconds=203790),
+    Some("2076-10-18 11:12:32.279460"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2048,
+      10,
+      27,
+      hour=22,
+      minute=26,
+      second=7,
+      microsecond=687380,
+    ),
+    @datetime.TimeDelta::new(days=-1142, seconds=53857, microseconds=614621),
+    Some("2045-09-12 13:23:45.302001"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1512,
+      5,
+      5,
+      hour=5,
+      minute=3,
+      second=50,
+      microsecond=878540,
+    ),
+    @datetime.TimeDelta::new(days=-4682, seconds=69814, microseconds=766614),
+    Some("1499-07-11 00:27:25.645154"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      8031,
+      11,
+      26,
+      hour=12,
+      minute=15,
+      second=10,
+      microsecond=865286,
+    ),
+    @datetime.TimeDelta::new(days=-3571, seconds=67388, microseconds=128279),
+    Some("8022-02-16 06:58:18.993565"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      4279,
+      8,
+      28,
+      hour=22,
+      minute=0,
+      second=8,
+      microsecond=639661,
+    ),
+    @datetime.TimeDelta::new(days=-1460, seconds=41860, microseconds=601451),
+    Some("4275-08-30 09:37:49.241112"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      105,
+      7,
+      10,
+      hour=19,
+      minute=46,
+      second=43,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-2524, seconds=57347, microseconds=246940),
+    Some("0098-08-12 11:42:30.246940"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2010,
+      3,
+      22,
+      hour=11,
+      minute=19,
+      second=32,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=397, seconds=21999, microseconds=592357),
+    Some("2011-04-23 17:26:11.592357"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3982,
+      6,
+      11,
+      hour=17,
+      minute=36,
+      second=2,
+      microsecond=507812,
+    ),
+    @datetime.TimeDelta::new(days=3394, seconds=83933, microseconds=58126),
+    Some("3991-09-27 16:54:55.565938"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6499,
+      7,
+      22,
+      hour=9,
+      minute=37,
+      second=34,
+      microsecond=383600,
+    ),
+    @datetime.TimeDelta::new(days=-3024, seconds=41542, microseconds=469230),
+    Some("6491-04-11 21:09:56.852830"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      1925,
+      4,
+      5,
+      hour=14,
+      minute=31,
+      second=26,
+      microsecond=416790,
+    ),
+    @datetime.TimeDelta::new(days=-3624, seconds=53703, microseconds=408483),
+    Some("1915-05-05 05:26:29.825273"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2914,
+      5,
+      3,
+      hour=17,
+      minute=13,
+      second=49,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-25, seconds=3033, microseconds=148996),
+    Some("2914-04-08 18:04:22.148996"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      7802,
+      4,
+      22,
+      hour=22,
+      minute=44,
+      second=0,
+      microsecond=648933,
+    ),
+    @datetime.TimeDelta::new(days=1834, seconds=46411, microseconds=943001),
+    Some("7807-05-01 11:37:32.591934"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      2065,
+      10,
+      21,
+      hour=18,
+      minute=24,
+      second=21,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=4964, seconds=17741, microseconds=572491),
+    Some("2079-05-25 23:20:02.572491"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      3266,
+      8,
+      5,
+      hour=14,
+      minute=17,
+      second=32,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=770, seconds=35027, microseconds=733766),
+    Some("3268-09-14 00:01:19.733766"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      797,
+      2,
+      10,
+      hour=17,
+      minute=18,
+      second=22,
+      microsecond=986538,
+    ),
+    @datetime.TimeDelta::new(days=-525, seconds=12578, microseconds=864560),
+    Some("0795-09-04 20:48:01.851098"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6176,
+      12,
+      17,
+      hour=9,
+      minute=16,
+      second=9,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=-146, seconds=54320, microseconds=160436),
+    Some("6176-07-25 00:21:29.160436"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      645,
+      10,
+      26,
+      hour=1,
+      minute=34,
+      second=39,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2618, seconds=81437, microseconds=341606),
+    Some("0652-12-27 00:11:56.341606"),
+  )
+  check_add(
+    @datetime.DateTime::new(
+      6968,
+      9,
+      17,
+      hour=22,
+      minute=55,
+      second=29,
+      microsecond=0,
+    ),
+    @datetime.TimeDelta::new(days=2891, seconds=30954, microseconds=785632),
+    Some("6976-08-18 07:31:23.785632"),
   )
 }
 
@@ -9376,4803 +20774,4803 @@ test "cpython: datetime + timedelta" {
 test "cpython: aware datetime difference and ordering" {
   check_diff(
     @datetime.DateTime::new(
-      743,
-      2,
-      14,
-      hour=8,
-      minute=55,
-      second=46,
-      microsecond=212603,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-861)),
-    ),
-    @datetime.DateTime::new(
-      5082,
-      3,
-      5,
-      hour=5,
-      minute=54,
-      second=52,
-      microsecond=693536,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-509)),
-    ),
-    "datetime.timedelta(days=-1584807, seconds=31973, microseconds=519067)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1942,
-      4,
-      11,
-      hour=0,
-      minute=0,
-      second=18,
-      microsecond=61355,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=530)),
-    ),
-    @datetime.DateTime::new(
-      2035,
-      10,
-      3,
-      hour=1,
-      minute=22,
-      second=18,
-      microsecond=305803,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-641)),
-    ),
-    "datetime.timedelta(days=-34144, seconds=11219, microseconds=755552)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5033,
-      5,
-      9,
-      hour=6,
-      minute=18,
-      second=57,
-      microsecond=534141,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=663)),
-    ),
-    @datetime.DateTime::new(
-      1976,
-      11,
-      20,
-      hour=3,
-      minute=2,
-      second=49,
-      microsecond=947388,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1318)),
-    ),
-    "datetime.timedelta(days=1116351, seconds=51067, microseconds=586753)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8509,
-      1,
-      29,
-      hour=15,
-      minute=37,
-      second=20,
-      microsecond=601127,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-170)),
-    ),
-    @datetime.DateTime::new(
-      3686,
-      4,
-      21,
-      hour=16,
-      minute=25,
-      second=13,
-      microsecond=192623,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=685)),
-    ),
-    "datetime.timedelta(days=1761482, seconds=48427, microseconds=408504)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9204,
-      5,
-      2,
-      hour=12,
-      minute=24,
-      second=7,
-      microsecond=22166,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-98)),
-    ),
-    @datetime.DateTime::new(
-      9138,
-      1,
-      17,
-      hour=6,
-      minute=9,
-      second=23,
-      microsecond=974919,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1001)),
-    ),
-    "datetime.timedelta(days=24213, seconds=2023, microseconds=47247)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      549,
-      4,
-      14,
-      hour=11,
-      minute=17,
-      second=26,
-      microsecond=508308,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-182)),
-    ),
-    @datetime.DateTime::new(
-      511,
-      7,
-      30,
-      hour=21,
-      minute=1,
-      second=46,
-      microsecond=196071,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-454)),
-    ),
-    "datetime.timedelta(days=13772, seconds=35020, microseconds=312237)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7197,
-      10,
-      29,
-      hour=1,
-      minute=6,
-      second=50,
-      microsecond=933467,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-47)),
-    ),
-    @datetime.DateTime::new(
-      2060,
-      2,
-      9,
-      hour=0,
-      minute=30,
-      second=24,
-      microsecond=182797,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1185)),
-    ),
-    "datetime.timedelta(days=1876512, seconds=20306, microseconds=750670)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1909,
-      8,
-      31,
-      hour=0,
-      minute=48,
-      second=25,
-      microsecond=207388,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=262)),
-    ),
-    @datetime.DateTime::new(
-      1982,
-      7,
-      3,
-      hour=8,
-      minute=21,
-      second=18,
-      microsecond=250897,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-549)),
-    ),
-    "datetime.timedelta(days=-26605, seconds=10566, microseconds=956491)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4095,
-      4,
-      13,
-      hour=9,
-      minute=35,
-      second=41,
-      microsecond=111158,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1299)),
-    ),
-    @datetime.DateTime::new(
-      5538,
-      1,
-      25,
-      hour=7,
-      minute=54,
-      second=40,
-      microsecond=924456,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-853)),
-    ),
-    "datetime.timedelta(days=-526968, seconds=49740, microseconds=186702)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2002,
-      1,
-      16,
-      hour=14,
-      minute=48,
-      second=26,
-      microsecond=993742,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1051)),
-    ),
-    @datetime.DateTime::new(
-      1107,
-      5,
-      27,
-      hour=9,
-      minute=6,
-      second=26,
-      microsecond=779104,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-536)),
-    ),
-    "datetime.timedelta(days=326762, seconds=51420, microseconds=214638)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2264,
-      9,
-      22,
-      hour=12,
-      minute=51,
-      second=44,
-      microsecond=863394,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-104)),
-    ),
-    @datetime.DateTime::new(
-      8752,
-      11,
-      2,
-      hour=21,
-      minute=4,
-      second=40,
-      microsecond=25450,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=575)),
-    ),
-    "datetime.timedelta(days=-2369734, seconds=11164, microseconds=837944)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7324,
-      6,
-      29,
-      hour=16,
-      minute=46,
-      second=56,
-      microsecond=875163,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=848)),
-    ),
-    @datetime.DateTime::new(
-      1947,
-      10,
-      10,
-      hour=1,
-      minute=6,
-      second=30,
-      microsecond=230012,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-149)),
-    ),
-    "datetime.timedelta(days=1963806, seconds=83006, microseconds=645151)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1924,
-      3,
-      24,
-      hour=19,
-      minute=57,
-      second=40,
-      microsecond=891490,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-878)),
-    ),
-    @datetime.DateTime::new(
-      8273,
-      4,
-      22,
-      hour=3,
-      minute=38,
-      second=26,
-      microsecond=84388,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1353)),
-    ),
-    "datetime.timedelta(days=-2318954, seconds=30254, microseconds=807102)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1548,
-      1,
-      16,
-      hour=15,
-      minute=14,
-      second=57,
-      microsecond=520139,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1037)),
-    ),
-    @datetime.DateTime::new(
-      5973,
-      3,
-      30,
-      hour=11,
-      minute=36,
-      second=26,
-      microsecond=4838,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-453)),
-    ),
-    "datetime.timedelta(days=-1616273, seconds=10111, microseconds=515301)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1299,
-      4,
+      5514,
       12,
-      hour=17,
-      minute=21,
-      second=2,
-      microsecond=193264,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1178)),
-    ),
-    @datetime.DateTime::new(
-      5213,
-      11,
-      21,
-      hour=6,
-      minute=59,
-      second=22,
-      microsecond=224373,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-464)),
-    ),
-    "datetime.timedelta(days=-1429782, seconds=80139, microseconds=968891)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4252,
-      6,
-      17,
-      hour=6,
-      minute=37,
-      second=54,
-      microsecond=685793,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1226)),
-    ),
-    @datetime.DateTime::new(
-      9511,
-      9,
-      7,
-      hour=8,
-      minute=56,
-      second=58,
-      microsecond=807471,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=958)),
-    ),
-    "datetime.timedelta(days=-1920890, seconds=36295, microseconds=878322)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2064,
-      9,
-      26,
-      hour=12,
-      minute=32,
-      second=57,
-      microsecond=234209,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-678)),
-    ),
-    @datetime.DateTime::new(
-      6564,
-      10,
-      6,
-      hour=11,
-      minute=44,
-      second=56,
-      microsecond=498772,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1053)),
-    ),
-    "datetime.timedelta(days=-1643600, seconds=20340, microseconds=735437)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2035,
-      12,
-      9,
-      hour=19,
-      minute=34,
-      second=47,
-      microsecond=819879,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=202)),
-    ),
-    @datetime.DateTime::new(
-      7318,
-      11,
-      22,
-      hour=5,
-      minute=9,
-      second=52,
-      microsecond=18193,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-207)),
-    ),
-    "datetime.timedelta(days=-1929559, seconds=27355, microseconds=801686)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2009,
-      10,
-      9,
-      hour=21,
-      minute=40,
-      second=41,
-      microsecond=133361,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-395)),
-    ),
-    @datetime.DateTime::new(
-      929,
-      5,
-      31,
-      hour=0,
-      minute=52,
-      second=46,
-      microsecond=392204,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=504)),
-    ),
-    "datetime.timedelta(days=394594, seconds=42414, microseconds=741157)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2076,
-      5,
-      21,
-      hour=10,
-      minute=3,
-      second=19,
-      microsecond=343708,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-811)),
-    ),
-    @datetime.DateTime::new(
-      7068,
-      10,
-      6,
-      hour=2,
-      minute=58,
-      second=19,
-      microsecond=232560,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-655)),
-    ),
-    "datetime.timedelta(days=-1823428, seconds=34860, microseconds=111148)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6389,
-      2,
-      4,
-      hour=18,
-      minute=50,
-      second=1,
-      microsecond=538679,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1336)),
-    ),
-    @datetime.DateTime::new(
-      2059,
-      5,
-      4,
-      hour=20,
-      minute=18,
-      second=43,
-      microsecond=669816,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-408)),
-    ),
-    "datetime.timedelta(days=1581409, seconds=62837, microseconds=868863)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8198,
-      3,
-      20,
-      hour=5,
-      minute=7,
-      second=53,
-      microsecond=292769,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-345)),
-    ),
-    @datetime.DateTime::new(
-      2026,
-      5,
-      9,
-      hour=0,
-      minute=50,
-      second=0,
-      microsecond=393936,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-987)),
-    ),
-    "datetime.timedelta(days=2254226, seconds=63352, microseconds=898833)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8266,
-      12,
-      12,
-      hour=10,
-      minute=33,
-      second=10,
-      microsecond=292649,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=184)),
-    ),
-    @datetime.DateTime::new(
-      1251,
-      2,
-      6,
-      hour=1,
-      minute=41,
-      second=3,
-      microsecond=705405,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1306)),
-    ),
-    "datetime.timedelta(days=2562486, seconds=12846, microseconds=587244)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1926,
-      7,
-      22,
-      hour=18,
-      minute=2,
-      second=15,
-      microsecond=809241,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-886)),
-    ),
-    @datetime.DateTime::new(
-      3964,
-      2,
-      20,
-      hour=16,
-      minute=34,
-      second=34,
-      microsecond=940817,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1372)),
-    ),
-    "datetime.timedelta(days=-744211, seconds=54340, microseconds=868424)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7358,
-      2,
-      13,
-      hour=13,
-      minute=42,
-      second=1,
-      microsecond=524439,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=465)),
-    ),
-    @datetime.DateTime::new(
-      6000,
-      3,
-      14,
-      hour=2,
-      minute=54,
-      second=22,
-      microsecond=587431,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=706)),
-    ),
-    "datetime.timedelta(days=495970, seconds=53318, microseconds=937008)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4808,
-      9,
-      14,
-      hour=5,
-      minute=26,
-      second=25,
-      microsecond=135141,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=629)),
-    ),
-    @datetime.DateTime::new(
-      2045,
-      11,
-      8,
-      hour=23,
-      minute=16,
-      second=12,
-      microsecond=446505,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-367)),
-    ),
-    "datetime.timedelta(days=1009108, seconds=48852, microseconds=688636)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9509,
-      6,
-      30,
-      hour=18,
-      minute=40,
-      second=5,
-      microsecond=664533,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=549)),
-    ),
-    @datetime.DateTime::new(
-      7756,
-      10,
-      6,
-      hour=15,
-      minute=5,
-      second=23,
-      microsecond=895866,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-362)),
-    ),
-    "datetime.timedelta(days=640170, seconds=44621, microseconds=768667)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9539,
-      6,
-      4,
-      hour=5,
-      minute=41,
-      second=44,
-      microsecond=468816,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-352)),
-    ),
-    @datetime.DateTime::new(
-      4324,
-      7,
-      10,
-      hour=21,
-      minute=3,
-      second=33,
-      microsecond=160331,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=501)),
-    ),
-    "datetime.timedelta(days=1904702, seconds=82271, microseconds=308485)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2060,
-      10,
-      16,
-      hour=14,
-      minute=41,
-      second=38,
-      microsecond=380129,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=324)),
-    ),
-    @datetime.DateTime::new(
-      9578,
-      12,
-      24,
-      hour=2,
-      minute=15,
-      second=27,
-      microsecond=539345,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=206)),
-    ),
-    "datetime.timedelta(days=-2745961, seconds=37690, microseconds=840784)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8012,
-      5,
-      10,
-      hour=13,
-      minute=19,
-      second=54,
-      microsecond=992474,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=742)),
-    ),
-    @datetime.DateTime::new(
-      8839,
-      2,
-      14,
-      hour=14,
-      minute=45,
-      second=34,
-      microsecond=958286,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=620)),
-    ),
-    "datetime.timedelta(days=-301971, seconds=73940, microseconds=34188)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9421,
-      2,
-      21,
-      hour=4,
-      minute=59,
-      second=26,
-      microsecond=366135,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=502)),
-    ),
-    @datetime.DateTime::new(
-      4426,
-      12,
-      17,
-      hour=6,
-      minute=6,
-      second=14,
-      microsecond=201284,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-490)),
-    ),
-    "datetime.timedelta(days=1824086, seconds=22872, microseconds=164851)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1099,
-      3,
-      3,
-      hour=10,
-      minute=10,
-      second=33,
-      microsecond=470517,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1153)),
-    ),
-    @datetime.DateTime::new(
-      1958,
-      2,
-      8,
-      hour=6,
-      minute=58,
-      second=32,
-      microsecond=344082,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-602)),
-    ),
-    "datetime.timedelta(days=-313722, seconds=79021, microseconds=126435)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4588,
-      5,
-      17,
-      hour=9,
-      minute=43,
-      second=48,
-      microsecond=898250,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-990)),
-    ),
-    @datetime.DateTime::new(
-      1720,
-      11,
-      23,
-      hour=19,
-      minute=22,
-      second=59,
-      microsecond=609372,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=19)),
-    ),
-    "datetime.timedelta(days=1047326, seconds=25789, microseconds=288878)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6581,
-      6,
-      4,
-      hour=10,
-      minute=29,
-      second=44,
-      microsecond=664061,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-300)),
-    ),
-    @datetime.DateTime::new(
-      9763,
-      1,
-      1,
-      hour=0,
-      minute=6,
-      second=46,
-      microsecond=897272,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-336)),
-    ),
-    "datetime.timedelta(days=-1162047, seconds=35217, microseconds=766789)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5435,
-      12,
-      2,
-      hour=1,
-      minute=13,
-      second=33,
-      microsecond=199495,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=659)),
-    ),
-    @datetime.DateTime::new(
-      9887,
-      2,
-      3,
-      hour=2,
-      minute=53,
-      second=7,
-      microsecond=584974,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1348)),
-    ),
-    "datetime.timedelta(days=-1625760, seconds=46405, microseconds=614521)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9548,
-      3,
-      16,
-      hour=21,
-      minute=3,
-      second=22,
-      microsecond=358299,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-418)),
-    ),
-    @datetime.DateTime::new(
-      2022,
-      1,
-      17,
-      hour=5,
-      minute=28,
-      second=13,
-      microsecond=823237,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-717)),
-    ),
-    "datetime.timedelta(days=2748873, seconds=38168, microseconds=535062)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4629,
-      10,
-      17,
-      hour=2,
-      minute=51,
-      second=54,
-      microsecond=743385,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1314)),
-    ),
-    @datetime.DateTime::new(
-      2011,
-      5,
-      3,
-      hour=17,
-      minute=51,
-      second=12,
-      microsecond=79712,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-840)),
-    ),
-    "datetime.timedelta(days=956371, seconds=60882, microseconds=663673)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2066,
-      4,
-      27,
-      hour=16,
-      minute=34,
-      second=50,
-      microsecond=163801,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=395)),
-    ),
-    @datetime.DateTime::new(
-      1994,
-      1,
-      27,
-      hour=10,
-      minute=26,
-      second=12,
-      microsecond=583103,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=505)),
-    ),
-    "datetime.timedelta(days=26388, seconds=28717, microseconds=580698)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8756,
-      4,
-      18,
-      hour=4,
-      minute=40,
-      second=12,
-      microsecond=307793,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=158)),
-    ),
-    @datetime.DateTime::new(
-      2049,
-      4,
-      7,
-      hour=18,
-      minute=22,
-      second=40,
-      microsecond=39687,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=644)),
-    ),
-    "datetime.timedelta(days=2449691, seconds=66212, microseconds=268106)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9023,
-      4,
-      1,
-      hour=2,
-      minute=8,
-      second=35,
-      microsecond=472219,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=700)),
-    ),
-    @datetime.DateTime::new(
-      5674,
-      12,
-      25,
-      hour=2,
-      minute=38,
-      second=26,
-      microsecond=137234,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-373)),
-    ),
-    "datetime.timedelta(days=1222927, seconds=20229, microseconds=334985)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1962,
-      5,
-      16,
-      hour=9,
-      minute=33,
-      second=44,
-      microsecond=846731,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=60)),
-    ),
-    @datetime.DateTime::new(
-      2085,
-      3,
-      16,
-      hour=13,
-      minute=17,
-      second=47,
-      microsecond=50240,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-62)),
-    ),
-    "datetime.timedelta(days=-44866, seconds=65637, microseconds=796491)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9012,
-      3,
-      14,
-      hour=20,
-      minute=46,
-      second=25,
-      microsecond=696607,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=480)),
-    ),
-    @datetime.DateTime::new(
-      544,
-      2,
-      18,
-      hour=10,
-      minute=57,
-      second=6,
-      microsecond=461230,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=66)),
-    ),
-    "datetime.timedelta(days=3092898, seconds=10519, microseconds=235377)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2040,
-      3,
-      27,
-      hour=2,
-      minute=23,
-      second=43,
-      microsecond=287192,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1102)),
-    ),
-    @datetime.DateTime::new(
-      2013,
-      3,
-      7,
-      hour=21,
-      minute=32,
-      second=59,
-      microsecond=361250,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=932)),
-    ),
-    "datetime.timedelta(days=9882, seconds=53083, microseconds=925942)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1992,
-      12,
-      29,
-      hour=16,
-      minute=25,
-      second=54,
-      microsecond=255899,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1189)),
-    ),
-    @datetime.DateTime::new(
-      3280,
-      11,
-      13,
-      hour=10,
-      minute=39,
-      second=54,
-      microsecond=156092,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1244)),
-    ),
-    "datetime.timedelta(days=-470387, seconds=24060, microseconds=99807)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6045,
-      5,
-      2,
-      hour=14,
-      minute=42,
-      second=58,
-      microsecond=17881,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=838)),
-    ),
-    @datetime.DateTime::new(
-      5867,
-      4,
-      7,
-      hour=3,
-      minute=32,
-      second=2,
-      microsecond=309195,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=902)),
-    ),
-    "datetime.timedelta(days=65039, seconds=44095, microseconds=708686)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2013,
-      1,
-      22,
-      hour=8,
-      minute=23,
-      second=22,
-      microsecond=524764,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-642)),
-    ),
-    @datetime.DateTime::new(
-      1094,
-      5,
-      21,
-      hour=15,
-      minute=11,
-      second=3,
-      microsecond=921981,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=961)),
-    ),
-    "datetime.timedelta(days=335539, seconds=71718, microseconds=602783)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5068,
-      10,
-      24,
-      hour=16,
-      minute=14,
-      second=51,
-      microsecond=645482,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-559)),
-    ),
-    @datetime.DateTime::new(
-      3648,
-      4,
-      26,
-      hour=17,
-      minute=0,
-      second=48,
-      microsecond=615078,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=361)),
-    ),
-    "datetime.timedelta(days=518825, seconds=52443, microseconds=30404)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9045,
-      6,
       19,
-      hour=20,
-      minute=34,
-      second=17,
-      microsecond=691923,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-750)),
-    ),
-    @datetime.DateTime::new(
-      6042,
-      7,
-      3,
-      hour=23,
-      minute=20,
-      second=29,
-      microsecond=410777,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=323)),
-    ),
-    "datetime.timedelta(days=1096809, seconds=54408, microseconds=281146)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2218,
-      4,
-      24,
-      hour=3,
-      minute=34,
-      second=59,
-      microsecond=841236,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=632)),
-    ),
-    @datetime.DateTime::new(
-      2996,
-      8,
-      24,
-      hour=9,
-      minute=24,
-      second=51,
-      microsecond=246152,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-88)),
-    ),
-    "datetime.timedelta(days=-284283, seconds=22208, microseconds=595084)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8109,
-      6,
-      13,
-      hour=13,
-      minute=12,
-      second=22,
-      microsecond=742804,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-911)),
-    ),
-    @datetime.DateTime::new(
-      8380,
-      9,
-      14,
-      hour=7,
-      minute=41,
-      second=12,
-      microsecond=32501,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-817)),
-    ),
-    "datetime.timedelta(days=-99074, seconds=25510, microseconds=710303)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4427,
-      9,
-      20,
-      hour=3,
-      minute=14,
-      second=55,
-      microsecond=84264,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=685)),
-    ),
-    @datetime.DateTime::new(
-      1930,
-      3,
-      18,
-      hour=19,
-      minute=48,
-      second=29,
-      microsecond=512641,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=211)),
-    ),
-    "datetime.timedelta(days=912195, seconds=84745, microseconds=571623)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1995,
-      11,
-      9,
-      hour=0,
-      minute=12,
-      second=39,
-      microsecond=343556,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=296)),
-    ),
-    @datetime.DateTime::new(
-      3097,
-      3,
-      30,
-      hour=12,
-      minute=21,
-      second=1,
-      microsecond=381421,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=984)),
-    ),
-    "datetime.timedelta(days=-402275, seconds=83977, microseconds=962135)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2006,
-      1,
-      13,
-      hour=12,
-      minute=14,
-      second=38,
-      microsecond=461014,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-267)),
-    ),
-    @datetime.DateTime::new(
-      1909,
-      11,
-      29,
-      hour=9,
-      minute=21,
-      second=10,
-      microsecond=666571,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-861)),
-    ),
-    "datetime.timedelta(days=35108, seconds=61167, microseconds=794443)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8256,
-      12,
-      18,
-      hour=5,
-      minute=2,
-      second=10,
-      microsecond=951350,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1377)),
-    ),
-    @datetime.DateTime::new(
-      952,
-      7,
-      2,
-      hour=5,
-      minute=53,
-      second=6,
-      microsecond=637359,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1285)),
-    ),
-    "datetime.timedelta(days=2667899, seconds=77824, microseconds=313991)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2063,
-      10,
-      12,
-      hour=9,
-      minute=33,
-      second=56,
-      microsecond=294782,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-555)),
-    ),
-    @datetime.DateTime::new(
-      4812,
-      11,
-      11,
-      hour=12,
-      minute=53,
-      second=47,
-      microsecond=329608,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=50)),
-    ),
-    "datetime.timedelta(days=-1004082, seconds=24308, microseconds=965174)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5310,
-      7,
-      8,
-      hour=0,
-      minute=56,
-      second=14,
-      microsecond=876838,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1034)),
-    ),
-    @datetime.DateTime::new(
-      3428,
-      8,
-      29,
-      hour=22,
-      minute=59,
-      second=27,
-      microsecond=501473,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=179)),
-    ),
-    "datetime.timedelta(days=687332, seconds=42107, microseconds=375365)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2085,
-      5,
-      11,
-      hour=18,
-      minute=42,
-      second=17,
-      microsecond=863454,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=168)),
-    ),
-    @datetime.DateTime::new(
-      9973,
-      2,
-      10,
-      hour=5,
-      minute=45,
-      second=51,
-      microsecond=880281,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=45)),
-    ),
-    "datetime.timedelta(days=-2880942, seconds=39205, microseconds=983173)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6567,
-      10,
-      5,
-      hour=5,
-      minute=21,
-      second=35,
-      microsecond=92905,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1230)),
-    ),
-    @datetime.DateTime::new(
-      7235,
-      9,
-      14,
-      hour=2,
-      minute=29,
-      second=42,
-      microsecond=797939,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-629)),
-    ),
-    "datetime.timedelta(days=-243963, seconds=71572, microseconds=294966)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2059,
-      11,
-      2,
-      hour=8,
-      minute=24,
-      second=51,
-      microsecond=923052,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1092)),
-    ),
-    @datetime.DateTime::new(
-      3546,
-      9,
-      6,
-      hour=20,
-      minute=31,
-      second=2,
-      microsecond=801696,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-533)),
-    ),
-    "datetime.timedelta(days=-543060, seconds=31729, microseconds=121356)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8033,
-      3,
-      15,
-      hour=20,
-      minute=51,
-      second=59,
-      microsecond=407957,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=278)),
-    ),
-    @datetime.DateTime::new(
-      671,
-      9,
-      1,
-      hour=5,
-      minute=37,
-      second=22,
-      microsecond=960530,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=671)),
-    ),
-    "datetime.timedelta(days=2688746, seconds=78456, microseconds=447427)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8787,
-      12,
-      31,
-      hour=18,
-      minute=38,
-      second=52,
-      microsecond=401451,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1235)),
-    ),
-    @datetime.DateTime::new(
-      8512,
-      7,
-      27,
-      hour=0,
-      minute=27,
-      second=30,
-      microsecond=327176,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1229)),
-    ),
-    "datetime.timedelta(days=100598, seconds=65842, microseconds=74275)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4542,
-      7,
-      28,
-      hour=5,
-      minute=22,
-      second=6,
-      microsecond=714308,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1237)),
-    ),
-    @datetime.DateTime::new(
-      9987,
-      9,
-      23,
       hour=16,
-      minute=50,
-      second=57,
-      microsecond=976229,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1241)),
-    ),
-    "datetime.timedelta(days=-1988805, seconds=69188, microseconds=738079)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8926,
-      3,
-      4,
-      hour=18,
-      minute=39,
-      second=14,
-      microsecond=214988,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1129)),
+      minute=49,
+      second=37,
+      microsecond=776261,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=204)),
     ),
     @datetime.DateTime::new(
-      1207,
-      9,
-      24,
-      hour=11,
-      minute=6,
-      second=54,
-      microsecond=801733,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-802)),
-    ),
-    "datetime.timedelta(days=2819101, seconds=84079, microseconds=413255)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      184,
-      12,
-      25,
-      hour=12,
-      minute=15,
-      second=2,
-      microsecond=448578,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=514)),
-    ),
-    @datetime.DateTime::new(
-      1981,
-      3,
-      14,
-      hour=10,
-      minute=17,
-      second=26,
-      microsecond=994770,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=655)),
-    ),
-    "datetime.timedelta(days=-656054, seconds=15515, microseconds=453808)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6208,
-      6,
-      12,
-      hour=23,
-      minute=51,
-      second=16,
-      microsecond=256405,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=429)),
-    ),
-    @datetime.DateTime::new(
-      1939,
-      2,
-      17,
-      hour=0,
-      minute=3,
-      second=45,
-      microsecond=207260,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=115)),
-    ),
-    "datetime.timedelta(days=1559336, seconds=66811, microseconds=49145)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1959,
-      4,
+      5766,
       8,
+      18,
       hour=11,
-      minute=54,
+      minute=23,
+      second=35,
+      microsecond=555084,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1114)),
+    ),
+    "datetime.timedelta(days=-91919, seconds=74162, microseconds=221177)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3685,
+      5,
+      21,
+      hour=17,
+      minute=51,
       second=36,
-      microsecond=575488,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1104)),
+      microsecond=535080,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-917)),
     ),
     @datetime.DateTime::new(
-      5565,
-      4,
-      19,
-      hour=6,
-      minute=0,
-      second=42,
-      microsecond=394368,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=344)),
-    ),
-    "datetime.timedelta(days=-1317075, seconds=21714, microseconds=181120)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6547,
-      10,
-      22,
-      hour=22,
-      minute=29,
-      second=8,
-      microsecond=533668,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=579)),
-    ),
-    @datetime.DateTime::new(
-      1957,
-      3,
-      8,
-      hour=17,
-      minute=32,
-      second=41,
-      microsecond=909291,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-534)),
-    ),
-    "datetime.timedelta(days=1676690, seconds=37406, microseconds=624377)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1118,
-      12,
-      4,
-      hour=11,
-      minute=13,
-      second=17,
-      microsecond=319462,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=404)),
-    ),
-    @datetime.DateTime::new(
-      1938,
-      6,
-      18,
-      hour=8,
-      minute=22,
-      second=31,
-      microsecond=190536,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-75)),
-    ),
-    "datetime.timedelta(days=-299331, seconds=67906, microseconds=128926)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7570,
-      2,
-      18,
-      hour=3,
-      minute=13,
-      second=31,
-      microsecond=918954,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=484)),
-    ),
-    @datetime.DateTime::new(
-      7483,
-      9,
-      8,
-      hour=19,
-      minute=36,
-      second=56,
-      microsecond=566939,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-764)),
-    ),
-    "datetime.timedelta(days=31572, seconds=38915, microseconds=352015)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6884,
-      8,
-      14,
-      hour=3,
-      minute=34,
-      second=24,
-      microsecond=980739,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1225)),
-    ),
-    @datetime.DateTime::new(
-      2094,
-      7,
-      25,
-      hour=10,
-      minute=59,
-      second=42,
-      microsecond=282763,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-452)),
-    ),
-    "datetime.timedelta(days=1749530, seconds=45462, microseconds=697976)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2527,
-      9,
-      15,
-      hour=14,
-      minute=22,
-      second=6,
-      microsecond=421435,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=858)),
-    ),
-    @datetime.DateTime::new(
-      4269,
+      5422,
       1,
       12,
-      hour=1,
-      minute=23,
-      second=31,
-      microsecond=301886,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-171)),
-    ),
-    "datetime.timedelta(days=-636008, seconds=71375, microseconds=119549)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2045,
-      8,
-      16,
-      hour=22,
-      minute=29,
-      second=20,
-      microsecond=647440,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1316)),
-    ),
-    @datetime.DateTime::new(
-      8370,
-      10,
-      19,
       hour=16,
-      minute=48,
-      second=34,
-      microsecond=695023,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=223)),
-    ),
-    "datetime.timedelta(days=-2310223, seconds=41265, microseconds=952417)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      596,
-      4,
-      12,
-      hour=23,
-      minute=42,
-      second=8,
-      microsecond=132552,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1069)),
-    ),
-    @datetime.DateTime::new(
-      2013,
-      9,
-      7,
-      hour=20,
-      minute=3,
-      second=3,
-      microsecond=768354,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-863)),
-    ),
-    "datetime.timedelta(days=-517696, seconds=25504, microseconds=364198)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1937,
-      12,
-      17,
-      hour=20,
-      minute=40,
-      second=19,
-      microsecond=300305,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-255)),
-    ),
-    @datetime.DateTime::new(
-      2771,
-      3,
-      5,
-      hour=11,
-      minute=49,
-      second=31,
-      microsecond=709208,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1188)),
-    ),
-    "datetime.timedelta(days=-304324, seconds=32027, microseconds=591097)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9014,
-      11,
-      3,
-      hour=14,
-      minute=8,
-      second=39,
-      microsecond=715648,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=281)),
-    ),
-    @datetime.DateTime::new(
-      2301,
-      5,
-      11,
-      hour=2,
-      minute=1,
-      second=1,
-      microsecond=788496,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=936)),
-    ),
-    "datetime.timedelta(days=2452049, seconds=82957, microseconds=927152)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3552,
-      1,
-      17,
-      hour=17,
-      minute=44,
-      second=38,
-      microsecond=61952,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=624)),
-    ),
-    @datetime.DateTime::new(
-      8761,
-      2,
-      19,
-      hour=13,
-      minute=3,
-      second=22,
-      microsecond=453538,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=175)),
-    ),
-    "datetime.timedelta(days=-1902583, seconds=76335, microseconds=608414)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4162,
-      3,
-      18,
-      hour=20,
-      minute=6,
-      second=21,
-      microsecond=749697,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=223)),
-    ),
-    @datetime.DateTime::new(
-      6297,
-      11,
-      17,
-      hour=1,
-      minute=21,
-      second=41,
-      microsecond=301328,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=117)),
-    ),
-    "datetime.timedelta(days=-780037, seconds=61120, microseconds=448369)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      924,
-      12,
-      17,
-      hour=8,
-      minute=10,
-      second=29,
-      microsecond=228849,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-219)),
-    ),
-    @datetime.DateTime::new(
-      2082,
-      2,
-      6,
-      hour=3,
-      minute=23,
-      second=17,
-      microsecond=540072,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-697)),
-    ),
-    "datetime.timedelta(days=-422638, seconds=74951, microseconds=688777)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9829,
-      7,
-      20,
-      hour=11,
-      minute=13,
-      second=3,
-      microsecond=326039,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-772)),
-    ),
-    @datetime.DateTime::new(
-      2029,
-      2,
-      1,
-      hour=23,
-      minute=19,
-      second=55,
-      microsecond=387916,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-461)),
-    ),
-    "datetime.timedelta(days=2849059, seconds=61447, microseconds=938123)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1930,
-      8,
-      29,
-      hour=12,
-      minute=46,
-      second=31,
-      microsecond=666683,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-906)),
-    ),
-    @datetime.DateTime::new(
-      2024,
-      7,
-      21,
-      hour=8,
-      minute=42,
-      second=3,
-      microsecond=530244,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1297)),
-    ),
-    "datetime.timedelta(days=-34294, seconds=60448, microseconds=136439)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1944,
-      4,
-      18,
-      hour=9,
-      minute=23,
-      second=11,
-      microsecond=416230,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1331)),
-    ),
-    @datetime.DateTime::new(
-      1925,
-      12,
-      7,
-      hour=6,
-      minute=19,
-      second=24,
-      microsecond=941817,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=932)),
-    ),
-    "datetime.timedelta(days=6708, seconds=60406, microseconds=474413)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8226,
-      7,
-      25,
-      hour=1,
-      minute=20,
-      second=48,
-      microsecond=201073,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=839)),
-    ),
-    @datetime.DateTime::new(
-      5999,
-      11,
-      30,
-      hour=6,
-      minute=2,
-      second=30,
-      microsecond=232918,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=589)),
-    ),
-    "datetime.timedelta(days=813266, seconds=54497, microseconds=968155)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9984,
-      1,
-      26,
-      hour=17,
-      minute=20,
-      second=34,
-      microsecond=357042,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=555)),
-    ),
-    @datetime.DateTime::new(
-      4215,
-      7,
-      9,
-      hour=22,
-      minute=43,
-      second=51,
-      microsecond=349400,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=64)),
-    ),
-    "datetime.timedelta(days=2106919, seconds=37543, microseconds=7642)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9389,
-      11,
-      3,
-      hour=20,
-      minute=0,
-      second=31,
-      microsecond=4055,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-829)),
-    ),
-    @datetime.DateTime::new(
-      6931,
-      2,
-      23,
-      hour=0,
-      minute=41,
-      second=2,
-      microsecond=735805,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1065)),
-    ),
-    "datetime.timedelta(days=898022, seconds=10408, microseconds=268250)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2134,
-      4,
-      7,
-      hour=14,
-      minute=56,
-      second=5,
-      microsecond=230976,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-223)),
-    ),
-    @datetime.DateTime::new(
-      2061,
-      10,
-      1,
-      hour=0,
-      minute=46,
-      second=59,
-      microsecond=51617,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1206)),
-    ),
-    "datetime.timedelta(days=26484, seconds=78366, microseconds=179359)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3125,
-      3,
-      29,
-      hour=3,
-      minute=38,
-      second=24,
-      microsecond=818990,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1146)),
-    ),
-    @datetime.DateTime::new(
-      2918,
-      4,
-      1,
-      hour=9,
-      minute=28,
-      second=11,
-      microsecond=314621,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=913)),
-    ),
-    "datetime.timedelta(days=75601, seconds=51433, microseconds=504369)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2016,
-      5,
-      12,
-      hour=4,
-      minute=10,
-      second=45,
-      microsecond=385189,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-154)),
-    ),
-    @datetime.DateTime::new(
-      1903,
-      3,
-      14,
-      hour=22,
-      minute=1,
-      second=3,
-      microsecond=306385,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=685)),
-    ),
-    "datetime.timedelta(days=41332, seconds=72522, microseconds=78804)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1492,
-      9,
-      22,
-      hour=4,
-      minute=24,
-      second=44,
-      microsecond=986461,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=938)),
-    ),
-    @datetime.DateTime::new(
-      5380,
-      12,
-      28,
-      hour=22,
-      minute=34,
-      second=15,
-      microsecond=915044,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=484)),
-    ),
-    "datetime.timedelta(days=-1420162, seconds=80189, microseconds=71417)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2098,
-      9,
-      7,
-      hour=17,
-      minute=46,
-      second=26,
-      microsecond=746875,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1327)),
-    ),
-    @datetime.DateTime::new(
-      552,
-      3,
-      4,
-      hour=13,
-      minute=37,
-      second=44,
-      microsecond=908355,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=742)),
-    ),
-    "datetime.timedelta(days=564853, seconds=52661, microseconds=838520)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1969,
-      2,
-      22,
-      hour=16,
-      minute=30,
-      second=12,
-      microsecond=571478,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=336)),
-    ),
-    @datetime.DateTime::new(
-      9717,
-      10,
-      1,
-      hour=21,
-      minute=33,
-      second=53,
-      microsecond=237552,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-131)),
-    ),
-    "datetime.timedelta(days=-2830121, seconds=40159, microseconds=333926)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1979,
-      9,
-      7,
-      hour=4,
-      minute=46,
-      second=29,
-      microsecond=390368,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-949)),
-    ),
-    @datetime.DateTime::new(
-      4360,
-      4,
-      26,
-      hour=4,
-      minute=59,
-      second=9,
-      microsecond=688052,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-308)),
-    ),
-    "datetime.timedelta(days=-869509, seconds=37699, microseconds=702316)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1115,
-      1,
-      2,
-      hour=6,
-      minute=6,
-      second=3,
-      microsecond=220926,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-328)),
-    ),
-    @datetime.DateTime::new(
-      2029,
-      1,
-      9,
-      hour=7,
-      minute=50,
+      minute=7,
       second=32,
-      microsecond=412858,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-535)),
+      microsecond=872175,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=110)),
     ),
-    "datetime.timedelta(days=-333841, seconds=67710, microseconds=808068)",
+    "datetime.timedelta(days=-634296, seconds=67863, microseconds=662905)",
     -1,
   )
   check_diff(
     @datetime.DateTime::new(
-      9679,
-      4,
-      12,
-      hour=11,
-      minute=51,
-      second=40,
-      microsecond=58044,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1135)),
-    ),
-    @datetime.DateTime::new(
-      6680,
-      3,
-      24,
-      hour=10,
+      8867,
+      8,
+      8,
+      hour=19,
       minute=54,
-      second=41,
-      microsecond=707600,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-58)),
-    ),
-    "datetime.timedelta(days=1095380, seconds=18238, microseconds=350444)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4615,
-      3,
-      8,
-      hour=11,
-      minute=14,
-      second=53,
-      microsecond=911144,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=413)),
-    ),
-    @datetime.DateTime::new(
-      5218,
-      9,
-      20,
-      hour=14,
-      minute=7,
-      second=57,
-      microsecond=620207,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=482)),
-    ),
-    "datetime.timedelta(days=-220439, seconds=80156, microseconds=290937)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2008,
-      2,
-      15,
-      hour=18,
-      minute=6,
-      second=29,
-      microsecond=936760,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=987)),
-    ),
-    @datetime.DateTime::new(
-      1941,
-      4,
-      26,
-      hour=6,
-      minute=8,
-      second=34,
-      microsecond=378992,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=143)),
-    ),
-    "datetime.timedelta(days=24400, seconds=78835, microseconds=557768)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4911,
-      2,
-      6,
-      hour=18,
-      minute=54,
-      second=55,
-      microsecond=878737,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=798)),
-    ),
-    @datetime.DateTime::new(
-      8856,
-      12,
-      22,
-      hour=16,
-      minute=16,
-      second=11,
-      microsecond=600908,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-316)),
-    ),
-    "datetime.timedelta(days=-1441203, seconds=29084, microseconds=277829)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2043,
-      10,
-      31,
-      hour=20,
-      minute=11,
-      second=40,
-      microsecond=351672,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1303)),
-    ),
-    @datetime.DateTime::new(
-      1532,
-      7,
-      28,
-      hour=12,
-      minute=49,
-      second=23,
-      microsecond=745322,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=24)),
-    ),
-    "datetime.timedelta(days=186735, seconds=19756, microseconds=606350)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3986,
-      2,
-      14,
-      hour=6,
-      minute=30,
-      second=45,
-      microsecond=980440,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-847)),
-    ),
-    @datetime.DateTime::new(
-      1974,
-      12,
-      30,
-      hour=12,
-      minute=18,
-      second=53,
-      microsecond=915467,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-7)),
-    ),
-    "datetime.timedelta(days=734549, seconds=29512, microseconds=64973)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1964,
-      6,
-      11,
-      hour=3,
-      minute=7,
-      second=33,
-      microsecond=928083,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=848)),
-    ),
-    @datetime.DateTime::new(
-      2969,
-      7,
-      29,
-      hour=6,
-      minute=52,
-      second=24,
-      microsecond=797736,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-393)),
-    ),
-    "datetime.timedelta(days=-367119, seconds=84849, microseconds=130347)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8944,
-      12,
-      18,
-      hour=19,
-      minute=23,
-      second=24,
-      microsecond=285984,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=925)),
-    ),
-    @datetime.DateTime::new(
-      8739,
-      6,
-      12,
-      hour=5,
-      minute=18,
-      second=13,
-      microsecond=425415,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1005)),
-    ),
-    "datetime.timedelta(days=75065, seconds=55510, microseconds=860569)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1926,
-      11,
-      14,
-      hour=0,
-      minute=14,
-      second=17,
-      microsecond=395214,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=331)),
-    ),
-    @datetime.DateTime::new(
-      1491,
-      3,
-      7,
-      hour=6,
-      minute=7,
-      second=37,
-      microsecond=166506,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-493)),
-    ),
-    "datetime.timedelta(days=159131, seconds=15760, microseconds=228708)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2055,
-      1,
-      6,
-      hour=0,
-      minute=57,
-      second=59,
-      microsecond=3904,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=472)),
-    ),
-    @datetime.DateTime::new(
-      7769,
-      7,
-      13,
-      hour=3,
-      minute=9,
-      second=50,
-      microsecond=238087,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1189)),
-    ),
-    "datetime.timedelta(days=-2087184, seconds=35108, microseconds=765817)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      853,
-      6,
-      9,
-      hour=6,
-      minute=38,
-      second=24,
-      microsecond=434905,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1312)),
-    ),
-    @datetime.DateTime::new(
-      2033,
-      6,
-      23,
-      hour=8,
-      minute=22,
-      second=19,
-      microsecond=779897,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-386)),
-    ),
-    "datetime.timedelta(days=-431002, seconds=64684, microseconds=655008)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6700,
-      3,
-      27,
-      hour=22,
-      minute=31,
-      second=16,
-      microsecond=231934,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-260)),
-    ),
-    @datetime.DateTime::new(
-      7602,
-      10,
-      7,
-      hour=14,
-      minute=15,
-      second=42,
-      microsecond=302672,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1167)),
-    ),
-    "datetime.timedelta(days=-329644, seconds=61713, microseconds=929262)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1793,
-      4,
-      9,
-      hour=16,
-      minute=26,
-      second=2,
-      microsecond=192442,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1218)),
-    ),
-    @datetime.DateTime::new(
-      6198,
-      6,
-      17,
-      hour=13,
-      minute=45,
-      second=14,
-      microsecond=415542,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-948)),
-    ),
-    "datetime.timedelta(days=-1608962, seconds=25847, microseconds=776900)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8023,
-      4,
-      29,
-      hour=20,
-      minute=36,
-      second=10,
-      microsecond=6992,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-103)),
-    ),
-    @datetime.DateTime::new(
-      7035,
-      5,
-      1,
-      hour=9,
-      minute=46,
-      second=34,
-      microsecond=118076,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=996)),
-    ),
-    "datetime.timedelta(days=360859, seconds=18515, microseconds=888916)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2096,
-      7,
-      9,
-      hour=12,
-      minute=36,
-      second=10,
-      microsecond=412699,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-964)),
-    ),
-    @datetime.DateTime::new(
-      749,
-      2,
-      13,
-      hour=22,
-      minute=23,
-      second=32,
-      microsecond=378085,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-271)),
-    ),
-    "datetime.timedelta(days=492129, seconds=6338, microseconds=34614)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1159,
-      10,
-      3,
-      hour=20,
-      minute=39,
-      second=4,
-      microsecond=110153,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-592)),
-    ),
-    @datetime.DateTime::new(
-      2039,
-      12,
-      12,
-      hour=1,
-      minute=28,
-      second=48,
-      microsecond=430783,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-403)),
-    ),
-    "datetime.timedelta(days=-321484, seconds=80355, microseconds=679370)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6469,
-      7,
-      12,
-      hour=19,
-      minute=36,
-      second=19,
-      microsecond=204895,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=440)),
-    ),
-    @datetime.DateTime::new(
-      5903,
-      12,
-      28,
-      hour=10,
-      minute=30,
-      second=24,
-      microsecond=133688,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=172)),
-    ),
-    "datetime.timedelta(days=206560, seconds=16675, microseconds=71207)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2027,
-      11,
-      25,
-      hour=15,
-      minute=55,
-      second=58,
-      microsecond=974805,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1314)),
-    ),
-    @datetime.DateTime::new(
-      3538,
-      7,
-      17,
-      hour=23,
-      minute=4,
-      second=15,
-      microsecond=896072,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1198)),
-    ),
-    "datetime.timedelta(days=-551753, seconds=82783, microseconds=78733)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5855,
-      1,
-      15,
-      hour=7,
-      minute=6,
-      second=14,
-      microsecond=682847,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-47)),
-    ),
-    @datetime.DateTime::new(
-      1740,
-      9,
-      14,
-      hour=20,
-      minute=47,
-      second=37,
-      microsecond=573423,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1377)),
-    ),
-    "datetime.timedelta(days=1502730, seconds=36157, microseconds=109424)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5515,
-      8,
-      2,
-      hour=23,
-      minute=45,
-      second=41,
-      microsecond=475700,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-588)),
-    ),
-    @datetime.DateTime::new(
-      2084,
-      2,
-      3,
-      hour=10,
-      minute=7,
-      second=0,
-      microsecond=612840,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-602)),
-    ),
-    "datetime.timedelta(days=1253326, seconds=48280, microseconds=862860)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2080,
-      9,
-      27,
-      hour=11,
-      minute=57,
-      second=54,
-      microsecond=974342,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1167)),
-    ),
-    @datetime.DateTime::new(
-      1265,
-      4,
-      26,
-      hour=16,
-      minute=48,
-      second=49,
-      microsecond=418422,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1300)),
-    ),
-    "datetime.timedelta(days=297828, seconds=44165, microseconds=555920)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1553,
-      12,
-      10,
-      hour=22,
-      minute=1,
-      second=54,
-      microsecond=419655,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-670)),
-    ),
-    @datetime.DateTime::new(
-      1962,
-      5,
-      29,
-      hour=17,
-      minute=50,
-      second=29,
-      microsecond=368574,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=707)),
-    ),
-    "datetime.timedelta(days=-149188, seconds=11305, microseconds=51081)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2096,
-      11,
-      22,
-      hour=3,
-      minute=7,
-      second=9,
-      microsecond=156466,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1190)),
-    ),
-    @datetime.DateTime::new(
-      353,
-      8,
-      15,
-      hour=16,
-      minute=35,
-      second=35,
-      microsecond=883148,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=266)),
-    ),
-    "datetime.timedelta(days=636718, seconds=38853, microseconds=273318)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9736,
-      2,
-      3,
-      hour=15,
-      minute=44,
-      second=40,
-      microsecond=586796,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-96)),
-    ),
-    @datetime.DateTime::new(
-      9046,
-      4,
-      15,
-      hour=22,
-      minute=54,
-      second=13,
-      microsecond=903668,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-963)),
-    ),
-    "datetime.timedelta(days=251945, seconds=8606, microseconds=683128)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7132,
-      9,
-      15,
-      hour=6,
-      minute=58,
-      second=3,
-      microsecond=888495,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=270)),
-    ),
-    @datetime.DateTime::new(
-      4837,
-      6,
-      3,
-      hour=19,
-      minute=41,
-      second=27,
-      microsecond=630720,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=830)),
-    ),
-    "datetime.timedelta(days=838334, seconds=74196, microseconds=257775)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1984,
-      5,
-      26,
-      hour=8,
-      minute=29,
-      second=20,
-      microsecond=493838,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=77)),
-    ),
-    @datetime.DateTime::new(
-      6973,
-      11,
-      4,
-      hour=12,
-      minute=6,
-      second=58,
-      microsecond=531023,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1312)),
-    ),
-    "datetime.timedelta(days=-1822357, seconds=61041, microseconds=962815)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8906,
-      8,
-      15,
-      hour=7,
-      minute=0,
-      second=48,
-      microsecond=869274,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=799)),
-    ),
-    @datetime.DateTime::new(
-      6750,
-      11,
-      12,
-      hour=10,
-      minute=22,
-      second=58,
-      microsecond=718490,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-460)),
-    ),
-    "datetime.timedelta(days=787372, seconds=85130, microseconds=150784)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9566,
-      11,
-      15,
-      hour=13,
-      minute=33,
-      second=14,
-      microsecond=362040,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-54)),
-    ),
-    @datetime.DateTime::new(
-      1986,
-      8,
-      27,
-      hour=16,
-      minute=10,
-      second=20,
-      microsecond=183530,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-124)),
-    ),
-    "datetime.timedelta(days=2768617, seconds=72774, microseconds=178510)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4639,
-      8,
-      15,
-      hour=15,
-      minute=53,
-      second=18,
-      microsecond=245544,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1053)),
-    ),
-    @datetime.DateTime::new(
-      1950,
-      1,
-      4,
-      hour=6,
-      minute=33,
-      second=10,
-      microsecond=667530,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1223)),
-    ),
-    "datetime.timedelta(days=982358, seconds=69847, microseconds=578014)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2137,
-      10,
-      19,
-      hour=15,
-      minute=5,
-      second=18,
-      microsecond=50232,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1217)),
-    ),
-    @datetime.DateTime::new(
-      916,
-      12,
-      23,
-      hour=3,
-      minute=53,
-      second=19,
-      microsecond=539387,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1201)),
-    ),
-    "datetime.timedelta(days=445896, seconds=39358, microseconds=510845)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5824,
-      1,
-      23,
-      hour=3,
-      minute=23,
-      second=35,
-      microsecond=518542,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1033)),
-    ),
-    @datetime.DateTime::new(
-      5645,
-      9,
-      23,
-      hour=7,
-      minute=30,
-      second=18,
-      microsecond=810416,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1243)),
-    ),
-    "datetime.timedelta(days=65133, seconds=58996, microseconds=708126)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5574,
-      3,
-      4,
-      hour=8,
-      minute=52,
-      second=17,
-      microsecond=735587,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1161)),
-    ),
-    @datetime.DateTime::new(
-      510,
-      3,
-      24,
-      hour=12,
-      minute=11,
-      second=8,
-      microsecond=381309,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-269)),
-    ),
-    "datetime.timedelta(days=1849566, seconds=75069, microseconds=354278)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3754,
-      3,
-      23,
-      hour=23,
-      minute=22,
-      second=38,
-      microsecond=671534,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1033)),
-    ),
-    @datetime.DateTime::new(
-      8783,
-      3,
-      7,
-      hour=14,
-      minute=5,
-      second=44,
-      microsecond=147911,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1008)),
-    ),
-    "datetime.timedelta(days=-1836790, seconds=83754, microseconds=523623)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      403,
-      6,
-      24,
-      hour=12,
-      minute=19,
-      second=40,
-      microsecond=159945,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1192)),
-    ),
-    @datetime.DateTime::new(
-      2050,
-      4,
-      28,
-      hour=7,
-      minute=56,
-      second=2,
-      microsecond=744805,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=102)),
-    ),
-    "datetime.timedelta(days=-601499, seconds=36817, microseconds=415140)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1920,
-      7,
-      3,
-      hour=0,
-      minute=43,
-      second=38,
-      microsecond=856633,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=852)),
-    ),
-    @datetime.DateTime::new(
-      3489,
-      2,
-      23,
-      hour=4,
-      minute=24,
-      second=18,
-      microsecond=908060,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=783)),
-    ),
-    "datetime.timedelta(days=-572937, seconds=69019, microseconds=948573)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2020,
-      1,
-      17,
-      hour=5,
-      minute=28,
-      second=23,
-      microsecond=122701,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-883)),
-    ),
-    @datetime.DateTime::new(
-      1345,
-      9,
-      16,
-      hour=17,
-      minute=41,
-      second=40,
-      microsecond=388072,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=302)),
-    ),
-    "datetime.timedelta(days=246296, seconds=27102, microseconds=734629)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3786,
-      2,
-      3,
-      hour=9,
-      minute=24,
-      second=39,
-      microsecond=697898,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1239)),
-    ),
-    @datetime.DateTime::new(
-      2929,
-      8,
-      6,
-      hour=16,
-      minute=36,
-      second=10,
-      microsecond=657875,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=847)),
-    ),
-    "datetime.timedelta(days=312828, seconds=36989, microseconds=40023)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6667,
-      3,
-      20,
-      hour=4,
-      minute=42,
-      second=31,
-      microsecond=991655,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-12)),
-    ),
-    @datetime.DateTime::new(
-      1981,
-      6,
-      18,
-      hour=19,
-      minute=28,
-      second=59,
-      microsecond=705895,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=413)),
-    ),
-    "datetime.timedelta(days=1711435, seconds=58712, microseconds=285760)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2065,
-      2,
-      14,
-      hour=23,
-      minute=16,
-      second=34,
-      microsecond=493811,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-665)),
-    ),
-    @datetime.DateTime::new(
-      1974,
-      1,
-      12,
-      hour=18,
-      minute=17,
-      second=3,
-      microsecond=503224,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=140)),
-    ),
-    "datetime.timedelta(days=33271, seconds=66270, microseconds=990587)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2085,
-      1,
-      17,
-      hour=9,
-      minute=38,
-      second=28,
-      microsecond=347772,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1182)),
-    ),
-    @datetime.DateTime::new(
-      3678,
-      1,
-      13,
-      hour=9,
-      minute=5,
-      second=40,
-      microsecond=182658,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1336)),
-    ),
-    "datetime.timedelta(days=-581829, seconds=23688, microseconds=165114)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3021,
-      9,
-      21,
-      hour=17,
-      minute=48,
-      second=26,
-      microsecond=117403,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=395)),
-    ),
-    @datetime.DateTime::new(
-      336,
-      1,
-      5,
-      hour=6,
-      minute=13,
       second=43,
-      microsecond=412952,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1355)),
+      microsecond=587023,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-880)),
     ),
-    "datetime.timedelta(days=980935, seconds=23082, microseconds=704451)",
+    @datetime.DateTime::new(
+      1090,
+      11,
+      20,
+      hour=17,
+      minute=23,
+      second=56,
+      microsecond=754602,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=734)),
+    ),
+    "datetime.timedelta(days=2840388, seconds=19486, microseconds=832421)",
     1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1397,
-      2,
-      6,
-      hour=0,
-      minute=11,
-      second=21,
-      microsecond=606190,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=85)),
-    ),
-    @datetime.DateTime::new(
-      5784,
-      6,
-      21,
-      hour=19,
-      minute=39,
-      second=22,
-      microsecond=499235,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1367)),
-    ),
-    "datetime.timedelta(days=-1602454, seconds=6839, microseconds=106955)",
-    -1,
   )
   check_diff(
     @datetime.DateTime::new(
       2054,
       10,
-      26,
-      hour=13,
-      minute=2,
-      second=39,
-      microsecond=721515,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1026)),
+      11,
+      hour=23,
+      minute=36,
+      second=1,
+      microsecond=777118,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=597)),
     ),
     @datetime.DateTime::new(
-      218,
-      6,
-      28,
-      hour=6,
-      minute=27,
-      second=16,
-      microsecond=49953,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=311)),
-    ),
-    "datetime.timedelta(days=670705, seconds=67223, microseconds=671562)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7113,
-      7,
-      14,
-      hour=2,
-      minute=2,
-      second=47,
-      microsecond=911014,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=569)),
-    ),
-    @datetime.DateTime::new(
-      1619,
+      2010,
       5,
-      10,
-      hour=10,
-      minute=13,
-      second=53,
-      microsecond=36341,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-998)),
-    ),
-    "datetime.timedelta(days=2006705, seconds=49314, microseconds=874673)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3433,
-      3,
-      6,
-      hour=20,
-      minute=26,
-      second=57,
-      microsecond=964131,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=26)),
-    ),
-    @datetime.DateTime::new(
-      1953,
-      4,
       17,
-      hour=7,
-      minute=32,
-      second=49,
-      microsecond=467558,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=499)),
-    ),
-    "datetime.timedelta(days=540517, seconds=74828, microseconds=496573)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8263,
-      8,
-      25,
-      hour=15,
-      minute=19,
+      hour=13,
+      minute=52,
       second=52,
-      microsecond=667212,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1099)),
+      microsecond=255207,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1310)),
     ),
-    @datetime.DateTime::new(
-      6358,
-      2,
-      10,
-      hour=3,
-      minute=57,
-      second=22,
-      microsecond=628758,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=116)),
-    ),
-    "datetime.timedelta(days=695982, seconds=68370, microseconds=38454)",
+    "datetime.timedelta(days=16217, seconds=6969, microseconds=521911)",
     1,
   )
   check_diff(
     @datetime.DateTime::new(
-      1915,
-      10,
-      27,
-      hour=3,
-      minute=7,
-      second=7,
-      microsecond=150025,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=11)),
+      1955,
+      3,
+      14,
+      hour=11,
+      minute=11,
+      second=30,
+      microsecond=398009,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=936)),
     ),
     @datetime.DateTime::new(
-      6464,
-      5,
-      22,
-      hour=18,
-      minute=45,
-      second=48,
-      microsecond=62735,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-985)),
-    ),
-    "datetime.timedelta(days=-1661334, seconds=56719, microseconds=87290)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      440,
-      2,
-      13,
-      hour=10,
-      minute=7,
-      second=54,
-      microsecond=847499,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-95)),
-    ),
-    @datetime.DateTime::new(
-      2075,
-      5,
-      9,
+      7943,
+      3,
+      26,
       hour=5,
-      minute=43,
-      second=31,
-      microsecond=873702,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1329)),
+      minute=35,
+      second=21,
+      microsecond=652583,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=338)),
     ),
-    "datetime.timedelta(days=-597256, seconds=14902, microseconds=973797)",
+    "datetime.timedelta(days=-2187085, seconds=70688, microseconds=745426)",
     -1,
   )
   check_diff(
     @datetime.DateTime::new(
-      1912,
+      4567,
+      6,
+      19,
+      hour=19,
+      minute=53,
+      second=3,
+      microsecond=542804,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1340)),
+    ),
+    @datetime.DateTime::new(
+      2311,
+      2,
+      18,
+      hour=12,
+      minute=33,
+      second=4,
+      microsecond=756803,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-27)),
+    ),
+    "datetime.timedelta(days=824110, seconds=18778, microseconds=786001)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      682,
+      3,
+      12,
+      hour=12,
+      minute=5,
+      second=31,
+      microsecond=767303,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-38)),
+    ),
+    @datetime.DateTime::new(
+      9569,
+      4,
+      13,
+      hour=7,
+      minute=51,
+      second=9,
+      microsecond=532012,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=72)),
+    ),
+    "datetime.timedelta(days=-3245942, seconds=21862, microseconds=235291)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2226,
       1,
       10,
-      hour=22,
-      minute=6,
-      second=24,
-      microsecond=376267,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-747)),
+      hour=17,
+      minute=25,
+      second=42,
+      microsecond=281188,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1153)),
     ),
     @datetime.DateTime::new(
-      1163,
-      9,
-      28,
-      hour=15,
-      minute=20,
-      second=47,
-      microsecond=72051,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1114)),
+      7589,
+      2,
+      27,
+      hour=12,
+      minute=22,
+      second=30,
+      microsecond=985820,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1073)),
     ),
-    "datetime.timedelta(days=273305, seconds=2317, microseconds=304216)",
+    "datetime.timedelta(days=-1958846, seconds=57431, microseconds=295368)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3871,
+      9,
+      17,
+      hour=10,
+      minute=7,
+      second=29,
+      microsecond=99978,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=622)),
+    ),
+    @datetime.DateTime::new(
+      1153,
+      9,
+      9,
+      hour=6,
+      minute=29,
+      second=47,
+      microsecond=770739,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=452)),
+    ),
+    "datetime.timedelta(days=992737, seconds=2861, microseconds=329239)",
     1,
   )
   check_diff(
     @datetime.DateTime::new(
-      541,
-      9,
-      23,
-      hour=17,
-      minute=18,
-      second=23,
-      microsecond=777427,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-842)),
+      2402,
+      3,
+      2,
+      hour=13,
+      minute=31,
+      second=42,
+      microsecond=883042,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=680)),
     ),
     @datetime.DateTime::new(
-      7254,
-      5,
-      16,
-      hour=19,
-      minute=52,
-      second=27,
-      microsecond=182257,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-134)),
+      3251,
+      11,
+      20,
+      hour=13,
+      minute=44,
+      second=22,
+      microsecond=926563,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=816)),
     ),
-    "datetime.timedelta(days=-2451743, seconds=33236, microseconds=595170)",
+    "datetime.timedelta(days=-310354, seconds=7399, microseconds=956479)",
     -1,
   )
   check_diff(
     @datetime.DateTime::new(
-      1999,
-      5,
-      23,
-      hour=15,
-      minute=33,
-      second=54,
-      microsecond=968071,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-179)),
+      8336,
+      4,
+      7,
+      hour=5,
+      minute=25,
+      second=57,
+      microsecond=307442,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=692)),
     ),
     @datetime.DateTime::new(
-      3534,
-      11,
+      2032,
+      4,
       12,
-      hour=14,
-      minute=5,
-      second=27,
-      microsecond=115974,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1174)),
+      hour=12,
+      minute=17,
+      second=50,
+      microsecond=980981,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-886)),
     ),
-    "datetime.timedelta(days=-560821, seconds=32007, microseconds=852097)",
-    -1,
+    "datetime.timedelta(days=2302481, seconds=53406, microseconds=326461)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9517,
+      9,
+      1,
+      hour=5,
+      minute=57,
+      second=52,
+      microsecond=836762,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1021)),
+    ),
+    @datetime.DateTime::new(
+      1899,
+      10,
+      17,
+      hour=9,
+      minute=7,
+      second=29,
+      microsecond=259573,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1227)),
+    ),
+    "datetime.timedelta(days=2782371, seconds=983, microseconds=577189)",
+    1,
   )
   check_diff(
     @datetime.DateTime::new(
       2019,
-      8,
-      8,
-      hour=3,
-      minute=54,
-      second=41,
-      microsecond=478765,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=221)),
-    ),
-    @datetime.DateTime::new(
-      2611,
-      8,
-      14,
-      hour=22,
-      minute=19,
-      second=7,
-      microsecond=893581,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=0)),
-    ),
-    "datetime.timedelta(days=-216230, seconds=6873, microseconds=585184)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8333,
-      10,
-      22,
-      hour=10,
-      minute=32,
-      second=43,
-      microsecond=271731,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=671)),
-    ),
-    @datetime.DateTime::new(
-      1902,
-      9,
-      10,
-      hour=18,
-      minute=42,
-      second=52,
-      microsecond=320718,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1214)),
-    ),
-    "datetime.timedelta(days=2348915, seconds=30290, microseconds=951013)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1999,
-      9,
       3,
-      hour=9,
-      minute=30,
-      second=38,
-      microsecond=768865,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=885)),
-    ),
-    @datetime.DateTime::new(
-      7694,
-      3,
-      30,
-      hour=17,
-      minute=21,
-      second=10,
-      microsecond=187870,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1085)),
-    ),
-    "datetime.timedelta(days=-2079902, seconds=26368, microseconds=580995)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1903,
-      1,
-      30,
-      hour=6,
-      minute=2,
-      second=55,
-      microsecond=228609,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-835)),
-    ),
-    @datetime.DateTime::new(
-      481,
-      3,
-      22,
-      hour=13,
-      minute=38,
-      second=37,
-      microsecond=669725,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-571)),
-    ),
-    "datetime.timedelta(days=519321, seconds=74897, microseconds=558884)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2076,
-      7,
-      6,
-      hour=11,
-      minute=17,
-      second=19,
-      microsecond=788637,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-121)),
-    ),
-    @datetime.DateTime::new(
-      2698,
-      6,
-      24,
-      hour=15,
-      minute=9,
-      second=3,
-      microsecond=413250,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=56)),
-    ),
-    "datetime.timedelta(days=-227169, seconds=83116, microseconds=375387)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5681,
-      8,
-      11,
-      hour=4,
-      minute=19,
-      second=23,
-      microsecond=655950,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-83)),
-    ),
-    @datetime.DateTime::new(
-      4372,
-      10,
-      9,
-      hour=8,
-      minute=8,
-      second=18,
-      microsecond=853171,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=442)),
-    ),
-    "datetime.timedelta(days=478044, seconds=17764, microseconds=802779)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      493,
-      4,
-      17,
-      hour=22,
-      minute=15,
-      second=23,
-      microsecond=526267,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=690)),
-    ),
-    @datetime.DateTime::new(
-      5538,
-      7,
       21,
-      hour=19,
-      minute=56,
-      second=44,
-      microsecond=616355,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-420)),
-    ),
-    "datetime.timedelta(days=-1842743, seconds=28118, microseconds=909912)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5980,
-      8,
-      13,
-      hour=3,
-      minute=20,
-      second=35,
-      microsecond=401489,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-329)),
-    ),
-    @datetime.DateTime::new(
-      2825,
-      6,
-      19,
-      hour=22,
-      minute=29,
-      second=2,
-      microsecond=273095,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1211)),
-    ),
-    "datetime.timedelta(days=1152395, seconds=23493, microseconds=128394)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2039,
-      12,
-      5,
-      hour=15,
-      minute=25,
-      second=53,
-      microsecond=72223,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=648)),
-    ),
-    @datetime.DateTime::new(
-      6800,
-      7,
-      18,
-      hour=23,
-      minute=18,
-      second=15,
-      microsecond=407610,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=374)),
-    ),
-    "datetime.timedelta(days=-1738781, seconds=41617, microseconds=664613)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8505,
-      8,
-      4,
-      hour=23,
-      minute=33,
-      second=46,
-      microsecond=96204,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-487)),
-    ),
-    @datetime.DateTime::new(
-      2831,
-      2,
-      2,
-      hour=1,
-      minute=25,
-      second=16,
-      microsecond=326062,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-420)),
-    ),
-    "datetime.timedelta(days=2072569, seconds=83729, microseconds=770142)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1696,
-      8,
-      28,
-      hour=4,
-      minute=6,
-      second=32,
-      microsecond=484482,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-173)),
-    ),
-    @datetime.DateTime::new(
-      5509,
-      2,
-      20,
-      hour=20,
-      minute=18,
-      second=3,
-      microsecond=307383,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1015)),
-    ),
-    "datetime.timedelta(days=-1392481, seconds=63989, microseconds=177099)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1940,
-      12,
-      3,
-      hour=21,
-      minute=39,
-      second=9,
-      microsecond=230664,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=632)),
-    ),
-    @datetime.DateTime::new(
-      2041,
-      11,
-      28,
-      hour=22,
-      minute=20,
-      second=0,
-      microsecond=76322,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=37)),
-    ),
-    "datetime.timedelta(days=-36886, seconds=48249, microseconds=154342)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4317,
-      6,
-      9,
-      hour=6,
-      minute=18,
-      second=7,
-      microsecond=252462,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=176)),
-    ),
-    @datetime.DateTime::new(
-      1971,
-      12,
-      11,
-      hour=20,
-      minute=36,
-      second=28,
-      microsecond=718139,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=541)),
-    ),
-    "datetime.timedelta(days=856673, seconds=56798, microseconds=534323)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3061,
-      8,
-      23,
-      hour=10,
-      minute=27,
-      second=48,
-      microsecond=696444,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=423)),
-    ),
-    @datetime.DateTime::new(
-      5264,
-      2,
-      25,
-      hour=23,
-      minute=49,
-      second=32,
-      microsecond=560293,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-491)),
-    ),
-    "datetime.timedelta(days=-804452, seconds=69856, microseconds=136151)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4391,
-      5,
-      13,
-      hour=2,
-      minute=1,
-      second=41,
-      microsecond=187882,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=158)),
-    ),
-    @datetime.DateTime::new(
-      9916,
-      5,
-      21,
-      hour=17,
-      minute=24,
-      second=3,
-      microsecond=170967,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1257)),
-    ),
-    "datetime.timedelta(days=-2017973, seconds=10598, microseconds=16915)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1635,
-      5,
-      7,
-      hour=11,
-      minute=16,
-      second=28,
-      microsecond=309699,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=532)),
-    ),
-    @datetime.DateTime::new(
-      9543,
-      10,
-      25,
-      hour=9,
-      minute=6,
-      second=27,
-      microsecond=808311,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=20)),
-    ),
-    "datetime.timedelta(days=-2888509, seconds=63480, microseconds=501388)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1451,
-      10,
-      5,
-      hour=23,
-      minute=37,
-      second=5,
-      microsecond=353037,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1249)),
-    ),
-    @datetime.DateTime::new(
-      6837,
-      4,
-      24,
-      hour=21,
-      minute=25,
-      second=18,
-      microsecond=338255,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1080)),
-    ),
-    "datetime.timedelta(days=-1967032, seconds=61247, microseconds=14782)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2859,
-      4,
-      4,
-      hour=17,
-      minute=14,
-      second=18,
-      microsecond=436452,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-193)),
-    ),
-    @datetime.DateTime::new(
-      5019,
-      7,
-      21,
-      hour=13,
-      minute=5,
-      second=44,
-      microsecond=398584,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-57)),
-    ),
-    "datetime.timedelta(days=-789031, seconds=23074, microseconds=37868)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8379,
-      7,
-      5,
-      hour=14,
-      minute=3,
-      second=35,
-      microsecond=393281,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-884)),
-    ),
-    @datetime.DateTime::new(
-      1735,
-      1,
-      4,
-      hour=19,
-      minute=46,
-      second=56,
-      microsecond=827542,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1058)),
-    ),
-    "datetime.timedelta(days=2426852, seconds=55358, microseconds=565739)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7579,
-      6,
-      25,
-      hour=4,
-      minute=55,
-      second=41,
-      microsecond=928520,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=477)),
-    ),
-    @datetime.DateTime::new(
-      3178,
-      12,
-      26,
-      hour=7,
-      minute=58,
-      second=24,
-      microsecond=444137,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1231)),
-    ),
-    "datetime.timedelta(days=1607246, seconds=59357, microseconds=484383)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1910,
-      1,
-      4,
-      hour=11,
-      minute=28,
-      second=19,
-      microsecond=578034,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-215)),
-    ),
-    @datetime.DateTime::new(
-      1914,
-      5,
-      18,
-      hour=19,
-      minute=27,
-      second=48,
-      microsecond=999974,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-675)),
-    ),
-    "datetime.timedelta(days=-1596, seconds=30030, microseconds=578060)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      743,
-      6,
-      26,
-      hour=13,
-      minute=42,
-      second=42,
-      microsecond=42657,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-861)),
-    ),
-    @datetime.DateTime::new(
-      5548,
-      4,
-      20,
-      hour=8,
-      minute=32,
-      second=43,
-      microsecond=602893,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=491)),
-    ),
-    "datetime.timedelta(days=-1754923, seconds=13318, microseconds=439764)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4297,
-      9,
-      14,
-      hour=17,
-      minute=18,
-      second=41,
-      microsecond=73459,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=344)),
-    ),
-    @datetime.DateTime::new(
-      1895,
-      10,
-      22,
-      hour=9,
-      minute=53,
-      second=37,
-      microsecond=852496,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=399)),
-    ),
-    "datetime.timedelta(days=877275, seconds=30003, microseconds=220963)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3055,
-      4,
-      26,
-      hour=20,
-      minute=53,
-      second=25,
-      microsecond=552501,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1242)),
-    ),
-    @datetime.DateTime::new(
-      3310,
-      3,
-      10,
-      hour=18,
-      minute=44,
-      second=34,
-      microsecond=872151,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-418)),
-    ),
-    "datetime.timedelta(days=-93090, seconds=57170, microseconds=680350)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4580,
-      8,
-      29,
-      hour=10,
-      minute=22,
-      second=15,
-      microsecond=249841,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=251)),
-    ),
-    @datetime.DateTime::new(
-      2451,
-      8,
-      17,
-      hour=13,
-      minute=12,
-      second=52,
-      microsecond=339925,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=418)),
-    ),
-    "datetime.timedelta(days=777613, seconds=86182, microseconds=909916)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      5712,
-      8,
-      5,
-      hour=18,
-      minute=20,
-      second=41,
-      microsecond=130711,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=680)),
-    ),
-    @datetime.DateTime::new(
-      2083,
-      7,
-      27,
-      hour=14,
-      minute=15,
-      second=14,
-      microsecond=588754,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-173)),
-    ),
-    "datetime.timedelta(days=1325473, seconds=49946, microseconds=541957)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      85,
-      9,
-      20,
-      hour=13,
-      minute=52,
-      second=19,
-      microsecond=707419,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=679)),
-    ),
-    @datetime.DateTime::new(
-      7891,
-      5,
-      3,
-      hour=11,
-      minute=56,
-      second=55,
-      microsecond=515902,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-975)),
-    ),
-    "datetime.timedelta(days=-2850944, seconds=80484, microseconds=191517)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4344,
-      7,
-      19,
-      hour=6,
-      minute=43,
-      second=36,
-      microsecond=698747,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-605)),
-    ),
-    @datetime.DateTime::new(
-      8344,
-      7,
-      24,
-      hour=2,
-      minute=23,
-      second=9,
-      microsecond=961392,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1119)),
-    ),
-    "datetime.timedelta(days=-1460976, seconds=71186, microseconds=737355)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      8929,
-      8,
-      2,
-      hour=9,
-      minute=57,
-      second=54,
-      microsecond=481770,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1235)),
-    ),
-    @datetime.DateTime::new(
-      138,
-      4,
-      30,
-      hour=20,
-      minute=36,
-      second=11,
-      microsecond=730253,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-513)),
-    ),
-    "datetime.timedelta(days=3210941, seconds=5022, microseconds=751517)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3381,
-      3,
-      6,
       hour=12,
       minute=47,
-      second=2,
-      microsecond=336190,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-36)),
+      second=0,
+      microsecond=626918,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=141)),
     ),
     @datetime.DateTime::new(
-      1475,
-      8,
-      8,
-      hour=8,
-      minute=25,
-      second=31,
-      microsecond=573708,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-311)),
-    ),
-    "datetime.timedelta(days=695997, seconds=85590, microseconds=762482)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7936,
-      8,
-      27,
-      hour=8,
-      minute=39,
-      second=36,
-      microsecond=942844,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-968)),
-    ),
-    @datetime.DateTime::new(
-      1908,
-      3,
+      6840,
+      12,
       14,
-      hour=20,
-      minute=4,
-      second=53,
-      microsecond=69793,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1367)),
-    ),
-    "datetime.timedelta(days=2201849, seconds=12583, microseconds=873051)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      4355,
-      7,
-      25,
-      hour=17,
-      minute=11,
-      second=2,
-      microsecond=290758,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-224)),
-    ),
-    @datetime.DateTime::new(
-      2040,
-      2,
-      6,
-      hour=16,
-      minute=11,
-      second=54,
-      microsecond=605757,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=784)),
-    ),
-    "datetime.timedelta(days=845705, seconds=64027, microseconds=685001)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      7791,
-      4,
-      4,
-      hour=12,
-      minute=15,
-      second=39,
-      microsecond=920962,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=332)),
-    ),
-    @datetime.DateTime::new(
-      4538,
-      8,
-      28,
-      hour=7,
-      minute=33,
-      second=15,
-      microsecond=788409,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1171)),
-    ),
-    "datetime.timedelta(days=1187987, seconds=13164, microseconds=132553)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2619,
-      5,
-      10,
-      hour=3,
-      minute=44,
-      second=59,
-      microsecond=177716,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=538)),
-    ),
-    @datetime.DateTime::new(
-      1153,
-      10,
-      23,
-      hour=9,
-      minute=22,
-      second=52,
-      microsecond=36332,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-823)),
-    ),
-    "datetime.timedelta(days=535277, seconds=70867, microseconds=141384)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3381,
-      2,
-      2,
-      hour=12,
-      minute=27,
-      second=1,
-      microsecond=476166,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=777)),
-    ),
-    @datetime.DateTime::new(
-      1937,
-      7,
-      16,
-      hour=1,
-      minute=3,
-      second=36,
-      microsecond=797779,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1114)),
-    ),
-    "datetime.timedelta(days=527246, seconds=13944, microseconds=678387)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9261,
-      4,
-      15,
-      hour=14,
-      minute=2,
-      second=23,
-      microsecond=891419,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=964)),
-    ),
-    @datetime.DateTime::new(
-      1961,
-      1,
-      10,
-      hour=7,
-      minute=20,
-      second=2,
-      microsecond=882393,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-479)),
-    ),
-    "datetime.timedelta(days=2666365, seconds=23961, microseconds=9026)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      811,
-      6,
-      29,
-      hour=6,
-      minute=32,
-      second=48,
-      microsecond=137092,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=478)),
-    ),
-    @datetime.DateTime::new(
-      2018,
-      5,
-      28,
-      hour=5,
-      minute=10,
-      second=6,
-      microsecond=961352,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1283)),
-    ),
-    "datetime.timedelta(days=-440816, seconds=53261, microseconds=175740)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1952,
-      5,
-      11,
-      hour=6,
-      minute=20,
-      second=21,
-      microsecond=974594,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=573)),
-    ),
-    @datetime.DateTime::new(
-      4096,
-      1,
-      3,
-      hour=10,
-      minute=4,
-      second=28,
-      microsecond=217365,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1212)),
-    ),
-    "datetime.timedelta(days=-782952, seconds=24893, microseconds=757229)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3268,
-      1,
-      27,
-      hour=19,
-      minute=26,
-      second=33,
-      microsecond=538129,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=598)),
-    ),
-    @datetime.DateTime::new(
-      2798,
-      6,
-      8,
-      hour=0,
-      minute=32,
-      second=49,
-      microsecond=440812,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=149)),
-    ),
-    "datetime.timedelta(days=171532, seconds=41084, microseconds=97317)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1983,
-      5,
-      2,
-      hour=13,
-      minute=41,
-      second=29,
-      microsecond=110092,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-275)),
-    ),
-    @datetime.DateTime::new(
-      5020,
-      7,
-      2,
-      hour=9,
-      minute=43,
-      second=45,
-      microsecond=725943,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1168)),
-    ),
-    "datetime.timedelta(days=-1109304, seconds=47083, microseconds=384149)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      6405,
-      5,
-      19,
-      hour=11,
-      minute=25,
-      second=14,
-      microsecond=872744,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=953)),
-    ),
-    @datetime.DateTime::new(
-      6105,
-      6,
-      23,
-      hour=17,
-      minute=56,
-      second=52,
-      microsecond=659513,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-29)),
-    ),
-    "datetime.timedelta(days=109537, seconds=3982, microseconds=213231)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      9499,
-      4,
-      29,
-      hour=17,
-      minute=38,
-      second=11,
-      microsecond=767790,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-664)),
-    ),
-    @datetime.DateTime::new(
-      4237,
-      11,
-      18,
       hour=4,
-      minute=9,
-      second=16,
-      microsecond=754643,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1279)),
+      minute=48,
+      second=51,
+      microsecond=305509,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-408)),
     ),
-    "datetime.timedelta(days=1921703, seconds=11635, microseconds=13147)",
+    "datetime.timedelta(days=-1761104, seconds=82149, microseconds=321409)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1160,
+      6,
+      8,
+      hour=15,
+      minute=51,
+      second=52,
+      microsecond=312897,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=272)),
+    ),
+    @datetime.DateTime::new(
+      1956,
+      6,
+      8,
+      hour=7,
+      minute=53,
+      second=52,
+      microsecond=657515,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-289)),
+    ),
+    "datetime.timedelta(days=-290734, seconds=81419, microseconds=655382)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5533,
+      8,
+      24,
+      hour=15,
+      minute=48,
+      second=25,
+      microsecond=492718,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=802)),
+    ),
+    @datetime.DateTime::new(
+      1980,
+      8,
+      28,
+      hour=18,
+      minute=12,
+      second=0,
+      microsecond=484694,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-225)),
+    ),
+    "datetime.timedelta(days=1297701, seconds=16165, microseconds=8024)",
     1,
   )
   check_diff(
     @datetime.DateTime::new(
-      8702,
-      4,
-      7,
-      hour=8,
-      minute=5,
-      second=7,
-      microsecond=839355,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=130)),
-    ),
-    @datetime.DateTime::new(
-      8652,
-      3,
-      4,
-      hour=10,
-      minute=7,
-      second=32,
-      microsecond=625700,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-889)),
-    ),
-    "datetime.timedelta(days=18294, seconds=17915, microseconds=213655)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2054,
-      4,
+      230,
+      2,
       26,
       hour=16,
-      minute=25,
-      second=57,
-      microsecond=958993,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=136)),
+      minute=11,
+      second=31,
+      microsecond=322699,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-379)),
     ),
     @datetime.DateTime::new(
-      136,
-      12,
-      28,
-      hour=15,
-      minute=24,
-      second=19,
-      microsecond=791490,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1177)),
+      1867,
+      11,
+      3,
+      hour=7,
+      minute=1,
+      second=47,
+      microsecond=993720,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1337)),
     ),
-    "datetime.timedelta(days=700289, seconds=66158, microseconds=167503)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1902,
-      10,
-      8,
-      hour=23,
-      minute=35,
-      second=0,
-      microsecond=423790,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-626)),
-    ),
-    @datetime.DateTime::new(
-      6295,
-      6,
-      24,
-      hour=0,
-      minute=6,
-      second=46,
-      microsecond=249284,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-787)),
-    ),
-    "datetime.timedelta(days=-1604405, seconds=74834, microseconds=174506)",
+    "datetime.timedelta(days=-598151, seconds=49543, microseconds=328979)",
     -1,
   )
   check_diff(
     @datetime.DateTime::new(
-      3749,
-      5,
-      16,
-      hour=0,
-      minute=7,
-      second=50,
-      microsecond=756850,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1091)),
+      1434,
+      10,
+      13,
+      hour=13,
+      minute=2,
+      second=26,
+      microsecond=584532,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-382)),
     ),
     @datetime.DateTime::new(
-      900,
+      2224,
       7,
-      12,
-      hour=19,
-      minute=35,
-      second=22,
-      microsecond=572832,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-148)),
+      13,
+      hour=6,
+      minute=12,
+      second=23,
+      microsecond=555779,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-202)),
     ),
-    "datetime.timedelta(days=1040517, seconds=28408, microseconds=184018)",
-    1,
+    "datetime.timedelta(days=-288450, seconds=35403, microseconds=28753)",
+    -1,
   )
   check_diff(
     @datetime.DateTime::new(
-      8817,
-      4,
-      21,
-      hour=21,
-      minute=46,
-      second=0,
-      microsecond=677331,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=365)),
-    ),
-    @datetime.DateTime::new(
-      624,
+      2050,
       1,
       2,
-      hour=15,
-      minute=50,
-      second=32,
-      microsecond=922116,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=615)),
-    ),
-    "datetime.timedelta(days=2992542, seconds=36327, microseconds=755215)",
-    1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      135,
-      5,
-      4,
-      hour=15,
-      minute=22,
-      second=1,
-      microsecond=24026,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-931)),
+      hour=18,
+      minute=14,
+      second=28,
+      microsecond=992127,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=322)),
     ),
     @datetime.DateTime::new(
-      6284,
-      8,
-      5,
-      hour=4,
-      minute=29,
-      second=25,
-      microsecond=271235,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=461)),
+      4280,
+      2,
+      25,
+      hour=23,
+      minute=36,
+      second=12,
+      microsecond=54470,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1366)),
     ),
-    "datetime.timedelta(days=-2245969, seconds=36275, microseconds=752791)",
+    "datetime.timedelta(days=-814546, seconds=52216, microseconds=937657)",
     -1,
   )
   check_diff(
     @datetime.DateTime::new(
-      3628,
-      1,
-      28,
-      hour=12,
-      minute=31,
-      second=35,
-      microsecond=616002,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-447)),
+      3155,
+      6,
+      30,
+      hour=20,
+      minute=30,
+      second=41,
+      microsecond=571855,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-925)),
     ),
     @datetime.DateTime::new(
-      2060,
-      1,
-      19,
-      hour=16,
-      minute=54,
-      second=54,
-      microsecond=649656,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=300)),
+      2046,
+      11,
+      11,
+      hour=4,
+      minute=57,
+      second=42,
+      microsecond=978225,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=399)),
     ),
-    "datetime.timedelta(days=572709, seconds=29020, microseconds=966346)",
+    "datetime.timedelta(days=404920, seconds=49018, microseconds=593630)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1955,
+      3,
+      21,
+      hour=4,
+      minute=18,
+      second=39,
+      microsecond=587206,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1117)),
+    ),
+    @datetime.DateTime::new(
+      4446,
+      8,
+      18,
+      hour=22,
+      minute=38,
+      second=13,
+      microsecond=814285,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=570)),
+    ),
+    "datetime.timedelta(days=-909970, seconds=35245, microseconds=772921)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8713,
+      7,
+      14,
+      hour=19,
+      minute=8,
+      second=30,
+      microsecond=971478,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=343)),
+    ),
+    @datetime.DateTime::new(
+      9091,
+      10,
+      9,
+      hour=6,
+      minute=50,
+      second=38,
+      microsecond=274747,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-717)),
+    ),
+    "datetime.timedelta(days=-138150, seconds=67072, microseconds=696731)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1929,
+      8,
+      20,
+      hour=15,
+      minute=43,
+      second=6,
+      microsecond=369709,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-115)),
+    ),
+    @datetime.DateTime::new(
+      222,
+      3,
+      26,
+      hour=18,
+      minute=50,
+      second=53,
+      microsecond=915249,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1009)),
+    ),
+    "datetime.timedelta(days=623615, seconds=21492, microseconds=454460)",
     1,
   )
   check_diff(
     @datetime.DateTime::new(
       1917,
+      11,
+      4,
+      hour=19,
+      minute=33,
+      second=1,
+      microsecond=542918,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1065)),
+    ),
+    @datetime.DateTime::new(
+      5929,
+      9,
+      1,
+      hour=22,
+      minute=24,
+      second=43,
+      microsecond=640681,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-48)),
+    ),
+    "datetime.timedelta(days=-1465290, seconds=9317, microseconds=902237)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4055,
+      12,
+      5,
+      hour=3,
+      minute=13,
+      second=28,
+      microsecond=283944,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=723)),
+    ),
+    @datetime.DateTime::new(
+      2070,
+      10,
+      11,
+      hour=10,
+      minute=16,
+      second=19,
+      microsecond=75833,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1246)),
+    ),
+    "datetime.timedelta(days=725059, seconds=29289, microseconds=208111)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7864,
+      10,
+      19,
+      hour=14,
+      minute=13,
+      second=5,
+      microsecond=269278,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=47)),
+    ),
+    @datetime.DateTime::new(
+      280,
+      1,
+      9,
+      hour=13,
+      minute=21,
+      second=9,
+      microsecond=640422,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-253)),
+    ),
+    "datetime.timedelta(days=2770282, seconds=71515, microseconds=628856)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      492,
+      3,
+      3,
+      hour=5,
+      minute=20,
+      second=46,
+      microsecond=793136,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=172)),
+    ),
+    @datetime.DateTime::new(
+      3344,
+      3,
+      12,
+      hour=12,
+      minute=47,
+      second=25,
+      microsecond=731138,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-682)),
+    ),
+    "datetime.timedelta(days=-1041681, seconds=8361, microseconds=61998)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5253,
+      4,
+      12,
+      hour=8,
+      minute=4,
+      second=42,
+      microsecond=817553,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1358)),
+    ),
+    @datetime.DateTime::new(
+      1008,
+      1,
+      4,
+      hour=8,
+      minute=17,
+      second=27,
+      microsecond=278577,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=378)),
+    ),
+    "datetime.timedelta(days=1550553, seconds=26835, microseconds=538976)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      6064,
+      12,
+      8,
+      hour=11,
+      minute=24,
+      second=9,
+      microsecond=73417,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-849)),
+    ),
+    @datetime.DateTime::new(
+      1923,
+      4,
+      14,
+      hour=21,
+      minute=28,
+      second=27,
+      microsecond=33051,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-132)),
+    ),
+    "datetime.timedelta(days=1512709, seconds=6762, microseconds=40366)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2069,
+      7,
+      27,
+      hour=14,
+      minute=8,
+      second=44,
+      microsecond=563378,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1090)),
+    ),
+    @datetime.DateTime::new(
+      1228,
+      11,
+      23,
+      hour=18,
+      minute=37,
+      second=35,
+      microsecond=273951,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-876)),
+    ),
+    "datetime.timedelta(days=307049, seconds=83109, microseconds=289427)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7254,
+      8,
+      15,
+      hour=5,
+      minute=32,
+      second=26,
+      microsecond=818793,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-375)),
+    ),
+    @datetime.DateTime::new(
+      1993,
+      2,
+      19,
+      hour=20,
+      minute=20,
+      second=47,
+      microsecond=522619,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-496)),
+    ),
+    "datetime.timedelta(days=1921717, seconds=25839, microseconds=296174)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2535,
+      4,
+      2,
+      hour=5,
+      minute=58,
+      second=0,
+      microsecond=985027,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-757)),
+    ),
+    @datetime.DateTime::new(
+      2012,
+      3,
+      21,
+      hour=17,
+      minute=2,
+      second=8,
+      microsecond=267559,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1363)),
+    ),
+    "datetime.timedelta(days=191032, seconds=10192, microseconds=717468)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7813,
+      2,
+      23,
+      hour=20,
+      minute=11,
+      second=15,
+      microsecond=622643,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-125)),
+    ),
+    @datetime.DateTime::new(
+      2032,
+      10,
+      22,
+      hour=16,
+      minute=45,
+      second=17,
+      microsecond=162117,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=502)),
+    ),
+    "datetime.timedelta(days=2111225, seconds=49978, microseconds=460526)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4503,
       10,
       28,
-      hour=22,
-      minute=58,
-      second=38,
-      microsecond=376870,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-542)),
+      hour=23,
+      minute=0,
+      second=39,
+      microsecond=313668,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-399)),
     ),
     @datetime.DateTime::new(
-      1978,
+      454,
+      11,
+      30,
+      hour=9,
+      minute=37,
+      second=30,
+      microsecond=774196,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-97)),
+    ),
+    "datetime.timedelta(days=1478833, seconds=66308, microseconds=539472)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4112,
+      11,
+      22,
+      hour=7,
+      minute=47,
+      second=34,
+      microsecond=959197,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1297)),
+    ),
+    @datetime.DateTime::new(
+      4405,
+      6,
+      22,
+      hour=2,
+      minute=14,
+      second=39,
+      microsecond=49864,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1074)),
+    ),
+    "datetime.timedelta(days=-106863, seconds=6595, microseconds=909333)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2020,
+      4,
+      4,
+      hour=11,
+      minute=54,
+      second=44,
+      microsecond=901521,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1095)),
+    ),
+    @datetime.DateTime::new(
+      3435,
+      10,
+      13,
+      hour=1,
+      minute=27,
+      second=21,
+      microsecond=457150,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=738)),
+    ),
+    "datetime.timedelta(days=-517008, seconds=61223, microseconds=444371)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4613,
+      5,
+      24,
+      hour=12,
+      minute=56,
+      second=47,
+      microsecond=500870,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=837)),
+    ),
+    @datetime.DateTime::new(
+      2211,
+      6,
+      13,
+      hour=20,
+      minute=53,
+      second=55,
+      microsecond=784776,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=360)),
+    ),
+    "datetime.timedelta(days=877292, seconds=29151, microseconds=716094)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9599,
+      4,
+      2,
+      hour=22,
+      minute=18,
+      second=0,
+      microsecond=495278,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-318)),
+    ),
+    @datetime.DateTime::new(
+      8672,
+      8,
+      23,
+      hour=4,
+      minute=22,
+      second=25,
+      microsecond=951883,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=878)),
+    ),
+    "datetime.timedelta(days=338437, seconds=49894, microseconds=543395)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2058,
+      12,
+      20,
+      hour=3,
+      minute=22,
+      second=35,
+      microsecond=315635,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=932)),
+    ),
+    @datetime.DateTime::new(
+      2333,
+      12,
+      2,
+      hour=3,
+      minute=41,
+      second=8,
+      microsecond=238548,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1151)),
+    ),
+    "datetime.timedelta(days=-100425, seconds=46707, microseconds=77087)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5049,
+      9,
+      29,
+      hour=13,
+      minute=19,
+      second=45,
+      microsecond=562126,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1124)),
+    ),
+    @datetime.DateTime::new(
+      2054,
+      6,
+      16,
+      hour=22,
+      minute=14,
+      second=11,
+      microsecond=533689,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-518)),
+    ),
+    "datetime.timedelta(days=1094006, seconds=4294, microseconds=28437)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2064,
+      6,
+      9,
+      hour=15,
+      minute=8,
+      second=8,
+      microsecond=399214,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1183)),
+    ),
+    @datetime.DateTime::new(
+      98,
+      8,
+      3,
+      hour=0,
+      minute=58,
+      second=48,
+      microsecond=224019,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=70)),
+    ),
+    "datetime.timedelta(days=718011, seconds=70580, microseconds=175195)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3064,
+      8,
+      8,
+      hour=14,
+      minute=11,
+      second=9,
+      microsecond=584564,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=336)),
+    ),
+    @datetime.DateTime::new(
+      4382,
+      12,
+      25,
+      hour=15,
+      minute=43,
+      second=18,
+      microsecond=208519,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1251)),
+    ),
+    "datetime.timedelta(days=-481530, seconds=72051, microseconds=376045)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2043,
+      12,
+      7,
+      hour=22,
+      minute=22,
+      second=23,
+      microsecond=67433,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-931)),
+    ),
+    @datetime.DateTime::new(
+      6373,
+      2,
+      13,
+      hour=22,
+      minute=41,
+      second=3,
+      microsecond=610722,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1379)),
+    ),
+    "datetime.timedelta(days=-1581204, seconds=58399, microseconds=456711)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1962,
+      4,
+      4,
+      hour=12,
+      minute=47,
+      second=3,
+      microsecond=880030,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=948)),
+    ),
+    @datetime.DateTime::new(
+      2440,
+      9,
+      4,
+      hour=11,
+      minute=42,
+      second=55,
+      microsecond=380329,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1178)),
+    ),
+    "datetime.timedelta(days=-174742, seconds=49088, microseconds=499701)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2085,
+      4,
+      26,
+      hour=12,
+      minute=11,
+      second=42,
+      microsecond=88028,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1194)),
+    ),
+    @datetime.DateTime::new(
+      1950,
+      5,
+      27,
+      hour=0,
+      minute=39,
+      second=38,
+      microsecond=826875,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1047)),
+    ),
+    "datetime.timedelta(days=49276, seconds=79863, microseconds=261153)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      537,
+      11,
+      6,
+      hour=22,
+      minute=23,
+      second=56,
+      microsecond=562659,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1377)),
+    ),
+    @datetime.DateTime::new(
+      1960,
+      5,
+      2,
+      hour=4,
+      minute=41,
+      second=8,
+      microsecond=667386,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1258)),
+    ),
+    "datetime.timedelta(days=-519554, seconds=78467, microseconds=895273)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8452,
+      10,
+      9,
+      hour=8,
+      minute=10,
+      second=17,
+      microsecond=909920,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-53)),
+    ),
+    @datetime.DateTime::new(
+      5339,
+      10,
+      15,
+      hour=21,
+      minute=52,
+      second=3,
+      microsecond=587943,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=53)),
+    ),
+    "datetime.timedelta(days=1136994, seconds=43454, microseconds=321977)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3307,
+      12,
+      21,
+      hour=4,
+      minute=44,
+      second=17,
+      microsecond=460739,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1220)),
+    ),
+    @datetime.DateTime::new(
+      2040,
+      6,
+      17,
+      hour=16,
+      minute=5,
+      second=59,
+      microsecond=891862,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1276)),
+    ),
+    "datetime.timedelta(days=462947, seconds=42137, microseconds=568877)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7332,
+      9,
+      15,
+      hour=3,
+      minute=34,
+      second=6,
+      microsecond=551921,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1067)),
+    ),
+    @datetime.DateTime::new(
+      8471,
+      7,
+      17,
+      hour=5,
+      minute=23,
+      second=20,
+      microsecond=562102,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-466)),
+    ),
+    "datetime.timedelta(days=-415951, seconds=29505, microseconds=989819)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      6824,
+      11,
+      28,
+      hour=16,
+      minute=34,
+      second=28,
+      microsecond=710788,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1053)),
+    ),
+    @datetime.DateTime::new(
+      8264,
+      6,
+      21,
+      hour=18,
+      minute=12,
+      second=14,
+      microsecond=681684,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1131)),
+    ),
+    "datetime.timedelta(days=-525788, seconds=38774, microseconds=29104)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8961,
+      7,
+      24,
+      hour=9,
+      minute=17,
+      second=57,
+      microsecond=106136,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1286)),
+    ),
+    @datetime.DateTime::new(
+      8125,
+      9,
+      25,
+      hour=4,
+      minute=41,
+      second=34,
+      microsecond=63240,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=308)),
+    ),
+    "datetime.timedelta(days=305279, seconds=44303, microseconds=42896)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3218,
+      10,
+      31,
+      hour=19,
+      minute=6,
+      second=9,
+      microsecond=796088,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-690)),
+    ),
+    @datetime.DateTime::new(
+      2049,
+      6,
+      13,
+      hour=3,
+      minute=0,
+      second=6,
+      microsecond=864176,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1171)),
+    ),
+    "datetime.timedelta(days=427109, seconds=83222, microseconds=931912)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      6144,
+      5,
+      4,
+      hour=3,
+      minute=36,
+      second=43,
+      microsecond=743073,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=9)),
+    ),
+    @datetime.DateTime::new(
+      1958,
+      9,
+      19,
+      hour=9,
+      minute=28,
+      second=37,
+      microsecond=833219,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1373)),
+    ),
+    "datetime.timedelta(days=1528768, seconds=60725, microseconds=909854)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1982,
+      9,
+      23,
+      hour=16,
+      minute=8,
+      second=44,
+      microsecond=939843,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1271)),
+    ),
+    @datetime.DateTime::new(
+      1540,
+      1,
+      4,
+      hour=2,
+      minute=46,
+      second=41,
+      microsecond=366446,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1136)),
+    ),
+    "datetime.timedelta(days=161702, seconds=19743, microseconds=573397)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9901,
+      1,
+      28,
+      hour=9,
+      minute=52,
+      second=19,
+      microsecond=953776,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1378)),
+    ),
+    @datetime.DateTime::new(
+      2075,
       3,
       27,
-      hour=12,
-      minute=29,
-      second=58,
-      microsecond=723627,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1357)),
-    ),
-    "datetime.timedelta(days=-22066, seconds=75219, microseconds=653243)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      1096,
-      10,
-      14,
-      hour=11,
-      minute=11,
-      second=1,
-      microsecond=636929,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=384)),
-    ),
-    @datetime.DateTime::new(
-      7429,
-      9,
-      6,
       hour=5,
-      minute=19,
-      second=28,
-      microsecond=577503,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1186)),
+      minute=3,
+      second=47,
+      microsecond=583938,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-72)),
     ),
-    "datetime.timedelta(days=-2313043, seconds=13293, microseconds=59426)",
-    -1,
+    "datetime.timedelta(days=2858328, seconds=16712, microseconds=369838)",
+    1,
   )
   check_diff(
     @datetime.DateTime::new(
-      2063,
-      8,
-      26,
-      hour=3,
-      minute=8,
-      second=23,
-      microsecond=934270,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-616)),
+      2034,
+      7,
+      29,
+      hour=15,
+      minute=47,
+      second=43,
+      microsecond=777746,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-874)),
     ),
     @datetime.DateTime::new(
-      3366,
-      12,
-      11,
-      hour=6,
-      minute=42,
-      second=31,
-      microsecond=338092,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=322)),
-    ),
-    "datetime.timedelta(days=-476018, seconds=43432, microseconds=596178)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2060,
+      8341,
       3,
+      4,
+      hour=0,
+      minute=37,
+      second=6,
+      microsecond=247292,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-263)),
+    ),
+    "datetime.timedelta(days=-2303436, seconds=4897, microseconds=530454)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      245,
+      9,
+      12,
+      hour=3,
+      minute=21,
+      second=25,
+      microsecond=771869,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=610)),
+    ),
+    @datetime.DateTime::new(
+      1368,
+      11,
+      19,
+      hour=19,
+      minute=26,
+      second=53,
+      microsecond=409177,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1194)),
+    ),
+    "datetime.timedelta(days=-410237, seconds=63512, microseconds=362692)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2049,
+      7,
+      7,
+      hour=7,
+      minute=2,
+      second=25,
+      microsecond=813530,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1103)),
+    ),
+    @datetime.DateTime::new(
+      2053,
+      11,
+      10,
+      hour=3,
+      minute=52,
+      second=35,
+      microsecond=676168,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-989)),
+    ),
+    "datetime.timedelta(days=-1589, seconds=58670, microseconds=137362)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9755,
+      8,
+      4,
+      hour=2,
+      minute=22,
+      second=5,
+      microsecond=343958,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=431)),
+    ),
+    @datetime.DateTime::new(
+      3453,
+      7,
+      2,
+      hour=19,
+      minute=43,
+      second=28,
+      microsecond=267058,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1190)),
+    ),
+    "datetime.timedelta(days=2301790, seconds=69457, microseconds=76900)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8976,
+      11,
+      20,
+      hour=13,
+      minute=47,
+      second=51,
+      microsecond=400343,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-322)),
+    ),
+    @datetime.DateTime::new(
+      7940,
+      10,
+      25,
+      hour=0,
+      minute=48,
+      second=19,
+      microsecond=84284,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-592)),
+    ),
+    "datetime.timedelta(days=378418, seconds=30572, microseconds=316059)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1017,
+      1,
+      29,
+      hour=16,
+      minute=47,
+      second=43,
+      microsecond=298874,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-828)),
+    ),
+    @datetime.DateTime::new(
+      7173,
+      12,
+      28,
+      hour=4,
+      minute=27,
+      second=44,
+      microsecond=437672,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=726)),
+    ),
+    "datetime.timedelta(days=-2248765, seconds=51238, microseconds=861202)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4868,
+      3,
+      28,
+      hour=16,
+      minute=27,
+      second=13,
+      microsecond=896845,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-267)),
+    ),
+    @datetime.DateTime::new(
+      2092,
+      7,
+      31,
+      hour=12,
+      minute=39,
+      second=22,
+      microsecond=94925,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-92)),
+    ),
+    "datetime.timedelta(days=1013788, seconds=24171, microseconds=801920)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2425,
+      2,
+      20,
+      hour=0,
+      minute=29,
+      second=10,
+      microsecond=308014,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-919)),
+    ),
+    @datetime.DateTime::new(
+      1915,
+      9,
+      23,
+      hour=0,
+      minute=38,
+      second=4,
+      microsecond=52938,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-405)),
+    ),
+    "datetime.timedelta(days=186060, seconds=30306, microseconds=255076)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8791,
+      10,
+      29,
+      hour=13,
+      minute=19,
+      second=26,
+      microsecond=733424,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-828)),
+    ),
+    @datetime.DateTime::new(
+      1855,
+      7,
+      30,
+      hour=23,
+      minute=29,
+      second=17,
+      microsecond=69609,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-570)),
+    ),
+    "datetime.timedelta(days=2533412, seconds=65289, microseconds=663815)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      321,
+      5,
+      25,
+      hour=8,
+      minute=24,
+      second=17,
+      microsecond=578825,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1380)),
+    ),
+    @datetime.DateTime::new(
+      2009,
+      4,
+      30,
+      hour=18,
+      minute=27,
+      second=39,
+      microsecond=526463,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=670)),
+    ),
+    "datetime.timedelta(days=-616504, seconds=398, microseconds=52362)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1970,
+      11,
+      29,
+      hour=10,
+      minute=3,
+      second=23,
+      microsecond=989709,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=190)),
+    ),
+    @datetime.DateTime::new(
+      156,
+      5,
+      21,
+      hour=5,
+      minute=47,
+      second=8,
+      microsecond=289389,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=315)),
+    ),
+    "datetime.timedelta(days=662741, seconds=22875, microseconds=700320)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9140,
+      2,
+      18,
+      hour=6,
+      minute=26,
+      second=50,
+      microsecond=207041,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-650)),
+    ),
+    @datetime.DateTime::new(
+      2056,
+      4,
+      6,
+      hour=21,
+      minute=12,
+      second=24,
+      microsecond=669843,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=994)),
+    ),
+    "datetime.timedelta(days=2587329, seconds=45505, microseconds=537198)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1972,
+      10,
+      15,
+      hour=2,
+      minute=49,
+      second=39,
+      microsecond=92304,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=474)),
+    ),
+    @datetime.DateTime::new(
+      1452,
+      10,
+      27,
+      hour=17,
+      minute=14,
+      second=33,
+      microsecond=926171,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-34)),
+    ),
+    "datetime.timedelta(days=189913, seconds=4025, microseconds=166133)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9074,
+      10,
+      28,
+      hour=2,
+      minute=1,
+      second=28,
+      microsecond=396502,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1039)),
+    ),
+    @datetime.DateTime::new(
+      2011,
+      9,
+      2,
+      hour=15,
+      minute=57,
+      second=23,
+      microsecond=798278,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1377)),
+    ),
+    "datetime.timedelta(days=2579765, seconds=8404, microseconds=598224)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1934,
+      3,
+      25,
+      hour=21,
+      minute=41,
+      second=6,
+      microsecond=283543,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=798)),
+    ),
+    @datetime.DateTime::new(
+      8709,
+      1,
+      12,
+      hour=9,
+      minute=10,
+      second=46,
+      microsecond=962806,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-186)),
+    ),
+    "datetime.timedelta(days=-2474447, seconds=72379, microseconds=320737)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1213,
+      2,
+      18,
+      hour=6,
+      minute=19,
+      second=32,
+      microsecond=748740,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=774)),
+    ),
+    @datetime.DateTime::new(
+      7388,
+      1,
+      31,
+      hour=20,
+      minute=45,
+      second=58,
+      microsecond=212569,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1037)),
+    ),
+    "datetime.timedelta(days=-2255356, seconds=12154, microseconds=536171)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7121,
+      4,
+      7,
+      hour=9,
+      minute=17,
+      second=44,
+      microsecond=961971,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=827)),
+    ),
+    @datetime.DateTime::new(
+      2868,
+      4,
+      11,
+      hour=18,
+      minute=16,
+      second=58,
+      microsecond=985668,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-104)),
+    ),
+    "datetime.timedelta(days=1553369, seconds=84585, microseconds=976303)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4976,
+      3,
+      24,
+      hour=7,
+      minute=31,
+      second=32,
+      microsecond=168071,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=585)),
+    ),
+    @datetime.DateTime::new(
+      9783,
+      5,
+      9,
+      hour=13,
+      minute=33,
+      second=42,
+      microsecond=724507,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-89)),
+    ),
+    "datetime.timedelta(days=-1755767, seconds=24229, microseconds=443564)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1961,
+      3,
+      17,
+      hour=1,
+      minute=23,
+      second=52,
+      microsecond=698252,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=968)),
+    ),
+    @datetime.DateTime::new(
+      2036,
+      10,
+      2,
+      hour=15,
+      minute=2,
+      second=25,
+      microsecond=324291,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-342)),
+    ),
+    "datetime.timedelta(days=-27595, seconds=45087, microseconds=373961)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2057,
+      4,
+      7,
+      hour=22,
+      minute=21,
+      second=45,
+      microsecond=556547,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-407)),
+    ),
+    @datetime.DateTime::new(
+      1919,
+      10,
+      15,
+      hour=13,
+      minute=39,
+      second=30,
+      microsecond=394870,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=210)),
+    ),
+    "datetime.timedelta(days=50214, seconds=68355, microseconds=161677)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      6475,
+      4,
+      6,
+      hour=2,
+      minute=53,
+      second=19,
+      microsecond=7486,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=63)),
+    ),
+    @datetime.DateTime::new(
+      1266,
+      1,
+      1,
+      hour=15,
+      minute=31,
+      second=5,
+      microsecond=779311,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=710)),
+    ),
+    "datetime.timedelta(days=1902642, seconds=79753, microseconds=228175)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3981,
+      8,
+      1,
+      hour=11,
+      minute=35,
+      second=13,
+      microsecond=806376,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=113)),
+    ),
+    @datetime.DateTime::new(
+      8941,
+      9,
+      29,
+      hour=6,
+      minute=53,
+      second=35,
+      microsecond=841997,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1166)),
+    ),
+    "datetime.timedelta(days=-1811663, seconds=26557, microseconds=964379)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8096,
+      6,
+      30,
+      hour=10,
+      minute=47,
+      second=23,
+      microsecond=284304,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-187)),
+    ),
+    @datetime.DateTime::new(
+      5534,
+      5,
+      6,
+      hour=8,
+      minute=47,
+      second=49,
+      microsecond=607380,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=3)),
+    ),
+    "datetime.timedelta(days=935808, seconds=18573, microseconds=676924)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      78,
+      9,
+      8,
+      hour=20,
+      minute=31,
+      second=39,
+      microsecond=298278,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-153)),
+    ),
+    @datetime.DateTime::new(
+      2910,
+      1,
+      19,
+      hour=6,
+      minute=8,
+      second=18,
+      microsecond=259617,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-380)),
+    ),
+    "datetime.timedelta(days=-1034134, seconds=38181, microseconds=38661)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2016,
+      6,
+      17,
+      hour=12,
+      minute=38,
+      second=43,
+      microsecond=859642,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1088)),
+    ),
+    @datetime.DateTime::new(
+      4319,
+      8,
+      23,
+      hour=11,
+      minute=46,
+      second=26,
+      microsecond=66987,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-955)),
+    ),
+    "datetime.timedelta(days=-841221, seconds=53357, microseconds=792655)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8230,
+      6,
+      3,
+      hour=5,
+      minute=54,
+      second=12,
+      microsecond=524728,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-912)),
+    ),
+    @datetime.DateTime::new(
+      5796,
+      2,
+      21,
+      hour=8,
+      minute=21,
+      second=15,
+      microsecond=943586,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1283)),
+    ),
+    "datetime.timedelta(days=889101, seconds=55316, microseconds=581142)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1618,
+      9,
+      20,
+      hour=5,
+      minute=14,
+      second=35,
+      microsecond=315580,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1271)),
+    ),
+    @datetime.DateTime::new(
+      6923,
+      12,
+      7,
+      hour=12,
+      minute=21,
+      second=59,
+      microsecond=184861,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-15)),
+    ),
+    "datetime.timedelta(days=-1937689, seconds=49716, microseconds=130719)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1968,
+      1,
+      22,
+      hour=23,
+      minute=25,
+      second=2,
+      microsecond=983897,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=6)),
+    ),
+    @datetime.DateTime::new(
+      5662,
+      4,
+      23,
+      hour=4,
+      minute=3,
+      second=22,
+      microsecond=681743,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1029)),
+    ),
+    "datetime.timedelta(days=-1349298, seconds=7600, microseconds=302154)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5428,
+      11,
+      30,
+      hour=14,
+      minute=31,
+      second=31,
+      microsecond=280692,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=700)),
+    ),
+    @datetime.DateTime::new(
+      6715,
+      5,
+      21,
+      hour=22,
+      minute=30,
+      second=5,
+      microsecond=257028,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-264)),
+    ),
+    "datetime.timedelta(days=-469875, seconds=86246, microseconds=23664)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8189,
+      9,
+      17,
+      hour=2,
+      minute=42,
+      second=46,
+      microsecond=26471,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=951)),
+    ),
+    @datetime.DateTime::new(
+      4728,
+      2,
+      9,
+      hour=9,
+      minute=1,
+      second=20,
+      microsecond=957621,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=893)),
+    ),
+    "datetime.timedelta(days=1264325, seconds=60205, microseconds=68850)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4925,
+      8,
+      9,
+      hour=16,
+      minute=7,
+      second=32,
+      microsecond=330639,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-968)),
+    ),
+    @datetime.DateTime::new(
+      7509,
+      8,
+      28,
+      hour=12,
+      minute=31,
+      second=42,
+      microsecond=846080,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=508)),
+    ),
+    "datetime.timedelta(days=-943804, seconds=15109, microseconds=484559)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4397,
+      8,
+      16,
+      hour=20,
+      minute=29,
+      second=6,
+      microsecond=109583,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1349)),
+    ),
+    @datetime.DateTime::new(
+      4862,
+      10,
+      3,
+      hour=19,
+      minute=20,
+      second=25,
+      microsecond=373017,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1302)),
+    ),
+    "datetime.timedelta(days=-169886, seconds=6940, microseconds=736566)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1996,
+      11,
+      19,
+      hour=18,
+      minute=36,
+      second=15,
+      microsecond=326291,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=429)),
+    ),
+    @datetime.DateTime::new(
+      9199,
+      1,
+      24,
+      hour=9,
+      minute=30,
+      second=15,
+      microsecond=229471,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1297)),
+    ),
+    "datetime.timedelta(days=-2630542, seconds=84840, microseconds=96820)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9533,
+      12,
+      30,
+      hour=18,
+      minute=3,
+      second=34,
+      microsecond=913159,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-909)),
+    ),
+    @datetime.DateTime::new(
+      9259,
+      5,
       27,
       hour=16,
-      minute=31,
-      second=57,
-      microsecond=866847,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1032)),
+      minute=11,
+      second=8,
+      microsecond=775648,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-506)),
+    ),
+    "datetime.timedelta(days=100293, seconds=30926, microseconds=137511)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      730,
+      8,
+      2,
+      hour=20,
+      minute=28,
+      second=11,
+      microsecond=942905,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1225)),
     ),
     @datetime.DateTime::new(
-      7585,
-      5,
-      12,
-      hour=21,
-      minute=30,
-      second=2,
-      microsecond=511735,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=424)),
+      2008,
+      7,
+      10,
+      hour=6,
+      minute=40,
+      second=53,
+      microsecond=151069,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=648)),
     ),
-    "datetime.timedelta(days=-2018010, seconds=69475, microseconds=355112)",
+    "datetime.timedelta(days=-466758, seconds=15018, microseconds=791836)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9393,
+      1,
+      29,
+      hour=4,
+      minute=32,
+      second=55,
+      microsecond=948340,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-655)),
+    ),
+    @datetime.DateTime::new(
+      2023,
+      11,
+      1,
+      hour=19,
+      minute=28,
+      second=53,
+      microsecond=637513,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-879)),
+    ),
+    "datetime.timedelta(days=2691561, seconds=19202, microseconds=310827)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5309,
+      12,
+      1,
+      hour=22,
+      minute=44,
+      second=7,
+      microsecond=541274,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-901)),
+    ),
+    @datetime.DateTime::new(
+      2092,
+      1,
+      18,
+      hour=18,
+      minute=45,
+      second=32,
+      microsecond=73765,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=151)),
+    ),
+    "datetime.timedelta(days=1175302, seconds=77435, microseconds=467509)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2624,
+      5,
+      18,
+      hour=17,
+      minute=9,
+      second=24,
+      microsecond=748353,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=164)),
+    ),
+    @datetime.DateTime::new(
+      4686,
+      3,
+      23,
+      hour=4,
+      minute=54,
+      second=2,
+      microsecond=959299,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-446)),
+    ),
+    "datetime.timedelta(days=-753074, seconds=7521, microseconds=789054)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      6352,
+      4,
+      30,
+      hour=18,
+      minute=14,
+      second=48,
+      microsecond=422876,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=26)),
+    ),
+    @datetime.DateTime::new(
+      1933,
+      1,
+      31,
+      hour=20,
+      minute=54,
+      second=30,
+      microsecond=549443,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-937)),
+    ),
+    "datetime.timedelta(days=1614095, seconds=19037, microseconds=873433)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2125,
+      2,
+      2,
+      hour=12,
+      minute=51,
+      second=44,
+      microsecond=897799,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=112)),
+    ),
+    @datetime.DateTime::new(
+      9907,
+      5,
+      17,
+      hour=14,
+      minute=0,
+      second=30,
+      microsecond=817923,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=931)),
+    ),
+    "datetime.timedelta(days=-2842420, seconds=45014, microseconds=79876)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1957,
+      5,
+      23,
+      hour=6,
+      minute=11,
+      second=38,
+      microsecond=413026,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1033)),
+    ),
+    @datetime.DateTime::new(
+      1913,
+      9,
+      23,
+      hour=2,
+      minute=31,
+      second=29,
+      microsecond=583862,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1264)),
+    ),
+    "datetime.timedelta(days=15949, seconds=64628, microseconds=829164)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      6536,
+      12,
+      24,
+      hour=4,
+      minute=10,
+      second=16,
+      microsecond=682806,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1115)),
+    ),
+    @datetime.DateTime::new(
+      1932,
+      2,
+      12,
+      hour=5,
+      minute=29,
+      second=5,
+      microsecond=241136,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1099)),
+    ),
+    "datetime.timedelta(days=1681891, seconds=35231, microseconds=441670)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2014,
+      5,
+      9,
+      hour=8,
+      minute=57,
+      second=42,
+      microsecond=34476,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1214)),
+    ),
+    @datetime.DateTime::new(
+      7764,
+      3,
+      19,
+      hour=5,
+      minute=45,
+      second=40,
+      microsecond=129444,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1022)),
+    ),
+    "datetime.timedelta(days=-2100093, seconds=59281, microseconds=905032)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3892,
+      3,
+      27,
+      hour=11,
+      minute=48,
+      second=39,
+      microsecond=475057,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-91)),
+    ),
+    @datetime.DateTime::new(
+      1995,
+      12,
+      27,
+      hour=21,
+      minute=38,
+      second=30,
+      microsecond=184150,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1374)),
+    ),
+    "datetime.timedelta(days=692591, seconds=52509, microseconds=290907)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2008,
+      2,
+      1,
+      hour=1,
+      minute=17,
+      second=29,
+      microsecond=687628,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-732)),
+    ),
+    @datetime.DateTime::new(
+      2751,
+      7,
+      30,
+      hour=23,
+      minute=6,
+      second=30,
+      microsecond=536812,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-616)),
+    ),
+    "datetime.timedelta(days=-271555, seconds=14819, microseconds=150816)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1911,
+      8,
+      6,
+      hour=10,
+      minute=33,
+      second=9,
+      microsecond=421988,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1270)),
+    ),
+    @datetime.DateTime::new(
+      1957,
+      7,
+      22,
+      hour=23,
+      minute=28,
+      second=42,
+      microsecond=587439,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-502)),
+    ),
+    "datetime.timedelta(days=-16789, seconds=19946, microseconds=834549)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2187,
+      7,
+      15,
+      hour=22,
+      minute=59,
+      second=16,
+      microsecond=917070,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-800)),
+    ),
+    @datetime.DateTime::new(
+      1972,
+      2,
+      16,
+      hour=16,
+      minute=4,
+      second=45,
+      microsecond=417965,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-108)),
+    ),
+    "datetime.timedelta(days=78677, seconds=66391, microseconds=499105)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2246,
+      5,
+      5,
+      hour=16,
+      minute=40,
+      second=7,
+      microsecond=605738,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=408)),
+    ),
+    @datetime.DateTime::new(
+      1917,
+      12,
+      7,
+      hour=20,
+      minute=24,
+      second=51,
+      microsecond=829462,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-529)),
+    ),
+    "datetime.timedelta(days=119948, seconds=16695, microseconds=776276)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4139,
+      9,
+      24,
+      hour=8,
+      minute=26,
+      second=24,
+      microsecond=662575,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-977)),
+    ),
+    @datetime.DateTime::new(
+      2004,
+      10,
+      6,
+      hour=12,
+      minute=27,
+      second=13,
+      microsecond=724140,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-162)),
+    ),
+    "datetime.timedelta(days=779780, seconds=34450, microseconds=938435)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7871,
+      4,
+      11,
+      hour=13,
+      minute=28,
+      second=15,
+      microsecond=663814,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1304)),
+    ),
+    @datetime.DateTime::new(
+      1979,
+      5,
+      4,
+      hour=5,
+      minute=26,
+      second=58,
+      microsecond=243331,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-914)),
+    ),
+    "datetime.timedelta(days=2151986, seconds=52277, microseconds=420483)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2100,
+      12,
+      16,
+      hour=1,
+      minute=22,
+      second=40,
+      microsecond=349267,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-28)),
+    ),
+    @datetime.DateTime::new(
+      9789,
+      9,
+      30,
+      hour=4,
+      minute=56,
+      second=28,
+      microsecond=531598,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=599)),
+    ),
+    "datetime.timedelta(days=-2808273, seconds=24791, microseconds=817669)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1911,
+      10,
+      10,
+      hour=23,
+      minute=45,
+      second=41,
+      microsecond=197741,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1131)),
+    ),
+    @datetime.DateTime::new(
+      3861,
+      8,
+      1,
+      hour=4,
+      minute=12,
+      second=48,
+      microsecond=156497,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1355)),
+    ),
+    "datetime.timedelta(days=-712154, seconds=83813, microseconds=41244)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      988,
+      8,
+      17,
+      hour=9,
+      minute=6,
+      second=39,
+      microsecond=46375,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1036)),
+    ),
+    @datetime.DateTime::new(
+      8713,
+      9,
+      1,
+      hour=9,
+      minute=25,
+      second=19,
+      microsecond=563735,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=262)),
+    ),
+    "datetime.timedelta(days=-2821513, seconds=38839, microseconds=482640)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3669,
+      11,
+      24,
+      hour=15,
+      minute=47,
+      second=8,
+      microsecond=759635,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1202)),
+    ),
+    @datetime.DateTime::new(
+      1899,
+      5,
+      11,
+      hour=14,
+      minute=36,
+      second=27,
+      microsecond=106012,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=294)),
+    ),
+    "datetime.timedelta(days=646676, seconds=36161, microseconds=653623)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1152,
+      1,
+      12,
+      hour=17,
+      minute=17,
+      second=31,
+      microsecond=848334,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1354)),
+    ),
+    @datetime.DateTime::new(
+      4618,
+      3,
+      14,
+      hour=20,
+      minute=35,
+      second=28,
+      microsecond=769250,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1279)),
+    ),
+    "datetime.timedelta(days=-1265994, seconds=2943, microseconds=79084)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      931,
+      10,
+      22,
+      hour=9,
+      minute=54,
+      second=22,
+      microsecond=693089,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1132)),
+    ),
+    @datetime.DateTime::new(
+      8076,
+      7,
+      17,
+      hour=17,
+      minute=29,
+      second=18,
+      microsecond=750104,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-81)),
+    ),
+    "datetime.timedelta(days=-2609562, seconds=35763, microseconds=942985)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1997,
+      3,
+      29,
+      hour=5,
+      minute=31,
+      second=47,
+      microsecond=110498,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1358)),
+    ),
+    @datetime.DateTime::new(
+      2566,
+      1,
+      18,
+      hour=5,
+      minute=19,
+      second=55,
+      microsecond=314123,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1052)),
+    ),
+    "datetime.timedelta(days=-207755, seconds=28911, microseconds=796375)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5142,
+      9,
+      19,
+      hour=15,
+      minute=57,
+      second=5,
+      microsecond=949821,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-6)),
+    ),
+    @datetime.DateTime::new(
+      9025,
+      11,
+      20,
+      hour=20,
+      minute=51,
+      second=10,
+      microsecond=617821,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=308)),
+    ),
+    "datetime.timedelta(days=-1418299, seconds=1195, microseconds=332000)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1065,
+      1,
+      9,
+      hour=6,
+      minute=6,
+      second=18,
+      microsecond=189074,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=518)),
+    ),
+    @datetime.DateTime::new(
+      4874,
+      4,
+      4,
+      hour=3,
+      minute=14,
+      second=32,
+      microsecond=341487,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1244)),
+    ),
+    "datetime.timedelta(days=-1391296, seconds=77385, microseconds=847587)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4540,
+      2,
+      19,
+      hour=11,
+      minute=28,
+      second=15,
+      microsecond=227911,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1130)),
+    ),
+    @datetime.DateTime::new(
+      3315,
+      5,
+      13,
+      hour=18,
+      minute=40,
+      second=4,
+      microsecond=541251,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=886)),
+    ),
+    "datetime.timedelta(days=447338, seconds=45850, microseconds=686660)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9796,
+      9,
+      21,
+      hour=10,
+      minute=44,
+      second=30,
+      microsecond=262062,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-30)),
+    ),
+    @datetime.DateTime::new(
+      473,
+      5,
+      27,
+      hour=6,
+      minute=55,
+      second=47,
+      microsecond=199133,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-772)),
+    ),
+    "datetime.timedelta(days=3405272, seconds=55603, microseconds=62929)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3581,
+      9,
+      26,
+      hour=11,
+      minute=51,
+      second=59,
+      microsecond=423577,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=350)),
+    ),
+    @datetime.DateTime::new(
+      2530,
+      10,
+      29,
+      hour=16,
+      minute=18,
+      second=21,
+      microsecond=351877,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-294)),
+    ),
+    "datetime.timedelta(days=383836, seconds=31778, microseconds=71700)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1910,
+      10,
+      19,
+      hour=10,
+      minute=28,
+      second=9,
+      microsecond=781240,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-599)),
+    ),
+    @datetime.DateTime::new(
+      82,
+      12,
+      4,
+      hour=21,
+      minute=4,
+      second=18,
+      microsecond=595657,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=44)),
+    ),
+    "datetime.timedelta(days=667616, seconds=411, microseconds=185583)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1944,
+      3,
+      30,
+      hour=0,
+      minute=17,
+      second=19,
+      microsecond=653440,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1128)),
+    ),
+    @datetime.DateTime::new(
+      8722,
+      4,
+      25,
+      hour=11,
+      minute=30,
+      second=1,
+      microsecond=476209,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-188)),
+    ),
+    "datetime.timedelta(days=-2475641, seconds=53478, microseconds=177231)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9839,
+      9,
+      10,
+      hour=1,
+      minute=1,
+      second=47,
+      microsecond=785395,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-278)),
+    ),
+    @datetime.DateTime::new(
+      3695,
+      10,
+      30,
+      hour=11,
+      minute=11,
+      second=31,
+      microsecond=178870,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-678)),
+    ),
+    "datetime.timedelta(days=2243998, seconds=25816, microseconds=606525)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1929,
+      3,
+      24,
+      hour=5,
+      minute=17,
+      second=20,
+      microsecond=569025,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1276)),
+    ),
+    @datetime.DateTime::new(
+      4584,
+      6,
+      8,
+      hour=14,
+      minute=48,
+      second=45,
+      microsecond=808238,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-877)),
+    ),
+    "datetime.timedelta(days=-969798, seconds=9334, microseconds=760787)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1989,
+      2,
+      21,
+      hour=20,
+      minute=20,
+      second=15,
+      microsecond=286093,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-64)),
+    ),
+    @datetime.DateTime::new(
+      1205,
+      8,
+      25,
+      hour=21,
+      minute=23,
+      second=6,
+      microsecond=233407,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-29)),
+    ),
+    "datetime.timedelta(days=286164, seconds=84729, microseconds=52686)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2066,
+      1,
+      11,
+      hour=4,
+      minute=47,
+      second=6,
+      microsecond=177370,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-328)),
+    ),
+    @datetime.DateTime::new(
+      2096,
+      2,
+      3,
+      hour=10,
+      minute=14,
+      second=5,
+      microsecond=689665,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1325)),
+    ),
+    "datetime.timedelta(days=-10980, seconds=79560, microseconds=487705)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1247,
+      10,
+      16,
+      hour=10,
+      minute=4,
+      second=34,
+      microsecond=562774,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-655)),
+    ),
+    @datetime.DateTime::new(
+      2075,
+      4,
+      18,
+      hour=3,
+      minute=23,
+      second=17,
+      microsecond=987100,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1204)),
+    ),
+    "datetime.timedelta(days=-302241, seconds=77536, microseconds=575674)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2585,
+      2,
+      9,
+      hour=4,
+      minute=9,
+      second=43,
+      microsecond=846411,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1248)),
+    ),
+    @datetime.DateTime::new(
+      218,
+      12,
+      9,
+      hour=11,
+      minute=37,
+      second=32,
+      microsecond=993134,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=925)),
+    ),
+    "datetime.timedelta(days=864226, seconds=40150, microseconds=853277)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5622,
+      2,
+      20,
+      hour=19,
+      minute=47,
+      second=23,
+      microsecond=523318,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=634)),
+    ),
+    @datetime.DateTime::new(
+      8588,
+      4,
+      18,
+      hour=3,
+      minute=20,
+      second=20,
+      microsecond=725569,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-254)),
+    ),
+    "datetime.timedelta(days=-1083367, seconds=5942, microseconds=797749)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4264,
+      2,
+      2,
+      hour=0,
+      minute=35,
+      second=28,
+      microsecond=470765,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-801)),
+    ),
+    @datetime.DateTime::new(
+      3948,
+      12,
+      22,
+      hour=14,
+      minute=56,
+      second=29,
+      microsecond=65114,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-497)),
+    ),
+    "datetime.timedelta(days=115092, seconds=52979, microseconds=405651)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1124,
+      8,
+      18,
+      hour=1,
+      minute=23,
+      second=16,
+      microsecond=164385,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-778)),
+    ),
+    @datetime.DateTime::new(
+      9762,
+      6,
+      10,
+      hour=20,
+      minute=10,
+      second=13,
+      microsecond=890553,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1352)),
+    ),
+    "datetime.timedelta(days=-3154896, seconds=60182, microseconds=273832)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1972,
+      12,
+      3,
+      hour=0,
+      minute=0,
+      second=27,
+      microsecond=786003,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-185)),
+    ),
+    @datetime.DateTime::new(
+      4534,
+      4,
+      11,
+      hour=8,
+      minute=34,
+      second=14,
+      microsecond=233539,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-307)),
+    ),
+    "datetime.timedelta(days=-935516, seconds=48253, microseconds=552464)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2858,
+      10,
+      18,
+      hour=13,
+      minute=43,
+      second=48,
+      microsecond=6673,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-352)),
+    ),
+    @datetime.DateTime::new(
+      8880,
+      10,
+      16,
+      hour=23,
+      minute=34,
+      second=18,
+      microsecond=160706,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-37)),
+    ),
+    "datetime.timedelta(days=-2199490, seconds=69869, microseconds=845967)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2036,
+      6,
+      5,
+      hour=19,
+      minute=3,
+      second=22,
+      microsecond=398698,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=279)),
+    ),
+    @datetime.DateTime::new(
+      9514,
+      1,
+      14,
+      hour=21,
+      minute=0,
+      second=21,
+      microsecond=240552,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1037)),
+    ),
+    "datetime.timedelta(days=-2731140, seconds=38461, microseconds=158146)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1910,
+      7,
+      2,
+      hour=0,
+      minute=11,
+      second=37,
+      microsecond=143226,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=890)),
+    ),
+    @datetime.DateTime::new(
+      2531,
+      2,
+      20,
+      hour=8,
+      minute=10,
+      second=49,
+      microsecond=722819,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1162)),
+    ),
+    "datetime.timedelta(days=-226686, seconds=20927, microseconds=420407)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1965,
+      11,
+      1,
+      hour=6,
+      minute=39,
+      second=53,
+      microsecond=380236,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=805)),
+    ),
+    @datetime.DateTime::new(
+      3440,
+      4,
+      9,
+      hour=17,
+      minute=13,
+      second=11,
+      microsecond=355755,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-84)),
+    ),
+    "datetime.timedelta(days=-538529, seconds=81462, microseconds=24481)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4435,
+      6,
+      15,
+      hour=4,
+      minute=35,
+      second=55,
+      microsecond=61031,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=939)),
+    ),
+    @datetime.DateTime::new(
+      1995,
+      6,
+      11,
+      hour=12,
+      minute=46,
+      second=29,
+      microsecond=522009,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-27)),
+    ),
+    "datetime.timedelta(days=891194, seconds=85405, microseconds=539022)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7510,
+      9,
+      19,
+      hour=4,
+      minute=48,
+      second=4,
+      microsecond=839362,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1006)),
+    ),
+    @datetime.DateTime::new(
+      538,
+      8,
+      10,
+      hour=21,
+      minute=36,
+      second=4,
+      microsecond=599435,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=596)),
+    ),
+    "datetime.timedelta(days=2546509, seconds=1320, microseconds=239927)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1919,
+      1,
+      22,
+      hour=17,
+      minute=51,
+      second=5,
+      microsecond=313673,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-643)),
+    ),
+    @datetime.DateTime::new(
+      5202,
+      7,
+      9,
+      hour=8,
+      minute=23,
+      second=36,
+      microsecond=430295,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1271)),
+    ),
+    "datetime.timedelta(days=-1199261, seconds=82768, microseconds=883378)",
     -1,
   )
   check_diff(
     @datetime.DateTime::new(
       2017,
+      4,
+      7,
+      hour=20,
+      minute=34,
+      second=1,
+      microsecond=687795,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-899)),
+    ),
+    @datetime.DateTime::new(
+      1909,
+      11,
+      14,
+      hour=15,
+      minute=3,
+      second=42,
+      microsecond=694095,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-201)),
+    ),
+    "datetime.timedelta(days=39226, seconds=61698, microseconds=993700)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5009,
+      9,
+      7,
+      hour=20,
+      minute=4,
+      second=18,
+      microsecond=669380,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-276)),
+    ),
+    @datetime.DateTime::new(
+      7730,
+      3,
+      29,
+      hour=15,
+      minute=2,
+      second=18,
+      microsecond=46380,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=922)),
+    ),
+    "datetime.timedelta(days=-993662, seconds=3600, microseconds=623000)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9472,
+      12,
+      17,
+      hour=8,
+      minute=3,
+      second=39,
+      microsecond=166673,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-578)),
+    ),
+    @datetime.DateTime::new(
+      9545,
+      9,
+      19,
+      hour=4,
+      minute=34,
+      second=18,
+      microsecond=722610,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-931)),
+    ),
+    "datetime.timedelta(days=-26574, seconds=77780, microseconds=444063)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1953,
+      11,
+      2,
+      hour=14,
+      minute=27,
+      second=51,
+      microsecond=322393,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-713)),
+    ),
+    @datetime.DateTime::new(
+      8035,
+      7,
+      6,
+      hour=0,
+      minute=22,
+      second=17,
+      microsecond=267096,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=478)),
+    ),
+    "datetime.timedelta(days=-2221285, seconds=35794, microseconds=55297)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1921,
+      1,
+      28,
+      hour=10,
+      minute=1,
+      second=32,
+      microsecond=820531,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1087)),
+    ),
+    @datetime.DateTime::new(
+      8268,
+      6,
+      10,
+      hour=20,
+      minute=5,
+      second=14,
+      microsecond=412614,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1137)),
+    ),
+    "datetime.timedelta(days=-2318330, seconds=3138, microseconds=407917)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9202,
+      8,
+      23,
+      hour=20,
+      minute=58,
+      second=21,
+      microsecond=381441,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1150)),
+    ),
+    @datetime.DateTime::new(
+      2785,
+      8,
+      28,
+      hour=7,
+      minute=47,
+      second=31,
+      microsecond=748273,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=432)),
+    ),
+    "datetime.timedelta(days=2343756, seconds=4369, microseconds=633168)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2146,
+      3,
+      26,
+      hour=18,
+      minute=22,
+      second=30,
+      microsecond=62299,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1255)),
+    ),
+    @datetime.DateTime::new(
+      6713,
+      4,
+      1,
+      hour=6,
+      minute=1,
+      second=11,
+      microsecond=986870,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1106)),
+    ),
+    "datetime.timedelta(days=-1668068, seconds=35538, microseconds=75429)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3729,
+      4,
+      8,
+      hour=14,
+      minute=6,
+      second=25,
+      microsecond=217738,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-641)),
+    ),
+    @datetime.DateTime::new(
+      5019,
+      5,
+      12,
+      hour=2,
+      minute=0,
+      second=26,
+      microsecond=450170,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-262)),
+    ),
+    "datetime.timedelta(days=-471196, seconds=66298, microseconds=767568)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1990,
+      2,
+      25,
+      hour=11,
+      minute=58,
+      second=43,
+      microsecond=627147,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1162)),
+    ),
+    @datetime.DateTime::new(
+      7828,
+      9,
+      28,
+      hour=1,
+      minute=43,
+      second=56,
+      microsecond=911599,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1039)),
+    ),
+    "datetime.timedelta(days=-2132501, seconds=29506, microseconds=715548)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2673,
+      2,
+      16,
+      hour=4,
+      minute=39,
+      second=16,
+      microsecond=573794,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1155)),
+    ),
+    @datetime.DateTime::new(
+      1908,
+      5,
+      8,
+      hour=19,
+      minute=14,
+      second=19,
+      microsecond=950226,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=576)),
+    ),
+    "datetime.timedelta(days=279328, seconds=85556, microseconds=623568)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2067,
+      6,
+      15,
+      hour=0,
+      minute=19,
+      second=17,
+      microsecond=492914,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-236)),
+    ),
+    @datetime.DateTime::new(
+      2265,
+      3,
+      29,
+      hour=19,
+      minute=31,
+      second=28,
+      microsecond=549090,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-205)),
+    ),
+    "datetime.timedelta(days=-72241, seconds=19128, microseconds=943824)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      544,
+      2,
+      10,
+      hour=20,
+      minute=35,
+      second=32,
+      microsecond=102080,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-865)),
+    ),
+    @datetime.DateTime::new(
+      8789,
+      4,
+      18,
+      hour=8,
+      minute=45,
+      second=26,
+      microsecond=751005,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-511)),
+    ),
+    "datetime.timedelta(days=-3011492, seconds=63845, microseconds=351075)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1922,
+      11,
+      20,
+      hour=16,
+      minute=57,
+      second=58,
+      microsecond=530623,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-706)),
+    ),
+    @datetime.DateTime::new(
+      6601,
+      4,
+      29,
+      hour=13,
+      minute=12,
+      second=1,
+      microsecond=648522,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-659)),
+    ),
+    "datetime.timedelta(days=-1708765, seconds=16376, microseconds=882101)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7416,
+      5,
+      13,
+      hour=5,
+      minute=41,
+      second=42,
+      microsecond=92331,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=498)),
+    ),
+    @datetime.DateTime::new(
+      5232,
+      5,
+      7,
+      hour=9,
+      minute=55,
+      second=3,
+      microsecond=826336,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1057)),
+    ),
+    "datetime.timedelta(days=797693, seconds=64298, microseconds=265995)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4283,
+      8,
+      1,
+      hour=2,
+      minute=11,
+      second=32,
+      microsecond=207825,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-642)),
+    ),
+    @datetime.DateTime::new(
+      1919,
+      12,
+      10,
+      hour=3,
+      minute=24,
+      second=39,
+      microsecond=661550,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-860)),
+    ),
+    "datetime.timedelta(days=863302, seconds=68932, microseconds=546275)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7852,
+      6,
+      30,
+      hour=7,
+      minute=16,
+      second=56,
+      microsecond=469600,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=678)),
+    ),
+    @datetime.DateTime::new(
+      2704,
+      10,
+      17,
+      hour=6,
+      minute=30,
+      second=59,
+      microsecond=974775,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-144)),
+    ),
+    "datetime.timedelta(days=1880159, seconds=39836, microseconds=494825)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5615,
+      11,
+      6,
+      hour=16,
+      minute=40,
+      second=49,
+      microsecond=752760,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=411)),
+    ),
+    @datetime.DateTime::new(
+      6933,
+      2,
+      23,
+      hour=8,
+      minute=43,
+      second=56,
+      microsecond=735166,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1294)),
+    ),
+    "datetime.timedelta(days=-481135, seconds=12713, microseconds=17594)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2417,
+      9,
+      29,
+      hour=6,
+      minute=4,
+      second=17,
+      microsecond=688757,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1238)),
+    ),
+    @datetime.DateTime::new(
+      1401,
+      8,
+      8,
+      hour=19,
+      minute=55,
+      second=5,
+      microsecond=704434,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=264)),
+    ),
+    "datetime.timedelta(days=371139, seconds=40271, microseconds=984323)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4921,
+      1,
+      1,
+      hour=6,
+      minute=11,
+      second=23,
+      microsecond=337618,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1090)),
+    ),
+    @datetime.DateTime::new(
+      1901,
+      7,
+      27,
+      hour=7,
+      minute=39,
+      second=15,
+      microsecond=608392,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1133)),
+    ),
+    "datetime.timedelta(days=1102825, seconds=83707, microseconds=729226)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7867,
+      6,
+      18,
+      hour=16,
+      minute=33,
+      second=29,
+      microsecond=881974,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=967)),
+    ),
+    @datetime.DateTime::new(
+      8266,
+      10,
+      26,
+      hour=14,
+      minute=4,
+      second=12,
+      microsecond=4318,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1316)),
+    ),
+    "datetime.timedelta(days=-145864, seconds=44777, microseconds=877656)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3766,
+      9,
+      14,
+      hour=17,
+      minute=13,
+      second=12,
+      microsecond=969143,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=658)),
+    ),
+    @datetime.DateTime::new(
+      9463,
+      5,
+      1,
+      hour=0,
+      minute=1,
+      second=54,
+      microsecond=50513,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=578)),
+    ),
+    "datetime.timedelta(days=-2080650, seconds=57078, microseconds=918630)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1391,
+      5,
+      20,
+      hour=22,
+      minute=50,
+      second=8,
+      microsecond=462968,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=871)),
+    ),
+    @datetime.DateTime::new(
+      1928,
       7,
       29,
-      hour=3,
-      minute=41,
-      second=47,
-      microsecond=958031,
+      hour=1,
+      minute=34,
+      second=10,
+      microsecond=100463,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=444)),
+    ),
+    "datetime.timedelta(days=-196205, seconds=50938, microseconds=362505)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2114,
+      10,
+      21,
+      hour=15,
+      minute=39,
+      second=29,
+      microsecond=420790,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1280)),
+    ),
+    @datetime.DateTime::new(
+      1939,
+      3,
+      3,
+      hour=6,
+      minute=44,
+      second=13,
+      microsecond=114169,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1033)),
+    ),
+    "datetime.timedelta(days=64148, seconds=66136, microseconds=306621)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8707,
+      5,
+      23,
+      hour=19,
+      minute=48,
+      second=0,
+      microsecond=132472,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-245)),
+    ),
+    @datetime.DateTime::new(
+      1406,
+      7,
+      13,
+      hour=9,
+      minute=58,
+      second=42,
+      microsecond=602043,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-220)),
+    ),
+    "datetime.timedelta(days=2666584, seconds=36857, microseconds=530429)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7264,
+      3,
+      26,
+      hour=2,
+      minute=28,
+      second=52,
+      microsecond=112703,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=968)),
+    ),
+    @datetime.DateTime::new(
+      2039,
+      7,
+      11,
+      hour=11,
+      minute=14,
+      second=46,
+      microsecond=67579,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=20)),
+    ),
+    "datetime.timedelta(days=1908284, seconds=84366, microseconds=45124)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2135,
+      10,
+      3,
+      hour=23,
+      minute=7,
+      second=48,
+      microsecond=984581,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-449)),
+    ),
+    @datetime.DateTime::new(
+      8884,
+      12,
+      1,
+      hour=2,
+      minute=48,
+      second=35,
+      microsecond=230562,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-785)),
+    ),
+    "datetime.timedelta(days=-2465082, seconds=52993, microseconds=754019)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4987,
+      10,
+      18,
+      hour=0,
+      minute=39,
+      second=35,
+      microsecond=482919,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=280)),
+    ),
+    @datetime.DateTime::new(
+      1948,
+      1,
+      24,
+      hour=23,
+      minute=26,
+      second=58,
+      microsecond=643613,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=504)),
+    ),
+    "datetime.timedelta(days=1110239, seconds=17796, microseconds=839306)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7421,
+      1,
+      5,
+      hour=22,
+      minute=25,
+      second=26,
+      microsecond=243773,
       tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=351)),
     ),
     @datetime.DateTime::new(
-      3619,
-      2,
-      22,
-      hour=18,
-      minute=3,
-      second=51,
-      microsecond=274970,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-365)),
-    ),
-    "datetime.timedelta(days=-584963, seconds=78116, microseconds=683061)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2502,
-      3,
-      31,
-      hour=1,
-      minute=23,
-      second=41,
-      microsecond=464286,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-546)),
-    ),
-    @datetime.DateTime::new(
-      5431,
-      8,
+      2063,
       9,
-      hour=8,
-      minute=0,
-      second=0,
-      microsecond=187343,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=326)),
-    ),
-    "datetime.timedelta(days=-1069926, seconds=28541, microseconds=276943)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      2027,
-      1,
-      11,
-      hour=8,
-      minute=59,
-      second=33,
-      microsecond=966059,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-925)),
-    ),
-    @datetime.DateTime::new(
-      5040,
-      11,
-      24,
-      hour=5,
-      minute=48,
-      second=15,
-      microsecond=339756,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1031)),
-    ),
-    "datetime.timedelta(days=-1100793, seconds=5118, microseconds=626303)",
-    -1,
-  )
-  check_diff(
-    @datetime.DateTime::new(
-      3281,
-      3,
-      27,
-      hour=0,
-      minute=43,
-      second=14,
-      microsecond=254632,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-968)),
-    ),
-    @datetime.DateTime::new(
-      5567,
-      5,
-      25,
-      hour=6,
+      23,
+      hour=1,
       minute=1,
-      second=26,
-      microsecond=26618,
-      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-744)),
+      second=49,
+      microsecond=408180,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-549)),
     ),
-    "datetime.timedelta(days=-835003, seconds=80748, microseconds=228014)",
+    "datetime.timedelta(days=1956708, seconds=23016, microseconds=835593)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1404,
+      2,
+      9,
+      hour=1,
+      minute=32,
+      second=56,
+      microsecond=186027,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=98)),
+    ),
+    @datetime.DateTime::new(
+      2770,
+      4,
+      26,
+      hour=6,
+      minute=17,
+      second=4,
+      microsecond=115416,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1101)),
+    ),
+    "datetime.timedelta(days=-499000, seconds=83812, microseconds=70611)",
     -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2840,
+      12,
+      29,
+      hour=1,
+      minute=14,
+      second=1,
+      microsecond=650469,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=511)),
+    ),
+    @datetime.DateTime::new(
+      546,
+      2,
+      5,
+      hour=14,
+      minute=51,
+      second=37,
+      microsecond=716313,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1127)),
+    ),
+    "datetime.timedelta(days=838193, seconds=74303, microseconds=934156)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1933,
+      2,
+      26,
+      hour=7,
+      minute=45,
+      second=30,
+      microsecond=277540,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=798)),
+    ),
+    @datetime.DateTime::new(
+      6005,
+      3,
+      4,
+      hour=10,
+      minute=31,
+      second=12,
+      microsecond=319212,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-551)),
+    ),
+    "datetime.timedelta(days=-1487276, seconds=81917, microseconds=958328)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1574,
+      11,
+      17,
+      hour=19,
+      minute=21,
+      second=50,
+      microsecond=844313,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-733)),
+    ),
+    @datetime.DateTime::new(
+      2550,
+      11,
+      7,
+      hour=22,
+      minute=17,
+      second=17,
+      microsecond=256164,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1304)),
+    ),
+    "datetime.timedelta(days=-356466, seconds=25293, microseconds=588149)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9960,
+      10,
+      12,
+      hour=23,
+      minute=33,
+      second=4,
+      microsecond=862942,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-671)),
+    ),
+    @datetime.DateTime::new(
+      2013,
+      11,
+      20,
+      hour=9,
+      minute=44,
+      second=27,
+      microsecond=188793,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1051)),
+    ),
+    "datetime.timedelta(days=2902543, seconds=26917, microseconds=674149)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1914,
+      12,
+      24,
+      hour=15,
+      minute=38,
+      second=34,
+      microsecond=640699,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-219)),
+    ),
+    @datetime.DateTime::new(
+      1158,
+      1,
+      2,
+      hour=14,
+      minute=0,
+      second=57,
+      microsecond=365695,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-249)),
+    ),
+    "datetime.timedelta(days=276479, seconds=4057, microseconds=275004)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7194,
+      9,
+      12,
+      hour=11,
+      minute=40,
+      second=50,
+      microsecond=737616,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=327)),
+    ),
+    @datetime.DateTime::new(
+      2588,
+      3,
+      1,
+      hour=1,
+      minute=50,
+      second=46,
+      microsecond=456627,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1297)),
+    ),
+    "datetime.timedelta(days=1682500, seconds=24364, microseconds=280989)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1980,
+      9,
+      14,
+      hour=9,
+      minute=28,
+      second=12,
+      microsecond=420187,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-750)),
+    ),
+    @datetime.DateTime::new(
+      2022,
+      6,
+      27,
+      hour=11,
+      minute=15,
+      second=42,
+      microsecond=909701,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=335)),
+    ),
+    "datetime.timedelta(days=-15261, seconds=58649, microseconds=510486)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      7156,
+      4,
+      29,
+      hour=8,
+      minute=48,
+      second=49,
+      microsecond=525147,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1048)),
+    ),
+    @datetime.DateTime::new(
+      9980,
+      1,
+      5,
+      hour=10,
+      minute=12,
+      second=32,
+      microsecond=163025,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=319)),
+    ),
+    "datetime.timedelta(days=-1031330, seconds=76997, microseconds=362122)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3663,
+      8,
+      3,
+      hour=17,
+      minute=5,
+      second=21,
+      microsecond=411856,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1322)),
+    ),
+    @datetime.DateTime::new(
+      1941,
+      12,
+      12,
+      hour=9,
+      minute=30,
+      second=56,
+      microsecond=135963,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1372)),
+    ),
+    "datetime.timedelta(days=628817, seconds=24265, microseconds=275893)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5200,
+      3,
+      10,
+      hour=19,
+      minute=12,
+      second=7,
+      microsecond=139414,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=269)),
+    ),
+    @datetime.DateTime::new(
+      2852,
+      9,
+      23,
+      hour=21,
+      minute=5,
+      second=47,
+      microsecond=528127,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1192)),
+    ),
+    "datetime.timedelta(days=857392, seconds=48559, microseconds=611287)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1904,
+      2,
+      4,
+      hour=12,
+      minute=44,
+      second=53,
+      microsecond=596022,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-754)),
+    ),
+    @datetime.DateTime::new(
+      3489,
+      3,
+      14,
+      hour=4,
+      minute=32,
+      second=49,
+      microsecond=285084,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=806)),
+    ),
+    "datetime.timedelta(days=-578948, seconds=36724, microseconds=310938)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1900,
+      4,
+      9,
+      hour=7,
+      minute=7,
+      second=32,
+      microsecond=987815,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-806)),
+    ),
+    @datetime.DateTime::new(
+      1878,
+      9,
+      17,
+      hour=3,
+      minute=31,
+      second=14,
+      microsecond=308273,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1126)),
+    ),
+    "datetime.timedelta(days=7875, seconds=42498, microseconds=679542)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      832,
+      7,
+      5,
+      hour=0,
+      minute=27,
+      second=9,
+      microsecond=218136,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-535)),
+    ),
+    @datetime.DateTime::new(
+      4067,
+      6,
+      30,
+      hour=21,
+      minute=38,
+      second=18,
+      microsecond=337828,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1180)),
+    ),
+    "datetime.timedelta(days=-1181556, seconds=57830, microseconds=880308)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8250,
+      10,
+      25,
+      hour=1,
+      minute=10,
+      second=10,
+      microsecond=855346,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-577)),
+    ),
+    @datetime.DateTime::new(
+      3157,
+      7,
+      30,
+      hour=15,
+      minute=42,
+      second=38,
+      microsecond=524035,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-9)),
+    ),
+    "datetime.timedelta(days=1860266, seconds=68132, microseconds=331311)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4260,
+      10,
+      29,
+      hour=15,
+      minute=43,
+      second=36,
+      microsecond=935521,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1074)),
+    ),
+    @datetime.DateTime::new(
+      1021,
+      8,
+      23,
+      hour=14,
+      minute=0,
+      second=44,
+      microsecond=884731,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1240)),
+    ),
+    "datetime.timedelta(days=1183089, seconds=58612, microseconds=50790)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1489,
+      3,
+      2,
+      hour=23,
+      minute=58,
+      second=57,
+      microsecond=42438,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-344)),
+    ),
+    @datetime.DateTime::new(
+      1928,
+      10,
+      2,
+      hour=21,
+      minute=37,
+      second=40,
+      microsecond=786664,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-119)),
+    ),
+    "datetime.timedelta(days=-160555, seconds=21976, microseconds=255774)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2001,
+      11,
+      5,
+      hour=1,
+      minute=33,
+      second=33,
+      microsecond=32692,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-623)),
+    ),
+    @datetime.DateTime::new(
+      6813,
+      8,
+      26,
+      hour=20,
+      minute=9,
+      second=40,
+      microsecond=866290,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-135)),
+    ),
+    "datetime.timedelta(days=-1757477, seconds=48712, microseconds=166402)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5743,
+      12,
+      2,
+      hour=4,
+      minute=56,
+      second=6,
+      microsecond=949079,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1)),
+    ),
+    @datetime.DateTime::new(
+      9943,
+      8,
+      31,
+      hour=19,
+      minute=27,
+      second=50,
+      microsecond=572195,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-602)),
+    ),
+    "datetime.timedelta(days=-1533927, seconds=84316, microseconds=376884)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1961,
+      3,
+      12,
+      hour=12,
+      minute=4,
+      second=16,
+      microsecond=319553,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-252)),
+    ),
+    @datetime.DateTime::new(
+      5223,
+      10,
+      5,
+      hour=9,
+      minute=40,
+      second=45,
+      microsecond=492391,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-529)),
+    ),
+    "datetime.timedelta(days=-1191629, seconds=78390, microseconds=827162)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8725,
+      6,
+      8,
+      hour=12,
+      minute=17,
+      second=3,
+      microsecond=400081,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-692)),
+    ),
+    @datetime.DateTime::new(
+      5335,
+      2,
+      24,
+      hour=9,
+      minute=19,
+      second=15,
+      microsecond=117212,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=23)),
+    ),
+    "datetime.timedelta(days=1238276, seconds=53568, microseconds=282869)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      9111,
+      2,
+      5,
+      hour=6,
+      minute=14,
+      second=55,
+      microsecond=294237,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-783)),
+    ),
+    @datetime.DateTime::new(
+      9710,
+      9,
+      17,
+      hour=0,
+      minute=34,
+      second=17,
+      microsecond=69949,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1183)),
+    ),
+    "datetime.timedelta(days=-219004, seconds=51998, microseconds=224288)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3914,
+      7,
+      24,
+      hour=14,
+      minute=35,
+      second=2,
+      microsecond=325406,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1033)),
+    ),
+    @datetime.DateTime::new(
+      1922,
+      11,
+      21,
+      hour=21,
+      minute=22,
+      second=50,
+      microsecond=321302,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1304)),
+    ),
+    "datetime.timedelta(days=727441, seconds=8112, microseconds=4104)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      5491,
+      11,
+      17,
+      hour=12,
+      minute=43,
+      second=54,
+      microsecond=138998,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=824)),
+    ),
+    @datetime.DateTime::new(
+      6824,
+      7,
+      26,
+      hour=23,
+      minute=53,
+      second=31,
+      microsecond=571648,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-935)),
+    ),
+    "datetime.timedelta(days=-486757, seconds=27082, microseconds=567350)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8933,
+      10,
+      20,
+      hour=4,
+      minute=28,
+      second=23,
+      microsecond=254852,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=914)),
+    ),
+    @datetime.DateTime::new(
+      2092,
+      5,
+      20,
+      hour=4,
+      minute=3,
+      second=10,
+      microsecond=907967,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-168)),
+    ),
+    "datetime.timedelta(days=2498775, seconds=22992, microseconds=346885)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2074,
+      4,
+      6,
+      hour=0,
+      minute=6,
+      second=43,
+      microsecond=589867,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-438)),
+    ),
+    @datetime.DateTime::new(
+      588,
+      8,
+      6,
+      hour=18,
+      minute=33,
+      second=24,
+      microsecond=873994,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1026)),
+    ),
+    "datetime.timedelta(days=542626, seconds=71118, microseconds=715873)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      6647,
+      10,
+      13,
+      hour=17,
+      minute=39,
+      second=40,
+      microsecond=653727,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=676)),
+    ),
+    @datetime.DateTime::new(
+      7391,
+      11,
+      25,
+      hour=20,
+      minute=34,
+      second=56,
+      microsecond=70794,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=385)),
+    ),
+    "datetime.timedelta(days=-271785, seconds=58424, microseconds=582933)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1921,
+      7,
+      27,
+      hour=16,
+      minute=36,
+      second=54,
+      microsecond=119567,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1110)),
+    ),
+    @datetime.DateTime::new(
+      4582,
+      9,
+      12,
+      hour=0,
+      minute=35,
+      second=29,
+      microsecond=883512,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1024)),
+    ),
+    "datetime.timedelta(days=-971956, seconds=12924, microseconds=236055)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1966,
+      7,
+      25,
+      hour=9,
+      minute=0,
+      second=27,
+      microsecond=279033,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=136)),
+    ),
+    @datetime.DateTime::new(
+      3894,
+      1,
+      21,
+      hour=6,
+      minute=15,
+      second=31,
+      microsecond=973790,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-592)),
+    ),
+    "datetime.timedelta(days=-704004, seconds=52615, microseconds=305243)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2079,
+      5,
+      7,
+      hour=17,
+      minute=14,
+      second=32,
+      microsecond=939390,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=969)),
+    ),
+    @datetime.DateTime::new(
+      5855,
+      5,
+      5,
+      hour=7,
+      minute=4,
+      second=9,
+      microsecond=256930,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=543)),
+    ),
+    "datetime.timedelta(days=-1379153, seconds=11063, microseconds=682460)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      810,
+      4,
+      20,
+      hour=11,
+      minute=15,
+      second=0,
+      microsecond=585399,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=135)),
+    ),
+    @datetime.DateTime::new(
+      6570,
+      8,
+      7,
+      hour=7,
+      minute=31,
+      second=20,
+      microsecond=361131,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1166)),
+    ),
+    "datetime.timedelta(days=-2103906, seconds=75280, microseconds=224268)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      8551,
+      5,
+      19,
+      hour=3,
+      minute=44,
+      second=13,
+      microsecond=467589,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1261)),
+    ),
+    @datetime.DateTime::new(
+      3597,
+      3,
+      9,
+      hour=6,
+      minute=18,
+      second=16,
+      microsecond=448511,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-225)),
+    ),
+    "datetime.timedelta(days=1809480, seconds=74397, microseconds=19078)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      3580,
+      11,
+      1,
+      hour=10,
+      minute=21,
+      second=58,
+      microsecond=504467,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-51)),
+    ),
+    @datetime.DateTime::new(
+      2015,
+      5,
+      17,
+      hour=6,
+      minute=24,
+      second=44,
+      microsecond=894569,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1246)),
+    ),
+    "datetime.timedelta(days=571772, seconds=28933, microseconds=609898)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2436,
+      11,
+      4,
+      hour=2,
+      minute=29,
+      second=13,
+      microsecond=437204,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1041)),
+    ),
+    @datetime.DateTime::new(
+      7617,
+      9,
+      19,
+      hour=9,
+      minute=53,
+      second=4,
+      microsecond=444399,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=989)),
+    ),
+    "datetime.timedelta(days=-1892274, seconds=8768, microseconds=992805)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      1445,
+      11,
+      8,
+      hour=5,
+      minute=2,
+      second=42,
+      microsecond=437642,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-289)),
+    ),
+    @datetime.DateTime::new(
+      1166,
+      4,
+      27,
+      hour=9,
+      minute=23,
+      second=27,
+      microsecond=567928,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1195)),
+    ),
+    "datetime.timedelta(days=102098, seconds=73394, microseconds=869714)",
+    1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      2092,
+      4,
+      21,
+      hour=20,
+      minute=52,
+      second=1,
+      microsecond=349095,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=522)),
+    ),
+    @datetime.DateTime::new(
+      9431,
+      3,
+      28,
+      hour=6,
+      minute=13,
+      second=58,
+      microsecond=35181,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-647)),
+    ),
+    "datetime.timedelta(days=-2680490, seconds=68943, microseconds=313914)",
+    -1,
+  )
+  check_diff(
+    @datetime.DateTime::new(
+      4663,
+      11,
+      8,
+      hour=4,
+      minute=59,
+      second=12,
+      microsecond=273778,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=-1197)),
+    ),
+    @datetime.DateTime::new(
+      2026,
+      8,
+      5,
+      hour=6,
+      minute=57,
+      second=37,
+      microsecond=283030,
+      tzinfo=@datetime.Tz::fixed(@datetime.TimeDelta::new(minutes=1102)),
+    ),
+    "datetime.timedelta(days=963240, seconds=44434, microseconds=990748)",
+    1,
   )
 }
 
@@ -14180,2026 +25578,2026 @@ test "cpython: aware datetime difference and ordering" {
 test "cpython: formatting" {
   check_fmt(
     @datetime.DateTime::new(
-      2986,
-      2,
-      20,
-      hour=7,
-      minute=37,
-      second=26,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Mon Monday Feb February 20 07 07 051 02 37 AM 26 08 1 08 86 2986 000000 %",
-    "2986-02-20 07:37:26",
-    "datetime.datetime(2986, 2, 20, 7, 37, 26)",
-    "2986-02-20T07:37:26",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      7389,
-      5,
-      17,
-      hour=0,
-      minute=34,
-      second=57,
-      microsecond=903927,
-    ),
-    "%x %X",
-    "05/17/89 00:34:57",
-    "7389-05-17 00:34:57.903927",
-    "datetime.datetime(7389, 5, 17, 0, 34, 57, 903927)",
-    "7389-05-17T00:34:57.903927",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1983,
-      7,
-      16,
-      hour=13,
-      minute=53,
-      second=46,
-      microsecond=448536,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Sat Saturday Jul July 16 13 01 197 07 53 PM 46 28 6 28 83 1983 448536 %",
-    "1983-07-16 13:53:46.448536",
-    "datetime.datetime(1983, 7, 16, 13, 53, 46, 448536)",
-    "1983-07-16T13:53:46.448536",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2054,
-      1,
-      1,
-      hour=12,
-      minute=4,
-      second=31,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "1/1/54 12:4:31",
-    "2054-01-01 12:04:31",
-    "datetime.datetime(2054, 1, 1, 12, 4, 31)",
-    "2054-01-01T12:04:31",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8934,
-      1,
-      3,
-      hour=16,
-      minute=19,
-      second=21,
-      microsecond=895733,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 3|01/03/34|8934-01-03|16:19:21|16:19|89|Jan",
-    "8934-01-03 16:19:21.895733",
-    "datetime.datetime(8934, 1, 3, 16, 19, 21, 895733)",
-    "8934-01-03T16:19:21.895733",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1996,
-      6,
-      19,
-      hour=14,
-      minute=43,
-      second=55,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Wed Wednesday Jun June 19 14 02 171 06 43 PM 55 24 3 25 96 1996 000000 %",
-    "1996-06-19 14:43:55",
-    "datetime.datetime(1996, 6, 19, 14, 43, 55)",
-    "1996-06-19T14:43:55",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2007,
-      10,
-      31,
-      hour=8,
-      minute=52,
-      second=27,
-      microsecond=207916,
-    ),
-    "%c",
-    "Wed Oct 31 08:52:27 2007",
-    "2007-10-31 08:52:27.207916",
-    "datetime.datetime(2007, 10, 31, 8, 52, 27, 207916)",
-    "2007-10-31T08:52:27.207916",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2182,
-      12,
-      10,
-      hour=10,
-      minute=47,
-      second=56,
-      microsecond=798636,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Tue Tuesday Dec December 10 10 10 344 12 47 AM 56 49 2 49 82 2182 798636 %",
-    "2182-12-10 10:47:56.798636",
-    "datetime.datetime(2182, 12, 10, 10, 47, 56, 798636)",
-    "2182-12-10T10:47:56.798636",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      5610,
-      11,
-      11,
-      hour=5,
-      minute=1,
-      second=52,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "5610-W45-4",
-    "5610-11-11 05:01:52",
-    "datetime.datetime(5610, 11, 11, 5, 1, 52)",
-    "5610-11-11T05:01:52",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1939,
-      5,
-      9,
-      hour=1,
-      minute=31,
-      second=48,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "9/5/39 1:31:48",
-    "1939-05-09 01:31:48",
-    "datetime.datetime(1939, 5, 9, 1, 31, 48)",
-    "1939-05-09T01:31:48",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1684,
-      2,
-      24,
-      hour=17,
-      minute=9,
-      second=27,
-      microsecond=367745,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "24|02/24/84|1684-02-24|17:09:27|17:09|16|Feb",
-    "1684-02-24 17:09:27.367745",
-    "datetime.datetime(1684, 2, 24, 17, 9, 27, 367745)",
-    "1684-02-24T17:09:27.367745",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      9458,
-      5,
-      30,
-      hour=0,
-      minute=22,
-      second=56,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "30|05/30/58|9458-05-30|00:22:56|00:22|94|May",
-    "9458-05-30 00:22:56",
-    "datetime.datetime(9458, 5, 30, 0, 22, 56)",
-    "9458-05-30T00:22:56",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2380,
-      3,
-      11,
-      hour=2,
-      minute=8,
-      second=56,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Tue Tuesday Mar March 11 02 02 071 03 08 AM 56 10 2 10 80 2380 000000 %",
-    "2380-03-11 02:08:56",
-    "datetime.datetime(2380, 3, 11, 2, 8, 56)",
-    "2380-03-11T02:08:56",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      9396,
-      4,
-      5,
-      hour=18,
-      minute=1,
-      second=38,
-      microsecond=0,
-    ),
-    "%x %X",
-    "04/05/96 18:01:38",
-    "9396-04-05 18:01:38",
-    "datetime.datetime(9396, 4, 5, 18, 1, 38)",
-    "9396-04-05T18:01:38",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4368,
-      10,
-      7,
-      hour=2,
-      minute=12,
-      second=20,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Mon Monday Oct October 07 02 02 281 10 12 AM 20 40 1 41 68 4368 000000 %",
-    "4368-10-07 02:12:20",
-    "datetime.datetime(4368, 10, 7, 2, 12, 20)",
-    "4368-10-07T02:12:20",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      7669,
-      5,
-      4,
-      hour=13,
-      minute=25,
-      second=37,
-      microsecond=489151,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "4/5/69 13:25:37",
-    "7669-05-04 13:25:37.489151",
-    "datetime.datetime(7669, 5, 4, 13, 25, 37, 489151)",
-    "7669-05-04T13:25:37.489151",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      5879,
-      5,
-      5,
-      hour=18,
-      minute=34,
-      second=50,
-      microsecond=443120,
-    ),
-    "%x %X",
-    "05/05/79 18:34:50",
-    "5879-05-05 18:34:50.443120",
-    "datetime.datetime(5879, 5, 5, 18, 34, 50, 443120)",
-    "5879-05-05T18:34:50.443120",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2046,
-      3,
-      17,
-      hour=1,
-      minute=41,
-      second=53,
-      microsecond=0,
-    ),
-    "%c",
-    "Sat Mar 17 01:41:53 2046",
-    "2046-03-17 01:41:53",
-    "datetime.datetime(2046, 3, 17, 1, 41, 53)",
-    "2046-03-17T01:41:53",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2602,
-      10,
-      28,
-      hour=5,
-      minute=1,
-      second=15,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "2602-W43-4",
-    "2602-10-28 05:01:15",
-    "datetime.datetime(2602, 10, 28, 5, 1, 15)",
-    "2602-10-28T05:01:15",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      5312,
-      6,
-      5,
-      hour=16,
-      minute=47,
-      second=52,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 5|06/05/12|5312-06-05|16:47:52|16:47|53|Jun",
-    "5312-06-05 16:47:52",
-    "datetime.datetime(5312, 6, 5, 16, 47, 52)",
-    "5312-06-05T16:47:52",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2786,
-      9,
-      17,
-      hour=9,
-      minute=55,
-      second=9,
-      microsecond=456162,
-    ),
-    "%G-W%V-%u",
-    "2786-W38-3",
-    "2786-09-17 09:55:09.456162",
-    "datetime.datetime(2786, 9, 17, 9, 55, 9, 456162)",
-    "2786-09-17T09:55:09.456162",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      9933,
-      11,
-      19,
-      hour=5,
-      minute=36,
-      second=35,
-      microsecond=498012,
-    ),
-    "%c",
-    "Sun Nov 19 05:36:35 9933",
-    "9933-11-19 05:36:35.498012",
-    "datetime.datetime(9933, 11, 19, 5, 36, 35, 498012)",
-    "9933-11-19T05:36:35.498012",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      9063,
-      6,
-      29,
-      hour=19,
-      minute=23,
-      second=31,
-      microsecond=0,
-    ),
-    "%x %X",
-    "06/29/63 19:23:31",
-    "9063-06-29 19:23:31",
-    "datetime.datetime(9063, 6, 29, 19, 23, 31)",
-    "9063-06-29T19:23:31",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8716,
-      12,
-      11,
-      hour=20,
-      minute=40,
-      second=43,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "8716-W50-1",
-    "8716-12-11 20:40:43",
-    "datetime.datetime(8716, 12, 11, 20, 40, 43)",
-    "8716-12-11T20:40:43",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2078,
-      6,
-      13,
-      hour=5,
-      minute=37,
-      second=8,
-      microsecond=898239,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Mon Monday Jun June 13 05 05 164 06 37 AM 08 24 1 24 78 2078 898239 %",
-    "2078-06-13 05:37:08.898239",
-    "datetime.datetime(2078, 6, 13, 5, 37, 8, 898239)",
-    "2078-06-13T05:37:08.898239",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2001,
-      11,
-      14,
-      hour=0,
-      minute=24,
-      second=26,
-      microsecond=0,
-    ),
-    "%c",
-    "Wed Nov 14 00:24:26 2001",
-    "2001-11-14 00:24:26",
-    "datetime.datetime(2001, 11, 14, 0, 24, 26)",
-    "2001-11-14T00:24:26",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1972,
-      5,
-      9,
-      hour=4,
-      minute=1,
-      second=11,
-      microsecond=605917,
-    ),
-    "%x %X",
-    "05/09/72 04:01:11",
-    "1972-05-09 04:01:11.605917",
-    "datetime.datetime(1972, 5, 9, 4, 1, 11, 605917)",
-    "1972-05-09T04:01:11.605917",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1983,
+      6461,
       8,
-      12,
-      hour=18,
-      minute=39,
-      second=41,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "12|08/12/83|1983-08-12|18:39:41|18:39|19|Aug",
-    "1983-08-12 18:39:41",
-    "datetime.datetime(1983, 8, 12, 18, 39, 41)",
-    "1983-08-12T18:39:41",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3656,
-      3,
-      26,
-      hour=9,
-      minute=38,
-      second=14,
-      microsecond=794251,
-    ),
-    "%G-W%V-%u",
-    "3656-W12-7",
-    "3656-03-26 09:38:14.794251",
-    "datetime.datetime(3656, 3, 26, 9, 38, 14, 794251)",
-    "3656-03-26T09:38:14.794251",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2506,
-      11,
-      28,
-      hour=10,
-      minute=13,
-      second=30,
-      microsecond=79221,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "28/11/06 10:13:30",
-    "2506-11-28 10:13:30.079221",
-    "datetime.datetime(2506, 11, 28, 10, 13, 30, 79221)",
-    "2506-11-28T10:13:30.079221",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1276,
-      12,
-      1,
-      hour=15,
-      minute=58,
-      second=3,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 1|12/01/76|1276-12-01|15:58:03|15:58|12|Dec",
-    "1276-12-01 15:58:03",
-    "datetime.datetime(1276, 12, 1, 15, 58, 3)",
-    "1276-12-01T15:58:03",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1641,
-      9,
-      21,
-      hour=22,
-      minute=22,
-      second=12,
-      microsecond=603785,
-    ),
-    "%x %X",
-    "09/21/41 22:22:12",
-    "1641-09-21 22:22:12.603785",
-    "datetime.datetime(1641, 9, 21, 22, 22, 12, 603785)",
-    "1641-09-21T22:22:12.603785",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      5805,
-      10,
-      16,
-      hour=13,
-      minute=37,
-      second=25,
-      microsecond=924699,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "16/10/05 13:37:25",
-    "5805-10-16 13:37:25.924699",
-    "datetime.datetime(5805, 10, 16, 13, 37, 25, 924699)",
-    "5805-10-16T13:37:25.924699",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      6880,
-      1,
-      3,
-      hour=14,
-      minute=13,
-      second=44,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 3|01/03/80|6880-01-03|14:13:44|14:13|68|Jan",
-    "6880-01-03 14:13:44",
-    "datetime.datetime(6880, 1, 3, 14, 13, 44)",
-    "6880-01-03T14:13:44",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      5544,
-      9,
-      7,
-      hour=5,
-      minute=45,
-      second=43,
-      microsecond=0,
-    ),
-    "%x %X",
-    "09/07/44 05:45:43",
-    "5544-09-07 05:45:43",
-    "datetime.datetime(5544, 9, 7, 5, 45, 43)",
-    "5544-09-07T05:45:43",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4447,
-      2,
-      19,
-      hour=5,
-      minute=2,
-      second=18,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "19/2/47 5:2:18",
-    "4447-02-19 05:02:18",
-    "datetime.datetime(4447, 2, 19, 5, 2, 18)",
-    "4447-02-19T05:02:18",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4842,
-      12,
       5,
-      hour=1,
-      minute=33,
-      second=57,
-      microsecond=374356,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 5|12/05/42|4842-12-05|01:33:57|01:33|48|Dec",
-    "4842-12-05 01:33:57.374356",
-    "datetime.datetime(4842, 12, 5, 1, 33, 57, 374356)",
-    "4842-12-05T01:33:57.374356",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3086,
-      3,
-      27,
-      hour=13,
-      minute=51,
-      second=46,
-      microsecond=368555,
+      hour=21,
+      minute=46,
+      second=27,
+      microsecond=0,
     ),
     "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Sat Saturday Mar March 27 13 01 086 03 51 PM 46 12 6 12 86 3086 368555 %",
-    "3086-03-27 13:51:46.368555",
-    "datetime.datetime(3086, 3, 27, 13, 51, 46, 368555)",
-    "3086-03-27T13:51:46.368555",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2598,
-      2,
-      2,
-      hour=5,
-      minute=59,
-      second=0,
-      microsecond=0,
-    ),
-    "%c",
-    "Fri Feb  2 05:59:00 2598",
-    "2598-02-02 05:59:00",
-    "datetime.datetime(2598, 2, 2, 5, 59)",
-    "2598-02-02T05:59:00",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      6765,
-      6,
-      16,
-      hour=20,
-      minute=26,
-      second=9,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "6765-W24-3",
-    "6765-06-16 20:26:09",
-    "datetime.datetime(6765, 6, 16, 20, 26, 9)",
-    "6765-06-16T20:26:09",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4632,
-      1,
-      12,
-      hour=0,
-      minute=15,
-      second=15,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "4632-W02-4",
-    "4632-01-12 00:15:15",
-    "datetime.datetime(4632, 1, 12, 0, 15, 15)",
-    "4632-01-12T00:15:15",
+    "Fri Friday Aug August 05 21 09 217 08 46 PM 27 31 5 31 61 6461 000000 %",
+    "6461-08-05 21:46:27",
+    "datetime.datetime(6461, 8, 5, 21, 46, 27)",
+    "6461-08-05T21:46:27",
   )
   check_fmt(
     @datetime.DateTime::new(
       2037,
-      2,
-      19,
-      hour=23,
-      minute=30,
-      second=43,
+      11,
+      15,
+      hour=6,
+      minute=15,
+      second=59,
       microsecond=0,
     ),
     "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Thu Thursday Feb February 19 23 11 050 02 30 PM 43 07 4 07 37 2037 000000 %",
-    "2037-02-19 23:30:43",
-    "datetime.datetime(2037, 2, 19, 23, 30, 43)",
-    "2037-02-19T23:30:43",
+    "Sun Sunday Nov November 15 06 06 319 11 15 AM 59 46 0 45 37 2037 000000 %",
+    "2037-11-15 06:15:59",
+    "datetime.datetime(2037, 11, 15, 6, 15, 59)",
+    "2037-11-15T06:15:59",
   )
   check_fmt(
     @datetime.DateTime::new(
-      7968,
-      4,
+      2866,
       5,
-      hour=14,
-      minute=14,
+      22,
+      hour=2,
+      minute=30,
+      second=36,
+      microsecond=62137,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    "22|05/22/66|2866-05-22|02:30:36|02:30|28|May",
+    "2866-05-22 02:30:36.062137",
+    "datetime.datetime(2866, 5, 22, 2, 30, 36, 62137)",
+    "2866-05-22T02:30:36.062137",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1520,
+      7,
+      1,
+      hour=7,
+      minute=3,
+      second=3,
+      microsecond=782628,
+    ),
+    "%x %X",
+    "07/01/20 07:03:03",
+    "1520-07-01 07:03:03.782628",
+    "datetime.datetime(1520, 7, 1, 7, 3, 3, 782628)",
+    "1520-07-01T07:03:03.782628",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3791,
+      4,
+      11,
+      hour=21,
+      minute=9,
       second=58,
+      microsecond=636874,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "11/4/91 21:9:58",
+    "3791-04-11 21:09:58.636874",
+    "datetime.datetime(3791, 4, 11, 21, 9, 58, 636874)",
+    "3791-04-11T21:09:58.636874",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      7838,
+      2,
+      15,
+      hour=17,
+      minute=2,
+      second=38,
+      microsecond=236606,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "15/2/38 17:2:38",
+    "7838-02-15 17:02:38.236606",
+    "datetime.datetime(7838, 2, 15, 17, 2, 38, 236606)",
+    "7838-02-15T17:02:38.236606",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8198,
+      5,
+      18,
+      hour=21,
+      minute=25,
+      second=21,
+      microsecond=842045,
+    ),
+    "%G-W%V-%u",
+    "8198-W20-5",
+    "8198-05-18 21:25:21.842045",
+    "datetime.datetime(8198, 5, 18, 21, 25, 21, 842045)",
+    "8198-05-18T21:25:21.842045",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8668,
+      10,
+      15,
+      hour=10,
+      minute=49,
+      second=5,
       microsecond=0,
     ),
     "%c",
-    "Fri Apr  5 14:14:58 7968",
-    "7968-04-05 14:14:58",
-    "datetime.datetime(7968, 4, 5, 14, 14, 58)",
-    "7968-04-05T14:14:58",
+    "Thu Oct 15 10:49:05 8668",
+    "8668-10-15 10:49:05",
+    "datetime.datetime(8668, 10, 15, 10, 49, 5)",
+    "8668-10-15T10:49:05",
   )
   check_fmt(
     @datetime.DateTime::new(
-      8383,
-      10,
-      16,
-      hour=3,
-      minute=46,
-      second=15,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "8383-W41-7",
-    "8383-10-16 03:46:15",
-    "datetime.datetime(8383, 10, 16, 3, 46, 15)",
-    "8383-10-16T03:46:15",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3132,
-      2,
-      3,
-      hour=23,
-      minute=3,
-      second=48,
-      microsecond=232834,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "3/2/32 23:3:48",
-    "3132-02-03 23:03:48.232834",
-    "datetime.datetime(3132, 2, 3, 23, 3, 48, 232834)",
-    "3132-02-03T23:03:48.232834",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      5801,
+      9547,
+      12,
       1,
-      27,
-      hour=20,
-      minute=50,
-      second=59,
-      microsecond=861063,
+      hour=16,
+      minute=1,
+      second=28,
+      microsecond=155187,
+    ),
+    "%c",
+    "Mon Dec  1 16:01:28 9547",
+    "9547-12-01 16:01:28.155187",
+    "datetime.datetime(9547, 12, 1, 16, 1, 28, 155187)",
+    "9547-12-01T16:01:28.155187",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1983,
+      3,
+      22,
+      hour=13,
+      minute=43,
+      second=56,
+      microsecond=65890,
     ),
     "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Tue Tuesday Jan January 27 20 08 027 01 50 PM 59 04 2 04 01 5801 861063 %",
-    "5801-01-27 20:50:59.861063",
-    "datetime.datetime(5801, 1, 27, 20, 50, 59, 861063)",
-    "5801-01-27T20:50:59.861063",
+    "Tue Tuesday Mar March 22 13 01 081 03 43 PM 56 12 2 12 83 1983 065890 %",
+    "1983-03-22 13:43:56.065890",
+    "datetime.datetime(1983, 3, 22, 13, 43, 56, 65890)",
+    "1983-03-22T13:43:56.065890",
   )
   check_fmt(
     @datetime.DateTime::new(
       2065,
-      11,
-      27,
-      hour=8,
-      minute=53,
-      second=15,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "27|11/27/65|2065-11-27|08:53:15|08:53|20|Nov",
-    "2065-11-27 08:53:15",
-    "datetime.datetime(2065, 11, 27, 8, 53, 15)",
-    "2065-11-27T08:53:15",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1977,
-      7,
-      3,
-      hour=2,
-      minute=39,
-      second=47,
-      microsecond=474050,
-    ),
-    "%x %X",
-    "07/03/77 02:39:47",
-    "1977-07-03 02:39:47.474050",
-    "datetime.datetime(1977, 7, 3, 2, 39, 47, 474050)",
-    "1977-07-03T02:39:47.474050",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      9176,
-      6,
-      3,
-      hour=18,
-      minute=0,
-      second=10,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Thu Thursday Jun June 03 18 06 155 06 00 PM 10 22 4 22 76 9176 000000 %",
-    "9176-06-03 18:00:10",
-    "datetime.datetime(9176, 6, 3, 18, 0, 10)",
-    "9176-06-03T18:00:10",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2057,
-      7,
-      4,
-      hour=11,
-      minute=9,
-      second=59,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Wed Wednesday Jul July 04 11 11 185 07 09 AM 59 26 3 27 57 2057 000000 %",
-    "2057-07-04 11:09:59",
-    "datetime.datetime(2057, 7, 4, 11, 9, 59)",
-    "2057-07-04T11:09:59",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1846,
-      5,
-      23,
-      hour=9,
-      minute=23,
-      second=56,
-      microsecond=0,
-    ),
-    "%x %X",
-    "05/23/46 09:23:56",
-    "1846-05-23 09:23:56",
-    "datetime.datetime(1846, 5, 23, 9, 23, 56)",
-    "1846-05-23T09:23:56",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2014,
-      3,
-      7,
-      hour=13,
-      minute=41,
-      second=28,
-      microsecond=606602,
-    ),
-    "%c",
-    "Fri Mar  7 13:41:28 2014",
-    "2014-03-07 13:41:28.606602",
-    "datetime.datetime(2014, 3, 7, 13, 41, 28, 606602)",
-    "2014-03-07T13:41:28.606602",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2036,
-      5,
-      27,
-      hour=23,
-      minute=19,
-      second=7,
-      microsecond=0,
-    ),
-    "%c",
-    "Tue May 27 23:19:07 2036",
-    "2036-05-27 23:19:07",
-    "datetime.datetime(2036, 5, 27, 23, 19, 7)",
-    "2036-05-27T23:19:07",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2054,
-      11,
-      16,
-      hour=4,
-      minute=52,
-      second=22,
-      microsecond=851667,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Mon Monday Nov November 16 04 04 320 11 52 AM 22 46 1 46 54 2054 851667 %",
-    "2054-11-16 04:52:22.851667",
-    "datetime.datetime(2054, 11, 16, 4, 52, 22, 851667)",
-    "2054-11-16T04:52:22.851667",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3787,
-      3,
-      4,
-      hour=20,
-      minute=22,
-      second=16,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "3787-W09-7",
-    "3787-03-04 20:22:16",
-    "datetime.datetime(3787, 3, 4, 20, 22, 16)",
-    "3787-03-04T20:22:16",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      5591,
-      8,
-      23,
-      hour=19,
-      minute=32,
-      second=16,
-      microsecond=766404,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "23/8/91 19:32:16",
-    "5591-08-23 19:32:16.766404",
-    "datetime.datetime(5591, 8, 23, 19, 32, 16, 766404)",
-    "5591-08-23T19:32:16.766404",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2689,
-      4,
       2,
-      hour=20,
-      minute=19,
-      second=11,
-      microsecond=694987,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 2|04/02/89|2689-04-02|20:19:11|20:19|26|Apr",
-    "2689-04-02 20:19:11.694987",
-    "datetime.datetime(2689, 4, 2, 20, 19, 11, 694987)",
-    "2689-04-02T20:19:11.694987",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1009,
-      2,
-      11,
-      hour=5,
-      minute=26,
-      second=54,
-      microsecond=0,
-    ),
-    "%c",
-    "Sat Feb 11 05:26:54 1009",
-    "1009-02-11 05:26:54",
-    "datetime.datetime(1009, 2, 11, 5, 26, 54)",
-    "1009-02-11T05:26:54",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8632,
-      8,
-      5,
-      hour=17,
-      minute=10,
-      second=42,
-      microsecond=653774,
-    ),
-    "%c",
-    "Sun Aug  5 17:10:42 8632",
-    "8632-08-05 17:10:42.653774",
-    "datetime.datetime(8632, 8, 5, 17, 10, 42, 653774)",
-    "8632-08-05T17:10:42.653774",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1963,
-      3,
-      13,
-      hour=15,
-      minute=16,
-      second=58,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "13/3/63 15:16:58",
-    "1963-03-13 15:16:58",
-    "datetime.datetime(1963, 3, 13, 15, 16, 58)",
-    "1963-03-13T15:16:58",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2054,
-      4,
-      7,
-      hour=5,
-      minute=21,
-      second=32,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "7/4/54 5:21:32",
-    "2054-04-07 05:21:32",
-    "datetime.datetime(2054, 4, 7, 5, 21, 32)",
-    "2054-04-07T05:21:32",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      7221,
-      6,
-      30,
-      hour=21,
-      minute=44,
-      second=14,
-      microsecond=286018,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "30/6/21 21:44:14",
-    "7221-06-30 21:44:14.286018",
-    "datetime.datetime(7221, 6, 30, 21, 44, 14, 286018)",
-    "7221-06-30T21:44:14.286018",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3511,
-      7,
-      14,
-      hour=7,
-      minute=35,
-      second=22,
-      microsecond=0,
-    ),
-    "%c",
-    "Fri Jul 14 07:35:22 3511",
-    "3511-07-14 07:35:22",
-    "datetime.datetime(3511, 7, 14, 7, 35, 22)",
-    "3511-07-14T07:35:22",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3142,
-      4,
-      30,
-      hour=14,
-      minute=40,
-      second=58,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Thu Thursday Apr April 30 14 02 120 04 40 PM 58 17 4 17 42 3142 000000 %",
-    "3142-04-30 14:40:58",
-    "datetime.datetime(3142, 4, 30, 14, 40, 58)",
-    "3142-04-30T14:40:58",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8073,
-      12,
-      6,
-      hour=10,
-      minute=37,
-      second=6,
-      microsecond=503811,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 6|12/06/73|8073-12-06|10:37:06|10:37|80|Dec",
-    "8073-12-06 10:37:06.503811",
-    "datetime.datetime(8073, 12, 6, 10, 37, 6, 503811)",
-    "8073-12-06T10:37:06.503811",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1622,
-      3,
-      8,
-      hour=15,
-      minute=11,
-      second=59,
-      microsecond=0,
-    ),
-    "%c",
-    "Tue Mar  8 15:11:59 1622",
-    "1622-03-08 15:11:59",
-    "datetime.datetime(1622, 3, 8, 15, 11, 59)",
-    "1622-03-08T15:11:59",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8181,
-      5,
-      4,
-      hour=15,
-      minute=1,
-      second=41,
-      microsecond=7783,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 4|05/04/81|8181-05-04|15:01:41|15:01|81|May",
-    "8181-05-04 15:01:41.007783",
-    "datetime.datetime(8181, 5, 4, 15, 1, 41, 7783)",
-    "8181-05-04T15:01:41.007783",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1914,
-      5,
-      11,
-      hour=11,
-      minute=11,
-      second=42,
-      microsecond=952130,
-    ),
-    "%G-W%V-%u",
-    "1914-W20-1",
-    "1914-05-11 11:11:42.952130",
-    "datetime.datetime(1914, 5, 11, 11, 11, 42, 952130)",
-    "1914-05-11T11:11:42.952130",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8913,
-      12,
-      13,
-      hour=21,
-      minute=27,
-      second=58,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "8913-W50-3",
-    "8913-12-13 21:27:58",
-    "datetime.datetime(8913, 12, 13, 21, 27, 58)",
-    "8913-12-13T21:27:58",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2018,
-      5,
-      17,
-      hour=20,
-      minute=18,
-      second=58,
-      microsecond=0,
-    ),
-    "%c",
-    "Thu May 17 20:18:58 2018",
-    "2018-05-17 20:18:58",
-    "datetime.datetime(2018, 5, 17, 20, 18, 58)",
-    "2018-05-17T20:18:58",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1803,
-      1,
-      28,
-      hour=10,
-      minute=14,
-      second=21,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "28/1/03 10:14:21",
-    "1803-01-28 10:14:21",
-    "datetime.datetime(1803, 1, 28, 10, 14, 21)",
-    "1803-01-28T10:14:21",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2031,
-      10,
-      20,
-      hour=14,
-      minute=10,
-      second=20,
-      microsecond=919021,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "20/10/31 14:10:20",
-    "2031-10-20 14:10:20.919021",
-    "datetime.datetime(2031, 10, 20, 14, 10, 20, 919021)",
-    "2031-10-20T14:10:20.919021",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3441,
-      12,
-      6,
-      hour=2,
-      minute=52,
-      second=28,
-      microsecond=797690,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Mon Monday Dec December 06 02 02 340 12 52 AM 28 49 1 49 41 3441 797690 %",
-    "3441-12-06 02:52:28.797690",
-    "datetime.datetime(3441, 12, 6, 2, 52, 28, 797690)",
-    "3441-12-06T02:52:28.797690",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1992,
-      1,
-      14,
-      hour=10,
-      minute=49,
-      second=27,
-      microsecond=0,
-    ),
-    "%x %X",
-    "01/14/92 10:49:27",
-    "1992-01-14 10:49:27",
-    "datetime.datetime(1992, 1, 14, 10, 49, 27)",
-    "1992-01-14T10:49:27",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      7468,
-      9,
-      24,
-      hour=16,
-      minute=27,
-      second=58,
-      microsecond=309167,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Thu Thursday Sep September 24 16 04 268 09 27 PM 58 38 4 38 68 7468 309167 %",
-    "7468-09-24 16:27:58.309167",
-    "datetime.datetime(7468, 9, 24, 16, 27, 58, 309167)",
-    "7468-09-24T16:27:58.309167",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3287,
-      3,
       19,
-      hour=14,
-      minute=24,
-      second=56,
-      microsecond=743156,
+      hour=15,
+      minute=15,
+      second=21,
+      microsecond=51773,
     ),
-    "%c",
-    "Wed Mar 19 14:24:56 3287",
-    "3287-03-19 14:24:56.743156",
-    "datetime.datetime(3287, 3, 19, 14, 24, 56, 743156)",
-    "3287-03-19T14:24:56.743156",
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Thu Thursday Feb February 19 15 03 050 02 15 PM 21 07 4 07 65 2065 051773 %",
+    "2065-02-19 15:15:21.051773",
+    "datetime.datetime(2065, 2, 19, 15, 15, 21, 51773)",
+    "2065-02-19T15:15:21.051773",
   )
   check_fmt(
     @datetime.DateTime::new(
-      8314,
-      6,
-      18,
+      2529,
+      3,
+      16,
+      hour=0,
+      minute=2,
+      second=17,
+      microsecond=0,
+    ),
+    "%c",
+    "Wed Mar 16 00:02:17 2529",
+    "2529-03-16 00:02:17",
+    "datetime.datetime(2529, 3, 16, 0, 2, 17)",
+    "2529-03-16T00:02:17",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2189,
+      9,
+      14,
+      hour=21,
+      minute=6,
+      second=2,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "14/9/89 21:6:2",
+    "2189-09-14 21:06:02",
+    "datetime.datetime(2189, 9, 14, 21, 6, 2)",
+    "2189-09-14T21:06:02",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      9738,
+      12,
+      24,
+      hour=17,
+      minute=47,
+      second=13,
+      microsecond=364071,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Wed Wednesday Dec December 24 17 05 358 12 47 PM 13 51 3 51 38 9738 364071 %",
+    "9738-12-24 17:47:13.364071",
+    "datetime.datetime(9738, 12, 24, 17, 47, 13, 364071)",
+    "9738-12-24T17:47:13.364071",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1901,
+      1,
+      24,
+      hour=7,
+      minute=24,
+      second=35,
+      microsecond=0,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    "24|01/24/01|1901-01-24|07:24:35|07:24|19|Jan",
+    "1901-01-24 07:24:35",
+    "datetime.datetime(1901, 1, 24, 7, 24, 35)",
+    "1901-01-24T07:24:35",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      7504,
+      3,
+      17,
+      hour=8,
+      minute=7,
+      second=19,
+      microsecond=445553,
+    ),
+    "%x %X",
+    "03/17/04 08:07:19",
+    "7504-03-17 08:07:19.445553",
+    "datetime.datetime(7504, 3, 17, 8, 7, 19, 445553)",
+    "7504-03-17T08:07:19.445553",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2118,
+      4,
+      28,
       hour=18,
-      minute=22,
+      minute=24,
+      second=29,
+      microsecond=783562,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    "28|04/28/18|2118-04-28|18:24:29|18:24|21|Apr",
+    "2118-04-28 18:24:29.783562",
+    "datetime.datetime(2118, 4, 28, 18, 24, 29, 783562)",
+    "2118-04-28T18:24:29.783562",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8130,
+      11,
+      17,
+      hour=13,
+      minute=2,
+      second=51,
+      microsecond=0,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Fri Friday Nov November 17 13 01 321 11 02 PM 51 46 5 46 30 8130 000000 %",
+    "8130-11-17 13:02:51",
+    "datetime.datetime(8130, 11, 17, 13, 2, 51)",
+    "8130-11-17T13:02:51",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1729,
+      6,
+      7,
+      hour=10,
+      minute=57,
       second=57,
       microsecond=0,
     ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Thu Thursday Jun June 18 18 06 169 06 22 PM 57 24 4 24 14 8314 000000 %",
-    "8314-06-18 18:22:57",
-    "datetime.datetime(8314, 6, 18, 18, 22, 57)",
-    "8314-06-18T18:22:57",
+    "%x %X",
+    "06/07/29 10:57:57",
+    "1729-06-07 10:57:57",
+    "datetime.datetime(1729, 6, 7, 10, 57, 57)",
+    "1729-06-07T10:57:57",
   )
   check_fmt(
     @datetime.DateTime::new(
-      9535,
-      2,
-      11,
-      hour=9,
-      minute=15,
-      second=21,
+      1909,
+      8,
+      28,
+      hour=11,
+      minute=38,
+      second=30,
       microsecond=0,
     ),
-    "%G-W%V-%u",
-    "9535-W07-1",
-    "9535-02-11 09:15:21",
-    "datetime.datetime(9535, 2, 11, 9, 15, 21)",
-    "9535-02-11T09:15:21",
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Sat Saturday Aug August 28 11 11 240 08 38 AM 30 34 6 34 09 1909 000000 %",
+    "1909-08-28 11:38:30",
+    "datetime.datetime(1909, 8, 28, 11, 38, 30)",
+    "1909-08-28T11:38:30",
   )
   check_fmt(
     @datetime.DateTime::new(
-      1965,
-      12,
-      12,
+      2047,
+      8,
+      14,
+      hour=0,
+      minute=45,
+      second=58,
+      microsecond=827197,
+    ),
+    "%G-W%V-%u",
+    "2047-W33-3",
+    "2047-08-14 00:45:58.827197",
+    "datetime.datetime(2047, 8, 14, 0, 45, 58, 827197)",
+    "2047-08-14T00:45:58.827197",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3084,
+      7,
+      31,
+      hour=16,
+      minute=58,
+      second=26,
+      microsecond=936004,
+    ),
+    "%c",
+    "Thu Jul 31 16:58:26 3084",
+    "3084-07-31 16:58:26.936004",
+    "datetime.datetime(3084, 7, 31, 16, 58, 26, 936004)",
+    "3084-07-31T16:58:26.936004",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2002,
+      7,
+      18,
+      hour=22,
+      minute=47,
+      second=14,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "18/7/02 22:47:14",
+    "2002-07-18 22:47:14",
+    "datetime.datetime(2002, 7, 18, 22, 47, 14)",
+    "2002-07-18T22:47:14",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1997,
+      1,
+      5,
+      hour=9,
+      minute=47,
+      second=37,
+      microsecond=0,
+    ),
+    "%c",
+    "Sun Jan  5 09:47:37 1997",
+    "1997-01-05 09:47:37",
+    "datetime.datetime(1997, 1, 5, 9, 47, 37)",
+    "1997-01-05T09:47:37",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      4292,
+      4,
+      1,
       hour=14,
-      minute=43,
-      second=48,
+      minute=19,
+      second=50,
       microsecond=0,
     ),
     "%e|%D|%F|%T|%R|%C|%h",
-    "12|12/12/65|1965-12-12|14:43:48|14:43|19|Dec",
-    "1965-12-12 14:43:48",
-    "datetime.datetime(1965, 12, 12, 14, 43, 48)",
-    "1965-12-12T14:43:48",
+    " 1|04/01/92|4292-04-01|14:19:50|14:19|42|Apr",
+    "4292-04-01 14:19:50",
+    "datetime.datetime(4292, 4, 1, 14, 19, 50)",
+    "4292-04-01T14:19:50",
   )
   check_fmt(
     @datetime.DateTime::new(
-      9019,
-      6,
-      28,
-      hour=17,
-      minute=17,
-      second=18,
-      microsecond=444432,
+      1881,
+      5,
+      16,
+      hour=5,
+      minute=58,
+      second=30,
+      microsecond=0,
     ),
     "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Mon Monday Jun June 28 17 05 179 06 17 PM 18 26 1 26 19 9019 444432 %",
-    "9019-06-28 17:17:18.444432",
-    "datetime.datetime(9019, 6, 28, 17, 17, 18, 444432)",
-    "9019-06-28T17:17:18.444432",
+    "Mon Monday May May 16 05 05 136 05 58 AM 30 20 1 20 81 1881 000000 %",
+    "1881-05-16 05:58:30",
+    "datetime.datetime(1881, 5, 16, 5, 58, 30)",
+    "1881-05-16T05:58:30",
   )
   check_fmt(
     @datetime.DateTime::new(
-      7348,
-      2,
-      22,
-      hour=9,
-      minute=20,
-      second=25,
+      8518,
+      12,
+      14,
+      hour=22,
+      minute=41,
+      second=12,
+      microsecond=184944,
+    ),
+    "%c",
+    "Wed Dec 14 22:41:12 8518",
+    "8518-12-14 22:41:12.184944",
+    "datetime.datetime(8518, 12, 14, 22, 41, 12, 184944)",
+    "8518-12-14T22:41:12.184944",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8898,
+      11,
+      14,
+      hour=14,
+      minute=13,
+      second=35,
       microsecond=0,
     ),
     "%x %X",
-    "02/22/48 09:20:25",
-    "7348-02-22 09:20:25",
-    "datetime.datetime(7348, 2, 22, 9, 20, 25)",
-    "7348-02-22T09:20:25",
+    "11/14/98 14:13:35",
+    "8898-11-14 14:13:35",
+    "datetime.datetime(8898, 11, 14, 14, 13, 35)",
+    "8898-11-14T14:13:35",
   )
   check_fmt(
     @datetime.DateTime::new(
-      1160,
-      7,
+      2060,
       9,
+      6,
+      hour=11,
+      minute=29,
+      second=57,
+      microsecond=377893,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    " 6|09/06/60|2060-09-06|11:29:57|11:29|20|Sep",
+    "2060-09-06 11:29:57.377893",
+    "datetime.datetime(2060, 9, 6, 11, 29, 57, 377893)",
+    "2060-09-06T11:29:57.377893",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2427,
+      4,
+      13,
+      hour=7,
+      minute=36,
+      second=57,
+      microsecond=0,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    "13|04/13/27|2427-04-13|07:36:57|07:36|24|Apr",
+    "2427-04-13 07:36:57",
+    "datetime.datetime(2427, 4, 13, 7, 36, 57)",
+    "2427-04-13T07:36:57",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2643,
+      9,
+      24,
+      hour=19,
+      minute=11,
+      second=34,
+      microsecond=286534,
+    ),
+    "%G-W%V-%u",
+    "2643-W38-7",
+    "2643-09-24 19:11:34.286534",
+    "datetime.datetime(2643, 9, 24, 19, 11, 34, 286534)",
+    "2643-09-24T19:11:34.286534",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8436,
+      3,
+      12,
+      hour=8,
+      minute=42,
+      second=33,
+      microsecond=0,
+    ),
+    "%x %X",
+    "03/12/36 08:42:33",
+    "8436-03-12 08:42:33",
+    "datetime.datetime(8436, 3, 12, 8, 42, 33)",
+    "8436-03-12T08:42:33",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8912,
+      5,
+      25,
+      hour=21,
+      minute=35,
+      second=21,
+      microsecond=632290,
+    ),
+    "%c",
+    "Wed May 25 21:35:21 8912",
+    "8912-05-25 21:35:21.632290",
+    "datetime.datetime(8912, 5, 25, 21, 35, 21, 632290)",
+    "8912-05-25T21:35:21.632290",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2075,
+      3,
+      9,
+      hour=11,
+      minute=10,
+      second=59,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "9/3/75 11:10:59",
+    "2075-03-09 11:10:59",
+    "datetime.datetime(2075, 3, 9, 11, 10, 59)",
+    "2075-03-09T11:10:59",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1479,
+      4,
+      4,
+      hour=22,
+      minute=50,
+      second=0,
+      microsecond=837574,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "4/4/79 22:50:0",
+    "1479-04-04 22:50:00.837574",
+    "datetime.datetime(1479, 4, 4, 22, 50, 0, 837574)",
+    "1479-04-04T22:50:00.837574",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1926,
+      4,
+      17,
+      hour=0,
+      minute=36,
+      second=52,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "17/4/26 0:36:52",
+    "1926-04-17 00:36:52",
+    "datetime.datetime(1926, 4, 17, 0, 36, 52)",
+    "1926-04-17T00:36:52",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3848,
+      5,
+      3,
+      hour=8,
+      minute=52,
+      second=7,
+      microsecond=0,
+    ),
+    "%G-W%V-%u",
+    "3848-W18-3",
+    "3848-05-03 08:52:07",
+    "datetime.datetime(3848, 5, 3, 8, 52, 7)",
+    "3848-05-03T08:52:07",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3524,
+      8,
+      17,
+      hour=23,
+      minute=37,
+      second=48,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "17/8/24 23:37:48",
+    "3524-08-17 23:37:48",
+    "datetime.datetime(3524, 8, 17, 23, 37, 48)",
+    "3524-08-17T23:37:48",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8776,
+      12,
+      2,
+      hour=16,
+      minute=26,
+      second=33,
+      microsecond=425404,
+    ),
+    "%c",
+    "Thu Dec  2 16:26:33 8776",
+    "8776-12-02 16:26:33.425404",
+    "datetime.datetime(8776, 12, 2, 16, 26, 33, 425404)",
+    "8776-12-02T16:26:33.425404",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      7504,
+      2,
+      24,
+      hour=14,
+      minute=23,
+      second=31,
+      microsecond=0,
+    ),
+    "%G-W%V-%u",
+    "7504-W08-3",
+    "7504-02-24 14:23:31",
+    "datetime.datetime(7504, 2, 24, 14, 23, 31)",
+    "7504-02-24T14:23:31",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8663,
+      5,
+      16,
+      hour=20,
+      minute=44,
+      second=24,
+      microsecond=114341,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "16/5/63 20:44:24",
+    "8663-05-16 20:44:24.114341",
+    "datetime.datetime(8663, 5, 16, 20, 44, 24, 114341)",
+    "8663-05-16T20:44:24.114341",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3757,
+      10,
+      17,
+      hour=21,
+      minute=46,
+      second=6,
+      microsecond=0,
+    ),
+    "%x %X",
+    "10/17/57 21:46:06",
+    "3757-10-17 21:46:06",
+    "datetime.datetime(3757, 10, 17, 21, 46, 6)",
+    "3757-10-17T21:46:06",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1979,
+      3,
+      17,
+      hour=5,
+      minute=34,
+      second=33,
+      microsecond=717459,
+    ),
+    "%x %X",
+    "03/17/79 05:34:33",
+    "1979-03-17 05:34:33.717459",
+    "datetime.datetime(1979, 3, 17, 5, 34, 33, 717459)",
+    "1979-03-17T05:34:33.717459",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2096,
+      2,
+      29,
+      hour=23,
+      minute=37,
+      second=13,
+      microsecond=316380,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Wed Wednesday Feb February 29 23 11 060 02 37 PM 13 09 3 09 96 2096 316380 %",
+    "2096-02-29 23:37:13.316380",
+    "datetime.datetime(2096, 2, 29, 23, 37, 13, 316380)",
+    "2096-02-29T23:37:13.316380",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      5173,
+      2,
+      1,
+      hour=2,
+      minute=5,
+      second=3,
+      microsecond=0,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    " 1|02/01/73|5173-02-01|02:05:03|02:05|51|Feb",
+    "5173-02-01 02:05:03",
+    "datetime.datetime(5173, 2, 1, 2, 5, 3)",
+    "5173-02-01T02:05:03",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      5684,
+      4,
+      24,
+      hour=22,
+      minute=38,
+      second=11,
+      microsecond=297563,
+    ),
+    "%G-W%V-%u",
+    "5684-W17-1",
+    "5684-04-24 22:38:11.297563",
+    "datetime.datetime(5684, 4, 24, 22, 38, 11, 297563)",
+    "5684-04-24T22:38:11.297563",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      9081,
+      6,
+      2,
+      hour=21,
+      minute=38,
+      second=55,
+      microsecond=479246,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "2/6/81 21:38:55",
+    "9081-06-02 21:38:55.479246",
+    "datetime.datetime(9081, 6, 2, 21, 38, 55, 479246)",
+    "9081-06-02T21:38:55.479246",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8231,
+      3,
+      19,
+      hour=20,
+      minute=42,
+      second=57,
+      microsecond=107423,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Sat Saturday Mar March 19 20 08 078 03 42 PM 57 11 6 11 31 8231 107423 %",
+    "8231-03-19 20:42:57.107423",
+    "datetime.datetime(8231, 3, 19, 20, 42, 57, 107423)",
+    "8231-03-19T20:42:57.107423",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      4991,
+      10,
+      25,
+      hour=5,
+      minute=14,
+      second=53,
+      microsecond=0,
+    ),
+    "%G-W%V-%u",
+    "4991-W43-2",
+    "4991-10-25 05:14:53",
+    "datetime.datetime(4991, 10, 25, 5, 14, 53)",
+    "4991-10-25T05:14:53",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1951,
+      10,
+      8,
       hour=13,
+      minute=22,
+      second=11,
+      microsecond=0,
+    ),
+    "%x %X",
+    "10/08/51 13:22:11",
+    "1951-10-08 13:22:11",
+    "datetime.datetime(1951, 10, 8, 13, 22, 11)",
+    "1951-10-08T13:22:11",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      6870,
+      8,
+      12,
+      hour=19,
+      minute=23,
+      second=4,
+      microsecond=933704,
+    ),
+    "%x %X",
+    "08/12/70 19:23:04",
+    "6870-08-12 19:23:04.933704",
+    "datetime.datetime(6870, 8, 12, 19, 23, 4, 933704)",
+    "6870-08-12T19:23:04.933704",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3023,
+      8,
+      16,
+      hour=1,
+      minute=3,
+      second=58,
+      microsecond=691726,
+    ),
+    "%c",
+    "Sat Aug 16 01:03:58 3023",
+    "3023-08-16 01:03:58.691726",
+    "datetime.datetime(3023, 8, 16, 1, 3, 58, 691726)",
+    "3023-08-16T01:03:58.691726",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      6966,
+      4,
+      8,
+      hour=21,
+      minute=14,
+      second=9,
+      microsecond=287594,
+    ),
+    "%x %X",
+    "04/08/66 21:14:09",
+    "6966-04-08 21:14:09.287594",
+    "datetime.datetime(6966, 4, 8, 21, 14, 9, 287594)",
+    "6966-04-08T21:14:09.287594",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2029,
+      5,
+      17,
+      hour=15,
+      minute=52,
+      second=5,
+      microsecond=0,
+    ),
+    "%x %X",
+    "05/17/29 15:52:05",
+    "2029-05-17 15:52:05",
+    "datetime.datetime(2029, 5, 17, 15, 52, 5)",
+    "2029-05-17T15:52:05",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3283,
+      7,
+      11,
+      hour=20,
+      minute=49,
+      second=47,
+      microsecond=777399,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Sun Sunday Jul July 11 20 08 192 07 49 PM 47 28 0 27 83 3283 777399 %",
+    "3283-07-11 20:49:47.777399",
+    "datetime.datetime(3283, 7, 11, 20, 49, 47, 777399)",
+    "3283-07-11T20:49:47.777399",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      7490,
+      1,
+      9,
+      hour=20,
+      minute=33,
+      second=31,
+      microsecond=407600,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "9/1/90 20:33:31",
+    "7490-01-09 20:33:31.407600",
+    "datetime.datetime(7490, 1, 9, 20, 33, 31, 407600)",
+    "7490-01-09T20:33:31.407600",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1969,
+      8,
+      3,
+      hour=3,
+      minute=57,
+      second=59,
+      microsecond=916300,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Sun Sunday Aug August 03 03 03 215 08 57 AM 59 31 0 30 69 1969 916300 %",
+    "1969-08-03 03:57:59.916300",
+    "datetime.datetime(1969, 8, 3, 3, 57, 59, 916300)",
+    "1969-08-03T03:57:59.916300",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1956,
+      3,
+      20,
+      hour=0,
+      minute=34,
+      second=2,
+      microsecond=501766,
+    ),
+    "%c",
+    "Tue Mar 20 00:34:02 1956",
+    "1956-03-20 00:34:02.501766",
+    "datetime.datetime(1956, 3, 20, 0, 34, 2, 501766)",
+    "1956-03-20T00:34:02.501766",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3578,
+      8,
+      22,
+      hour=4,
+      minute=16,
+      second=58,
+      microsecond=579085,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Tue Tuesday Aug August 22 04 04 234 08 16 AM 58 34 2 34 78 3578 579085 %",
+    "3578-08-22 04:16:58.579085",
+    "datetime.datetime(3578, 8, 22, 4, 16, 58, 579085)",
+    "3578-08-22T04:16:58.579085",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1375,
+      4,
+      27,
+      hour=23,
+      minute=11,
+      second=50,
+      microsecond=0,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Thu Thursday Apr April 27 23 11 117 04 11 PM 50 17 4 17 75 1375 000000 %",
+    "1375-04-27 23:11:50",
+    "datetime.datetime(1375, 4, 27, 23, 11, 50)",
+    "1375-04-27T23:11:50",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8785,
+      4,
+      9,
+      hour=10,
+      minute=41,
+      second=18,
+      microsecond=0,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Tue Tuesday Apr April 09 10 10 099 04 41 AM 18 14 2 14 85 8785 000000 %",
+    "8785-04-09 10:41:18",
+    "datetime.datetime(8785, 4, 9, 10, 41, 18)",
+    "8785-04-09T10:41:18",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8593,
+      3,
+      21,
+      hour=1,
+      minute=48,
+      second=47,
+      microsecond=317565,
+    ),
+    "%c",
+    "Thu Mar 21 01:48:47 8593",
+    "8593-03-21 01:48:47.317565",
+    "datetime.datetime(8593, 3, 21, 1, 48, 47, 317565)",
+    "8593-03-21T01:48:47.317565",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2444,
+      9,
+      23,
+      hour=19,
+      minute=40,
+      second=11,
+      microsecond=566184,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Fri Friday Sep September 23 19 07 267 09 40 PM 11 38 5 38 44 2444 566184 %",
+    "2444-09-23 19:40:11.566184",
+    "datetime.datetime(2444, 9, 23, 19, 40, 11, 566184)",
+    "2444-09-23T19:40:11.566184",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1994,
+      1,
+      19,
+      hour=0,
+      minute=0,
+      second=30,
+      microsecond=0,
+    ),
+    "%x %X",
+    "01/19/94 00:00:30",
+    "1994-01-19 00:00:30",
+    "datetime.datetime(1994, 1, 19, 0, 0, 30)",
+    "1994-01-19T00:00:30",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3112,
+      4,
+      5,
+      hour=0,
+      minute=50,
+      second=59,
+      microsecond=801329,
+    ),
+    "%x %X",
+    "04/05/12 00:50:59",
+    "3112-04-05 00:50:59.801329",
+    "datetime.datetime(3112, 4, 5, 0, 50, 59, 801329)",
+    "3112-04-05T00:50:59.801329",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2003,
+      2,
+      8,
+      hour=9,
+      minute=58,
+      second=22,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "8/2/03 9:58:22",
+    "2003-02-08 09:58:22",
+    "datetime.datetime(2003, 2, 8, 9, 58, 22)",
+    "2003-02-08T09:58:22",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1947,
+      5,
+      13,
+      hour=3,
       minute=30,
       second=59,
       microsecond=0,
     ),
     "%x %X",
-    "07/09/60 13:30:59",
-    "1160-07-09 13:30:59",
-    "datetime.datetime(1160, 7, 9, 13, 30, 59)",
-    "1160-07-09T13:30:59",
+    "05/13/47 03:30:59",
+    "1947-05-13 03:30:59",
+    "datetime.datetime(1947, 5, 13, 3, 30, 59)",
+    "1947-05-13T03:30:59",
   )
   check_fmt(
     @datetime.DateTime::new(
-      2788,
-      1,
-      19,
-      hour=8,
-      minute=18,
-      second=12,
-      microsecond=0,
+      4132,
+      9,
+      5,
+      hour=7,
+      minute=58,
+      second=56,
+      microsecond=558265,
     ),
     "%e|%D|%F|%T|%R|%C|%h",
-    "19|01/19/88|2788-01-19|08:18:12|08:18|27|Jan",
-    "2788-01-19 08:18:12",
-    "datetime.datetime(2788, 1, 19, 8, 18, 12)",
-    "2788-01-19T08:18:12",
+    " 5|09/05/32|4132-09-05|07:58:56|07:58|41|Sep",
+    "4132-09-05 07:58:56.558265",
+    "datetime.datetime(4132, 9, 5, 7, 58, 56, 558265)",
+    "4132-09-05T07:58:56.558265",
   )
   check_fmt(
     @datetime.DateTime::new(
-      9483,
-      1,
-      8,
-      hour=4,
-      minute=46,
-      second=7,
-      microsecond=32341,
+      4023,
+      5,
+      12,
+      hour=22,
+      minute=32,
+      second=27,
+      microsecond=0,
     ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "8/1/83 4:46:7",
-    "9483-01-08 04:46:07.032341",
-    "datetime.datetime(9483, 1, 8, 4, 46, 7, 32341)",
-    "9483-01-08T04:46:07.032341",
+    "%x %X",
+    "05/12/23 22:32:27",
+    "4023-05-12 22:32:27",
+    "datetime.datetime(4023, 5, 12, 22, 32, 27)",
+    "4023-05-12T22:32:27",
   )
   check_fmt(
     @datetime.DateTime::new(
-      2277,
-      8,
-      25,
-      hour=23,
-      minute=42,
-      second=2,
-      microsecond=680442,
+      8676,
+      1,
+      6,
+      hour=18,
+      minute=57,
+      second=15,
+      microsecond=0,
+    ),
+    "%G-W%V-%u",
+    "8676-W01-4",
+    "8676-01-06 18:57:15",
+    "datetime.datetime(8676, 1, 6, 18, 57, 15)",
+    "8676-01-06T18:57:15",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      9121,
+      11,
+      11,
+      hour=6,
+      minute=11,
+      second=0,
+      microsecond=0,
     ),
     "%c",
-    "Sat Aug 25 23:42:02 2277",
-    "2277-08-25 23:42:02.680442",
-    "datetime.datetime(2277, 8, 25, 23, 42, 2, 680442)",
-    "2277-08-25T23:42:02.680442",
+    "Fri Nov 11 06:11:00 9121",
+    "9121-11-11 06:11:00",
+    "datetime.datetime(9121, 11, 11, 6, 11)",
+    "9121-11-11T06:11:00",
   )
   check_fmt(
     @datetime.DateTime::new(
-      4308,
-      9,
-      21,
-      hour=13,
-      minute=51,
-      second=40,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "21/9/08 13:51:40",
-    "4308-09-21 13:51:40",
-    "datetime.datetime(4308, 9, 21, 13, 51, 40)",
-    "4308-09-21T13:51:40",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1870,
-      9,
-      7,
-      hour=16,
-      minute=34,
-      second=44,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "7/9/70 16:34:44",
-    "1870-09-07 16:34:44",
-    "datetime.datetime(1870, 9, 7, 16, 34, 44)",
-    "1870-09-07T16:34:44",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8294,
-      1,
-      18,
-      hour=14,
-      minute=59,
-      second=41,
-      microsecond=914187,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Thu Thursday Jan January 18 14 02 018 01 59 PM 41 02 4 03 94 8294 914187 %",
-    "8294-01-18 14:59:41.914187",
-    "datetime.datetime(8294, 1, 18, 14, 59, 41, 914187)",
-    "8294-01-18T14:59:41.914187",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      7912,
-      9,
-      11,
-      hour=11,
-      minute=27,
-      second=3,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "11/9/12 11:27:3",
-    "7912-09-11 11:27:03",
-    "datetime.datetime(7912, 9, 11, 11, 27, 3)",
-    "7912-09-11T11:27:03",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3991,
-      4,
-      10,
-      hour=3,
-      minute=50,
-      second=23,
-      microsecond=4369,
-    ),
-    "%x %X",
-    "04/10/91 03:50:23",
-    "3991-04-10 03:50:23.004369",
-    "datetime.datetime(3991, 4, 10, 3, 50, 23, 4369)",
-    "3991-04-10T03:50:23.004369",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8082,
-      2,
-      18,
-      hour=11,
-      minute=21,
-      second=18,
-      microsecond=0,
-    ),
-    "%x %X",
-    "02/18/82 11:21:18",
-    "8082-02-18 11:21:18",
-    "datetime.datetime(8082, 2, 18, 11, 21, 18)",
-    "8082-02-18T11:21:18",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2360,
+      6157,
       9,
       19,
-      hour=16,
-      minute=2,
-      second=53,
-      microsecond=109334,
+      hour=10,
+      minute=13,
+      second=57,
+      microsecond=0,
     ),
-    "%x %X",
-    "09/19/60 16:02:53",
-    "2360-09-19 16:02:53.109334",
-    "datetime.datetime(2360, 9, 19, 16, 2, 53, 109334)",
-    "2360-09-19T16:02:53.109334",
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Mon Monday Sep September 19 10 10 262 09 13 AM 57 38 1 38 57 6157 000000 %",
+    "6157-09-19 10:13:57",
+    "datetime.datetime(6157, 9, 19, 10, 13, 57)",
+    "6157-09-19T10:13:57",
   )
   check_fmt(
     @datetime.DateTime::new(
-      2037,
-      8,
-      10,
-      hour=6,
-      minute=37,
-      second=3,
-      microsecond=49856,
+      1334,
+      2,
+      27,
+      hour=18,
+      minute=13,
+      second=5,
+      microsecond=758307,
+    ),
+    "%G-W%V-%u",
+    "1334-W08-6",
+    "1334-02-27 18:13:05.758307",
+    "datetime.datetime(1334, 2, 27, 18, 13, 5, 758307)",
+    "1334-02-27T18:13:05.758307",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1952,
+      12,
+      6,
+      hour=22,
+      minute=42,
+      second=9,
+      microsecond=113914,
     ),
     "%e|%D|%F|%T|%R|%C|%h",
-    "10|08/10/37|2037-08-10|06:37:03|06:37|20|Aug",
-    "2037-08-10 06:37:03.049856",
-    "datetime.datetime(2037, 8, 10, 6, 37, 3, 49856)",
-    "2037-08-10T06:37:03.049856",
+    " 6|12/06/52|1952-12-06|22:42:09|22:42|19|Dec",
+    "1952-12-06 22:42:09.113914",
+    "datetime.datetime(1952, 12, 6, 22, 42, 9, 113914)",
+    "1952-12-06T22:42:09.113914",
   )
   check_fmt(
     @datetime.DateTime::new(
       1944,
-      7,
-      6,
-      hour=17,
-      minute=44,
-      second=8,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 6|07/06/44|1944-07-06|17:44:08|17:44|19|Jul",
-    "1944-07-06 17:44:08",
-    "datetime.datetime(1944, 7, 6, 17, 44, 8)",
-    "1944-07-06T17:44:08",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2084,
-      6,
-      1,
-      hour=5,
-      minute=43,
-      second=38,
-      microsecond=211860,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    " 1|06/01/84|2084-06-01|05:43:38|05:43|20|Jun",
-    "2084-06-01 05:43:38.211860",
-    "datetime.datetime(2084, 6, 1, 5, 43, 38, 211860)",
-    "2084-06-01T05:43:38.211860",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4782,
-      2,
-      27,
-      hour=3,
-      minute=54,
-      second=13,
-      microsecond=270431,
-    ),
-    "%G-W%V-%u",
-    "4782-W08-6",
-    "4782-02-27 03:54:13.270431",
-    "datetime.datetime(4782, 2, 27, 3, 54, 13, 270431)",
-    "4782-02-27T03:54:13.270431",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4119,
       4,
       29,
-      hour=20,
-      minute=23,
-      second=26,
+      hour=7,
+      minute=54,
+      second=31,
       microsecond=0,
     ),
-    "%c",
-    "Sat Apr 29 20:23:26 4119",
-    "4119-04-29 20:23:26",
-    "datetime.datetime(4119, 4, 29, 20, 23, 26)",
-    "4119-04-29T20:23:26",
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "29/4/44 7:54:31",
+    "1944-04-29 07:54:31",
+    "datetime.datetime(1944, 4, 29, 7, 54, 31)",
+    "1944-04-29T07:54:31",
   )
   check_fmt(
     @datetime.DateTime::new(
-      1989,
-      2,
-      21,
-      hour=5,
-      minute=15,
-      second=11,
-      microsecond=546368,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "21|02/21/89|1989-02-21|05:15:11|05:15|19|Feb",
-    "1989-02-21 05:15:11.546368",
-    "datetime.datetime(1989, 2, 21, 5, 15, 11, 546368)",
-    "1989-02-21T05:15:11.546368",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2028,
-      6,
-      17,
-      hour=20,
-      minute=26,
-      second=6,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "17|06/17/28|2028-06-17|20:26:06|20:26|20|Jun",
-    "2028-06-17 20:26:06",
-    "datetime.datetime(2028, 6, 17, 20, 26, 6)",
-    "2028-06-17T20:26:06",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1908,
-      4,
-      30,
-      hour=19,
-      minute=11,
-      second=49,
-      microsecond=0,
-    ),
-    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Thu Thursday Apr April 30 19 07 121 04 11 PM 49 17 4 17 08 1908 000000 %",
-    "1908-04-30 19:11:49",
-    "datetime.datetime(1908, 4, 30, 19, 11, 49)",
-    "1908-04-30T19:11:49",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1943,
+      2043,
       6,
       26,
-      hour=5,
-      minute=40,
-      second=54,
-      microsecond=429664,
+      hour=0,
+      minute=2,
+      second=39,
+      microsecond=266069,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "26/6/43 0:2:39",
+    "2043-06-26 00:02:39.266069",
+    "datetime.datetime(2043, 6, 26, 0, 2, 39, 266069)",
+    "2043-06-26T00:02:39.266069",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1575,
+      10,
+      5,
+      hour=22,
+      minute=36,
+      second=28,
+      microsecond=563240,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "5/10/75 22:36:28",
+    "1575-10-05 22:36:28.563240",
+    "datetime.datetime(1575, 10, 5, 22, 36, 28, 563240)",
+    "1575-10-05T22:36:28.563240",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1401,
+      5,
+      6,
+      hour=17,
+      minute=54,
+      second=5,
+      microsecond=312741,
     ),
     "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
-    "Sat Saturday Jun June 26 05 05 177 06 40 AM 54 25 6 25 43 1943 429664 %",
-    "1943-06-26 05:40:54.429664",
-    "datetime.datetime(1943, 6, 26, 5, 40, 54, 429664)",
-    "1943-06-26T05:40:54.429664",
+    "Wed Wednesday May May 06 17 05 126 05 54 PM 05 18 3 18 01 1401 312741 %",
+    "1401-05-06 17:54:05.312741",
+    "datetime.datetime(1401, 5, 6, 17, 54, 5, 312741)",
+    "1401-05-06T17:54:05.312741",
   )
   check_fmt(
     @datetime.DateTime::new(
-      1899,
-      3,
-      5,
-      hour=13,
-      minute=24,
-      second=48,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "1899-W09-7",
-    "1899-03-05 13:24:48",
-    "datetime.datetime(1899, 3, 5, 13, 24, 48)",
-    "1899-03-05T13:24:48",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4893,
-      8,
-      21,
-      hour=22,
-      minute=41,
-      second=54,
+      2410,
+      6,
+      9,
+      hour=15,
+      minute=18,
+      second=12,
       microsecond=0,
     ),
     "%x %X",
-    "08/21/93 22:41:54",
-    "4893-08-21 22:41:54",
-    "datetime.datetime(4893, 8, 21, 22, 41, 54)",
-    "4893-08-21T22:41:54",
+    "06/09/10 15:18:12",
+    "2410-06-09 15:18:12",
+    "datetime.datetime(2410, 6, 9, 15, 18, 12)",
+    "2410-06-09T15:18:12",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2036,
+      9,
+      16,
+      hour=13,
+      minute=54,
+      second=34,
+      microsecond=636290,
+    ),
+    "%G-W%V-%u",
+    "2036-W38-2",
+    "2036-09-16 13:54:34.636290",
+    "datetime.datetime(2036, 9, 16, 13, 54, 34, 636290)",
+    "2036-09-16T13:54:34.636290",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2007,
+      2,
+      3,
+      hour=20,
+      minute=39,
+      second=9,
+      microsecond=517463,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Sat Saturday Feb February 03 20 08 034 02 39 PM 09 04 6 05 07 2007 517463 %",
+    "2007-02-03 20:39:09.517463",
+    "datetime.datetime(2007, 2, 3, 20, 39, 9, 517463)",
+    "2007-02-03T20:39:09.517463",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8493,
+      2,
+      7,
+      hour=4,
+      minute=10,
+      second=57,
+      microsecond=318123,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "7/2/93 4:10:57",
+    "8493-02-07 04:10:57.318123",
+    "datetime.datetime(8493, 2, 7, 4, 10, 57, 318123)",
+    "8493-02-07T04:10:57.318123",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8973,
+      5,
+      18,
+      hour=3,
+      minute=39,
+      second=3,
+      microsecond=0,
+    ),
+    "%x %X",
+    "05/18/73 03:39:03",
+    "8973-05-18 03:39:03",
+    "datetime.datetime(8973, 5, 18, 3, 39, 3)",
+    "8973-05-18T03:39:03",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1103,
+      1,
+      8,
+      hour=4,
+      minute=14,
+      second=15,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "8/1/03 4:14:15",
+    "1103-01-08 04:14:15",
+    "datetime.datetime(1103, 1, 8, 4, 14, 15)",
+    "1103-01-08T04:14:15",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1960,
+      9,
+      10,
+      hour=6,
+      minute=2,
+      second=32,
+      microsecond=0,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    "10|09/10/60|1960-09-10|06:02:32|06:02|19|Sep",
+    "1960-09-10 06:02:32",
+    "datetime.datetime(1960, 9, 10, 6, 2, 32)",
+    "1960-09-10T06:02:32",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      7582,
+      10,
+      4,
+      hour=17,
+      minute=55,
+      second=27,
+      microsecond=790127,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Mon Monday Oct October 04 17 05 277 10 55 PM 27 40 1 40 82 7582 790127 %",
+    "7582-10-04 17:55:27.790127",
+    "datetime.datetime(7582, 10, 4, 17, 55, 27, 790127)",
+    "7582-10-04T17:55:27.790127",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8860,
+      9,
+      23,
+      hour=2,
+      minute=9,
+      second=15,
+      microsecond=0,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    "23|09/23/60|8860-09-23|02:09:15|02:09|88|Sep",
+    "8860-09-23 02:09:15",
+    "datetime.datetime(8860, 9, 23, 2, 9, 15)",
+    "8860-09-23T02:09:15",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2052,
+      12,
+      8,
+      hour=17,
+      minute=40,
+      second=46,
+      microsecond=77935,
+    ),
+    "%c",
+    "Sun Dec  8 17:40:46 2052",
+    "2052-12-08 17:40:46.077935",
+    "datetime.datetime(2052, 12, 8, 17, 40, 46, 77935)",
+    "2052-12-08T17:40:46.077935",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1646,
+      12,
+      19,
+      hour=9,
+      minute=26,
+      second=9,
+      microsecond=387002,
+    ),
+    "%G-W%V-%u",
+    "1646-W51-3",
+    "1646-12-19 09:26:09.387002",
+    "datetime.datetime(1646, 12, 19, 9, 26, 9, 387002)",
+    "1646-12-19T09:26:09.387002",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1905,
+      6,
+      5,
+      hour=15,
+      minute=12,
+      second=0,
+      microsecond=864649,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Mon Monday Jun June 05 15 03 156 06 12 PM 00 23 1 23 05 1905 864649 %",
+    "1905-06-05 15:12:00.864649",
+    "datetime.datetime(1905, 6, 5, 15, 12, 0, 864649)",
+    "1905-06-05T15:12:00.864649",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      7116,
+      6,
+      15,
+      hour=5,
+      minute=5,
+      second=17,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "15/6/16 5:5:17",
+    "7116-06-15 05:05:17",
+    "datetime.datetime(7116, 6, 15, 5, 5, 17)",
+    "7116-06-15T05:05:17",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      6947,
+      11,
+      4,
+      hour=19,
+      minute=59,
+      second=20,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "4/11/47 19:59:20",
+    "6947-11-04 19:59:20",
+    "datetime.datetime(6947, 11, 4, 19, 59, 20)",
+    "6947-11-04T19:59:20",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      7377,
+      3,
+      11,
+      hour=20,
+      minute=48,
+      second=35,
+      microsecond=87314,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "11/3/77 20:48:35",
+    "7377-03-11 20:48:35.087314",
+    "datetime.datetime(7377, 3, 11, 20, 48, 35, 87314)",
+    "7377-03-11T20:48:35.087314",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8147,
+      4,
+      25,
+      hour=8,
+      minute=26,
+      second=55,
+      microsecond=958973,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Tue Tuesday Apr April 25 08 08 115 04 26 AM 55 17 2 17 47 8147 958973 %",
+    "8147-04-25 08:26:55.958973",
+    "datetime.datetime(8147, 4, 25, 8, 26, 55, 958973)",
+    "8147-04-25T08:26:55.958973",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2054,
+      2,
+      9,
+      hour=20,
+      minute=51,
+      second=26,
+      microsecond=0,
+    ),
+    "%G-W%V-%u",
+    "2054-W07-1",
+    "2054-02-09 20:51:26",
+    "datetime.datetime(2054, 2, 9, 20, 51, 26)",
+    "2054-02-09T20:51:26",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      6270,
+      8,
+      29,
+      hour=12,
+      minute=22,
+      second=27,
+      microsecond=711742,
+    ),
+    "%c",
+    "Mon Aug 29 12:22:27 6270",
+    "6270-08-29 12:22:27.711742",
+    "datetime.datetime(6270, 8, 29, 12, 22, 27, 711742)",
+    "6270-08-29T12:22:27.711742",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2068,
+      7,
+      30,
+      hour=21,
+      minute=38,
+      second=55,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "30/7/68 21:38:55",
+    "2068-07-30 21:38:55",
+    "datetime.datetime(2068, 7, 30, 21, 38, 55)",
+    "2068-07-30T21:38:55",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2030,
+      4,
+      14,
+      hour=4,
+      minute=11,
+      second=5,
+      microsecond=0,
+    ),
+    "%G-W%V-%u",
+    "2030-W15-7",
+    "2030-04-14 04:11:05",
+    "datetime.datetime(2030, 4, 14, 4, 11, 5)",
+    "2030-04-14T04:11:05",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2031,
+      6,
+      1,
+      hour=12,
+      minute=15,
+      second=36,
+      microsecond=439168,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "1/6/31 12:15:36",
+    "2031-06-01 12:15:36.439168",
+    "datetime.datetime(2031, 6, 1, 12, 15, 36, 439168)",
+    "2031-06-01T12:15:36.439168",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      5054,
+      5,
+      20,
+      hour=16,
+      minute=35,
+      second=50,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "20/5/54 16:35:50",
+    "5054-05-20 16:35:50",
+    "datetime.datetime(5054, 5, 20, 16, 35, 50)",
+    "5054-05-20T16:35:50",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      4737,
+      7,
+      2,
+      hour=18,
+      minute=40,
+      second=0,
+      microsecond=0,
+    ),
+    "%x %X",
+    "07/02/37 18:40:00",
+    "4737-07-02 18:40:00",
+    "datetime.datetime(4737, 7, 2, 18, 40)",
+    "4737-07-02T18:40:00",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8539,
+      11,
+      4,
+      hour=16,
+      minute=13,
+      second=6,
+      microsecond=305484,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Wed Wednesday Nov November 04 16 04 308 11 13 PM 06 44 3 44 39 8539 305484 %",
+    "8539-11-04 16:13:06.305484",
+    "datetime.datetime(8539, 11, 4, 16, 13, 6, 305484)",
+    "8539-11-04T16:13:06.305484",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1009,
+      1,
+      5,
+      hour=7,
+      minute=1,
+      second=17,
+      microsecond=0,
+    ),
+    "%e|%D|%F|%T|%R|%C|%h",
+    " 5|01/05/09|1009-01-05|07:01:17|07:01|10|Jan",
+    "1009-01-05 07:01:17",
+    "datetime.datetime(1009, 1, 5, 7, 1, 17)",
+    "1009-01-05T07:01:17",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1490,
+      12,
+      13,
+      hour=11,
+      minute=12,
+      second=24,
+      microsecond=977101,
+    ),
+    "%c",
+    "Sat Dec 13 11:12:24 1490",
+    "1490-12-13 11:12:24.977101",
+    "datetime.datetime(1490, 12, 13, 11, 12, 24, 977101)",
+    "1490-12-13T11:12:24.977101",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      3797,
+      7,
+      22,
+      hour=21,
+      minute=52,
+      second=6,
+      microsecond=592795,
+    ),
+    "%x %X",
+    "07/22/97 21:52:06",
+    "3797-07-22 21:52:06.592795",
+    "datetime.datetime(3797, 7, 22, 21, 52, 6, 592795)",
+    "3797-07-22T21:52:06.592795",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2095,
+      9,
+      13,
+      hour=11,
+      minute=11,
+      second=35,
+      microsecond=693945,
+    ),
+    "%c",
+    "Tue Sep 13 11:11:35 2095",
+    "2095-09-13 11:11:35.693945",
+    "datetime.datetime(2095, 9, 13, 11, 11, 35, 693945)",
+    "2095-09-13T11:11:35.693945",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1969,
+      2,
+      21,
+      hour=9,
+      minute=57,
+      second=16,
+      microsecond=0,
+    ),
+    "%x %X",
+    "02/21/69 09:57:16",
+    "1969-02-21 09:57:16",
+    "datetime.datetime(1969, 2, 21, 9, 57, 16)",
+    "1969-02-21T09:57:16",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2076,
+      2,
+      9,
+      hour=12,
+      minute=54,
+      second=50,
+      microsecond=570178,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Sun Sunday Feb February 09 12 12 040 02 54 PM 50 06 0 05 76 2076 570178 %",
+    "2076-02-09 12:54:50.570178",
+    "datetime.datetime(2076, 2, 9, 12, 54, 50, 570178)",
+    "2076-02-09T12:54:50.570178",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1904,
+      11,
+      30,
+      hour=5,
+      minute=24,
+      second=30,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "30/11/04 5:24:30",
+    "1904-11-30 05:24:30",
+    "datetime.datetime(1904, 11, 30, 5, 24, 30)",
+    "1904-11-30T05:24:30",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8494,
+      1,
+      13,
+      hour=12,
+      minute=21,
+      second=0,
+      microsecond=0,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Wed Wednesday Jan January 13 12 12 013 01 21 PM 00 02 3 02 94 8494 000000 %",
+    "8494-01-13 12:21:00",
+    "datetime.datetime(8494, 1, 13, 12, 21)",
+    "8494-01-13T12:21:00",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      1565,
+      12,
+      24,
+      hour=1,
+      minute=34,
+      second=50,
+      microsecond=0,
+    ),
+    "%G-W%V-%u",
+    "1565-W51-5",
+    "1565-12-24 01:34:50",
+    "datetime.datetime(1565, 12, 24, 1, 34, 50)",
+    "1565-12-24T01:34:50",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      8014,
+      6,
+      13,
+      hour=18,
+      minute=54,
+      second=31,
+      microsecond=473105,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Fri Friday Jun June 13 18 06 164 06 54 PM 31 23 5 23 14 8014 473105 %",
+    "8014-06-13 18:54:31.473105",
+    "datetime.datetime(8014, 6, 13, 18, 54, 31, 473105)",
+    "8014-06-13T18:54:31.473105",
   )
   check_fmt(
     @datetime.DateTime::new(
       2018,
+      7,
+      28,
+      hour=0,
+      minute=18,
+      second=30,
+      microsecond=730139,
+    ),
+    "%G-W%V-%u",
+    "2018-W30-6",
+    "2018-07-28 00:18:30.730139",
+    "datetime.datetime(2018, 7, 28, 0, 18, 30, 730139)",
+    "2018-07-28T00:18:30.730139",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      9754,
+      1,
+      17,
+      hour=0,
+      minute=4,
+      second=53,
+      microsecond=232185,
+    ),
+    "%x %X",
+    "01/17/54 00:04:53",
+    "9754-01-17 00:04:53.232185",
+    "datetime.datetime(9754, 1, 17, 0, 4, 53, 232185)",
+    "9754-01-17T00:04:53.232185",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2003,
+      3,
+      28,
+      hour=20,
+      minute=55,
+      second=57,
+      microsecond=939760,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Fri Friday Mar March 28 20 08 087 03 55 PM 57 12 5 12 03 2003 939760 %",
+    "2003-03-28 20:55:57.939760",
+    "datetime.datetime(2003, 3, 28, 20, 55, 57, 939760)",
+    "2003-03-28T20:55:57.939760",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      5509,
+      7,
+      20,
+      hour=16,
+      minute=57,
+      second=38,
+      microsecond=0,
+    ),
+    "%a %A %b %B %d %H %I %j %m %M %p %S %U %w %W %y %Y %f %%",
+    "Tue Tuesday Jul July 20 16 04 201 07 57 PM 38 29 2 29 09 5509 000000 %",
+    "5509-07-20 16:57:38",
+    "datetime.datetime(5509, 7, 20, 16, 57, 38)",
+    "5509-07-20T16:57:38",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2003,
       5,
-      29,
-      hour=7,
-      minute=25,
+      22,
+      hour=0,
+      minute=24,
+      second=34,
+      microsecond=0,
+    ),
+    "%-d/%-m/%y %-H:%-M:%-S",
+    "22/5/03 0:24:34",
+    "2003-05-22 00:24:34",
+    "datetime.datetime(2003, 5, 22, 0, 24, 34)",
+    "2003-05-22T00:24:34",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2040,
+      4,
+      8,
+      hour=20,
+      minute=34,
+      second=45,
+      microsecond=0,
+    ),
+    "%c",
+    "Sun Apr  8 20:34:45 2040",
+    "2040-04-08 20:34:45",
+    "datetime.datetime(2040, 4, 8, 20, 34, 45)",
+    "2040-04-08T20:34:45",
+  )
+  check_fmt(
+    @datetime.DateTime::new(
+      2012,
+      2,
+      8,
+      hour=12,
+      minute=41,
       second=28,
       microsecond=0,
     ),
     "%e|%D|%F|%T|%R|%C|%h",
-    "29|05/29/18|2018-05-29|07:25:28|07:25|20|May",
-    "2018-05-29 07:25:28",
-    "datetime.datetime(2018, 5, 29, 7, 25, 28)",
-    "2018-05-29T07:25:28",
+    " 8|02/08/12|2012-02-08|12:41:28|12:41|20|Feb",
+    "2012-02-08 12:41:28",
+    "datetime.datetime(2012, 2, 8, 12, 41, 28)",
+    "2012-02-08T12:41:28",
   )
   check_fmt(
     @datetime.DateTime::new(
-      2101,
-      1,
-      1,
-      hour=18,
-      minute=51,
-      second=24,
-      microsecond=0,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "1/1/01 18:51:24",
-    "2101-01-01 18:51:24",
-    "datetime.datetime(2101, 1, 1, 18, 51, 24)",
-    "2101-01-01T18:51:24",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8739,
-      4,
-      16,
-      hour=4,
-      minute=36,
-      second=27,
-      microsecond=145040,
-    ),
-    "%x %X",
-    "04/16/39 04:36:27",
-    "8739-04-16 04:36:27.145040",
-    "datetime.datetime(8739, 4, 16, 4, 36, 27, 145040)",
-    "8739-04-16T04:36:27.145040",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      6238,
-      10,
-      14,
-      hour=23,
-      minute=40,
-      second=54,
-      microsecond=0,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "14|10/14/38|6238-10-14|23:40:54|23:40|62|Oct",
-    "6238-10-14 23:40:54",
-    "datetime.datetime(6238, 10, 14, 23, 40, 54)",
-    "6238-10-14T23:40:54",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      4695,
-      3,
-      25,
-      hour=16,
-      minute=15,
-      second=27,
-      microsecond=638162,
-    ),
-    "%c",
-    "Mon Mar 25 16:15:27 4695",
-    "4695-03-25 16:15:27.638162",
-    "datetime.datetime(4695, 3, 25, 16, 15, 27, 638162)",
-    "4695-03-25T16:15:27.638162",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8823,
-      9,
-      27,
-      hour=1,
-      minute=20,
-      second=31,
-      microsecond=80537,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "27|09/27/23|8823-09-27|01:20:31|01:20|88|Sep",
-    "8823-09-27 01:20:31.080537",
-    "datetime.datetime(8823, 9, 27, 1, 20, 31, 80537)",
-    "8823-09-27T01:20:31.080537",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1441,
-      12,
-      4,
-      hour=16,
-      minute=17,
-      second=29,
-      microsecond=0,
-    ),
-    "%c",
-    "Sat Dec  4 16:17:29 1441",
-    "1441-12-04 16:17:29",
-    "datetime.datetime(1441, 12, 4, 16, 17, 29)",
-    "1441-12-04T16:17:29",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      6973,
+      1399,
       5,
-      14,
-      hour=0,
-      minute=26,
-      second=40,
-      microsecond=558648,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "14|05/14/73|6973-05-14|00:26:40|00:26|69|May",
-    "6973-05-14 00:26:40.558648",
-    "datetime.datetime(6973, 5, 14, 0, 26, 40, 558648)",
-    "6973-05-14T00:26:40.558648",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      6101,
-      2,
-      7,
-      hour=3,
-      minute=7,
-      second=1,
-      microsecond=0,
-    ),
-    "%x %X",
-    "02/07/01 03:07:01",
-    "6101-02-07 03:07:01",
-    "datetime.datetime(6101, 2, 7, 3, 7, 1)",
-    "6101-02-07T03:07:01",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2063,
-      7,
-      30,
-      hour=0,
-      minute=2,
-      second=46,
-      microsecond=0,
+      20,
+      hour=8,
+      minute=24,
+      second=44,
+      microsecond=241257,
     ),
     "%G-W%V-%u",
-    "2063-W31-1",
-    "2063-07-30 00:02:46",
-    "datetime.datetime(2063, 7, 30, 0, 2, 46)",
-    "2063-07-30T00:02:46",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      8993,
-      5,
-      25,
-      hour=1,
-      minute=56,
-      second=47,
-      microsecond=39640,
-    ),
-    "%G-W%V-%u",
-    "8993-W21-6",
-    "8993-05-25 01:56:47.039640",
-    "datetime.datetime(8993, 5, 25, 1, 56, 47, 39640)",
-    "8993-05-25T01:56:47.039640",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      6359,
-      6,
-      3,
-      hour=18,
-      minute=2,
-      second=13,
-      microsecond=0,
-    ),
-    "%c",
-    "Wed Jun  3 18:02:13 6359",
-    "6359-06-03 18:02:13",
-    "datetime.datetime(6359, 6, 3, 18, 2, 13)",
-    "6359-06-03T18:02:13",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      1900,
-      10,
-      15,
-      hour=21,
-      minute=3,
-      second=29,
-      microsecond=469891,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "15|10/15/00|1900-10-15|21:03:29|21:03|19|Oct",
-    "1900-10-15 21:03:29.469891",
-    "datetime.datetime(1900, 10, 15, 21, 3, 29, 469891)",
-    "1900-10-15T21:03:29.469891",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      2025,
-      2,
-      13,
-      hour=4,
-      minute=59,
-      second=56,
-      microsecond=536991,
-    ),
-    "%e|%D|%F|%T|%R|%C|%h",
-    "13|02/13/25|2025-02-13|04:59:56|04:59|20|Feb",
-    "2025-02-13 04:59:56.536991",
-    "datetime.datetime(2025, 2, 13, 4, 59, 56, 536991)",
-    "2025-02-13T04:59:56.536991",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      6840,
-      1,
-      22,
-      hour=2,
-      minute=44,
-      second=43,
-      microsecond=0,
-    ),
-    "%x %X",
-    "01/22/40 02:44:43",
-    "6840-01-22 02:44:43",
-    "datetime.datetime(6840, 1, 22, 2, 44, 43)",
-    "6840-01-22T02:44:43",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3687,
-      3,
-      2,
-      hour=21,
-      minute=1,
-      second=56,
-      microsecond=791606,
-    ),
-    "%-d/%-m/%y %-H:%-M:%-S",
-    "2/3/87 21:1:56",
-    "3687-03-02 21:01:56.791606",
-    "datetime.datetime(3687, 3, 2, 21, 1, 56, 791606)",
-    "3687-03-02T21:01:56.791606",
-  )
-  check_fmt(
-    @datetime.DateTime::new(
-      3819,
-      9,
-      19,
-      hour=13,
-      minute=45,
-      second=16,
-      microsecond=0,
-    ),
-    "%G-W%V-%u",
-    "3819-W37-7",
-    "3819-09-19 13:45:16",
-    "datetime.datetime(3819, 9, 19, 13, 45, 16)",
-    "3819-09-19T13:45:16",
+    "1399-W21-1",
+    "1399-05-20 08:24:44.241257",
+    "datetime.datetime(1399, 5, 20, 8, 24, 44, 241257)",
+    "1399-05-20T08:24:44.241257",
   )
 }
 
 ///|
 test "cpython: utcfromtimestamp" {
-  check_ts(-2656098040.0, "1885-10-31 02:59:20")
-  check_ts(7709059636.449078, "2214-04-17 05:27:16.449078")
-  check_ts(6219384673.0, "2167-01-31 14:51:13")
-  check_ts(1468009308.436524, "2016-07-08 20:21:48.436524")
-  check_ts(-483448353.18928, "1954-09-06 12:47:26.810720")
-  check_ts(-6236498930.0, "1772-05-16 07:11:10")
-  check_ts(2161002831.953059, "2038-06-24 14:33:51.953059")
-  check_ts(6800623497.0, "2185-07-02 22:04:57")
-  check_ts(6832328028.933871, "2186-07-04 20:53:48.933871")
-  check_ts(8668147267.9815, "2244-09-06 18:41:07.981501")
-  check_ts(6583276087.0, "2178-08-13 07:48:07")
-  check_ts(-1685386068.0, "1916-08-05 05:12:12")
-  check_ts(7394993764.0, "2204-05-04 04:56:04")
-  check_ts(1781516046.211116, "2026-06-15 09:34:06.211116")
-  check_ts(-1531582164.0, "1921-06-20 08:30:36")
-  check_ts(-2599649441.0, "1887-08-15 11:09:19")
-  check_ts(1454933633.772793, "2016-02-08 12:13:53.772793")
-  check_ts(8945701599.156094, "2253-06-24 05:06:39.156094")
-  check_ts(-6831800225.0, "1753-07-05 05:42:55")
-  check_ts(2436585017.0, "2047-03-19 05:10:17")
-  check_ts(8618244300.912165, "2243-02-07 04:45:00.912165")
-  check_ts(2348257581.0, "2044-05-30 21:46:21")
-  check_ts(6853023398.888682, "2187-03-01 09:36:38.888682")
-  check_ts(5085291114.0, "2131-02-23 12:51:54")
-  check_ts(8808530624.0, "2249-02-17 14:03:44")
-  check_ts(2611070471.0, "2052-09-27 17:21:11")
-  check_ts(8886116884.0, "2251-08-04 13:48:04")
-  check_ts(5928295222.456481, "2157-11-10 12:40:22.456481")
-  check_ts(7527162752.904194, "2208-07-11 22:32:32.904194")
-  check_ts(-2709024772.0, "1884-02-26 13:07:08")
-  check_ts(3113236496.680119, "2068-08-26 19:54:56.680119")
-  check_ts(7319140337.206679, "2201-12-08 06:32:17.206679")
-  check_ts(-5304238373.0, "1801-12-01 08:27:07")
-  check_ts(4284423378.0, "2105-10-08 05:36:18")
-  check_ts(9420564675.632202, "2268-07-11 07:31:15.632202")
-  check_ts(2115187148.734204, "2037-01-10 07:59:08.734204")
-  check_ts(4059765372.283504, "2098-08-25 00:36:12.283504")
-  check_ts(-8235569051.0, "1709-01-09 21:55:49")
-  check_ts(8334538397.776001, "2234-02-10 13:33:17.776001")
-  check_ts(9476859527.0, "2270-04-23 20:58:47")
-  check_ts(706808027.0, "1992-05-25 15:33:47")
-  check_ts(6583972386.645821, "2178-08-21 09:13:06.645821")
-  check_ts(6564434646.0, "2178-01-07 06:04:06")
-  check_ts(518952803.0, "1986-06-12 09:33:23")
-  check_ts(-8925136845.0, "1687-03-04 19:19:15")
-  check_ts(-6298301438.0, "1770-05-31 23:49:22")
-  check_ts(2911516510.0, "2062-04-06 02:35:10")
-  check_ts(-8767493689.0, "1692-03-02 09:05:11")
-  check_ts(3148736722.0, "2069-10-11 17:05:22")
-  check_ts(3708839289.67029, "2087-07-12 09:08:09.670290")
-  check_ts(-2229695133.0, "1899-05-06 08:14:27")
-  check_ts(9929455565.406267, "2284-08-26 06:06:05.406267")
-  check_ts(2355526410.156872, "2044-08-23 00:53:30.156872")
-  check_ts(1093714531.73164, "2004-08-28 17:35:31.731640")
-  check_ts(5387470899.0, "2140-09-20 23:41:39")
-  check_ts(-1440433480.0, "1924-05-10 07:35:20")
-  check_ts(1904860595.908767, "2030-05-12 23:56:35.908767")
-  check_ts(-1740875709.0, "1914-11-01 23:24:51")
-  check_ts(2512979497.436625, "2049-08-19 09:51:37.436625")
-  check_ts(1117553943.639635, "2005-05-31 15:39:03.639635")
-  check_ts(4276073162.374721, "2105-07-03 14:06:02.374721")
-  check_ts(-4411859519.0, "1830-03-12 19:28:01")
-  check_ts(2347459439.555422, "2044-05-21 16:03:59.555422")
-  check_ts(-454395403.404838, "1955-08-08 19:03:16.595162")
-  check_ts(-5492424263.0, "1795-12-14 06:35:37")
-  check_ts(7637520274.0, "2212-01-10 05:24:34")
-  check_ts(901794167.0, "1998-07-30 10:22:47")
-  check_ts(3948668581.0, "2095-02-16 04:23:01")
-  check_ts(-1390878821.0, "1925-12-04 20:46:19")
-  check_ts(3617555409.450117, "2084-08-19 20:30:09.450117")
-  check_ts(-1222931667.0, "1931-04-01 16:45:33")
-  check_ts(7094210298.524983, "2194-10-21 21:58:18.524983")
-  check_ts(-4589703531.0, "1824-07-23 10:21:09")
-  check_ts(2281952964.941919, "2042-04-24 11:49:24.941919")
-  check_ts(506385218.0, "1986-01-17 22:33:38")
-  check_ts(7015191251.0, "2192-04-20 08:14:11")
-  check_ts(2325153237.0, "2043-09-06 11:53:57")
-  check_ts(-6992890710.0, "1748-05-27 18:21:30")
-  check_ts(-4523165417.0, "1826-09-01 13:09:43")
-  check_ts(-343413736.0, "1959-02-13 07:17:44")
-  check_ts(3512761888.0, "2081-04-24 23:11:28")
-  check_ts(6810387803.635722, "2185-10-23 22:23:23.635722")
-  check_ts(-194414992.0, "1963-11-03 19:50:08")
-  check_ts(5831734101.0, "2154-10-19 22:08:21")
-  check_ts(1587051113.452739, "2020-04-16 15:31:53.452739")
-  check_ts(-41816410.551586, "1968-09-04 00:19:49.448414")
-  check_ts(6348244027.780207, "2171-03-03 01:07:07.780207")
-  check_ts(9477137817.0, "2270-04-27 02:16:57")
-  check_ts(6619056065.0, "2179-10-01 10:41:05")
-  check_ts(9740238588.072084, "2278-08-28 05:49:48.072084")
-  check_ts(5011075690.564119, "2128-10-17 13:28:10.564119")
-  check_ts(3322124699.134344, "2075-04-10 12:24:59.134344")
-  check_ts(-5238911770.0, "1803-12-27 10:43:50")
-  check_ts(8575447387.206736, "2241-09-29 20:43:07.206736")
-  check_ts(97527192.985891, "1973-02-02 18:53:12.985891")
-  check_ts(-9272022219.0, "1676-03-06 22:16:21")
-  check_ts(-8351228953.0, "1705-05-12 06:10:47")
-  check_ts(2028808942.542232, "2034-04-16 14:02:22.542232")
-  check_ts(-2945291475.0, "1876-08-31 23:28:45")
-  check_ts(9641774012.836454, "2275-07-15 14:33:32.836454")
+  check_ts(6726862670.415689, "2183-03-02 04:57:50.415689")
+  check_ts(-5763444917.0, "1787-05-13 11:04:43")
+  check_ts(1892856293.175086, "2029-12-25 01:24:53.175086")
+  check_ts(9699467544.558098, "2277-05-13 08:32:24.558098")
+  check_ts(2200468438.974572, "2039-09-24 09:13:58.974572")
+  check_ts(4882978210.572219, "2124-09-25 22:50:10.572219")
+  check_ts(2175731547.0, "2038-12-12 01:52:27")
+  check_ts(5326762989.071496, "2138-10-19 08:23:09.071496")
+  check_ts(6133251708.395848, "2164-05-09 17:01:48.395848")
+  check_ts(-8609184105.0, "1697-03-08 15:58:15")
+  check_ts(-5412490217.0, "1798-06-26 10:29:43")
+  check_ts(6213403153.790286, "2166-11-23 09:19:13.790286")
+  check_ts(9659618666.612043, "2276-02-07 03:24:26.612043")
+  check_ts(4977679324.189675, "2127-09-27 00:42:04.189675")
+  check_ts(-4621067446.0, "1823-07-26 10:09:14")
+  check_ts(-182407185.0, "1964-03-21 19:20:15")
+  check_ts(9680139245.212091, "2276-10-01 15:34:05.212091")
+  check_ts(7577662330.874355, "2210-02-16 10:12:10.874355")
+  check_ts(3775944800.850706, "2089-08-27 01:33:20.850706")
+  check_ts(3521124199.871293, "2081-07-30 18:03:19.871293")
+  check_ts(-7325857824.0, "1737-11-07 23:29:36")
+  check_ts(-3144642363.0, "1870-05-08 16:13:57")
+  check_ts(3421811546.0, "2078-06-07 07:12:26")
+  check_ts(2333249813.131175, "2043-12-09 04:56:53.131175")
+  check_ts(2244222557.509306, "2041-02-11 19:09:17.509306")
+  check_ts(-581009435.0, "1951-08-04 08:29:25")
+  check_ts(59244510.0, "1971-11-17 16:48:30")
+  check_ts(7737947388.88905, "2215-03-17 13:49:48.889050")
+  check_ts(3013648639.0, "2065-07-01 04:37:19")
+  check_ts(6855307216.657197, "2187-03-27 20:00:16.657197")
+  check_ts(5839436218.720419, "2155-01-17 01:36:58.720419")
+  check_ts(-317158582.272165, "1959-12-14 04:23:37.727835")
+  check_ts(8019204369.0, "2224-02-13 20:46:09")
+  check_ts(1385960496.0, "2013-12-02 05:01:36")
+  check_ts(284359987.82088, "1979-01-05 04:53:07.820880")
+  check_ts(1686110034.160538, "2023-06-07 03:53:54.160538")
+  check_ts(8063409862.143991, "2225-07-09 12:04:22.143991")
+  check_ts(-9005374603.0, "1684-08-18 03:03:17")
+  check_ts(-9127398125.0, "1680-10-05 19:37:55")
+  check_ts(-848381761.698503, "1943-02-12 18:23:58.301497")
+  check_ts(-730562445.77792, "1946-11-07 09:59:14.222080")
+  check_ts(1081651267.085051, "2004-04-11 02:41:07.085051")
+  check_ts(8426915006.614788, "2237-01-14 17:43:26.614788")
+  check_ts(8487447403.0, "2238-12-16 08:16:43")
+  check_ts(-4240852811.0, "1835-08-13 01:19:49")
+  check_ts(1831725508.305152, "2028-01-17 12:38:28.305152")
+  check_ts(-2197837408.0, "1900-05-10 01:36:32")
+  check_ts(8185144777.242388, "2229-05-18 11:19:37.242388")
+  check_ts(-65845883.168321, "1967-11-30 21:28:36.831679")
+  check_ts(-1661728581.0, "1917-05-06 00:43:39")
+  check_ts(34010792.0, "1971-01-29 15:26:32")
+  check_ts(1871890540.23111, "2029-04-26 09:35:40.231110")
+  check_ts(1651554762.0, "2022-05-03 05:12:42")
+  check_ts(1165163945.0, "2006-12-03 16:39:05")
+  check_ts(3607730718.180497, "2084-04-28 03:25:18.180497")
+  check_ts(-238985054.571738, "1962-06-05 23:15:45.428262")
+  check_ts(192328222.426705, "1976-02-05 00:30:22.426705")
+  check_ts(-712092362.0, "1947-06-09 04:33:58")
+  check_ts(2440076122.895264, "2047-04-28 14:55:22.895264")
+  check_ts(4591123569.460716, "2115-06-28 00:06:09.460716")
+  check_ts(9135095913.225037, "2259-06-25 06:38:33.225037")
+  check_ts(1382304492.0, "2013-10-20 21:28:12")
+  check_ts(4379263531.027011, "2108-10-09 22:05:31.027011")
+  check_ts(2022715764.0, "2034-02-05 01:29:24")
+  check_ts(-354412698.0, "1958-10-09 00:01:42")
+  check_ts(9186847614.428995, "2261-02-13 06:06:54.428995")
+  check_ts(1586009722.0, "2020-04-04 14:15:22")
+  check_ts(1370281614.125318, "2013-06-03 17:46:54.125318")
+  check_ts(5463678946.301935, "2143-02-20 00:35:46.301935")
+  check_ts(5664829458.0, "2149-07-06 03:44:18")
+  check_ts(8990378404.0, "2254-11-23 07:20:04")
+  check_ts(-2111818478.0, "1903-01-30 15:45:22")
+  check_ts(3151207373.244036, "2069-11-09 07:22:53.244036")
+  check_ts(7115618938.600209, "2195-06-26 16:48:58.600209")
+  check_ts(-2505604051.0, "1890-08-07 22:52:29")
+  check_ts(-256344500.0, "1961-11-17 01:11:40")
+  check_ts(430656148.0, "1983-08-25 10:42:28")
+  check_ts(1979029337.0, "2032-09-17 10:22:17")
+  check_ts(1337624514.163601, "2012-05-21 18:21:54.163601")
+  check_ts(5247165331.066054, "2136-04-11 01:55:31.066054")
+  check_ts(9199739560.370869, "2261-07-12 11:12:40.370869")
+  check_ts(-9221702308.0, "1677-10-10 08:01:32")
+  check_ts(9952645430.648123, "2285-05-21 15:43:50.648123")
+  check_ts(321065690.0, "1980-03-05 00:54:50")
+  check_ts(967072813.411913, "2000-08-23 23:20:13.411913")
+  check_ts(7480601127.274119, "2207-01-20 00:45:27.274119")
+  check_ts(3816223719.844615, "2090-12-06 06:08:39.844615")
+  check_ts(-415014051.080499, "1956-11-06 14:19:08.919501")
+  check_ts(-451051110.042149, "1955-09-16 12:01:29.957851")
+  check_ts(-4682105070.0, "1821-08-18 23:15:30")
+  check_ts(9246537516.557596, "2263-01-05 02:38:36.557596")
+  check_ts(9531927798.85547, "2272-01-21 05:43:18.855471")
+  check_ts(7436793255.516694, "2205-08-30 23:54:15.516694")
+  check_ts(3258397567.0, "2073-04-02 22:26:07")
+  check_ts(-207896137.008611, "1963-05-31 19:04:22.991389")
+  check_ts(-548308650.813088, "1952-08-16 20:02:29.186912")
+  check_ts(-4195871086.0, "1837-01-14 16:15:14")
+  check_ts(-5849278212.0, "1784-08-23 00:29:48")
+  check_ts(4294029934.298454, "2106-01-27 10:05:34.298454")
+  check_ts(-256857256.340954, "1961-11-11 02:45:43.659046")
 }

@@ -47,67 +47,8 @@ pub impl Debug for DateOrDateTime with fn to_repr(self) {
 pub extend DateOrDateTime with Show::{to_string, output}
 
 ///|
-let us_per_second : Int64 = 1000000L
-
-///|
-let us_per_day : Int64 = 86400000000L
-
-///|
-fn checked_add64(a : Int64, b : Int64) -> Int64 raise @datetime.DateTimeError {
-  let s = a + b
-  if ((a ^ s) & (b ^ s)) < 0L {
-    raise @datetime.OverflowError("date value out of range")
-  }
-  s
-}
-
-///|
-/// CPython's `timedelta.__new__` accumulation (`accum`) of one argument:
-/// the integral part is multiplied exactly, the fractional part in floating
-/// point; the sub-microsecond leftover is collected in `leftover`.
-fn accum(
-  sofar : Int64,
-  num : Double,
-  factor : Int64,
-  leftover : Ref[Double],
-) -> Int64 raise @datetime.DateTimeError {
-  if num.is_nan() {
-    raise @datetime.ValueError("cannot convert float NaN to integer")
-  }
-  let intpart = num.trunc()
-  let fracpart = num - intpart
-  // Results this large are far outside the date range anyway.
-  if intpart.abs() * factor.to_double() >= 9.0e18 {
-    raise @datetime.OverflowError("date value out of range")
-  }
-  let sum = checked_add64(sofar, intpart.to_int64() * factor)
-  if fracpart == 0.0 {
-    return sum
-  }
-  let dnum = factor.to_double() * fracpart
-  let intpart2 = dnum.trunc()
-  leftover.val += dnum - intpart2
-  checked_add64(sum, intpart2.to_int64())
-}
-
-///|
-/// C `round()`: half away from zero, computed exactly (no `x + 0.5`
-/// double rounding).
-fn c_round(x : Double) -> Double {
-  let t = x.trunc()
-  let frac = x - t // exact
-  if frac >= 0.5 {
-    t + 1.0
-  } else if frac <= -0.5 {
-    t - 1.0
-  } else {
-    t
-  }
-}
-
-///|
 /// `datetime.timedelta(days=, hours=, minutes=, seconds=, microseconds=)`
-/// with float arguments, using CPython's exact algorithm.
+/// with float arguments (CPython's exact C algorithm).
 fn py_timedelta(
   days~ : Double,
   hours~ : Double,
@@ -115,30 +56,12 @@ fn py_timedelta(
   seconds~ : Double,
   microseconds~ : Double,
 ) -> @datetime.TimeDelta raise @datetime.DateTimeError {
-  let leftover = Ref(0.0)
-  let mut x = 0L
-  x = accum(x, microseconds, 1L, leftover)
-  x = accum(x, seconds, us_per_second, leftover)
-  x = accum(x, minutes, 60L * us_per_second, leftover)
-  x = accum(x, hours, 3600L * us_per_second, leftover)
-  x = accum(x, days, us_per_day, leftover)
-  if leftover.val != 0.0 {
-    let lo = leftover.val
-    let mut whole_us = c_round(lo)
-    if (whole_us - lo).abs() == 0.5 {
-      // Exactly halfway: round half to even on the total.
-      let is_odd = (x & 1L).to_double()
-      whole_us = 2.0 * c_round((lo + is_odd) * 0.5) - is_odd
-    }
-    x = checked_add64(x, whole_us.to_int64())
-  }
-  let d = x / us_per_day
-  let r = x % us_per_day
-  let (d, r) = if r < 0L { (d - 1L, r + us_per_day) } else { (d, r) }
-  @datetime.TimeDelta::try_new(
-    days=d.to_int(),
-    seconds=(r / us_per_second).to_int(),
-    microseconds=(r % us_per_second).to_int(),
+  @datetime.TimeDelta::from_float(
+    days~,
+    hours~,
+    minutes~,
+    seconds~,
+    microseconds~,
   )
 }
 
