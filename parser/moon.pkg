@@ -8,4 +8,5 @@ import {
 
 import {
   "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/json",
 } for "test"
