@@ -6,8 +6,9 @@
 ///
 /// Every method receives the datetime being queried, or `None` when the
 /// query comes from a `Time` object (Python calls `tzinfo.utcoffset(None)`
-/// in that case). When called through a `DateTime`, the argument's `tzinfo`
-/// is the handle wrapping this zone, so implementations may freely call
+/// in that case). When called through a `Tz` handle (directly or via a
+/// `DateTime`), the argument's `tzinfo` is that handle, so implementations
+/// may freely call
 /// `dt.utcoffset()` and friends on derived values.
 pub(open) trait TzInfo {
   /// Offset of local time from UTC (positive east of UTC); `None` if unknown.
@@ -116,18 +117,31 @@ fn check_offset(name : String, off : TimeDelta?) -> TimeDelta? {
 }
 
 ///|
+/// Re-attach this zone to a datetime handed to a `TzInfo` method, so that
+/// implementations always see `dt.tzinfo` = the handle wrapping them (as
+/// the trait documentation promises), even when a zone is queried directly
+/// with a naive datetime or one carrying another zone.
+fn Tz::attach(self : Tz, dt : DateTime?) -> DateTime? {
+  match dt {
+    Some(d) if !(d.tzinfo is Some(t) && t.is_same(self)) =>
+      Some({ ..d, tzinfo: Some(self), })
+    _ => dt
+  }
+}
+
+///|
 pub fn Tz::utcoffset(self : Tz, dt : DateTime?) -> TimeDelta? {
-  check_offset("utcoffset", self.inner.utcoffset(dt))
+  check_offset("utcoffset", self.inner.utcoffset(self.attach(dt)))
 }
 
 ///|
 pub fn Tz::dst(self : Tz, dt : DateTime?) -> TimeDelta? {
-  check_offset("dst", self.inner.dst(dt))
+  check_offset("dst", self.inner.dst(self.attach(dt)))
 }
 
 ///|
 pub fn Tz::tzname(self : Tz, dt : DateTime?) -> String? {
-  self.inner.tzname(dt)
+  self.inner.tzname(self.attach(dt))
 }
 
 ///|
@@ -144,7 +158,10 @@ pub fn Tz::fromutc(self : Tz, dt : DateTime) -> DateTime raise DateTimeError {
 ///|
 /// dateutil's `is_ambiguous`, `None` if the zone does not support it.
 pub fn Tz::is_ambiguous(self : Tz, dt : DateTime) -> Bool? {
-  self.inner.is_ambiguous(dt)
+  match self.attach(Some(dt)) {
+    Some(dt) => self.inner.is_ambiguous(dt)
+    None => None
+  }
 }
 
 ///|
