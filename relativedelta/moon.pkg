@@ -1,0 +1,11 @@
+warnings = "-79"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "moonbitlang/core/bigint",
+  "moonbitlang/core/string",
+}
+
+import {
+  "bobzhang/dateutil/tz",
+} for "test"
