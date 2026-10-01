@@ -40,18 +40,31 @@ pub fn gmtime(t : Int64) -> LocalTime {
 }
 
 ///|
-/// `time.localtime(t)` for the system time zone (honouring the `TZ`
-/// environment variable after `tzset()` on native). On the wasm backends
-/// there is no system zone and this is `gmtime`. On js the wall fields and
-/// offset come from the host `Date`; `isdst` is approximated by comparing
-/// with the January/July offsets and `zone` uses `Intl` short names (e.g.
-/// `GMT+1` where libc would say `IST`), and `tzset` has no effect.
+/// `time.localtime(t)` for the system time zone, honouring the `TZ`
+/// environment variable as of the last `tzset()`.
+///
+/// * native: the C library (`localtime_r`).
+/// * wasm, wasm-gc, js: the same rules as glibc, evaluated in MoonBit.
+///   `TZ` unset means `/etc/localtime`, empty means UTC; otherwise, after
+///   stripping a leading `:`, a TZif file (an absolute path, or a name under
+///   `TZDIR`, `/usr/share/zoneinfo`, `/usr/lib/zoneinfo`,
+///   `/usr/share/lib/zoneinfo` or `/etc/zoneinfo`), else a POSIX TZ string
+///   (`EST5EDT,M3.2.0,M11.1.0`, `<+0330>-3:30`); anything else is UTC.
+///   TZif files of every version are supported, including the 64-bit data
+///   and the footer rule used after the last transition. Files are read
+///   through MoonBit's `__moonbit_fs_unstable` host imports on wasm and
+///   Node's `fs` (`process.getBuiltinModule`) on js.
+/// * js without a file system (browsers), when `TZ` is not a POSIX TZ
+///   string: the host `Date`. This is approximate: `isdst` compares with the
+///   January/July offsets of the same year and `zone` is `Intl`'s short name
+///   (e.g. `GMT+1` where libc would say `BST`).
 pub fn localtime(t : Int64) -> LocalTime {
   platform_localtime(t)
 }
 
 ///|
-/// `time.tzset()`: re-read the `TZ` environment variable (native only).
+/// `time.tzset()`: re-read the `TZ` environment variable (and on wasm,
+/// wasm-gc and js, drop the cached zone so that it is resolved again).
 pub fn tzset() -> Unit {
   platform_tzset()
 }
