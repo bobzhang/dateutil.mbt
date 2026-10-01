@@ -282,6 +282,10 @@ pub fn PosixTz::lookup(self : PosixTz, t : Int64) -> TimeType {
     dst.end.local_epoch(y) - dst.offset.to_int64()
   }
 
+  if start_utc(year) == end_utc(year) {
+    // coincident transitions: an empty DST interval (glibc)
+    return std
+  }
   let northern = start_utc(year) < end_utc(year)
   let mut inside = false
   for y in (year - 1L)..<=(year + 1L) {

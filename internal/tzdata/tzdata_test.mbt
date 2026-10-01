@@ -264,6 +264,39 @@ test "TZif: version 1 file uses the 32-bit block and no footer" {
 }
 
 ///|
+test "TZif: huge counts are rejected, not overflowed" {
+  let header : Array[Byte] = [b'T', b'Z', b'i', b'f', b'2']
+  for _ in 0..<15 {
+    header.push(b'\x00')
+  }
+  // isutcnt, isstdcnt, leapcnt, timecnt = 0; typecnt = 1; charcnt = 0x7fffffee
+  for _ in 0..<16 {
+    header.push(b'\x00')
+  }
+  for
+    b in [
+      b'\x00', b'\x00', b'\x00', b'\x01', b'\x7f', b'\xff', b'\xff', b'\xee',
+    ] {
+    header.push(b)
+  }
+  try @tzdata.parse_tzif(Bytes::from_array(header)) catch {
+    err => debug_inspect(err, content="InvalidTzif(\"bad counts\")")
+  } noraise {
+    _ => fail("expected an error")
+  }
+  let read = (_ : String) => Some(Bytes::from_array(header))
+  assert_true(@tzdata.load_tzif("/x", read) is None)
+}
+
+///|
+test "POSIX: coincident transitions mean no DST (glibc)" {
+  let z = posix("AAA0BBB,J100/2,J100/3")
+  for t in [utc(2024, 1, 1), utc(2024, 4, 9, h=2), utc(2024, 7, 1)] {
+    inspect(z.lookup(t).abbr, content="AAA")
+  }
+}
+
+///|
 test "TZif: malformed data" {
   let good = @base64.decode(zone_files["Europe/Paris"])
   for

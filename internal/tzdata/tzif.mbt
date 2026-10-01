@@ -42,7 +42,7 @@ priv struct Reader {
 
 ///|
 fn Reader::need(self : Reader, n : Int) -> Unit raise TzdataError {
-  if n < 0 || self.pos + n > self.data.length() {
+  if n < 0 || n > self.data.length() - self.pos {
     raise InvalidTzif("unexpected end of data")
   }
 }
@@ -79,6 +79,11 @@ fn Reader::skip(self : Reader, n : Int) -> Unit raise TzdataError {
   self.need(n)
   self.pos += n
 }
+
+///|
+/// Upper bound for every TZif count (real files have a few thousand
+/// entries at most).
+let max_count : Int = 0x100000
 
 ///|
 priv struct Header {
@@ -124,6 +129,13 @@ fn Reader::header(self : Reader) -> Header raise TzdataError {
     typecnt > 256 ||
     charcnt <= 0 {
     raise InvalidTzif("bad counts")
+  }
+  // Each count is bounded by the data size (and by `max_count`), so the
+  // block-size arithmetic below cannot overflow.
+  for c in [isutcnt, isstdcnt, leapcnt, timecnt, charcnt] {
+    if c > max_count || c > self.data.length() {
+      raise InvalidTzif("bad counts")
+    }
   }
   { version, isutcnt, isstdcnt, leapcnt, timecnt, typecnt, charcnt, }
 }
