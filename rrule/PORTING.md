@@ -19,7 +19,7 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
 | `rruleset(cache)` + `rrule/rdate/exrule/exdate` | `RruleSet::new(cache?)` + same method names |
 | `rrulestr(s, **kw)` | `rrulestr(s, dtstart?, cache?, unfold?, forceset?, compatible?, ignoretz?, tzids?, tzinfos?) -> RruleBase` |
 | `rrule` / `rruleset` result of `rrulestr` | `RruleBase::Rule(Rrule)` / `RruleBase::Set(RruleSet)` (same query methods) |
-| `tzids` mapping / callable | `TzIds::Mapping(Map)` / `TzIds::Lookup(fn)` |
+| `tzids` mapping / callable | `TzIds::Table(Map)` / `TzIds::Callback(fn)` (variant names as in `@parser.TzInfos`) |
 
 ## Divergences
 
@@ -29,6 +29,12 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
   (`weekdays[i]` for an int). `dtstart`/`until` are `DateTime`; pass
   `Date::to_datetime()` for a Python `date`. An empty array is still
   distinct from an omitted argument, as in Python (`()` vs `None`).
+* **Shared `Weekday` type.** Python's `rrule.weekday` subclass rejects
+  `n == 0` in its constructor. Here `Weekday` is the shared
+  `@datetime.Weekday` (also used by relativedelta, where `n == 0` is
+  allowed), so `Weekday::nth` itself does **not** validate; use rrule's
+  `nth(wday, n)` / `weekday(wkday, n?)`, which raise `ValueError` for
+  `n == 0` (also when `wday` already carries `n == 0`).
 * **`wkst` default** is Monday; Python reads the process-global
   `calendar.firstweekday()`, which has no MoonBit counterpart.
 * **Errors during iteration.** Python generators raise lazily. All query
@@ -53,14 +59,18 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
   * `int()` values are limited to the `Int` range (Unicode decimal digits
     and `_` separators are accepted, as in Python).
   * `tzinfos` is `@parser.TzInfos` and is passed to `@parser.parse`.
-  * The callback in `TzIds::Lookup` may raise any error, and parse errors
+  * The callback in `TzIds::Callback` may raise any error, and parse errors
     of date values propagate as `@parser.ParserError` (a Python
     `ValueError` subclass); `rrulestr` therefore raises the polymorphic
     `Error`. Inside `RRULE` values, parse errors are re-wrapped as
     `ValueError("invalid 'UNTIL': ...")` like Python.
 * **Integer overflow.** Python integers are unbounded; the period
   arithmetic uses `Int64`, so huge `interval`/`count` values behave like
-  Python (e.g. `interval=2**31-1` ends after the first period).
+  Python (e.g. `interval=2**31-1` ends after the first period). Mask
+  indices derived from user values (nth-weekday ordinals such as
+  `BYDAY=613566758MO`, `byeaster` offsets) are also computed in `Int64` and
+  bounds-checked before narrowing, so they raise the `IndexError` mapping
+  instead of wrapping back into range.
 * **Debug/repr**: Python's `repr(rrule)` is the default object repr; our
   `Debug` shows the RFC string.
 

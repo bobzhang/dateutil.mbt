@@ -35,7 +35,9 @@ pub fn weekday(wkday : Int, n? : Int) -> Weekday raise @datetime.DateTimeError {
 ///|
 /// Python `wday(n)` for rrule weekdays (e.g. `TU(+1)`, `FR(-1)`): the same
 /// weekday with occurrence `n`. Returns `wday` itself when `n` already
-/// matches, and raises `ValueError` for `n == 0`.
+/// matches, and raises `ValueError` for `n == 0` (even when `wday` is a
+/// shared `Weekday` that already has `n == 0`, which rrule's own
+/// constructor can never produce).
 ///
 /// ```mbt check
 /// test {
@@ -44,6 +46,9 @@ pub fn weekday(wkday : Int, n? : Int) -> Weekday raise @datetime.DateTimeError {
 /// }
 /// ```
 pub fn nth(wday : Weekday, n : Int) -> Weekday raise @datetime.DateTimeError {
+  if n == 0 {
+    raise @datetime.ValueError("Can't create weekday with n==0")
+  }
   if wday.n == Some(n) {
     wday
   } else {

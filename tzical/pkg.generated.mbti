@@ -18,7 +18,9 @@ pub fn TzIcal::from_file(String) -> Self raise
 pub fn TzIcal::from_string(String, name? : String) -> Self raise
 pub fn TzIcal::get(Self, tzid? : String) -> @datetime.Tz? raise @datetime.DateTimeError
 pub fn TzIcal::keys(Self) -> Array[String]
+pub fn TzIcal::output(Self, &Logger) -> Unit
 pub fn TzIcal::repr(Self) -> String
+pub fn TzIcal::to_string(Self) -> String
 pub impl Show for TzIcal
 pub impl @debug.Debug for TzIcal
 

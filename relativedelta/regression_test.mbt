@@ -83,3 +83,32 @@ test "set_weeks with large day counts" {
   r.set_weeks(0)
   assert_eq(r.days, 4.0)
 }
+
+///|
+test "subtracting a delta whose negation overflows raises" {
+  // datetime(2024, 1, 1) - relativedelta(years=-2**31) -> OverflowError
+  let rd = RelativeDelta::new(years=-2147483648)
+  inspect(
+    kind(() => rd.sub_from_datetime(dt(2024, 1, 1)).repr()),
+    content="OverflowError",
+  )
+  inspect(
+    kind(() => {
+      ignore(rd.sub_from_date(@datetime.Date::new(2024, 1, 1)))
+      "ok"
+    }),
+    content="OverflowError",
+  )
+  // date(2024, 1, 1) - relativedelta(months=-2**31) -> year 178958994 ValueError
+  inspect(
+    kind(() => {
+      ignore(
+        RelativeDelta::new(months=-2147483648).sub_from_date(
+          @datetime.Date::new(2024, 1, 1),
+        ),
+      )
+      "ok"
+    }),
+    content="ValueError: year 178958994 is out of range",
+  )
+}

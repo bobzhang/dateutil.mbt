@@ -249,3 +249,55 @@ test "tzical: single component zone and folded lines" {
   inspect(t, content="01:00:00")
   inspect(t.strftime("%H%M%Z"), content="0100IST")
 }
+
+///|
+test "tzical: Show/to_string is repr" {
+  let tzc = @tzical.TzIcal::from_string(tzical_pst8pdt, name="f.ics")
+  inspect(tzc.to_string(), content="tzical('f.ics')")
+  inspect("\{tzc}", content="tzical('f.ics')")
+}
+
+///|
+test "tzical: a component rrule that raises counts as no onset" {
+  // BYEASTER=400 indexes past the easter mask: Python's first utcoffset()
+  // raises IndexError from inside _find_comp (later queries then hang in
+  // the broken rrule cache). TzInfo queries cannot raise here, so the
+  // failing component is skipped like one without an onset before `dt`.
+  let s =
+    #|BEGIN:VTIMEZONE
+    #|TZID:Bad-Easter
+    #|BEGIN:STANDARD
+    #|DTSTART:19671029T020000
+    #|RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+    #|TZOFFSETFROM:-0400
+    #|TZOFFSETTO:-0500
+    #|TZNAME:EST
+    #|END:STANDARD
+    #|BEGIN:DAYLIGHT
+    #|DTSTART:19870405T020000
+    #|RRULE:FREQ=YEARLY;BYEASTER=400
+    #|TZOFFSETFROM:-0500
+    #|TZOFFSETTO:-0400
+    #|TZNAME:EDT
+    #|END:DAYLIGHT
+    #|END:VTIMEZONE
+  let tzc = @tzical.TzIcal::from_string(s).get().unwrap()
+  for d in [dt(2003, 7, 1, tz=tzc), dt(1960, 1, 1, tz=tzc)] {
+    // repeated queries give the same answer
+    for _ in 0..<2 {
+      debug_inspect(
+        d.utcoffset(),
+        content=(
+          #|Some("datetime.timedelta(days=-1, seconds=68400)")
+        ),
+      )
+      debug_inspect(
+        d.dst(),
+        content=(
+          #|Some("datetime.timedelta(0)")
+        ),
+      )
+      debug_inspect(d.tzname(), content="Some(\"EST\")")
+    }
+  }
+}

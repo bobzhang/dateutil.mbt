@@ -251,6 +251,9 @@ pub impl Show for TzIcal with fn output(self, logger) {
 }
 
 ///|
+pub extend TzIcal with Show::{to_string, output}
+
+///|
 pub impl Debug for TzIcal with fn to_repr(self) {
   Repr(self.repr())
 }

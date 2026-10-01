@@ -20,7 +20,7 @@ pub fn gettz_cache_clear() -> Unit
 
 pub fn gettz_nocache(name? : String) -> @datetime.Tz? raise
 
-pub fn gettz_set_cache_size(Int) -> Unit
+pub fn gettz_set_cache_size(Int) -> Unit raise @datetime.DateTimeError
 
 pub fn resolve_imaginary(@datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
 

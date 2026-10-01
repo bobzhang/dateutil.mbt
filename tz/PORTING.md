@@ -40,7 +40,11 @@ offset zero; a `tzoffset` with the same name and offset) through
   Here cached zones are kept until `gettz_cache_clear()` (tzoffset/tzstr
   caches are never cleared, like Python's), i.e. as if the caller still
   held every zone: repeated calls always return the same handle.
-  `gettz_set_cache_size` is accepted but has no observable effect.
+  Consequently a non-negative `gettz_set_cache_size(n)` has no observable
+  effect (the strong LRU only bounds what a weak dictionary would keep
+  alive). A negative size raises `ValueError` without changing any state;
+  Python stores the size, empties the LRU and then raises `KeyError` from
+  `OrderedDict.popitem()` (there is no `KeyError` in `DateTimeError`).
 * **`tzfile` input.** File objects are replaced by `Bytes`
   (`tzfile_from_bytes`) or a path (`tzfile`). Without a file name the
   `repr()` is `tzfile('<bytes>')` (Python would use the stream's `name` or

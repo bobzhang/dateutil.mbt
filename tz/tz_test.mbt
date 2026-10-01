@@ -957,6 +957,27 @@ test "gettz without the file system: TZ strings, UTC, bad names" {
 }
 
 ///|
+test "gettz_set_cache_size rejects negative sizes" {
+  // Python: gettz.set_cache_size(-1) raises KeyError (popitem on an empty
+  // OrderedDict); we raise ValueError before touching the cache.
+  try @tz.gettz_set_cache_size(-1) catch {
+    @datetime.ValueError(_) => ()
+    e => fail("unexpected \{e}")
+  } noraise {
+    _ => fail("expected ValueError")
+  }
+  // the cache still works afterwards (this used to abort)
+  let u = @tz.gettz(name="UTC").unwrap()
+  assert_true(@tz.gettz(name="UTC").unwrap().is_same(u))
+  let e = @tz.gettz(name="EST5EDT").unwrap()
+  // size 0 is valid; cached zones stay identical (no weak references)
+  @tz.gettz_set_cache_size(0)
+  assert_true(@tz.gettz(name="EST5EDT").unwrap().is_same(e))
+  assert_true(@tz.gettz(name="UTC").unwrap().is_same(u))
+  @tz.gettz_set_cache_size(8)
+}
+
+///|
 test "regressions from review" {
   // tzrange.fromutc propagates transition errors (Python OverflowError)
   let z = @tz.tzstr("X0Y,J365/99,J1")

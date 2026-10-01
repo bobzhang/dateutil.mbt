@@ -25,7 +25,7 @@ test "RRuleTest.testStrWithTZID" {
 test "RRuleTest.testStrWithTZIDMapping" {
   let rrstr = "DTSTART;TZID=Eastern:19970902T090000\nRRULE:FREQ=YEARLY;COUNT=3"
   let nyc = gettz("America/New_York")
-  let rr = @rrule.rrulestr(rrstr, tzids=Mapping({ "Eastern": nyc }))
+  let rr = @rrule.rrulestr(rrstr, tzids=Table({ "Eastern": nyc }))
   let exp = [
     dt(1997, 9, 2, h=9, tz=nyc),
     dt(1998, 9, 2, h=9, tz=nyc),

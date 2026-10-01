@@ -1,14 +1,6 @@
 // Port of dateutil tests/test_utils.py (clock-independent tests). The
-// freezegun-based `today` tests are in utils_wbtest.mbt.
-
-///|
-/// Stand-in for `tz.gettz("America/New_York")` (not available): every
-/// test using it only needs a distinct zone object (or EST in December).
-fn nyc() -> @datetime.Tz {
-  @tz.tzoffset(Some("EST"), -18000) catch {
-    e => abort(e.to_string())
-  }
-}
+// freezegun-based `today` tests are in utils_wbtest.mbt. `nyc()` is
+// defined per target in nyc_fs_test.mbt / nyc_nofs_test.mbt.
 
 ///|
 test "test_utils_default_tz_info_naive" {

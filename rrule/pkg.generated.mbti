@@ -105,8 +105,8 @@ pub fn RruleSet::to_array(Self) -> Array[@datetime.DateTime] raise @datetime.Dat
 pub fn RruleSet::xafter(Self, @datetime.DateTime, count? : Int, inc? : Bool) -> Iter[@datetime.DateTime]
 
 pub(all) enum TzIds {
-  Mapping(Map[String, @datetime.Tz])
-  Lookup((String) -> @datetime.Tz? raise)
+  Table(Map[String, @datetime.Tz])
+  Callback((String) -> @datetime.Tz? raise)
 }
 
 // Type aliases

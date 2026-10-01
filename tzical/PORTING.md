@@ -24,6 +24,16 @@ Port of `tz.tzical`, `_tzicalvtz` and `_tzicalvtzcomp` from
 * Property names are upper-cased with ASCII rules (Python uses Unicode
   `str.upper()`); offsets accept ASCII digits only.
 * Errors raised by `rrulestr` while building a component propagate as-is.
+* Errors raised by a component's rrule while *answering* a
+  `utcoffset`/`dst`/`tzname` query (e.g. `RRULE:FREQ=YEARLY;BYEASTER=400`,
+  an `IndexError` in Python) cannot propagate through the non-raising
+  `@datetime.TzInfo` methods. Such a component is treated as having no
+  onset before the queried datetime, so another component (or the
+  before-first-onset fallback) answers. Python raises from the first query
+  (and later queries spin forever in the rrule's broken iteration cache).
+  Pinned by the test "tzical: a component rrule that raises counts as no
+  onset".
+* `TzIcal`'s `Show` (`to_string`) is its `repr()`, like Python's `str()`.
 
 ## Tests
 
