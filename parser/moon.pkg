@@ -1,0 +1,17 @@
+warnings = "-79"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/relativedelta",
+  "bobzhang/dateutil/tz",
+  "moonbitlang/core/string",
+}
+
+import {
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/json",
+} for "test"
+
+options(
+  targets: { "gettz_test.mbt": [ "native", "js" ] },
+)
