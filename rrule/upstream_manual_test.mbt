@@ -173,7 +173,7 @@ test "RRuleTest.testStrWithTZIDCallableFailure" {
     }
     None
   }
-  try @rrule.rrulestr(rrstr, tzids=Lookup(tzinfos)) catch {
+  try @rrule.rrulestr(rrstr, tzids=Callback(tzinfos)) catch {
     Failure(msg) => assert_eq(msg, "Invalid!")
     e => fail("unexpected \{e}")
   } noraise {
@@ -188,7 +188,7 @@ test "RRuleTest.testStrWithTZIDCallable" {
   let parse_tzstr : (String) -> @datetime.Tz? raise = tzstr => {
     Some(@tz.tzstr(tzstr))
   }
-  let rr = @rrule.rrulestr(rrstr, tzids=Lookup(parse_tzstr))
+  let rr = @rrule.rrulestr(rrstr, tzids=Callback(parse_tzstr))
   let exp = [
     dt(1997, 9, 2, h=9, tz~),
     dt(1998, 9, 2, h=9, tz~),

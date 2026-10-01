@@ -19,7 +19,7 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
 | `rruleset(cache)` + `rrule/rdate/exrule/exdate` | `RruleSet::new(cache?)` + same method names |
 | `rrulestr(s, **kw)` | `rrulestr(s, dtstart?, cache?, unfold?, forceset?, compatible?, ignoretz?, tzids?, tzinfos?) -> RruleBase` |
 | `rrule` / `rruleset` result of `rrulestr` | `RruleBase::Rule(Rrule)` / `RruleBase::Set(RruleSet)` (same query methods) |
-| `tzids` mapping / callable | `TzIds::Mapping(Map)` / `TzIds::Lookup(fn)` |
+| `tzids` mapping / callable | `TzIds::Table(Map)` / `TzIds::Callback(fn)` (variant names as in `@parser.TzInfos`) |
 
 ## Divergences
 
@@ -59,7 +59,7 @@ Port of `dateutil/rrule.py` (`rrule`, `rruleset`, `rrulestr`, `weekday`).
   * `int()` values are limited to the `Int` range (Unicode decimal digits
     and `_` separators are accepted, as in Python).
   * `tzinfos` is `@parser.TzInfos` and is passed to `@parser.parse`.
-  * The callback in `TzIds::Lookup` may raise any error, and parse errors
+  * The callback in `TzIds::Callback` may raise any error, and parse errors
     of date values propagate as `@parser.ParserError` (a Python
     `ValueError` subclass); `rrulestr` therefore raises the polymorphic
     `Error`. Inside `RRULE` values, parse errors are re-wrapped as

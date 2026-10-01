@@ -12,9 +12,9 @@ pub(all) enum RruleBase {
 /// How `rrulestr` resolves `TZID=` parameters (Python `tzids`).
 pub(all) enum TzIds {
   /// Python mapping: `tzids.get(name)`; unknown names give no zone.
-  Mapping(Map[String, @datetime.Tz])
+  Table(Map[String, @datetime.Tz])
   /// Python callable: `tzids(name)`; `None` gives no zone. Errors propagate.
-  Lookup((String) -> @datetime.Tz? raise)
+  Callback((String) -> @datetime.Tz? raise)
 }
 
 ///|
@@ -227,8 +227,8 @@ fn parse_date_value(
       }
       tzid = match tzids {
         None => default_gettz(tzkey)
-        Some(Lookup(f)) => f(tzkey)
-        Some(Mapping(m)) => m.get(tzkey)
+        Some(Callback(f)) => f(tzkey)
+        Some(Table(m)) => m.get(tzkey)
       }
       continue
     }
