@@ -173,11 +173,12 @@ pub fn RelativeDelta::add_to_datetime(
 
 ///|
 /// Python `datetime - relativedelta`, i.e. `(-rd).add_to_datetime(dt)`.
+/// Raises `OverflowError` when `-rd` does not fit (see `checked_neg`).
 pub fn RelativeDelta::sub_from_datetime(
   self : RelativeDelta,
   dt : @datetime.DateTime,
 ) -> @datetime.DateTime raise @datetime.DateTimeError {
-  (-self).apply_datetime(dt)
+  self.checked_neg().apply_datetime(dt)
 }
 
 ///|
@@ -199,11 +200,12 @@ pub fn RelativeDelta::add_to_date(
 
 ///|
 /// Python `date - relativedelta`, i.e. `(-rd).add_to_date(d)`.
+/// Raises `OverflowError` when `-rd` does not fit (see `checked_neg`).
 pub fn RelativeDelta::sub_from_date(
   self : RelativeDelta,
   d : @datetime.Date,
 ) -> DateOrDateTime raise @datetime.DateTimeError {
-  (-self).add_to_date(d)
+  self.checked_neg().add_to_date(d)
 }
 
 ///|

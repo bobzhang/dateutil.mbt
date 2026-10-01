@@ -62,7 +62,42 @@ pub impl Sub for RelativeDelta with fn sub(self, other) {
 
 ///|
 /// `-rd`: negates the relative fields (not `leapdays`, nor absolute fields).
+/// Aborts when a negated `years` no longer fits an `Int` (e.g.
+/// `years=-2147483648`); use `checked_neg` to get an `OverflowError`.
 pub impl Neg for RelativeDelta with fn neg(self) {
+  self.checked_neg() catch {
+    e => abort(e.to_string())
+  }
+}
+
+///|
+/// `-rd` that raises `OverflowError` instead of aborting when the negated
+/// `years` does not fit an `Int` (Python ints are unbounded; the overflow
+/// surfaces there as `OverflowError` when the delta is applied).
+///
+/// ```mbt check
+/// test {
+///   let rd = @relativedelta.RelativeDelta::from_float(
+///     years=1,
+///     months=-2,
+///     days=3.5,
+///   )
+///   inspect(
+///     rd.checked_neg(),
+///     content="relativedelta(years=-1, months=+2, days=-3.5)",
+///   )
+///   let min = @relativedelta.RelativeDelta::new(years=-2147483648)
+///   try min.checked_neg() catch {
+///     @datetime.OverflowError(_) => ()
+///     e => fail("unexpected \{e}")
+///   } noraise {
+///     _ => fail("expected OverflowError")
+///   }
+/// }
+/// ```
+pub fn RelativeDelta::checked_neg(
+  self : RelativeDelta,
+) -> RelativeDelta raise @datetime.DateTimeError {
   self.with_relative(
     years=-self.years.to_int64(),
     months=-self.months.to_int64(),
@@ -71,9 +106,7 @@ pub impl Neg for RelativeDelta with fn neg(self) {
     minutes=-self.minutes,
     seconds=-self.seconds,
     microseconds=-self.microseconds,
-  ) catch {
-    e => abort(e.to_string())
-  }
+  )
 }
 
 ///|

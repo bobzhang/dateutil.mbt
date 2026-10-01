@@ -59,6 +59,7 @@ pub fn RelativeDelta::add_to_date(Self, @datetime.Date) -> DateOrDateTime raise 
 pub fn RelativeDelta::add_to_datetime(Self, @datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
 pub fn RelativeDelta::between(@datetime.DateTime, @datetime.DateTime) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::between_dates(@datetime.Date, @datetime.Date) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::checked_neg(Self) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::div(Self, Double) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::from_float(years? : Double, months? : Double, days? : Double, leapdays? : Int, weeks? : Double, hours? : Double, minutes? : Double, seconds? : Double, microseconds? : Double, year? : Int, month? : Int, day? : Int, weekday? : @datetime.Weekday, yearday? : Int, nlyearday? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::has_time(Self) -> Bool

@@ -84,7 +84,10 @@ resulting `timedelta` count).
   normalized `years` outside the `Int` range raises `OverflowError` from
   the constructors, `mul`/`div` and `normalized()`; the `+`/`-`/unary `-`
   operators and `abs()`/`add_timedelta()` abort in that (pathological)
-  case, like `TimeDelta`'s operators. At application, the target year is
+  case, like `TimeDelta`'s operators (`checked_neg()` raises instead, and
+  the raising `sub_from_datetime`/`sub_from_date` use it, so e.g.
+  `date - relativedelta(years=-2**31)` raises `OverflowError` like
+  Python). At application, the target year is
   computed in `Int64` and raises `OverflowError` if it does not fit (Python
   raises `OverflowError` from `replace` in that case too); the weekday jump
   is computed in `Int64` and raises `OverflowError` beyond 999999999 days.
