@@ -144,7 +144,7 @@ pub fn Date::add(self : Date, delta : TimeDelta) -> Date raise DateTimeError {
   if o > 0L && o <= MAXORDINAL.to_int64() {
     Date::from_ordinal(o.to_int())
   } else {
-    raise OverflowError("result out of range")
+    raise OverflowError("date value out of range")
   }
 }
 
@@ -156,7 +156,7 @@ pub fn Date::sub(self : Date, delta : TimeDelta) -> Date raise DateTimeError {
   if o > 0L && o <= MAXORDINAL.to_int64() {
     Date::from_ordinal(o.to_int())
   } else {
-    raise OverflowError("result out of range")
+    raise OverflowError("date value out of range")
   }
 }
 

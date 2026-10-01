@@ -1,0 +1,101 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/parser"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub let default_ampm : Array[Array[String]]
+
+pub let default_hms : Array[Array[String]]
+
+pub let default_jump : Array[String]
+
+pub let default_months : Array[Array[String]]
+
+pub let default_pertain : Array[String]
+
+pub let default_utczone : Array[String]
+
+pub let default_weekdays : Array[Array[String]]
+
+pub fn isoparse(String) -> @datetime.DateTime raise @datetime.DateTimeError
+
+pub fn parse(String, parserinfo? : ParserInfo, default? : @datetime.DateTime, ignoretz? : Bool, tzinfos? : TzInfos, dayfirst? : Bool, yearfirst? : Bool, fuzzy? : Bool, on_warning? : (UnknownTimezoneWarning) -> Unit) -> @datetime.DateTime raise
+
+pub fn parse_with_tokens(String, parserinfo? : ParserInfo, default? : @datetime.DateTime, ignoretz? : Bool, tzinfos? : TzInfos, dayfirst? : Bool, yearfirst? : Bool, on_warning? : (UnknownTimezoneWarning) -> Unit) -> (@datetime.DateTime, Array[String]) raise
+
+pub fn timelex_split(String) -> Array[String]
+
+// Errors
+pub(all) suberror ParserError {
+  ParserError(String, String)
+} derive(Eq)
+pub fn ParserError::output(Self, &Logger) -> Unit
+pub fn ParserError::repr(Self) -> String
+pub fn ParserError::to_string(Self) -> String
+pub impl Show for ParserError
+pub impl @debug.Debug for ParserError
+
+// Types and methods
+pub struct IsoParser {
+  // private fields
+}
+pub fn IsoParser::isoparse(Self, String) -> @datetime.DateTime raise @datetime.DateTimeError
+pub fn IsoParser::new(sep? : String) -> Self raise @datetime.DateTimeError
+pub fn IsoParser::parse_isodate(Self, String) -> @datetime.Date raise @datetime.DateTimeError
+pub fn IsoParser::parse_isotime(Self, String) -> @datetime.Time raise @datetime.DateTimeError
+pub fn IsoParser::parse_tzstr(Self, String, zero_as_utc? : Bool) -> @datetime.Tz raise @datetime.DateTimeError
+
+pub struct Parser {
+  info : ParserInfo
+}
+pub fn Parser::new(info? : ParserInfo) -> Self
+pub fn Parser::parse(Self, String, default? : @datetime.DateTime, ignoretz? : Bool, tzinfos? : TzInfos, dayfirst? : Bool, yearfirst? : Bool, fuzzy? : Bool, on_warning? : (UnknownTimezoneWarning) -> Unit) -> @datetime.DateTime raise
+pub fn Parser::parse_with_tokens(Self, String, default? : @datetime.DateTime, ignoretz? : Bool, tzinfos? : TzInfos, dayfirst? : Bool, yearfirst? : Bool, on_warning? : (UnknownTimezoneWarning) -> Unit) -> (@datetime.DateTime, Array[String]) raise
+
+pub struct ParserInfo {
+  dayfirst : Bool
+  yearfirst : Bool
+  utczone_list : Array[String]
+  tzoffsets : Map[String, Int]
+  year : Int
+  century : Int
+  // private fields
+}
+pub fn ParserInfo::ampm(Self, String) -> Int?
+pub fn ParserInfo::convertyear(Self, Int, century_specified? : Bool) -> Int
+pub fn ParserInfo::default_convertyear(Self, Int, century_specified? : Bool) -> Int
+pub fn ParserInfo::hms(Self, String) -> Int?
+pub fn ParserInfo::jump(Self, String) -> Bool
+pub fn ParserInfo::month(Self, String) -> Int?
+pub fn ParserInfo::new(dayfirst? : Bool, yearfirst? : Bool, jump? : Array[String], weekdays? : Array[Array[String]], months? : Array[Array[String]], hms? : Array[Array[String]], ampm? : Array[Array[String]], utczone? : Array[String], pertain? : Array[String], tzoffset? : Map[String, Int], year? : Int, convertyear? : (Self, Int, Bool) -> Int) -> Self
+pub fn ParserInfo::pertain(Self, String) -> Bool
+pub fn ParserInfo::tzoffset(Self, String) -> Int?
+pub fn ParserInfo::utczone(Self, String) -> Bool
+pub fn ParserInfo::weekday(Self, String) -> Int?
+
+pub(all) enum TzInfoSpec {
+  NoTz
+  Zone(@datetime.Tz)
+  Offset(Int)
+  TzString(String)
+}
+
+pub(all) enum TzInfos {
+  Table(Map[String, TzInfoSpec])
+  Callback((String?, Int?) -> TzInfoSpec raise)
+}
+
+pub struct UnknownTimezoneWarning {
+  tzname : String
+} derive(Eq, @debug.Debug)
+pub fn UnknownTimezoneWarning::output(Self, &Logger) -> Unit
+pub fn UnknownTimezoneWarning::to_string(Self) -> String
+pub impl Show for UnknownTimezoneWarning
+
+// Type aliases
+
+// Traits
