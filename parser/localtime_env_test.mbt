@@ -29,6 +29,60 @@ test "local zone names: BST under TZ=Europe/London" {
 }
 
 ///|
+test "TestTZVar.test_parse_unambiguous_nonexistent_local" {
+  // When dates are specified "EST" even when they should be "EDT" in the
+  // local time zone, we should still assign the local time zone
+  with_tz("EST+5EDT,M3.2.0/2,M11.1.0/2", () => {
+    let dt_exp = @datetime.DateTime::new(
+      2011,
+      8,
+      1,
+      hour=12,
+      minute=30,
+      tzinfo=@tz.tzlocal(),
+    )
+    let dt = @parser.parse("2011-08-01T12:30 EST")
+    assert_eq(dt.tzname(), Some("EDT"))
+    assert_true(dt == dt_exp)
+  })
+}
+
+///|
+test "TestTZVar.test_tzlocal_in_gmt" {
+  // GH #318
+  with_tz("GMT0BST,M3.5.0,M10.5.0", () => {
+    // This is an imaginary datetime in tz.tzlocal() but should still
+    // parse using the GMT-as-alias-for-UTC rule
+    let dt = @parser.parse("2004-05-01T12:00 GMT")
+    let dt_exp = @datetime.DateTime::new(2004, 5, 1, hour=12, tzinfo=@tz.utc)
+    assert_true(dt == dt_exp)
+  })
+}
+
+///|
+test "TestTZVar.test_tzlocal_parse_fold" {
+  // One manifestion of GH #318
+  with_tz("EST+5EDT,M3.2.0/2,M11.1.0/2", () => {
+    let dt_exp = @tz.enfold(
+      @datetime.DateTime::new(
+        2011,
+        11,
+        6,
+        hour=1,
+        minute=30,
+        tzinfo=@tz.tzlocal(),
+      ),
+      fold=1,
+    )
+    let dt = @parser.parse("2011-11-06T01:30 EST")
+    assert_eq(dt.tzname(), dt_exp.tzname())
+    assert_true(dt.replace(tzinfo=None) == dt_exp.replace(tzinfo=None))
+    assert_eq(dt.fold, dt_exp.fold)
+    assert_true(dt.astimezone(tz=@tz.utc) == dt_exp.astimezone(tz=@tz.utc))
+  })
+}
+
+///|
 test "local zone names: AEST/AEDT under a POSIX TZ string" {
   with_tz("AEST-10AEDT,M10.1.0,M4.1.0/3", () => {
     let d = @parser.parse("2024-01-15 12:00 AEDT")

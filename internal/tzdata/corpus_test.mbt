@@ -6,7 +6,7 @@ fn zone_from_corpus(name : String) -> @tzdata.Zone raise {
 
 ///|
 fn type_str(ty : @tzdata.TimeType) -> String {
-  "\{ty.offset}|\{if ty.isdst { 1 } else { 0 }}|\{ty.abbr}"
+  "\{ty.offset}|\{ty.isdst.to_int()}|\{ty.abbr}"
 }
 
 ///|
