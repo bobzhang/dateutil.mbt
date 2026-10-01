@@ -259,8 +259,19 @@ test "easter" {
   `@parser.ParserError` and `@tz.IOError`.
 * There are no weak references or warnings: zone caches hold strong
   references and parser warnings go to an optional callback.
-* The wasm backends have no system time zone or file system: local time
-  is UTC there and `gettz` only understands TZ strings and UTC names.
+* System local time (`DateTime::now()`, `timestamp()`, `astimezone()`,
+  `tz.tzlocal()`, local zone names in the parser) uses the C library on
+  native. On wasm, wasm-gc and js it is computed in MoonBit with glibc's
+  rules: `TZ` (a zone name, a TZif path or a POSIX TZ string; empty means
+  UTC) or else `/etc/localtime`, read from the system zoneinfo database
+  (TZif v1-v4, including the footer rule after the last transition);
+  anything unresolvable is UTC. This needs file access: on wasm the host
+  must provide MoonBit's `__moonbit_fs_unstable`/env imports (as `moon run`
+  and `moon test` do), on js Node's `process.getBuiltinModule` (Node >=
+  22.3, Deno, Bun). In a browser, unless `TZ` is a POSIX string, local time
+  falls back to the JS `Date` object, which is approximate (`isdst` from a
+  January/July comparison, `Intl` names such as `GMT+1` instead of `BST`).
+  `gettz` and `tzfile(path)` read files the same way.
 
 ## Development
 

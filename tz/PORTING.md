@@ -53,9 +53,12 @@ offset zero; a `tzoffset` with the same name and offset) through
   out-of-range type indices, negative counts) raise `ValueError` where
   Python raises `struct.error`/`IndexError`.
 * **File system.** `tzfile(path)`/`gettz` read zone files through
-  `moonbitlang/x/fs` on every backend. On wasm/wasm-gc this relies on the
-  host providing MoonBit's file-system imports (`moon run`/`moon test`
-  do); embedders that don't provide them should use `tzfile_from_bytes`.
+  `internal/host`: `moonbitlang/x/fs` on native and wasm/wasm-gc (where
+  the host must provide MoonBit's `__moonbit_fs_unstable` imports, as
+  `moon run`/`moon test` do; embedders that don't should use
+  `tzfile_from_bytes`), and on js Node's `fs` obtained at run time via
+  `process.getBuiltinModule` (no static `node:fs` import, so bundles load
+  in browsers, where every read fails with `IOError`).
   dateutil's bundled zoneinfo tarball and Windows zones do not exist here.
 * **`gettz` raises** (as Python does) only when an explicit absolute path
   names a file that is not a valid zone file; its type is the generic
@@ -87,8 +90,15 @@ offset zero; a `tzoffset` with the same name and offset) through
 * **`resolve_imaginary`** returns `dt` unchanged for existing datetimes;
   Python's "same object" guarantee becomes "equal fields, fold and zone".
 * `tzrange.transitions(year)` is not public (zones are opaque handles).
-* `tzlocal` uses the C library on native (honouring `TZ` after
-  `@datetime.tzset()`), the JS `Date` object on js, and is UTC on wasm.
+* `tzlocal` is built on `@datetime.localtime`/`local_zone` (Python
+  `time.localtime`/`time.timezone`/...): the C library on native, and on
+  wasm, wasm-gc and js the same glibc rules evaluated by
+  `internal/tzdata` (TZ, /etc/localtime, TZif v1-v4 with footer, POSIX TZ
+  strings). Every backend honours `TZ` after `@datetime.tzset()`. Only js
+  without a file system (browsers) falls back to the approximate `Date`
+  object when `TZ` is not a POSIX string. This system-zone engine is
+  separate from `tzfile`/`tzstr`, which keep dateutil's own semantics
+  (version-1 data only; dateutil's TZ-string dialect).
 
 ## Tests
 
@@ -98,9 +108,10 @@ offset zero; a `tzoffset` with the same name and offset) through
 * `fold_mixin_test.mbt` — `TzFoldMixin` for tzfile, tzrange and tzstr.
 * `gettz_fs_test.mbt` (native, js) — `GettzTest` and friends against the
   system zoneinfo database (`/usr/share/zoneinfo`).
-* `tzlocal_native_test.mbt` (native) — `TzLocalNixTest`, `test_tzlocal_*`
-  and `TzFoldMixin` with `TZ` set via `@env.set_env_var` + `@datetime.tzset()`.
-* `diff_test.mbt` + `diff_corpus_test.mbt`, `diff_corpus_tzlocal_native_test.mbt`
+* `tzlocal_env_test.mbt` (every backend) — `TzLocalNixTest`, `test_tzlocal_*`
+  and `TzFoldMixin` with `TZ` set via `@env.set_env_var` + `@datetime.tzset()`,
+  plus the 1941 London (BST in winter) regression.
+* `diff_test.mbt` + `diff_corpus_test.mbt`, `diff_corpus_tzlocal_test.mbt`
   — differential records from `tools/gen_tz_corpus.py` (UTC→local
   conversions and wall-time queries — utcoffset/dst/tzname/fold,
   is_ambiguous, datetime_exists, datetime_ambiguous, astimezone(UTC),

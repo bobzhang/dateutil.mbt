@@ -1,3 +1,9 @@
+// Fallback for js hosts without a file system (browsers), used when `TZ`
+// is not a POSIX TZ string: the wall fields and offset come from the host
+// `Date`; `isdst` is approximated by comparing with the January/July
+// offsets of the same year and the abbreviation is `Intl`'s short name
+// (e.g. `GMT+1` where libc would say `BST`).
+
 ///|
 extern "js" fn js_localtime(t : Double, out : FixedArray[Int]) -> String =
   #|(t, out) => {
@@ -23,7 +29,7 @@ extern "js" fn js_localtime(t : Double, out : FixedArray[Int]) -> String =
   #|}
 
 ///|
-fn platform_localtime(t : Int64) -> LocalTime {
+fn host_date_localtime(t : Int64) -> LocalTime {
   let out = FixedArray::make(8, 0)
   let zone = js_localtime(t.to_double(), out)
   {
@@ -37,9 +43,4 @@ fn platform_localtime(t : Int64) -> LocalTime {
     gmtoff: out[7],
     zone,
   }
-}
-
-///|
-fn platform_tzset() -> Unit {
-
 }

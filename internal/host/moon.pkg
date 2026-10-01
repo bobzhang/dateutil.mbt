@@ -1,0 +1,16 @@
+// `moonbitlang/x/fs` is only used on wasm, wasm-gc and native (host_fs.mbt);
+// the js build never references it (no static `node:fs` import is emitted),
+// hence `-29` (unused_package) for this package.
+warnings = "-79-29"
+
+import {
+  "moonbitlang/core/env",
+  "moonbitlang/x/fs",
+}
+
+options(
+  targets: {
+    "host_fs.mbt": [ "wasm", "wasm-gc", "native" ],
+    "host_js.mbt": [ "js" ],
+  },
+)

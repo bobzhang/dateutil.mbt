@@ -1,17 +1,25 @@
-warnings = "-79"
+// `internal/tzdata` and `internal/host` implement system local time on the
+// wasm, wasm-gc and js backends only (localtime_system.mbt); native uses
+// the C library, so they are unused there -- hence `-29` (unused_package).
+warnings = "-79-29"
 
 import {
   "moonbitlang/core/env",
   "moonbitlang/core/cmp",
   "moonbitlang/core/bigint",
+  "bobzhang/dateutil/internal/tzdata",
+  "bobzhang/dateutil/internal/host",
 }
 
 options(
   "native-stub": [ "localtime_stub.c" ],
   targets: {
     "localtime_native.mbt": [ "native" ],
-    "localtime_native_test.mbt": [ "native" ],
+    "localtime_libc_test.mbt": [ "native" ],
     "localtime_js.mbt": [ "js" ],
     "localtime_wasm.mbt": [ "wasm", "wasm-gc" ],
+    "localtime_system.mbt": [ "wasm", "wasm-gc", "js" ],
+    "localtime_system_wbtest.mbt": [ "wasm", "wasm-gc", "js" ],
+    "localtime_js_wbtest.mbt": [ "js" ],
   },
 )

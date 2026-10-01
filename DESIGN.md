@@ -10,14 +10,16 @@ Module name: `bobzhang/dateutil`.
 
 | package          | Python source                        | depends on                    |
 |------------------|--------------------------------------|-------------------------------|
-| `datetime`       | CPython `datetime`, `calendar`, `time` subset, `dateutil._common.weekday` | core only |
+| `datetime`       | CPython `datetime`, `calendar`, `time` subset, `dateutil._common.weekday` | internal/tzdata, internal/host (local time on wasm/js) |
 | `easter`         | `dateutil/easter.py`                 | datetime                      |
 | `relativedelta`  | `dateutil/relativedelta.py`          | datetime                      |
-| `tz`             | `dateutil/tz/{tz,_common,_factories}.py` + `parser._tzparser` (POSIX TZ strings) | datetime, relativedelta, fs (gettz only) |
+| `tz`             | `dateutil/tz/{tz,_common,_factories}.py` + `parser._tzparser` (POSIX TZ strings) | datetime, relativedelta, internal/host (gettz/tzfile files) |
 | `parser`         | `dateutil/parser/{_parser,isoparser}.py` | datetime, tz, relativedelta |
 | `rrule`          | `dateutil/rrule.py`                  | datetime, easter, parser (rrulestr), tz |
-| `tzical`         | `dateutil/tz/tz.py` `tzical`, `_tzicalvtz` | datetime, tz, rrule (breaks tz→rrule→parser→tz cycle) |
+| `tzical`         | `dateutil/tz/tz.py` `tzical`, `_tzicalvtz` | datetime, tz, rrule (breaks tz→rrule→parser→tz cycle), internal/host |
 | `utils`          | `dateutil/utils.py`                  | datetime, tz                  |
+| `internal/tzdata`| (glibc/tzcode `localtime`, RFC 9636) | core only                     |
+| `internal/host`  | `os.environ`, `open()`               | core env, moonbitlang/x/fs (not on js) |
 
 Out of scope: `tz/win.py` (Windows registry), `zoneinfo` bundled tarball
 (no tarball in the vendored tree; gettz reads the system zoneinfo directory
@@ -90,9 +92,9 @@ Calendar helpers (`calendar` module): `is_leap(y)`, `days_in_month(y, m)`,
 `monthrange(y, m) -> (first_weekday, ndays)`, `timegm`.
 
 Local time (`time.localtime`, `time.timezone`, `time.altzone`, `time.tzname`,
-`time.daylight`): small per-target platform layer — native via a C stub
-(`localtime_r`/`tm_gmtoff`/`tm_zone`), js via `Date`, wasm targets fall back to
-UTC. Used by `now()` and `tz.tzlocal`.
+`time.daylight`, `time.tzset`): see "System local time" below. Used by
+`now()`, `timestamp()`/`mktime`, `from_timestamp` fold detection,
+`astimezone()`, `tz.tzlocal` and the parser's local zone names.
 
 `Weekday` (from `dateutil._common`): `pub struct Weekday { weekday : Int; n : Int? }`,
 constants `MO..SU`, `Weekday::nth(n)` (Python `__call__`), Show `MO`, `MO(+2)`.
@@ -150,3 +152,51 @@ vendored Python implementation (with a local `six` shim) and comparing outputs.
 * Weekday `n` validation is package-specific (rrule rejects 0).
 * parser `tzinfos`: `Map[String, TzInfoSpec]` / callback, where
   `TzInfoSpec` = explicit none | zone | offset seconds | TZ string.
+
+## System local time
+
+`@datetime.localtime(t)` is CPython's `time.localtime` and everything local
+is built on it (`local_zone()` probes January/July like CPython's
+`init_timezone`; `mktime` inverts it like CPython's `_mktime`).
+
+* **native**: the C library (`localtime_r`, `tm_gmtoff`, `tm_zone`) via
+  `datetime/localtime_stub.c`; `tzset()` calls the C `tzset`.
+* **wasm, wasm-gc, js**: glibc's rules, evaluated in MoonBit
+  (`datetime/localtime_system.mbt`). The zone is resolved once and cached
+  until `@datetime.tzset()`:
+  `TZ` unset → `/etc/localtime`; `TZ` empty → UTC; otherwise strip one
+  leading `:` and try a TZif file (the path if absolute, else the name under
+  `TZDIR`, `/usr/share/zoneinfo`, `/usr/lib/zoneinfo`,
+  `/usr/share/lib/zoneinfo`, `/etc/zoneinfo`), then a POSIX TZ string;
+  anything unresolvable → UTC (abbreviation `UTC`).
+* `internal/tzdata` (pure, core only; the resolver takes an injected file
+  reader): TZif v1–v4 decoder (64-bit block + footer TZ string for instants
+  after the last transition, first standard type before the first
+  transition, leap-second records ignored), POSIX TZ parser/evaluator
+  (`std offset [dst [offset] [,rule,rule]]`, `<...>` abbreviations,
+  `Jn`/`n`/`Mm.w.d`, rule times −167..167 h, southern hemisphere, all-year
+  DST; DST without rules defaults to `M3.2.0,M11.1.0` like glibc), and
+  `Zone::lookup(Int64) -> { offset, isdst, abbr }` for any `Int64`.
+  This is *not* dateutil's `tzstr`/`tzfile`: those keep dateutil's own
+  semantics (inverted `GMT+h`, version-1 data only) in the `tz` package.
+* `internal/host`: `getenv`, `read_file`, `is_file`, `can_read_files`.
+  wasm/wasm-gc/native use `moonbitlang/x/fs` + `@env`, so on wasm the host
+  must provide MoonBit's `__moonbit_fs_unstable` imports when local time is
+  used (they are dead-code eliminated otherwise). js uses no static
+  `node:fs` import: `fs` comes from `process.getBuiltinModule('fs')` (Node
+  ≥ 22.3, Deno, Bun) or a global `require`. `tz` and `tzical` read zone and
+  iCalendar files through it too.
+* **js without a file system** (browsers): a POSIX `TZ` string is still
+  honoured; otherwise local time comes from the host `Date` — approximate
+  (`isdst` by comparing with the January/July offsets, `Intl` short names
+  such as `GMT+1`).
+
+Divergences from glibc: the default DST rules ignore a `posixrules` file;
+leap-second ("right/") zones are evaluated without leap corrections;
+malformed TZ strings are rejected as a whole (UTC) where glibc may keep a
+partially parsed prefix. Tests: `internal/tzdata` has a differential corpus
+against CPython `time.localtime`/`zoneinfo` on pinned TZif bytes
+(`tools/gen_tzdata_corpus.py`); `datetime/localtime_libc_test.mbt` (native)
+cross-checks the engine against libc for ~30 zones; the TZ-dependent
+datetime, tz (`TzLocalNixTest`, tzlocal corpus) and parser (`TestTZVar`)
+tests run on every backend.

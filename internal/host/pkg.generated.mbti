@@ -1,0 +1,21 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/internal/host"
+
+// Values
+pub fn can_read_files() -> Bool
+
+pub fn getenv(String) -> String?
+
+pub fn is_file(String) -> Bool
+
+pub fn read_file(String) -> Bytes?
+
+pub fn read_file_result(String) -> Result[Bytes, String]
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

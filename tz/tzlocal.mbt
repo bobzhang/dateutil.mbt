@@ -1,5 +1,5 @@
-// dateutil `tzlocal`: the system local zone, built on the C library's
-// `localtime` and the `time.timezone`/`altzone`/`daylight`/`tzname` values.
+// dateutil `tzlocal`: the system local zone, built on `@datetime.localtime`
+// (Python `time.localtime`) and the `time.timezone`/`altzone`/`daylight`/`tzname` values.
 
 ///|
 priv struct TzLocal {
@@ -163,9 +163,10 @@ impl @datetime.TzInfo for TzLocal with fn eq_with(self, other) {
 }
 
 ///|
-/// `tzlocal()`: the system local time zone, described by the C library
-/// at construction time (honouring `TZ` after `@datetime.tzset()` on the
-/// native backend; UTC on the wasm backends). Each call returns a new zone.
+/// `tzlocal()`: the system local time zone, described by
+/// `@datetime.localtime` / `@datetime.local_zone` at construction time
+/// (honouring `TZ` after `@datetime.tzset()` on every backend). Each call
+/// returns a new zone.
 ///
 /// ```mbt check
 /// test {
