@@ -146,7 +146,9 @@ fn gettz_touch_strong(name : String) -> Unit {
     None => ()
   }
   gettz_strong_cache.push(name)
-  while gettz_strong_cache.length() > gettz_strong_cache_size.val {
+  // Python pops at most one entry here (`if len(...) > size: popitem()`).
+  if gettz_strong_cache.length() > gettz_strong_cache_size.val &&
+    gettz_strong_cache.length() > 0 {
     ignore(gettz_strong_cache.remove(0))
   }
 }
@@ -204,11 +206,31 @@ pub fn gettz_cache_clear() -> Unit {
 
 ///|
 /// `gettz.set_cache_size(size)`: the size of Python's strong LRU cache.
-/// Without weak references this has no observable effect (see
-/// `PORTING.md`).
-pub fn gettz_set_cache_size(size : Int) -> Unit {
+/// Without weak references a valid size has no observable effect (see
+/// `PORTING.md`). A negative size raises `ValueError` and leaves the cache
+/// untouched (Python stores the size, empties the LRU, then raises
+/// `KeyError` from `OrderedDict.popitem()` on the empty dictionary).
+///
+/// ```mbt check
+/// test {
+///   try @tz.gettz_set_cache_size(-1) catch {
+///     @datetime.ValueError(_) => ()
+///     e => fail("unexpected \{e}")
+///   } noraise {
+///     _ => fail("expected ValueError")
+///   }
+///   assert_true(@tz.gettz(name="UTC") is Some(_))
+/// }
+/// ```
+pub fn gettz_set_cache_size(size : Int) -> Unit raise @datetime.DateTimeError {
+  if size < 0 {
+    // Python: KeyError('dictionary is empty') from popitem()
+    raise @datetime.ValueError(
+      "gettz cache size must be non-negative, got \{size}",
+    )
+  }
   gettz_strong_cache_size.val = size
-  while gettz_strong_cache.length() > size && gettz_strong_cache.length() > 0 {
+  while gettz_strong_cache.length() > size {
     ignore(gettz_strong_cache.remove(0))
   }
 }
