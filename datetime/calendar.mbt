@@ -95,6 +95,7 @@ pub fn days_in_year(year : Int) -> Int {
 
 ///|
 /// Number of days before January 1st of `year` (proleptic Gregorian).
+/// Valid for `|year| < 5_000_000` (the result must fit an `Int`).
 pub fn days_before_year(year : Int) -> Int {
   let y = year - 1
   y * 365 + floor_div(y, 4) - floor_div(y, 100) + floor_div(y, 400)
@@ -155,7 +156,10 @@ pub fn ordinal_to_ymd(ordinal : Int) -> (Int, Int, Int) {
 /// Day of week for a date, Monday == 0 ... Sunday == 6
 /// (`calendar.weekday`).
 pub fn weekday_of(year : Int, month : Int, day : Int) -> Int {
-  floor_mod(ymd_to_ordinal(year, month, day) + 6, 7)
+  // The Gregorian calendar repeats every 400 years (146097 days, a whole
+  // number of weeks), so reduce the year to avoid Int overflow.
+  let y = floor_mod(year - 1, 400) + 1
+  floor_mod(ymd_to_ordinal(y, month, day) + 6, 7)
 }
 
 ///|
@@ -178,10 +182,14 @@ pub fn timegm(
   minute : Int,
   second : Int,
 ) -> Int64 {
-  let days = (ymd_to_ordinal(year, month, 1) -
-  ymd_to_ordinal(1970, 1, 1) +
-  day -
-  1).to_int64()
+  // Work in Int64 from the start; years are reduced by whole 400-year
+  // cycles (146097 days) so the ordinal helper stays in range.
+  let cycles = floor_div(year - 1, 400)
+  let y = year - cycles * 400
+  let days = cycles.to_int64() * 146097L +
+    (ymd_to_ordinal(y, month, 1) - ymd_to_ordinal(1970, 1, 1)).to_int64() +
+    day.to_int64() -
+    1L
   ((days * 24L + hour.to_int64()) * 60L + minute.to_int64()) * 60L +
   second.to_int64()
 }

@@ -236,12 +236,14 @@ pub fn TimeDelta::checked_neg(Self) -> Self raise DateTimeError
 pub fn TimeDelta::checked_sub(Self, Self) -> Self raise DateTimeError
 pub fn TimeDelta::compare(Self, Self) -> Int
 pub fn TimeDelta::div_int(Self, Int) -> Self raise DateTimeError
+pub fn TimeDelta::floor_div(Self, Self) -> Int64 raise DateTimeError
+pub fn TimeDelta::floor_div_int(Self, Int) -> Self raise DateTimeError
 pub fn TimeDelta::from_float(days? : Double, seconds? : Double, microseconds? : Double, milliseconds? : Double, minutes? : Double, hours? : Double, weeks? : Double) -> Self raise DateTimeError
 pub fn TimeDelta::is_zero(Self) -> Bool
 pub fn TimeDelta::mul_float(Self, Double) -> Self raise DateTimeError
 pub fn TimeDelta::new(days? : Int, seconds? : Int, microseconds? : Int, milliseconds? : Int, minutes? : Int, hours? : Int, weeks? : Int) -> Self
 pub fn TimeDelta::output(Self, &Logger) -> Unit
-pub fn TimeDelta::ratio(Self, Self) -> Double
+pub fn TimeDelta::ratio(Self, Self) -> Double raise DateTimeError
 pub fn TimeDelta::repr(Self) -> String
 pub fn TimeDelta::to_string(Self) -> String
 pub fn TimeDelta::total_microseconds(Self) -> Int64
@@ -317,4 +319,5 @@ pub(open) trait TzInfo {
   fn is_ambiguous(Self, DateTime) -> Bool? = _
   fn repr(Self) -> String
   fn eq_key(Self) -> String? = _
+  fn eq_with(Self, Tz) -> Bool? = _
 }

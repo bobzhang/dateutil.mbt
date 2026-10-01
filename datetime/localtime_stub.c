@@ -9,11 +9,12 @@ static int dateutil_localtime_tm(int64_t t, struct tm *out) {
   return _localtime64_s(out, &tt) == 0;
 }
 static long dateutil_gmtoff(int64_t t, struct tm *lt) {
-  struct tm gt;
-  __time64_t tt = (__time64_t)t;
-  if (_gmtime64_s(&gt, &tt) != 0) return 0;
-  gt.tm_isdst = lt->tm_isdst;
-  return (long)(t - (int64_t)_mktime64(&gt)) + (lt->tm_isdst > 0 ? 3600 : 0);
+  /* Interpret the local civil fields as if they were UTC: the difference
+     to the real instant is the offset (no DST adjustment involved). */
+  struct tm copy = *lt;
+  __time64_t as_utc = _mkgmtime64(&copy);
+  if (as_utc == -1) return 0;
+  return (long)((int64_t)as_utc - t);
 }
 static const char *dateutil_zone(struct tm *lt) {
   static char buf[64];

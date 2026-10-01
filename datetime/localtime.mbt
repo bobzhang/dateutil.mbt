@@ -42,7 +42,10 @@ pub fn gmtime(t : Int64) -> LocalTime {
 ///|
 /// `time.localtime(t)` for the system time zone (honouring the `TZ`
 /// environment variable after `tzset()` on native). On the wasm backends
-/// there is no system zone and this is `gmtime`.
+/// there is no system zone and this is `gmtime`. On js the wall fields and
+/// offset come from the host `Date`; `isdst` is approximated by comparing
+/// with the January/July offsets and `zone` uses `Intl` short names (e.g.
+/// `GMT+1` where libc would say `IST`), and `tzset` has no effect.
 pub fn localtime(t : Int64) -> LocalTime {
   platform_localtime(t)
 }

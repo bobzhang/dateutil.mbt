@@ -151,7 +151,13 @@ pub fn Date::add(self : Date, delta : TimeDelta) -> Date raise DateTimeError {
 ///|
 /// `date - timedelta`.
 pub fn Date::sub(self : Date, delta : TimeDelta) -> Date raise DateTimeError {
-  self.add(delta.checked_neg())
+  // CPython uses only `delta.days` (sub-day parts are ignored, not negated).
+  let o = self.to_ordinal().to_int64() - delta.days.to_int64()
+  if o > 0L && o <= MAXORDINAL.to_int64() {
+    Date::from_ordinal(o.to_int())
+  } else {
+    raise OverflowError("result out of range")
+  }
 }
 
 ///|

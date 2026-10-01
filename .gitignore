@@ -4,3 +4,4 @@ target/
 .mooncakes/
 node_modules/
 reviews/
+.claude/

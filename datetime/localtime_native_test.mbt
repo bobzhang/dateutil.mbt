@@ -68,3 +68,18 @@ test "local time: America/New_York" {
     )
   })
 }
+
+///|
+test "local time: astimezone in a gap honours fold" {
+  with_tz("America/New_York", () => {
+    let gap = @datetime.DateTime::new(2021, 3, 14, hour=2, minute=30)
+    inspect(
+      gap.astimezone(tz=@datetime.utc),
+      content="2021-03-14 07:30:00+00:00",
+    )
+    inspect(
+      gap.replace(fold=1).astimezone(tz=@datetime.utc),
+      content="2021-03-14 06:30:00+00:00",
+    )
+  })
+}

@@ -9,7 +9,12 @@ extern "js" fn js_localtime(t : Double, out : FixedArray[Int]) -> String =
   #|  const jul = new Date(y, 6, 1).getTimezoneOffset();
   #|  const off = d.getTimezoneOffset();
   #|  out[6] = (jan !== jul && off === Math.min(jan, jul)) ? 1 : 0;
-  #|  out[7] = -off * 60;
+  #|  // exact offset (including historical seconds) from the civil fields
+  #|  const civil = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(),
+  #|    d.getHours(), d.getMinutes(), d.getSeconds());
+  #|  const civilAdj = (d.getFullYear() < 100) ? (() => { const c = new Date(civil);
+  #|    c.setUTCFullYear(d.getFullYear()); return c.getTime(); })() : civil;
+  #|  out[7] = Math.round((civilAdj - Math.floor(t) * 1000) / 1000);
   #|  try {
   #|    const p = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' })
   #|      .formatToParts(d).find((x) => x.type === 'timeZoneName');
