@@ -11,7 +11,7 @@ fn zone_bytes(name : String) -> Bytes {
 }
 
 ///|
-let embedded_zones : Map[String, @datetime.Tz] = {}
+let embedded_zones : Map[String, @datetime.Tz] = Map([])
 
 ///|
 /// The embedded TZif data for `name` as a `tzfile` (one object per name,

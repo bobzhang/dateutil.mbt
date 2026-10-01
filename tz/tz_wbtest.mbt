@@ -28,7 +28,7 @@ test "TZTest.testIsStd" {
   // NEW_YORK tzfile contains this isstd information:
   let (parsed, _) = read_tzfile(wb_zone_bytes("NEW_YORK"))
   let isstd = parsed.ttinfo_list.map(t => if t.isstd { 1 } else { 0 })
-  assert_eq(isstd[0:4].to_array(), [0, 0, 0, 1])
+  assert_eq(isstd[0:4].to_owned(), [0, 0, 0, 1])
 }
 
 ///|

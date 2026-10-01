@@ -979,7 +979,7 @@ test "regressions from review" {
     _ => fail("expected ValueError")
   }
   // a leap second count larger than the data is a truncated file
-  let buf = @buffer.new()
+  let buf = Buffer()
   buf.write_bytes(b"TZif")
   for _ in 0..<16 {
     buf.write_byte(0)

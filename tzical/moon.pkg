@@ -1,0 +1,16 @@
+warnings = "-79"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/tz",
+  "bobzhang/dateutil/rrule",
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/x/fs",
+}
+
+options(
+  targets: {
+    "io_fs.mbt": [ "native", "js" ],
+    "io_nofs.mbt": [ "wasm", "wasm-gc" ],
+  },
+)

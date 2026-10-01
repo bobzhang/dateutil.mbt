@@ -1,0 +1,156 @@
+// iCalendar VTIMEZONE fixtures from upstream tests/test_tz.py
+// (TZICalTest._gettz_str_tuple, TZICAL_EST5EDT, TZICAL_PST8PDT).
+
+///|
+fn ical_str(name : String) -> String {
+  match name {
+    "Australia/Sydney" =>
+      (
+        #|BEGIN:VTIMEZONE
+        #|TZID:Australia-Sydney
+        #|BEGIN:STANDARD
+        #|DTSTART:19980301T030000
+        #|RRULE:FREQ=YEARLY;BYDAY=+1SU;BYMONTH=04
+        #|TZOFFSETFROM:+1100
+        #|TZOFFSETTO:+1000
+        #|TZNAME:AEST
+        #|END:STANDARD
+        #|BEGIN:DAYLIGHT
+        #|DTSTART:19971029T020000
+        #|RRULE:FREQ=YEARLY;BYDAY=+1SU;BYMONTH=10
+        #|TZOFFSETFROM:+1000
+        #|TZOFFSETTO:+1100
+        #|TZNAME:AEDT
+        #|END:DAYLIGHT
+        #|END:VTIMEZONE
+      )
+    "America/Toronto" =>
+      (
+        #|BEGIN:VTIMEZONE
+        #|TZID:US-Eastern
+        #|BEGIN:STANDARD
+        #|DTSTART:19971029T020000
+        #|RRULE:FREQ=YEARLY;BYDAY=+1SU;BYMONTH=11
+        #|TZOFFSETFROM:-0400
+        #|TZOFFSETTO:-0500
+        #|TZNAME:EST
+        #|END:STANDARD
+        #|BEGIN:DAYLIGHT
+        #|DTSTART:19980301T020000
+        #|RRULE:FREQ=YEARLY;BYDAY=+2SU;BYMONTH=03
+        #|TZOFFSETFROM:-0500
+        #|TZOFFSETTO:-0400
+        #|TZNAME:EDT
+        #|END:DAYLIGHT
+        #|END:VTIMEZONE
+      )
+    "America/New_York" =>
+      (
+        #|BEGIN:VTIMEZONE
+        #|TZID:US-Eastern
+        #|BEGIN:STANDARD
+        #|DTSTART:19971029T020000
+        #|RRULE:FREQ=YEARLY;BYDAY=+1SU;BYMONTH=11
+        #|TZOFFSETFROM:-0400
+        #|TZOFFSETTO:-0500
+        #|TZNAME:EST
+        #|END:STANDARD
+        #|BEGIN:DAYLIGHT
+        #|DTSTART:19980301T020000
+        #|RRULE:FREQ=YEARLY;BYDAY=+2SU;BYMONTH=03
+        #|TZOFFSETFROM:-0500
+        #|TZOFFSETTO:-0400
+        #|TZNAME:EDT
+        #|END:DAYLIGHT
+        #|END:VTIMEZONE
+      )
+    "America/Los_Angeles" =>
+      (
+        #|BEGIN:VTIMEZONE
+        #|TZID:US-Pacific
+        #|BEGIN:STANDARD
+        #|DTSTART:19971029T020000
+        #|RRULE:FREQ=YEARLY;BYDAY=+1SU;BYMONTH=11
+        #|TZOFFSETFROM:-0700
+        #|TZOFFSETTO:-0800
+        #|TZNAME:PST
+        #|END:STANDARD
+        #|BEGIN:DAYLIGHT
+        #|DTSTART:19980301T020000
+        #|RRULE:FREQ=YEARLY;BYDAY=+2SU;BYMONTH=03
+        #|TZOFFSETFROM:-0800
+        #|TZOFFSETTO:-0700
+        #|TZNAME:PDT
+        #|END:DAYLIGHT
+        #|END:VTIMEZONE
+      )
+    "Europe/London" =>
+      (
+        #|BEGIN:VTIMEZONE
+        #|TZID:Europe-London
+        #|BEGIN:STANDARD
+        #|DTSTART:19810301T030000
+        #|RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10;BYHOUR=02
+        #|TZOFFSETFROM:+0100
+        #|TZOFFSETTO:+0000
+        #|TZNAME:GMT
+        #|END:STANDARD
+        #|BEGIN:DAYLIGHT
+        #|DTSTART:19961001T030000
+        #|RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=03;BYHOUR=01
+        #|TZOFFSETFROM:+0000
+        #|TZOFFSETTO:+0100
+        #|TZNAME:BST
+        #|END:DAYLIGHT
+        #|END:VTIMEZONE
+      )
+    _ => abort("unknown zone \{name}")
+  }
+}
+
+///|
+let tzical_est5edt : String =
+  #|
+  #|BEGIN:VTIMEZONE
+  #|TZID:US-Eastern
+  #|LAST-MODIFIED:19870101T000000Z
+  #|TZURL:http://zones.stds_r_us.net/tz/US-Eastern
+  #|BEGIN:STANDARD
+  #|DTSTART:19671029T020000
+  #|RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+  #|TZOFFSETFROM:-0400
+  #|TZOFFSETTO:-0500
+  #|TZNAME:EST
+  #|END:STANDARD
+  #|BEGIN:DAYLIGHT
+  #|DTSTART:19870405T020000
+  #|RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4
+  #|TZOFFSETFROM:-0500
+  #|TZOFFSETTO:-0400
+  #|TZNAME:EDT
+  #|END:DAYLIGHT
+  #|END:VTIMEZONE
+  #|
+
+///|
+let tzical_pst8pdt : String =
+  #|
+  #|BEGIN:VTIMEZONE
+  #|TZID:US-Pacific
+  #|LAST-MODIFIED:19870101T000000Z
+  #|BEGIN:STANDARD
+  #|DTSTART:19671029T020000
+  #|RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+  #|TZOFFSETFROM:-0700
+  #|TZOFFSETTO:-0800
+  #|TZNAME:PST
+  #|END:STANDARD
+  #|BEGIN:DAYLIGHT
+  #|DTSTART:19870405T020000
+  #|RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4
+  #|TZOFFSETFROM:-0800
+  #|TZOFFSETTO:-0700
+  #|TZNAME:PDT
+  #|END:DAYLIGHT
+  #|END:VTIMEZONE
+  #|
