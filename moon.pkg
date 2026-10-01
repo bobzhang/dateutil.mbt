@@ -1,0 +1,12 @@
+warnings = "-79"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "bobzhang/dateutil/easter",
+  "bobzhang/dateutil/relativedelta",
+  "bobzhang/dateutil/rrule",
+  "bobzhang/dateutil/parser",
+  "bobzhang/dateutil/tz",
+  "bobzhang/dateutil/tzical",
+  "bobzhang/dateutil/utils",
+} for "test"
