@@ -123,18 +123,20 @@ priv enum YmdVal {
 }
 
 ///|
+/// The `_ymd.append` labels 'Y', 'M', 'D' (the parser itself never passes
+/// 'D'; only the internals test does).
+#warnings("-unused_constructor")
 priv enum YmdLabel {
   LY
   LM
-  // dateutil also supports a 'D' label, but the parser never passes it, so
-  // dstridx always stays None.
+  LD
 }
 
 ///|
 priv struct Ymd {
   vals : Array[Int64]
   mut century_specified : Bool
-  dstridx : Int?
+  mut dstridx : Int?
   mut mstridx : Int?
   mut ystridx : Int?
 }
@@ -211,7 +213,7 @@ fn Ymd::append(
   }
   if big {
     self.century_specified = true
-    if label is Some(LM) {
+    if label is Some(LM | LD) {
       raise ParseFail("label")
     }
     label = Some(LY)
@@ -229,6 +231,12 @@ fn Ymd::append(
         raise ParseFail("Month is already set")
       }
       self.mstridx = Some(idx)
+    }
+    Some(LD) => {
+      if self.dstridx is Some(_) {
+        raise ParseFail("Day is already set")
+      }
+      self.dstridx = Some(idx)
     }
     Some(LY) => {
       if self.ystridx is Some(_) {
