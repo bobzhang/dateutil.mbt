@@ -112,3 +112,32 @@ test "subtracting a delta whose negation overflows raises" {
     content="ValueError: year 178958994 is out of range",
   )
 }
+
+///|
+test "subtraction does not materialise -rd (Codex fixes review)" {
+  // Python: date(2024,1,1) - relativedelta(years=-2**31, year=-(2**31-1))
+  let rd = @relativedelta.RelativeDelta::new(
+    years=-2147483648,
+    year=-2147483647,
+  )
+  inspect(
+    rd.sub_from_date(@datetime.Date::new(2024, 1, 1)),
+    content="0001-01-01",
+  )
+  // leapdays is not negated; fractional days and time fields are
+  let rd2 = @relativedelta.RelativeDelta::from_float(
+    months=1.0,
+    days=1.5,
+    leapdays=3,
+    hours=2.0,
+  )
+  inspect(
+    rd2.sub_from_datetime(@datetime.DateTime::new(2024, 1, 31, hour=10)),
+    content="2023-12-29 20:00:00",
+  )
+  let rd3 = @relativedelta.RelativeDelta::new(years=-1, months=-11, leapdays=1)
+  inspect(
+    rd3.sub_from_date(@datetime.Date::new(2024, 3, 31)),
+    content="2026-02-28",
+  )
+}

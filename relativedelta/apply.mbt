@@ -67,22 +67,27 @@ fn py_timedelta(
 
 ///|
 /// Python `relativedelta.__add__(datetime)`.
+/// `sign = -1` applies `-self` (Python `other - self`) without building the
+/// negated delta, so `years=-2**31` does not overflow when an absolute
+/// `year` brings the result back into range.
 fn RelativeDelta::apply_datetime(
   self : RelativeDelta,
   other : @datetime.DateTime,
+  sign? : Int = 1,
 ) -> @datetime.DateTime raise @datetime.DateTimeError {
+  let s = sign.to_double()
   // `self.year or other.year`: 0 counts as unset.
   let base_year = match self.year {
     Some(y) if y != 0 => y
     _ => other.year
   }
-  let mut year = base_year.to_int64() + self.years.to_int64()
+  let mut year = base_year.to_int64() + sign.to_int64() * self.years.to_int64()
   let mut month = match self.month {
     Some(m) if m != 0 => m
     _ => other.month
   }
   if self.months != 0 {
-    month += self.months
+    month += sign * self.months
     if month > 12 {
       year += 1L
       month -= 12
@@ -108,16 +113,17 @@ fn RelativeDelta::apply_datetime(
     second?=self.second,
     microsecond?=self.microsecond,
   )
-  let mut days = self.days
+  // `leapdays` is not negated by Python's `__neg__`.
+  let mut days = s * self.days
   if self.leapdays != 0 && month > 2 && @datetime.is_leap(year) {
     days += self.leapdays.to_double()
   }
   let td = py_timedelta(
     days~,
-    hours=self.hours,
-    minutes=self.minutes,
-    seconds=self.seconds,
-    microseconds=self.microseconds,
+    hours=s * self.hours,
+    minutes=s * self.minutes,
+    seconds=s * self.seconds,
+    microseconds=s * self.microseconds,
   )
   let ret = replaced.add(td)
   match self.weekday {
@@ -172,13 +178,13 @@ pub fn RelativeDelta::add_to_datetime(
 }
 
 ///|
-/// Python `datetime - relativedelta`, i.e. `(-rd).add_to_datetime(dt)`.
-/// Raises `OverflowError` when `-rd` does not fit (see `checked_neg`).
+/// Python `datetime - relativedelta`, i.e. `(-rd).add_to_datetime(dt)`
+/// (computed without materialising `-rd`).
 pub fn RelativeDelta::sub_from_datetime(
   self : RelativeDelta,
   dt : @datetime.DateTime,
 ) -> @datetime.DateTime raise @datetime.DateTimeError {
-  self.checked_neg().apply_datetime(dt)
+  self.apply_datetime(dt, sign=-1)
 }
 
 ///|
@@ -199,13 +205,18 @@ pub fn RelativeDelta::add_to_date(
 }
 
 ///|
-/// Python `date - relativedelta`, i.e. `(-rd).add_to_date(d)`.
-/// Raises `OverflowError` when `-rd` does not fit (see `checked_neg`).
+/// Python `date - relativedelta`, i.e. `(-rd).add_to_date(d)`
+/// (computed without materialising `-rd`).
 pub fn RelativeDelta::sub_from_date(
   self : RelativeDelta,
   d : @datetime.Date,
 ) -> DateOrDateTime raise @datetime.DateTimeError {
-  self.checked_neg().add_to_date(d)
+  let dt = self.apply_datetime(d.to_datetime(), sign=-1)
+  if self.has_time() {
+    DateTime(dt)
+  } else {
+    Date(dt.date())
+  }
 }
 
 ///|
