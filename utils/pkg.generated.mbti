@@ -1,0 +1,21 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/utils"
+
+import {
+  "bobzhang/dateutil/datetime",
+}
+
+// Values
+pub fn default_tzinfo(@datetime.DateTime, @datetime.Tz) -> @datetime.DateTime
+
+pub fn today(tzinfo? : @datetime.Tz) -> @datetime.DateTime
+
+pub fn within_delta(@datetime.DateTime, @datetime.DateTime, @datetime.TimeDelta) -> Bool raise @datetime.DateTimeError
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

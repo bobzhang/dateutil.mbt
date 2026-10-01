@@ -1,0 +1,87 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "bobzhang/dateutil/relativedelta"
+
+import {
+  "bobzhang/dateutil/datetime",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub let fr : @datetime.Weekday
+
+pub let mo : @datetime.Weekday
+
+pub let sa : @datetime.Weekday
+
+pub let su : @datetime.Weekday
+
+pub let th : @datetime.Weekday
+
+pub let tu : @datetime.Weekday
+
+pub let we : @datetime.Weekday
+
+// Errors
+
+// Types and methods
+pub(all) enum DateOrDateTime {
+  Date(@datetime.Date)
+  DateTime(@datetime.DateTime)
+} derive(Eq)
+pub fn DateOrDateTime::date(Self) -> @datetime.Date
+pub fn DateOrDateTime::output(Self, &Logger) -> Unit
+pub fn DateOrDateTime::to_datetime(Self) -> @datetime.DateTime
+pub fn DateOrDateTime::to_string(Self) -> String
+pub impl Show for DateOrDateTime
+pub impl @debug.Debug for DateOrDateTime
+
+pub struct RelativeDelta {
+  years : Int
+  months : Int
+  mut days : Double
+  leapdays : Int
+  hours : Double
+  minutes : Double
+  seconds : Double
+  microseconds : Double
+  year : Int?
+  month : Int?
+  day : Int?
+  weekday : @datetime.Weekday?
+  hour : Int?
+  minute : Int?
+  second : Int?
+  microsecond : Int?
+}
+pub fn RelativeDelta::abs(Self) -> Self
+pub fn RelativeDelta::add_timedelta(Self, @datetime.TimeDelta) -> Self
+pub fn RelativeDelta::add_to_date(Self, @datetime.Date) -> DateOrDateTime raise @datetime.DateTimeError
+pub fn RelativeDelta::add_to_datetime(Self, @datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
+pub fn RelativeDelta::between(@datetime.DateTime, @datetime.DateTime) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::between_dates(@datetime.Date, @datetime.Date) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::div(Self, Double) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::from_float(years? : Double, months? : Double, days? : Double, leapdays? : Int, weeks? : Double, hours? : Double, minutes? : Double, seconds? : Double, microseconds? : Double, year? : Int, month? : Int, day? : Int, weekday? : @datetime.Weekday, yearday? : Int, nlyearday? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::has_time(Self) -> Bool
+pub fn RelativeDelta::mul(Self, Double) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::new(years? : Int, months? : Int, days? : Int, leapdays? : Int, weeks? : Int, hours? : Int, minutes? : Int, seconds? : Int, microseconds? : Int, year? : Int, month? : Int, day? : Int, weekday? : @datetime.Weekday, yearday? : Int, nlyearday? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::normalized(Self) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::output(Self, &Logger) -> Unit
+pub fn RelativeDelta::repr(Self) -> String
+pub fn RelativeDelta::set_weeks(Self, Int) -> Unit
+pub fn RelativeDelta::sub_from_date(Self, @datetime.Date) -> DateOrDateTime raise @datetime.DateTimeError
+pub fn RelativeDelta::sub_from_datetime(Self, @datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
+pub fn RelativeDelta::to_bool(Self) -> Bool
+pub fn RelativeDelta::to_string(Self) -> String
+pub fn RelativeDelta::weeks(Self) -> Int
+pub impl Add for RelativeDelta
+pub impl Eq for RelativeDelta
+pub impl Hash for RelativeDelta
+pub impl Neg for RelativeDelta
+pub impl Show for RelativeDelta
+pub impl Sub for RelativeDelta
+pub impl @debug.Debug for RelativeDelta
+
+// Type aliases
+pub using @datetime {type Weekday}
+
+// Traits
