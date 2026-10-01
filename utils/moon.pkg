@@ -11,12 +11,3 @@ import {
 import {
   "bobzhang/dateutil/tz",
 } for "wbtest"
-
-options(
-  targets: {
-    "nyc_fs_test.mbt": [ "native", "js" ],
-    "nyc_fs_wbtest.mbt": [ "native", "js" ],
-    "nyc_nofs_test.mbt": [ "wasm", "wasm-gc" ],
-    "nyc_nofs_wbtest.mbt": [ "wasm", "wasm-gc" ],
-  },
-)

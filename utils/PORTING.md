@@ -29,9 +29,6 @@ All seven upstream tests are ported, with these adaptations:
   `FakeDatetime.now` (including adding `tz_offset` to aware results, which
   is why the last test lands on the next day). A black-box test checks the
   real-clock `today()` for midnight / consistency with `DateTime::now()`.
-* `NYC = tz.gettz("America/New_York")` is `@tz.gettz` on native and js
-  (`nyc_fs_test.mbt` / `nyc_fs_wbtest.mbt`; needs the system zoneinfo
-  database). The wasm backends have no file system, so there
-  (`nyc_nofs_*`) the tests use `tzoffset("EST", -18000)`, which is NYC's
-  offset on every date the tests use and serves equally as a distinct
-  zone object for the `default_tzinfo` identity checks.
+* `NYC = tz.gettz("America/New_York")` is `@tz.gettz` on every backend
+  (`nyc_fs_test.mbt` / `nyc_fs_wbtest.mbt`; reads the system zoneinfo
+  database).

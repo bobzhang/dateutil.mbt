@@ -1,5 +1,5 @@
 // `NYC = tz.gettz("America/New_York")` as in upstream tests/test_utils.py
-// (native/js: needs the system zoneinfo database).
+// (reads the system zoneinfo database).
 
 ///|
 fn nyc() -> @datetime.Tz raise {
