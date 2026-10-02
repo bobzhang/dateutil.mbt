@@ -59,18 +59,16 @@ test "local time: POSIX TZ strings, southern hemisphere" {
 }
 
 ///|
-test "local time: empty or unresolvable TZ is UTC" {
-  for tz in ["", "Nowhere/Zone", "no-offset"] {
-    with_tz(tz, () => {
-      inspect(lt_str(1719835200L), content="2024-7-1 12:0:0 isdst=0 0 UTC")
-      debug_inspect(
-        @datetime.local_zone(),
-        content=(
-          #|{ timezone: 0, altzone: 0, daylight: false, tzname: ("UTC", "UTC") }
-        ),
-      )
-    })
-  }
+test "local time: empty TZ is UTC" {
+  with_tz("", () => {
+    inspect(lt_str(1719835200L), content="2024-7-1 12:0:0 isdst=0 0 UTC")
+    debug_inspect(
+      @datetime.local_zone(),
+      content=(
+        #|{ timezone: 0, altzone: 0, daylight: false, tzname: ("UTC", "UTC") }
+      ),
+    )
+  })
 }
 
 ///|

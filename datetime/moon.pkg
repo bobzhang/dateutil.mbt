@@ -14,6 +14,7 @@ import {
 options(
   "native-stub": [ "localtime_stub.c" ],
   targets: {
+    "localtime_engine_test.mbt": [ "wasm", "wasm-gc", "js" ],
     "localtime_native.mbt": [ "native" ],
     "localtime_libc_test.mbt": [ "native" ],
     "localtime_js.mbt": [ "js" ],
