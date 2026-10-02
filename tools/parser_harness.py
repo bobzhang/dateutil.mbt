@@ -16,6 +16,47 @@ for p in (os.path.join(ROOT, '.repos/dateutil'),
 from dateutil import parser as dparser  # noqa: E402
 from dateutil import tz  # noqa: E402
 from dateutil.parser import UnknownTimezoneWarning  # noqa: E402
+from dateutil.parser import _parser as _dparser_impl  # noqa: E402
+
+# Freeze "now" so that generated expectations do not depend on the day the
+# generator runs: `parse()` without `default` uses today's date and
+# `parserinfo` uses the current year to expand two-digit years. The MoonBit
+# side (parser/helpers_test.mbt `check_parse`) pins the same values.
+FROZEN_NOW = datetime(2026, 10, 1, 12, 0, 0)
+
+
+class _FrozenDatetime(datetime):
+    @classmethod
+    def now(cls, tz=None):
+        if tz is None:
+            return FROZEN_NOW
+        return tz.fromutc(FROZEN_NOW.replace(tzinfo=tz))
+
+
+class _FrozenDatetimeModule(object):
+    def __getattr__(self, name):
+        import datetime as _real
+        return getattr(_real, name)
+
+
+_frozen_dt_module = _FrozenDatetimeModule()
+_frozen_dt_module.datetime = _FrozenDatetime
+
+
+class _FrozenTimeModule(object):
+    def __getattr__(self, name):
+        import time as _real
+        return getattr(_real, name)
+
+    def localtime(self, *args):
+        import time as _real
+        if args:
+            return _real.localtime(*args)
+        return FROZEN_NOW.timetuple()
+
+
+_dparser_impl.datetime = _frozen_dt_module
+_dparser_impl.time = _FrozenTimeModule()
 
 REAL_parse = dparser.parse
 REAL_isoparser = dparser.isoparser

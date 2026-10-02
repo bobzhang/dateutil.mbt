@@ -47,6 +47,16 @@ fn tuple_repr(xs : Array[String]) -> String {
 }
 
 ///|
+/// The frozen "now" of the test generators (tools/parser_harness.py):
+/// `parse()` without `default` uses today's date and the default
+/// `ParserInfo` expands two-digit years relative to the current year, so
+/// tests pin both.
+let frozen_default : @datetime.DateTime = dt(2026, 10, 1)
+
+///|
+let frozen_info : @parser.ParserInfo = @parser.ParserInfo::new(year=2026)
+
+///|
 fn check_parse(
   timestr : String,
   expected : String,
@@ -60,14 +70,16 @@ fn check_parse(
   warns? : Array[String] = [],
   info? : @parser.ParserInfo,
 ) -> Unit raise {
+  let default = default.unwrap_or(frozen_default)
+  let info = info.unwrap_or(frozen_info)
   let warned = []
   let on_warning = (w : @parser.UnknownTimezoneWarning) => warned.push(w.tzname)
   let actual = try {
     if tokens {
       let (d, toks) = @parser.parse_with_tokens(
         timestr,
-        parserinfo?=info,
-        default?,
+        parserinfo=info,
+        default~,
         ignoretz~,
         tzinfos?,
         dayfirst?,
@@ -78,8 +90,8 @@ fn check_parse(
     } else {
       @parser.parse(
         timestr,
-        parserinfo?=info,
-        default?,
+        parserinfo=info,
+        default~,
         ignoretz~,
         tzinfos?,
         dayfirst?,
