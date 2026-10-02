@@ -1,5 +1,7 @@
 # dateutil.mbt
 
+[![ci](https://github.com/bobzhang/dateutil.mbt/actions/workflows/ci.yml/badge.svg)](https://github.com/bobzhang/dateutil.mbt/actions/workflows/ci.yml)
+
 A MoonBit port of [python-dateutil](https://github.com/dateutil/dateutil)
 (ported from upstream commit `2642afa`), together with a faithful model of
 CPython's `datetime` module that it is built on. It runs on the wasm,
