@@ -1,0 +1,68 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        # Windows is not covered: the tests read the system zoneinfo
+        # database (/usr/share/zoneinfo), which Windows does not have.
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # js reads zone files through `process.getBuiltinModule` (Node >= 22.3).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: install MoonBit
+        uses: moonbit-community/setup-moonbit@04293a8a813bfd4b6c2fce22701b52ae1050d100
+        with:
+          version: latest
+
+      - name: moon version
+        run: moon version --all
+
+      - name: moon update
+        run: moon update
+
+      - name: moon check
+        run: moon check --target all --deny-warn
+
+      - name: format and interface are up to date
+        shell: bash
+        run: |
+          moon fmt
+          moon info
+          git diff --exit-code
+
+      - name: moon test (wasm-gc)
+        run: moon test --target wasm-gc
+
+      - name: moon test (wasm)
+        run: moon test --target wasm
+
+      - name: moon test (js)
+        run: moon test --target js
+
+      - name: moon test (native)
+        run: moon test --target native
+
+      - name: package builds and passes its tests standalone
+        shell: bash
+        run: |
+          moon package
+          dir="$RUNNER_TEMP/pkg"
+          mkdir -p "$dir"
+          unzip -q _build/publish/*.zip -d "$dir"
+          cd "$dir"
+          moon test --target wasm-gc
