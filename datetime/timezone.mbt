@@ -114,7 +114,7 @@ pub fn py_str_repr(s : String) -> String {
 /// Approximation of `not str.isprintable()` for a code point: control
 /// characters, separators other than ASCII space, common format
 /// characters, surrogates, private use and noncharacters.
-fn is_py_nonprintable(c : Int) -> Bool {
+fn is_py_nonprintable(c : Int32) -> Bool {
   c < 0x20 ||
   (c >= 0x7f && c <= 0xa0) ||
   c == 0xad ||
@@ -137,8 +137,8 @@ fn is_py_nonprintable(c : Int) -> Bool {
 }
 
 ///|
-fn hex_digit(n : Int) -> String {
-  "0123456789abcdef".view(start_offset=n, end_offset=n + 1).to_owned()
+fn hex_digit(n : Int32) -> String {
+  "0123456789abcdef"[n:n + 1].to_owned()
 }
 
 ///|

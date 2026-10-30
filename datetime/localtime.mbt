@@ -1,16 +1,16 @@
 ///|
 /// Broken-down local time (C `struct tm`), as returned by `localtime`.
 pub struct LocalTime {
-  year : Int
-  month : Int
-  day : Int
-  hour : Int
-  minute : Int
-  second : Int
+  year : Int32
+  month : Int32
+  day : Int32
+  hour : Int32
+  minute : Int32
+  second : Int32
   /// 1 if DST is in effect, 0 if not, -1 if unknown.
-  isdst : Int
+  isdst : Int32
   /// Offset east of UTC in seconds (`tm_gmtoff`).
-  gmtoff : Int
+  gmtoff : Int32
   /// Zone abbreviation (`tm_zone`).
   zone : String
 } derive(Eq, Debug)
@@ -74,9 +74,9 @@ pub fn tzset() -> Unit {
 /// `time` module does when `tm_gmtoff` is available.
 pub struct LocalZone {
   /// Seconds *west* of UTC of standard time (`time.timezone`).
-  timezone : Int
+  timezone : Int32
   /// Seconds west of UTC of daylight time (`time.altzone`).
-  altzone : Int
+  altzone : Int32
   /// Whether the zone has DST (`time.daylight`).
   daylight : Bool
   /// `(standard name, daylight name)` (`time.tzname`).

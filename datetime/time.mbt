@@ -1,23 +1,23 @@
 ///|
 /// A time of day (Python `datetime.time`), optionally time zone aware.
 pub struct Time {
-  hour : Int
-  minute : Int
-  second : Int
-  microsecond : Int
+  hour : Int32
+  minute : Int32
+  second : Int32
+  microsecond : Int32
   tzinfo : Tz?
-  fold : Int
+  fold : Int32
 }
 
 ///|
 /// `time(hour, minute, second, microsecond, tzinfo, fold=fold)`.
 pub fn Time::new(
-  hour? : Int = 0,
-  minute? : Int = 0,
-  second? : Int = 0,
-  microsecond? : Int = 0,
+  hour~ : Int32 = 0,
+  minute~ : Int32 = 0,
+  second~ : Int32 = 0,
+  microsecond~ : Int32 = 0,
   tzinfo? : Tz,
-  fold? : Int = 0,
+  fold~ : Int32 = 0,
 ) -> Time raise DateTimeError {
   check_time_fields(hour, minute, second, microsecond, fold)
   { hour, minute, second, microsecond, tzinfo, fold, }
@@ -27,12 +27,12 @@ pub fn Time::new(
 /// `time.replace(...)`. Pass `tzinfo=None` to drop the zone.
 pub fn Time::replace(
   self : Time,
-  hour? : Int,
-  minute? : Int,
-  second? : Int,
-  microsecond? : Int,
+  hour? : Int32,
+  minute? : Int32,
+  second? : Int32,
+  microsecond? : Int32,
   tzinfo? : Tz?,
-  fold? : Int,
+  fold? : Int32,
 ) -> Time raise DateTimeError {
   let tzinfo = match tzinfo {
     Some(t) => t
@@ -77,7 +77,7 @@ fn Time::cmp(
   self : Time,
   other : Time,
   allow_mixed : Bool,
-) -> Int raise DateTimeError {
+) -> Int32 raise DateTimeError {
   let mut myoff = None
   let mut otoff = None
   let base_compare = if same_tz(self.tzinfo, other.tzinfo) {
@@ -114,7 +114,10 @@ fn time_utc_us(t : Time, off : TimeDelta) -> Int64 {
 }
 
 ///|
-fn compare_tuple4(a : (Int, Int, Int, Int), b : (Int, Int, Int, Int)) -> Int {
+fn compare_tuple4(
+  a : (Int32, Int32, Int32, Int32),
+  b : (Int32, Int32, Int32, Int32),
+) -> Int32 {
   let c = a.0.compare(b.0)
   if c != 0 {
     return c
@@ -135,7 +138,7 @@ fn compare_tuple4(a : (Int, Int, Int, Int), b : (Int, Int, Int, Int)) -> Int {
 pub fn Time::checked_compare(
   self : Time,
   other : Time,
-) -> Int raise DateTimeError {
+) -> Int32 raise DateTimeError {
   self.cmp(other, false)
 }
 
@@ -181,10 +184,10 @@ pub(all) enum TimeSpec {
 
 ///|
 fn format_time(
-  hh : Int,
-  mm : Int,
-  ss : Int,
-  us : Int,
+  hh : Int32,
+  mm : Int32,
+  ss : Int32,
+  us : Int32,
   timespec : TimeSpec,
 ) -> String {
   let spec = match timespec {
@@ -203,7 +206,7 @@ fn format_time(
 
 ///|
 /// `+HH:MM[:SS[.ffffff]]` (CPython `_format_offset`), empty for `None`.
-pub fn format_utcoffset(off : TimeDelta?, sep? : String = ":") -> String {
+pub fn format_utcoffset(off : TimeDelta?, sep~ : String = ":") -> String {
   guard off is Some(off) else { return "" }
   let (sign, off) = if off.days < 0 { ("-", -off) } else { ("+", off) }
   let hh = off.seconds / 3600
@@ -224,7 +227,7 @@ pub fn format_utcoffset(off : TimeDelta?, sep? : String = ":") -> String {
 
 ///|
 /// `time.isoformat(timespec)`.
-pub fn Time::isoformat(self : Time, timespec? : TimeSpec = Auto) -> String {
+pub fn Time::isoformat(self : Time, timespec~ : TimeSpec = Auto) -> String {
   format_time(self.hour, self.minute, self.second, self.microsecond, timespec) +
   format_utcoffset(self.utcoffset())
 }

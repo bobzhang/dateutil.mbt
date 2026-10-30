@@ -2,30 +2,30 @@
 /// A date with time of day (Python `datetime.datetime`), optionally time
 /// zone aware. Follows CPython semantics, including PEP 495 `fold`.
 pub struct DateTime {
-  year : Int
-  month : Int
-  day : Int
-  hour : Int
-  minute : Int
-  second : Int
-  microsecond : Int
+  year : Int32
+  month : Int32
+  day : Int32
+  hour : Int32
+  minute : Int32
+  second : Int32
+  microsecond : Int32
   tzinfo : Tz?
-  fold : Int
+  fold : Int32
 }
 
 ///|
 /// `datetime(year, month, day, hour, minute, second, microsecond, tzinfo,
 /// fold=fold)`; raises `ValueError` for out-of-range fields.
 pub fn DateTime::new(
-  year : Int,
-  month : Int,
-  day : Int,
-  hour? : Int = 0,
-  minute? : Int = 0,
-  second? : Int = 0,
-  microsecond? : Int = 0,
+  year : Int32,
+  month : Int32,
+  day : Int32,
+  hour~ : Int32 = 0,
+  minute~ : Int32 = 0,
+  second~ : Int32 = 0,
+  microsecond~ : Int32 = 0,
   tzinfo? : Tz,
-  fold? : Int = 0,
+  fold~ : Int32 = 0,
 ) -> DateTime raise DateTimeError {
   check_date_fields(year, month, day)
   check_time_fields(hour, minute, second, microsecond, fold)
@@ -65,15 +65,15 @@ pub let max_datetime : DateTime = {
 /// `tzinfo=Some(tz)` to attach a zone without conversion.
 pub fn DateTime::replace(
   self : DateTime,
-  year? : Int,
-  month? : Int,
-  day? : Int,
-  hour? : Int,
-  minute? : Int,
-  second? : Int,
-  microsecond? : Int,
+  year? : Int32,
+  month? : Int32,
+  day? : Int32,
+  hour? : Int32,
+  minute? : Int32,
+  second? : Int32,
+  microsecond? : Int32,
   tzinfo? : Tz?,
-  fold? : Int,
+  fold? : Int32,
 ) -> DateTime raise DateTimeError {
   let tzinfo = match tzinfo {
     Some(t) => t
@@ -100,7 +100,7 @@ pub fn DateTime::with_tzinfo(self : DateTime, tzinfo : Tz?) -> DateTime {
 
 ///|
 /// Set the PEP 495 `fold` attribute (0 or 1); never fails.
-pub fn DateTime::with_fold(self : DateTime, fold : Int) -> DateTime {
+pub fn DateTime::with_fold(self : DateTime, fold : Int32) -> DateTime {
   { ..self, fold: if fold != 0 { 1 } else { 0 }, }
 }
 
@@ -143,7 +143,7 @@ pub fn Date::to_datetime(self : Date) -> DateTime {
 
 ///|
 /// `datetime.fromordinal(n)` (midnight, naive).
-pub fn DateTime::from_ordinal(n : Int) -> DateTime raise DateTimeError {
+pub fn DateTime::from_ordinal(n : Int32) -> DateTime raise DateTimeError {
   Date::from_ordinal(n).to_datetime()
 }
 
@@ -172,23 +172,23 @@ pub fn DateTime::timetz(self : DateTime) -> Time {
 }
 
 ///|
-pub fn DateTime::to_ordinal(self : DateTime) -> Int {
+pub fn DateTime::to_ordinal(self : DateTime) -> Int32 {
   ymd_to_ordinal(self.year, self.month, self.day)
 }
 
 ///|
 /// Monday == 0 ... Sunday == 6.
-pub fn DateTime::weekday(self : DateTime) -> Int {
+pub fn DateTime::weekday(self : DateTime) -> Int32 {
   floor_mod(self.to_ordinal() + 6, 7)
 }
 
 ///|
-pub fn DateTime::isoweekday(self : DateTime) -> Int {
+pub fn DateTime::isoweekday(self : DateTime) -> Int32 {
   self.weekday() + 1
 }
 
 ///|
-pub fn DateTime::isocalendar(self : DateTime) -> (Int, Int, Int) {
+pub fn DateTime::isocalendar(self : DateTime) -> (Int32, Int32, Int32) {
   iso_calendar_of(self.year, self.month, self.day)
 }
 
@@ -329,7 +329,7 @@ fn DateTime::cmp(
   self : DateTime,
   other : DateTime,
   allow_mixed : Bool,
-) -> Int raise DateTimeError {
+) -> Int32 raise DateTimeError {
   let mut myoff = None
   let mut otoff = None
   let base_compare = if same_tz(self.tzinfo, other.tzinfo) {
@@ -381,7 +381,7 @@ fn DateTime::cmp(
 pub fn DateTime::checked_compare(
   self : DateTime,
   other : DateTime,
-) -> Int raise DateTimeError {
+) -> Int32 raise DateTimeError {
   self.cmp(other, false)
 }
 
@@ -550,7 +550,7 @@ pub fn DateTime::timestamp(self : DateTime) -> Double raise DateTimeError {
 ///|
 fn utc_fields(
   t : Int64,
-  us : Int,
+  us : Int32,
   tzinfo : Tz?,
 ) -> DateTime raise DateTimeError {
   let days = floor_div64(t, 86400L)
@@ -574,7 +574,7 @@ fn utc_fields(
 }
 
 ///|
-fn local_fields(t : Int64, us : Int) -> DateTime raise DateTimeError {
+fn local_fields(t : Int64, us : Int32) -> DateTime raise DateTimeError {
   // Local offsets are within a day; keep the platform call in range.
   let days = floor_div64(t, 86400L) + ymd_to_ordinal(1970, 1, 1).to_int64()
   if days < 2L || days > MAXORDINAL.to_int64() - 1L {
@@ -593,7 +593,7 @@ fn local_fields(t : Int64, us : Int) -> DateTime raise DateTimeError {
 }
 
 ///|
-fn split_timestamp(t : Double) -> (Int64, Int) raise DateTimeError {
+fn split_timestamp(t : Double) -> (Int64, Int32) raise DateTimeError {
   if t.is_nan() {
     raise ValueError("Invalid value NaN (not a number)")
   }
@@ -629,7 +629,7 @@ pub fn DateTime::from_timestamp(
 
 ///|
 /// Naive local time for a timestamp, with CPython's fold detection.
-fn local_from_timestamp(t : Int64, us : Int) -> DateTime raise DateTimeError {
+fn local_from_timestamp(t : Int64, us : Int32) -> DateTime raise DateTimeError {
   let result = local_fields(t, us)
   let max_fold_seconds = 86400L
   let probe1 = local_fields(t - max_fold_seconds, us) catch {
@@ -686,8 +686,8 @@ pub fn DateTime::utcnow() -> DateTime {
 /// `datetime.isoformat(sep, timespec)`.
 pub fn DateTime::isoformat(
   self : DateTime,
-  sep? : Char = 'T',
-  timespec? : TimeSpec = Auto,
+  sep~ : Char = 'T',
+  timespec~ : TimeSpec = Auto,
 ) -> String {
   "\{pad(self.year, 4)}-\{pad(self.month, 2)}-\{pad(self.day, 2)}\{sep}" +
   format_time(self.hour, self.minute, self.second, self.microsecond, timespec) +
