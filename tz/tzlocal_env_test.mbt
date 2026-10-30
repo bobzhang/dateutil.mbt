@@ -29,7 +29,7 @@ test "differential: tzlocal under TZ strings" {
     }
   }
   for key, recs in groups {
-    with_tz_env(key.view(start_offset=2).to_owned(), () => {
+    with_tz_env(key[2:].to_owned(), () => {
       let zone = @tz.tzlocal()
       check_corpus(recs, _ => zone)
     })
