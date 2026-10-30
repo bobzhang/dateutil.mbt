@@ -32,7 +32,7 @@ fn TzLocal::new() -> TzLocal {
 ///|
 /// `time.localtime(timestamp + time.timezone).tm_isdst`, with the
 /// datetime's wall time read as a UTC timestamp.
-fn naive_is_dst(dt : @datetime.DateTime) -> Int {
+fn naive_is_dst(dt : @datetime.DateTime) -> Int32 {
   let timestamp = naive_timestamp_floor(dt)
   let timezone = @datetime.local_zone().timezone
   @datetime.localtime(timestamp + timezone.to_int64()).isdst

@@ -25,7 +25,7 @@ test "local zone names resolve to tzlocal()" {
   // UTCZONE entry) reach the tzlocal() branch.
   if std.length() > 0 &&
     std.length() <= 5 &&
-    std.iter().all(c => c is ('A'..='Z')) {
+    std.iter().all(c => c is ('A'..<='Z')) {
     let res = @parser.parse("2003-01-15 10:00 \{std}")
     guard res.tzinfo is Some(z) else { fail("expected an aware result") }
     if std == "UTC" || std == "GMT" {

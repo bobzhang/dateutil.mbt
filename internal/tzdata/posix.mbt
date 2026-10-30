@@ -16,12 +16,12 @@
 /// The day on which a DST rule fires.
 pub(all) enum RuleDate {
   /// `Jn`: Julian day 1..=365, February 29 is never counted.
-  Julian1(Int)
+  Julian1(Int32)
   /// `n`: zero-based day of the year 0..=365, counting February 29.
-  Julian0(Int)
+  Julian0(Int32)
   /// `Mm.w.d`: day `weekday` (0 = Sunday) of week `week` (1..=5, 5 =
   /// last) of month `month`.
-  MonthWeekDay(month~ : Int, week~ : Int, weekday~ : Int)
+  MonthWeekDay(month~ : Int32, week~ : Int32, weekday~ : Int32)
 } derive(Eq, Debug)
 
 ///|
@@ -29,7 +29,7 @@ pub(all) enum RuleDate {
 /// be negative or larger than a day).
 pub(all) struct Rule {
   date : RuleDate
-  time : Int
+  time : Int32
 } derive(Eq, Debug)
 
 ///|
@@ -37,7 +37,7 @@ pub(all) struct Rule {
 pub(all) struct DstSpec {
   abbr : String
   /// Seconds *east* of UTC.
-  offset : Int
+  offset : Int32
   /// Start of DST, in local standard time.
   start : Rule
   /// End of DST, in local daylight time.
@@ -49,18 +49,18 @@ pub(all) struct DstSpec {
 pub(all) struct PosixTz {
   std_abbr : String
   /// Seconds *east* of UTC (the negation of the string's offset).
-  std_offset : Int
+  std_offset : Int32
   dst : DstSpec?
 } derive(Eq, Debug)
 
 ///|
 priv struct Cursor {
   s : String
-  mut pos : Int
+  mut pos : Int32
 }
 
 ///|
-fn Cursor::peek(self : Cursor) -> Int {
+fn Cursor::peek(self : Cursor) -> Int32 {
   if self.pos < self.s.length() {
     self.s[self.pos].to_int()
   } else {
@@ -79,12 +79,12 @@ fn Cursor::eat(self : Cursor, c : Char) -> Bool {
 }
 
 ///|
-fn is_alpha(c : Int) -> Bool {
+fn is_alpha(c : Int32) -> Bool {
   (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
 }
 
 ///|
-fn is_digit(c : Int) -> Bool {
+fn is_digit(c : Int32) -> Bool {
   c >= '0' && c <= '9'
 }
 
@@ -102,7 +102,7 @@ fn Cursor::abbr(self : Cursor) -> String? {
     if end - inner < 3 || !self.eat('>') {
       return None
     }
-    Some(self.s.view(start_offset=inner, end_offset=end).to_owned())
+    Some(self.s[inner:end].to_owned())
   } else {
     while is_alpha(self.peek()) {
       self.pos += 1
@@ -110,13 +110,13 @@ fn Cursor::abbr(self : Cursor) -> String? {
     if self.pos - start < 3 {
       return None
     }
-    Some(self.s.view(start_offset=start, end_offset=self.pos).to_owned())
+    Some(self.s[start:self.pos].to_owned())
   }
 }
 
 ///|
 /// Unsigned decimal of 1..=`max_digits` digits.
-fn Cursor::number(self : Cursor, max_digits : Int) -> Int? {
+fn Cursor::number(self : Cursor, max_digits : Int32) -> Int32? {
   let start = self.pos
   let mut n = 0
   while is_digit(self.peek()) && self.pos - start < max_digits {
@@ -133,7 +133,7 @@ fn Cursor::number(self : Cursor, max_digits : Int) -> Int? {
 ///|
 /// `[+-]hh[:mm[:ss]]` in seconds, with `hh <= max_hours`; positive unless
 /// a `-` sign is given.
-fn Cursor::hms(self : Cursor, max_hours : Int) -> Int? {
+fn Cursor::hms(self : Cursor, max_hours : Int32) -> Int32? {
   let sign = if self.eat('-') {
     -1
   } else {
@@ -208,7 +208,7 @@ pub fn parse_posix_tz(s : String) -> PosixTz? {
     return Some({ std_abbr, std_offset, dst: None, })
   }
   guard c.abbr() is Some(dst_abbr) else { return None }
-  let dst_offset = if c.peek() is ('+' | '-' | '0'..='9') {
+  let dst_offset = if c.peek() is ('+' | '-' | '0'..<='9') {
     guard c.hms(24) is Some(w) else { return None }
     -w
   } else {

@@ -36,22 +36,22 @@ pub impl Show for DateOrDateTime
 pub impl @debug.Debug for DateOrDateTime
 
 pub struct RelativeDelta {
-  years : Int
-  months : Int
+  years : Int32
+  months : Int32
   mut days : Double
-  leapdays : Int
+  leapdays : Int32
   hours : Double
   minutes : Double
   seconds : Double
   microseconds : Double
-  year : Int?
-  month : Int?
-  day : Int?
+  year : Int32?
+  month : Int32?
+  day : Int32?
   weekday : @datetime.Weekday?
-  hour : Int?
-  minute : Int?
-  second : Int?
-  microsecond : Int?
+  hour : Int32?
+  minute : Int32?
+  second : Int32?
+  microsecond : Int32?
 }
 pub fn RelativeDelta::abs(Self) -> Self
 pub fn RelativeDelta::add_timedelta(Self, @datetime.TimeDelta) -> Self
@@ -61,19 +61,19 @@ pub fn RelativeDelta::between(@datetime.DateTime, @datetime.DateTime) -> Self ra
 pub fn RelativeDelta::between_dates(@datetime.Date, @datetime.Date) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::checked_neg(Self) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::div(Self, Double) -> Self raise @datetime.DateTimeError
-pub fn RelativeDelta::from_float(years? : Double, months? : Double, days? : Double, leapdays? : Int, weeks? : Double, hours? : Double, minutes? : Double, seconds? : Double, microseconds? : Double, year? : Int, month? : Int, day? : Int, weekday? : @datetime.Weekday, yearday? : Int, nlyearday? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::from_float(years? : Double, months? : Double, days? : Double, leapdays? : Int32, weeks? : Double, hours? : Double, minutes? : Double, seconds? : Double, microseconds? : Double, year? : Int32, month? : Int32, day? : Int32, weekday? : @datetime.Weekday, yearday? : Int32, nlyearday? : Int32, hour? : Int32, minute? : Int32, second? : Int32, microsecond? : Int32) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::has_time(Self) -> Bool
 pub fn RelativeDelta::mul(Self, Double) -> Self raise @datetime.DateTimeError
-pub fn RelativeDelta::new(years? : Int, months? : Int, days? : Int, leapdays? : Int, weeks? : Int, hours? : Int, minutes? : Int, seconds? : Int, microseconds? : Int, year? : Int, month? : Int, day? : Int, weekday? : @datetime.Weekday, yearday? : Int, nlyearday? : Int, hour? : Int, minute? : Int, second? : Int, microsecond? : Int) -> Self raise @datetime.DateTimeError
+pub fn RelativeDelta::new(years? : Int32, months? : Int32, days? : Int32, leapdays? : Int32, weeks? : Int32, hours? : Int32, minutes? : Int32, seconds? : Int32, microseconds? : Int32, year? : Int32, month? : Int32, day? : Int32, weekday? : @datetime.Weekday, yearday? : Int32, nlyearday? : Int32, hour? : Int32, minute? : Int32, second? : Int32, microsecond? : Int32) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::normalized(Self) -> Self raise @datetime.DateTimeError
 pub fn RelativeDelta::output(Self, &Logger) -> Unit
 pub fn RelativeDelta::repr(Self) -> String
-pub fn RelativeDelta::set_weeks(Self, Int) -> Unit
+pub fn RelativeDelta::set_weeks(Self, Int32) -> Unit
 pub fn RelativeDelta::sub_from_date(Self, @datetime.Date) -> DateOrDateTime raise @datetime.DateTimeError
 pub fn RelativeDelta::sub_from_datetime(Self, @datetime.DateTime) -> @datetime.DateTime raise @datetime.DateTimeError
 pub fn RelativeDelta::to_bool(Self) -> Bool
 pub fn RelativeDelta::to_string(Self) -> String
-pub fn RelativeDelta::weeks(Self) -> Int
+pub fn RelativeDelta::weeks(Self) -> Int32
 pub impl Add for RelativeDelta
 pub impl Eq for RelativeDelta
 pub impl Hash for RelativeDelta

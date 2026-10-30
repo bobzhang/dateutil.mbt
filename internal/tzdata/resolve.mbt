@@ -88,7 +88,7 @@ pub fn resolve(
     Some("") => (utc, Fallback)
     Some(value) => {
       let name = if value.has_prefix(":") {
-        value.view(start_offset=1).to_owned()
+        value[1:].to_owned()
       } else {
         value
       }

@@ -6,7 +6,13 @@ fn posix(s : String) -> @tzdata.Zone raise {
 
 ///|
 /// Seconds since the epoch of a UTC civil time.
-fn utc(y : Int, m : Int, d : Int, h? : Int = 0, mi? : Int = 0) -> Int64 {
+fn utc(
+  y : Int32,
+  m : Int32,
+  d : Int32,
+  h~ : Int32 = 0,
+  mi~ : Int32 = 0,
+) -> Int64 {
   @tzdata.days_from_civil(y.to_int64(), m, d) * 86400L +
   (h * 3600 + mi * 60).to_int64()
 }

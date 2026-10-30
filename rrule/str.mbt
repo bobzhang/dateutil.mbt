@@ -20,7 +20,7 @@ pub impl Show for Rrule with fn output(self, logger) {
     logger.write_string(u.strftime(";UNTIL=%Y%m%dT%H%M%S"))
   }
   let o = self.orig
-  fn ints(name : String, xs : Array[Int]?) {
+  fn ints(name : String, xs : Array[Int32]?) {
     if xs is Some(xs) && !xs.is_empty() {
       logger.write_string(";\{name}=")
       logger.write_string(xs.map(x => x.to_string()).join(","))

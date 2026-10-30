@@ -8,7 +8,7 @@ priv struct Lcg {
 }
 
 ///|
-fn Lcg::next(self : Lcg, bound : Int) -> Int {
+fn Lcg::next(self : Lcg, bound : Int32) -> Int32 {
   self.state = self.state * 6364136223846793005UL + 1442695040888963407UL
   ((self.state >> 33).to_int() & 0x7fffffff) % bound
 }
@@ -59,7 +59,7 @@ test "test_isoparse_prop::test_timespec_auto" {
       microsecond=us,
       tzinfo?=zones[rng.next(zones.length())],
     )
-    let sep = Int::unsafe_to_char(rng.next(128))
+    let sep = Int32::unsafe_to_char(rng.next(128))
     let dtstr = dt.isoformat(sep~)
     let dt_rt = @parser.isoparse(dtstr)
     // The round trip preserves the wall time and the offset.

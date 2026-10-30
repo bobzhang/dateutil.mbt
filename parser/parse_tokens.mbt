@@ -7,14 +7,14 @@ priv struct ParseResult {
   mut year : Int64?
   mut month : Int64?
   mut day : Int64?
-  mut weekday : Int?
+  mut weekday : Int32?
   mut hour : Int64?
   mut minute : Int64?
   mut second : Int64?
   mut microsecond : Int64?
   mut tzname : String?
   mut tzoffset : Int64?
-  mut ampm : Int?
+  mut ampm : Int32?
   mut century_specified : Bool
 }
 
@@ -38,7 +38,7 @@ fn ParseResult::new() -> ParseResult {
 
 ///|
 /// `len(res)`: the number of attributes that are not `None`.
-fn ParseResult::count(self : ParseResult) -> Int {
+fn ParseResult::count(self : ParseResult) -> Int32 {
   let flags = [
     self.year is Some(_),
     self.month is Some(_),
@@ -57,7 +57,7 @@ fn ParseResult::count(self : ParseResult) -> Int {
 
 ///|
 /// `tokens[i]`, raising like Python's `IndexError` when out of range.
-fn tok(tokens : Array[String], i : Int) -> String raise ParseFail {
+fn tok(tokens : Array[String], i : Int32) -> String raise ParseFail {
   match tokens.get(i) {
     Some(t) => t
     None => raise ParseFail("list index out of range")
@@ -103,7 +103,7 @@ fn parse_min_sec(value : Dec) -> (Int64, Int64?) raise DecimalInvalidOperation {
 
 ///|
 /// `parser._adjust_ampm`
-fn adjust_ampm(hour : Int64, ampm : Int) -> Int64 {
+fn adjust_ampm(hour : Int64, ampm : Int32) -> Int64 {
   if hour < 12L && ampm == 1 {
     hour + 12L
   } else if hour == 12L && ampm == 0 {
@@ -116,7 +116,11 @@ fn adjust_ampm(hour : Int64, ampm : Int) -> Int64 {
 ///|
 /// `parser._ampm_valid`: for fuzzy parsing, 'a' or 'am' (both valid English
 /// words) may erroneously trigger the AM/PM flag.
-fn ampm_valid(hour : Int64?, ampm : Int?, fuzzy : Bool) -> Bool raise ParseFail {
+fn ampm_valid(
+  hour : Int64?,
+  ampm : Int32?,
+  fuzzy : Bool,
+) -> Bool raise ParseFail {
   let mut val_is_ampm = true
   // If there's already an AM/PM flag, this one isn't one.
   if fuzzy && ampm is Some(_) {
@@ -147,7 +151,7 @@ fn ampm_valid(hour : Int64?, ampm : Int?, fuzzy : Bool) -> Bool raise ParseFail 
 ///|
 /// Python `x in string.ascii_uppercase` for every character.
 fn all_ascii_upper(s : String) -> Bool {
-  s.iter().all(c => c is ('A'..='Z'))
+  s.iter().all(c => c is ('A'..<='Z'))
 }
 
 ///|
@@ -179,9 +183,9 @@ fn TokenParser::could_be_tzname(
 /// `parser._find_hms_idx`
 fn TokenParser::find_hms_idx(
   self : TokenParser,
-  idx : Int,
+  idx : Int32,
   allow_jump : Bool,
-) -> Int? {
+) -> Int32? {
   let tokens = self.tokens
   let info = self.info
   let len_l = tokens.length()
@@ -219,9 +223,9 @@ fn TokenParser::find_hms_idx(
 /// `parser._parse_hms` -> (new_idx, hms)
 fn TokenParser::parse_hms(
   self : TokenParser,
-  idx : Int,
-  hms_idx : Int,
-) -> (Int, Int) {
+  idx : Int32,
+  hms_idx : Int32,
+) -> (Int32, Int32) {
   let hms = self.info.hms(self.tokens[hms_idx]).unwrap()
   if hms_idx > idx {
     (hms_idx, hms)
@@ -236,7 +240,7 @@ fn TokenParser::parse_hms(
 fn TokenParser::assign_hms(
   self : TokenParser,
   value_repr : String,
-  hms : Int,
+  hms : Int32,
 ) -> Unit raise {
   // See GH issue #427, fixing float rounding
   let value = to_decimal(value_repr)
@@ -261,7 +265,10 @@ fn TokenParser::assign_hms(
 ///|
 /// `parser._parse_numeric_token`: returns the index of the last consumed
 /// token.
-fn TokenParser::parse_numeric_token(self : TokenParser, idx : Int) -> Int raise {
+fn TokenParser::parse_numeric_token(
+  self : TokenParser,
+  idx : Int32,
+) -> Int32 raise {
   let tokens = self.tokens
   let info = self.info
   let ymd = self.ymd
@@ -386,7 +393,7 @@ fn TokenParser::parse_numeric_token(self : TokenParser, idx : Int) -> Int raise 
 
 ///|
 /// Python `s.find(c)` by code point.
-fn py_find(s : String, c : Char) -> Int {
+fn py_find(s : String, c : Char) -> Int32 {
   for i, x in s.to_array() {
     if x == c {
       return i
@@ -399,7 +406,7 @@ fn py_find(s : String, c : Char) -> Int {
 /// `parser._recombine_skipped`
 fn recombine_skipped(
   tokens : Array[String],
-  skipped_idxs : Array[Int],
+  skipped_idxs : Array[Int32],
 ) -> Array[String] {
   let skipped_tokens : Array[String] = []
   for i, idx in skipped_idxs {
@@ -419,7 +426,7 @@ fn TokenParser::run(
   self : TokenParser,
   yearfirst : Bool,
   dayfirst : Bool,
-  skipped_idxs : Array[Int],
+  skipped_idxs : Array[Int32],
 ) -> Unit raise {
   let l = self.tokens
   let info = self.info

@@ -3,7 +3,7 @@
 // description there.
 
 ///|
-let corpus_n : Int = 20
+let corpus_n : Int32 = 20
 
 ///|
 fn parse_dt(s : String) -> @datetime.DateTime raise {
@@ -30,7 +30,7 @@ fn fmt_dt(d : @datetime.DateTime) -> String {
 }
 
 ///|
-fn ints(v : String) -> Array[Int] raise {
+fn ints(v : String) -> Array[Int32] raise {
   if v == "" {
     []
   } else {

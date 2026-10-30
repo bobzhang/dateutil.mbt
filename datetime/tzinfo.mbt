@@ -79,7 +79,7 @@ pub fn cpython_fromutc(dt : DateTime) -> DateTime raise DateTimeError {
 }
 
 ///|
-let tz_counter : Ref[Int] = Ref(0)
+let tz_counter : Ref[Int32] = Ref(0)
 
 ///|
 /// A time zone object: a `TzInfo` implementation plus a stable identity.
@@ -89,7 +89,7 @@ let tz_counter : Ref[Int] = Ref(0)
 /// `Tz::is_same` is identity, `==` is value equality via `TzInfo::eq_key`.
 /// Create a handle once and share it, like a Python object.
 pub struct Tz {
-  priv id : Int
+  priv id : Int32
   priv inner : &TzInfo
 }
 

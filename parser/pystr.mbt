@@ -4,18 +4,18 @@
 
 ///|
 priv struct RangeTable {
-  starts : Array[Int]
-  ends : Array[Int]
+  starts : Array[Int32]
+  ends : Array[Int32]
 }
 
 ///|
-fn parse_hex(s : StringView) -> Int {
+fn parse_hex(s : StringView) -> Int32 {
   let mut v = 0
   for c in s {
     let d = match c {
-      '0'..='9' => c.to_int() - '0'.to_int()
-      'a'..='f' => c.to_int() - 'a'.to_int() + 10
-      'A'..='F' => c.to_int() - 'A'.to_int() + 10
+      '0'..<='9' => c.to_int() - '0'.to_int()
+      'a'..<='f' => c.to_int() - 'a'.to_int() + 10
+      'A'..<='F' => c.to_int() - 'A'.to_int() + 10
       _ => abort("bad hex digit")
     }
     v = v * 16 + d
@@ -58,7 +58,7 @@ fn parse_ranges(src : String) -> RangeTable {
 
 ///|
 /// Index of the last range whose start is `<= c`, or -1.
-fn bsearch_start(starts : Array[Int], c : Int) -> Int {
+fn bsearch_start(starts : Array[Int32], c : Int32) -> Int32 {
   for lo = 0, hi = starts.length(); lo < hi; {
     let mid = lo + (hi - lo) / 2
     if starts[mid] <= c {
@@ -72,7 +72,7 @@ fn bsearch_start(starts : Array[Int], c : Int) -> Int {
 }
 
 ///|
-fn RangeTable::find(self : RangeTable, c : Int) -> Int {
+fn RangeTable::find(self : RangeTable, c : Int32) -> Int32 {
   let i = bsearch_start(self.starts, c)
   if i >= 0 && c <= self.ends[i] {
     i
@@ -95,10 +95,10 @@ let decimal_table : RangeTable = parse_ranges(decimal_ranges_src)
 
 ///|
 priv struct LowerRuns {
-  starts : Array[Int]
-  ends : Array[Int]
-  steps : Array[Int]
-  deltas : Array[Int]
+  starts : Array[Int32]
+  ends : Array[Int32]
+  steps : Array[Int32]
+  deltas : Array[Int32]
 }
 
 ///|
@@ -121,7 +121,7 @@ let lower_runs : LowerRuns = {
 /// Python `ch.isalpha()`.
 fn py_isalpha_char(c : Char) -> Bool {
   if c.to_int() < 128 {
-    c is ('a'..='z' | 'A'..='Z')
+    c is ('a'..<='z' | 'A'..<='Z')
   } else {
     alpha_table.find(c.to_int()) >= 0
   }
@@ -131,7 +131,7 @@ fn py_isalpha_char(c : Char) -> Bool {
 /// Python `ch.isdigit()`.
 fn py_isdigit_char(c : Char) -> Bool {
   if c.to_int() < 128 {
-    c is ('0'..='9')
+    c is ('0'..<='9')
   } else {
     digit_table.find(c.to_int()) >= 0
   }
@@ -141,7 +141,7 @@ fn py_isdigit_char(c : Char) -> Bool {
 /// Python `ch.isspace()`.
 fn py_isspace_char(c : Char) -> Bool {
   if c.to_int() < 128 {
-    c is (' ' | '\t'..='\r' | '\u{1c}'..='\u{1f}')
+    c is (' ' | '\t'..<='\r' | '\u{1c}'..<='\u{1f}')
   } else {
     space_table.find(c.to_int()) >= 0
   }
@@ -149,10 +149,10 @@ fn py_isspace_char(c : Char) -> Bool {
 
 ///|
 /// The value of a Unicode decimal digit (`str.isdecimal()`), or -1.
-fn py_decimal_value(c : Char) -> Int {
+fn py_decimal_value(c : Char) -> Int32 {
   let ci = c.to_int()
   if ci < 128 {
-    if c is ('0'..='9') {
+    if c is ('0'..<='9') {
       ci - '0'.to_int()
     } else {
       -1
@@ -177,7 +177,7 @@ fn lower_char_simple(c : Char) -> Char {
   if i >= 0 &&
     ci <= lower_runs.ends[i] &&
     (ci - lower_runs.starts[i]) % lower_runs.steps[i] == 0 {
-    Int::unsafe_to_char(ci + lower_runs.deltas[i])
+    Int32::unsafe_to_char(ci + lower_runs.deltas[i])
   } else {
     c
   }
@@ -192,7 +192,7 @@ let case_ignorable_table : RangeTable = parse_ranges(case_ignorable_ranges_src)
 ///|
 /// CPython `handle_capital_sigma`: a cased letter precedes (skipping
 /// case-ignorable characters) and none follows.
-fn final_sigma(chars : Array[Char], i : Int) -> Bool {
+fn final_sigma(chars : Array[Char], i : Int32) -> Bool {
   let ignorable = (c : Char) => case_ignorable_table.find(c.to_int()) >= 0
   let cased = (c : Char) => cased_table.find(c.to_int()) >= 0
   let mut j = i - 1
@@ -216,7 +216,7 @@ fn final_sigma(chars : Array[Char], i : Int) -> Bool {
 fn py_lower(s : String) -> String {
   let mut ascii = true
   for c in s {
-    if c.to_int() >= 128 || c is ('A'..='Z') {
+    if c.to_int() >= 128 || c is ('A'..<='Z') {
       ascii = false
       break
     }
@@ -247,13 +247,13 @@ fn py_isdigit(s : String) -> Bool {
 
 ///|
 /// Python `len(s)`: the number of code points.
-fn py_len(s : String) -> Int {
+fn py_len(s : String) -> Int32 {
   s.char_length()
 }
 
 ///|
 /// Python `s[start:end]` for non-negative indices (clamped), by code point.
-fn py_slice(s : String, start : Int, end? : Int) -> String {
+fn py_slice(s : String, start : Int32, end? : Int32) -> String {
   let n = py_len(s)
   let end = match end {
     Some(e) => if e > n { n } else { e }
@@ -271,7 +271,7 @@ fn py_slice(s : String, start : Int, end? : Int) -> String {
 
 ///|
 /// Python `s.count(c)` for a single character.
-fn py_count(s : String, c : Char) -> Int {
+fn py_count(s : String, c : Char) -> Int32 {
   let mut n = 0
   for x in s {
     if x == c {
@@ -341,7 +341,7 @@ fn digits_value(chars : ArrayView[Char], allow_underscore : Bool) -> Int64? {
 
 ///|
 /// `v * 10 + d`, saturating at `INT_SATURATE`.
-fn sat_push(v : Int64, d : Int) -> Int64 {
+fn sat_push(v : Int64, d : Int32) -> Int64 {
   if v >= (INT_SATURATE - d.to_int64()) / 10L {
     INT_SATURATE
   } else {
@@ -351,7 +351,7 @@ fn sat_push(v : Int64, d : Int) -> Int64 {
 
 ///|
 /// CPython's default `sys.get_int_max_str_digits()`.
-const INT_MAX_STR_DIGITS : Int = 4300
+const INT_MAX_STR_DIGITS : Int32 = 4300
 
 ///|
 /// Python `int(s)` (base 10) for `str` input. Values beyond 10**18 saturate;
@@ -386,7 +386,7 @@ fn py_int(s : String) -> Int64 raise @datetime.DateTimeError {
 }
 
 ///|
-fn to_c_int(v : Int64) -> Int raise @datetime.DateTimeError {
+fn to_c_int(v : Int64) -> Int32 raise @datetime.DateTimeError {
   if v > 2147483647L || v < -2147483648L {
     raise @datetime.OverflowError("Python int too large to convert to C int")
   }

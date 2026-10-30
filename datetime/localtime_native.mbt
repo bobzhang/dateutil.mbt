@@ -1,6 +1,6 @@
 ///|
 #borrow(out)
-extern "c" fn c_localtime(t : Int64, out : FixedArray[Int]) -> Int = "dateutil_localtime"
+extern "c" fn c_localtime(t : Int64, out : FixedArray[Int32]) -> Int32 = "dateutil_localtime"
 
 ///|
 extern "c" fn c_localtime_zone(t : Int64) -> Bytes = "dateutil_localtime_zone"

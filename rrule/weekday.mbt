@@ -22,7 +22,10 @@ pub let weekdays : FixedArray[Weekday] = [mo, tu, we, th, fr, sa, su]
 ///   }
 /// }
 /// ```
-pub fn weekday(wkday : Int, n? : Int) -> Weekday raise @datetime.DateTimeError {
+pub fn weekday(
+  wkday : Int32,
+  n? : Int32,
+) -> Weekday raise @datetime.DateTimeError {
   if n is Some(0) {
     raise @datetime.ValueError("Can't create weekday with n==0")
   }
@@ -45,7 +48,7 @@ pub fn weekday(wkday : Int, n? : Int) -> Weekday raise @datetime.DateTimeError {
 ///   inspect(@rrule.nth(@rrule.th, -2), content="TH(-2)")
 /// }
 /// ```
-pub fn nth(wday : Weekday, n : Int) -> Weekday raise @datetime.DateTimeError {
+pub fn nth(wday : Weekday, n : Int32) -> Weekday raise @datetime.DateTimeError {
   if n == 0 {
     raise @datetime.ValueError("Can't create weekday with n==0")
   }

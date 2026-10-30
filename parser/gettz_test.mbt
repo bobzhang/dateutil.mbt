@@ -68,6 +68,9 @@ test "test_isoparse_prop::test_timespec_auto (gettz zones)" {
       second=rng.next(60),
       microsecond=rng.next(1000000),
     ).with_tzinfo(Some(zones[rng.next(zones.length())]))
-    check(@tz.enfold(dt, fold=rng.next(2)), Int::unsafe_to_char(rng.next(128)))
+    check(
+      @tz.enfold(dt, fold=rng.next(2)),
+      Int32::unsafe_to_char(rng.next(128)),
+    )
   }
 }

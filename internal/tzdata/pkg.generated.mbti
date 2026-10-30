@@ -6,13 +6,13 @@ import {
 }
 
 // Values
-pub fn civil_from_days(Int64) -> (Int64, Int, Int)
+pub fn civil_from_days(Int64) -> (Int64, Int32, Int32)
 
-pub fn civil_from_seconds(Int64) -> (Int64, Int, Int, Int, Int, Int)
+pub fn civil_from_seconds(Int64) -> (Int64, Int32, Int32, Int32, Int32, Int32)
 
-pub fn days_from_civil(Int64, Int, Int) -> Int64
+pub fn days_from_civil(Int64, Int32, Int32) -> Int64
 
-pub fn days_in_month(Int64, Int) -> Int
+pub fn days_in_month(Int64, Int32) -> Int32
 
 pub let default_dst_rules : (Rule, Rule)
 
@@ -30,7 +30,7 @@ pub fn resolve(String?, read_file~ : (String) -> Bytes?, tzdir? : String) -> (Zo
 
 pub let utc : Zone
 
-pub fn weekday_from_days(Int64) -> Int
+pub fn weekday_from_days(Int64) -> Int32
 
 pub fn zone_file_candidates(String, tzdir? : String) -> Array[String]
 
@@ -44,39 +44,39 @@ pub(all) suberror TzdataError {
 // Types and methods
 pub(all) struct DstSpec {
   abbr : String
-  offset : Int
+  offset : Int32
   start : Rule
   end : Rule
 } derive(Eq, @debug.Debug)
 
 pub(all) struct PosixTz {
   std_abbr : String
-  std_offset : Int
+  std_offset : Int32
   dst : DstSpec?
 } derive(Eq, @debug.Debug)
 pub fn PosixTz::lookup(Self, Int64) -> TimeType
 
 pub(all) struct Rule {
   date : RuleDate
-  time : Int
+  time : Int32
 } derive(Eq, @debug.Debug)
 
 pub(all) enum RuleDate {
-  Julian1(Int)
-  Julian0(Int)
-  MonthWeekDay(month~ : Int, week~ : Int, weekday~ : Int)
+  Julian1(Int32)
+  Julian0(Int32)
+  MonthWeekDay(month~ : Int32, week~ : Int32, weekday~ : Int32)
 } derive(Eq, @debug.Debug)
 
 pub(all) struct TimeType {
-  offset : Int
+  offset : Int32
   isdst : Bool
   abbr : String
 } derive(Eq, @debug.Debug)
 
 pub(all) struct Tzif {
-  version : Int
+  version : Int32
   transitions : Array[Int64]
-  type_indices : Array[Int]
+  type_indices : Array[Int32]
   types : Array[TimeType]
   footer_text : String
   footer : PosixTz?

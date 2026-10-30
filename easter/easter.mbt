@@ -14,7 +14,7 @@ pub(all) enum EasterMethod {
 ///|
 /// dateutil's integer method codes: 1 = Julian, 2 = Orthodox, 3 = Western.
 pub fn EasterMethod::from_int(
-  code : Int,
+  code : Int32,
 ) -> EasterMethod raise @datetime.DateTimeError {
   match code {
     1 => Julian
@@ -26,7 +26,7 @@ pub fn EasterMethod::from_int(
 
 ///|
 /// The integer code of a method (inverse of `from_int`).
-pub fn EasterMethod::to_int(self : EasterMethod) -> Int {
+pub fn EasterMethod::to_int(self : EasterMethod) -> Int32 {
   match self {
     Julian => 1
     Orthodox => 2
@@ -36,13 +36,13 @@ pub fn EasterMethod::to_int(self : EasterMethod) -> Int {
 
 ///|
 /// Python floor division `//`.
-fn fdiv(a : Int, b : Int) -> Int {
+fn fdiv(a : Int32, b : Int32) -> Int32 {
   @datetime.floor_div(a, b)
 }
 
 ///|
 /// Python modulo `%`.
-fn fmod(a : Int, b : Int) -> Int {
+fn fmod(a : Int32, b : Int32) -> Int32 {
   @datetime.floor_mod(a, b)
 }
 
@@ -60,8 +60,8 @@ fn fmod(a : Int, b : Int) -> Int {
 /// }
 /// ```
 pub fn easter(
-  year : Int,
-  variant? : EasterMethod = Western,
+  year : Int32,
+  variant~ : EasterMethod = Western,
 ) -> @datetime.Date raise @datetime.DateTimeError {
   // g - Golden year - 1
   // c - Century

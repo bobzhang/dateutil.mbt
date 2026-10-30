@@ -3,13 +3,13 @@
 ///|
 /// Python `datetime(y, m, d, h, mi, s, us)` (naive).
 fn dt(
-  y : Int,
-  m : Int,
-  d : Int,
-  h? : Int = 0,
-  mi? : Int = 0,
-  s? : Int = 0,
-  us? : Int = 0,
+  y : Int32,
+  m : Int32,
+  d : Int32,
+  h~ : Int32 = 0,
+  mi~ : Int32 = 0,
+  s~ : Int32 = 0,
+  us~ : Int32 = 0,
   tz? : @datetime.Tz,
 ) -> @datetime.DateTime raise @datetime.DateTimeError {
   @datetime.DateTime::new(
@@ -28,9 +28,9 @@ fn dt(
 /// Python `date(y, m, d)` as accepted by `rrule` (converted with
 /// `datetime.fromordinal(d.toordinal())`).
 fn date(
-  y : Int,
-  m : Int,
-  d : Int,
+  y : Int32,
+  m : Int32,
+  d : Int32,
 ) -> @datetime.DateTime raise @datetime.DateTimeError {
   @datetime.Date::new(y, m, d).to_datetime()
 }

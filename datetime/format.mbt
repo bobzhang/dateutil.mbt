@@ -21,7 +21,7 @@ let month_names : FixedArray[String] = [
 ]
 
 ///|
-fn space_pad(n : Int, width : Int) -> String {
+fn space_pad(n : Int32, width : Int32) -> String {
   let s = n.to_string()
   if s.length() >= width {
     s
@@ -32,12 +32,12 @@ fn space_pad(n : Int, width : Int) -> String {
 
 ///|
 fn ctime_of(
-  year : Int,
-  month : Int,
-  day : Int,
-  hour : Int,
-  minute : Int,
-  second : Int,
+  year : Int32,
+  month : Int32,
+  day : Int32,
+  hour : Int32,
+  minute : Int32,
+  second : Int32,
 ) -> String {
   let wd = weekday_of(year, month, day)
   "\{day_abbrs[wd]} \{month_abbrs[month]} \{space_pad(day, 2)} \{pad(hour, 2)}:\{pad(minute, 2)}:\{pad(second, 2)} \{pad(year, 4)}"
@@ -52,13 +52,13 @@ fn ctime_of(
 /// only queried when `%z`/`%Z` occur.
 fn strftime_impl(
   fmt : String,
-  year : Int,
-  month : Int,
-  day : Int,
-  hour : Int,
-  minute : Int,
-  second : Int,
-  microsecond : Int,
+  year : Int32,
+  month : Int32,
+  day : Int32,
+  hour : Int32,
+  minute : Int32,
+  second : Int32,
+  microsecond : Int32,
   utcoffset : () -> TimeDelta?,
   tzname : () -> String?,
 ) -> String {
@@ -84,7 +84,7 @@ fn strftime_impl(
         break
       }
     }
-    let num = (v : Int, width : Int) => {
+    let num = (v : Int32, width : Int32) => {
       if nopad {
         v.to_string()
       } else {

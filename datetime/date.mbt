@@ -2,17 +2,17 @@
 /// A calendar date (Python `datetime.date`), proleptic Gregorian,
 /// `MINYEAR <= year <= MAXYEAR`.
 pub struct Date {
-  year : Int
-  month : Int
-  day : Int
+  year : Int32
+  month : Int32
+  day : Int32
 } derive(Eq, Compare, Hash)
 
 ///|
 /// `date(year, month, day)`; raises `ValueError` for out-of-range fields.
 pub fn Date::new(
-  year : Int,
-  month : Int,
-  day : Int,
+  year : Int32,
+  month : Int32,
+  day : Int32,
 ) -> Date raise DateTimeError {
   check_date_fields(year, month, day)
   { year, month, day, }
@@ -20,7 +20,7 @@ pub fn Date::new(
 
 ///|
 /// `date.fromordinal(n)`.
-pub fn Date::from_ordinal(n : Int) -> Date raise DateTimeError {
+pub fn Date::from_ordinal(n : Int32) -> Date raise DateTimeError {
   if n < 1 || n > MAXORDINAL {
     raise ValueError("ordinal must be >= 1")
   }
@@ -31,9 +31,9 @@ pub fn Date::from_ordinal(n : Int) -> Date raise DateTimeError {
 ///|
 /// `date.fromisocalendar(year, week, day)`.
 pub fn Date::from_isocalendar(
-  year : Int,
-  week : Int,
-  day : Int,
+  year : Int32,
+  week : Int32,
+  day : Int32,
 ) -> Date raise DateTimeError {
   if year < MINYEAR || year > MAXYEAR {
     raise ValueError("Year is out of range: \{year}")
@@ -61,7 +61,7 @@ pub fn Date::from_isocalendar(
 }
 
 ///|
-fn iso_week1_monday(year : Int) -> Int {
+fn iso_week1_monday(year : Int32) -> Int32 {
   let firstday = ymd_to_ordinal(year, 1, 1)
   let firstweekday = floor_mod(firstday + 6, 7)
   let week1monday = firstday - firstweekday
@@ -73,7 +73,11 @@ fn iso_week1_monday(year : Int) -> Int {
 }
 
 ///|
-fn iso_calendar_of(year : Int, month : Int, day : Int) -> (Int, Int, Int) {
+fn iso_calendar_of(
+  year : Int32,
+  month : Int32,
+  day : Int32,
+) -> (Int32, Int32, Int32) {
   let mut year = year
   let mut week1monday = iso_week1_monday(year)
   let today = ymd_to_ordinal(year, month, day)
@@ -100,25 +104,25 @@ pub fn Date::today() -> Date {
 }
 
 ///|
-pub fn Date::to_ordinal(self : Date) -> Int {
+pub fn Date::to_ordinal(self : Date) -> Int32 {
   ymd_to_ordinal(self.year, self.month, self.day)
 }
 
 ///|
 /// Monday == 0 ... Sunday == 6.
-pub fn Date::weekday(self : Date) -> Int {
+pub fn Date::weekday(self : Date) -> Int32 {
   floor_mod(self.to_ordinal() + 6, 7)
 }
 
 ///|
 /// Monday == 1 ... Sunday == 7.
-pub fn Date::isoweekday(self : Date) -> Int {
+pub fn Date::isoweekday(self : Date) -> Int32 {
   self.weekday() + 1
 }
 
 ///|
 /// `(iso_year, iso_week, iso_weekday)`.
-pub fn Date::isocalendar(self : Date) -> (Int, Int, Int) {
+pub fn Date::isocalendar(self : Date) -> (Int32, Int32, Int32) {
   iso_calendar_of(self.year, self.month, self.day)
 }
 
@@ -126,9 +130,9 @@ pub fn Date::isocalendar(self : Date) -> (Int, Int, Int) {
 /// `date.replace(...)`.
 pub fn Date::replace(
   self : Date,
-  year? : Int,
-  month? : Int,
-  day? : Int,
+  year? : Int32,
+  month? : Int32,
+  day? : Int32,
 ) -> Date raise DateTimeError {
   Date::new(
     year.unwrap_or(self.year),
@@ -187,18 +191,18 @@ pub fn Date::repr(self : Date) -> String {
 ///|
 /// `time.struct_time`-like broken-down time.
 pub struct TimeTuple {
-  year : Int
-  month : Int
-  day : Int
-  hour : Int
-  minute : Int
-  second : Int
+  year : Int32
+  month : Int32
+  day : Int32
+  hour : Int32
+  minute : Int32
+  second : Int32
   /// Monday == 0
-  weekday : Int
+  weekday : Int32
   /// 1-based day of the year
-  yday : Int
+  yday : Int32
   /// 1, 0 or -1 (unknown)
-  isdst : Int
+  isdst : Int32
 } derive(Eq, Debug)
 
 ///|

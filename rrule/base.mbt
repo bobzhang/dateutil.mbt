@@ -60,7 +60,7 @@ priv struct Base {
   mut cache_complete : Bool
   mut cache_gen : Gen?
   /// Python `_len`: set when a full iteration finishes.
-  mut len : Int?
+  mut len : Int32?
 }
 
 ///|
@@ -177,7 +177,7 @@ fn Base::to_array(
 fn Base::get(
   self : Base,
   raw : () -> Gen,
-  item : Int,
+  item : Int32,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   if self.cache_complete && self.cache is Some(c) {
     py_index(c.length(), item).map(i => c[i])
@@ -202,9 +202,9 @@ fn Base::get(
 fn Base::slice(
   self : Base,
   raw : () -> Gen,
-  start : Int?,
-  stop : Int?,
-  step : Int?,
+  start : Int32?,
+  stop : Int32?,
+  step : Int32?,
 ) -> Array[@datetime.DateTime] raise @datetime.DateTimeError {
   if self.cache_complete && self.cache is Some(c) {
     py_slice(c, start, stop, step)
@@ -290,7 +290,7 @@ fn Base::contains(
 fn Base::count(
   self : Base,
   raw : () -> Gen,
-) -> Int raise @datetime.DateTimeError {
+) -> Int32 raise @datetime.DateTimeError {
   if self.len is None {
     let g = self.iter(raw)
     while g.next() is Some(_) {
@@ -345,7 +345,7 @@ fn Base::xafter(
   self : Base,
   raw : () -> Gen,
   dt : @datetime.DateTime,
-  count : Int?,
+  count : Int32?,
   inc : Bool,
 ) -> Gen {
   let mut g : Gen? = None

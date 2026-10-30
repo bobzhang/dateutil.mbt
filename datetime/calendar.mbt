@@ -5,29 +5,29 @@
 
 ///|
 /// Smallest year number allowed in a `Date` or `DateTime`.
-pub const MINYEAR : Int = 1
+pub const MINYEAR : Int32 = 1
 
 ///|
 /// Largest year number allowed in a `Date` or `DateTime`.
-pub const MAXYEAR : Int = 9999
+pub const MAXYEAR : Int32 = 9999
 
 ///|
 /// Ordinal of 9999-12-31.
-pub const MAXORDINAL : Int = 3652059
+pub const MAXORDINAL : Int32 = 3652059
 
 ///|
-let days_in_month_table : FixedArray[Int] = [
+let days_in_month_table : FixedArray[Int32] = [
   -1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
 ]
 
 ///|
-let days_before_month_table : FixedArray[Int] = [
+let days_before_month_table : FixedArray[Int32] = [
   -1, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334,
 ]
 
 ///|
 /// Floor division (Python `//`).
-pub fn floor_div(a : Int, b : Int) -> Int {
+pub fn floor_div(a : Int32, b : Int32) -> Int32 {
   let q = a / b
   if a % b != 0 && (a < 0) != (b < 0) {
     q - 1
@@ -38,7 +38,7 @@ pub fn floor_div(a : Int, b : Int) -> Int {
 
 ///|
 /// Floor modulo (Python `%`): the result has the sign of `b`.
-pub fn floor_mod(a : Int, b : Int) -> Int {
+pub fn floor_mod(a : Int32, b : Int32) -> Int32 {
   let r = a % b
   if r != 0 && (r < 0) != (b < 0) {
     r + b
@@ -69,13 +69,13 @@ fn floor_mod64(a : Int64, b : Int64) -> Int64 {
 
 ///|
 /// `calendar.isleap(year)`.
-pub fn is_leap(year : Int) -> Bool {
+pub fn is_leap(year : Int32) -> Bool {
   year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 }
 
 ///|
 /// Number of days in `month` of `year` (`month` in 1..=12).
-pub fn days_in_month(year : Int, month : Int) -> Int {
+pub fn days_in_month(year : Int32, month : Int32) -> Int32 {
   if month == 2 && is_leap(year) {
     29
   } else {
@@ -85,7 +85,7 @@ pub fn days_in_month(year : Int, month : Int) -> Int {
 
 ///|
 /// Number of days in `year` (365 or 366).
-pub fn days_in_year(year : Int) -> Int {
+pub fn days_in_year(year : Int32) -> Int32 {
   if is_leap(year) {
     366
   } else {
@@ -96,36 +96,36 @@ pub fn days_in_year(year : Int) -> Int {
 ///|
 /// Number of days before January 1st of `year` (proleptic Gregorian).
 /// Valid for `|year| < 5_000_000` (the result must fit an `Int`).
-pub fn days_before_year(year : Int) -> Int {
+pub fn days_before_year(year : Int32) -> Int32 {
   let y = year - 1
   y * 365 + floor_div(y, 4) - floor_div(y, 100) + floor_div(y, 400)
 }
 
 ///|
 /// Number of days in `year` preceding the first day of `month`.
-pub fn days_before_month(year : Int, month : Int) -> Int {
+pub fn days_before_month(year : Int32, month : Int32) -> Int32 {
   days_before_month_table[month] +
   (if month > 2 && is_leap(year) { 1 } else { 0 })
 }
 
 ///|
 /// Proleptic Gregorian ordinal, where 0001-01-01 is day 1.
-pub fn ymd_to_ordinal(year : Int, month : Int, day : Int) -> Int {
+pub fn ymd_to_ordinal(year : Int32, month : Int32, day : Int32) -> Int32 {
   days_before_year(year) + days_before_month(year, month) + day
 }
 
 ///|
-let di400y : Int = 146097
+let di400y : Int32 = 146097
 
 ///|
-let di100y : Int = 36524
+let di100y : Int32 = 36524
 
 ///|
-let di4y : Int = 1461
+let di4y : Int32 = 1461
 
 ///|
 /// Inverse of `ymd_to_ordinal`: returns `(year, month, day)`.
-pub fn ordinal_to_ymd(ordinal : Int) -> (Int, Int, Int) {
+pub fn ordinal_to_ymd(ordinal : Int32) -> (Int32, Int32, Int32) {
   let n0 = ordinal - 1
   let n400 = floor_div(n0, di400y)
   let n = floor_mod(n0, di400y)
@@ -155,7 +155,7 @@ pub fn ordinal_to_ymd(ordinal : Int) -> (Int, Int, Int) {
 ///|
 /// Day of week for a date, Monday == 0 ... Sunday == 6
 /// (`calendar.weekday`).
-pub fn weekday_of(year : Int, month : Int, day : Int) -> Int {
+pub fn weekday_of(year : Int32, month : Int32, day : Int32) -> Int32 {
   // The Gregorian calendar repeats every 400 years (146097 days, a whole
   // number of weeks), so reduce the year to avoid Int overflow.
   let y = floor_mod(year - 1, 400) + 1
@@ -165,7 +165,10 @@ pub fn weekday_of(year : Int, month : Int, day : Int) -> Int {
 ///|
 /// `calendar.monthrange(year, month)`: weekday of the first day of the
 /// month and number of days in the month.
-pub fn monthrange(year : Int, month : Int) -> (Int, Int) raise DateTimeError {
+pub fn monthrange(
+  year : Int32,
+  month : Int32,
+) -> (Int32, Int32) raise DateTimeError {
   if month < 1 || month > 12 {
     raise ValueError("bad month number \{month}; must be 1-12")
   }
@@ -175,12 +178,12 @@ pub fn monthrange(year : Int, month : Int) -> (Int, Int) raise DateTimeError {
 ///|
 /// `calendar.timegm`: seconds since the epoch for a UTC broken-down time.
 pub fn timegm(
-  year : Int,
-  month : Int,
-  day : Int,
-  hour : Int,
-  minute : Int,
-  second : Int,
+  year : Int32,
+  month : Int32,
+  day : Int32,
+  hour : Int32,
+  minute : Int32,
+  second : Int32,
 ) -> Int64 {
   // Work in Int64 from the start; years are reduced by whole 400-year
   // cycles (146097 days) so the ordinal helper stays in range.
@@ -196,9 +199,9 @@ pub fn timegm(
 
 ///|
 fn check_date_fields(
-  year : Int,
-  month : Int,
-  day : Int,
+  year : Int32,
+  month : Int32,
+  day : Int32,
 ) -> Unit raise DateTimeError {
   if year < MINYEAR || year > MAXYEAR {
     raise ValueError("year \{year} is out of range")
@@ -214,11 +217,11 @@ fn check_date_fields(
 
 ///|
 fn check_time_fields(
-  hour : Int,
-  minute : Int,
-  second : Int,
-  microsecond : Int,
-  fold : Int,
+  hour : Int32,
+  minute : Int32,
+  second : Int32,
+  microsecond : Int32,
+  fold : Int32,
 ) -> Unit raise DateTimeError {
   if hour < 0 || hour > 23 {
     raise ValueError("hour must be in 0..23")

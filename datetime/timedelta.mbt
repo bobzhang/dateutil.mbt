@@ -3,13 +3,13 @@
 /// `-999999999 <= days <= 999999999`, `0 <= seconds < 86400`,
 /// `0 <= microseconds < 1000000`.
 pub struct TimeDelta {
-  days : Int
-  seconds : Int
-  microseconds : Int
+  days : Int32
+  seconds : Int32
+  microseconds : Int32
 } derive(Eq, Compare, Hash)
 
 ///|
-pub let max_timedelta_days : Int = 999999999
+pub let max_timedelta_days : Int32 = 999999999
 
 ///|
 fn TimeDelta::normalize64(
@@ -32,13 +32,13 @@ fn TimeDelta::normalize64(
 /// with integer arguments. Raises `OverflowError` if the result has more
 /// than 999999999 days in magnitude.
 pub fn TimeDelta::try_new(
-  days? : Int = 0,
-  seconds? : Int = 0,
-  microseconds? : Int = 0,
-  milliseconds? : Int = 0,
-  minutes? : Int = 0,
-  hours? : Int = 0,
-  weeks? : Int = 0,
+  days~ : Int32 = 0,
+  seconds~ : Int32 = 0,
+  microseconds~ : Int32 = 0,
+  milliseconds~ : Int32 = 0,
+  minutes~ : Int32 = 0,
+  hours~ : Int32 = 0,
+  weeks~ : Int32 = 0,
 ) -> TimeDelta raise DateTimeError {
   let d = days.to_int64() + weeks.to_int64() * 7L
   let s = seconds.to_int64() +
@@ -57,13 +57,13 @@ pub fn TimeDelta::try_new(
 /// Like `try_new` but aborts on overflow. Use it for literal durations that
 /// are known to be in range.
 pub fn TimeDelta::new(
-  days? : Int = 0,
-  seconds? : Int = 0,
-  microseconds? : Int = 0,
-  milliseconds? : Int = 0,
-  minutes? : Int = 0,
-  hours? : Int = 0,
-  weeks? : Int = 0,
+  days~ : Int32 = 0,
+  seconds~ : Int32 = 0,
+  microseconds~ : Int32 = 0,
+  milliseconds~ : Int32 = 0,
+  minutes~ : Int32 = 0,
+  hours~ : Int32 = 0,
+  weeks~ : Int32 = 0,
 ) -> TimeDelta {
   TimeDelta::try_new(
     days~,
@@ -122,13 +122,13 @@ fn c_round(x : Double) -> Double {
 /// algorithm of CPython's C implementation (`delta_new`), including its
 /// half-to-even rounding of the accumulated sub-microsecond remainder.
 pub fn TimeDelta::from_float(
-  days? : Double = 0.0,
-  seconds? : Double = 0.0,
-  microseconds? : Double = 0.0,
-  milliseconds? : Double = 0.0,
-  minutes? : Double = 0.0,
-  hours? : Double = 0.0,
-  weeks? : Double = 0.0,
+  days~ : Double = 0.0,
+  seconds~ : Double = 0.0,
+  microseconds~ : Double = 0.0,
+  milliseconds~ : Double = 0.0,
+  minutes~ : Double = 0.0,
+  hours~ : Double = 0.0,
+  weeks~ : Double = 0.0,
 ) -> TimeDelta raise DateTimeError {
   let leftover = Ref(0.0)
   let mut x = big(0L)
@@ -254,7 +254,7 @@ pub fn TimeDelta::checked_neg(
 /// Multiply by an integer (`td * n`).
 pub fn TimeDelta::checked_mul(
   self : TimeDelta,
-  n : Int,
+  n : Int32,
 ) -> TimeDelta raise DateTimeError {
   // |days * n| < 2**61, so the products cannot overflow Int64.
   let n = n.to_int64()
@@ -287,7 +287,7 @@ pub fn TimeDelta::mul_float(
 /// `td / n` for an integer `n`, rounding half to even.
 pub fn TimeDelta::div_int(
   self : TimeDelta,
-  n : Int,
+  n : Int32,
 ) -> TimeDelta raise DateTimeError {
   if n == 0 {
     raise ValueError("integer division or modulo by zero")
@@ -300,7 +300,7 @@ pub fn TimeDelta::div_int(
 /// `td // n` for an integer `n` (floor division).
 pub fn TimeDelta::floor_div_int(
   self : TimeDelta,
-  n : Int,
+  n : Int32,
 ) -> TimeDelta raise DateTimeError {
   if n == 0 {
     raise ValueError("integer division or modulo by zero")

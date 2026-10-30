@@ -20,7 +20,7 @@ extern "js" fn js_fs_available() -> Bool =
 /// stored in `msg[0]` and an empty array is returned.
 extern "js" fn js_read_file(
   path : String,
-  status : FixedArray[Int],
+  status : FixedArray[Int32],
   msg : FixedArray[String],
 ) -> Bytes =
   #|(path, status, msg) => {

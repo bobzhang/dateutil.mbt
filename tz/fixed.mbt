@@ -153,7 +153,7 @@ pub fn tzoffset_delta(
 /// ```
 pub fn tzoffset(
   name : String?,
-  seconds : Int,
+  seconds : Int32,
 ) -> @datetime.Tz raise @datetime.DateTimeError {
   tzoffset_delta(name, @datetime.TimeDelta::try_new(seconds~))
 }

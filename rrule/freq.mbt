@@ -13,7 +13,7 @@ pub(all) enum Freq {
 
 ///|
 /// The Python integer value (`YEARLY == 0` .. `SECONDLY == 6`).
-pub fn Freq::to_int(self : Freq) -> Int {
+pub fn Freq::to_int(self : Freq) -> Int32 {
   match self {
     Yearly => 0
     Monthly => 1
@@ -27,7 +27,7 @@ pub fn Freq::to_int(self : Freq) -> Int {
 
 ///|
 /// Inverse of `to_int`; raises `ValueError` outside `0..=6`.
-pub fn Freq::from_int(i : Int) -> Freq raise @datetime.DateTimeError {
+pub fn Freq::from_int(i : Int32) -> Freq raise @datetime.DateTimeError {
   match i {
     0 => Yearly
     1 => Monthly

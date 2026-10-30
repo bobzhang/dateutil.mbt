@@ -2,13 +2,13 @@
 /// A weekday with an optional occurrence count, e.g. `MO`, `FR(+2)`,
 /// `SU(-1)` (dateutil's `_common.weekday`). `weekday` is 0 (Monday) .. 6.
 pub struct Weekday {
-  weekday : Int
-  n : Int?
+  weekday : Int32
+  n : Int32?
 } derive(Eq, Hash)
 
 ///|
 /// Create a weekday; `weekday` must be in `0..=6`.
-pub fn Weekday::new(weekday : Int, n? : Int) -> Weekday {
+pub fn Weekday::new(weekday : Int32, n? : Int32) -> Weekday {
   if weekday < 0 || weekday > 6 {
     abort("weekday must be in 0..=6, got \{weekday}")
   }
@@ -17,7 +17,7 @@ pub fn Weekday::new(weekday : Int, n? : Int) -> Weekday {
 
 ///|
 /// Python `weekday.__call__(n)`: the same weekday with occurrence `n`.
-pub fn Weekday::nth(self : Weekday, n : Int?) -> Weekday {
+pub fn Weekday::nth(self : Weekday, n : Int32?) -> Weekday {
   if n == self.n {
     self
   } else {

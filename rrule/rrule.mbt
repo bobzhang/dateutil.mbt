@@ -8,24 +8,24 @@ pub struct Rrule {
   priv dtstart : @datetime.DateTime
   priv tzinfo : @datetime.Tz?
   priv freq : Freq
-  priv interval : Int
-  priv count : Int?
+  priv interval : Int32
+  priv count : Int32?
   priv until : @datetime.DateTime?
-  priv wkst : Int
-  priv bysetpos : Array[Int]?
-  priv bymonth : Array[Int]?
-  priv byyearday : Array[Int]?
-  priv byeaster : Array[Int]?
-  priv bymonthday : Array[Int]
-  priv bynmonthday : Array[Int]
-  priv byweekno : Array[Int]?
-  priv byweekday : Array[Int]?
-  priv bynweekday : Array[(Int, Int)]?
-  priv byhour : Array[Int]?
-  priv byminute : Array[Int]?
-  priv bysecond : Array[Int]?
+  priv wkst : Int32
+  priv bysetpos : Array[Int32]?
+  priv bymonth : Array[Int32]?
+  priv byyearday : Array[Int32]?
+  priv byeaster : Array[Int32]?
+  priv bymonthday : Array[Int32]
+  priv bynmonthday : Array[Int32]
+  priv byweekno : Array[Int32]?
+  priv byweekday : Array[Int32]?
+  priv bynweekday : Array[(Int32, Int32)]?
+  priv byhour : Array[Int32]?
+  priv byminute : Array[Int32]?
+  priv bysecond : Array[Int32]?
   /// For `freq < Hourly`: sorted `(h, m, s)` triples (Python `_timeset`).
-  priv timeset : Array[(Int, Int, Int)]
+  priv timeset : Array[(Int32, Int32, Int32)]
   priv orig : OriginalRule
   priv tables : Tables
 }
@@ -35,16 +35,16 @@ pub struct Rrule {
 /// and `replace`. `None` both for "not given" and for the `None` marker
 /// Python stores for values derived from `dtstart`.
 priv struct OriginalRule {
-  bysetpos : Array[Int]?
-  bymonth : Array[Int]?
-  bymonthday : Array[Int]?
-  byyearday : Array[Int]?
-  byeaster : Array[Int]?
-  byweekno : Array[Int]?
+  bysetpos : Array[Int32]?
+  bymonth : Array[Int32]?
+  bymonthday : Array[Int32]?
+  byyearday : Array[Int32]?
+  byeaster : Array[Int32]?
+  byweekno : Array[Int32]?
   byweekday : Array[Weekday]?
-  byhour : Array[Int]?
-  byminute : Array[Int]?
-  bysecond : Array[Int]?
+  byhour : Array[Int32]?
+  byminute : Array[Int32]?
+  bysecond : Array[Int32]?
 }
 
 ///|
@@ -61,7 +61,11 @@ priv struct Tables {
 }
 
 ///|
-fn table(xs : Array[Int]?, size : Int, offset? : Int = 0) -> FixedArray[Bool] {
+fn table(
+  xs : Array[Int32]?,
+  size : Int32,
+  offset~ : Int32 = 0,
+) -> FixedArray[Bool] {
   let t = FixedArray::make(size, false)
   if xs is Some(xs) {
     for x in xs {
@@ -75,7 +79,7 @@ fn table(xs : Array[Int]?, size : Int, offset? : Int = 0) -> FixedArray[Bool] {
 }
 
 ///|
-fn in_table(t : FixedArray[Bool], i : Int) -> Bool {
+fn in_table(t : FixedArray[Bool], i : Int32) -> Bool {
   i >= 0 && i < t.length() && t[i]
 }
 
@@ -83,11 +87,11 @@ fn in_table(t : FixedArray[Bool], i : Int) -> Bool {
 /// Python `__construct_byset`: keep the `BYXXX` values reachable from
 /// `start` stepping by `interval` modulo `base`.
 fn construct_byset(
-  interval : Int,
-  start : Int,
-  byxxx : Array[Int],
-  base : Int,
-) -> Array[Int] raise @datetime.DateTimeError {
+  interval : Int32,
+  start : Int32,
+  byxxx : Array[Int32],
+  base : Int32,
+) -> Array[Int32] raise @datetime.DateTimeError {
   let cset = []
   let i_gcd = gcd(interval, base)
   for num in byxxx {
@@ -103,7 +107,11 @@ fn construct_byset(
 
 ///|
 /// Python `datetime.time(h, m, s)` range validation.
-fn check_time(h : Int, m : Int, s : Int) -> Unit raise @datetime.DateTimeError {
+fn check_time(
+  h : Int32,
+  m : Int32,
+  s : Int32,
+) -> Unit raise @datetime.DateTimeError {
   if h < 0 || h > 23 {
     raise @datetime.ValueError("hour must be in 0..23")
   }
@@ -159,21 +167,21 @@ fn check_time(h : Int, m : Int, s : Int) -> Unit raise @datetime.DateTimeError {
 pub fn Rrule::new(
   freq : Freq,
   dtstart? : @datetime.DateTime,
-  interval? : Int = 1,
+  interval~ : Int32 = 1,
   wkst? : Weekday,
-  count? : Int,
+  count? : Int32,
   until? : @datetime.DateTime,
-  bysetpos? : Array[Int],
-  bymonth? : Array[Int],
-  bymonthday? : Array[Int],
-  byyearday? : Array[Int],
-  byeaster? : Array[Int],
-  byweekno? : Array[Int],
+  bysetpos? : Array[Int32],
+  bymonth? : Array[Int32],
+  bymonthday? : Array[Int32],
+  byyearday? : Array[Int32],
+  byeaster? : Array[Int32],
+  byweekno? : Array[Int32],
   byweekday? : Array[Weekday],
-  byhour? : Array[Int],
-  byminute? : Array[Int],
-  bysecond? : Array[Int],
-  cache? : Bool = false,
+  byhour? : Array[Int32],
+  byminute? : Array[Int32],
+  bysecond? : Array[Int32],
+  cache~ : Bool = false,
 ) -> Rrule raise @datetime.DateTimeError {
   let base = Base::new(cache)
   let dtstart = match dtstart {
@@ -424,7 +432,7 @@ pub fn Rrule::new(
 }
 
 ///|
-fn dedup_pairs(xs : Array[(Int, Int)]) -> Array[(Int, Int)] {
+fn dedup_pairs(xs : Array[(Int32, Int32)]) -> Array[(Int32, Int32)] {
   let out = []
   for i, x in xs {
     if i == 0 || xs[i - 1] != x {
@@ -443,20 +451,20 @@ pub fn Rrule::replace(
   self : Rrule,
   freq? : Freq,
   dtstart? : @datetime.DateTime,
-  interval? : Int,
+  interval? : Int32,
   wkst? : Weekday,
-  count? : Int?,
+  count? : Int32?,
   until? : @datetime.DateTime?,
-  bysetpos? : Array[Int]?,
-  bymonth? : Array[Int]?,
-  bymonthday? : Array[Int]?,
-  byyearday? : Array[Int]?,
-  byeaster? : Array[Int]?,
-  byweekno? : Array[Int]?,
+  bysetpos? : Array[Int32]?,
+  bymonth? : Array[Int32]?,
+  bymonthday? : Array[Int32]?,
+  byyearday? : Array[Int32]?,
+  byeaster? : Array[Int32]?,
+  byweekno? : Array[Int32]?,
   byweekday? : Array[Weekday]?,
-  byhour? : Array[Int]?,
-  byminute? : Array[Int]?,
-  bysecond? : Array[Int]?,
+  byhour? : Array[Int32]?,
+  byminute? : Array[Int32]?,
+  bysecond? : Array[Int32]?,
   cache? : Bool,
 ) -> Rrule raise @datetime.DateTimeError {
   let o = self.orig
