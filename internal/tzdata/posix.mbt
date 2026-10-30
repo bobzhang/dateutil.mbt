@@ -106,7 +106,7 @@ fn Cursor::abbr(self : Cursor) -> String? {
     if end - inner < 3 || !self.eat('>') {
       return None
     }
-    Some(self.s.view(start_offset=inner, end_offset=end).to_owned())
+    Some(self.s[inner:end].to_owned())
   } else {
     while is_alpha(self.peek()) {
       self.pos += 1
@@ -114,7 +114,7 @@ fn Cursor::abbr(self : Cursor) -> String? {
     if self.pos - start < 3 {
       return None
     }
-    Some(self.s.view(start_offset=start, end_offset=self.pos).to_owned())
+    Some(self.s[start:self.pos].to_owned())
   }
 }
 

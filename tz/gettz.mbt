@@ -64,11 +64,7 @@ fn gettz_lookup(name : String?) -> (@datetime.Tz?, Bool) raise {
       (Some(tzlocal()), true)
     }
     Some(name) => {
-      let name = if name.has_prefix(":") {
-        name.view(start_offset=1).to_owned()
-      } else {
-        name
-      }
+      let name = if name.has_prefix(":") { name[1:].to_owned() } else { name }
       if is_abs_path(name) {
         if is_file(name) {
           return (Some(tzfile(name)), false)

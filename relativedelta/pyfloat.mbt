@@ -98,7 +98,7 @@ fn py_format_plus_g(x : Double) -> String {
     if qs.length() > precision {
       // Rounding carried into a new leading digit (e.g. 999999.5 -> 1e+06).
       exp10 += 1
-      digits = qs.view(end_offset=precision).to_owned()
+      digits = qs[:precision].to_owned()
     } else {
       digits = qs
     }
@@ -107,25 +107,21 @@ fn py_format_plus_g(x : Double) -> String {
   while end > 1 && digits[end - 1] == '0' {
     end -= 1
   }
-  let digits = digits.view(end_offset=end).to_owned()
+  let digits = digits[:end].to_owned()
   let body = if exp10 >= -4 && exp10 < precision {
     if exp10 >= 0 {
       let int_len = exp10 + 1
       if digits.length() <= int_len {
         digits + "0".repeat(int_len - digits.length())
       } else {
-        digits.view(end_offset=int_len).to_owned() +
-        "." +
-        digits.view(start_offset=int_len).to_owned()
+        digits[:int_len].to_owned() + "." + digits[int_len:].to_owned()
       }
     } else {
       "0." + "0".repeat(-exp10 - 1) + digits
     }
   } else {
     let mantissa = if digits.length() > 1 {
-      digits.view(end_offset=1).to_owned() +
-      "." +
-      digits.view(start_offset=1).to_owned()
+      digits[:1].to_owned() + "." + digits[1:].to_owned()
     } else {
       digits
     }

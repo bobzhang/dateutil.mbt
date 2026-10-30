@@ -136,7 +136,7 @@ fn py_slice(s : String, start : Int32, end : Int32) -> String {
   if a >= b {
     ""
   } else {
-    s.view(start_offset=a, end_offset=b).to_owned()
+    s[a:b].to_owned()
   }
 }
 

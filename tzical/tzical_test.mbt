@@ -15,11 +15,7 @@ fn ical_str_dtstart_with_params(name : String, param_str : String) -> String {
     let line = line.to_owned()
     if line.has_prefix("DTSTART") {
       let i = line.find(":").unwrap()
-      line.view(end_offset=i).to_owned() +
-      ";" +
-      param_str +
-      ":" +
-      line.view(start_offset=i + 1).to_owned()
+      line[:i].to_owned() + ";" + param_str + ":" + line[i + 1:].to_owned()
     } else {
       line
     }
@@ -298,6 +294,21 @@ test "tzical: a component rrule that raises counts as no onset" {
         ),
       )
       debug_inspect(d.tzname(), content="Some(\"EST\")")
+    }
+  }
+}
+
+///|
+test "tzical: reject surrogate pairs crossing numeric offset fields" {
+  for offset in ["1😀2", "12😀34", "123😀4"] {
+    for field in ["TZOFFSETFROM", "TZOFFSETTO"] {
+      let source = "BEGIN:VTIMEZONE\nBEGIN:STANDARD\n" + field + ":" + offset
+      try @tzical.TzIcal::from_string(source) catch {
+        @datetime.ValueError(_) => ()
+        e => fail("expected ValueError, got \{e}")
+      } noraise {
+        _ => fail("expected malformed numeric offset to fail")
+      }
     }
   }
 }

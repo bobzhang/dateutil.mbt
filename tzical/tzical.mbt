@@ -278,8 +278,8 @@ fn py_int(s : StringView) -> Int32 raise @datetime.DateTimeError {
     raise bad()
   }
   let (neg, digits) = match t.get_char(0) {
-    Some('+') => (false, t.view(start_offset=1))
-    Some('-') => (true, t.view(start_offset=1))
+    Some('+') => (false, t[1:])
+    Some('-') => (true, t[1:])
     _ => (false, t[:])
   }
   if digits.is_empty() {
@@ -314,19 +314,24 @@ fn parse_offset(s : String) -> Int32 raise @datetime.DateTimeError {
     raise value_error("empty offset")
   }
   let (signal, s) = match s.get_char(0) {
-    Some('+') => (1, s.view(start_offset=1).to_owned())
-    Some('-') => (-1, s.view(start_offset=1).to_owned())
+    Some('+') => (1, s[1:].to_owned())
+    Some('-') => (-1, s[1:].to_owned())
     _ => (1, s)
   }
   let n = s.length()
+  // Length checks bound these raw UTF-16 fields; clamping would discard invalid
+  // surrogate halves and could turn malformed input into a valid number.
   if n == 4 {
-    (py_int(s.view(end_offset=2)) * 3600 + py_int(s.view(start_offset=2)) * 60) *
+    (
+      py_int(s.unsafe_view(start=0, end=2)) * 3600 +
+      py_int(s.unsafe_view(start=2, end=n)) * 60
+    ) *
     signal
   } else if n == 6 {
     (
-      py_int(s.view(end_offset=2)) * 3600 +
-      py_int(s.view(start_offset=2, end_offset=4)) * 60 +
-      py_int(s.view(start_offset=4))
+      py_int(s.unsafe_view(start=0, end=2)) * 3600 +
+      py_int(s.unsafe_view(start=2, end=4)) * 60 +
+      py_int(s.unsafe_view(start=4, end=n))
     ) *
     signal
   } else {
@@ -347,7 +352,7 @@ fn TzIcal::parse_rfc(self : TzIcal, s : String) -> Unit raise {
     if line.is_empty() {
       lines.remove(i) |> ignore
     } else if i > 0 && line.has_prefix(" ") {
-      lines[i - 1] = lines[i - 1] + line.view(start_offset=1).to_owned()
+      lines[i - 1] = lines[i - 1] + line[1:].to_owned()
       lines.remove(i) |> ignore
     } else {
       i += 1
@@ -369,8 +374,8 @@ fn TzIcal::parse_rfc(self : TzIcal, s : String) -> Unit raise {
     guard line.find(":") is Some(colon) else {
       raise value_error("not enough values to unpack (expected 2, got 1)")
     }
-    let name = line.view(end_offset=colon).to_owned()
-    let value = line.view(start_offset=colon + 1).to_owned()
+    let name = line[:colon].to_owned()
+    let value = line[colon + 1:].to_owned()
     let parms = name.split(";").map(p => p.to_owned()).collect()
     let name = ascii_upper(parms[0])
     let parms = parms[1:].to_owned()

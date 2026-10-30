@@ -9,7 +9,7 @@ test "differential: tzfile (embedded TZif data)" {
 ///|
 test "differential: tzstr" {
   check_corpus(tzstr_corpus, key => {
-    let s = key.view(start_offset=2).to_owned()
+    let s = key[2:].to_owned()
     @tz.tzstr(s) catch {
       e => abort("tzstr(\{s}): \{e}")
     }
