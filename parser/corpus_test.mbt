@@ -11,7 +11,7 @@ fn json_str(j : Json) -> String {
 }
 
 ///|
-fn json_int(j : Json) -> Int {
+fn json_int(j : Json) -> Int32 {
   guard j is Number(n, ..) else { abort("expected a JSON number") }
   n.to_int()
 }

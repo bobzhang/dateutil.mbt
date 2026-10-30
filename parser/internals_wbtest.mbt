@@ -1,7 +1,7 @@
 // Ported from dateutil tests/test_internals.py (the `_ymd` smoke test).
 
 ///|
-fn dec(n : Int) -> Dec {
+fn dec(n : Int32) -> Dec {
   { ip: n.to_int64(), frac: "", int_digits: 0, }
 }
 

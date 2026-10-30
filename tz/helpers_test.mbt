@@ -31,14 +31,14 @@ fn zone(name : String) -> @datetime.Tz {
 
 ///|
 fn dt(
-  year : Int,
-  month : Int,
-  day : Int,
-  hour? : Int = 0,
-  minute? : Int = 0,
-  second? : Int = 0,
+  year : Int32,
+  month : Int32,
+  day : Int32,
+  hour~ : Int32 = 0,
+  minute~ : Int32 = 0,
+  second~ : Int32 = 0,
   tz? : @datetime.Tz,
-  fold? : Int = 0,
+  fold~ : Int32 = 0,
 ) -> @datetime.DateTime {
   @datetime.DateTime::new(
     year,
@@ -55,12 +55,12 @@ fn dt(
 }
 
 ///|
-fn hours(h : Int) -> @datetime.TimeDelta {
+fn hours(h : Int32) -> @datetime.TimeDelta {
   @datetime.TimeDelta::new(hours=h)
 }
 
 ///|
-fn seconds(s : Int) -> @datetime.TimeDelta {
+fn seconds(s : Int32) -> @datetime.TimeDelta {
   @datetime.TimeDelta::new(seconds=s)
 }
 
@@ -89,7 +89,7 @@ let edt_tuple : (String?, @datetime.TimeDelta?, @datetime.TimeDelta?) = (
 ///|
 /// Parse `YYYY-MM-DDTHH:MM:SS` (naive).
 fn iso_dt(s : String) -> @datetime.DateTime {
-  let num = (a : Int, b : Int) => {
+  let num = (a : Int32, b : Int32) => {
     let mut v = 0
     for i in a..<b {
       v = v * 10 + (s[i].to_int() - '0'.to_int())
@@ -205,13 +205,13 @@ fn check_corpus(
 ///|
 /// `relativedelta(...)` for tzrange rules.
 fn rd(
-  days? : Int = 0,
-  hours? : Int = 0,
-  seconds? : Int = 0,
-  month? : Int,
-  day? : Int,
+  days~ : Int32 = 0,
+  hours~ : Int32 = 0,
+  seconds~ : Int32 = 0,
+  month? : Int32,
+  day? : Int32,
   weekday? : @datetime.Weekday,
-  hour? : Int,
+  hour? : Int32,
 ) -> @relativedelta.RelativeDelta {
   @relativedelta.RelativeDelta::new(
     days~,

@@ -12,7 +12,7 @@ priv enum LexState {
 ///|
 priv struct TimeLex {
   chars : Array[Char]
-  mut pos : Int
+  mut pos : Int32
   charstack : Array[Char]
   tokenstack : Array[String]
   mut eof : Bool

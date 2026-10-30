@@ -4,7 +4,7 @@
 ///|
 /// Exact decimal expansion of a finite, non-zero `x`:
 /// `|x| == n * 10^e` with `n` a positive integer.
-fn exact_decimal(x : Double) -> (@bigint.BigInt, Int) {
+fn exact_decimal(x : Double) -> (@bigint.BigInt, Int32) {
   let bits = x.reinterpret_as_uint64()
   let exp_bits = ((bits >> 52) & 0x7FFUL).to_int()
   let frac = bits & ((1UL << 52) - 1UL)
@@ -28,19 +28,19 @@ fn exact_decimal(x : Double) -> (@bigint.BigInt, Int) {
 }
 
 ///|
-fn pow5(k : Int) -> @bigint.BigInt {
+fn pow5(k : Int32) -> @bigint.BigInt {
   @bigint.BigInt::from_int(5).pow(@bigint.BigInt::from_int(k))
 }
 
 ///|
-fn pow10(k : Int) -> @bigint.BigInt {
+fn pow10(k : Int32) -> @bigint.BigInt {
   @bigint.BigInt::from_int(10).pow(@bigint.BigInt::from_int(k))
 }
 
 ///|
 /// Divide the non-negative integer `n` by `10^k`, rounding half to even
 /// (exactly).
-fn div_pow10_half_even(n : @bigint.BigInt, k : Int) -> @bigint.BigInt {
+fn div_pow10_half_even(n : @bigint.BigInt, k : Int32) -> @bigint.BigInt {
   if k <= 0 {
     return n
   }
@@ -59,7 +59,7 @@ fn div_pow10_half_even(n : @bigint.BigInt, k : Int) -> @bigint.BigInt {
 ///|
 /// Python `round(x, ndigits)` for a float: correctly rounded (half to
 /// even on the exact binary value), converted back to the nearest double.
-fn py_round_ndigits(x : Double, ndigits : Int) -> Double {
+fn py_round_ndigits(x : Double, ndigits : Int32) -> Double {
   if x == 0.0 || x.is_nan() || x.is_inf() {
     return x
   }
@@ -98,7 +98,7 @@ fn py_format_plus_g(x : Double) -> String {
     if qs.length() > precision {
       // Rounding carried into a new leading digit (e.g. 999999.5 -> 1e+06).
       exp10 += 1
-      digits = qs.view(end_offset=precision).to_owned()
+      digits = qs[:precision].to_owned()
     } else {
       digits = qs
     }
@@ -107,25 +107,21 @@ fn py_format_plus_g(x : Double) -> String {
   while end > 1 && digits[end - 1] == '0' {
     end -= 1
   }
-  let digits = digits.view(end_offset=end).to_owned()
+  let digits = digits[:end].to_owned()
   let body = if exp10 >= -4 && exp10 < precision {
     if exp10 >= 0 {
       let int_len = exp10 + 1
       if digits.length() <= int_len {
         digits + "0".repeat(int_len - digits.length())
       } else {
-        digits.view(end_offset=int_len).to_owned() +
-        "." +
-        digits.view(start_offset=int_len).to_owned()
+        digits[:int_len].to_owned() + "." + digits[int_len:].to_owned()
       }
     } else {
       "0." + "0".repeat(-exp10 - 1) + digits
     }
   } else {
     let mantissa = if digits.length() > 1 {
-      digits.view(end_offset=1).to_owned() +
-      "." +
-      digits.view(start_offset=1).to_owned()
+      digits[:1].to_owned() + "." + digits[1:].to_owned()
     } else {
       digits
     }
@@ -193,7 +189,7 @@ fn py_int64(x : Double) -> Int64 raise @datetime.DateTimeError {
 
 ///|
 /// Narrow an `Int64` to `Int`, raising `OverflowError` if it does not fit.
-fn int64_to_int(x : Int64) -> Int raise @datetime.DateTimeError {
+fn int64_to_int(x : Int64) -> Int32 raise @datetime.DateTimeError {
   if x > 2147483647L || x < -2147483648L {
     raise @datetime.OverflowError("Python int too large to convert to C int")
   }

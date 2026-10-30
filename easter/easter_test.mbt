@@ -2,7 +2,7 @@
 
 ///|
 test "easter western" {
-  let dates : Array[(Int, Int, Int)] = [
+  let dates : Array[(Int32, Int32, Int32)] = [
     (1990, 4, 15),
     (1991, 3, 31),
     (1992, 4, 19),
@@ -76,7 +76,7 @@ test "easter western" {
 
 ///|
 test "easter orthodox" {
-  let dates : Array[(Int, Int, Int)] = [
+  let dates : Array[(Int32, Int32, Int32)] = [
     (1990, 4, 15),
     (1991, 4, 7),
     (1992, 4, 26),
@@ -150,7 +150,7 @@ test "easter orthodox" {
 
 ///|
 test "easter julian" {
-  let dates : Array[(Int, Int, Int)] = [
+  let dates : Array[(Int32, Int32, Int32)] = [
     (326, 4, 3),
     (375, 4, 5),
     (492, 4, 5),
@@ -212,7 +212,7 @@ test "easter bad method" {
 ///|
 test "easter differential sweep" {
   // (year, western, orthodox, julian) as ordinals, generated from dateutil
-  let cases : Array[(Int, Int, Int, Int)] = [
+  let cases : Array[(Int32, Int32, Int32, Int32)] = [
     (1583, 577913, 577913, 577903),
     (1590, 580482, 580489, 580479),
     (1597, 583023, 583023, 583013),

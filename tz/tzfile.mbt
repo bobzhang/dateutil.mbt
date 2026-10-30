@@ -5,9 +5,9 @@
 /// dateutil fills it in while walking the transitions, and the objects are
 /// shared between `ttinfo_list` and `trans_idx`.
 priv struct TtInfo {
-  offset : Int
+  offset : Int32
   delta : @datetime.TimeDelta
-  isdst : Int
+  isdst : Int32
   abbr : String
   isstd : Bool
   isgmt : Bool
@@ -40,13 +40,13 @@ priv struct TzFileData {
 /// A cursor over the TZif bytes, mirroring the reads `_read_tzfile` makes.
 priv struct ByteReader {
   data : BytesView
-  mut pos : Int
+  mut pos : Int32
 }
 
 ///|
 fn ByteReader::take(
   self : ByteReader,
-  n : Int,
+  n : Int32,
 ) -> BytesView raise @datetime.DateTimeError {
   if n < 0 || n > self.data.length() - self.pos {
     raise @datetime.ValueError("tzfile: unexpected end of data")
@@ -58,7 +58,9 @@ fn ByteReader::take(
 
 ///|
 /// A big-endian signed 32-bit integer (`struct` format `>l`).
-fn ByteReader::read_i32(self : ByteReader) -> Int raise @datetime.DateTimeError {
+fn ByteReader::read_i32(
+  self : ByteReader,
+) -> Int32 raise @datetime.DateTimeError {
   let b = self.take(4)
   (b[0].to_int() << 24) |
   (b[1].to_int() << 16) |
@@ -68,7 +70,9 @@ fn ByteReader::read_i32(self : ByteReader) -> Int raise @datetime.DateTimeError 
 
 ///|
 /// A signed byte (`struct` format `b`).
-fn ByteReader::read_i8(self : ByteReader) -> Int raise @datetime.DateTimeError {
+fn ByteReader::read_i8(
+  self : ByteReader,
+) -> Int32 raise @datetime.DateTimeError {
   let v = self.take(1)[0].to_int()
   if v >= 128 {
     v - 256
@@ -79,14 +83,16 @@ fn ByteReader::read_i8(self : ByteReader) -> Int raise @datetime.DateTimeError {
 
 ///|
 /// An unsigned byte (`struct` format `B`).
-fn ByteReader::read_u8(self : ByteReader) -> Int raise @datetime.DateTimeError {
+fn ByteReader::read_u8(
+  self : ByteReader,
+) -> Int32 raise @datetime.DateTimeError {
   self.take(1)[0].to_int()
 }
 
 ///|
 /// Python `s.find(sub, start)` for a single character, with Python's
 /// handling of negative and out-of-range `start`.
-fn py_find_char(s : String, c : Char, start : Int) -> Int {
+fn py_find_char(s : String, c : Char, start : Int32) -> Int32 {
   let len = s.length()
   let start = if start < 0 {
     let st = start + len
@@ -109,9 +115,9 @@ fn py_find_char(s : String, c : Char, start : Int) -> Int {
 ///|
 /// Python `s[start:end]` with Python's clamping of negative and
 /// out-of-range indices.
-fn py_slice(s : String, start : Int, end : Int) -> String {
+fn py_slice(s : String, start : Int32, end : Int32) -> String {
   let len = s.length()
-  fn norm(i : Int) -> Int {
+  fn norm(i : Int32) -> Int32 {
     if i < 0 {
       let j = i + len
       if j < 0 {
@@ -130,7 +136,7 @@ fn py_slice(s : String, start : Int, end : Int) -> String {
   if a >= b {
     ""
   } else {
-    s.view(start_offset=a, end_offset=b).to_owned()
+    s[a:b].to_owned()
   }
 }
 
@@ -140,7 +146,7 @@ fn py_slice(s : String, start : Int, end : Int) -> String {
 /// Returns the data and the number of bytes consumed.
 fn read_tzfile(
   data : BytesView,
-) -> (TzFileData, Int) raise @datetime.DateTimeError {
+) -> (TzFileData, Int32) raise @datetime.DateTimeError {
   let r = ByteReader::{ data, pos: 0, }
   // magic
   let magic = if data.length() >= 4 { data[0:4] } else { data[:] }
@@ -168,11 +174,11 @@ fn read_tzfile(
   for _ in 0..<timecnt {
     trans_list_utc.push(r.read_i32().to_int64())
   }
-  let trans_idx_raw : Array[Int] = []
+  let trans_idx_raw : Array[Int32] = []
   for _ in 0..<timecnt {
     trans_idx_raw.push(r.read_u8())
   }
-  let ttinfo_raw : Array[(Int, Int, Int)] = []
+  let ttinfo_raw : Array[(Int32, Int32, Int32)] = []
   for _ in 0..<typecnt {
     let gmtoff = r.read_i32()
     let isdst = r.read_i8()
@@ -187,11 +193,11 @@ fn read_tzfile(
     raise @datetime.ValueError("tzfile: unexpected end of data")
   }
   ignore(r.take(leapcnt * 8))
-  let isstd : Array[Int] = []
+  let isstd : Array[Int32] = []
   for _ in 0..<ttisstdcnt {
     isstd.push(r.read_i8())
   }
-  let isgmt : Array[Int] = []
+  let isgmt : Array[Int32] = []
   for _ in 0..<ttisgmtcnt {
     isgmt.push(r.read_i8())
   }
@@ -254,10 +260,10 @@ fn read_tzfile(
     }
   }
   // Now fix transition times to become relative to wall time.
-  let mut lastdst : Int? = None
+  let mut lastdst : Int32? = None
   let mut lastoffset = 0
-  let mut lastdstoffset : Int? = None
-  let mut lastbaseoffset : Int? = None
+  let mut lastdstoffset : Int32? = None
+  let mut lastbaseoffset : Int32? = None
   let trans_list : Array[Int64] = []
   for i, tti in trans_idx {
     let offset = tti.offset
@@ -345,8 +351,8 @@ priv struct TzFile {
 fn TzFile::find_last_transition(
   self : TzFile,
   dt : @datetime.DateTime,
-  in_utc? : Bool = false,
-) -> Int? {
+  in_utc~ : Bool = false,
+) -> Int32? {
   let list = if in_utc {
     self.data.trans_list_utc
   } else {
@@ -373,7 +379,7 @@ fn TzFile::find_last_transition(
 ///|
 /// dateutil `_get_ttinfo`: after the last transition (and with no
 /// transitions) the standard type is used; before the first, `before`.
-fn TzFile::get_ttinfo(self : TzFile, idx : Int?) -> TtInfo? {
+fn TzFile::get_ttinfo(self : TzFile, idx : Int32?) -> TtInfo? {
   match idx {
     None => self.data.ttinfo_std
     Some(i) =>
@@ -392,7 +398,7 @@ fn TzFile::get_ttinfo(self : TzFile, idx : Int?) -> TtInfo? {
 fn TzFile::is_ambiguous_idx(
   self : TzFile,
   dt : @datetime.DateTime,
-  idx : Int?,
+  idx : Int32?,
 ) -> Bool {
   let idx = match idx {
     None => self.find_last_transition(dt)
@@ -419,7 +425,7 @@ fn TzFile::is_ambiguous_idx(
 fn TzFile::resolve_ambiguous_time(
   self : TzFile,
   dt : @datetime.DateTime,
-) -> Int? {
+) -> Int32? {
   let idx = self.find_last_transition(dt)
   match idx {
     None | Some(0) => idx
@@ -526,7 +532,7 @@ fn TzFile::new(data : TzFileData, filename : String) -> TzFile {
 /// ```
 pub fn tzfile_from_bytes(
   data : BytesView,
-  filename? : String = "<bytes>",
+  filename~ : String = "<bytes>",
 ) -> @datetime.Tz raise @datetime.DateTimeError {
   let (parsed, _) = read_tzfile(data)
   @datetime.Tz::new(TzFile::new(parsed, filename))

@@ -204,7 +204,7 @@ pub fn RelativeDelta::to_bool(self : RelativeDelta) -> Bool {
 ///|
 /// Weekday occurrence as compared by `__eq__`: `None`, `0` and `1` are all
 /// "the next occurrence".
-fn weekday_key(w : @datetime.Weekday?) -> (Int, Int)? {
+fn weekday_key(w : @datetime.Weekday?) -> (Int32, Int32)? {
   match w {
     None => None
     Some({ weekday, n: None | Some(0) | Some(1), }) => Some((weekday, 1))
@@ -270,7 +270,7 @@ pub fn RelativeDelta::repr(self : RelativeDelta) -> String {
     }
   }
 
-  fn abs_(name : String, value : Int?) {
+  fn abs_(name : String, value : Int32?) {
     if value is Some(v) {
       parts.push("\{name}=\{v}")
     }

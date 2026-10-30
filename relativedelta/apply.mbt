@@ -73,7 +73,7 @@ fn py_timedelta(
 fn RelativeDelta::apply_datetime(
   self : RelativeDelta,
   other : @datetime.DateTime,
-  sign? : Int = 1,
+  sign~ : Int32 = 1,
 ) -> @datetime.DateTime raise @datetime.DateTimeError {
   let s = sign.to_double()
   // `self.year or other.year`: 0 counts as unset.
@@ -221,7 +221,7 @@ pub fn RelativeDelta::sub_from_date(
 
 ///|
 /// Python `_set_months`.
-fn split_months(months : Int) -> (Int, Int) {
+fn split_months(months : Int32) -> (Int32, Int32) {
   if months.abs() > 11 {
     let s = if months < 0 { -1 } else { 1 }
     let m = months * s
@@ -250,7 +250,7 @@ pub fn RelativeDelta::between(
   dt1 : @datetime.DateTime,
   dt2 : @datetime.DateTime,
 ) -> RelativeDelta raise @datetime.DateTimeError {
-  fn months_only(months : Int) -> RelativeDelta {
+  fn months_only(months : Int32) -> RelativeDelta {
     let (years, months) = split_months(months)
     {
       years,

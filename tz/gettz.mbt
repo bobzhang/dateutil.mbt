@@ -64,11 +64,7 @@ fn gettz_lookup(name : String?) -> (@datetime.Tz?, Bool) raise {
       (Some(tzlocal()), true)
     }
     Some(name) => {
-      let name = if name.has_prefix(":") {
-        name.view(start_offset=1).to_owned()
-      } else {
-        name
-      }
+      let name = if name.has_prefix(":") { name[1:].to_owned() } else { name }
       if is_abs_path(name) {
         if is_file(name) {
           return (Some(tzfile(name)), false)
@@ -95,7 +91,7 @@ fn gettz_lookup(name : String?) -> (@datetime.Tz?, Bool) raise {
       // here.)
       for c in name {
         // name is not a tzstr unless it has at least one offset
-        if c is ('0'..='9') {
+        if c is ('0'..<='9') {
           let tz = tzstr(name) catch {
             @datetime.ValueError(_) => return (None, false)
             e => raise e
@@ -137,7 +133,7 @@ let gettz_instances : Map[String, @datetime.Tz] = Map([])
 let gettz_strong_cache : Array[String] = []
 
 ///|
-let gettz_strong_cache_size : Ref[Int] = Ref(8)
+let gettz_strong_cache_size : Ref[Int32] = Ref(8)
 
 ///|
 fn gettz_touch_strong(name : String) -> Unit {
@@ -222,7 +218,7 @@ pub fn gettz_cache_clear() -> Unit {
 ///   assert_true(@tz.gettz(name="UTC") is Some(_))
 /// }
 /// ```
-pub fn gettz_set_cache_size(size : Int) -> Unit raise @datetime.DateTimeError {
+pub fn gettz_set_cache_size(size : Int32) -> Unit raise @datetime.DateTimeError {
   if size < 0 {
     // Python: KeyError('dictionary is empty') from popitem()
     raise @datetime.ValueError(

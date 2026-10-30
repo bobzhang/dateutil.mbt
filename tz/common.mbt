@@ -3,7 +3,7 @@
 
 ///|
 /// `enfold(dt, fold)`: set the PEP 495 fold attribute (0 or 1).
-pub fn enfold(dt : @datetime.DateTime, fold? : Int = 1) -> @datetime.DateTime {
+pub fn enfold(dt : @datetime.DateTime, fold~ : Int32 = 1) -> @datetime.DateTime {
   dt.with_fold(fold)
 }
 
@@ -27,7 +27,7 @@ pub fn tzinfo_fold_status(
   tz : @datetime.Tz,
   dt_utc : @datetime.DateTime,
   dt_wall : @datetime.DateTime,
-) -> Int raise @datetime.DateTimeError {
+) -> Int32 raise @datetime.DateTimeError {
   let ambiguous = match tz.is_ambiguous(dt_wall) {
     Some(b) => b
     None => tzinfo_is_ambiguous(tz, dt_wall)

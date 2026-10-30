@@ -34,7 +34,7 @@ test "TZTest.testIsStd" {
 ///|
 fn rule_repr(r : TzRule) -> String {
   let parts : Array[String] = []
-  let add = (name : String, v : Int?) => {
+  let add = (name : String, v : Int32?) => {
     if v is Some(x) {
       parts.push("\{name}=\{x}")
     }

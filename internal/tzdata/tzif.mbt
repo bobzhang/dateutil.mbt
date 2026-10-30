@@ -7,7 +7,7 @@
 /// A local time type: offset in seconds *east* of UTC, DST flag and
 /// abbreviation.
 pub(all) struct TimeType {
-  offset : Int
+  offset : Int32
   isdst : Bool
   abbr : String
 } derive(Eq, Debug)
@@ -16,11 +16,11 @@ pub(all) struct TimeType {
 /// Decoded TZif data.
 pub(all) struct Tzif {
   /// 1 for version-1 files (`'\0'`), otherwise 2, 3, 4, ...
-  version : Int
+  version : Int32
   /// Transition times (seconds since the epoch, UTC), ascending.
   transitions : Array[Int64]
   /// For each transition, the index into `types` that applies from it.
-  type_indices : Array[Int]
+  type_indices : Array[Int32]
   types : Array[TimeType]
   /// Footer TZ string (version 2+; empty if absent).
   footer_text : String
@@ -37,18 +37,18 @@ pub(all) suberror TzdataError {
 ///|
 priv struct Reader {
   data : BytesView
-  mut pos : Int
+  mut pos : Int32
 }
 
 ///|
-fn Reader::need(self : Reader, n : Int) -> Unit raise TzdataError {
+fn Reader::need(self : Reader, n : Int32) -> Unit raise TzdataError {
   if n < 0 || n > self.data.length() - self.pos {
     raise InvalidTzif("unexpected end of data")
   }
 }
 
 ///|
-fn Reader::u8(self : Reader) -> Int raise TzdataError {
+fn Reader::u8(self : Reader) -> Int32 raise TzdataError {
   self.need(1)
   let b = self.data[self.pos].to_int()
   self.pos += 1
@@ -56,7 +56,7 @@ fn Reader::u8(self : Reader) -> Int raise TzdataError {
 }
 
 ///|
-fn Reader::i32(self : Reader) -> Int raise TzdataError {
+fn Reader::i32(self : Reader) -> Int32 raise TzdataError {
   self.need(4)
   let d = self.data
   let p = self.pos
@@ -75,7 +75,7 @@ fn Reader::i64(self : Reader) -> Int64 raise TzdataError {
 }
 
 ///|
-fn Reader::skip(self : Reader, n : Int) -> Unit raise TzdataError {
+fn Reader::skip(self : Reader, n : Int32) -> Unit raise TzdataError {
   self.need(n)
   self.pos += n
 }
@@ -83,17 +83,17 @@ fn Reader::skip(self : Reader, n : Int) -> Unit raise TzdataError {
 ///|
 /// Upper bound for every TZif count (real files have a few thousand
 /// entries at most).
-let max_count : Int = 0x100000
+let max_count : Int32 = 0x100000
 
 ///|
 priv struct Header {
-  version : Int
-  isutcnt : Int
-  isstdcnt : Int
-  leapcnt : Int
-  timecnt : Int
-  typecnt : Int
-  charcnt : Int
+  version : Int32
+  isutcnt : Int32
+  isstdcnt : Int32
+  leapcnt : Int32
+  timecnt : Int32
+  typecnt : Int32
+  charcnt : Int32
 }
 
 ///|
@@ -145,8 +145,8 @@ fn Reader::header(self : Reader) -> Header raise TzdataError {
 fn Reader::block(
   self : Reader,
   h : Header,
-  time_size : Int,
-) -> (Array[Int64], Array[Int], Array[TimeType]) raise TzdataError {
+  time_size : Int32,
+) -> (Array[Int64], Array[Int32], Array[TimeType]) raise TzdataError {
   self.need(
     h.timecnt * (time_size + 1) +
     h.typecnt * 6 +

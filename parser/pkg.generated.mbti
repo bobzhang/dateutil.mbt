@@ -60,33 +60,33 @@ pub struct ParserInfo {
   dayfirst : Bool
   yearfirst : Bool
   utczone_list : Array[String]
-  tzoffsets : Map[String, Int]
-  year : Int
-  century : Int
+  tzoffsets : Map[String, Int32]
+  year : Int32
+  century : Int32
   // private fields
 }
-pub fn ParserInfo::ampm(Self, String) -> Int?
-pub fn ParserInfo::convertyear(Self, Int, century_specified? : Bool) -> Int
-pub fn ParserInfo::default_convertyear(Self, Int, century_specified? : Bool) -> Int
-pub fn ParserInfo::hms(Self, String) -> Int?
+pub fn ParserInfo::ampm(Self, String) -> Int32?
+pub fn ParserInfo::convertyear(Self, Int32, century_specified? : Bool) -> Int32
+pub fn ParserInfo::default_convertyear(Self, Int32, century_specified? : Bool) -> Int32
+pub fn ParserInfo::hms(Self, String) -> Int32?
 pub fn ParserInfo::jump(Self, String) -> Bool
-pub fn ParserInfo::month(Self, String) -> Int?
-pub fn ParserInfo::new(dayfirst? : Bool, yearfirst? : Bool, jump? : Array[String], weekdays? : Array[Array[String]], months? : Array[Array[String]], hms? : Array[Array[String]], ampm? : Array[Array[String]], utczone? : Array[String], pertain? : Array[String], tzoffset? : Map[String, Int], year? : Int, convertyear? : (Self, Int, Bool) -> Int) -> Self
+pub fn ParserInfo::month(Self, String) -> Int32?
+pub fn ParserInfo::new(dayfirst? : Bool, yearfirst? : Bool, jump? : Array[String], weekdays? : Array[Array[String]], months? : Array[Array[String]], hms? : Array[Array[String]], ampm? : Array[Array[String]], utczone? : Array[String], pertain? : Array[String], tzoffset? : Map[String, Int32], year? : Int32, convertyear? : (Self, Int32, Bool) -> Int32) -> Self
 pub fn ParserInfo::pertain(Self, String) -> Bool
-pub fn ParserInfo::tzoffset(Self, String) -> Int?
+pub fn ParserInfo::tzoffset(Self, String) -> Int32?
 pub fn ParserInfo::utczone(Self, String) -> Bool
-pub fn ParserInfo::weekday(Self, String) -> Int?
+pub fn ParserInfo::weekday(Self, String) -> Int32?
 
 pub(all) enum TzInfoSpec {
   NoTz
   Zone(@datetime.Tz)
-  Offset(Int)
+  Offset(Int32)
   TzString(String)
 }
 
 pub(all) enum TzInfos {
   Table(Map[String, TzInfoSpec])
-  Callback((String?, Int?) -> TzInfoSpec raise)
+  Callback((String?, Int32?) -> TzInfoSpec raise)
 }
 
 pub struct UnknownTimezoneWarning {
