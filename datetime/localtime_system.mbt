@@ -32,7 +32,7 @@ fn resolve_local_source(tz : String?, can_read_files : Bool) -> LocalSource {
     Some("") => Zone(@tzdata.utc)
     Some(value) => {
       let value = if value.has_prefix(":") {
-        value.view(start_offset=1).to_owned()
+        value[1:].to_owned()
       } else {
         value
       }
