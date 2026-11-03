@@ -12,6 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        moonbit: [pre-release]
         # Windows is not covered: the tests read the system zoneinfo
         # database (/usr/share/zoneinfo), which Windows does not have.
         os: [ubuntu-latest, macos-latest]
