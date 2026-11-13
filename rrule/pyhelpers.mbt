@@ -2,7 +2,7 @@
 
 ///|
 /// `sorted(set(xs))`.
-fn uniq_sorted(xs : Array[Int]) -> Array[Int] {
+fn uniq_sorted(xs : Array[Int32]) -> Array[Int32] {
   let ys = xs.copy()
   ys.sort()
   let out = []
@@ -16,7 +16,7 @@ fn uniq_sorted(xs : Array[Int]) -> Array[Int] {
 
 ///|
 /// `math.gcd` (always non-negative).
-fn gcd(a : Int, b : Int) -> Int {
+fn gcd(a : Int32, b : Int32) -> Int32 {
   let mut a = a.abs()
   let mut b = b.abs()
   while b != 0 {
@@ -29,7 +29,7 @@ fn gcd(a : Int, b : Int) -> Int {
 
 ///|
 /// Python `seq[i]` index normalization; `None` means `IndexError`.
-fn py_index(len : Int, i : Int) -> Int? {
+fn py_index(len : Int32, i : Int32) -> Int32? {
   if i >= 0 {
     if i < len {
       Some(i)
@@ -55,16 +55,16 @@ fn index_error() -> @datetime.DateTimeError {
 /// Python `seq[start:stop:step]` (with `step != 0`; `None` = omitted).
 fn[T] py_slice(
   xs : Array[T],
-  start : Int?,
-  stop : Int?,
-  step : Int?,
+  start : Int32?,
+  stop : Int32?,
+  step : Int32?,
 ) -> Array[T] raise @datetime.DateTimeError {
   let step = step.unwrap_or(1)
   if step == 0 {
     raise @datetime.ValueError("slice step cannot be zero")
   }
   let len = xs.length()
-  fn adjust(v : Int?, default : Int) -> Int {
+  fn adjust(v : Int32?, default : Int32) -> Int32 {
     match v {
       None => default
       Some(v) =>

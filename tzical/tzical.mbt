@@ -19,14 +19,14 @@ priv struct VtzZone {
   comps : Array[Comp]
   // Small most-recently-used cache of `(naive dt, fold) -> component`,
   // as in dateutil (at most 10 entries).
-  cachedate : Array[(@datetime.DateTime, Int)]
+  cachedate : Array[(@datetime.DateTime, Int32)]
   cachecomp : Array[Comp]
 }
 
 ///|
 fn naive_key_eq(
-  a : (@datetime.DateTime, Int),
-  b : (@datetime.DateTime, Int),
+  a : (@datetime.DateTime, Int32),
+  b : (@datetime.DateTime, Int32),
 ) -> Bool {
   // naive datetimes compare by wall fields (fold ignored), plus fold
   a.0 == b.0 && a.1 == b.1
@@ -195,7 +195,7 @@ pub struct TzIcal {
 /// ```
 pub fn TzIcal::from_string(
   s : String,
-  name? : String = "<string>",
+  name~ : String = "<string>",
 ) -> TzIcal raise {
   let ical = { name, vtz: {}, }
   ical.parse_rfc(s)
@@ -267,7 +267,7 @@ fn value_error(msg : String) -> @datetime.DateTimeError {
 ///|
 /// Python `int()` on a short ASCII digit string (with optional sign and
 /// surrounding whitespace, as `int()` accepts).
-fn py_int(s : StringView) -> Int raise @datetime.DateTimeError {
+fn py_int(s : StringView) -> Int32 raise @datetime.DateTimeError {
   let t = py_strip(s.to_owned())
   let bad = () => {
     value_error(
@@ -308,7 +308,7 @@ fn py_int(s : StringView) -> Int raise @datetime.DateTimeError {
 
 ///|
 /// `tzical._parse_offset`: `[+-]HHMM[SS]` to seconds.
-fn parse_offset(s : String) -> Int raise @datetime.DateTimeError {
+fn parse_offset(s : String) -> Int32 raise @datetime.DateTimeError {
   let s = py_strip(s)
   if s.is_empty() {
     raise value_error("empty offset")
@@ -358,8 +358,8 @@ fn TzIcal::parse_rfc(self : TzIcal, s : String) -> Unit raise {
   let mut invtz = false
   let mut comptype : String? = None
   let mut founddtstart = false
-  let mut tzoffsetfrom : Int? = None
-  let mut tzoffsetto : Int? = None
+  let mut tzoffsetfrom : Int32? = None
+  let mut tzoffsetto : Int32? = None
   let rrulelines : Array[String] = []
   let mut tzname : String? = None
   for line in lines {

@@ -1,11 +1,12 @@
 ///|
 /// Errors raised by the datetime model. The constructors mirror the Python
 /// exception classes raised by CPython's `datetime` module.
+#derive(Eq)
 pub(all) suberror DateTimeError {
   ValueError(String)
   OverflowError(String)
   TypeError(String)
-} derive(Eq)
+}
 
 ///|
 pub impl Show for DateTimeError with fn output(self, logger) {

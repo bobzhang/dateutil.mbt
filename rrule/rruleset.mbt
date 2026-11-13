@@ -28,7 +28,7 @@ pub struct RruleSet {
 ///   debug_inspect(set.to_array().map(d => d.day), content="[1, 2, 4, 5, 10]")
 /// }
 /// ```
-pub fn RruleSet::new(cache? : Bool = false) -> RruleSet {
+pub fn RruleSet::new(cache~ : Bool = false) -> RruleSet {
   let set : RruleSet = {
     base: Base::new(cache),
     rrules: [],
@@ -124,8 +124,8 @@ fn GenItem::advance(self : GenItem) -> Unit raise @datetime.DateTimeError {
 ///|
 fn heap_siftdown(
   heap : Array[GenItem],
-  startpos : Int,
-  pos : Int,
+  startpos : Int32,
+  pos : Int32,
 ) -> Unit raise @datetime.DateTimeError {
   let newitem = heap[pos]
   let mut pos = pos
@@ -145,7 +145,7 @@ fn heap_siftdown(
 ///|
 fn heap_siftup(
   heap : Array[GenItem],
-  pos : Int,
+  pos : Int32,
 ) -> Unit raise @datetime.DateTimeError {
   let endpos = heap.length()
   let startpos = pos

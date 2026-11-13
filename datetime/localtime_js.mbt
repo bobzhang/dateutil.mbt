@@ -5,7 +5,7 @@
 // (e.g. `GMT+1` where libc would say `BST`).
 
 ///|
-extern "js" fn js_localtime(t : Double, out : FixedArray[Int]) -> String =
+extern "js" fn js_localtime(t : Double, out : FixedArray[Int32]) -> String =
   #|(t, out) => {
   #|  const d = new Date(t * 1000);
   #|  out[0] = d.getFullYear(); out[1] = d.getMonth() + 1; out[2] = d.getDate();

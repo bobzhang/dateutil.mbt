@@ -6,13 +6,13 @@ using @relativedelta {type RelativeDelta, mo, tu, we, fr, su}
 
 ///|
 fn dt(
-  y : Int,
-  m : Int,
-  d : Int,
-  h? : Int = 0,
-  mi? : Int = 0,
-  s? : Int = 0,
-  us? : Int = 0,
+  y : Int32,
+  m : Int32,
+  d : Int32,
+  h~ : Int32 = 0,
+  mi~ : Int32 = 0,
+  s~ : Int32 = 0,
+  us~ : Int32 = 0,
 ) -> @datetime.DateTime {
   @datetime.DateTime::new(y, m, d, hour=h, minute=mi, second=s, microsecond=us) catch {
     e => abort(e.to_string())
@@ -20,7 +20,7 @@ fn dt(
 }
 
 ///|
-fn date(y : Int, m : Int, d : Int) -> @datetime.Date {
+fn date(y : Int32, m : Int32, d : Int32) -> @datetime.Date {
   @datetime.Date::new(y, m, d) catch {
     e => abort(e.to_string())
   }

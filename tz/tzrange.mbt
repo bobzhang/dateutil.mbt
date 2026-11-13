@@ -26,7 +26,7 @@ fn TzRange::dst_base_offset(self : TzRange) -> @datetime.TimeDelta {
 /// (a transition outside the datetime range, an invalid rule).
 fn TzRange::transitions_checked(
   self : TzRange,
-  year : Int,
+  year : Int32,
 ) -> (@datetime.DateTime, @datetime.DateTime)? raise @datetime.DateTimeError {
   if !self.hasdst {
     return None
@@ -47,7 +47,7 @@ fn TzRange::transitions_checked(
 /// `utcoffset()` and friends) mapped to "no transitions".
 fn TzRange::transitions(
   self : TzRange,
-  year : Int,
+  year : Int32,
 ) -> (@datetime.DateTime, @datetime.DateTime)? {
   self.transitions_checked(year) catch {
     _ => None
@@ -193,7 +193,7 @@ impl @datetime.TzInfo for TzRange with fn eq_key(self) {
 /// (a weekday with `n` of `None`, `0` or `1` compares equal; `-0.0` and
 /// `0.0` are equal).
 fn relativedelta_key(d : @relativedelta.RelativeDelta) -> String {
-  fn opt(v : Int?) -> String {
+  fn opt(v : Int32?) -> String {
     match v {
       None => "_"
       Some(x) => x.to_string()
@@ -335,11 +335,11 @@ fn tzstr_delta(
   std_offset : @datetime.TimeDelta,
   dst_offset : @datetime.TimeDelta,
 ) -> @relativedelta.RelativeDelta raise @datetime.DateTimeError {
-  let mut month : Int? = None
-  let mut day : Int? = None
+  let mut month : Int32? = None
+  let mut day : Int32? = None
   let mut weekday : @datetime.Weekday? = None
-  let mut yearday : Int? = None
-  let mut nlyearday : Int? = None
+  let mut yearday : Int32? = None
+  let mut nlyearday : Int32? = None
   if x.month is Some(m) {
     month = Some(m)
     if x.weekday is Some(wd) {
@@ -407,7 +407,7 @@ fn TzRange::from_tzstr(
     }
     res.stdoffset = Some(-o)
   }
-  let to_delta = (o : Int?) => o.map(s => @datetime.TimeDelta::new(seconds=s))
+  let to_delta = (o : Int32?) => o.map(s => @datetime.TimeDelta::new(seconds=s))
   let base = TzRange::new(
     res.stdabbr,
     to_delta(res.stdoffset),
@@ -444,7 +444,7 @@ let tzstr_cache : Map[(String, Bool), @datetime.Tz] = Map([])
 /// `tzstr.instance(s, posix_offset)`: a fresh, uncached zone.
 pub fn tzstr_instance(
   s : String,
-  posix_offset? : Bool = false,
+  posix_offset~ : Bool = false,
 ) -> @datetime.Tz raise @datetime.DateTimeError {
   @datetime.Tz::new(TzRange::from_tzstr(s, posix_offset))
 }
@@ -468,7 +468,7 @@ pub fn tzstr_instance(
 /// ```
 pub fn tzstr(
   s : String,
-  posix_offset? : Bool = false,
+  posix_offset~ : Bool = false,
 ) -> @datetime.Tz raise @datetime.DateTimeError {
   let key = (s, posix_offset)
   match tzstr_cache.get(key) {

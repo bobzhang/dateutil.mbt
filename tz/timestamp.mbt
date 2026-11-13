@@ -1,5 +1,5 @@
 ///|
-let epoch_ordinal : Int = @datetime.ymd_to_ordinal(1970, 1, 1)
+let epoch_ordinal : Int32 = @datetime.ymd_to_ordinal(1970, 1, 1)
 
 ///|
 /// dateutil `_datetime_to_timestamp(dt)` in microseconds: the wall time of

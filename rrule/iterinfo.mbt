@@ -2,16 +2,16 @@
 /// Per-year/per-month masks (Python `_iterinfo`).
 priv struct IterInfo {
   rr : Rrule
-  mut lastyear : Int?
-  mut lastmonth : Int?
-  mut yearlen : Int
-  mut nextyearlen : Int
-  mut yearordinal : Int
-  mut yearweekday : Int
-  mut mmask : FixedArray[Int]
-  mut mrange : FixedArray[Int]
-  mut mdaymask : FixedArray[Int]
-  mut nmdaymask : FixedArray[Int]
+  mut lastyear : Int32?
+  mut lastmonth : Int32?
+  mut yearlen : Int32
+  mut nextyearlen : Int32
+  mut yearordinal : Int32
+  mut yearweekday : Int32
+  mut mmask : FixedArray[Int32]
+  mut mrange : FixedArray[Int32]
+  mut mdaymask : FixedArray[Int32]
+  mut nmdaymask : FixedArray[Int32]
   mut wnomask : FixedArray[Bool]?
   mut nwdaymask : FixedArray[Bool]?
   mut eastermask : FixedArray[Bool]?
@@ -42,8 +42,8 @@ fn IterInfo::new(rr : Rrule) -> IterInfo {
 /// Python negative indexing; out of range raises (Python `IndexError`).
 fn IterInfo::wday(
   self : IterInfo,
-  i : Int,
-) -> Int raise @datetime.DateTimeError {
+  i : Int32,
+) -> Int32 raise @datetime.DateTimeError {
   let len = wdaymask_len - self.yearweekday
   if i >= 0 && i < len {
     (self.yearweekday + i) % 7
@@ -61,7 +61,7 @@ fn IterInfo::wday(
 fn IterInfo::checked_index(
   self : IterInfo,
   i : Int64,
-) -> Int raise @datetime.DateTimeError {
+) -> Int32 raise @datetime.DateTimeError {
   let len = (wdaymask_len - self.yearweekday).to_int64()
   guard i >= -len && i < len else { raise index_error() }
   i.to_int()
@@ -71,8 +71,8 @@ fn IterInfo::checked_index(
 /// Python `self.mrange[month-1:month+1]` unpacked into `first, last`.
 fn IterInfo::month_range(
   self : IterInfo,
-  month : Int,
-) -> (Int, Int) raise @datetime.DateTimeError {
+  month : Int32,
+) -> (Int32, Int32) raise @datetime.DateTimeError {
   let s = py_slice(
     self.mrange.iter().to_array(),
     Some(month - 1),
@@ -91,8 +91,8 @@ fn IterInfo::month_range(
 /// Python `_iterinfo.rebuild(year, month)`.
 fn IterInfo::rebuild(
   self : IterInfo,
-  year : Int,
-  month : Int,
+  year : Int32,
+  month : Int32,
 ) -> Unit raise @datetime.DateTimeError {
   let rr = self.rr
   let mut month = month
@@ -207,7 +207,7 @@ fn IterInfo::rebuild(
   if rr.bynweekday is Some(bynweekday) &&
     !bynweekday.is_empty() &&
     (self.lastmonth != Some(month) || self.lastyear != Some(year)) {
-    let ranges : Array[(Int, Int)] = []
+    let ranges : Array[(Int32, Int32)] = []
     match rr.freq {
       Yearly =>
         match rr.bymonth {
@@ -278,7 +278,7 @@ fn IterInfo::rebuild(
 /// Python `mask[i] = 1` (negative indices wrap; out of range raises).
 fn set_mask(
   mask : FixedArray[Bool],
-  i : Int,
+  i : Int32,
 ) -> Unit raise @datetime.DateTimeError {
   match py_index(mask.length(), i) {
     Some(j) => mask[j] = true

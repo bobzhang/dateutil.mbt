@@ -30,7 +30,7 @@ pub fn is_leap(year : Int64) -> Bool {
 
 ///|
 /// Number of days in `month` (1..=12) of `year`.
-pub fn days_in_month(year : Int64, month : Int) -> Int {
+pub fn days_in_month(year : Int64, month : Int32) -> Int32 {
   match month {
     2 => if is_leap(year) { 29 } else { 28 }
     4 | 6 | 9 | 11 => 30
@@ -48,7 +48,7 @@ pub fn days_in_month(year : Int64, month : Int) -> Int {
 ///   inspect(@tzdata.days_from_civil(1, 1, 1), content="-719162")
 /// }
 /// ```
-pub fn days_from_civil(year : Int64, month : Int, day : Int) -> Int64 {
+pub fn days_from_civil(year : Int64, month : Int32, day : Int32) -> Int64 {
   let y = if month <= 2 { year - 1L } else { year }
   let era = floor_div(y, 400L)
   let yoe = y - era * 400L // [0, 399]
@@ -69,7 +69,7 @@ pub fn days_from_civil(year : Int64, month : Int, day : Int) -> Int64 {
 ///   debug_inspect(@tzdata.civil_from_days(11016), content="(2000, 2, 29)")
 /// }
 /// ```
-pub fn civil_from_days(days : Int64) -> (Int64, Int, Int) {
+pub fn civil_from_days(days : Int64) -> (Int64, Int32, Int32) {
   let z = days + 719468L
   let era = floor_div(z, 146097L)
   let doe = z - era * 146097L // [0, 146096]
@@ -84,7 +84,7 @@ pub fn civil_from_days(days : Int64) -> (Int64, Int, Int) {
 
 ///|
 /// Day of the week of a day number, `0` = Sunday (POSIX `tm_wday`).
-pub fn weekday_from_days(days : Int64) -> Int {
+pub fn weekday_from_days(days : Int64) -> Int32 {
   // 1970-01-01 was a Thursday
   floor_mod(days + 4L, 7L).to_int()
 }
@@ -101,7 +101,9 @@ pub fn weekday_from_days(days : Int64) -> Int {
 ///   )
 /// }
 /// ```
-pub fn civil_from_seconds(t : Int64) -> (Int64, Int, Int, Int, Int, Int) {
+pub fn civil_from_seconds(
+  t : Int64,
+) -> (Int64, Int32, Int32, Int32, Int32, Int32) {
   let days = floor_div(t, 86400L)
   let secs = floor_mod(t, 86400L).to_int()
   let (y, m, d) = civil_from_days(days)

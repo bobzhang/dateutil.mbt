@@ -30,7 +30,7 @@ pub fn Rrule::to_array(
 ///|
 /// The number of occurrences (Python `count()`); iterates over the whole
 /// recurrence unless a previous full iteration recorded it.
-pub fn Rrule::count(self : Rrule) -> Int raise @datetime.DateTimeError {
+pub fn Rrule::count(self : Rrule) -> Int32 raise @datetime.DateTimeError {
   self.base.count(() => self.raw_iter())
 }
 
@@ -39,7 +39,7 @@ pub fn Rrule::count(self : Rrule) -> Int raise @datetime.DateTimeError {
 /// the index is out of range (Python `IndexError`).
 pub fn Rrule::get(
   self : Rrule,
-  index : Int,
+  index : Int32,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   self.base.get(() => self.raw_iter(), index)
 }
@@ -51,9 +51,9 @@ pub fn Rrule::get(
 /// `ValueError`, and `stop=0` means "no limit").
 pub fn Rrule::slice(
   self : Rrule,
-  start? : Int,
-  stop? : Int,
-  step? : Int,
+  start? : Int32,
+  stop? : Int32,
+  step? : Int32,
 ) -> Array[@datetime.DateTime] raise @datetime.DateTimeError {
   self.base.slice(() => self.raw_iter(), start, stop, step)
 }
@@ -72,7 +72,7 @@ pub fn Rrule::contains(
 pub fn Rrule::before(
   self : Rrule,
   dt : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   self.base.before(() => self.raw_iter(), dt, inc)
 }
@@ -82,7 +82,7 @@ pub fn Rrule::before(
 pub fn Rrule::after(
   self : Rrule,
   dt : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   self.base.after(() => self.raw_iter(), dt, inc)
 }
@@ -94,8 +94,8 @@ pub fn Rrule::after(
 pub fn Rrule::xafter(
   self : Rrule,
   dt : @datetime.DateTime,
-  count? : Int,
-  inc? : Bool = false,
+  count? : Int32,
+  inc~ : Bool = false,
 ) -> Iter[@datetime.DateTime] {
   self.base.xafter(() => self.raw_iter(), dt, count, inc).to_iter()
 }
@@ -107,7 +107,7 @@ pub fn Rrule::between(
   self : Rrule,
   after : @datetime.DateTime,
   before : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> Array[@datetime.DateTime] raise @datetime.DateTimeError {
   self.base.between(() => self.raw_iter(), after, before, inc)
 }
@@ -138,7 +138,7 @@ pub fn RruleSet::to_array(
 ///|
 /// The number of occurrences (Python `count()`); iterates over the whole
 /// recurrence unless a previous full iteration recorded it.
-pub fn RruleSet::count(self : RruleSet) -> Int raise @datetime.DateTimeError {
+pub fn RruleSet::count(self : RruleSet) -> Int32 raise @datetime.DateTimeError {
   self.base.count(() => self.raw_iter())
 }
 
@@ -147,7 +147,7 @@ pub fn RruleSet::count(self : RruleSet) -> Int raise @datetime.DateTimeError {
 /// the index is out of range (Python `IndexError`).
 pub fn RruleSet::get(
   self : RruleSet,
-  index : Int,
+  index : Int32,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   self.base.get(() => self.raw_iter(), index)
 }
@@ -159,9 +159,9 @@ pub fn RruleSet::get(
 /// `ValueError`, and `stop=0` means "no limit").
 pub fn RruleSet::slice(
   self : RruleSet,
-  start? : Int,
-  stop? : Int,
-  step? : Int,
+  start? : Int32,
+  stop? : Int32,
+  step? : Int32,
 ) -> Array[@datetime.DateTime] raise @datetime.DateTimeError {
   self.base.slice(() => self.raw_iter(), start, stop, step)
 }
@@ -180,7 +180,7 @@ pub fn RruleSet::contains(
 pub fn RruleSet::before(
   self : RruleSet,
   dt : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   self.base.before(() => self.raw_iter(), dt, inc)
 }
@@ -190,7 +190,7 @@ pub fn RruleSet::before(
 pub fn RruleSet::after(
   self : RruleSet,
   dt : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   self.base.after(() => self.raw_iter(), dt, inc)
 }
@@ -202,8 +202,8 @@ pub fn RruleSet::after(
 pub fn RruleSet::xafter(
   self : RruleSet,
   dt : @datetime.DateTime,
-  count? : Int,
-  inc? : Bool = false,
+  count? : Int32,
+  inc~ : Bool = false,
 ) -> Iter[@datetime.DateTime] {
   self.base.xafter(() => self.raw_iter(), dt, count, inc).to_iter()
 }
@@ -215,7 +215,7 @@ pub fn RruleSet::between(
   self : RruleSet,
   after : @datetime.DateTime,
   before : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> Array[@datetime.DateTime] raise @datetime.DateTimeError {
   self.base.between(() => self.raw_iter(), after, before, inc)
 }
@@ -260,7 +260,9 @@ pub fn RruleBase::to_array(
 
 ///|
 /// The number of occurrences (Python `count()`).
-pub fn RruleBase::count(self : RruleBase) -> Int raise @datetime.DateTimeError {
+pub fn RruleBase::count(
+  self : RruleBase,
+) -> Int32 raise @datetime.DateTimeError {
   match self {
     Rule(r) => r.count()
     Set(s) => s.count()
@@ -271,7 +273,7 @@ pub fn RruleBase::count(self : RruleBase) -> Int raise @datetime.DateTimeError {
 /// Python `self[index]` (see `Rrule::get`).
 pub fn RruleBase::get(
   self : RruleBase,
-  index : Int,
+  index : Int32,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   match self {
     Rule(r) => r.get(index)
@@ -283,9 +285,9 @@ pub fn RruleBase::get(
 /// Python `self[start:stop:step]` (see `Rrule::slice`).
 pub fn RruleBase::slice(
   self : RruleBase,
-  start? : Int,
-  stop? : Int,
-  step? : Int,
+  start? : Int32,
+  stop? : Int32,
+  step? : Int32,
 ) -> Array[@datetime.DateTime] raise @datetime.DateTimeError {
   match self {
     Rule(r) => r.slice(start?, stop?, step?)
@@ -310,7 +312,7 @@ pub fn RruleBase::contains(
 pub fn RruleBase::before(
   self : RruleBase,
   dt : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   match self {
     Rule(r) => r.before(dt, inc~)
@@ -323,7 +325,7 @@ pub fn RruleBase::before(
 pub fn RruleBase::after(
   self : RruleBase,
   dt : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> @datetime.DateTime? raise @datetime.DateTimeError {
   match self {
     Rule(r) => r.after(dt, inc~)
@@ -336,8 +338,8 @@ pub fn RruleBase::after(
 pub fn RruleBase::xafter(
   self : RruleBase,
   dt : @datetime.DateTime,
-  count? : Int,
-  inc? : Bool = false,
+  count? : Int32,
+  inc~ : Bool = false,
 ) -> Iter[@datetime.DateTime] {
   match self {
     Rule(r) => r.xafter(dt, count?, inc~)
@@ -351,7 +353,7 @@ pub fn RruleBase::between(
   self : RruleBase,
   after : @datetime.DateTime,
   before : @datetime.DateTime,
-  inc? : Bool = false,
+  inc~ : Bool = false,
 ) -> Array[@datetime.DateTime] raise @datetime.DateTimeError {
   match self {
     Rule(r) => r.between(after, before, inc~)

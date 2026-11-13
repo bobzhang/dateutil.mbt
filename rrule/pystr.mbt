@@ -114,7 +114,7 @@ fn py_splitlines(s : String) -> Array[String] {
 ///|
 /// First code points of the Unicode (15.1) decimal digit runs (category Nd,
 /// each run is `zero..=zero+9`).
-let decimal_zeros : FixedArray[Int] = [
+let decimal_zeros : FixedArray[Int32] = [
   0x30, 0x660, 0x6f0, 0x7c0, 0x966, 0x9e6, 0xa66, 0xae6, 0xb66, 0xbe6, 0xc66, 0xce6,
   0xd66, 0xde6, 0xe50, 0xed0, 0xf20, 0x1040, 0x1090, 0x17e0, 0x1810, 0x1946, 0x19d0,
   0x1a80, 0x1a90, 0x1b50, 0x1bb0, 0x1c40, 0x1c50, 0xa620, 0xa8d0, 0xa900, 0xa9d0,
@@ -126,7 +126,7 @@ let decimal_zeros : FixedArray[Int] = [
 
 ///|
 /// Python `unicodedata.decimal(c)`.
-fn decimal_value(c : Char) -> Int? {
+fn decimal_value(c : Char) -> Int32? {
   let c = c.to_int()
   for z in decimal_zeros {
     if c >= z && c <= z + 9 {
@@ -140,7 +140,7 @@ fn decimal_value(c : Char) -> Int? {
 /// Python `int(s)` for base-10 strings: surrounding whitespace, an optional
 /// sign, and (Unicode) decimal digits optionally separated by single
 /// underscores. Values must fit in `Int` (Python ints are unbounded).
-fn py_int(s : String) -> Int raise HandleError {
+fn py_int(s : String) -> Int32 raise HandleError {
   let chars = py_strip(s).to_array()
   let n = chars.length()
   let mut i = 0

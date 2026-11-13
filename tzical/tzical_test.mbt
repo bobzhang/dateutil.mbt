@@ -66,8 +66,8 @@ fn us_zone_probes(
 fn check_us_zone(
   tzc : @datetime.Tz,
   start : Bool,
-  std : (String, Int),
-  dst : (String, Int),
+  std : (String, Int32),
+  dst : (String, Int32),
 ) -> Unit raise {
   // values in (start of DST) order: std then dst; reversed at the end of DST
   let values = if start { [std, dst] } else { [dst, std] }

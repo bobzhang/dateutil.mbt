@@ -4,19 +4,19 @@
 
 ///|
 fn dt(
-  y : Int,
-  m : Int,
-  d : Int,
-  hour? : Int = 0,
-  minute? : Int = 0,
-  second? : Int = 0,
-  microsecond? : Int = 0,
+  y : Int32,
+  m : Int32,
+  d : Int32,
+  hour~ : Int32 = 0,
+  minute~ : Int32 = 0,
+  second~ : Int32 = 0,
+  microsecond~ : Int32 = 0,
 ) -> @datetime.DateTime {
   try! @datetime.DateTime::new(y, m, d, hour~, minute~, second~, microsecond~)
 }
 
 ///|
-fn offsets(pairs : Array[(String, Int)]) -> @parser.TzInfos {
+fn offsets(pairs : Array[(String, Int32)]) -> @parser.TzInfos {
   let m = Map([])
   for p in pairs {
     m[p.0] = @parser.Offset(p.1)
@@ -61,13 +61,13 @@ fn check_parse(
   timestr : String,
   expected : String,
   default? : @datetime.DateTime,
-  ignoretz? : Bool = false,
+  ignoretz~ : Bool = false,
   tzinfos? : @parser.TzInfos,
   dayfirst? : Bool,
   yearfirst? : Bool,
-  fuzzy? : Bool = false,
-  tokens? : Bool = false,
-  warns? : Array[String] = [],
+  fuzzy~ : Bool = false,
+  tokens~ : Bool = false,
+  warns~ : Array[String] = [],
   info? : @parser.ParserInfo,
 ) -> Unit raise {
   let default = default.unwrap_or(frozen_default)
@@ -163,7 +163,7 @@ fn check_isotime(s : String, expected : String, sep? : String) -> Unit raise {
 fn check_tzstr(
   s : String,
   expected : String,
-  zero_as_utc? : Bool = true,
+  zero_as_utc~ : Bool = true,
   sep? : String,
 ) -> Unit raise {
   check_iso_result("parse_tzstr", s, expected, () => {

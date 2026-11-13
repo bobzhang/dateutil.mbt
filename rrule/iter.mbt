@@ -9,29 +9,29 @@
 priv struct RruleGen {
   rr : Rrule
   ii : IterInfo
-  mut year : Int
-  mut month : Int
-  mut day : Int
-  mut hour : Int
-  mut minute : Int
-  mut second : Int
-  mut weekday : Int
+  mut year : Int32
+  mut month : Int32
+  mut day : Int32
+  mut hour : Int32
+  mut minute : Int32
+  mut second : Int32
+  mut weekday : Int32
   /// Current timeset as `(h, m, s)` triples.
-  mut timeset : Array[(Int, Int, Int)]
-  mut total : Int
-  mut count : Int?
+  mut timeset : Array[(Int32, Int32, Int32)]
+  mut total : Int32
+  mut count : Int32?
   /// `bysetpos` candidates of the current period (eagerly built).
   buf : Array[@datetime.DateTime]
-  mut pos : Int
+  mut pos : Int32
   /// Without `bysetpos`: position in `kept` x `timeset`.
-  mut day_pos : Int
-  mut time_pos : Int
+  mut day_pos : Int32
+  mut time_pos : Int32
   /// `false` until the first period has been expanded.
   mut started : Bool
   /// Whether some day of the current period was filtered out.
   mut filtered : Bool
   /// Kept day indices of the current period (scratch).
-  kept : Array[Int]
+  kept : Array[Int32]
 }
 
 ///|
@@ -106,7 +106,7 @@ fn RruleGen::init(rr : Rrule) -> RruleGen raise @datetime.DateTimeError {
 /// Python `htimeset` / `mtimeset` / `stimeset` for the current time.
 fn RruleGen::gettimeset(
   self : RruleGen,
-) -> Array[(Int, Int, Int)] raise @datetime.DateTimeError {
+) -> Array[(Int32, Int32, Int32)] raise @datetime.DateTimeError {
   let rr = self.rr
   let tset = []
   match rr.freq {
@@ -207,8 +207,8 @@ fn RruleGen::next_candidate(
 /// Python `(year, mmask/mdaymask)` of day index `i` as a datetime at `t`.
 fn RruleGen::make(
   self : RruleGen,
-  i : Int,
-  t : (Int, Int, Int),
+  i : Int32,
+  t : (Int32, Int32, Int32),
 ) -> @datetime.DateTime raise @datetime.DateTimeError {
   let ii = self.ii
   let year = if i >= ii.yearlen { self.year + 1 } else { self.year }
@@ -225,7 +225,7 @@ fn RruleGen::make(
 
 ///|
 /// `datetime.date(year, month, day).toordinal() - yearordinal`.
-fn RruleGen::day_index(self : RruleGen) -> Int raise @datetime.DateTimeError {
+fn RruleGen::day_index(self : RruleGen) -> Int32 raise @datetime.DateTimeError {
   if self.day < 1 || self.day > @datetime.days_in_month(self.year, self.month) {
     raise @datetime.ValueError("day is out of range for month")
   }
@@ -235,7 +235,7 @@ fn RruleGen::day_index(self : RruleGen) -> Int raise @datetime.DateTimeError {
 
 ///|
 /// Whether day index `i` is removed by the by-rules.
-fn RruleGen::excluded(self : RruleGen, i : Int) -> Bool {
+fn RruleGen::excluded(self : RruleGen, i : Int32) -> Bool {
   let rr = self.rr
   let ii = self.ii
   let t = rr.tables
@@ -391,7 +391,7 @@ fn py_floordiv64(a : Int64, b : Int64) -> Int64 raise @datetime.DateTimeError {
 ///|
 /// Clamp a day number to `Int`. Values beyond the clamp are equivalent: a
 /// day past ~4M overflows MAXYEAR and one below 1 is invalid either way.
-fn clamp_day(d : Int64) -> Int {
+fn clamp_day(d : Int64) -> Int32 {
   if d > 100_000_000L {
     100_000_000
   } else if d < -100_000_000L {
@@ -408,8 +408,8 @@ fn RruleGen::mod_distance(
   self : RruleGen,
   value : Int64,
   byxxx : FixedArray[Bool],
-  base : Int,
-) -> (Int64, Int) raise @datetime.DateTimeError {
+  base : Int32,
+) -> (Int64, Int32) raise @datetime.DateTimeError {
   let interval = self.rr.interval.to_int64()
   let b = base.to_int64()
   let mut accumulator = 0L

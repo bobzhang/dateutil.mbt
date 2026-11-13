@@ -8,7 +8,7 @@
 ///|
 fn frozen_now(
   frozen : @datetime.DateTime,
-  tz_offset? : Int = 0,
+  tz_offset~ : Int32 = 0,
 ) -> (@datetime.Tz?) -> @datetime.DateTime {
   let off = @datetime.TimeDelta::new(hours=tz_offset)
   tz => {

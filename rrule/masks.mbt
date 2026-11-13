@@ -2,7 +2,7 @@
 // is 7 days longer than the year to handle cross-year weekly periods.
 
 ///|
-let month_lengths_366 : FixedArray[Int] = [
+let month_lengths_366 : FixedArray[Int32] = [
   31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
 ]
 
@@ -10,8 +10,8 @@ let month_lengths_366 : FixedArray[Int] = [
 /// Build `(month mask, month-day mask, negative month-day mask)` for a year
 /// with the given February length.
 fn build_masks(
-  feb : Int,
-) -> (FixedArray[Int], FixedArray[Int], FixedArray[Int]) {
+  feb : Int32,
+) -> (FixedArray[Int32], FixedArray[Int32], FixedArray[Int32]) {
   let mmask = []
   let mday = []
   let nmday = []
@@ -37,25 +37,25 @@ fn build_masks(
 }
 
 ///|
-let masks_366 : (FixedArray[Int], FixedArray[Int], FixedArray[Int]) = build_masks(
+let masks_366 : (FixedArray[Int32], FixedArray[Int32], FixedArray[Int32]) = build_masks(
   29,
 )
 
 ///|
-let masks_365 : (FixedArray[Int], FixedArray[Int], FixedArray[Int]) = build_masks(
+let masks_365 : (FixedArray[Int32], FixedArray[Int32], FixedArray[Int32]) = build_masks(
   28,
 )
 
 ///|
-let m366range : FixedArray[Int] = [
+let m366range : FixedArray[Int32] = [
   0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366,
 ]
 
 ///|
-let m365range : FixedArray[Int] = [
+let m365range : FixedArray[Int32] = [
   0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365,
 ]
 
 ///|
 /// Length of Python's `WDAYMASK` (`[0..6] * 55`).
-let wdaymask_len : Int = 385
+let wdaymask_len : Int32 = 385

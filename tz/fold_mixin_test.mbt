@@ -6,7 +6,7 @@
 ///|
 fn fold_mixin(
   gettz : (String) -> @datetime.Tz raise,
-  restore? : () -> Unit = () => (),
+  restore~ : () -> Unit = () => (),
 ) -> Unit raise {
   defer restore()
   let utc = @tz.utc

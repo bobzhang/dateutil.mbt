@@ -1,9 +1,10 @@
 ///|
 /// A system time zone: TZif data or a POSIX TZ string.
+#derive(Eq, Debug)
 pub(all) enum Zone {
   TzifZone(Tzif)
   PosixZone(PosixTz)
-} derive(Eq, Debug)
+}
 
 ///|
 /// UTC with abbreviation `"UTC"` (the fallback for unresolvable `TZ`).

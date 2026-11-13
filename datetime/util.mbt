@@ -1,6 +1,6 @@
 ///|
 /// Zero-pad the decimal representation of a non-negative `n` to `width`.
-fn pad(n : Int, width : Int) -> String {
+fn pad(n : Int32, width : Int32) -> String {
   let s = n.abs().to_string()
   let body = if s.length() >= width {
     s
