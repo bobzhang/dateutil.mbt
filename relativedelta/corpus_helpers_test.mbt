@@ -178,7 +178,7 @@ fn check_arith(
   assert_eq(a == b, eq, loc~)
   assert_eq(b == a, eq, loc~)
   if eq {
-    assert_eq(a.hash(), b.hash(), loc~)
+    assert_eq(Hash::hash(a), Hash::hash(b), loc~)
   }
 }
 
@@ -203,6 +203,6 @@ fn check_eq(
 ) -> Unit raise {
   assert_eq(a == b, expected, loc~)
   if expected {
-    assert_eq(a.hash(), b.hash(), loc~)
+    assert_eq(Hash::hash(a), Hash::hash(b), loc~)
   }
 }
