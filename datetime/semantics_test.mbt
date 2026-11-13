@@ -94,7 +94,7 @@ test "PEP 495 comparison and default fromutc" {
   let h1 = @datetime.DateTime::new(2021, 7, 1, hour=12, tzinfo=toy)
   let h2 = h1.astimezone(tz=jst)
   assert_true(h1 == h2)
-  assert_eq(h1.hash(), h2.hash())
+  assert_eq(Hash::hash(h1), Hash::hash(h2))
 }
 
 ///|
@@ -159,7 +159,7 @@ test "time objects" {
   )
   let t2 = @datetime.Time::new(hour=18, minute=20, tzinfo=@datetime.utc)
   assert_true(t == t2)
-  assert_eq(t.hash(), t2.hash())
+  assert_eq(Hash::hash(t), Hash::hash(t2))
   inspect(@datetime.Time::new(hour=1, microsecond=5), content="01:00:00.000005")
   inspect(
     @datetime.Time::new(hour=1, microsecond=5).isoformat(timespec=Milliseconds),
