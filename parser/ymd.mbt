@@ -16,7 +16,7 @@ priv suberror ParseFail {
 priv struct Dec {
   ip : Int64
   frac : String
-  int_digits : Int
+  int_digits : Int32
 }
 
 ///|
@@ -29,14 +29,14 @@ priv suberror DecimalInvalidOperation {
 
 ///|
 /// Precision of Python's default decimal context.
-const DECIMAL_PREC : Int = 28
+const DECIMAL_PREC : Int32 = 28
 
 ///|
 fn ascii_digits(chars : ArrayView[Char]) -> String {
   let sb = StringBuilder()
   for c in chars {
     if c != '_' {
-      sb.write_char(Int::unsafe_to_char('0'.to_int() + py_decimal_value(c)))
+      sb.write_char(Int32::unsafe_to_char('0'.to_int() + py_decimal_value(c)))
     }
   }
   sb.to_string()
@@ -113,7 +113,7 @@ fn incr_digits(s : String) -> String {
       chars[i] = '0'
       i -= 1
     } else {
-      chars[i] = Int::unsafe_to_char(chars[i].to_int() + 1)
+      chars[i] = Int32::unsafe_to_char(chars[i].to_int() + 1)
       return String::from_array(chars)
     }
   }
@@ -123,7 +123,7 @@ fn incr_digits(s : String) -> String {
 ///|
 /// Round the coefficient `c` (no leading zeros) of `c * 10**exp` to the
 /// context precision with ROUND_HALF_EVEN (`Decimal._fix`).
-fn round_prec(c : String, exp : Int) -> (String, Int) {
+fn round_prec(c : String, exp : Int32) -> (String, Int32) {
   let n = c.length()
   if n <= DECIMAL_PREC {
     return (c, exp)
@@ -155,7 +155,7 @@ fn round_prec(c : String, exp : Int) -> (String, Int) {
 /// Python `value % 1` in the default decimal context: the coefficient and
 /// exponent of the (rounded) remainder. Raises `InvalidOperation`
 /// (DivisionImpossible) when the integer part exceeds the precision.
-fn Dec::rem1(self : Dec) -> (String, Int) raise DecimalInvalidOperation {
+fn Dec::rem1(self : Dec) -> (String, Int32) raise DecimalInvalidOperation {
   if self.int_digits > DECIMAL_PREC {
     raise DecimalInvalidOperation("[<class 'decimal.DivisionImpossible'>]")
   }
@@ -181,11 +181,11 @@ fn Dec::frac60(self : Dec) -> Int64 raise DecimalInvalidOperation {
   let mut carry = 0
   for i = chars.length() - 1; i >= 0; i = i - 1 {
     let t = (chars[i].to_int() - '0'.to_int()) * 60 + carry
-    out.push(Int::unsafe_to_char('0'.to_int() + t % 10))
+    out.push(Int32::unsafe_to_char('0'.to_int() + t % 10))
     carry = t / 10
   }
   while carry > 0 {
-    out.push(Int::unsafe_to_char('0'.to_int() + carry % 10))
+    out.push(Int32::unsafe_to_char('0'.to_int() + carry % 10))
     carry = carry / 10
   }
   out.rev_in_place()
@@ -240,9 +240,9 @@ priv enum YmdLabel {
 priv struct Ymd {
   vals : Array[Int64]
   mut century_specified : Bool
-  mut dstridx : Int?
-  mut mstridx : Int?
-  mut ystridx : Int?
+  mut dstridx : Int32?
+  mut mstridx : Int32?
+  mut ystridx : Int32?
 }
 
 ///|
@@ -257,13 +257,13 @@ fn Ymd::new() -> Ymd {
 }
 
 ///|
-fn Ymd::length(self : Ymd) -> Int {
+fn Ymd::length(self : Ymd) -> Int32 {
   self.vals.length()
 }
 
 ///|
 /// Python calendar month lengths for any (possibly out-of-range) year.
-fn days_in_month64(year : Int64, month : Int64) -> Int raise ParseFail {
+fn days_in_month64(year : Int64, month : Int64) -> Int32 raise ParseFail {
   if month < 1L || month > 12L {
     raise ParseFail("bad month number \{month}; must be 1-12")
   }

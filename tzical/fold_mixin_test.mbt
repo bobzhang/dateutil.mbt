@@ -6,7 +6,7 @@
 ///|
 fn fold_mixin(
   gettz : (String) -> @datetime.Tz raise,
-  restore? : () -> Unit = () => (),
+  restore~ : () -> Unit = () => (),
 ) -> Unit raise {
   defer restore()
   let utc = @tz.utc
@@ -149,14 +149,14 @@ fn fold_mixin(
 
 ///|
 fn dt(
-  year : Int,
-  month : Int,
-  day : Int,
-  hour? : Int = 0,
-  minute? : Int = 0,
-  second? : Int = 0,
+  year : Int32,
+  month : Int32,
+  day : Int32,
+  hour~ : Int32 = 0,
+  minute~ : Int32 = 0,
+  second~ : Int32 = 0,
   tz? : @datetime.Tz,
-  fold? : Int = 0,
+  fold~ : Int32 = 0,
 ) -> @datetime.DateTime {
   @datetime.DateTime::new(
     year,
@@ -173,7 +173,7 @@ fn dt(
 }
 
 ///|
-fn hours(h : Int) -> @datetime.TimeDelta {
+fn hours(h : Int32) -> @datetime.TimeDelta {
   @datetime.TimeDelta::new(hours=h)
 }
 

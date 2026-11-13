@@ -23,7 +23,7 @@ pub fn IsoParser::new(sep? : String) -> IsoParser raise @datetime.DateTimeError 
       let chars = s.to_array()
       if chars.length() != 1 ||
         chars[0].to_int() >= 128 ||
-        chars[0] is ('0'..='9') {
+        chars[0] is ('0'..<='9') {
         raise @datetime.ValueError(
           "Separator must be a single, non-numeric ASCII character",
         )
@@ -47,7 +47,7 @@ fn check_ascii(s : String) -> Unit raise @datetime.DateTimeError {
 
 ///|
 /// Python `s[a:b]` on the ASCII bytes (clamped).
-fn bslice(s : String, a : Int, b : Int) -> String {
+fn bslice(s : String, a : Int32, b : Int32) -> String {
   let n = s.length()
   let a = if a > n { n } else { a }
   let b = if b > n { n } else { b }
@@ -92,7 +92,7 @@ fn bytes_repr(s : String) -> String {
 ///|
 /// Python `int(b)` for ASCII bytes: optional ASCII whitespace, sign, and
 /// digits with single `_` separators.
-fn bytes_int(s : String) -> Int raise @datetime.DateTimeError {
+fn bytes_int(s : String) -> Int32 raise @datetime.DateTimeError {
   let chars = s.to_array()
   let mut a = 0
   let mut b = chars.length()
@@ -129,7 +129,7 @@ fn bytes_int(s : String) -> Int raise @datetime.DateTimeError {
 /// `isoparser._parse_isodate_common`
 fn parse_isodate_common(
   dt_str : String,
-) -> (Array[Int], Int) raise @datetime.DateTimeError {
+) -> (Array[Int32], Int32) raise @datetime.DateTimeError {
   let len_str = dt_str.length()
   let components = [1, 1, 1]
   if len_str < 4 {
@@ -175,9 +175,9 @@ fn parse_isodate_common(
 ///|
 /// `isoparser._calculate_weekdate`: the inverse of `date.isocalendar`.
 fn calculate_weekdate(
-  year : Int,
-  week : Int,
-  day : Int,
+  year : Int32,
+  week : Int32,
+  day : Int32,
 ) -> @datetime.Date raise @datetime.DateTimeError {
   if !(0 < week && week < 54) {
     raise @datetime.ValueError("Invalid week: \{week}")
@@ -200,7 +200,7 @@ fn calculate_weekdate(
 /// `isoparser._parse_isodate_uncommon`
 fn parse_isodate_uncommon(
   dt_str : String,
-) -> (Array[Int], Int) raise @datetime.DateTimeError {
+) -> (Array[Int32], Int32) raise @datetime.DateTimeError {
   if dt_str.length() < 4 {
     raise @datetime.ValueError("ISO string too short")
   }
@@ -247,7 +247,7 @@ fn parse_isodate_uncommon(
 /// `isoparser._parse_isodate`
 fn parse_isodate_any(
   dt_str : String,
-) -> (Array[Int], Int) raise @datetime.DateTimeError {
+) -> (Array[Int32], Int32) raise @datetime.DateTimeError {
   parse_isodate_common(dt_str) catch {
     @datetime.ValueError(_) => parse_isodate_uncommon(dt_str)
     e => raise e
@@ -257,10 +257,10 @@ fn parse_isodate_any(
 ///|
 /// `isoparser._FRACTION_REGEX.match(s)`: `[.,]([0-9]+)` at the start;
 /// returns (digits, matched length).
-fn match_fraction(s : String) -> (String, Int)? {
+fn match_fraction(s : String) -> (String, Int32)? {
   guard s.get_char(0) is Some('.' | ',') else { return None }
   let mut i = 1
-  while i < s.length() && s.get_char(i) is Some('0'..='9') {
+  while i < s.length() && s.get_char(i) is Some('0'..<='9') {
     i += 1
   }
   if i == 1 {
@@ -274,7 +274,7 @@ fn match_fraction(s : String) -> (String, Int)? {
 /// The components of `_parse_isotime`: hour, minute, second, microsecond
 /// and zone.
 priv struct IsoTime {
-  parts : Array[Int]
+  parts : Array[Int32]
   mut tz : @datetime.Tz?
 }
 
@@ -478,7 +478,7 @@ pub fn IsoParser::parse_isotime(
 pub fn IsoParser::parse_tzstr(
   self : IsoParser,
   tzstr : String,
-  zero_as_utc? : Bool = true,
+  zero_as_utc~ : Bool = true,
 ) -> @datetime.Tz raise @datetime.DateTimeError {
   ignore(self)
   check_ascii(tzstr)

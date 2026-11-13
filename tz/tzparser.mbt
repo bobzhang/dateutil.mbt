@@ -4,13 +4,13 @@
 ///|
 /// `_tzparser._result._attr`: one transition rule.
 priv struct TzRule {
-  mut month : Int?
-  mut week : Int?
-  mut weekday : Int?
-  mut yday : Int?
-  mut jyday : Int?
-  mut day : Int?
-  mut time : Int?
+  mut month : Int32?
+  mut week : Int32?
+  mut weekday : Int32?
+  mut yday : Int32?
+  mut jyday : Int32?
+  mut day : Int32?
+  mut time : Int32?
 }
 
 ///|
@@ -30,9 +30,9 @@ fn TzRule::new() -> TzRule {
 /// `_tzparser._result`.
 priv struct TzStrParse {
   mut stdabbr : String?
-  mut stdoffset : Int?
+  mut stdoffset : Int32?
   mut dstabbr : String?
-  mut dstoffset : Int?
+  mut dstoffset : Int32?
   start : TzRule
   end : TzRule
   mut any_unused_tokens : Bool
@@ -69,18 +69,18 @@ fn tz_tokens(s : String) -> Array[String] {
       flush_other()
       out.push(c.to_string())
       i += 1
-    } else if c is ('a'..='z' | 'A'..='Z') {
+    } else if c is ('a'..<='z' | 'A'..<='Z') {
       flush_other()
       let b = StringBuilder()
-      while i < n && chars[i] is ('a'..='z' | 'A'..='Z') {
+      while i < n && chars[i] is ('a'..<='z' | 'A'..<='Z') {
         b.write_char(chars[i])
         i += 1
       }
       out.push(b.to_string())
-    } else if c is ('0'..='9') {
+    } else if c is ('0'..<='9') {
       flush_other()
       let b = StringBuilder()
-      while i < n && chars[i] is ('0'..='9') {
+      while i < n && chars[i] is ('0'..<='9') {
         b.write_char(chars[i])
         i += 1
       }
@@ -97,7 +97,7 @@ fn tz_tokens(s : String) -> Array[String] {
 ///|
 /// Python `int(token)` for the tokens the parser can see (digit runs);
 /// anything else is a `ValueError`.
-fn tz_int(s : String) -> Int raise TzParseFail {
+fn tz_int(s : String) -> Int32 raise TzParseFail {
   if s.length() == 0 || s.length() > 9 {
     // Longer digit runs would need Python big integers; treat them as
     // invalid (dateutil would fail later anyway).
@@ -105,7 +105,7 @@ fn tz_int(s : String) -> Int raise TzParseFail {
   }
   let mut v = 0
   for c in s {
-    guard c is ('0'..='9') else { raise TzParseFail }
+    guard c is ('0'..<='9') else { raise TzParseFail }
     v = v * 10 + (c.to_int() - '0'.to_int())
   }
   v
@@ -114,7 +114,7 @@ fn tz_int(s : String) -> Int raise TzParseFail {
 ///|
 /// Python computes offsets and times with unbounded integers; values that
 /// do not fit in 32 bits are rejected here (the string is invalid).
-fn tz_fit(v : Int64) -> Int raise TzParseFail {
+fn tz_fit(v : Int64) -> Int32 raise TzParseFail {
   if v < -2147483648L || v > 2147483647L {
     raise TzParseFail
   }
@@ -123,19 +123,19 @@ fn tz_fit(v : Int64) -> Int raise TzParseFail {
 
 ///|
 /// `h * 3600 + m * 60 + s` without overflow.
-fn tz_hms(h : Int, m : Int, s? : Int = 0) -> Int raise TzParseFail {
+fn tz_hms(h : Int32, m : Int32, s~ : Int32 = 0) -> Int32 raise TzParseFail {
   tz_fit(h.to_int64() * 3600L + m.to_int64() * 60L + s.to_int64())
 }
 
 ///|
-fn tz_tok(l : Array[String], i : Int) -> String raise TzParseFail {
+fn tz_tok(l : Array[String], i : Int32) -> String raise TzParseFail {
   guard l.get(i) is Some(t) else { raise TzParseFail }
   t
 }
 
 ///|
 /// Python `s[a:b]` on a token.
-fn tz_slice(s : String, a : Int, b : Int) -> String {
+fn tz_slice(s : String, a : Int32, b : Int32) -> String {
   py_slice(s, a, b)
 }
 
@@ -160,7 +160,7 @@ fn tz_all_in(s : String, chars : String) -> Bool {
 }
 
 ///|
-fn tz_count(l : ArrayView[String], s : String) -> Int {
+fn tz_count(l : ArrayView[String], s : String) -> Int32 {
   let mut n = 0
   for x in l {
     if x == s {
@@ -186,7 +186,7 @@ fn parse_tzstr(tzstr : String) -> TzStrParse? raise @datetime.DateTimeError {
     type_error: false,
   }
   let l = tz_tokens(tzstr)
-  let used_idxs : Array[Int] = []
+  let used_idxs : Array[Int32] = []
   let len_l = l.length()
   let ok = parse_tzstr_tokens(res, l, used_idxs) catch { TzParseFail => false }
   if !ok {
@@ -218,7 +218,7 @@ fn parse_tzstr(tzstr : String) -> TzStrParse? raise @datetime.DateTimeError {
 fn parse_tzstr_tokens(
   res : TzStrParse,
   l : Array[String],
-  used_idxs : Array[Int],
+  used_idxs : Array[Int32],
 ) -> Bool raise TzParseFail {
   let len_l = l.length()
   let mut i = 0

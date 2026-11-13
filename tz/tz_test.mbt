@@ -207,7 +207,7 @@ test "TZRangeTest.testRangeTimeDelta" {
 
 ///|
 test "TZRangeTest.testRangeEquality" {
-  let range = (std : String, stdoff : Int, dst : String, dstoff : Int) => {
+  let range = (std : String, stdoff : Int32, dst : String, dstoff : Int32) => {
     @tz.tzrange(
       Some(std),
       stdoffset=seconds(stdoff),
@@ -701,7 +701,7 @@ impl @datetime.TzInfo for FoldingTzInfo with fn repr(_) {
 }
 
 ///|
-fn no_support_tzinfo(dst_only? : Bool = false) -> @datetime.Tz {
+fn no_support_tzinfo(dst_only~ : Bool = false) -> @datetime.Tz {
   @datetime.Tz::new(FoldingTzInfo::{
     start: dt(2018, 9, 1, hour=1),
     end: dt(2018, 9, 1, hour=2),

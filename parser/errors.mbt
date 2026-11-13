@@ -17,9 +17,10 @@
 ///   )
 /// }
 /// ```
+#derive(Eq)
 pub(all) suberror ParserError {
   ParserError(String, String)
-} derive(Eq)
+}
 
 ///|
 /// Python `fmt % (arg,)` for a format containing `%s` placeholders (and
@@ -82,10 +83,11 @@ pub extend ParserError with Show::{to_string, output}
 /// cannot turn into a zone (pass `tzinfos` to resolve it). MoonBit has no
 /// warnings machinery; `parse` reports it through its `on_warning`
 /// callback instead (and otherwise ignores it, returning a naive datetime).
+#derive(Eq, Debug)
 pub struct UnknownTimezoneWarning {
   /// The unrecognised zone name.
   tzname : String
-} derive(Eq, Debug)
+}
 
 ///|
 /// The Python warning message.

@@ -27,7 +27,7 @@ jobs:
       - name: install MoonBit
         uses: moonbit-community/setup-moonbit@04293a8a813bfd4b6c2fce22701b52ae1050d100
         with:
-          version: latest
+          version: pre-release
 
       - name: moon version
         run: moon version --all

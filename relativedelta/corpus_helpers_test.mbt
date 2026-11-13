@@ -3,13 +3,13 @@
 
 ///|
 fn pdt(
-  y : Int,
-  m : Int,
-  d : Int,
-  h : Int,
-  mi : Int,
-  s : Int,
-  us : Int,
+  y : Int32,
+  m : Int32,
+  d : Int32,
+  h : Int32,
+  mi : Int32,
+  s : Int32,
+  us : Int32,
 ) -> @datetime.DateTime {
   dt(y, m, d, h~, mi~, s~, us~)
 }
@@ -30,7 +30,7 @@ fn check_ctor(
   rd : RelativeDelta,
   expected : String,
   normalized~ : String,
-  weeks~ : Int,
+  weeks~ : Int32,
   has_time~ : Bool,
   truthy~ : Bool,
   loc~ : SourceLoc,
@@ -143,9 +143,9 @@ fn check_between_dates(
 #callsite(autofill(loc))
 fn check_between_aware(
   a : @datetime.DateTime,
-  oa : Int,
+  oa : Int32,
   b : @datetime.DateTime,
-  ob : Int,
+  ob : Int32,
   expected : String,
   loc~ : SourceLoc,
 ) -> Unit raise {

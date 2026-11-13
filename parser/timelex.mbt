@@ -1,18 +1,19 @@
 // dateutil `_timelex`: breaks a time string into lexical units.
 
 ///|
+#derive(Eq)
 priv enum LexState {
   Start
   Alpha // 'a'
   Num // '0'
   AlphaDot // 'a.'
   NumDot // '0.'
-} derive(Eq)
+}
 
 ///|
 priv struct TimeLex {
   chars : Array[Char]
-  mut pos : Int
+  mut pos : Int32
   charstack : Array[Char]
   tokenstack : Array[String]
   mut eof : Bool

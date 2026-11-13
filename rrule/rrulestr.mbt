@@ -48,11 +48,11 @@ pub(all) enum TzIds {
 pub fn rrulestr(
   s : String,
   dtstart? : @datetime.DateTime,
-  cache? : Bool = false,
-  unfold? : Bool = false,
-  forceset? : Bool = false,
-  compatible? : Bool = false,
-  ignoretz? : Bool = false,
+  cache~ : Bool = false,
+  unfold~ : Bool = false,
+  forceset~ : Bool = false,
+  compatible~ : Bool = false,
+  ignoretz~ : Bool = false,
   tzids? : TzIds,
   tzinfos? : @parser.TzInfos,
 ) -> RruleBase raise {
@@ -328,20 +328,20 @@ fn parse_rfc_rrule(
 /// The keyword arguments collected from an RRULE value (Python `rrkwargs`).
 priv struct RruleKwargs {
   mut freq : Freq?
-  mut interval : Int?
-  mut count : Int?
+  mut interval : Int32?
+  mut count : Int32?
   mut until : @datetime.DateTime?
   mut wkst : Weekday?
-  mut bysetpos : Array[Int]?
-  mut bymonth : Array[Int]?
-  mut bymonthday : Array[Int]?
-  mut byyearday : Array[Int]?
-  mut byeaster : Array[Int]?
-  mut byweekno : Array[Int]?
+  mut bysetpos : Array[Int32]?
+  mut bymonth : Array[Int32]?
+  mut bymonthday : Array[Int32]?
+  mut byyearday : Array[Int32]?
+  mut byeaster : Array[Int32]?
+  mut byweekno : Array[Int32]?
   mut byweekday : Array[Weekday]?
-  mut byhour : Array[Int]?
-  mut byminute : Array[Int]?
-  mut bysecond : Array[Int]?
+  mut byhour : Array[Int32]?
+  mut byminute : Array[Int32]?
+  mut bysecond : Array[Int32]?
 }
 
 ///|
@@ -374,7 +374,7 @@ priv suberror HandleError {
 }
 
 ///|
-fn int_list(value : String) -> Array[Int] raise HandleError {
+fn int_list(value : String) -> Array[Int32] raise HandleError {
   split_all(value, ",").map(x => py_int(x))
 }
 
@@ -420,7 +420,7 @@ fn RruleKwargs::handle(
 
 ///|
 /// Python `_weekday_map[w]`.
-fn weekday_index(w : String) -> Int raise HandleError {
+fn weekday_index(w : String) -> Int32 raise HandleError {
   match w {
     "MO" => 0
     "TU" => 1

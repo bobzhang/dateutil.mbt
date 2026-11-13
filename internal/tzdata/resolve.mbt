@@ -14,6 +14,7 @@ pub let default_localtime_path : String = "/etc/localtime"
 
 ///|
 /// Where a resolved zone came from.
+#derive(Eq, Debug)
 pub(all) enum ZoneSource {
   /// TZif data read from this path.
   File(String)
@@ -21,7 +22,7 @@ pub(all) enum ZoneSource {
   Posix
   /// Nothing usable: UTC.
   Fallback
-} derive(Eq, Debug)
+}
 
 ///|
 /// Load and decode the TZif file at `path`; `None` if it cannot be read or

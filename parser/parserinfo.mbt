@@ -75,24 +75,24 @@ pub struct ParserInfo {
   /// The raw `UTCZONE` list (used case-sensitively by the parser).
   utczone_list : Array[String]
   /// `TZOFFSET`: tz names with a known offset in seconds.
-  tzoffsets : Map[String, Int]
+  tzoffsets : Map[String, Int32]
   /// `parserinfo._year`: the reference year for two-digit years.
-  year : Int
+  year : Int32
   /// `parserinfo._century`
-  century : Int
-  priv jump_set : Map[String, Int]
-  priv weekdays_map : Map[String, Int]
-  priv months_map : Map[String, Int]
-  priv hms_map : Map[String, Int]
-  priv ampm_map : Map[String, Int]
-  priv utczone_map : Map[String, Int]
-  priv pertain_map : Map[String, Int]
-  priv convertyear_hook : ((ParserInfo, Int, Bool) -> Int)?
+  century : Int32
+  priv jump_set : Map[String, Int32]
+  priv weekdays_map : Map[String, Int32]
+  priv months_map : Map[String, Int32]
+  priv hms_map : Map[String, Int32]
+  priv ampm_map : Map[String, Int32]
+  priv utczone_map : Map[String, Int32]
+  priv pertain_map : Map[String, Int32]
+  priv convertyear_hook : ((ParserInfo, Int32, Bool) -> Int32)?
 }
 
 ///|
 /// `parserinfo._convert` for a table of alias groups.
-fn convert_groups(lst : Array[Array[String]]) -> Map[String, Int] {
+fn convert_groups(lst : Array[Array[String]]) -> Map[String, Int32] {
   let dct = Map([])
   for i, group in lst {
     for v in group {
@@ -104,7 +104,7 @@ fn convert_groups(lst : Array[Array[String]]) -> Map[String, Int] {
 
 ///|
 /// `parserinfo._convert` for a flat table.
-fn convert_flat(lst : Array[String]) -> Map[String, Int] {
+fn convert_flat(lst : Array[String]) -> Map[String, Int32] {
   let dct = Map([])
   for i, v in lst {
     dct[py_lower(v)] = i
@@ -144,18 +144,18 @@ fn convert_flat(lst : Array[String]) -> Map[String, Int] {
 /// }
 /// ```
 pub fn ParserInfo::new(
-  dayfirst? : Bool = false,
-  yearfirst? : Bool = false,
-  jump? : Array[String] = default_jump,
-  weekdays? : Array[Array[String]] = default_weekdays,
-  months? : Array[Array[String]] = default_months,
-  hms? : Array[Array[String]] = default_hms,
-  ampm? : Array[Array[String]] = default_ampm,
-  utczone? : Array[String] = default_utczone,
-  pertain? : Array[String] = default_pertain,
-  tzoffset? : Map[String, Int] = {},
-  year? : Int,
-  convertyear? : (ParserInfo, Int, Bool) -> Int,
+  dayfirst~ : Bool = false,
+  yearfirst~ : Bool = false,
+  jump~ : Array[String] = default_jump,
+  weekdays~ : Array[Array[String]] = default_weekdays,
+  months~ : Array[Array[String]] = default_months,
+  hms~ : Array[Array[String]] = default_hms,
+  ampm~ : Array[Array[String]] = default_ampm,
+  utczone~ : Array[String] = default_utczone,
+  pertain~ : Array[String] = default_pertain,
+  tzoffset~ : Map[String, Int32] = {},
+  year? : Int32,
+  convertyear? : (ParserInfo, Int32, Bool) -> Int32,
 ) -> ParserInfo {
   let year = match year {
     Some(y) => y
@@ -187,25 +187,25 @@ pub fn ParserInfo::jump(self : ParserInfo, name : String) -> Bool {
 
 ///|
 /// `parserinfo.weekday(name)`: 0 (Monday) .. 6, or `None`.
-pub fn ParserInfo::weekday(self : ParserInfo, name : String) -> Int? {
+pub fn ParserInfo::weekday(self : ParserInfo, name : String) -> Int32? {
   self.weekdays_map.get(py_lower(name))
 }
 
 ///|
 /// `parserinfo.month(name)`: 1 .. 12, or `None`.
-pub fn ParserInfo::month(self : ParserInfo, name : String) -> Int? {
+pub fn ParserInfo::month(self : ParserInfo, name : String) -> Int32? {
   self.months_map.get(py_lower(name)).map(m => m + 1)
 }
 
 ///|
 /// `parserinfo.hms(name)`: 0 = hours, 1 = minutes, 2 = seconds.
-pub fn ParserInfo::hms(self : ParserInfo, name : String) -> Int? {
+pub fn ParserInfo::hms(self : ParserInfo, name : String) -> Int32? {
   self.hms_map.get(py_lower(name))
 }
 
 ///|
 /// `parserinfo.ampm(name)`: 0 = AM, 1 = PM.
-pub fn ParserInfo::ampm(self : ParserInfo, name : String) -> Int? {
+pub fn ParserInfo::ampm(self : ParserInfo, name : String) -> Int32? {
   self.ampm_map.get(py_lower(name))
 }
 
@@ -224,7 +224,7 @@ pub fn ParserInfo::utczone(self : ParserInfo, name : String) -> Bool {
 ///|
 /// `parserinfo.tzoffset(name)`. Like dateutil, the UTC check compares the
 /// name as-is against the lower-cased `UTCZONE` keys (so only `"z"` hits).
-pub fn ParserInfo::tzoffset(self : ParserInfo, name : String) -> Int? {
+pub fn ParserInfo::tzoffset(self : ParserInfo, name : String) -> Int32? {
   if self.utczone_map.contains(name) {
     return Some(0)
   }
@@ -236,9 +236,9 @@ pub fn ParserInfo::tzoffset(self : ParserInfo, name : String) -> Int? {
 /// within [-50, 49] of `self.year`.
 pub fn ParserInfo::default_convertyear(
   self : ParserInfo,
-  year : Int,
-  century_specified? : Bool = false,
-) -> Int {
+  year : Int32,
+  century_specified~ : Bool = false,
+) -> Int32 {
   if year < 100 && !century_specified {
     // assume current century to start
     let year = year + self.century
@@ -259,9 +259,9 @@ pub fn ParserInfo::default_convertyear(
 /// `convertyear` hook.
 pub fn ParserInfo::convertyear(
   self : ParserInfo,
-  year : Int,
-  century_specified? : Bool = false,
-) -> Int {
+  year : Int32,
+  century_specified~ : Bool = false,
+) -> Int32 {
   match self.convertyear_hook {
     Some(f) => f(self, year, century_specified)
     None => self.default_convertyear(year, century_specified~)

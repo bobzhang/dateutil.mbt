@@ -1,8 +1,9 @@
 ///|
 /// Python `IOError`/`OSError`: a zone file could not be read.
+#derive(Eq, Debug)
 pub(all) suberror IOError {
   IOError(String)
-} derive(Eq, Debug)
+}
 
 ///|
 pub impl Show for IOError with fn output(self, logger) {

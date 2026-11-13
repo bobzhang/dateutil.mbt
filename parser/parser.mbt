@@ -10,7 +10,7 @@ pub(all) enum TzInfoSpec {
   /// A zone object.
   Zone(@datetime.Tz)
   /// An offset east of UTC in seconds (becomes `tzoffset(name, seconds)`).
-  Offset(Int)
+  Offset(Int32)
   /// A POSIX-style TZ string (becomes `tzstr(s)`).
   TzString(String)
 }
@@ -24,7 +24,7 @@ pub(all) enum TzInfoSpec {
 /// `Table` is only consulted for names it contains.
 pub(all) enum TzInfos {
   Table(Map[String, TzInfoSpec])
-  Callback((String?, Int?) -> TzInfoSpec raise)
+  Callback((String?, Int32?) -> TzInfoSpec raise)
 }
 
 ///|
@@ -129,11 +129,11 @@ pub fn Parser::parse(
   self : Parser,
   timestr : String,
   default? : @datetime.DateTime,
-  ignoretz? : Bool = false,
+  ignoretz~ : Bool = false,
   tzinfos? : TzInfos,
   dayfirst? : Bool,
   yearfirst? : Bool,
-  fuzzy? : Bool = false,
+  fuzzy~ : Bool = false,
   on_warning? : (UnknownTimezoneWarning) -> Unit,
 ) -> @datetime.DateTime raise {
   self.parse_impl(
@@ -148,7 +148,7 @@ pub fn Parser::parse_with_tokens(
   self : Parser,
   timestr : String,
   default? : @datetime.DateTime,
-  ignoretz? : Bool = false,
+  ignoretz~ : Bool = false,
   tzinfos? : TzInfos,
   dayfirst? : Bool,
   yearfirst? : Bool,
@@ -196,11 +196,11 @@ pub fn parse(
   timestr : String,
   parserinfo? : ParserInfo,
   default? : @datetime.DateTime,
-  ignoretz? : Bool = false,
+  ignoretz~ : Bool = false,
   tzinfos? : TzInfos,
   dayfirst? : Bool,
   yearfirst? : Bool,
-  fuzzy? : Bool = false,
+  fuzzy~ : Bool = false,
   on_warning? : (UnknownTimezoneWarning) -> Unit,
 ) -> @datetime.DateTime raise {
   parser_for(parserinfo).parse_impl(
@@ -229,7 +229,7 @@ pub fn parse_with_tokens(
   timestr : String,
   parserinfo? : ParserInfo,
   default? : @datetime.DateTime,
-  ignoretz? : Bool = false,
+  ignoretz~ : Bool = false,
   tzinfos? : TzInfos,
   dayfirst? : Bool,
   yearfirst? : Bool,
@@ -261,7 +261,7 @@ fn build_naive(
     }
   }
   // `datetime.replace` converts every argument to a C int first.
-  fn c_int(v : Int64?) -> Int? raise @datetime.DateTimeError {
+  fn c_int(v : Int64?) -> Int32? raise @datetime.DateTimeError {
     match v {
       Some(v) => Some(to_c_int(v))
       None => None

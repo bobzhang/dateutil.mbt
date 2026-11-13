@@ -1,12 +1,12 @@
 ///|
 fn check_date(
-  y : Int,
-  m : Int,
-  d : Int,
-  ordinal~ : Int,
-  weekday~ : Int,
-  iso~ : (Int, Int, Int),
-  yday~ : Int,
+  y : Int32,
+  m : Int32,
+  d : Int32,
+  ordinal~ : Int32,
+  weekday~ : Int32,
+  iso~ : (Int32, Int32, Int32),
+  yday~ : Int32,
 ) -> Unit raise {
   let date = @datetime.Date::new(y, m, d)
   assert_eq(date.to_ordinal(), ordinal)
@@ -57,7 +57,7 @@ fn check_diff(
   a : @datetime.DateTime,
   b : @datetime.DateTime,
   repr : String,
-  cmp : Int,
+  cmp : Int32,
 ) -> Unit raise {
   assert_eq(a.diff(b).repr(), repr)
   assert_eq(a.compare(b), cmp)

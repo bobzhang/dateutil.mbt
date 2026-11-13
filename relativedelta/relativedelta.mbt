@@ -14,22 +14,22 @@
 /// `|hours| <= 23`, `|months| <= 11` (carrying into the next larger unit
 /// with the sign of the value), while `days` is unbounded.
 pub struct RelativeDelta {
-  years : Int
-  months : Int
+  years : Int32
+  months : Int32
   mut days : Double
-  leapdays : Int
+  leapdays : Int32
   hours : Double
   minutes : Double
   seconds : Double
   microseconds : Double
-  year : Int?
-  month : Int?
-  day : Int?
+  year : Int32?
+  month : Int32?
+  day : Int32?
   weekday : @datetime.Weekday?
-  hour : Int?
-  minute : Int?
-  second : Int?
-  microsecond : Int?
+  hour : Int32?
+  minute : Int32?
+  second : Int32?
+  microsecond : Int32?
 }
 
 ///|
@@ -40,19 +40,19 @@ fn RelativeDelta::build(
   years~ : Int64,
   months~ : Int64,
   days~ : Double,
-  leapdays~ : Int,
+  leapdays~ : Int32,
   hours~ : Double,
   minutes~ : Double,
   seconds~ : Double,
   microseconds~ : Double,
-  year~ : Int?,
-  month~ : Int?,
-  day~ : Int?,
+  year~ : Int32?,
+  month~ : Int32?,
+  day~ : Int32?,
   weekday~ : @datetime.Weekday?,
-  hour~ : Int?,
-  minute~ : Int?,
-  second~ : Int?,
-  microsecond~ : Int?,
+  hour~ : Int32?,
+  minute~ : Int32?,
+  second~ : Int32?,
+  microsecond~ : Int32?,
 ) -> RelativeDelta raise @datetime.DateTimeError {
   let mut years = years
   let mut months = months
@@ -137,25 +137,25 @@ fn RelativeDelta::build(
 /// }
 /// ```
 pub fn RelativeDelta::new(
-  years? : Int = 0,
-  months? : Int = 0,
-  days? : Int = 0,
-  leapdays? : Int = 0,
-  weeks? : Int = 0,
-  hours? : Int = 0,
-  minutes? : Int = 0,
-  seconds? : Int = 0,
-  microseconds? : Int = 0,
-  year? : Int,
-  month? : Int,
-  day? : Int,
+  years~ : Int32 = 0,
+  months~ : Int32 = 0,
+  days~ : Int32 = 0,
+  leapdays~ : Int32 = 0,
+  weeks~ : Int32 = 0,
+  hours~ : Int32 = 0,
+  minutes~ : Int32 = 0,
+  seconds~ : Int32 = 0,
+  microseconds~ : Int32 = 0,
+  year? : Int32,
+  month? : Int32,
+  day? : Int32,
   weekday? : @datetime.Weekday,
-  yearday? : Int,
-  nlyearday? : Int,
-  hour? : Int,
-  minute? : Int,
-  second? : Int,
-  microsecond? : Int,
+  yearday? : Int32,
+  nlyearday? : Int32,
+  hour? : Int32,
+  minute? : Int32,
+  second? : Int32,
+  microsecond? : Int32,
 ) -> RelativeDelta raise @datetime.DateTimeError {
   RelativeDelta::from_float(
     years=years.to_double(),
@@ -194,25 +194,25 @@ pub fn RelativeDelta::new(
 /// }
 /// ```
 pub fn RelativeDelta::from_float(
-  years? : Double = 0.0,
-  months? : Double = 0.0,
-  days? : Double = 0.0,
-  leapdays? : Int = 0,
-  weeks? : Double = 0.0,
-  hours? : Double = 0.0,
-  minutes? : Double = 0.0,
-  seconds? : Double = 0.0,
-  microseconds? : Double = 0.0,
-  year? : Int,
-  month? : Int,
-  day? : Int,
+  years~ : Double = 0.0,
+  months~ : Double = 0.0,
+  days~ : Double = 0.0,
+  leapdays~ : Int32 = 0,
+  weeks~ : Double = 0.0,
+  hours~ : Double = 0.0,
+  minutes~ : Double = 0.0,
+  seconds~ : Double = 0.0,
+  microseconds~ : Double = 0.0,
+  year? : Int32,
+  month? : Int32,
+  day? : Int32,
   weekday? : @datetime.Weekday,
-  yearday? : Int,
-  nlyearday? : Int,
-  hour? : Int,
-  minute? : Int,
-  second? : Int,
-  microsecond? : Int,
+  yearday? : Int32,
+  nlyearday? : Int32,
+  hour? : Int32,
+  minute? : Int32,
+  second? : Int32,
+  microsecond? : Int32,
 ) -> RelativeDelta raise @datetime.DateTimeError {
   // Python checks `x != int(x)` for years, then months.
   fn integral(x : Double) -> Int64 raise @datetime.DateTimeError {
@@ -285,14 +285,14 @@ pub fn RelativeDelta::has_time(self : RelativeDelta) -> Bool {
 
 ///|
 /// The `weeks` property: `int(days / 7.0)` (truncated toward zero).
-pub fn RelativeDelta::weeks(self : RelativeDelta) -> Int {
+pub fn RelativeDelta::weeks(self : RelativeDelta) -> Int32 {
   (self.days / 7.0).trunc().to_int()
 }
 
 ///|
 /// The `weeks` property setter: replaces the whole-weeks part of `days`
 /// (`days = days - weeks * 7 + value * 7`), in place.
-pub fn RelativeDelta::set_weeks(self : RelativeDelta, value : Int) -> Unit {
+pub fn RelativeDelta::set_weeks(self : RelativeDelta, value : Int32) -> Unit {
   self.days = self.days -
     (self.days / 7.0).trunc() * 7.0 +
     value.to_double() * 7.0
