@@ -49,7 +49,7 @@ fn Gen::from_array(xs : Array[@datetime.DateTime]) -> Gen {
 ///|
 /// Turn a generator into a MoonBit iterator; errors abort.
 fn Gen::to_iter(self : Gen) -> Iter[@datetime.DateTime] {
-  Iter::new(() => self.next() catch { e => abort(e.to_string()) })
+  Iter::Iter(() => self.next() catch { e => abort(e.to_string()) })
 }
 
 ///|

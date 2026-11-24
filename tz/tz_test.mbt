@@ -1001,7 +1001,7 @@ test "regressions from review" {
   }
   // a leap second count larger than the data is a truncated file
   let buf = Buffer()
-  buf.write_bytes(b"TZif")
+  buf.write_bytesview(b"TZif")
   for _ in 0..<16 {
     buf.write_byte(0)
   }
