@@ -267,9 +267,14 @@ test "easter" {
   rules: `TZ` (a zone name, a TZif path or a POSIX TZ string; empty means
   UTC) or else `/etc/localtime`, read from the system zoneinfo database
   (TZif v1-v4, including the footer rule after the last transition);
-  anything unresolvable is UTC. This needs file access: on wasm the host
-  must provide MoonBit's `__moonbit_fs_unstable`/env imports (as `moon run`
-  and `moon test` do), on js Node's `process.getBuiltinModule` (Node >=
+  anything unresolvable is UTC. This needs file access: Wasm hosts must
+  provide the runtime imports required by the resolved dependencies (as
+  `moon run` and `moon test` do). With `moonbitlang/x` 0.5.9, plain `wasm`
+  timezone-file reads also require `moonbitlang/async` runtime imports,
+  including `thread_pool/make_open_stat_job` and `thread_pool/make_read_job`;
+  a custom host implementing only `__moonbit_fs_unstable`/env must be updated.
+  `wasm-gc` retains the `__moonbit_fs_unstable` file-read imports.
+  On js, file access needs Node's `process.getBuiltinModule` (Node >=
   22.3, Deno, Bun). In a browser, unless `TZ` is a POSIX string, local time
   falls back to the JS `Date` object, which is approximate (`isdst` from a
   January/July comparison, `Intl` names such as `GMT+1` instead of `BST`).
